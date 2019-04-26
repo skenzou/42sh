@@ -1,31 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstdelcurr.c                                    :+:      :+:    :+:   */
+/*   ft_count_words_str.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/05 19:49:17 by midrissi          #+#    #+#             */
-/*   Updated: 2019/04/05 20:28:39 by midrissi         ###   ########.fr       */
+/*   Created: 2019/04/26 13:24:53 by midrissi          #+#    #+#             */
+/*   Updated: 2019/04/26 13:28:58 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void		ft_lstdelcurr(t_list *prev, t_list *curr, t_list **head)
+int		ft_count_words_str(char const *s, char *needle)
 {
-	if (!curr || !head)
-		return ;
-	if (!prev)
+	int i;
+	int count;
+
+	i = 0;
+	count = 0;
+	while (s[i])
 	{
-		*head = curr->next;
-		ft_memdel((void **)&curr->content);
-		ft_memdel((void **)&curr);
+		if (!ft_strchr(needle, s[i]) && (ft_strchr(needle, s[i - 1]) || i == 0))
+			count++;
+		i++;
 	}
-	else
-	{
-		prev->next = curr->next;
-		ft_memdel((void **)&curr->content);
-		ft_memdel((void **)&curr);
-	}
+	return (count);
 }

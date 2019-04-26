@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 21:23:47 by midrissi          #+#    #+#             */
-/*   Updated: 2019/04/23 21:46:49 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/04/26 13:35:54 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void			cmd_handler(char *cmd, char ***env)
 	int		id;
 	int		i;
 
-	if (!(args = ft_strsplit(cmd, ' ')))
+	if (!(args = ft_strsplitstr(cmd, " \t")))
 		exit(1);
 	if (ft_split_count(args) > 0)
 	{

@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/24 13:32:59 by midrissi          #+#    #+#             */
-/*   Updated: 2019/04/24 17:14:52 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/04/26 18:17:10 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,9 @@ void	err_handler(int err_id, char *str)
 		ft_printf("-minishell: %s: Invalid argument\n", str);
 	if (err_id == SETENV_USG)
 		ft_printf("usage: setenv [<Key> <Value> | <Key>]\n");
+	if (err_id == SETENV_INVALID_KEY)
+		ft_printf(
+			"setenv: Variable name must contain alphanumeric characters.\n");
 	if (err_id == UNSETENV_USG)
 		ft_printf("usage: unsetenv <Key>\n");
 	if (err_id == FAILFORK)

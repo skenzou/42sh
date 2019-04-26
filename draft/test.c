@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 17:44:52 by midrissi          #+#    #+#             */
-/*   Updated: 2019/04/24 19:32:55 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/04/24 19:42:14 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 
 /*
-/** petit example pour recuperer stdin & err dans un fork
+** petit example pour recuperer stdin & err dans un fork
 */
 // int main(int argc, char **argv)
 // {
@@ -52,7 +52,7 @@
 
 
 /*
-/** REDIRECTION DANS UN FICHIER DONNER DANS ARGV[1]
+** REDIRECTION DANS UN FICHIER DONNER DANS ARGV[1]
 */
 int main(int argc, char **argv)
 {

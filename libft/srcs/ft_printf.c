@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/27 12:10:48 by midrissi          #+#    #+#             */
-/*   Updated: 2019/04/19 10:20:57 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/02/20 06:17:14 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void		set_conversion(char *str, t_format *fmt)
 			fmt->conversion = *str;
 			if (ft_strchr("DOU", fmt->conversion))
 			{
-				fmt->modifier = PRINTF_L;
+				fmt->modifier = L;
 				fmt->conversion = ft_tolower(fmt->conversion);
 			}
 			fmt->base = 10;

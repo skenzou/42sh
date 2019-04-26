@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/08 05:12:40 by midrissi          #+#    #+#             */
-/*   Updated: 2019/04/19 10:19:00 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/02/20 06:16:59 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ intmax_t		get_signed(t_format *fmt, va_list ap)
 		return ((char)va_arg(ap, long long));
 	else if (fmt->modifier == H)
 		return ((short)va_arg(ap, long long));
-	else if (fmt->modifier == PRINTF_L || fmt->modifier == LL)
+	else if (fmt->modifier == L || fmt->modifier == LL)
 		return (va_arg(ap, long long));
-	else if (fmt->modifier == PRINTF_Z)
+	else if (fmt->modifier == Z)
 		return (va_arg(ap, size_t));
 	else if (fmt->modifier == J)
 		return (va_arg(ap, intmax_t));
@@ -31,14 +31,14 @@ intmax_t		get_signed(t_format *fmt, va_list ap)
 
 uintmax_t		get_unsigned(t_format *fmt, va_list ap)
 {
-	if (fmt->modifier == PRINTF_L || fmt->modifier == LL
+	if (fmt->modifier == L || fmt->modifier == LL
 			|| fmt->conversion == 'p')
 		return (va_arg(ap, unsigned long long));
 	else if (fmt->modifier == H)
 		return ((unsigned short)va_arg(ap, unsigned long long));
 	else if (fmt->modifier == HH)
 		return ((unsigned char)va_arg(ap, unsigned long long));
-	else if (fmt->modifier == PRINTF_Z)
+	else if (fmt->modifier == Z)
 		return (va_arg(ap, size_t));
 	else if (fmt->modifier == J)
 		return (va_arg(ap, uintmax_t));

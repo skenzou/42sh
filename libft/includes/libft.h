@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/04 13:56:36 by midrissi          #+#    #+#             */
-/*   Updated: 2019/04/19 10:17:58 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/04/26 13:29:29 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@
 # define CONV "diouxXcspfDOUb%"
 # define H 1
 # define HH	2
-# define PRINTF_L	3
+# define L	3
 # define LL	4
 # define LU	5
-# define PRINTF_Z	6
+# define Z	6
 # define J  7
 # define BUFF_SIZE 32
 # define FD_MAX OPEN_MAX
@@ -145,10 +145,7 @@ double			ft_percent(int start, int end, int curr);
 int				ft_split_count(char **split);
 void			ft_splitdel(char **split);
 char			*ft_strcjoin(char const *s1, char const *s2, char c);
-int				ft_indexof(char *str, char c);
-void			ft_lstdelcurr(t_list *prev, t_list *curr, t_list **head);
-int				ft_max(int n, int nn);
-int				ft_min(int n, int nn);
-int				ft_intlen_base(uintmax_t nbr, int base);
+char			**ft_strsplitstr(char const *s, char *needle);
+int				ft_count_words_str(char const *s, char *needle);
 
 #endif

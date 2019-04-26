@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/08 05:23:27 by midrissi          #+#    #+#             */
-/*   Updated: 2019/04/19 10:18:17 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/02/27 00:55:54 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,9 @@ int				get_modifier(char *str, t_format *fmt)
 	if (ft_count_modifiers('j', str))
 		return (J);
 	if (ft_count_modifiers('z', str))
-		return (PRINTF_Z);
+		return (Z);
 	if (lcount && lcount % 2)
-		return (PRINTF_L);
+		return (L);
 	if (lcount)
 		return (LL);
 	if (hcount && hcount % 2)
