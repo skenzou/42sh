@@ -6,12 +6,18 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/27 17:27:48 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/04/27 19:33:08 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/04/27 22:03:16 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sh21.h"
 #include <stdio.h>
+
+int		fputchar(int c)
+{
+	write(1, &c, 1);
+	return (1);
+}
 
 int		init_termcaps(t_term *term)
 {
@@ -26,10 +32,11 @@ int		init_termcaps(t_term *term)
 	return (1);
 }
 
-void	sig_handler(int signal)
+void	sig_handler(int sig)
 {
-	if (signal == SIGINT)
+	if (sig == SIGINT)
 	{
+		signal(SIGINT, sig_handler);
 		printf("on quitte\n");
 		exit(0);
 	}
@@ -70,16 +77,37 @@ void read_arrows(char touche[2], int shift)
 	}
 }
 
+int		exec_command(char *command)
+{
+	ft_printf("%s\n", command);
+	return (1);
+}
+
+void get_col(void)
+{
+	int col = tgetnum("co");
+int line = tgetnum("li");
+ft_printf("col {%d, %d}\n", col, line);
+	/* code */
+}
+
 int		main(int ac, char **av)
 {
 	t_term	term;
 	char	buffer;
 	char	touche[2];
+	char	command[BUFFSIZE];
+	int		curseur;
+
+	curseur = 0;
+	command[BUFFSIZE - 1] = '\0';
+
 	(void)ac;
 	(void)av;
 	buffer = 0;
 	if (!(tgetent(NULL, getenv("TERM"))) || !init_termcaps(&term))
 		return (-1);
+	get_col();
 	signal(SIGINT, sig_handler);
 	display_prompt();
 	while (19)
@@ -97,11 +125,22 @@ int		main(int ac, char **av)
 		}
 		else if (buffer == 10)
 		{
+			command[curseur] = '\0';
+			curseur = 0;
 			ft_putchar('\n');
+			exec_command(command);
 			display_prompt();
 		}
+		else if (buffer == 127)
+		{
+			char *cm = tgetstr("kl", NULL);
+			tputs(tgoto(cm, 5, 2), 2, fputchar);
+		}
 		else
+		{
+			command[curseur++] = buffer;
 			ft_printf("%c", buffer);
+		}
 	}
 	return (0);
 }
