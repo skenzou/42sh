@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 17:44:52 by midrissi          #+#    #+#             */
-/*   Updated: 2019/04/27 17:34:47 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/04/27 18:14:55 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,23 @@ void 		pipe_cmds(char **cmd1, char **cmd2, char **env)
 	return ;
 }
 
+void 		redirect(char **cmd, char *path, char **env)
+{
+	pid_t pid;
+	int fd;
+
+	fd = open(path, O_RDONLY | O_WRONLY);
+	pid = fork();
+	signal(SIGINT, sighandler);
+	if (pid == 0)
+	{
+		dup2(fd, 1); /* recupere stdout */
+		dup2(fd, 2); /* recupere stderr */
+		execve(cmd[0], cmd, env);
+	}
+	wait(&pid);
+}
+
 /*
 ** petit example pour recuperer stdin & err dans un fork
 */
@@ -61,7 +78,7 @@ int main(int argc, char **argv, char **env)
 
 	cmd1 = (char **)malloc(sizeof(char *) * 4);
 	cmd1[0] = "/bin/ls";
-	cmd1[1] = "-R";
+	cmd1[1] = "-l";
 	cmd1[2] = "/";
 	cmd1[3] = NULL;
 	cmd2 = (char **)malloc(sizeof(char *) * 4);
@@ -70,6 +87,7 @@ int main(int argc, char **argv, char **env)
 	cmd2[2] = "Desktop";
 	cmd2[3] = NULL;
 	pipe_cmds(cmd1, cmd2, env);
+	redirect(cmd1, "./test", env);
 	return (0);
 }
 
