@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/27 17:27:48 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/04/27 18:05:15 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/04/27 19:33:08 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,42 @@ void	sig_handler(int signal)
 		exit(0);
 	}
 }
+
 void display_prompt()
 {
 	ft_printf("\x1b[32m$21sh>\x1b[0m ");
 }
+
+void read_arrows(char touche[2], int shift)
+{
+	if (shift)
+	{
+		if (touche[1] == ARROW_UP)
+			ft_printf("{LU}\n");
+		else if (touche[1] == ARROW_DOWN)
+			ft_printf("{LD}\n");
+		else if (touche[1] == ARROW_LEFT)
+			ft_printf("{LL}\n");
+		else if (touche[1] == ARROW_RIGHT)
+			ft_printf("{LR}\n");
+		display_prompt();
+	}
+	else
+	{
+		if (touche[1] == ARROW_UP)
+			ft_printf("{U}\n");
+		else if (touche[1] == ARROW_DOWN)
+			ft_printf("{D}\n");
+		else if (touche[1] == ARROW_LEFT)
+			ft_printf("{L}\n");
+		else if (touche[1] == ARROW_RIGHT)
+			ft_printf("{R}\n");
+		if (touche[1] == ARROW_UP || touche[1] == ARROW_DOWN ||
+				touche[1] == ARROW_LEFT || touche[1] == ARROW_RIGHT)
+			display_prompt();
+	}
+}
+
 int		main(int ac, char **av)
 {
 	t_term	term;
@@ -53,18 +85,10 @@ int		main(int ac, char **av)
 	while (19)
 	{
 		read(0, &buffer, 1);
-		if (buffer == 27)
+		if (buffer == 27 || buffer == 59)
 		{
 			read(0, touche, 2);
-			if (touche[1] == ARROW_UP)
-				ft_printf("{U}\n");
-			else if (touche[1] == ARROW_DOWN)
-				ft_printf("{D}\n");
-			else if (touche[1] == ARROW_LEFT)
-				ft_printf("{L}\n");
-			else if (touche[1] == ARROW_RIGHT)
-				ft_printf("{R}\n");
-			display_prompt();
+			read_arrows(touche, buffer == 59);
 		}
 		else if (buffer == 4)
 		{
@@ -75,13 +99,9 @@ int		main(int ac, char **av)
 		{
 			ft_putchar('\n');
 			display_prompt();
-
 		}
 		else
-		{
-			//printf("touche: %d\n", buffer);
 			ft_printf("%c", buffer);
-		}
 	}
 	return (0);
 }
