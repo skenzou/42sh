@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 17:44:52 by midrissi          #+#    #+#             */
-/*   Updated: 2019/04/27 19:43:44 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/04/27 20:40:08 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,23 @@ void 		redirect(char **cmd, char *path, char **env, char simple)
 	wait(&pid);
 }
 
+void 		input_redir(char **cmd, char *path, char **env)
+{
+	pid_t	pid;
+	int		fildes[2];
+	int fd;
+
+	pid = fork();
+	signal(SIGINT, sighandler);
+	if (pid == 0)
+	{
+		fd = open(path, O_RDONLY);
+		dup2(fd, 0);
+		execve(cmd[0], cmd, env);
+	}
+	wait(&pid);
+}
+
 /*
 ** petit example pour recuperer stdin & err dans un fork
 */
@@ -87,10 +104,11 @@ int main(int argc, char **argv, char **env)
 	cmd2 = (char **)malloc(sizeof(char *) * 4);
 	cmd2[0] = "/usr/bin/grep";
 	cmd2[1] = "--color=always";
-	cmd2[2] = "Desktop";
+	cmd2[2] = "test";
 	cmd2[3] = NULL;
-	pipe_cmds(cmd1, cmd2, env);
-	redirect(cmd1, argv[3], env, ft_strequ(argv[2], ">"));
+	input_redir(cmd2, argv[1], env);
+	// pipe_cmds(cmd1, cmd2, env);
+	// redirect(cmd1, argv[3], env, ft_strequ(argv[2], ">"));
 	return (0);
 }
 
