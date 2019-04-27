@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 17:44:52 by midrissi          #+#    #+#             */
-/*   Updated: 2019/04/27 18:14:55 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/04/27 19:43:44 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,12 +51,15 @@ void 		pipe_cmds(char **cmd1, char **cmd2, char **env)
 	return ;
 }
 
-void 		redirect(char **cmd, char *path, char **env)
+void 		redirect(char **cmd, char *path, char **env, char simple)
 {
 	pid_t pid;
 	int fd;
 
-	fd = open(path, O_RDONLY | O_WRONLY);
+	if (simple) /* redirection simple '>' */
+		fd = open(path, O_RDWR | O_APPEND | O_CREAT | O_TRUNC, 0666); /* ecraser un le contenu de fichier */
+	else		/* double redirection '>>' */
+		fd = open(path, O_RDWR | O_APPEND | O_CREAT, 0666); /* ecrire fin de fichier */
 	pid = fork();
 	signal(SIGINT, sighandler);
 	if (pid == 0)
@@ -79,7 +82,7 @@ int main(int argc, char **argv, char **env)
 	cmd1 = (char **)malloc(sizeof(char *) * 4);
 	cmd1[0] = "/bin/ls";
 	cmd1[1] = "-l";
-	cmd1[2] = "/";
+	cmd1[2] = argv[1];
 	cmd1[3] = NULL;
 	cmd2 = (char **)malloc(sizeof(char *) * 4);
 	cmd2[0] = "/usr/bin/grep";
@@ -87,7 +90,7 @@ int main(int argc, char **argv, char **env)
 	cmd2[2] = "Desktop";
 	cmd2[3] = NULL;
 	pipe_cmds(cmd1, cmd2, env);
-	redirect(cmd1, "./test", env);
+	redirect(cmd1, argv[3], env, ft_strequ(argv[2], ">"));
 	return (0);
 }
 
