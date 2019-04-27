@@ -1,18 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sh21.h                                             :+:      :+:    :+:   */
+/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/28 15:31:17 by midrissi          #+#    #+#             */
-/*   Updated: 2019/04/27 15:12:37 by aben-azz         ###   ########.fr       */
+/*   Created: 2018/10/15 20:01:33 by aben-azz          #+#    #+#             */
+/*   Updated: 2018/10/15 21:19:49 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SH_21_H
-# define SH_21_H
-# include <term.h>
-# include <termios.h>
-# include <stdlib.h>
-#endif
+#include "libft.h"
+
+void	ft_lstdelone(t_list **alst, void (*del) (void *, size_t))
+{
+	(alst && *alst) ? del((*alst)->content, (*alst)->content_size) : NULL;
+	(alst && *alst) ? ft_memdel((void **)alst) : NULL;
+}

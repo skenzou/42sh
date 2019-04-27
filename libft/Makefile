@@ -5,10 +5,11 @@
 #                                                     +:+ +:+         +:+      #
 #    By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2019/04/12 06:27:40 by aben-azz          #+#    #+#              #
-#    Updated: 2019/04/12 07:36:02 by midrissi         ###   ########.fr        #
+#    Created: 2018/10/13 13:11:49 by aben-azz          #+#    #+#              #
+#    Updated: 2019/04/27 15:11:54 by aben-azz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
 
 _END			=	\x1b[0m
 _BOLD			=	\x1b[1m
@@ -42,12 +43,27 @@ SRCS			=	$(addprefix $(SRC_DIR), $(SRC_BASE))
 OBJS			=	$(addprefix $(OBJ_DIR), $(SRC_BASE:.c=.o))
 NB				=	$(words $(SRC_BASE))
 INDEX			=	0
-SRC_DIR			=	srcs/
+SRC_DIR			=	src/
 INC_DIR			=	includes/
 OBJ_DIR			=	objs/
 
-SRC_BASE		= SRCS DE LA LIBFT A RAJOUTER
-
+SRC_BASE				=	ft_counti.c ft_round.c ft_intlen.c ft_ftoa.c ft_pow.c \
+ft_count.c ft_indexof.c ft_isupper.c ft_islower.c ft_atoi.c ft_isalnum.c \
+ft_bzero.c ft_isascii.c ft_isdigit.c ft_isprint.c ft_itoa.c ft_lstadd.c  \
+ft_lstdelone.c ft_lstiter.c ft_lstmap.c ft_lstnew.c ft_memalloc.c ft_memccpy.c \
+ft_lstdel.c ft_memchr.c ft_memcmp.c ft_memcpy.c ft_memdel.c ft_memmove.c \
+ft_memset.c ft_putchar.c ft_putchar_fd.c ft_putendl.c ft_putendl_fd.c \
+ft_putnbr_fd.c ft_putstr.c ft_putstr_fd.c ft_strcat.c ft_strchr.c ft_strclr.c \
+ft_strcmp.c ft_strcpy.c ft_strdel.c ft_strdup.c ft_strequ.c ft_striter.c \
+ft_striteri.c ft_strjoin.c ft_strlcat.c ft_strlen.c ft_strmap.c ft_strtrim.c \
+ft_strsplit.c ft_strstr.c ft_strsub.c ft_toupper.c ft_strmapi.c ft_strncat.c \
+ft_strncmp.c ft_strncpy.c ft_strnequ.c ft_strnew.c ft_strnstr.c ft_strrchr.c \
+ft_putnbr.c ft_isalpha.c ft_tolower.c get_next_line.c ft_repeat_char.c \
+ft_utoa_base.c ft_intlen_base.c min.c max.c ft_printf.c geters.c \
+handle_numbers.c handlers.c ft_lstrev.c ft_lstdestroy.c ft_count_words.c \
+ft_itoa_base.c rgb2dec.c ft_percent.c get_color_from_percent.c ft_rand.c \
+ft_is_space.c ft_strendswith.c ft_strstartswith.c ft_lastindexof.c \
+ft_strreplace.c ft_strsplitwhitespace.c ft_substr.c
 all:
 	@make -j $(NAME)
 
@@ -75,7 +91,7 @@ clean:
 
 fclean: clean
 	@$(RM) $(NAME)
-	@printf "\r\033[38;5;196m❌  fclean $(NAME)\033[0m\033[K\n"
+	@printf "\r\033[38;5;196m❌ fclean $(NAME)\033[0m\033[K\n"
 
 re: fclean all
 

@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sh21.h                                             :+:      :+:    :+:   */
+/*   down_bit.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/28 15:31:17 by midrissi          #+#    #+#             */
-/*   Updated: 2019/04/27 15:12:37 by aben-azz         ###   ########.fr       */
+/*   Created: 2018/12/01 09:08:45 by aben-azz          #+#    #+#             */
+/*   Updated: 2019/03/05 06:54:01 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SH_21_H
-# define SH_21_H
-# include <term.h>
-# include <termios.h>
-# include <stdlib.h>
-#endif
+#include "libft.h"
+
+t_bits	down_bit(t_bits i, t_bits n)
+{
+	return (n & ~(1 << i));
+}

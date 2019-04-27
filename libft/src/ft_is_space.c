@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sh21.h                                             :+:      :+:    :+:   */
+/*   ft_is_space.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/28 15:31:17 by midrissi          #+#    #+#             */
-/*   Updated: 2019/04/27 15:12:37 by aben-azz         ###   ########.fr       */
+/*   Created: 2018/10/15 17:04:34 by aben-azz          #+#    #+#             */
+/*   Updated: 2018/10/15 17:05:34 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SH_21_H
-# define SH_21_H
-# include <term.h>
-# include <termios.h>
-# include <stdlib.h>
-#endif
+#include "libft.h"
+
+int	ft_is_space(int c)
+{
+	return (c == '\t' || c == ' ' || c == '\n');
+}

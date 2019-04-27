@@ -1,18 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sh21.h                                             :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/28 15:31:17 by midrissi          #+#    #+#             */
-/*   Updated: 2019/04/27 15:12:37 by aben-azz         ###   ########.fr       */
+/*   Created: 2018/10/07 13:48:17 by aben-azz          #+#    #+#             */
+/*   Updated: 2019/01/26 19:20:49 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SH_21_H
-# define SH_21_H
-# include <term.h>
-# include <termios.h>
-# include <stdlib.h>
-#endif
+#include "libft.h"
+
+char	*ft_strrchr(char *s, int c)
+{
+	char *ptr;
+
+	ptr = NULL;
+	while (*s)
+	{
+		*s == (char)c && (ptr = (char*)s);
+		s++;
+	}
+	*s == (char)c && (ptr = (char*)s);
+	return (ptr);
+}

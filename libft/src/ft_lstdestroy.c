@@ -1,18 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sh21.h                                             :+:      :+:    :+:   */
+/*   ft_lstdestroy.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/28 15:31:17 by midrissi          #+#    #+#             */
-/*   Updated: 2019/04/27 15:12:37 by aben-azz         ###   ########.fr       */
+/*   Created: 2019/02/14 06:29:17 by midrissi          #+#    #+#             */
+/*   Updated: 2019/02/28 14:31:16 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SH_21_H
-# define SH_21_H
-# include <term.h>
-# include <termios.h>
-# include <stdlib.h>
-#endif
+#include "libft.h"
+
+int		ft_lstdestroy(t_list **lst)
+{
+	t_list *save;
+
+	while (*lst)
+	{
+		save = *lst;
+		*lst = (*lst)->next;
+		ft_memdel(&(save->content));
+		ft_memdel((void **)&save);
+	}
+	*lst = NULL;
+	return (0);
+}
