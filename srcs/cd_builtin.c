@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/24 11:44:34 by midrissi          #+#    #+#             */
-/*   Updated: 2019/04/24 16:05:47 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/04/26 20:16:46 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static int		change_dir(char *path, char ***env)
 	struct stat		buf;
 	char			cwd[MAX_PATH_LEN];
 
-	if (!lstat(path, &buf))
+	if (!stat(path, &buf))
 	{
 		if (S_ISDIR(buf.st_mode) == 1)
 		{

@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 17:44:52 by midrissi          #+#    #+#             */
-/*   Updated: 2019/04/24 19:42:14 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/04/26 18:52:41 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int main(int argc, char **argv)
 	char **str;
 	char buff[300];
 
-	int fd = open(argv[1], O_RDONLY | O_WRONLY | O_TRUNC | O_CREAT);
+	int fd = open(argv[1], O_RDONLY | O_WRONLY | O_TRUNC | O_CREAT, 0666);
 	str = (char **)malloc(sizeof(char *) * 4);
 	str[0] = ft_strdup("/bin/ls");
 	str[1] = ft_strdup(".");

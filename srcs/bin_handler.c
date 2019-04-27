@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 21:26:08 by midrissi          #+#    #+#             */
-/*   Updated: 2019/04/26 18:00:59 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/04/26 20:16:32 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,9 @@ static int		find_bin(char **bin, char **env, char **paths)
 	while (paths && paths[++i])
 	{
 		set_path(path, bin[0], paths[i]);
-		if (!lstat(path, &buff))
-			if (!access(path, X_OK))
+		if (!stat(path, &buff))
+		{
+			if (!access(path, X_OK) && !S_ISDIR(buff.st_mode) == 1)
 			{
 				pid = fork();
 				signal(SIGINT, sigfork);
@@ -35,6 +36,8 @@ static int		find_bin(char **bin, char **env, char **paths)
 				wait(&pid);
 				return (0);
 			}
+			return (NO_RIGHT);
+		}
 	}
 	return (NOT_FOUND);
 }
@@ -59,7 +62,7 @@ static int		exec_binpath(char **bin, char **env)
 	struct stat	buff;
 	pid_t		pid;
 
-	if (lstat(bin[0], &buff) == -1)
+	if (stat(bin[0], &buff) == -1)
 		return (NON_EXISTENT);
 	if (S_ISREG(buff.st_mode) == 1 && !access(bin[0], X_OK))
 	{
