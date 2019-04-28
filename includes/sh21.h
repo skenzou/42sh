@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/28 13:06:21 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/04/28 15:45:07 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/04/28 16:09:30 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,27 @@
 # include <signal.h>
 # include <stdlib.h>
 # include <sys/types.h>
+# include <sys/stat.h>
 # include <sys/uio.h>
 # include <unistd.h>
 # include "libft.h"
+# include <unistd.h>
+# include <math.h>
+# include <fcntl.h>
+# define PREFIX "\x1b[32m➜ \x1b[0m\x1b[37m\x1b[1m"
+# define SUFFIX "%s\x1b[0m \x1b[1m\x1b[31m%s\x1b[0m\x1b[32m> \x1b[0m"
+typedef struct	s_data
+{
+	int				xd;
+	char			**argv;
+}				t_data;
+char					**g_env;
+typedef struct stat	t_stat;
+typedef struct	s_built
+{
+	char			*builtin;
+	int				(*function)(char **argv);
+}				t_built;
 # define ARROW_UP		4283163
 # define ARROW_DOWN		4348699
 # define ARROW_RIGHT	4414235
@@ -48,6 +66,7 @@ typedef struct	s_key_event
 }				t_key_event;
 extern t_arrow_event g_arrow_event[];
 extern t_key_event g_key_event[];
+extern char **g_env;
 /*
 **	ARROW_EVENTS.C
 */
@@ -81,4 +100,31 @@ void	sig_handler(int sig);
 int		fputchar(int c);
 int		exec_command(char *command);
 void	display_prompt(void);
+/*
+** MIMISHELL.C
+*/
+
+int		find_built(char **argv);
+int		ft_echo(char **argv);
+int		ft_env(char **argv);
+int		change_dir(char *path, int print_path);
+int		ft_cd(char **argv);
+void	signal_handler_command(int sig);
+int		quick_cd(char **cmd);
+int		set_env(char *key, char *value);
+int		ft_setenv(char **argv);
+char	**realloc_env(int new_size, int exception);
+int		ft_unsetenv(char **argv);
+int		ft_exit(char **argv);
+void	display_prompt_prefix(void);
+int		env_len(char **env);
+void	init_env(char **env);
+char	*get_env(char *name);
+int		get_env_index(char *name);
+int		execute(char **cmd, int dir);
+int		exec_valid_command(char **argv, int m);
+int		is_expansion_printable(char *s, int dollar_index, int i);
+char	*get_expansion(char *string, char *act_env, int length);
+char	*expansion_dollar(char *string);
+int		handler(char *string);
 #endif

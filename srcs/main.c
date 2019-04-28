@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/27 17:27:48 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/04/28 15:42:54 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/04/28 16:10:32 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int		exec_command(char *command)
 	return (1);
 }
 
-int		main(int ac, char **av)
+int		main(int ac, char **av, char **env)
 {
 	t_term	term;
 	int		buffer;
@@ -58,6 +58,7 @@ int		main(int ac, char **av)
 
 	(void)ac;
 	(void)av;
+	init_env(env);
 	if (!(curseur = malloc(sizeof(curseur))))
 		return (-1);
 	command[BUFFSIZE - 1] = '\0';
