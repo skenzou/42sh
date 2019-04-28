@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/27 17:27:48 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/04/28 16:10:32 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/04/28 16:25:04 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ int		main(int ac, char **av, char **env)
 	if (!(tgetent(NULL, getenv("TERM"))) || !init_termcaps(&term, curseur))
 		return (-1);
 	signal(SIGINT, sig_handler);
-	display_prompt();
+	display_prompt_prefix();
 	while ("21sh")
 	{
 		read(0, &buffer, 4);

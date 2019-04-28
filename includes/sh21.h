@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/28 13:06:21 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/04/28 16:09:30 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/04/28 16:28:39 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,18 +26,6 @@
 # include <fcntl.h>
 # define PREFIX "\x1b[32m➜ \x1b[0m\x1b[37m\x1b[1m"
 # define SUFFIX "%s\x1b[0m \x1b[1m\x1b[31m%s\x1b[0m\x1b[32m> \x1b[0m"
-typedef struct	s_data
-{
-	int				xd;
-	char			**argv;
-}				t_data;
-char					**g_env;
-typedef struct stat	t_stat;
-typedef struct	s_built
-{
-	char			*builtin;
-	int				(*function)(char **argv);
-}				t_built;
 # define ARROW_UP		4283163
 # define ARROW_DOWN		4348699
 # define ARROW_RIGHT	4414235
@@ -46,8 +34,20 @@ typedef struct	s_built
 # define ENTER			10
 # define BUFFSIZE		4096
 # define UNUSED			0
-
+typedef struct	s_data
+{
+	int				xd;
+	char			**argv;
+}				t_data;
+char					**g_env;
+typedef struct stat	t_stat;
 typedef struct termios	t_term;
+typedef struct	s_built
+{
+	char			*builtin;
+	int				(*function)(char **argv);
+}				t_built;
+
 typedef struct	s_curs
 {
 	unsigned int			x;
