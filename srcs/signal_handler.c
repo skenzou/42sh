@@ -1,16 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isprint.c                                       :+:      :+:    :+:   */
+/*   signal_handler.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/10/09 15:00:17 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/04/28 13:30:09 by aben-azz         ###   ########.fr       */
+/*   Created: 2019/04/28 15:31:17 by aben-azz          #+#    #+#             */
+/*   Updated: 2019/04/28 15:38:06 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isprint(int c)
+#include "sh21.h"
+
+void	sig_handler(int sig)
 {
-	return (c >= 32 && c <= 126);
+	if (sig == SIGINT)
+	{
+		signal(SIGINT, sig_handler);
+		ft_printf("on quitte\n");
+		exit(0);
+	}
 }

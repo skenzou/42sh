@@ -29,7 +29,8 @@ LIBFT_INC	=	$(LIBFT_DIR)includes/
 SRC_DIR		=	srcs/
 INC_DIR		=	includes/
 OBJ_DIR		=	obj/
-SRC_BASE 	= main.c
+SRC_BASE 	= main.c arrow_events.c key_events.c reader.c signal_handler.c \
+others.c
 SRCS			=	$(addprefix $(SRC_DIR), $(SRC_BASE))
 OBJS			=	$(addprefix $(OBJ_DIR), $(SRC_BASE:.c=.o))
 NB				=	$(words $(SRC_BASE))

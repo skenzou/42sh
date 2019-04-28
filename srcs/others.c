@@ -1,16 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isprint.c                                       :+:      :+:    :+:   */
+/*   others.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/10/09 15:00:17 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/04/28 13:30:09 by aben-azz         ###   ########.fr       */
+/*   Created: 2019/04/28 15:35:56 by aben-azz          #+#    #+#             */
+/*   Updated: 2019/04/28 15:36:30 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isprint(int c)
+#include "sh21.h"
+
+int		ft_put_termcaps(int c)
 {
-	return (c >= 32 && c <= 126);
+	write(1, &c, 1);
+	return (1);
+}
+
+void	display_prompt(void)
+{
+	ft_printf("\x1b[32m$21sh>\x1b[0m ");
 }
