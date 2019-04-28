@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/27 17:27:48 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/04/28 15:39:10 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/04/28 15:42:54 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,8 @@ int		main(int ac, char **av)
 	while ("21sh")
 	{
 		read(0, &buffer, 4);
-		read_buffer(buffer, curseur, command);
+		if (!read_buffer(buffer, curseur, command))
+			return (-1);
 		buffer = 0;
 	}
 	return (0);

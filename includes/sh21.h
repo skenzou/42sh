@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/28 13:06:21 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/04/28 15:37:55 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/04/28 15:45:07 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int		backspace_event(t_curs *curseur, char *command);
 /*
 **	READER.C
 */
-void	read_buffer(int buffer, t_curs *curseur, char *command);
+int		read_buffer(int buffer, t_curs *curseur, char *command);
 /*
 **	OTHERS.C
 */
