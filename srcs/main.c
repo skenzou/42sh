@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/27 17:27:48 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/04/27 22:03:16 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/04/28 12:02:41 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,9 @@ void display_prompt()
 	ft_printf("\x1b[32m$21sh>\x1b[0m ");
 }
 
-void read_arrows(char touche[2], int shift)
+void read_arrows(char touche[2], int shift, int *curseur)
 {
+	(void)curseur;
 	if (shift)
 	{
 		if (touche[1] == ARROW_UP)
@@ -64,16 +65,23 @@ void read_arrows(char touche[2], int shift)
 	else
 	{
 		if (touche[1] == ARROW_UP)
-			ft_printf("{U}\n");
+			ft_printf("{LU}");
 		else if (touche[1] == ARROW_DOWN)
-			ft_printf("{D}\n");
+			ft_printf("{LD}");
 		else if (touche[1] == ARROW_LEFT)
-			ft_printf("{L}\n");
+		{
+			if (*curseur)
+			{
+				tputs(tgoto(tgetstr("LE", NULL), 1, 0), 0, fputchar);
+			}
+		}
 		else if (touche[1] == ARROW_RIGHT)
-			ft_printf("{R}\n");
+		{
+			tputs(tgoto(tgetstr("RI", NULL), 1, 0), 0, fputchar);
+		}
 		if (touche[1] == ARROW_UP || touche[1] == ARROW_DOWN ||
 				touche[1] == ARROW_LEFT || touche[1] == ARROW_RIGHT)
-			display_prompt();
+				;
 	}
 }
 
@@ -83,12 +91,9 @@ int		exec_command(char *command)
 	return (1);
 }
 
-void get_col(void)
+void	get_col(void)
 {
-	int col = tgetnum("co");
-int line = tgetnum("li");
-ft_printf("col {%d, %d}\n", col, line);
-	/* code */
+	ft_printf("col {%d, %d}\n", tgetnum("co"), tgetnum("li"));
 }
 
 int		main(int ac, char **av)
@@ -116,7 +121,7 @@ int		main(int ac, char **av)
 		if (buffer == 27 || buffer == 59)
 		{
 			read(0, touche, 2);
-			read_arrows(touche, buffer == 59);
+			read_arrows(touche, buffer == 59, &curseur);
 		}
 		else if (buffer == 4)
 		{
@@ -133,8 +138,13 @@ int		main(int ac, char **av)
 		}
 		else if (buffer == 127)
 		{
-			char *cm = tgetstr("kl", NULL);
-			tputs(tgoto(cm, 5, 2), 2, fputchar);
+			if (curseur)
+			{
+				tputs(tgetstr("le", NULL), 1, fputchar);
+				ft_putchar(' ');
+				tputs(tgetstr("le", NULL), 1, fputchar);
+				curseur--;
+			}
 		}
 		else
 		{
