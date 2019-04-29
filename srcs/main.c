@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/29 17:39:49 by midrissi          #+#    #+#             */
-/*   Updated: 2019/04/29 23:19:02 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/04/29 23:39:21 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -181,12 +181,12 @@ int				main(int argc, char **argv, char **env)
 	lexer = NULL;
 	while (ret == 1)
 	{
-		// print_prompt();
-		// signal(SIGINT, sighandler);
+		print_prompt();
 		if ((ret = get_next_line(0, &input)) > 0)
 			lex_input(input, &lexer);
 		ft_lstrev(&lexer);
 		print_list(lexer);
+		ft_lstdestroy(&lexer);
 		ft_strdel(&input);
 	}
 	(void)argc;

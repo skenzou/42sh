@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 16:42:03 by midrissi          #+#    #+#             */
-/*   Updated: 2019/04/29 17:39:03 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/04/29 23:36:54 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,9 @@
 # define ANSI_MAGENTA	"\x1b[1m\x1b[35m"
 # define ANSI_CYAN		"\x1b[1m\x1b[36m"
 # define ANSI_RESET		"\x1b[0m"
+
+void	print_prompt(void);
+void	sighandler(int sig);
 
 typedef enum
 {

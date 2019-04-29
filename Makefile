@@ -6,7 +6,7 @@
 #    By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/03 09:24:41 by midrissi          #+#    #+#              #
-#    Updated: 2019/04/29 23:18:52 by midrissi         ###   ########.fr        #
+#    Updated: 2019/04/29 23:37:09 by midrissi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,7 +39,7 @@ MSG				=	Compiling 21sh
 NAME = 21sh
 cc = gcc
 C_FLAGS = -Wall -Wextra -Werror
-SRC_NAME = main.c
+SRC_NAME = main.c utils.c
 OBJ_PATH = ./obj/
 LFT_PATH = ./libft/
 LFT_NAME = libft.a
