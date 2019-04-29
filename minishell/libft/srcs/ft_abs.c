@@ -1,28 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa_base.c                                     :+:      :+:    :+:   */
+/*   abs.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/25 17:18:31 by midrissi          #+#    #+#             */
-/*   Updated: 2019/04/29 16:40:22 by midrissi         ###   ########.fr       */
+/*   Created: 2019/02/24 23:47:20 by midrissi          #+#    #+#             */
+/*   Updated: 2019/02/24 23:48:06 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_itoa_base(intmax_t n, int base, int uppercase)
+intmax_t		ft_abs(intmax_t nb)
 {
-	char *str;
-	char *temp;
-
-	str = ft_utoa_base(ft_abs(n), base, uppercase);
-	if (n < 0)
-	{
-		temp = str;
-		str = ft_strjoin("-", str);
-		ft_strdel(&temp);
-	}
-	return (str);
+	return (nb < 0 ? -nb : nb);
 }

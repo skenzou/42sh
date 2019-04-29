@@ -1,28 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa_base.c                                     :+:      :+:    :+:   */
+/*   ft_strnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: midrissi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/25 17:18:31 by midrissi          #+#    #+#             */
-/*   Updated: 2019/04/29 16:40:22 by midrissi         ###   ########.fr       */
+/*   Created: 2018/10/05 15:03:25 by midrissi          #+#    #+#             */
+/*   Updated: 2018/10/09 17:01:10 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_itoa_base(intmax_t n, int base, int uppercase)
+char	*ft_strnew(size_t size)
 {
-	char *str;
-	char *temp;
+	char	*str;
+	size_t	i;
 
-	str = ft_utoa_base(ft_abs(n), base, uppercase);
-	if (n < 0)
+	i = 0;
+	str = (char *)malloc(sizeof(char) * (size + 1));
+	if (!str)
+		return (NULL);
+	while (i <= size)
 	{
-		temp = str;
-		str = ft_strjoin("-", str);
-		ft_strdel(&temp);
+		str[i++] = '\0';
 	}
 	return (str);
 }

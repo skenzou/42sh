@@ -1,28 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa_base.c                                     :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/25 17:18:31 by midrissi          #+#    #+#             */
-/*   Updated: 2019/04/29 16:40:22 by midrissi         ###   ########.fr       */
+/*   Created: 2018/10/06 12:54:52 by midrissi          #+#    #+#             */
+/*   Updated: 2019/03/27 22:40:04 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_itoa_base(intmax_t n, int base, int uppercase)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	char *str;
-	char *temp;
+	size_t	size;
+	int		i;
+	char	*fresh;
 
-	str = ft_utoa_base(ft_abs(n), base, uppercase);
-	if (n < 0)
+	if (!s1 || !s2)
+		return (NULL);
+	size = ft_strlen(s1) + ft_strlen(s2) + 1;
+	fresh = (char *)malloc(sizeof(char) * size);
+	if (!fresh)
+		return (NULL);
+	i = 0;
+	while (s1[i])
 	{
-		temp = str;
-		str = ft_strjoin("-", str);
-		ft_strdel(&temp);
+		fresh[i] = s1[i];
+		i++;
 	}
-	return (str);
+	fresh[i] = '\0';
+	ft_strcat(fresh, s2);
+	return (fresh);
 }

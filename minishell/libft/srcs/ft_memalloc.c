@@ -1,28 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa_base.c                                     :+:      :+:    :+:   */
+/*   ft_memalloc.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: midrissi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/25 17:18:31 by midrissi          #+#    #+#             */
-/*   Updated: 2019/04/29 16:40:22 by midrissi         ###   ########.fr       */
+/*   Created: 2018/10/05 14:48:28 by midrissi          #+#    #+#             */
+/*   Updated: 2018/10/08 14:49:24 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_itoa_base(intmax_t n, int base, int uppercase)
+void	*ft_memalloc(size_t size)
 {
-	char *str;
-	char *temp;
+	void	*mem;
 
-	str = ft_utoa_base(ft_abs(n), base, uppercase);
-	if (n < 0)
-	{
-		temp = str;
-		str = ft_strjoin("-", str);
-		ft_strdel(&temp);
-	}
-	return (str);
+	if (!(mem = malloc(size)))
+		return (NULL);
+	return (ft_memset(mem, '\0', size));
 }

@@ -1,28 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa_base.c                                     :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: midrissi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/25 17:18:31 by midrissi          #+#    #+#             */
-/*   Updated: 2019/04/29 16:40:22 by midrissi         ###   ########.fr       */
+/*   Created: 2018/10/08 11:01:05 by midrissi          #+#    #+#             */
+/*   Updated: 2018/10/08 11:12:25 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_itoa_base(intmax_t n, int base, int uppercase)
+void	ft_putnbr_fd(int n, int fd)
 {
-	char *str;
-	char *temp;
+	char c;
 
-	str = ft_utoa_base(ft_abs(n), base, uppercase);
 	if (n < 0)
 	{
-		temp = str;
-		str = ft_strjoin("-", str);
-		ft_strdel(&temp);
+		write(fd, "-", 1);
+		if (n == -2147483648)
+		{
+			n = -147483648;
+			write(fd, "2", 1);
+		}
+		n = n * -1;
 	}
-	return (str);
+	if (n > 9)
+		ft_putnbr_fd(n / 10, fd);
+	c = 48 + n % 10;
+	write(fd, &c, 1);
 }

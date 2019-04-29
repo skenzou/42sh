@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa_base.c                                     :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: midrissi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/25 17:18:31 by midrissi          #+#    #+#             */
-/*   Updated: 2019/04/29 16:40:22 by midrissi         ###   ########.fr       */
+/*   Created: 2018/10/05 12:40:54 by midrissi          #+#    #+#             */
+/*   Updated: 2018/10/11 12:38:59 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_itoa_base(intmax_t n, int base, int uppercase)
+void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
-	char *str;
-	char *temp;
+	char		*ptr1;
+	const char	*ptr2;
 
-	str = ft_utoa_base(ft_abs(n), base, uppercase);
-	if (n < 0)
+	ptr1 = (char *)dst;
+	ptr2 = (const char *)src;
+	while (n > 0)
 	{
-		temp = str;
-		str = ft_strjoin("-", str);
-		ft_strdel(&temp);
+		*ptr1++ = *ptr2++;
+		n--;
 	}
-	return (str);
+	return (dst);
 }

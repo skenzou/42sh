@@ -1,28 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa_base.c                                     :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: midrissi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/25 17:18:31 by midrissi          #+#    #+#             */
-/*   Updated: 2019/04/29 16:40:22 by midrissi         ###   ########.fr       */
+/*   Created: 2018/10/04 16:17:26 by midrissi          #+#    #+#             */
+/*   Updated: 2018/10/09 13:58:00 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_itoa_base(intmax_t n, int base, int uppercase)
+char	*ft_strdup(const char *s1)
 {
-	char *str;
-	char *temp;
+	char *dest;
 
-	str = ft_utoa_base(ft_abs(n), base, uppercase);
-	if (n < 0)
-	{
-		temp = str;
-		str = ft_strjoin("-", str);
-		ft_strdel(&temp);
-	}
-	return (str);
+	dest = (char *)malloc(sizeof(char) * (ft_strlen(s1) + 1));
+	if (dest == NULL)
+		return (NULL);
+	dest = ft_strcpy(dest, s1);
+	return (dest);
 }

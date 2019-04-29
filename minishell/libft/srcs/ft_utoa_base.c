@@ -1,28 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa_base.c                                     :+:      :+:    :+:   */
+/*   ft_utoa_base.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/25 17:18:31 by midrissi          #+#    #+#             */
-/*   Updated: 2019/04/29 16:40:22 by midrissi         ###   ########.fr       */
+/*   Created: 2019/02/05 15:27:19 by midrissi          #+#    #+#             */
+/*   Updated: 2019/02/08 03:02:26 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_itoa_base(intmax_t n, int base, int uppercase)
+char	*ft_utoa_base(uintmax_t nb, unsigned base, int uppercase)
 {
-	char *str;
-	char *temp;
+	int			len;
+	uintmax_t	tmp;
+	char		*str;
 
-	str = ft_utoa_base(ft_abs(n), base, uppercase);
-	if (n < 0)
+	len = 1;
+	tmp = nb;
+	while (tmp >= base && ++len)
+		tmp /= base;
+	if (!(str = (char *)malloc(sizeof(char) * (len + 1))))
+		return (NULL);
+	str[len] = '\0';
+	tmp = uppercase ? 55 : 87;
+	while (len--)
 	{
-		temp = str;
-		str = ft_strjoin("-", str);
-		ft_strdel(&temp);
+		str[len] = nb % base > 9 ? tmp + (nb % base) : 48 + (nb % base);
+		nb /= base;
 	}
 	return (str);
 }

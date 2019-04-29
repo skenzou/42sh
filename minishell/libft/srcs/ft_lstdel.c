@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa_base.c                                     :+:      :+:    :+:   */
+/*   ft_lstdel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: midrissi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/25 17:18:31 by midrissi          #+#    #+#             */
-/*   Updated: 2019/04/29 16:40:22 by midrissi         ###   ########.fr       */
+/*   Created: 2018/10/09 10:27:35 by midrissi          #+#    #+#             */
+/*   Updated: 2018/10/13 09:53:06 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_itoa_base(intmax_t n, int base, int uppercase)
+void	ft_lstdel(t_list **alst, void (*del) (void *, size_t))
 {
-	char *str;
-	char *temp;
+	t_list *list;
 
-	str = ft_utoa_base(ft_abs(n), base, uppercase);
-	if (n < 0)
+	list = *alst;
+	while (list)
 	{
-		temp = str;
-		str = ft_strjoin("-", str);
-		ft_strdel(&temp);
+		*alst = list->next;
+		del(list->content, list->content_size);
+		free(list);
+		list = *alst;
 	}
-	return (str);
+	*alst = NULL;
 }

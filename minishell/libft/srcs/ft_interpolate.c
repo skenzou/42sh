@@ -1,28 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa_base.c                                     :+:      :+:    :+:   */
+/*   ft_interpolate.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/25 17:18:31 by midrissi          #+#    #+#             */
-/*   Updated: 2019/04/29 16:40:22 by midrissi         ###   ########.fr       */
+/*   Created: 2019/03/22 19:36:23 by midrissi          #+#    #+#             */
+/*   Updated: 2019/03/22 19:37:04 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_itoa_base(intmax_t n, int base, int uppercase)
+double	interpolate(double start, double end, double interpolat)
 {
-	char *str;
-	char *temp;
-
-	str = ft_utoa_base(ft_abs(n), base, uppercase);
-	if (n < 0)
-	{
-		temp = str;
-		str = ft_strjoin("-", str);
-		ft_strdel(&temp);
-	}
-	return (str);
+	return (start + ((end - start) * interpolat));
 }

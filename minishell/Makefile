@@ -6,7 +6,7 @@
 #    By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/03 09:24:41 by midrissi          #+#    #+#              #
-#    Updated: 2019/04/29 23:18:52 by midrissi         ###   ########.fr        #
+#    Updated: 2019/04/26 20:52:56 by midrissi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,20 +33,22 @@ _ICYAN			=	\x1b[46m
 _IWHITE			=	\x1b[47m
 _MAGENTA		=	\x1b[35m
 
-MSG				=	Compiling 21sh
+MSG				=	Compiling minishell
 .PHONY: all, $(NAME), clean, fclean, re
 
-NAME = 21sh
+NAME = minishell
 cc = gcc
 C_FLAGS = -Wall -Wextra -Werror
-SRC_NAME = main.c
+SRC_NAME = main.c cd_builtin.c err_handler.c echo_builtin.c cd_builtin.c \
+		signal_handlers.c exit_builtin.c setenv_builtin.c unsetenv_builtin.c \
+		cmd_handler.c bin_handler.c utils.c expansions.c
 OBJ_PATH = ./obj/
 LFT_PATH = ./libft/
 LFT_NAME = libft.a
 INC_PATH = ./includes
 SRC_PATH = ./srcs/
 OBJ_NAME = $(SRC_NAME:.c=.o)
-INC_FPATH = ./includes/header.h
+INC_NAME = minishell.h
 SRC = $(addprefix $(SRC_PATH),$(SRC_NAME))
 LONGEST			=	$(shell echo $(notdir $(SRC)) | tr " " "\n" | awk ' { if (\
 				length > x ) { x = length; y = $$0 } }END{ print y }' | wc -c)
@@ -60,9 +62,9 @@ $(LFT_PATH)$(LFT_NAME):
 
 $(NAME): $(OBJ)
 		@$(CC) -o $(NAME) -L $(LFT_PATH) -lft $^ -o $@
-		@printf "$(_BOLD)$(_RED)./$(NAME) is ready for use\n$(_END)"
+		@printf "$(_BOLD)$(_RED)./minishell is ready for use\n$(_END)"
 
-$(OBJ_PATH)%.o: $(SRC_PATH)%.c $(INC_FPATH)
+$(OBJ_PATH)%.o: $(SRC_PATH)%.c
 		@mkdir -p $(OBJ_PATH)
 		@$(CC) $(C_FLAGS) $(INC) -o $@ -c $<
 		@printf "$(_BOLD)$(_BLUE)$(MSG)$(_END) $(_BOLD)$(_CYAN)%-$(LONGEST)s\
