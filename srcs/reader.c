@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/28 15:31:17 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/04/28 18:39:19 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/04/30 16:08:44 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,5 +57,7 @@ int			read_buffer(int buffer, t_curs *curseur, char *command)
 		return (read_arrow(buffer, curseur));
 	else if (is_key(buffer))
 		return (read_key(buffer, curseur, command));
+	else
+		ft_printf("%c|%d", buffer, buffer);
 	return (1);
 }

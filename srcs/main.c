@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/27 17:27:48 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/04/28 18:39:14 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/05/01 00:40:30 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,7 @@ int		init_termcaps(t_term *term, t_curs *curseur)
 {
 	if (tcgetattr(0, term) == -1)
 		return (0);
-	term->c_lflag &= ~(ICANON);
-	term->c_lflag &= ~(ECHO);
+	term->c_lflag &= ~(ICANON | ECHO);
 	term->c_cc[VMIN] = 1;
 	term->c_cc[VTIME] = 0;
 	*curseur = (t_curs){0, 0, 0};
@@ -38,26 +37,42 @@ int		init_termcaps(t_term *term, t_curs *curseur)
 	return (1);
 }
 
-int		exec_command(char *command)
+int wcharlen(int nb)
 {
-	if (!ft_strcmp(command, "clear"))
-		tputs(tgetstr("cl", NULL), 0, ft_put_termcaps);
-	else if (!ft_strcmp(command, "exit"))
-		kill(0, SIGINT);
-	else
-		ft_printf("%s\n", command);
-	return (1);
+	ft_printf("wchar %d|%d|\n", nb, nb > 128);
+	int i;
+	int count;
+
+	if (nb < 128)
+		return (1);
+	i = 7;
+	count = 0;
+	while (i > 3)
+	{
+		if ((nb & (1 << i)) > 0)
+			count++;
+		i--;
+	}
+	return count;
 }
 
 int		main(int ac, char **av, char **env)
 {
 	t_term	term;
-	int		buffer;
+	//int		buffer;
+	wchar_t	buffer[6];
 	char	command[BUFFSIZE];
 	t_curs	*curseur;
 
 	(void)ac;
 	(void)av;
+	char lol[3];
+
+	lol[0] = 0b11100010;
+	lol[1] = 0b10000010;
+	lol[2] = 0b10101100;
+	ft_printf("jpp: %s\n", lol);
+	buffer[5] = '\0';
 	init_env(env);
 	if (!(curseur = malloc(sizeof(curseur))))
 		return (-1);
@@ -68,10 +83,13 @@ int		main(int ac, char **av, char **env)
 	display_prompt_prefix();
 	while ("21sh")
 	{
-		read(0, &buffer, 4);
-		if (!read_buffer(buffer, curseur, command))
-			return (-1);
-		buffer = 0;
+		read(0, &buffer, 5);
+
+		// if (!read_buffer(buffer, curseur, command))
+		// 	return (-1);
+
+		ft_printf("buffer: |%hhb|%d|\n", buffer[0], wcharlen(buffer[0]));
+		buffer[0] = 0;
 	}
 	return (0);
 }

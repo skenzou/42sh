@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/28 15:23:43 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/04/28 18:39:17 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/04/30 16:01:21 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,7 @@ int		backspace_event(t_curs *curseur, char *command)
 	if (curseur->x > 0)
 	{
 		tputs(tgetstr("le", NULL), 1, ft_put_termcaps);
-		ft_putchar(' ');
-		tputs(tgetstr("le", NULL), 1, ft_put_termcaps);
+		tputs(tgetstr("dc", NULL), 1, ft_put_termcaps);
 		curseur->x--;
 	}
 	return (1);
