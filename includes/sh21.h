@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/28 13:06:21 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/04/28 18:39:23 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/05/01 16:00:55 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,12 @@
 # include <fcntl.h>
 # define PREFIX "\x1b[32m➜ \x1b[0m\x1b[37m\x1b[1m"
 # define SUFFIX "%s\x1b[0m \x1b[1m\x1b[31m%s\x1b[0m\x1b[32m> \x1b[0m"
-# define ARROW_UP		4283163
-# define ARROW_DOWN		4348699
-# define ARROW_RIGHT	4414235
-# define ARROW_LEFT		4479771
+# define ARROW_CODE1	27
+# define ARROW_CODE2	91
+# define UP				65
+# define DOWN			66
+# define RIGHT			67
+# define LEFT			68
 # define BACKSPACE		127
 # define ENTER			10
 # define BUFFSIZE		4096
@@ -82,7 +84,7 @@ int		backspace_event(t_curs *curseur, char *command);
 /*
 **	READER.C
 */
-int		read_buffer(int buffer, t_curs *curseur, char *command);
+int		read_buffer(char buffer[4], t_curs *curseur, char *command, int unicode);
 /*
 **	OTHERS.C
 */
@@ -100,6 +102,7 @@ void	sig_handler(int sig);
 int		fputchar(int c);
 int		exec_command(char *command);
 void	display_prompt(void);
+int		wcharlen(char nb);
 /*
 ** MIMISHELL.C
 */
