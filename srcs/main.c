@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/27 17:27:48 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/01 19:44:39 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/05/01 20:01:26 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ int		main(int ac, char **av, char **env)
 	(void)ac;
 	(void)av;
 	init_env(env);
-	if (!init_history() || !(curseur = malloc(sizeof(curseur))))
+	if (init_history() == -1 || !(curseur = malloc(sizeof(curseur))))
 		return (-1);
 	ft_printf("on a lu %d element\n", g_history->read);
 	command[BUFFSIZE - 1] = '\0';

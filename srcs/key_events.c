@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/28 15:23:43 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/01 19:53:33 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/05/01 19:58:48 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@ int		enter_event(t_curs *curseur, char *command)
 {
 	command[curseur->x] = '\0';
 	curseur->x = 0;
-	add_cmd_to_history(command);
+	if (add_cmd_to_history(command) == -1)
+		return (-1);
 	ft_putchar('\n');
 	if (!ft_strcmp(command, "history"))
 	{
