@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/28 15:57:45 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/04/28 18:39:16 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/05/01 17:20:29 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -184,7 +184,6 @@ int		quick_cd(char **cmd)
 	}
 	return (-1);
 }
-
 
 int		set_env(char *key, char *value)
 {

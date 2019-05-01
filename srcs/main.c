@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/27 17:27:48 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/01 16:16:12 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/05/01 17:20:27 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,19 @@ t_arrow_event g_arrow_event[] = {
 	{UP, &arrow_up_event},
 	{DOWN, &arrow_down_event},
 	{RIGHT, &arrow_right_event},
-	{LEFT, &arrow_left_event}
+	{LEFT, &arrow_left_event},
+	{SHIFT_UP, &shift_arrow_up_event},
+	{SHIFT_DOWN, &shift_arrow_down_event},
+	{SHIFT_RIGHT, &shift_arrow_right_event},
+	{SHIFT_LEFT, &shift_arrow_left_event}
 };
 t_key_event g_key_event[] = {
 	{ENTER, &enter_event},
-	{BACKSPACE, &backspace_event}
+	{BACKSPACE, &backspace_event},
+	{CTRL_R, &ctrl_r_event},
+	{TAB, &tab_event},
+	{HOME, &home_event},
+	{END, &end_event}
 };
 
 int		init_termcaps(t_term *term, t_curs *curseur)

@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/28 13:06:21 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/01 16:00:55 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/05/01 17:21:11 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,26 @@
 # define DOWN			66
 # define RIGHT			67
 # define LEFT			68
+# define SHIFT_CODE1	27
+# define SHIFT_CODE2	91
+# define SHIFT_CODE3	49
+# define ARROW_CODE3	59
+# define ARROW_CODE4	50
+# define SHIFT_UP		75
+# define SHIFT_DOWN		76
+# define SHIFT_RIGHT	77
+# define SHIFT_LEFT		78
 # define BACKSPACE		127
 # define ENTER			10
+# define CTRL_R			18
+# define TAB			9
+# define HOME_END1		27
+# define HOME_END2		91
+# define HOME			72
+# define END			70
 # define BUFFSIZE		4096
 # define UNUSED			0
+# define DEBUG_LOG		0
 typedef struct	s_data
 {
 	int				xd;
@@ -76,15 +92,23 @@ int		arrow_up_event(t_curs *curseur);
 int		arrow_down_event(t_curs *curseur);
 int		arrow_right_event(t_curs *curseur);
 int		arrow_left_event(t_curs *curseur);
+int		shift_arrow_up_event(t_curs *curseur);
+int		shift_arrow_down_event(t_curs *curseur);
+int		shift_arrow_right_event(t_curs *curseur);
+int		shift_arrow_left_event(t_curs *curseur);
 /*
 **	KEY_EVENTS.C
 */
 int		enter_event(t_curs *curseur, char *command);
 int		backspace_event(t_curs *curseur, char *command);
+int		ctrl_r_event(t_curs *curseur, char *command);
+int		tab_event(t_curs *curseur, char *command);
+int		home_event(t_curs *curseur, char *command);
+int		end_event(t_curs *curseur, char *command);
 /*
 **	READER.C
 */
-int		read_buffer(char buffer[4], t_curs *curseur, char *command, int unicode);
+int		read_buffer(char buffer[4], t_curs *curseur, char *cmd, int unicode);
 /*
 **	OTHERS.C
 */
