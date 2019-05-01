@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/27 17:27:48 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/01 17:37:50 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/05/01 19:44:39 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int		init_termcaps(t_term *term, t_curs *curseur)
 	return (1);
 }
 
-int	wcharlen(char nb)
+int		wcharlen(char nb)
 {
 	int i;
 	int count;
@@ -74,15 +74,17 @@ int		main(int ac, char **av, char **env)
 	(void)ac;
 	(void)av;
 	init_env(env);
-	if (!(curseur = malloc(sizeof(curseur))))
+	if (!init_history() || !(curseur = malloc(sizeof(curseur))))
 		return (-1);
+	ft_printf("on a lu %d element\n", g_history->read);
 	command[BUFFSIZE - 1] = '\0';
 	if (!(tgetent(NULL, getenv("TERM"))) || !init_termcaps(&term, curseur))
 		return (-1);
-	signal(SIGINT, sig_handler);
 	display_prompt_prefix();
 	while ("21sh")
 	{
+		signal(SIGINT, sigint_handler);
+		signal(SIGWINCH, sigwinch_handler);
 		read(0, &buffer, 3);
 		if (!read_buffer(buffer, curseur, command, wcharlen(buffer[0]) > 1))
 			return (-1);

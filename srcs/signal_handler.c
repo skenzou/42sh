@@ -6,19 +6,30 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/28 15:31:17 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/01 17:43:05 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/05/01 18:54:38 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sh21.h"
 
-void	sig_handler(int sig)
+void	sigint_handler(int sig)
 {
 	if (sig == SIGINT)
 	{
-		signal(SIGINT, sig_handler);
+		signal(SIGINT, sigint_handler);
 		ft_printf("\n");
 		display_prompt_prefix();
 		exit(0);
+	}
+}
+
+void	sigwinch_handler(int sig)
+{
+	if (sig == SIGWINCH)
+	{
+		ft_printf("redimensionnement: {%d, %d}", tgetnum("co"), tgetnum("li"));
+		signal(SIGWINCH, sigwinch_handler);
+		ft_printf("\n");
+		display_prompt_prefix();
 	}
 }

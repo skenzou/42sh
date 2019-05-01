@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/28 13:06:21 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/01 17:39:12 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/05/01 19:53:58 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,31 +26,34 @@
 # include <fcntl.h>
 # define PREFIX "\x1b[32m➜ \x1b[0m\x1b[37m\x1b[1m"
 # define SUFFIX "%s\x1b[0m \x1b[1m\x1b[31m%s\x1b[0m\x1b[32m> \x1b[0m"
-# define BUFFSIZE		4096
-# define ARROW_CODE1	27
-# define ARROW_CODE2	91
-# define UP				65
-# define DOWN			66
-# define RIGHT			67
-# define LEFT			68
-# define SHIFT_CODE1	27
-# define SHIFT_CODE2	91
-# define SHIFT_CODE3	49
-# define ARROW_CODE3	59
-# define ARROW_CODE4	50
-# define SHIFT_UP		75
-# define SHIFT_DOWN		76
-# define SHIFT_RIGHT	77
-# define SHIFT_LEFT		78
-# define BACKSPACE		127
-# define ENTER			10
-# define CTRL_R			18
-# define CTRL_D			30
-# define TAB			9
-# define HOME_END1		27
-# define HOME_END2		91
-# define HOME			72
-# define END			70
+# define HISTORY_FILE_NAME	"/Users/aben-azz/.21sh_history.log"
+# define BUFFSIZE					4096
+# define ARROW_CODE1				27
+# define ARROW_CODE2				91
+# define UP							65
+# define DOWN						66
+# define RIGHT						67
+# define LEFT						68
+# define SHIFT_CODE1				27
+# define SHIFT_CODE2				91
+# define SHIFT_CODE3				49
+# define ARROW_CODE3				59
+# define ARROW_CODE4				50
+# define SHIFT_UP					75
+# define SHIFT_DOWN					76
+# define SHIFT_RIGHT				77
+# define SHIFT_LEFT					78
+# define BACKSPACE					127
+# define ENTER						10
+# define CTRL_R						18
+# define CTRL_D						30
+# define TAB						9
+# define HOME_END1					27
+# define HOME_END2					91
+# define HOME						72
+# define END						70
+# define MAX_HISTORY_LENGHT			4096
+
 
 # define UNUSED			0
 # define DEBUG_LOG		1
@@ -84,9 +87,16 @@ typedef struct	s_key_event
 	int						key;
 	int						(*function)(t_curs *curseur, char *command);
 }				t_key_event;
+typedef struct	s_history
+{
+	int						len;
+	int						read;
+	char					*history[MAX_HISTORY_LENGHT];
+}				t_history;
 extern t_arrow_event g_arrow_event[];
 extern t_key_event g_key_event[];
-extern char **g_env;
+
+extern t_history *g_history;
 /*
 **	ARROW_EVENTS.C
 */
@@ -121,7 +131,8 @@ void	display_prompt(void);
 /*
 **	SIGNAL_HANDLER.C
 */
-void	sig_handler(int sig);
+void	sigint_handler(int sig);
+void	sigwinch_handler(int sig);
 
 /*
 **	READ_KEY.C
@@ -136,6 +147,15 @@ char	is_shift_arrow(char key[4]);
 int		is_arrow(char key[4]);
 int		read_arrow(char buffer, t_curs *curseur);
 /*
+**	HISTORY.C
+*/
+
+int		write_history(char *string);
+int		init_history(void);
+int		add_cmd_to_history(char *string);
+int		debug_history(void);
+int		read_history(void);
+/*
 **	MAIN.C
 */
 
@@ -143,6 +163,7 @@ int		fputchar(int c);
 int		exec_command(char *command);
 void	display_prompt(void);
 int		wcharlen(char nb);
+
 /*
 ** MIMISHELL.C
 */

@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/08 08:43:19 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/03/02 22:57:06 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/05/01 18:05:06 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ static int		parse(int fd, char *str, va_list ap)
 			}
 		}
 		else
-			write(1, str++, 1) && (l++);
+			write(fd, str++, 1) && (l++);
 	}
 	return (l);
 }
