@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/28 13:06:21 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/01 17:21:11 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/05/01 17:39:12 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 # include <fcntl.h>
 # define PREFIX "\x1b[32m➜ \x1b[0m\x1b[37m\x1b[1m"
 # define SUFFIX "%s\x1b[0m \x1b[1m\x1b[31m%s\x1b[0m\x1b[32m> \x1b[0m"
+# define BUFFSIZE		4096
 # define ARROW_CODE1	27
 # define ARROW_CODE2	91
 # define UP				65
@@ -44,14 +45,15 @@
 # define BACKSPACE		127
 # define ENTER			10
 # define CTRL_R			18
+# define CTRL_D			30
 # define TAB			9
 # define HOME_END1		27
 # define HOME_END2		91
 # define HOME			72
 # define END			70
-# define BUFFSIZE		4096
+
 # define UNUSED			0
-# define DEBUG_LOG		0
+# define DEBUG_LOG		1
 typedef struct	s_data
 {
 	int				xd;
@@ -105,6 +107,7 @@ int		ctrl_r_event(t_curs *curseur, char *command);
 int		tab_event(t_curs *curseur, char *command);
 int		home_event(t_curs *curseur, char *command);
 int		end_event(t_curs *curseur, char *command);
+int		ctrl_d_event(t_curs *curseur, char *command);
 /*
 **	READER.C
 */
@@ -119,6 +122,19 @@ void	display_prompt(void);
 **	SIGNAL_HANDLER.C
 */
 void	sig_handler(int sig);
+
+/*
+**	READ_KEY.C
+*/
+int		is_key(char key[3]);
+int		read_key(char buffer, t_curs *curseur, char *c);
+/*
+**	READ_ARROW.C
+*/
+
+char	is_shift_arrow(char key[4]);
+int		is_arrow(char key[4]);
+int		read_arrow(char buffer, t_curs *curseur);
 /*
 **	MAIN.C
 */

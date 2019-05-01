@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/27 17:27:48 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/01 17:20:27 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/05/01 17:37:50 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ t_key_event g_key_event[] = {
 	{ENTER, &enter_event},
 	{BACKSPACE, &backspace_event},
 	{CTRL_R, &ctrl_r_event},
+	{CTRL_D, &ctrl_d_event},
 	{TAB, &tab_event},
 	{HOME, &home_event},
 	{END, &end_event}

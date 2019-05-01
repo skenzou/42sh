@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/28 15:23:43 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/01 17:20:26 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/05/01 17:43:51 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,15 @@ int		ctrl_r_event(t_curs *curseur, char *command)
 	(void)curseur;
 	ft_printf("ctrl_r\n");
 	display_prompt_prefix();
+	return (1);
+}
+
+int		ctrl_d_event(t_curs *curseur, char *command)
+{
+	(void)command;
+	(void)curseur;
+	ft_printf("ctrl_d\n");
+	exit(0);
 	return (1);
 }
 
