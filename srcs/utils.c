@@ -6,11 +6,11 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/29 19:09:23 by midrissi          #+#    #+#             */
-/*   Updated: 2019/04/29 23:37:52 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/04/30 19:04:54 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "header.h"
+#include "shell.h"
 
 void	print_prompt(void)
 {

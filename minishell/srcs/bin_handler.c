@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 21:26:08 by midrissi          #+#    #+#             */
-/*   Updated: 2019/04/26 20:16:32 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/04/30 21:11:50 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,10 @@ static int		find_bin(char **bin, char **env, char **paths)
 				pid = fork();
 				signal(SIGINT, sigfork);
 				if (!pid)
+				{
 					execve(path, bin, env);
+					exit(1);
+				}
 				else if (pid < 0)
 					return (FAILFORK);
 				wait(&pid);
@@ -69,7 +72,10 @@ static int		exec_binpath(char **bin, char **env)
 		pid = fork();
 		signal(SIGINT, sigfork);
 		if (pid == 0)
+		{
 			execve(bin[0], bin, env);
+			exit(1);
+		}
 		else if (pid < 0)
 			return (FAILFORK);
 		wait(&pid);
