@@ -37,7 +37,7 @@ NB				=	$(words $(SRC_BASE))
 INDEX			=	0
 
 all :
-	@make -C $(LIBFT_DIR)
+	@#make -C $(LIBFT_DIR)
 	@make -j $(NAME)
 
 $(NAME):		$(LIBFT_LIB) $(OBJ_DIR) $(OBJS)

@@ -6,7 +6,7 @@
 #    By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/10/13 13:11:49 by aben-azz          #+#    #+#              #
-#    Updated: 2019/04/27 22:03:13 by aben-azz         ###   ########.fr        #
+#    Updated: 2019/05/03 15:26:19 by aben-azz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -91,7 +91,7 @@ clean:
 
 fclean: clean
 	@$(RM) $(NAME)
-	@printf "\r\033[38;5;196m❌ fclean $(NAME)\033[0m\033[K\n"
+	@printf "\r\033[38;5;196m❌  fclean $(NAME)\033[0m\033[K\n"
 
 re: fclean all
 

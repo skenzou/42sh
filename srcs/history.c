@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/01 17:45:36 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/01 21:16:41 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/05/03 15:23:44 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,6 @@ int	read_history(void)
 				return (-1);
 		}
 	}
-	ft_strdel(&str);
 	close(fd);
 	return (1);
 }
