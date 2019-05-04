@@ -6,7 +6,7 @@
 #    By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/03 09:24:41 by midrissi          #+#    #+#              #
-#    Updated: 2019/04/30 19:06:03 by midrissi         ###   ########.fr        #
+#    Updated: 2019/05/05 00:35:45 by midrissi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,7 +39,8 @@ MSG				=	Compiling 21sh
 NAME = 21sh
 cc = gcc
 C_FLAGS = -Wall -Wextra -Werror
-SRC_NAME = main.c utils.c lexer.c
+SRC_NAME = main.c utils.c lexer/lexer.c parser/parser.c lexer/utils.c \
+					lexer/print_lexer.c
 OBJ_PATH = ./obj/
 LFT_PATH = ./libft/
 LFT_NAME = libft.a
@@ -64,6 +65,8 @@ $(NAME): $(OBJ)
 
 $(OBJ_PATH)%.o: $(SRC_PATH)%.c $(INC_FPATH)
 		@mkdir -p $(OBJ_PATH)
+		@mkdir -p $(OBJ_PATH)/lexer
+		@mkdir -p $(OBJ_PATH)/parser
 		@$(CC) $(C_FLAGS) $(INC) -o $@ -c $<
 		@printf "$(_BOLD)$(_BLUE)$(MSG)$(_END) $(_BOLD)$(_CYAN)%-$(LONGEST)s\
 		$(_END)" $(notdir $<)

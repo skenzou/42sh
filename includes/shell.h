@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 16:42:03 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/04 18:26:26 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/05/05 00:57:03 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 # include <sys/wait.h>
 # include <sys/types.h>
 # include <sys/stat.h>
+# include "lexer.h"
+# include "parser.h"
 # define ANSI_RED		"\x1b[1m\x1b[31m"
 # define ANSI_GREEN		"\x1b[1m\x1b[32m"
 # define ANSI_YELLOW	"\x1b[1m\x1b[33m"
@@ -29,8 +31,6 @@
 
 void		print_prompt(void);
 void		sighandler(int sig);
-void 		print_list(t_list *lexer);
-int			lex_input(char *input, t_list **lexer);
 void ft_exit(char *str);
 
 #endif
