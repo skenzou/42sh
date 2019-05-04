@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 16:42:03 by midrissi          #+#    #+#             */
-/*   Updated: 2019/04/30 19:04:42 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/05/04 18:26:26 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,6 @@ void		print_prompt(void);
 void		sighandler(int sig);
 void 		print_list(t_list *lexer);
 int			lex_input(char *input, t_list **lexer);
+void ft_exit(char *str);
 
 #endif

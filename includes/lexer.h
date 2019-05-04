@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/30 18:57:23 by midrissi          #+#    #+#             */
-/*   Updated: 2019/04/30 18:59:00 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/05/04 19:02:32 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,33 @@
 
 typedef enum
 {
+	SEMI,
+	DBL_SEMI,
+	PIPE,
+	DBL_PIPE,
+	AND,
+	DBL_AND,
+	LESS,
+	DBL_LESS,
+	GREAT,
+	DBL_GREAT,
+	LESS_AND,
+	GREAT_AND,
+	LESS_GREAT,
+	DBL_LESS_DASH,
+	DBL_GREAT_DASH,
+	CLOBBER,
+	OTHER_OP,
+} e_op_type;
+
+typedef enum
+{
 	TOKEN_EAT,
 	TOKEN_DQ,
 	TOKEN_SQ,
-	TOKEN_SEMI,
-	TOKEN_DBL_SEMI,
-	TOKEN_OPERATOR,
+	TOKEN_CTL_OPERATOR,
 	TOKEN_NEG,
-	TOKEN_DBLAND,
-	TOKEN_DBLOR,
-	TOKEN_PIPE,
 	TOKEN_OP_ARITHM,
-	TOKEN_AND,
 	TOKEN_OP_BRA,
 	TOKEN_CL_BRA,
 	TOKEN_OP_PAR,
@@ -36,8 +51,7 @@ typedef enum
 	TOKEN_OP_CURLY,
 	TOKEN_CL_CURLY,
 	TOKEN_EQUAL,
-	TOKEN_STRING,
-	TOKEN_NAME,
+	TOKEN_WORD,
 	TOKEN_FOR,
 	TOKEN_WHILE,
 	TOKEN_NULL
@@ -46,6 +60,8 @@ typedef enum
 typedef struct		s_token
 {
 	char			*content;
+	char			is_op;
+	e_op_type		op_type;
 	size_t			len;
 	e_token_type	type;
 }					t_token;
@@ -55,4 +71,5 @@ typedef struct		s_oplist
 	char			*op;
 	size_t			len;
 	e_token_type	type;
+	e_op_type		op_type;
 }					t_oplist;
