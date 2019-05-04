@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/30 18:51:02 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/05 00:38:21 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/05/05 01:13:10 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ static void 		create_token(t_list **lexer, char *str,
 	token.op_type = op_type;
 	list = ft_lstnew((void *)&token, sizeof(token));
 	if (!list)
-		exit(1);
+		ft_exit("Failed to malloc a node of my lexer list");
 	ft_lstadd(lexer, list);
 }
 
