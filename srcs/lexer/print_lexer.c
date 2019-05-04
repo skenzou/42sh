@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/05 00:34:12 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/05 00:37:57 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/05/05 01:35:54 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void print_optype(e_op_type op_type)
 {
-	ft_printf(ANSI_CYAN"==>");
+	ft_printf(ANSI_BCYAN"==>");
 	op_type == 0 ? ft_printf("SEMI" ANSI_RESET): 0;
 	op_type == 1 ? ft_printf("DBL_SEMI"ANSI_RESET): 0;
 	op_type == 2 ? ft_printf("PIPE"ANSI_RESET): 0;
@@ -35,7 +35,7 @@ static void print_optype(e_op_type op_type)
 
 static void print_tokentype(e_token_type token_type)
 {
-	ft_printf(ANSI_BLUE"==>");
+	ft_printf(ANSI_BBLUE"==>");
 	token_type == 0 ? ft_printf("TOKEN_EAT "ANSI_RESET): 0;
 	token_type == 1 ? ft_printf("TOKEN_DQ "ANSI_RESET): 0;
 	token_type == 2 ? ft_printf("TOKEN_SQ "ANSI_RESET): 0;

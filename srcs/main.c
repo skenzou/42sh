@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/29 17:39:49 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/05 00:54:51 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/05/05 01:50:25 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ int				main(int argc, char **argv, char **env)
 		if ((ret = get_next_line(0, &input)) > 0)
 			build_lexer(input, &lexer);
 		ft_lstrev(&lexer);
-		del_all_front_semis(&lexer);
 		print_lexer(lexer);
 		ft_parse(lexer);
 		lex_del_list(&lexer);

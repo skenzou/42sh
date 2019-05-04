@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/30 18:57:23 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/05 00:53:13 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/05/05 01:50:38 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,4 +82,3 @@ int			build_lexer(char *input, t_list **lexer);
 void 		print_lexer(t_list *lexer);
 void 	lex_delone(void *data, size_t size);
 void  lex_del_list(t_list **lexer);
-void  del_all_front_semis(t_list **lexer);

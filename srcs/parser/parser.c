@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/04 23:37:49 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/05 00:57:26 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/05/05 01:38:28 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,9 @@ void    ft_parse(t_list *lexer)
 
   error = check_syntax_errors(lexer);
   if (error)
-    ft_printf("21sh: parse error near '%s'\n", error);
+  {
+    ft_putstr_fd(ANSI_RED"21sh: parse error near'", 2);
+    ft_putstr_fd(error, 2);
+    ft_putendl_fd("'", 2);
+  }
 }
