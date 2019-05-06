@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/30 18:57:23 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/05 01:50:38 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/05/06 20:00:33 by ghamelek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,15 @@ typedef struct		s_oplist
 	e_token_type	type;
 	e_op_type		op_type;
 }					t_oplist;
+
+typedef struct		s_ast
+{
+	t_token			*token;
+	struct s_ast	*left;
+	struct s_ast	*right;
+}					t_ast;
+
+
 
 int			build_lexer(char *input, t_list **lexer);
 void 		print_lexer(t_list *lexer);
