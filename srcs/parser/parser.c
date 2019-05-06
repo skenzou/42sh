@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/04 23:37:49 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/05 01:38:28 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/05/06 18:57:53 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ char		*check_syntax_errors(t_list *tokens)
 		return (((t_token *)(tokens->content))->content);
 	while (tokens && tokens->next)
 	{
-    curr = (t_token *)(tokens->content);
-    next = (t_token *)(tokens->next->content);
+		curr = (t_token *)(tokens->content);
+		next = (t_token *)(tokens->next->content);
 		if (curr->type == TOKEN_REDIR && next->type != TOKEN_WORD)
 			return (next->content);
 		if (curr->type == TOKEN_CTL_OPERATOR && next->type == TOKEN_CTL_OPERATOR)
@@ -38,15 +38,15 @@ char		*check_syntax_errors(t_list *tokens)
 }
 
 
-void    ft_parse(t_list *lexer)
+void  ft_parse(t_list *lexer)
 {
-  char *error;
+	char *error;
 
-  error = check_syntax_errors(lexer);
-  if (error)
-  {
-    ft_putstr_fd(ANSI_RED"21sh: parse error near'", 2);
-    ft_putstr_fd(error, 2);
-    ft_putendl_fd("'", 2);
-  }
+	error = check_syntax_errors(lexer);
+	if (error)
+	{
+	ft_putstr_fd(ANSI_RED"21sh: parse error near'", 2);
+	ft_putstr_fd(error, 2);
+	ft_putendl_fd("'", 2);
+	}
 }

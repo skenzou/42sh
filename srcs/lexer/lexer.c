@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/30 18:51:02 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/05 01:49:43 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/05/06 19:01:04 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,23 @@ static const t_oplist existing_token[] =
 	{NULL, 1, 0, OTHER_OP}
 };
 
+static int		join_if_2words(t_list **lexer, char *str, e_token_type type)
+{
+	t_token *token;
+	char *tmp;
+
+	if (type == TOKEN_WORD && *lexer &&
+		((t_token *)((*lexer)->content))->type == TOKEN_WORD)
+	{
+		token = (t_token *)(*lexer)->content;
+		tmp = token->content;
+		token->content = ft_strcjoin(tmp, str, ' ');
+		ft_strdel(&tmp);
+		return (1);
+	}
+	return (0);
+}
+
 static void 		create_token(t_list **lexer, char *str,
 															e_token_type type, e_op_type op_type)
 {
@@ -73,6 +90,8 @@ static void 		create_token(t_list **lexer, char *str,
 
 	if (!str)
 		ft_exit("Malloc fail");
+	if (join_if_2words(lexer, str, type))
+		return ;
 	if (op_type == SEMI && (*lexer == NULL || (*lexer &&
 		((t_token *)((*lexer)->content))->op_type == SEMI)))
 		{
