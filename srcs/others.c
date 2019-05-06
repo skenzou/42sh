@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/28 15:35:56 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/01 21:16:45 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/05/07 00:48:12 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,4 @@ int		ft_put_termcaps(int c)
 {
 	write(1, &c, 1);
 	return (1);
-}
-
-void	display_prompt(void)
-{
-	ft_printf("\x1b[32m$21sh>\x1b[0m ");
 }

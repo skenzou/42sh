@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/28 13:06:21 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/01 21:16:56 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/05/07 00:36:12 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@
 
 
 # define UNUSED			0
-# define DEBUG_LOG		1
+# define DEBUG_LOG		0
 typedef struct	s_data
 {
 	int				xd;
@@ -70,22 +70,23 @@ typedef struct	s_built
 	char			*builtin;
 	int				(*function)(char **argv);
 }				t_built;
-
 typedef struct	s_curs
 {
 	unsigned int			x;
 	unsigned int			y;
+	unsigned int			prompt_len;
 	unsigned int			last;
+	char					*command;
 }				t_curs;
 typedef struct	s_arrow_event
 {
 	int						key;
-	int						(*function)(t_curs *curseur);
+	int						(*function)(void);
 }				t_arrow_event;
 typedef struct	s_key_event
 {
 	int						key;
-	int						(*function)(t_curs *curseur, char *command);
+	int						(*function)(void);
 }				t_key_event;
 typedef struct	s_history
 {
@@ -95,39 +96,38 @@ typedef struct	s_history
 }				t_history;
 extern t_arrow_event g_arrow_event[];
 extern t_key_event g_key_event[];
-
 extern t_history *g_history;
+extern t_curs g_curs;
 /*
 **	ARROW_EVENTS.C
 */
-int		arrow_up_event(t_curs *curseur);
-int		arrow_down_event(t_curs *curseur);
-int		arrow_right_event(t_curs *curseur);
-int		arrow_left_event(t_curs *curseur);
-int		shift_arrow_up_event(t_curs *curseur);
-int		shift_arrow_down_event(t_curs *curseur);
-int		shift_arrow_right_event(t_curs *curseur);
-int		shift_arrow_left_event(t_curs *curseur);
+int		arrow_up_event();
+int		arrow_down_event();
+int		arrow_right_event();
+int		arrow_left_event();
+int		shift_arrow_up_event();
+int		shift_arrow_down_event();
+int		shift_arrow_right_event();
+int		shift_arrow_left_event();
 /*
 **	KEY_EVENTS.C
 */
-int		enter_event(t_curs *curseur, char *command);
-int		backspace_event(t_curs *curseur, char *command);
-int		ctrl_r_event(t_curs *curseur, char *command);
-int		tab_event(t_curs *curseur, char *command);
-int		home_event(t_curs *curseur, char *command);
-int		end_event(t_curs *curseur, char *command);
-int		ctrl_d_event(t_curs *curseur, char *command);
+int		enter_event();
+int		backspace_event();
+int		ctrl_r_event();
+int		tab_event();
+int		home_event();
+int		end_event();
+int		ctrl_d_event();
 /*
 **	READER.C
 */
-int		read_buffer(char buffer[4], t_curs *curseur, char *cmd, int unicode);
+int		read_buffer(char buffer[4]);
+void	add_to_cmd(char buffer[4], int pos, int len);
 /*
 **	OTHERS.C
 */
 int		ft_put_termcaps(int c);
-void	display_prompt(void);
-
 /*
 **	SIGNAL_HANDLER.C
 */
@@ -138,14 +138,14 @@ void	sigwinch_handler(int sig);
 **	READ_KEY.C
 */
 int		is_key(char key[3]);
-int		read_key(char buffer, t_curs *curseur, char *c);
+int		read_key(char buffer);
 /*
 **	READ_ARROW.C
 */
 
 char	is_shift_arrow(char key[4]);
 int		is_arrow(char key[4]);
-int		read_arrow(char buffer, t_curs *curseur);
+int		read_arrow(char buffer);
 /*
 **	HISTORY.C
 */
@@ -161,7 +161,7 @@ int		read_history(void);
 
 int		fputchar(int c);
 int		exec_command(char *command);
-void	display_prompt(void);
+void		display_prompt_prefix(void);
 int		wcharlen(char nb);
 
 /*
@@ -180,7 +180,6 @@ int		ft_setenv(char **argv);
 char	**realloc_env(int new_size, int exception);
 int		ft_unsetenv(char **argv);
 int		ft_exit(char **argv);
-void	display_prompt_prefix(void);
 int		env_len(char **env);
 void	init_env(char **env);
 char	*get_env(char *name);

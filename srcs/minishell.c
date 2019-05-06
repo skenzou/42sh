@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/28 15:57:45 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/01 21:16:43 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/05/07 00:48:11 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -251,19 +251,7 @@ int		ft_exit(char **argv)
 	exit(0);
 	return (0);
 }
-void	display_prompt_prefix(void)
-{
-	char *string;
-	char *name;
 
-	name = get_env("USER");
-	name || (name = "aben-azz~");
-	string = NULL;
-	string = getcwd(string, 20);
-	ft_printf(PREFIX);
-	ft_printf(SUFFIX, (string +
-		ft_lastindexof(string, '/') + 1), name);
-}
 
 
 int		env_len(char **env)

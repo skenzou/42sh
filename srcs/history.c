@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/01 17:45:36 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/03 15:23:44 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/05/07 00:48:10 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ t_history *g_history;
 
 int	add_cmd_to_history(char *string)
 {
-	ft_printf("ajout de : %s\n", string);
 	if (g_history->len)
 		if (!ft_strcmp(string, g_history->history[g_history->len - 1]))
 			return (1);
