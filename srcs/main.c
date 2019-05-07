@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/29 17:39:49 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/07 23:15:32 by ghamelek         ###   ########.fr       */
+/*   Updated: 2019/05/08 00:44:45 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,8 @@ int				main(int argc, char **argv, char **env)
 			build_lexer(input, &lexer);
 		ft_lstrev(&lexer);
 		print_lexer(lexer);
-	trees = ft_parse(lexer);
-	ft_compiler(trees,env);
+		trees = ft_parse(lexer);
+		ft_compiler(trees, env);
 		lex_del_list(&lexer);
 		ft_strdel(&input);
 	}
