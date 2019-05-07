@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/04 23:37:49 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/07 02:27:22 by ghamelek         ###   ########.fr       */
+/*   Updated: 2019/05/07 17:32:06 by ghamelek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,7 +162,7 @@ char		*check_syntax_errors(t_list *tokens)
 }
 
 
-void  ft_parse(t_list *lexer)
+t_ast  *ft_parse(t_list *lexer)
 {
 	char *error;
 	t_ast *root;
@@ -185,4 +185,5 @@ void  ft_parse(t_list *lexer)
 	else
 		ast(lexer, &root, PIPE);
 	inorder(root,"root");
+	return root;
 }

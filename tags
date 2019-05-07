@@ -4,7 +4,7 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.8	//
-AND	includes/lexer.h	/^	AND,$/;"	e	enum:__anon5
+AND	includes/lexer.h	/^	AND,			\/\/  &$/;"	e	enum:__anon5
 ANSI_BBLUE	includes/shell.h	/^# define ANSI_BBLUE	/;"	d
 ANSI_BCYAN	includes/shell.h	/^# define ANSI_BCYAN	/;"	d
 ANSI_BGREEN	includes/shell.h	/^# define ANSI_BGREEN	/;"	d
@@ -32,28 +32,28 @@ BUFF_SIZE	minishell/libft/includes/libft.h	/^# define BUFF_SIZE /;"	d
 CD	minishell/includes/minishell.h	/^# define CD	/;"	d
 CFLAGS	libft/Makefile	/^CFLAGS = -Wall -Wextra -Werror -I.\/includes -c$/;"	m
 CFLAGS	minishell/libft/Makefile	/^CFLAGS = -Wall -Wextra -Werror -I.\/includes -c$/;"	m
-CLOBBER	includes/lexer.h	/^	CLOBBER,$/;"	e	enum:__anon5
+CLOBBER	includes/lexer.h	/^	CLOBBER,		\/\/$/;"	e	enum:__anon5
 COMP	libft/Makefile	/^COMP = gcc$/;"	m
 COMP	minishell/libft/Makefile	/^COMP = gcc$/;"	m
 CONV	libft/includes/libft.h	/^# define CONV /;"	d
 CONV	minishell/libft/includes/libft.h	/^# define CONV /;"	d
 C_FLAGS	Makefile	/^C_FLAGS = -Wall -Wextra -Werror -g -v$/;"	m
 C_FLAGS	minishell/Makefile	/^C_FLAGS = -Wall -Wextra -Werror$/;"	m
-DBL_AND	includes/lexer.h	/^	DBL_AND,$/;"	e	enum:__anon5
-DBL_GREAT	includes/lexer.h	/^	DBL_GREAT,$/;"	e	enum:__anon5
-DBL_GREAT_DASH	includes/lexer.h	/^	DBL_GREAT_DASH,$/;"	e	enum:__anon5
-DBL_LESS	includes/lexer.h	/^	DBL_LESS,$/;"	e	enum:__anon5
-DBL_LESS_DASH	includes/lexer.h	/^	DBL_LESS_DASH,$/;"	e	enum:__anon5
-DBL_PIPE	includes/lexer.h	/^	DBL_PIPE,$/;"	e	enum:__anon5
-DBL_SEMI	includes/lexer.h	/^	DBL_SEMI,$/;"	e	enum:__anon5
+DBL_AND	includes/lexer.h	/^	DBL_AND,		\/\/  &&$/;"	e	enum:__anon5
+DBL_GREAT	includes/lexer.h	/^	DBL_GREAT,		\/\/$/;"	e	enum:__anon5
+DBL_GREAT_DASH	includes/lexer.h	/^	DBL_GREAT_DASH,	\/\/$/;"	e	enum:__anon5
+DBL_LESS	includes/lexer.h	/^	DBL_LESS,		\/\/  --$/;"	e	enum:__anon5
+DBL_LESS_DASH	includes/lexer.h	/^	DBL_LESS_DASH,	\/\/$/;"	e	enum:__anon5
+DBL_PIPE	includes/lexer.h	/^	DBL_PIPE,		\/\/  ||$/;"	e	enum:__anon5
+DBL_SEMI	includes/lexer.h	/^	DBL_SEMI,		\/\/  ;;$/;"	e	enum:__anon5
 ECHO	minishell/includes/minishell.h	/^# define ECHO	/;"	d
 ENV	minishell/includes/minishell.h	/^# define ENV	/;"	d
 EXIT	minishell/includes/minishell.h	/^# define EXIT	/;"	d
 FAILFORK	minishell/includes/minishell.h	/^# define FAILFORK	/;"	d
 FD_MAX	libft/includes/libft.h	/^# define FD_MAX /;"	d
 FD_MAX	minishell/libft/includes/libft.h	/^# define FD_MAX /;"	d
-GREAT	includes/lexer.h	/^	GREAT,$/;"	e	enum:__anon5
-GREAT_AND	includes/lexer.h	/^	GREAT_AND,$/;"	e	enum:__anon5
+GREAT	includes/lexer.h	/^	GREAT,			\/\/$/;"	e	enum:__anon5
+GREAT_AND	includes/lexer.h	/^	GREAT_AND,		\/\/$/;"	e	enum:__anon5
 H	libft/includes/libft.h	/^# define H /;"	d
 H	minishell/libft/includes/libft.h	/^# define H /;"	d
 HH	libft/includes/libft.h	/^# define HH	/;"	d
@@ -70,9 +70,9 @@ J	libft/includes/libft.h	/^# define J /;"	d
 J	minishell/libft/includes/libft.h	/^# define J /;"	d
 L	libft/includes/libft.h	/^# define L	/;"	d
 L	minishell/libft/includes/libft.h	/^# define L	/;"	d
-LESS	includes/lexer.h	/^	LESS,$/;"	e	enum:__anon5
-LESS_AND	includes/lexer.h	/^	LESS_AND,$/;"	e	enum:__anon5
-LESS_GREAT	includes/lexer.h	/^	LESS_GREAT,$/;"	e	enum:__anon5
+LESS	includes/lexer.h	/^	LESS,			\/\/  -$/;"	e	enum:__anon5
+LESS_AND	includes/lexer.h	/^	LESS_AND,		\/\/$/;"	e	enum:__anon5
+LESS_GREAT	includes/lexer.h	/^	LESS_GREAT,		\/\/$/;"	e	enum:__anon5
 LFT_NAME	Makefile	/^LFT_NAME = libft.a$/;"	m
 LFT_NAME	minishell/Makefile	/^LFT_NAME = libft.a$/;"	m
 LFT_PATH	Makefile	/^LFT_PATH = .\/libft\/$/;"	m
@@ -111,9 +111,9 @@ OBJ_NAME	Makefile	/^OBJ_NAME = $(SRC_NAME:.c=.o)$/;"	m
 OBJ_NAME	minishell/Makefile	/^OBJ_NAME = $(SRC_NAME:.c=.o)$/;"	m
 OBJ_PATH	Makefile	/^OBJ_PATH = .\/obj\/$/;"	m
 OBJ_PATH	minishell/Makefile	/^OBJ_PATH = .\/obj\/$/;"	m
-OTHER_OP	includes/lexer.h	/^	OTHER_OP,$/;"	e	enum:__anon5
-PIPE	includes/lexer.h	/^	PIPE,$/;"	e	enum:__anon5
-SEMI	includes/lexer.h	/^	SEMI,$/;"	e	enum:__anon5
+OTHER_OP	includes/lexer.h	/^	OTHER_OP,		\/\/$/;"	e	enum:__anon5
+PIPE	includes/lexer.h	/^	PIPE,			\/\/  |$/;"	e	enum:__anon5
+SEMI	includes/lexer.h	/^	SEMI,			\/\/  ;$/;"	e	enum:__anon5
 SETENV	minishell/includes/minishell.h	/^# define SETENV	/;"	d
 SETENV_INVALID_KEY	minishell/includes/minishell.h	/^# define SETENV_INVALID_KEY	/;"	d
 SETENV_USG	minishell/includes/minishell.h	/^# define SETENV_USG	/;"	d
@@ -265,12 +265,12 @@ _YELLOW	minishell/Makefile	/^_YELLOW			=	\\x1b[33m$/;"	m
 _YELLOW	minishell/libft/Makefile	/^_YELLOW			=	\\x1b[33m$/;"	m
 addToLexer	draft/lexertest.c	/^void addToLexer(t_lexer* lexer, const char* text, uint32_t text_size, e_token_type type)$/;"	f
 addkey	minishell/srcs/setenv_builtin.c	/^static char				**addkey(char *key, char *value, char **env)$/;"	f	file:
-ast	srcs/parser/parser.c	/^void ast (t_list *lexer, t_ast *root, e_op_type optype)$/;"	f
+ast	srcs/parser/parser.c	/^void ast (t_list *lexer, t_ast **root, e_op_type optype)$/;"	f
 base	libft/includes/libft.h	/^	int				base;$/;"	m	struct:s_format
 base	minishell/libft/includes/libft.h	/^	int				base;$/;"	m	struct:s_format
 bool	draft/lexertest.c	/^typedef unsigned char bool; \/* Real type *\/$/;"	t	file:
 build_lexer	srcs/lexer/lexer.c	/^int					build_lexer(char *input, t_list **lexer)$/;"	f
-build_tree_op	srcs/parser/parser.c	/^void	build_tree_op(t_list *lexer, t_ast *root, e_op_type optype)$/;"	f
+build_tree_op	srcs/parser/parser.c	/^void	build_tree_op(t_list *lexer, t_ast **root, e_op_type optype)$/;"	f
 cc	Makefile	/^cc = gcc$/;"	m
 cc	minishell/Makefile	/^cc = gcc$/;"	m
 cd_builtin	minishell/srcs/cd_builtin.c	/^int				cd_builtin(int argc, char **argv, char ***env)$/;"	f
@@ -508,7 +508,7 @@ handle_str	minishell/libft/srcs/handlers.c	/^int		handle_str(t_format *fmt, va_l
 handler	libft/includes/libft.h	/^	int				(*handler)(struct s_format *fmt, va_list ap);$/;"	m	struct:s_format
 handler	minishell/libft/includes/libft.h	/^	int				(*handler)(struct s_format *fmt, va_list ap);$/;"	m	struct:s_format
 inorder	draft/trees.c	/^void inorder(t_ast *root) $/;"	f
-inorder	srcs/parser/parser.c	/^void inorder(t_ast *root) $/;"	f
+inorder	srcs/parser/parser.c	/^void inorder(t_ast *root,char *str) $/;"	f
 input_handler	minishell/srcs/main.c	/^static void		input_handler(char *input, char ***env)$/;"	f	file:
 input_redir	draft/test.c	/^void 		input_redir(char **cmd, char *path, char **env)$/;"	f
 insert	draft/trees.c	/^t_ast *insert(t_ast *node, void *val) $/;"	f

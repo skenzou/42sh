@@ -6,9 +6,9 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/05 00:53:00 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/05 01:32:08 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/05/07 23:19:40 by ghamelek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char		*check_syntax_errors(t_list *tokens);
-void    ft_parse(t_list *lexer);
+void	sigfork(int sig);
+t_ast    *ft_parse(t_list *lexer);
