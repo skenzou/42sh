@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/04 23:37:49 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/06 22:26:27 by ghamelek         ###   ########.fr       */
+/*   Updated: 2019/05/07 02:27:22 by ghamelek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,45 +24,10 @@ t_ast *newnode(t_token *item)
 	temp->left = temp->right = NULL; 
 	return temp;
 }
-
-
-
-void	build_tree_op(t_list *lexer, t_ast *root, e_op_type optype)
-{
-	t_list *save2;
-	t_list *save1;
-	t_token token;
-	t_list *prev;
-
-	save2 = NULL;
-	save1 = NULL;
-	prev = lexer;
-	printf("============================\n");
-	while(lexer)
-	{
-		token = *(t_token*)(lexer->content);
-		printf("test: %s\n", token.content);
-		if (token.op_type == optype)
-		{
-			save1 = prev;
-			save2 = lexer->next;
-		}
-		prev = lexer;
-		lexer = lexer->next;
-	}
-	printf("============================\n");
-	prev = save1;
-	save1 = save1->next;
-	prev->next = NULL;
-	if (save1)
-	{
-		root->left = newnode((t_token *)(save1->content));
-		root->left->right = newnode((t_token *)(save2->content));
-	}
-}
 int		is_in_lexer(t_list *lexer, e_op_type optype)
 {
 	t_token *token;
+
 	while (lexer)
 	{
 		token = (t_token *)(lexer->content);
@@ -73,23 +38,98 @@ int		is_in_lexer(t_list *lexer, e_op_type optype)
 	return (0);
 }
 
-void inorder(t_ast *root) 
-{ 
-	if (root != NULL) 
-	{ 
-		inorder(root->left);
-		if (root->token)
-			printf("%s \n", root->token->content);
-		inorder(root->right);
-	} 
+
+void	build_tree_op(t_list *lexer, t_ast **root, e_op_type optype)
+{
+	t_list *save2;
+	t_list *save1;
+	t_list *origin;
+	t_token *token;
+	t_list *prev;
+
+	save2 = NULL;
+	save1 = NULL;
+	origin= lexer;
+
+	if (!lexer)
+		return ;
+	prev = lexer;
+	while(lexer)
+	{
+		token = (t_token*)(lexer->content);
+		//printf("test: %s\n", token->content);
+		if (token->op_type == optype)
+		{
+			save1 = prev;
+			save2 = lexer->next;
+		}
+		prev = lexer;
+		lexer = lexer->next;
+	}
+	prev = save1;
+	if (save1)
+		save1 = save1->next;
+	if (prev)
+		prev->next = NULL;
+	if (!is_in_lexer(origin, optype) && !save1)
+	{	
+				if (is_in_lexer(origin, DBL_AND))
+					build_tree_op(origin, root, DBL_AND);
+				else if (is_in_lexer(origin, DBL_PIPE))
+					build_tree_op(origin, root, DBL_PIPE);
+				else if (is_in_lexer(origin, PIPE))
+					build_tree_op(origin, root, PIPE);
+				else
+					*root = newnode((t_token *)(origin->content));
+	}
+	if (save1)
+	{
+
+		//	printf("1 / %s -- 2 / %s\n",((t_token *)(save1->content))->content, ((t_token *)(save2->content))->content);
+			*root = newnode((t_token *)(save1->content));
+			if (save2)
+			{
+				if (is_in_lexer(save2, DBL_AND))
+					build_tree_op(save2, &((*root)->right), DBL_AND);
+				else if (is_in_lexer(save2, DBL_PIPE))
+					build_tree_op(save2, &((*root)->right), DBL_PIPE);
+				else if (is_in_lexer(save2, PIPE))
+					build_tree_op(save2, &((*root)->right), PIPE);
+				else
+					(*root)->right = newnode((t_token *)(save2->content));
+			}
+			build_tree_op(origin, &((*root)->left) , optype);
+	}
 }
 
-void ast (t_list *lexer, t_ast *root, e_op_type optype)
+
+void inorder(t_ast *root,char *str) 
+{ 
+	static int row;
+/*
+	root = root->right;
+	while (root)
+	{
+		printf("row: %d %s --- %s \n", row, root->token->content,str);
+		root = root->left;
+	}
+*/	
+	if (root != NULL) 
+	{ 
+		inorder(root->left,ft_strjoin(str , " - > left"));
+		if (root->token)
+			printf("row: %d %s --- %s \n", row, root->token->content,str);
+		inorder(root->right,ft_strjoin(str ,"- > right"));
+	}
+}
+
+void ast (t_list *lexer, t_ast **root, e_op_type optype)
 {
-	if (is_in_lexer(lexer, optype))
+//	if (is_in_lexer(lexer, optype))
+		*root = NULL;
 		build_tree_op(lexer, root, optype);
-	if (root->left)
-		ast(lexer, root->left, optype);
+//	if (root->left)
+//		ast(lexer, root->left, optype);
 }
 
 
@@ -127,6 +167,7 @@ void  ft_parse(t_list *lexer)
 	char *error;
 	t_ast *root;
 
+	root = NULL;
 	error = check_syntax_errors(lexer);
 	if (error)
 	{
@@ -134,7 +175,14 @@ void  ft_parse(t_list *lexer)
 	ft_putstr_fd(error, 2);
 	ft_putendl_fd("'", 2);
 	}
-	root = newnode(NULL);
-	ast(lexer, root, SEMI);
-	inorder(root);
+//	root = newnode(NULL);
+	if (is_in_lexer(lexer, SEMI))
+		ast(lexer, &root, SEMI);
+	else if (is_in_lexer(lexer, DBL_AND))
+		ast(lexer, &root, DBL_AND);
+	else if (is_in_lexer(lexer, DBL_PIPE))
+		ast(lexer, &root, DBL_PIPE);
+	else
+		ast(lexer, &root, PIPE);
+	inorder(root,"root");
 }

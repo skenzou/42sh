@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/30 18:57:23 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/06 20:00:33 by ghamelek         ###   ########.fr       */
+/*   Updated: 2019/05/07 01:20:24 by ghamelek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,23 +18,23 @@
 */
 typedef enum
 {
-	SEMI,
-	DBL_SEMI,
-	PIPE,
-	DBL_PIPE,
-	AND,
-	DBL_AND,
-	LESS,
-	DBL_LESS,
-	GREAT,
-	DBL_GREAT,
-	LESS_AND,
-	GREAT_AND,
-	LESS_GREAT,
-	DBL_LESS_DASH,
-	DBL_GREAT_DASH,
-	CLOBBER,
-	OTHER_OP,
+	SEMI,			//  ;
+	DBL_SEMI,		//  ;;
+	PIPE,			//  |
+	DBL_PIPE,		//  ||
+	AND,			//  &
+	DBL_AND,		//  &&
+	LESS,			//  -
+	DBL_LESS,		//  --
+	GREAT,			//
+	DBL_GREAT,		//
+	LESS_AND,		//
+	GREAT_AND,		//
+	LESS_GREAT,		//
+	DBL_LESS_DASH,	//
+	DBL_GREAT_DASH,	//
+	CLOBBER,		//
+	OTHER_OP,		//
 } e_op_type;
 
 typedef enum

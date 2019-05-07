@@ -1,0 +1,617 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+AND	includes/lexer.h	/^	AND,$/;"	e	enum:__anon5
+ANSI_BBLUE	includes/shell.h	/^# define ANSI_BBLUE	/;"	d
+ANSI_BCYAN	includes/shell.h	/^# define ANSI_BCYAN	/;"	d
+ANSI_BGREEN	includes/shell.h	/^# define ANSI_BGREEN	/;"	d
+ANSI_BLUE	includes/shell.h	/^# define ANSI_BLUE	/;"	d
+ANSI_BLUE	minishell/includes/minishell.h	/^# define ANSI_BLUE	/;"	d
+ANSI_BMAGENTA	includes/shell.h	/^# define ANSI_BMAGENTA	/;"	d
+ANSI_BRED	includes/shell.h	/^# define ANSI_BRED	/;"	d
+ANSI_BYELLOW	includes/shell.h	/^# define ANSI_BYELLOW	/;"	d
+ANSI_CYAN	includes/shell.h	/^# define ANSI_CYAN	/;"	d
+ANSI_CYAN	minishell/includes/minishell.h	/^# define ANSI_CYAN	/;"	d
+ANSI_GREEN	includes/shell.h	/^# define ANSI_GREEN	/;"	d
+ANSI_GREEN	minishell/includes/minishell.h	/^# define ANSI_GREEN	/;"	d
+ANSI_MAGENTA	includes/shell.h	/^# define ANSI_MAGENTA	/;"	d
+ANSI_MAGENTA	minishell/includes/minishell.h	/^# define ANSI_MAGENTA	/;"	d
+ANSI_RED	includes/shell.h	/^# define ANSI_RED	/;"	d
+ANSI_RED	minishell/includes/minishell.h	/^# define ANSI_RED	/;"	d
+ANSI_RESET	includes/shell.h	/^# define ANSI_RESET	/;"	d
+ANSI_RESET	minishell/includes/minishell.h	/^# define ANSI_RESET	/;"	d
+ANSI_YELLOW	includes/shell.h	/^# define ANSI_YELLOW	/;"	d
+ANSI_YELLOW	minishell/includes/minishell.h	/^# define ANSI_YELLOW	/;"	d
+AR	libft/Makefile	/^AR = ar rcs$/;"	m
+AR	minishell/libft/Makefile	/^AR = ar rcs$/;"	m
+BUFF_SIZE	libft/includes/libft.h	/^# define BUFF_SIZE /;"	d
+BUFF_SIZE	minishell/libft/includes/libft.h	/^# define BUFF_SIZE /;"	d
+CD	minishell/includes/minishell.h	/^# define CD	/;"	d
+CFLAGS	libft/Makefile	/^CFLAGS = -Wall -Wextra -Werror -I.\/includes -c$/;"	m
+CFLAGS	minishell/libft/Makefile	/^CFLAGS = -Wall -Wextra -Werror -I.\/includes -c$/;"	m
+CLOBBER	includes/lexer.h	/^	CLOBBER,$/;"	e	enum:__anon5
+COMP	libft/Makefile	/^COMP = gcc$/;"	m
+COMP	minishell/libft/Makefile	/^COMP = gcc$/;"	m
+CONV	libft/includes/libft.h	/^# define CONV /;"	d
+CONV	minishell/libft/includes/libft.h	/^# define CONV /;"	d
+C_FLAGS	Makefile	/^C_FLAGS = -Wall -Wextra -Werror -g -v$/;"	m
+C_FLAGS	minishell/Makefile	/^C_FLAGS = -Wall -Wextra -Werror$/;"	m
+DBL_AND	includes/lexer.h	/^	DBL_AND,$/;"	e	enum:__anon5
+DBL_GREAT	includes/lexer.h	/^	DBL_GREAT,$/;"	e	enum:__anon5
+DBL_GREAT_DASH	includes/lexer.h	/^	DBL_GREAT_DASH,$/;"	e	enum:__anon5
+DBL_LESS	includes/lexer.h	/^	DBL_LESS,$/;"	e	enum:__anon5
+DBL_LESS_DASH	includes/lexer.h	/^	DBL_LESS_DASH,$/;"	e	enum:__anon5
+DBL_PIPE	includes/lexer.h	/^	DBL_PIPE,$/;"	e	enum:__anon5
+DBL_SEMI	includes/lexer.h	/^	DBL_SEMI,$/;"	e	enum:__anon5
+ECHO	minishell/includes/minishell.h	/^# define ECHO	/;"	d
+ENV	minishell/includes/minishell.h	/^# define ENV	/;"	d
+EXIT	minishell/includes/minishell.h	/^# define EXIT	/;"	d
+FAILFORK	minishell/includes/minishell.h	/^# define FAILFORK	/;"	d
+FD_MAX	libft/includes/libft.h	/^# define FD_MAX /;"	d
+FD_MAX	minishell/libft/includes/libft.h	/^# define FD_MAX /;"	d
+GREAT	includes/lexer.h	/^	GREAT,$/;"	e	enum:__anon5
+GREAT_AND	includes/lexer.h	/^	GREAT_AND,$/;"	e	enum:__anon5
+H	libft/includes/libft.h	/^# define H /;"	d
+H	minishell/libft/includes/libft.h	/^# define H /;"	d
+HH	libft/includes/libft.h	/^# define HH	/;"	d
+HH	minishell/libft/includes/libft.h	/^# define HH	/;"	d
+INC	Makefile	/^INC = $(addprefix -I,$(INC_PATH))$/;"	m
+INC	minishell/Makefile	/^INC = $(addprefix -I,$(INC_PATH))$/;"	m
+INC_FPATH	Makefile	/^INC_FPATH = .\/includes\/shell.h .\/includes\/lexer.h$/;"	m
+INC_NAME	minishell/Makefile	/^INC_NAME = minishell.h$/;"	m
+INC_PATH	Makefile	/^INC_PATH = .\/includes$/;"	m
+INC_PATH	minishell/Makefile	/^INC_PATH = .\/includes$/;"	m
+INV_ARG	minishell/includes/minishell.h	/^# define INV_ARG	/;"	d
+IS_DIRECTORY	minishell/includes/minishell.h	/^# define IS_DIRECTORY	/;"	d
+J	libft/includes/libft.h	/^# define J /;"	d
+J	minishell/libft/includes/libft.h	/^# define J /;"	d
+L	libft/includes/libft.h	/^# define L	/;"	d
+L	minishell/libft/includes/libft.h	/^# define L	/;"	d
+LESS	includes/lexer.h	/^	LESS,$/;"	e	enum:__anon5
+LESS_AND	includes/lexer.h	/^	LESS_AND,$/;"	e	enum:__anon5
+LESS_GREAT	includes/lexer.h	/^	LESS_GREAT,$/;"	e	enum:__anon5
+LFT_NAME	Makefile	/^LFT_NAME = libft.a$/;"	m
+LFT_NAME	minishell/Makefile	/^LFT_NAME = libft.a$/;"	m
+LFT_PATH	Makefile	/^LFT_PATH = .\/libft\/$/;"	m
+LFT_PATH	minishell/Makefile	/^LFT_PATH = .\/libft\/$/;"	m
+LIBFT_H	libft/includes/libft.h	/^# define LIBFT_H$/;"	d
+LIBFT_H	minishell/libft/includes/libft.h	/^# define LIBFT_H$/;"	d
+LL	libft/includes/libft.h	/^# define LL	/;"	d
+LL	minishell/libft/includes/libft.h	/^# define LL	/;"	d
+LONGEST	Makefile	/^LONGEST			=	$(shell echo $(notdir $(SRC)) | tr " " "\\n" | awk ' { if (\\$/;"	m
+LONGEST	libft/Makefile	/^LONGEST			=	$(shell echo $(notdir $(SRCS)) | tr " " "\\n" | awk ' { if (\\$/;"	m
+LONGEST	minishell/Makefile	/^LONGEST			=	$(shell echo $(notdir $(SRC)) | tr " " "\\n" | awk ' { if (\\$/;"	m
+LONGEST	minishell/libft/Makefile	/^LONGEST			=	$(shell echo $(notdir $(SRCS)) | tr " " "\\n" | awk ' { if (\\$/;"	m
+LU	libft/includes/libft.h	/^# define LU	/;"	d
+LU	minishell/libft/includes/libft.h	/^# define LU	/;"	d
+MAX_PATH_LEN	minishell/includes/minishell.h	/^# define MAX_PATH_LEN	/;"	d
+MINISHELL_H	minishell/includes/minishell.h	/^# define MINISHELL_H$/;"	d
+MSG	Makefile	/^MSG				=	Compiling 21sh$/;"	m
+MSG	libft/Makefile	/^MSG					= Compiling the libft:$/;"	m
+MSG	minishell/Makefile	/^MSG				=	Compiling minishell$/;"	m
+MSG	minishell/libft/Makefile	/^MSG					= Compiling the libft:$/;"	m
+NAME	Makefile	/^NAME = 21sh$/;"	m
+NAME	libft/Makefile	/^NAME = libft.a$/;"	m
+NAME	minishell/Makefile	/^NAME = minishell$/;"	m
+NAME	minishell/libft/Makefile	/^NAME = libft.a$/;"	m
+NON_EXISTENT	minishell/includes/minishell.h	/^# define NON_EXISTENT	/;"	d
+NOT_DIR	minishell/includes/minishell.h	/^# define NOT_DIR	/;"	d
+NOT_FOUND	minishell/includes/minishell.h	/^# define NOT_FOUND	/;"	d
+NO_RIGHT	minishell/includes/minishell.h	/^# define NO_RIGHT	/;"	d
+OBJ	Makefile	/^OBJ = $(addprefix $(OBJ_PATH),$(OBJ_NAME))$/;"	m
+OBJ	libft/Makefile	/^OBJ := $(SRC:%.c=$(OBJPATH)%.o)$/;"	m
+OBJ	minishell/Makefile	/^OBJ = $(addprefix $(OBJ_PATH),$(OBJ_NAME))$/;"	m
+OBJ	minishell/libft/Makefile	/^OBJ := $(SRC:%.c=$(OBJPATH)%.o)$/;"	m
+OBJPATH	libft/Makefile	/^OBJPATH			= obj\/$/;"	m
+OBJPATH	minishell/libft/Makefile	/^OBJPATH			= obj\/$/;"	m
+OBJ_NAME	Makefile	/^OBJ_NAME = $(SRC_NAME:.c=.o)$/;"	m
+OBJ_NAME	minishell/Makefile	/^OBJ_NAME = $(SRC_NAME:.c=.o)$/;"	m
+OBJ_PATH	Makefile	/^OBJ_PATH = .\/obj\/$/;"	m
+OBJ_PATH	minishell/Makefile	/^OBJ_PATH = .\/obj\/$/;"	m
+OTHER_OP	includes/lexer.h	/^	OTHER_OP,$/;"	e	enum:__anon5
+PIPE	includes/lexer.h	/^	PIPE,$/;"	e	enum:__anon5
+SEMI	includes/lexer.h	/^	SEMI,$/;"	e	enum:__anon5
+SETENV	minishell/includes/minishell.h	/^# define SETENV	/;"	d
+SETENV_INVALID_KEY	minishell/includes/minishell.h	/^# define SETENV_INVALID_KEY	/;"	d
+SETENV_USG	minishell/includes/minishell.h	/^# define SETENV_USG	/;"	d
+SHELL_H	includes/shell.h	/^# define SHELL_H$/;"	d
+SRC	Makefile	/^SRC = $(addprefix $(SRC_PATH),$(SRC_NAME))$/;"	m
+SRC	libft/Makefile	/^SRC = ft_atoi.c ft_isalnum.c ft_bzero.c ft_isalpha.c \\$/;"	m
+SRC	minishell/Makefile	/^SRC = $(addprefix $(SRC_PATH),$(SRC_NAME))$/;"	m
+SRC	minishell/libft/Makefile	/^SRC = ft_atoi.c ft_isalnum.c ft_bzero.c ft_isalpha.c \\$/;"	m
+SRCPATH	libft/Makefile	/^SRCPATH			=	srcs\/$/;"	m
+SRCPATH	minishell/libft/Makefile	/^SRCPATH			=	srcs\/$/;"	m
+SRCS	libft/Makefile	/^SRCS := $(SRC:%=$(SRCPATH)%)$/;"	m
+SRCS	minishell/libft/Makefile	/^SRCS := $(SRC:%=$(SRCPATH)%)$/;"	m
+SRC_NAME	Makefile	/^SRC_NAME = main.c utils.c lexer\/lexer.c parser\/parser.c lexer\/utils.c \\$/;"	m
+SRC_NAME	minishell/Makefile	/^SRC_NAME = main.c cd_builtin.c err_handler.c echo_builtin.c cd_builtin.c \\$/;"	m
+SRC_PATH	Makefile	/^SRC_PATH = .\/srcs\/$/;"	m
+SRC_PATH	minishell/Makefile	/^SRC_PATH = .\/srcs\/$/;"	m
+TOKEN_AND	draft/lexertest.c	/^    TOKEN_AND, \/\/11$/;"	e	enum:__anon1	file:
+TOKEN_ASS_WORD	draft/lexertest.c	/^    TOKEN_ASS_WORD, \/\/17$/;"	e	enum:__anon1	file:
+TOKEN_ASS_WORD	includes/lexer.h	/^	TOKEN_ASS_WORD,$/;"	e	enum:__anon6
+TOKEN_CL_BRA	draft/lexertest.c	/^    TOKEN_CL_BRA, \/\/13$/;"	e	enum:__anon1	file:
+TOKEN_CL_BRA	includes/lexer.h	/^	TOKEN_CL_BRA,$/;"	e	enum:__anon6
+TOKEN_CL_CURLY	draft/lexertest.c	/^    TOKEN_CL_CURLY, \/\/20$/;"	e	enum:__anon1	file:
+TOKEN_CL_CURLY	includes/lexer.h	/^	TOKEN_CL_CURLY,$/;"	e	enum:__anon6
+TOKEN_CL_PAR	draft/lexertest.c	/^    TOKEN_CL_PAR, \/\/15$/;"	e	enum:__anon1	file:
+TOKEN_CL_PAR	includes/lexer.h	/^	TOKEN_CL_PAR,$/;"	e	enum:__anon6
+TOKEN_CTL_OPERATOR	includes/lexer.h	/^	TOKEN_CTL_OPERATOR,$/;"	e	enum:__anon6
+TOKEN_DBLAND	draft/lexertest.c	/^    TOKEN_DBLAND, \/\/7$/;"	e	enum:__anon1	file:
+TOKEN_DBLOR	draft/lexertest.c	/^    TOKEN_DBLOR, \/\/8$/;"	e	enum:__anon1	file:
+TOKEN_DBL_SEMI	draft/lexertest.c	/^    TOKEN_DBL_SEMI, \/\/4$/;"	e	enum:__anon1	file:
+TOKEN_DQ	draft/lexertest.c	/^    TOKEN_DQ, \/\/1$/;"	e	enum:__anon1	file:
+TOKEN_DQ	includes/lexer.h	/^	TOKEN_DQ,$/;"	e	enum:__anon6
+TOKEN_EAT	draft/lexertest.c	/^    TOKEN_EAT, \/\/0$/;"	e	enum:__anon1	file:
+TOKEN_EAT	includes/lexer.h	/^	TOKEN_EAT,$/;"	e	enum:__anon6
+TOKEN_EQUAL	draft/lexertest.c	/^    TOKEN_EQUAL, \/\/20$/;"	e	enum:__anon1	file:
+TOKEN_EQUAL	includes/lexer.h	/^	TOKEN_EQUAL,$/;"	e	enum:__anon6
+TOKEN_FOR	draft/lexertest.c	/^    TOKEN_FOR,$/;"	e	enum:__anon1	file:
+TOKEN_FOR	includes/lexer.h	/^	TOKEN_FOR,$/;"	e	enum:__anon6
+TOKEN_NAME	draft/lexertest.c	/^    TOKEN_NAME,$/;"	e	enum:__anon1	file:
+TOKEN_NEG	draft/lexertest.c	/^    TOKEN_NEG, \/\/6$/;"	e	enum:__anon1	file:
+TOKEN_NEG	includes/lexer.h	/^	TOKEN_NEG,$/;"	e	enum:__anon6
+TOKEN_NULL	draft/lexertest.c	/^    TOKEN_NULL$/;"	e	enum:__anon1	file:
+TOKEN_NULL	includes/lexer.h	/^	TOKEN_NULL$/;"	e	enum:__anon6
+TOKEN_OPERATOR	draft/lexertest.c	/^    TOKEN_OPERATOR, \/\/5$/;"	e	enum:__anon1	file:
+TOKEN_OP_ARITHM	draft/lexertest.c	/^    TOKEN_OP_ARITHM, \/\/10$/;"	e	enum:__anon1	file:
+TOKEN_OP_ARITHM	includes/lexer.h	/^	TOKEN_OP_ARITHM,$/;"	e	enum:__anon6
+TOKEN_OP_BRA	draft/lexertest.c	/^    TOKEN_OP_BRA, \/\/12$/;"	e	enum:__anon1	file:
+TOKEN_OP_BRA	includes/lexer.h	/^	TOKEN_OP_BRA,$/;"	e	enum:__anon6
+TOKEN_OP_CMD	draft/lexertest.c	/^    TOKEN_OP_CMD, \/\/18$/;"	e	enum:__anon1	file:
+TOKEN_OP_CMD	includes/lexer.h	/^	TOKEN_OP_CMD,$/;"	e	enum:__anon6
+TOKEN_OP_CURLY	draft/lexertest.c	/^    TOKEN_OP_CURLY, \/\/19$/;"	e	enum:__anon1	file:
+TOKEN_OP_CURLY	includes/lexer.h	/^	TOKEN_OP_CURLY,$/;"	e	enum:__anon6
+TOKEN_OP_PAR	draft/lexertest.c	/^    TOKEN_OP_PAR, \/\/14$/;"	e	enum:__anon1	file:
+TOKEN_OP_PAR	includes/lexer.h	/^	TOKEN_OP_PAR,$/;"	e	enum:__anon6
+TOKEN_PIPE	draft/lexertest.c	/^    TOKEN_PIPE, \/\/9$/;"	e	enum:__anon1	file:
+TOKEN_REDIR	draft/lexertest.c	/^    TOKEN_REDIR, \/\/16$/;"	e	enum:__anon1	file:
+TOKEN_REDIR	includes/lexer.h	/^	TOKEN_REDIR,$/;"	e	enum:__anon6
+TOKEN_SEMI	draft/lexertest.c	/^    TOKEN_SEMI, \/\/3$/;"	e	enum:__anon1	file:
+TOKEN_SQ	draft/lexertest.c	/^    TOKEN_SQ, \/\/2$/;"	e	enum:__anon1	file:
+TOKEN_SQ	includes/lexer.h	/^	TOKEN_SQ,$/;"	e	enum:__anon6
+TOKEN_STRING	draft/lexertest.c	/^    TOKEN_STRING,$/;"	e	enum:__anon1	file:
+TOKEN_WHILE	draft/lexertest.c	/^    TOKEN_WHILE,$/;"	e	enum:__anon1	file:
+TOKEN_WHILE	includes/lexer.h	/^	TOKEN_WHILE,$/;"	e	enum:__anon6
+TOKEN_WORD	includes/lexer.h	/^	TOKEN_WORD,$/;"	e	enum:__anon6
+UNSETENV	minishell/includes/minishell.h	/^# define UNSETENV	/;"	d
+UNSETENV_USG	minishell/includes/minishell.h	/^# define UNSETENV_USG	/;"	d
+Z	libft/includes/libft.h	/^# define Z	/;"	d
+Z	minishell/libft/includes/libft.h	/^# define Z	/;"	d
+_BLUE	Makefile	/^_BLUE			=	\\x1b[34m$/;"	m
+_BLUE	libft/Makefile	/^_BLUE			=	\\x1b[34m$/;"	m
+_BLUE	minishell/Makefile	/^_BLUE			=	\\x1b[34m$/;"	m
+_BLUE	minishell/libft/Makefile	/^_BLUE			=	\\x1b[34m$/;"	m
+_BOLD	Makefile	/^_BOLD			=	\\x1b[1m$/;"	m
+_BOLD	libft/Makefile	/^_BOLD			=	\\x1b[1m$/;"	m
+_BOLD	minishell/Makefile	/^_BOLD			=	\\x1b[1m$/;"	m
+_BOLD	minishell/libft/Makefile	/^_BOLD			=	\\x1b[1m$/;"	m
+_CYAN	Makefile	/^_CYAN			=	\\x1b[36m$/;"	m
+_CYAN	libft/Makefile	/^_CYAN			=	\\x1b[36m$/;"	m
+_CYAN	minishell/Makefile	/^_CYAN			=	\\x1b[36m$/;"	m
+_CYAN	minishell/libft/Makefile	/^_CYAN			=	\\x1b[36m$/;"	m
+_END	Makefile	/^_END			=	\\x1b[0m$/;"	m
+_END	libft/Makefile	/^_END			=	\\x1b[0m$/;"	m
+_END	minishell/Makefile	/^_END			=	\\x1b[0m$/;"	m
+_END	minishell/libft/Makefile	/^_END			=	\\x1b[0m$/;"	m
+_GREEN	Makefile	/^_GREEN			=	\\x1b[32m$/;"	m
+_GREEN	libft/Makefile	/^_GREEN			=	\\x1b[32m$/;"	m
+_GREEN	minishell/Makefile	/^_GREEN			=	\\x1b[32m$/;"	m
+_GREEN	minishell/libft/Makefile	/^_GREEN			=	\\x1b[32m$/;"	m
+_GREY	Makefile	/^_GREY			=	\\x1b[30m$/;"	m
+_GREY	libft/Makefile	/^_GREY			=	\\x1b[30m$/;"	m
+_GREY	minishell/Makefile	/^_GREY			=	\\x1b[30m$/;"	m
+_GREY	minishell/libft/Makefile	/^_GREY			=	\\x1b[30m$/;"	m
+_IBLUE	Makefile	/^_IBLUE			=	\\x1b[44m$/;"	m
+_IBLUE	libft/Makefile	/^_IBLUE			=	\\x1b[44m$/;"	m
+_IBLUE	minishell/Makefile	/^_IBLUE			=	\\x1b[44m$/;"	m
+_IBLUE	minishell/libft/Makefile	/^_IBLUE			=	\\x1b[44m$/;"	m
+_ICYAN	Makefile	/^_ICYAN			=	\\x1b[46m$/;"	m
+_ICYAN	libft/Makefile	/^_ICYAN			=	\\x1b[46m$/;"	m
+_ICYAN	minishell/Makefile	/^_ICYAN			=	\\x1b[46m$/;"	m
+_ICYAN	minishell/libft/Makefile	/^_ICYAN			=	\\x1b[46m$/;"	m
+_IGREEN	Makefile	/^_IGREEN			=	\\x1b[42m$/;"	m
+_IGREEN	libft/Makefile	/^_IGREEN			=	\\x1b[42m$/;"	m
+_IGREEN	minishell/Makefile	/^_IGREEN			=	\\x1b[42m$/;"	m
+_IGREEN	minishell/libft/Makefile	/^_IGREEN			=	\\x1b[42m$/;"	m
+_IGREY	Makefile	/^_IGREY			=	\\x1b[40m$/;"	m
+_IGREY	libft/Makefile	/^_IGREY			=	\\x1b[40m$/;"	m
+_IGREY	minishell/Makefile	/^_IGREY			=	\\x1b[40m$/;"	m
+_IGREY	minishell/libft/Makefile	/^_IGREY			=	\\x1b[40m$/;"	m
+_IPURPLE	Makefile	/^_IPURPLE		=	\\x1b[45m$/;"	m
+_IPURPLE	libft/Makefile	/^_IPURPLE		=	\\x1b[45m$/;"	m
+_IPURPLE	minishell/Makefile	/^_IPURPLE		=	\\x1b[45m$/;"	m
+_IPURPLE	minishell/libft/Makefile	/^_IPURPLE		=	\\x1b[45m$/;"	m
+_IRED	Makefile	/^_IRED			=	\\x1b[41m$/;"	m
+_IRED	libft/Makefile	/^_IRED			=	\\x1b[41m$/;"	m
+_IRED	minishell/Makefile	/^_IRED			=	\\x1b[41m$/;"	m
+_IRED	minishell/libft/Makefile	/^_IRED			=	\\x1b[41m$/;"	m
+_IWHITE	Makefile	/^_IWHITE			=	\\x1b[47m$/;"	m
+_IWHITE	libft/Makefile	/^_IWHITE			=	\\x1b[47m$/;"	m
+_IWHITE	minishell/Makefile	/^_IWHITE			=	\\x1b[47m$/;"	m
+_IWHITE	minishell/libft/Makefile	/^_IWHITE			=	\\x1b[47m$/;"	m
+_IYELLOW	Makefile	/^_IYELLOW		=	\\x1b[43m$/;"	m
+_IYELLOW	libft/Makefile	/^_IYELLOW		=	\\x1b[43m$/;"	m
+_IYELLOW	minishell/Makefile	/^_IYELLOW		=	\\x1b[43m$/;"	m
+_IYELLOW	minishell/libft/Makefile	/^_IYELLOW		=	\\x1b[43m$/;"	m
+_MAGENTA	Makefile	/^_MAGENTA		=	\\x1b[35m$/;"	m
+_MAGENTA	minishell/Makefile	/^_MAGENTA		=	\\x1b[35m$/;"	m
+_PURPLE	Makefile	/^_PURPLE			=	\\x1b[35m$/;"	m
+_PURPLE	libft/Makefile	/^_PURPLE			=	\\x1b[35m$/;"	m
+_PURPLE	minishell/Makefile	/^_PURPLE			=	\\x1b[35m$/;"	m
+_PURPLE	minishell/libft/Makefile	/^_PURPLE			=	\\x1b[35m$/;"	m
+_RED	Makefile	/^_RED			=	\\x1b[31m$/;"	m
+_RED	libft/Makefile	/^_RED			=	\\x1b[31m$/;"	m
+_RED	minishell/Makefile	/^_RED			=	\\x1b[31m$/;"	m
+_RED	minishell/libft/Makefile	/^_RED			=	\\x1b[31m$/;"	m
+_REV	Makefile	/^_REV			=	\\x1b[7m$/;"	m
+_REV	libft/Makefile	/^_REV			=	\\x1b[7m$/;"	m
+_REV	minishell/Makefile	/^_REV			=	\\x1b[7m$/;"	m
+_REV	minishell/libft/Makefile	/^_REV			=	\\x1b[7m$/;"	m
+_UNDER	Makefile	/^_UNDER			=	\\x1b[4m$/;"	m
+_UNDER	libft/Makefile	/^_UNDER			=	\\x1b[4m$/;"	m
+_UNDER	minishell/Makefile	/^_UNDER			=	\\x1b[4m$/;"	m
+_UNDER	minishell/libft/Makefile	/^_UNDER			=	\\x1b[4m$/;"	m
+_WHITE	Makefile	/^_WHITE			=	\\x1b[37m$/;"	m
+_WHITE	libft/Makefile	/^_WHITE			=	\\x1b[37m$/;"	m
+_WHITE	minishell/Makefile	/^_WHITE			=	\\x1b[37m$/;"	m
+_WHITE	minishell/libft/Makefile	/^_WHITE			=	\\x1b[37m$/;"	m
+_YELLOW	Makefile	/^_YELLOW			=	\\x1b[33m$/;"	m
+_YELLOW	libft/Makefile	/^_YELLOW			=	\\x1b[33m$/;"	m
+_YELLOW	minishell/Makefile	/^_YELLOW			=	\\x1b[33m$/;"	m
+_YELLOW	minishell/libft/Makefile	/^_YELLOW			=	\\x1b[33m$/;"	m
+addToLexer	draft/lexertest.c	/^void addToLexer(t_lexer* lexer, const char* text, uint32_t text_size, e_token_type type)$/;"	f
+addkey	minishell/srcs/setenv_builtin.c	/^static char				**addkey(char *key, char *value, char **env)$/;"	f	file:
+ast	srcs/parser/parser.c	/^void ast (t_list *lexer, t_ast *root, e_op_type optype)$/;"	f
+base	libft/includes/libft.h	/^	int				base;$/;"	m	struct:s_format
+base	minishell/libft/includes/libft.h	/^	int				base;$/;"	m	struct:s_format
+bool	draft/lexertest.c	/^typedef unsigned char bool; \/* Real type *\/$/;"	t	file:
+build_lexer	srcs/lexer/lexer.c	/^int					build_lexer(char *input, t_list **lexer)$/;"	f
+build_tree_op	srcs/parser/parser.c	/^void	build_tree_op(t_list *lexer, t_ast *root, e_op_type optype)$/;"	f
+cc	Makefile	/^cc = gcc$/;"	m
+cc	minishell/Makefile	/^cc = gcc$/;"	m
+cd_builtin	minishell/srcs/cd_builtin.c	/^int				cd_builtin(int argc, char **argv, char ***env)$/;"	f
+change_dir	minishell/srcs/cd_builtin.c	/^static int		change_dir(char *path, char ***env)$/;"	f	file:
+check_conversion	libft/srcs/ft_printf.c	/^int			check_conversion(char **str)$/;"	f
+check_conversion	minishell/libft/srcs/ft_printf.c	/^int			check_conversion(char **str)$/;"	f
+check_key	minishell/srcs/setenv_builtin.c	/^static int				check_key(char *str)$/;"	f	file:
+check_ops	srcs/lexer/lexer.c	/^static t_oplist		check_ops(char *str)$/;"	f	file:
+check_syntax_errors	srcs/parser/parser.c	/^char		*check_syntax_errors(t_list *tokens)$/;"	f
+cmd_handler	minishell/srcs/cmd_handler.c	/^void			cmd_handler(char *cmd, char ***env)$/;"	f
+content	draft/lexertest.c	/^  char content[128]; \/* Replace with a dynamic array *\/$/;"	m	struct:__anon3	file:
+content	includes/lexer.h	/^	char			*content;$/;"	m	struct:s_token
+content	libft/includes/libft.h	/^	void			*content;$/;"	m	struct:s_list
+content	minishell/libft/includes/libft.h	/^	void			*content;$/;"	m	struct:s_list
+content_size	libft/includes/libft.h	/^	size_t			content_size;$/;"	m	struct:s_list
+content_size	minishell/libft/includes/libft.h	/^	size_t			content_size;$/;"	m	struct:s_list
+conversion	libft/includes/libft.h	/^	char			conversion;$/;"	m	struct:s_format
+conversion	minishell/libft/includes/libft.h	/^	char			conversion;$/;"	m	struct:s_format
+create_format	libft/srcs/ft_printf.c	/^t_format	*create_format(char *str, va_list ap)$/;"	f
+create_format	minishell/libft/srcs/ft_printf.c	/^t_format	*create_format(char *str, va_list ap)$/;"	f
+create_token	srcs/lexer/lexer.c	/^static void 		create_token(t_list **lexer, char *str,$/;"	f	file:
+dollar_expansion	minishell/srcs/expansions.c	/^static char		*dollar_expansion(char *needle, char **env)$/;"	f	file:
+dup_env	minishell/srcs/main.c	/^static char		**dup_env(char **env)$/;"	f	file:
+dup_env	srcs/main.c	/^static char		**dup_env(char **env)$/;"	f	file:
+e_op_type	includes/lexer.h	/^} e_op_type;$/;"	t	typeref:enum:__anon5
+e_token_type	draft/lexertest.c	/^  } e_token_type;$/;"	t	typeref:enum:__anon1	file:
+e_token_type	includes/lexer.h	/^} e_token_type;$/;"	t	typeref:enum:__anon6
+echo_builtin	minishell/srcs/echo_builtin.c	/^int			echo_builtin(int argc, char **argv)$/;"	f
+err_handler	minishell/srcs/err_handler.c	/^void	err_handler(int err_id, char *str)$/;"	f
+exec_bin	minishell/srcs/bin_handler.c	/^void			exec_bin(char **bin, char **env)$/;"	f
+exec_binpath	minishell/srcs/bin_handler.c	/^static int		exec_binpath(char **bin, char **env)$/;"	f	file:
+exec_builtin	minishell/srcs/cmd_handler.c	/^static void		exec_builtin(char **builtin, int id, char ***env)$/;"	f	file:
+exec_envpath	minishell/srcs/bin_handler.c	/^static int		exec_envpath(char **bin, char **env)$/;"	f	file:
+executor	srcs/executor/executor.c	/^void 	executor(char **argv, char **env)$/;"	f
+existing_token	draft/lexertest.c	/^static const t_oplist existing_token[] =$/;"	v	file:
+existing_token	srcs/lexer/lexer.c	/^static const t_oplist existing_token[] =$/;"	v	file:
+exit_builtin	minishell/srcs/exit_builtin.c	/^void	exit_builtin(void)$/;"	f
+fillLexerFromString	draft/lexertest.c	/^bool fillLexerFromString(const char* s, t_lexer* lexer)$/;"	f
+find_bin	minishell/srcs/bin_handler.c	/^static int		find_bin(char **bin, char **env, char **paths)$/;"	f	file:
+free_mem	libft/srcs/ft_strsplit.c	/^static void		free_mem(char **strings, int len)$/;"	f	file:
+free_mem	libft/srcs/ft_strsplitstr.c	/^static void		free_mem(char **strings, int len)$/;"	f	file:
+free_mem	minishell/libft/srcs/ft_strsplit.c	/^static void		free_mem(char **strings, int len)$/;"	f	file:
+free_mem	minishell/libft/srcs/ft_strsplitstr.c	/^static void		free_mem(char **strings, int len)$/;"	f	file:
+ft_abs	libft/srcs/ft_abs.c	/^intmax_t		ft_abs(intmax_t nb)$/;"	f
+ft_abs	minishell/libft/srcs/ft_abs.c	/^intmax_t		ft_abs(intmax_t nb)$/;"	f
+ft_atoi	libft/srcs/ft_atoi.c	/^int		ft_atoi(const char *str)$/;"	f
+ft_atoi	minishell/libft/srcs/ft_atoi.c	/^int		ft_atoi(const char *str)$/;"	f
+ft_bzero	libft/srcs/ft_bzero.c	/^void	ft_bzero(void *s, size_t n)$/;"	f
+ft_bzero	minishell/libft/srcs/ft_bzero.c	/^void	ft_bzero(void *s, size_t n)$/;"	f
+ft_count_char	libft/srcs/ft_count_char.c	/^int		ft_count_char(char c, char *str)$/;"	f
+ft_count_char	minishell/libft/srcs/ft_count_char.c	/^int		ft_count_char(char c, char *str)$/;"	f
+ft_count_modifiers	libft/srcs/format_geters.c	/^static int		ft_count_modifiers(char c, char *str)$/;"	f	file:
+ft_count_modifiers	minishell/libft/srcs/format_geters.c	/^static int		ft_count_modifiers(char c, char *str)$/;"	f	file:
+ft_count_words	libft/srcs/ft_count_words.c	/^int		ft_count_words(char const *s, char c)$/;"	f
+ft_count_words	minishell/libft/srcs/ft_count_words.c	/^int		ft_count_words(char const *s, char c)$/;"	f
+ft_count_words_str	libft/srcs/ft_count_words_str.c	/^int		ft_count_words_str(char const *s, char *needle)$/;"	f
+ft_count_words_str	minishell/libft/srcs/ft_count_words_str.c	/^int		ft_count_words_str(char const *s, char *needle)$/;"	f
+ft_exit	srcs/utils.c	/^void ft_exit(char *str)$/;"	f
+ft_ftoa	libft/srcs/ft_ftoa.c	/^char					*ft_ftoa(long double d, int precision)$/;"	f
+ft_ftoa	minishell/libft/srcs/ft_ftoa.c	/^char					*ft_ftoa(long double d, int precision)$/;"	f
+ft_get_color	libft/srcs/ft_get_color.c	/^int				ft_get_color(int color1, int color2, double percentage)$/;"	f
+ft_get_color	minishell/libft/srcs/ft_get_color.c	/^int				ft_get_color(int color1, int color2, double percentage)$/;"	f
+ft_isalnum	libft/srcs/ft_isalnum.c	/^int		ft_isalnum(int c)$/;"	f
+ft_isalnum	minishell/libft/srcs/ft_isalnum.c	/^int		ft_isalnum(int c)$/;"	f
+ft_isalpha	libft/srcs/ft_isalpha.c	/^int		ft_isalpha(int c)$/;"	f
+ft_isalpha	minishell/libft/srcs/ft_isalpha.c	/^int		ft_isalpha(int c)$/;"	f
+ft_isascii	libft/srcs/ft_isascii.c	/^int		ft_isascii(int c)$/;"	f
+ft_isascii	minishell/libft/srcs/ft_isascii.c	/^int		ft_isascii(int c)$/;"	f
+ft_isdigit	libft/srcs/ft_isdigit.c	/^int		ft_isdigit(int c)$/;"	f
+ft_isdigit	minishell/libft/srcs/ft_isdigit.c	/^int		ft_isdigit(int c)$/;"	f
+ft_isprint	libft/srcs/ft_isprint.c	/^int		ft_isprint(int c)$/;"	f
+ft_isprint	minishell/libft/srcs/ft_isprint.c	/^int		ft_isprint(int c)$/;"	f
+ft_itoa	libft/srcs/ft_itoa.c	/^char	*ft_itoa(intmax_t n)$/;"	f
+ft_itoa	minishell/libft/srcs/ft_itoa.c	/^char	*ft_itoa(intmax_t n)$/;"	f
+ft_itoa_base	libft/srcs/ft_itoa_base.c	/^char	*ft_itoa_base(intmax_t n, int base, int uppercase)$/;"	f
+ft_itoa_base	minishell/libft/srcs/ft_itoa_base.c	/^char	*ft_itoa_base(intmax_t n, int base, int uppercase)$/;"	f
+ft_lstadd	libft/srcs/ft_lstadd.c	/^void	ft_lstadd(t_list **alst, t_list *new)$/;"	f
+ft_lstadd	minishell/libft/srcs/ft_lstadd.c	/^void	ft_lstadd(t_list **alst, t_list *new)$/;"	f
+ft_lstdel	libft/srcs/ft_lstdel.c	/^void	ft_lstdel(t_list **alst, void (*del) (void *, size_t))$/;"	f
+ft_lstdel	minishell/libft/srcs/ft_lstdel.c	/^void	ft_lstdel(t_list **alst, void (*del) (void *, size_t))$/;"	f
+ft_lstdelone	libft/srcs/ft_lstdelone.c	/^void	ft_lstdelone(t_list **alst, void (*del) (void *, size_t))$/;"	f
+ft_lstdelone	minishell/libft/srcs/ft_lstdelone.c	/^void	ft_lstdelone(t_list **alst, void (*del) (void *, size_t))$/;"	f
+ft_lstdestroy	libft/srcs/ft_lstdestroy.c	/^int		ft_lstdestroy(t_list **lst)$/;"	f
+ft_lstdestroy	minishell/libft/srcs/ft_lstdestroy.c	/^int		ft_lstdestroy(t_list **lst)$/;"	f
+ft_lstiter	libft/srcs/ft_lstiter.c	/^void	ft_lstiter(t_list *lst, void (*f) (t_list *elem))$/;"	f
+ft_lstiter	minishell/libft/srcs/ft_lstiter.c	/^void	ft_lstiter(t_list *lst, void (*f) (t_list *elem))$/;"	f
+ft_lstmap	libft/srcs/ft_lstmap.c	/^t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))$/;"	f
+ft_lstmap	minishell/libft/srcs/ft_lstmap.c	/^t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))$/;"	f
+ft_lstnew	libft/srcs/ft_lstnew.c	/^t_list		*ft_lstnew(void const *content, size_t content_size)$/;"	f
+ft_lstnew	minishell/libft/srcs/ft_lstnew.c	/^t_list		*ft_lstnew(void const *content, size_t content_size)$/;"	f
+ft_lstpushback	libft/srcs/ft_lstpushback.c	/^int		ft_lstpushback(t_list **begin, t_list *new)$/;"	f
+ft_lstpushback	minishell/libft/srcs/ft_lstpushback.c	/^int		ft_lstpushback(t_list **begin, t_list *new)$/;"	f
+ft_lstrev	libft/srcs/ft_lstrev.c	/^void		ft_lstrev(t_list **alst)$/;"	f
+ft_lstrev	minishell/libft/srcs/ft_lstrev.c	/^void		ft_lstrev(t_list **alst)$/;"	f
+ft_memalloc	libft/srcs/ft_memalloc.c	/^void	*ft_memalloc(size_t size)$/;"	f
+ft_memalloc	minishell/libft/srcs/ft_memalloc.c	/^void	*ft_memalloc(size_t size)$/;"	f
+ft_memccpy	libft/srcs/ft_memccpy.c	/^void	*ft_memccpy(void *dst, const void *src, int c, size_t n)$/;"	f
+ft_memccpy	minishell/libft/srcs/ft_memccpy.c	/^void	*ft_memccpy(void *dst, const void *src, int c, size_t n)$/;"	f
+ft_memchr	libft/srcs/ft_memchr.c	/^void	*ft_memchr(const void *s, int c, size_t n)$/;"	f
+ft_memchr	minishell/libft/srcs/ft_memchr.c	/^void	*ft_memchr(const void *s, int c, size_t n)$/;"	f
+ft_memcmp	libft/srcs/ft_memcmp.c	/^int		ft_memcmp(const void *s1, const void *s2, size_t n)$/;"	f
+ft_memcmp	minishell/libft/srcs/ft_memcmp.c	/^int		ft_memcmp(const void *s1, const void *s2, size_t n)$/;"	f
+ft_memcpy	libft/srcs/ft_memcpy.c	/^void	*ft_memcpy(void *dst, const void *src, size_t n)$/;"	f
+ft_memcpy	minishell/libft/srcs/ft_memcpy.c	/^void	*ft_memcpy(void *dst, const void *src, size_t n)$/;"	f
+ft_memdel	libft/srcs/ft_memdel.c	/^void	ft_memdel(void **ap)$/;"	f
+ft_memdel	minishell/libft/srcs/ft_memdel.c	/^void	ft_memdel(void **ap)$/;"	f
+ft_memmove	libft/srcs/ft_memmove.c	/^void	*ft_memmove(void *dst, const void *src, size_t len)$/;"	f
+ft_memmove	minishell/libft/srcs/ft_memmove.c	/^void	*ft_memmove(void *dst, const void *src, size_t len)$/;"	f
+ft_memset	libft/srcs/ft_memset.c	/^void	*ft_memset(void *b, int c, size_t len)$/;"	f
+ft_memset	minishell/libft/srcs/ft_memset.c	/^void	*ft_memset(void *b, int c, size_t len)$/;"	f
+ft_nputchar	libft/srcs/ft_nputchar.c	/^void	ft_nputchar(char c, int n)$/;"	f
+ft_nputchar	minishell/libft/srcs/ft_nputchar.c	/^void	ft_nputchar(char c, int n)$/;"	f
+ft_parse	srcs/parser/parser.c	/^void  ft_parse(t_list *lexer)$/;"	f
+ft_percent	libft/srcs/ft_percent.c	/^double		ft_percent(int start, int end, int curr)$/;"	f
+ft_percent	minishell/libft/srcs/ft_percent.c	/^double		ft_percent(int start, int end, int curr)$/;"	f
+ft_printf	libft/srcs/ft_printf.c	/^int			ft_printf(const char *restrict format, ...)$/;"	f
+ft_printf	minishell/libft/srcs/ft_printf.c	/^int			ft_printf(const char *restrict format, ...)$/;"	f
+ft_putchar	libft/srcs/ft_putchar.c	/^void	ft_putchar(char c)$/;"	f
+ft_putchar	minishell/libft/srcs/ft_putchar.c	/^void	ft_putchar(char c)$/;"	f
+ft_putchar_fd	libft/srcs/ft_putchar_fd.c	/^void	ft_putchar_fd(char c, int fd)$/;"	f
+ft_putchar_fd	minishell/libft/srcs/ft_putchar_fd.c	/^void	ft_putchar_fd(char c, int fd)$/;"	f
+ft_putendl	libft/srcs/ft_putendl.c	/^void	ft_putendl(char const *s)$/;"	f
+ft_putendl	minishell/libft/srcs/ft_putendl.c	/^void	ft_putendl(char const *s)$/;"	f
+ft_putendl_fd	libft/srcs/ft_putendl_fd.c	/^void	ft_putendl_fd(char const *s, int fd)$/;"	f
+ft_putendl_fd	minishell/libft/srcs/ft_putendl_fd.c	/^void	ft_putendl_fd(char const *s, int fd)$/;"	f
+ft_putnbr	libft/srcs/ft_putnbr.c	/^void	ft_putnbr(int n)$/;"	f
+ft_putnbr	minishell/libft/srcs/ft_putnbr.c	/^void	ft_putnbr(int n)$/;"	f
+ft_putnbr_fd	libft/srcs/ft_putnbr_fd.c	/^void	ft_putnbr_fd(int n, int fd)$/;"	f
+ft_putnbr_fd	minishell/libft/srcs/ft_putnbr_fd.c	/^void	ft_putnbr_fd(int n, int fd)$/;"	f
+ft_putstr	libft/srcs/ft_putstr.c	/^void	ft_putstr(char const *s)$/;"	f
+ft_putstr	minishell/libft/srcs/ft_putstr.c	/^void	ft_putstr(char const *s)$/;"	f
+ft_putstr_fd	libft/srcs/ft_putstr_fd.c	/^void	ft_putstr_fd(char const *s, int fd)$/;"	f
+ft_putstr_fd	minishell/libft/srcs/ft_putstr_fd.c	/^void	ft_putstr_fd(char const *s, int fd)$/;"	f
+ft_setenv	minishell/srcs/setenv_builtin.c	/^void					ft_setenv(char *key, char *value, char ***env)$/;"	f
+ft_split_count	libft/srcs/ft_split_count.c	/^int		ft_split_count(char **split)$/;"	f
+ft_split_count	minishell/libft/srcs/ft_split_count.c	/^int		ft_split_count(char **split)$/;"	f
+ft_splitdel	libft/srcs/ft_splitdel.c	/^void		ft_splitdel(char **split)$/;"	f
+ft_splitdel	minishell/libft/srcs/ft_splitdel.c	/^void		ft_splitdel(char **split)$/;"	f
+ft_strcat	libft/srcs/ft_strcat.c	/^char	*ft_strcat(char *s1, const char *s2)$/;"	f
+ft_strcat	minishell/libft/srcs/ft_strcat.c	/^char	*ft_strcat(char *s1, const char *s2)$/;"	f
+ft_strchr	libft/srcs/ft_strchr.c	/^char	*ft_strchr(const char *s, int c)$/;"	f
+ft_strchr	minishell/libft/srcs/ft_strchr.c	/^char	*ft_strchr(const char *s, int c)$/;"	f
+ft_strcjoin	libft/srcs/ft_strcjoin.c	/^char	*ft_strcjoin(char const *s1, char const *s2, char c)$/;"	f
+ft_strcjoin	minishell/libft/srcs/ft_strcjoin.c	/^char	*ft_strcjoin(char const *s1, char const *s2, char c)$/;"	f
+ft_strclr	libft/srcs/ft_strclr.c	/^void	ft_strclr(char *s)$/;"	f
+ft_strclr	minishell/libft/srcs/ft_strclr.c	/^void	ft_strclr(char *s)$/;"	f
+ft_strcmp	libft/srcs/ft_strcmp.c	/^int		ft_strcmp(const char *s1, const char *s2)$/;"	f
+ft_strcmp	minishell/libft/srcs/ft_strcmp.c	/^int		ft_strcmp(const char *s1, const char *s2)$/;"	f
+ft_strcpy	libft/srcs/ft_strcpy.c	/^char	*ft_strcpy(char *dst, const char *src)$/;"	f
+ft_strcpy	minishell/libft/srcs/ft_strcpy.c	/^char	*ft_strcpy(char *dst, const char *src)$/;"	f
+ft_strdel	libft/srcs/ft_strdel.c	/^void	ft_strdel(char **as)$/;"	f
+ft_strdel	minishell/libft/srcs/ft_strdel.c	/^void	ft_strdel(char **as)$/;"	f
+ft_strdup	libft/srcs/ft_strdup.c	/^char	*ft_strdup(const char *s1)$/;"	f
+ft_strdup	minishell/libft/srcs/ft_strdup.c	/^char	*ft_strdup(const char *s1)$/;"	f
+ft_strequ	libft/srcs/ft_strequ.c	/^int		ft_strequ(char const *s1, char const *s2)$/;"	f
+ft_strequ	minishell/libft/srcs/ft_strequ.c	/^int		ft_strequ(char const *s1, char const *s2)$/;"	f
+ft_striter	libft/srcs/ft_striter.c	/^void	ft_striter(char *s, void (*f)(char *))$/;"	f
+ft_striter	minishell/libft/srcs/ft_striter.c	/^void	ft_striter(char *s, void (*f)(char *))$/;"	f
+ft_striteri	libft/srcs/ft_striteri.c	/^void	ft_striteri(char *s, void (*f)(unsigned int, char *))$/;"	f
+ft_striteri	minishell/libft/srcs/ft_striteri.c	/^void	ft_striteri(char *s, void (*f)(unsigned int, char *))$/;"	f
+ft_strjoin	libft/srcs/ft_strjoin.c	/^char	*ft_strjoin(char const *s1, char const *s2)$/;"	f
+ft_strjoin	minishell/libft/srcs/ft_strjoin.c	/^char	*ft_strjoin(char const *s1, char const *s2)$/;"	f
+ft_strlcat	libft/srcs/ft_strlcat.c	/^size_t	ft_strlcat(char *dst, const char *src, size_t size)$/;"	f
+ft_strlcat	minishell/libft/srcs/ft_strlcat.c	/^size_t	ft_strlcat(char *dst, const char *src, size_t size)$/;"	f
+ft_strlen	libft/srcs/ft_strlen.c	/^size_t	ft_strlen(const char *s)$/;"	f
+ft_strlen	minishell/libft/srcs/ft_strlen.c	/^size_t	ft_strlen(const char *s)$/;"	f
+ft_strmap	libft/srcs/ft_strmap.c	/^char	*ft_strmap(char const *s, char (*f)(char))$/;"	f
+ft_strmap	minishell/libft/srcs/ft_strmap.c	/^char	*ft_strmap(char const *s, char (*f)(char))$/;"	f
+ft_strmapi	libft/srcs/ft_strmapi.c	/^char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))$/;"	f
+ft_strmapi	minishell/libft/srcs/ft_strmapi.c	/^char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))$/;"	f
+ft_strncat	libft/srcs/ft_strncat.c	/^char	*ft_strncat(char *s1, const char *s2, size_t len)$/;"	f
+ft_strncat	minishell/libft/srcs/ft_strncat.c	/^char	*ft_strncat(char *s1, const char *s2, size_t len)$/;"	f
+ft_strncmp	libft/srcs/ft_strncmp.c	/^int		ft_strncmp(const char *s1, const char *s2, size_t n)$/;"	f
+ft_strncmp	minishell/libft/srcs/ft_strncmp.c	/^int		ft_strncmp(const char *s1, const char *s2, size_t n)$/;"	f
+ft_strncpy	libft/srcs/ft_strncpy.c	/^char	*ft_strncpy(char *dst, const char *src, size_t len)$/;"	f
+ft_strncpy	minishell/libft/srcs/ft_strncpy.c	/^char	*ft_strncpy(char *dst, const char *src, size_t len)$/;"	f
+ft_strnequ	libft/srcs/ft_strnequ.c	/^int		ft_strnequ(char const *s1, char const *s2, size_t n)$/;"	f
+ft_strnequ	minishell/libft/srcs/ft_strnequ.c	/^int		ft_strnequ(char const *s1, char const *s2, size_t n)$/;"	f
+ft_strnew	libft/srcs/ft_strnew.c	/^char	*ft_strnew(size_t size)$/;"	f
+ft_strnew	minishell/libft/srcs/ft_strnew.c	/^char	*ft_strnew(size_t size)$/;"	f
+ft_strnstr	libft/srcs/ft_strnstr.c	/^char	*ft_strnstr(const char *haystack, const char *needle, size_t len)$/;"	f
+ft_strnstr	minishell/libft/srcs/ft_strnstr.c	/^char	*ft_strnstr(const char *haystack, const char *needle, size_t len)$/;"	f
+ft_strrchr	libft/srcs/ft_strrchr.c	/^char	*ft_strrchr(const char *s, int c)$/;"	f
+ft_strrchr	minishell/libft/srcs/ft_strrchr.c	/^char	*ft_strrchr(const char *s, int c)$/;"	f
+ft_strsplit	libft/srcs/ft_strsplit.c	/^char			**ft_strsplit(char const *s, char c)$/;"	f
+ft_strsplit	minishell/libft/srcs/ft_strsplit.c	/^char			**ft_strsplit(char const *s, char c)$/;"	f
+ft_strsplitstr	libft/srcs/ft_strsplitstr.c	/^char			**ft_strsplitstr(char const *s, char *needle)$/;"	f
+ft_strsplitstr	minishell/libft/srcs/ft_strsplitstr.c	/^char			**ft_strsplitstr(char const *s, char *needle)$/;"	f
+ft_strstr	libft/srcs/ft_strstr.c	/^char	*ft_strstr(const char *haystack, const char *needle)$/;"	f
+ft_strstr	minishell/libft/srcs/ft_strstr.c	/^char	*ft_strstr(const char *haystack, const char *needle)$/;"	f
+ft_strsub	libft/srcs/ft_strsub.c	/^char	*ft_strsub(char const *s, unsigned int start, size_t len)$/;"	f
+ft_strsub	minishell/libft/srcs/ft_strsub.c	/^char	*ft_strsub(char const *s, unsigned int start, size_t len)$/;"	f
+ft_strtrim	libft/srcs/ft_strtrim.c	/^char		*ft_strtrim(char const *s)$/;"	f
+ft_strtrim	minishell/libft/srcs/ft_strtrim.c	/^char		*ft_strtrim(char const *s)$/;"	f
+ft_tolower	libft/srcs/ft_tolower.c	/^int		ft_tolower(int c)$/;"	f
+ft_tolower	minishell/libft/srcs/ft_tolower.c	/^int		ft_tolower(int c)$/;"	f
+ft_toupper	libft/srcs/ft_toupper.c	/^int		ft_toupper(int c)$/;"	f
+ft_toupper	minishell/libft/srcs/ft_toupper.c	/^int		ft_toupper(int c)$/;"	f
+ft_utoa_base	libft/srcs/ft_utoa_base.c	/^char	*ft_utoa_base(uintmax_t nb, unsigned base, int uppercase)$/;"	f
+ft_utoa_base	minishell/libft/srcs/ft_utoa_base.c	/^char	*ft_utoa_base(uintmax_t nb, unsigned base, int uppercase)$/;"	f
+full_num	libft/srcs/ft_ftoa.c	/^static	char			*full_num(long double save,$/;"	f	file:
+full_num	minishell/libft/srcs/ft_ftoa.c	/^static	char			*full_num(long double save,$/;"	f	file:
+get_builtin	minishell/srcs/cmd_handler.c	/^static int		get_builtin(char *cmd)$/;"	f	file:
+get_env_path	minishell/srcs/utils.c	/^char	*get_env_path(char **env)$/;"	f
+get_homepath	minishell/srcs/cd_builtin.c	/^char			*get_homepath(char **env)$/;"	f
+get_light	libft/srcs/ft_get_color.c	/^static int		get_light(int start, int end, double percentage)$/;"	f	file:
+get_light	minishell/libft/srcs/ft_get_color.c	/^static int		get_light(int start, int end, double percentage)$/;"	f	file:
+get_line_length	libft/srcs/get_next_line.c	/^static	int		get_line_length(char *s)$/;"	f	file:
+get_line_length	minishell/libft/srcs/get_next_line.c	/^static	int		get_line_length(char *s)$/;"	f	file:
+get_modifier	libft/srcs/format_geters.c	/^int				get_modifier(char *str, t_format *fmt)$/;"	f
+get_modifier	minishell/libft/srcs/format_geters.c	/^int				get_modifier(char *str, t_format *fmt)$/;"	f
+get_next_line	libft/srcs/get_next_line.c	/^int				get_next_line(const int fd, char **line)$/;"	f
+get_next_line	minishell/libft/srcs/get_next_line.c	/^int				get_next_line(const int fd, char **line)$/;"	f
+get_oldpwd	minishell/srcs/cd_builtin.c	/^static char		*get_oldpwd(char **env)$/;"	f	file:
+get_precision	libft/srcs/format_geters.c	/^int				get_precision(char *str, t_format *fmt, va_list ap)$/;"	f
+get_precision	minishell/libft/srcs/format_geters.c	/^int				get_precision(char *str, t_format *fmt, va_list ap)$/;"	f
+get_signed	libft/srcs/numbers.c	/^intmax_t		get_signed(t_format *fmt, va_list ap)$/;"	f
+get_signed	minishell/libft/srcs/numbers.c	/^intmax_t		get_signed(t_format *fmt, va_list ap)$/;"	f
+get_string	libft/srcs/numbers.c	/^char			*get_string(t_format *fmt, va_list ap)$/;"	f
+get_string	minishell/libft/srcs/numbers.c	/^char			*get_string(t_format *fmt, va_list ap)$/;"	f
+get_substr_len	libft/srcs/ft_strsplit.c	/^static size_t	get_substr_len(char const *s, int start, char c)$/;"	f	file:
+get_substr_len	libft/srcs/ft_strsplitstr.c	/^static size_t	get_substr_len(char const *s, int start, char *needle)$/;"	f	file:
+get_substr_len	minishell/libft/srcs/ft_strsplit.c	/^static size_t	get_substr_len(char const *s, int start, char c)$/;"	f	file:
+get_substr_len	minishell/libft/srcs/ft_strsplitstr.c	/^static size_t	get_substr_len(char const *s, int start, char *needle)$/;"	f	file:
+get_unsigned	libft/srcs/numbers.c	/^uintmax_t		get_unsigned(t_format *fmt, va_list ap)$/;"	f
+get_unsigned	minishell/libft/srcs/numbers.c	/^uintmax_t		get_unsigned(t_format *fmt, va_list ap)$/;"	f
+get_width	libft/srcs/format_geters.c	/^int				get_width(char *str, va_list ap, t_format *fmt)$/;"	f
+get_width	minishell/libft/srcs/format_geters.c	/^int				get_width(char *str, va_list ap, t_format *fmt)$/;"	f
+handle_char	libft/srcs/handlers.c	/^int		handle_char(t_format *fmt, va_list ap)$/;"	f
+handle_char	minishell/libft/srcs/handlers.c	/^int		handle_char(t_format *fmt, va_list ap)$/;"	f
+handle_numbers	libft/srcs/handlers.c	/^int		handle_numbers(t_format *fmt, va_list ap)$/;"	f
+handle_numbers	minishell/libft/srcs/handlers.c	/^int		handle_numbers(t_format *fmt, va_list ap)$/;"	f
+handle_str	libft/srcs/handlers.c	/^int		handle_str(t_format *fmt, va_list ap)$/;"	f
+handle_str	minishell/libft/srcs/handlers.c	/^int		handle_str(t_format *fmt, va_list ap)$/;"	f
+handler	libft/includes/libft.h	/^	int				(*handler)(struct s_format *fmt, va_list ap);$/;"	m	struct:s_format
+handler	minishell/libft/includes/libft.h	/^	int				(*handler)(struct s_format *fmt, va_list ap);$/;"	m	struct:s_format
+inorder	draft/trees.c	/^void inorder(t_ast *root) $/;"	f
+inorder	srcs/parser/parser.c	/^void inorder(t_ast *root) $/;"	f
+input_handler	minishell/srcs/main.c	/^static void		input_handler(char *input, char ***env)$/;"	f	file:
+input_redir	draft/test.c	/^void 		input_redir(char **cmd, char *path, char **env)$/;"	f
+insert	draft/trees.c	/^t_ast *insert(t_ast *node, void *val) $/;"	f
+interpolate	libft/srcs/ft_interpolate.c	/^double	interpolate(double start, double end, double interpolat)$/;"	f
+interpolate	minishell/libft/srcs/ft_interpolate.c	/^double	interpolate(double start, double end, double interpolat)$/;"	f
+is_in_lexer	srcs/parser/parser.c	/^int		is_in_lexer(t_list *lexer, e_op_type optype)$/;"	f
+is_op	includes/lexer.h	/^	char			is_op;$/;"	m	struct:s_token
+is_path	minishell/srcs/utils.c	/^int		is_path(char *str)$/;"	f
+is_set	minishell/srcs/setenv_builtin.c	/^int						is_set(char *key, char **env)$/;"	f
+is_space	libft/srcs/ft_strtrim.c	/^static int	is_space(char c)$/;"	f	file:
+is_space	minishell/libft/srcs/ft_strtrim.c	/^static int	is_space(char c)$/;"	f	file:
+join_if_2words	srcs/lexer/lexer.c	/^static int		join_if_2words(t_list **lexer, char *str, e_token_type type)$/;"	f	file:
+left	includes/lexer.h	/^	struct s_ast	*left;$/;"	m	struct:s_ast	typeref:struct:s_ast::s_ast
+len	includes/lexer.h	/^	size_t			len;$/;"	m	struct:s_oplist
+len	includes/lexer.h	/^	size_t			len;$/;"	m	struct:s_token
+lex_del_list	srcs/lexer/utils.c	/^void  lex_del_list(t_list **lexer)$/;"	f
+lex_delone	srcs/lexer/utils.c	/^void 	lex_delone(void *data, size_t size)$/;"	f
+main	draft/lexertest.c	/^int main()$/;"	f
+main	draft/test.c	/^int main(int argc, char **argv, char **env)$/;"	f
+main	draft/trees.c	/^int main()$/;"	f
+main	minishell/srcs/main.c	/^int				main(int argc, char **argv, char **env)$/;"	f
+main	srcs/main.c	/^int				main(int argc, char **argv, char **env)$/;"	f
+manage_expansions	minishell/srcs/expansions.c	/^void			manage_expansions(char **input, char **env)$/;"	f
+minus	libft/includes/libft.h	/^	char			minus;$/;"	m	struct:s_format
+minus	minishell/libft/includes/libft.h	/^	char			minus;$/;"	m	struct:s_format
+modifier	libft/includes/libft.h	/^	short			modifier;$/;"	m	struct:s_format
+modifier	minishell/libft/includes/libft.h	/^	short			modifier;$/;"	m	struct:s_format
+newNode	draft/trees.c	/^t_ast *newNode(t_token *item) $/;"	f
+newnode	srcs/parser/parser.c	/^t_ast *newnode(t_token *item) $/;"	f
+next	libft/includes/libft.h	/^	struct s_list	*next;$/;"	m	struct:s_list	typeref:struct:s_list::s_list
+next	minishell/libft/includes/libft.h	/^	struct s_list	*next;$/;"	m	struct:s_list	typeref:struct:s_list::s_list
+op	draft/lexertest.c	/^  const char* op;$/;"	m	struct:__anon2	file:
+op	includes/lexer.h	/^	char			*op;$/;"	m	struct:s_oplist
+op_type	includes/lexer.h	/^	e_op_type		op_type;$/;"	m	struct:s_oplist
+op_type	includes/lexer.h	/^	e_op_type		op_type;$/;"	m	struct:s_token
+parse_format	libft/srcs/ft_printf.c	/^int			parse_format(char *str, va_list ap)$/;"	f
+parse_format	minishell/libft/srcs/ft_printf.c	/^int			parse_format(char *str, va_list ap)$/;"	f
+pipe_cmds	draft/test.c	/^void 		pipe_cmds(char **cmd1, char **cmd2, char **env)$/;"	f
+precision	libft/includes/libft.h	/^	int				precision;$/;"	m	struct:s_format
+precision	minishell/libft/includes/libft.h	/^	int				precision;$/;"	m	struct:s_format
+prefixe	libft/includes/libft.h	/^	char			prefixe;$/;"	m	struct:s_format
+prefixe	minishell/libft/includes/libft.h	/^	char			prefixe;$/;"	m	struct:s_format
+print	draft/lexertest.c	/^void print(const t_lexer* lexer)$/;"	f
+print_env	minishell/srcs/utils.c	/^void	print_env(char **env)$/;"	f
+print_lexer	srcs/lexer/print_lexer.c	/^void 				print_lexer(t_list *lexer)$/;"	f
+print_numbers	libft/srcs/numbers.c	/^int				print_numbers(t_format *fmt, char *str, int len)$/;"	f
+print_numbers	minishell/libft/srcs/numbers.c	/^int				print_numbers(t_format *fmt, char *str, int len)$/;"	f
+print_optype	srcs/lexer/print_lexer.c	/^static void print_optype(e_op_type op_type)$/;"	f	file:
+print_prefixe	libft/srcs/numbers.c	/^static int		print_prefixe(char c)$/;"	f	file:
+print_prefixe	minishell/libft/srcs/numbers.c	/^static int		print_prefixe(char c)$/;"	f	file:
+print_prompt	minishell/srcs/utils.c	/^void	print_prompt(void)$/;"	f
+print_prompt	srcs/utils.c	/^void	print_prompt(void)$/;"	f
+print_tokentype	srcs/lexer/print_lexer.c	/^static void print_tokentype(e_token_type token_type)$/;"	f	file:
+read_line	libft/srcs/get_next_line.c	/^static	char	*read_line(char *s, int fd, int *ret)$/;"	f	file:
+read_line	minishell/libft/srcs/get_next_line.c	/^static	char	*read_line(char *s, int fd, int *ret)$/;"	f	file:
+redirect	draft/test.c	/^void 		redirect(char **cmd, char *path, char **env, char simple)$/;"	f
+removekey	minishell/srcs/unsetenv_builtin.c	/^static char		**removekey(char *key, int keylen, char **env)$/;"	f	file:
+right	includes/lexer.h	/^	struct s_ast	*right;$/;"	m	struct:s_ast	typeref:struct:s_ast::s_ast
+round_num	libft/srcs/ft_ftoa.c	/^static long double		round_num(long double d, int precision)$/;"	f	file:
+round_num	minishell/libft/srcs/ft_ftoa.c	/^static long double		round_num(long double d, int precision)$/;"	f	file:
+s_ast	includes/lexer.h	/^typedef struct		s_ast$/;"	s
+s_format	libft/includes/libft.h	/^typedef struct	s_format$/;"	s
+s_format	minishell/libft/includes/libft.h	/^typedef struct	s_format$/;"	s
+s_list	libft/includes/libft.h	/^typedef struct	s_list$/;"	s
+s_list	minishell/libft/includes/libft.h	/^typedef struct	s_list$/;"	s
+s_oplist	includes/lexer.h	/^typedef struct		s_oplist$/;"	s
+s_token	includes/lexer.h	/^typedef struct		s_token$/;"	s
+searchTokenType	draft/lexertest.c	/^t_oplist searchTokenType(const char* s)$/;"	f
+set_conversion	libft/srcs/ft_printf.c	/^void		set_conversion(char *str, t_format *fmt)$/;"	f
+set_conversion	minishell/libft/srcs/ft_printf.c	/^void		set_conversion(char *str, t_format *fmt)$/;"	f
+set_flags	libft/srcs/format_geters.c	/^void			set_flags(char *str, t_format *fmt)$/;"	f
+set_flags	minishell/libft/srcs/format_geters.c	/^void			set_flags(char *str, t_format *fmt)$/;"	f
+set_path	minishell/srcs/utils.c	/^void	set_path(char fullpath[], char *cmd, char *path)$/;"	f
+setenv_builtin	minishell/srcs/setenv_builtin.c	/^int						setenv_builtin(int ac, char **av, char ***env)$/;"	f
+sigfork	minishell/srcs/signal_handlers.c	/^void	sigfork(int sig)$/;"	f
+sighandler	draft/test.c	/^void	sighandler(int sig)$/;"	f
+sighandler	minishell/srcs/signal_handlers.c	/^void	sighandler(int sig)$/;"	f
+sighandler	srcs/utils.c	/^void	sighandler(int sig)$/;"	f
+signe	libft/includes/libft.h	/^	char			signe;$/;"	m	struct:s_format
+signe	minishell/libft/includes/libft.h	/^	char			signe;$/;"	m	struct:s_format
+size	draft/lexertest.c	/^  uint32_t size;$/;"	m	struct:__anon2	file:
+size	draft/lexertest.c	/^  uint32_t size;$/;"	m	struct:__anon3	file:
+size	draft/lexertest.c	/^  uint32_t size;$/;"	m	struct:__anon4	file:
+t_ast	includes/lexer.h	/^}					t_ast;$/;"	t	typeref:struct:s_ast
+t_format	libft/includes/libft.h	/^}				t_format;$/;"	t	typeref:struct:s_format
+t_format	minishell/libft/includes/libft.h	/^}				t_format;$/;"	t	typeref:struct:s_format
+t_lexer	draft/lexertest.c	/^} t_lexer;$/;"	t	typeref:struct:__anon4	file:
+t_lexer_token	draft/lexertest.c	/^} t_lexer_token;$/;"	t	typeref:struct:__anon3	file:
+t_list	libft/includes/libft.h	/^}				t_list;$/;"	t	typeref:struct:s_list
+t_list	minishell/libft/includes/libft.h	/^}				t_list;$/;"	t	typeref:struct:s_list
+t_oplist	draft/lexertest.c	/^} t_oplist;$/;"	t	typeref:struct:__anon2	file:
+t_oplist	includes/lexer.h	/^}					t_oplist;$/;"	t	typeref:struct:s_oplist
+t_token	includes/lexer.h	/^}					t_token;$/;"	t	typeref:struct:s_token
+tilde_expansion	minishell/srcs/expansions.c	/^static char		*tilde_expansion(char *needle, char **env)$/;"	f	file:
+token	includes/lexer.h	/^	t_token			*token;$/;"	m	struct:s_ast
+tokens	draft/lexertest.c	/^  t_lexer_token tokens[2048];  \/* Replace with a dynamic array *\/$/;"	m	struct:__anon4	file:
+type	draft/lexertest.c	/^  e_token_type type;$/;"	m	struct:__anon2	file:
+type	draft/lexertest.c	/^  e_token_type type;$/;"	m	struct:__anon3	file:
+type	includes/lexer.h	/^	e_token_type	type;$/;"	m	struct:s_oplist
+type	includes/lexer.h	/^	e_token_type	type;$/;"	m	struct:s_token
+uint32_t	draft/lexertest.c	/^typedef unsigned int uint32_t; \/* Real type, normally in <stdint.h>, a good practice to use it *\/$/;"	t	file:
+unsetenv_builtin	minishell/srcs/unsetenv_builtin.c	/^int				unsetenv_builtin(int ac, char **av, char ***env)$/;"	f
+width	libft/includes/libft.h	/^	int				width;$/;"	m	struct:s_format
+width	minishell/libft/includes/libft.h	/^	int				width;$/;"	m	struct:s_format
+zero	libft/includes/libft.h	/^	char			zero;$/;"	m	struct:s_format
+zero	minishell/libft/includes/libft.h	/^	char			zero;$/;"	m	struct:s_format

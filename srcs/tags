@@ -1,0 +1,29 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+ast	parser/parser.c	/^void ast (t_list *lexer, t_ast *root, e_op_type optype)$/;"	f
+build_lexer	lexer/lexer.c	/^int					build_lexer(char *input, t_list **lexer)$/;"	f
+build_tree_op	parser/parser.c	/^void	build_tree_op(t_list *lexer, t_ast *root, e_op_type optype)$/;"	f
+check_ops	lexer/lexer.c	/^static t_oplist		check_ops(char *str)$/;"	f	file:
+check_syntax_errors	parser/parser.c	/^char		*check_syntax_errors(t_list *tokens)$/;"	f
+create_token	lexer/lexer.c	/^static void 		create_token(t_list **lexer, char *str,$/;"	f	file:
+dup_env	main.c	/^static char		**dup_env(char **env)$/;"	f	file:
+executor	executor/executor.c	/^void 	executor(char **argv, char **env)$/;"	f
+existing_token	lexer/lexer.c	/^static const t_oplist existing_token[] =$/;"	v	file:
+ft_exit	utils.c	/^void ft_exit(char *str)$/;"	f
+ft_parse	parser/parser.c	/^void  ft_parse(t_list *lexer)$/;"	f
+inorder	parser/parser.c	/^void inorder(t_ast *root) $/;"	f
+is_in_lexer	parser/parser.c	/^int		is_in_lexer(t_list *lexer, e_op_type optype)$/;"	f
+join_if_2words	lexer/lexer.c	/^static int		join_if_2words(t_list **lexer, char *str, e_token_type type)$/;"	f	file:
+lex_del_list	lexer/utils.c	/^void  lex_del_list(t_list **lexer)$/;"	f
+lex_delone	lexer/utils.c	/^void 	lex_delone(void *data, size_t size)$/;"	f
+main	main.c	/^int				main(int argc, char **argv, char **env)$/;"	f
+newnode	parser/parser.c	/^t_ast *newnode(t_token *item) $/;"	f
+print_lexer	lexer/print_lexer.c	/^void 				print_lexer(t_list *lexer)$/;"	f
+print_optype	lexer/print_lexer.c	/^static void print_optype(e_op_type op_type)$/;"	f	file:
+print_prompt	utils.c	/^void	print_prompt(void)$/;"	f
+print_tokentype	lexer/print_lexer.c	/^static void print_tokentype(e_token_type token_type)$/;"	f	file:
+sighandler	utils.c	/^void	sighandler(int sig)$/;"	f
