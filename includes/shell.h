@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 16:42:03 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/08 00:43:35 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/05/08 07:08:44 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,9 @@
 # define ANSI_BMAGENTA	"\x1b[1m\x1b[35m"
 # define ANSI_BCYAN		"\x1b[1m\x1b[36m"
 # define ANSI_RESET		"\x1b[0m"
+# define DQUOTE			'"'
+# define QUOTE			'\''
+# define BSLASH			'\\'
 
 void		ft_compiler(t_ast *root ,char **env);
 void		print_prompt(void);

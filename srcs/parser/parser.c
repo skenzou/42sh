@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/04 23:37:49 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/08 06:18:23 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/05/08 07:09:33 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,9 +162,44 @@ char		*check_syntax_errors(t_list *tokens)
 	return (NULL);
 }
 
-void		handle_inhibitors(t_list *lexer)
+static void		exec_inhib(char inhib, t_list *lexer)
 {
+	(void)inhib;
 	(void)lexer;
+}
+
+static void		check_inhib(char *str, t_list *lexer)
+{
+	char inhib;
+
+	while (*str)
+	{
+		if (*str == DQUOTE || *str == QUOTE || *str == BSLASH)
+		{
+			inhib = *str++;
+			while (*str && *str != inhib)
+				str++;
+			if (!*str)
+			{
+				exec_inhib(inhib, lexer);
+				return ;
+			}
+		}
+		str++;
+	}
+}
+
+void			handle_inhibitors(t_list *lexer)
+{
+	t_token *token;
+
+	while (lexer)
+	{
+		token = (t_token *)lexer->content;
+		if (token->type == TOKEN_WORD)
+			check_inhib(token->content, lexer);
+		lexer = lexer->next;
+	}
 }
 
 
