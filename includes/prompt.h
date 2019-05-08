@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 07:12:40 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/08 07:27:39 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/05/08 08:07:17 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,6 +136,8 @@ int		ctrl_d_event(t_cap *tcap);
 */
 int		read_buffer(char buffer[4], t_cap *tcap);
 void	add_to_cmd(char buffer[4], int len);
+void	ft_delete_n_char(t_cap *tcap, int pos, int len);
+void	ft_delete_back(t_cap *tcap);
 /*
 **	OTHERS.C
 */
