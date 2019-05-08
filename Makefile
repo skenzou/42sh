@@ -6,7 +6,7 @@
 #    By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/03 09:24:41 by midrissi          #+#    #+#              #
-#    Updated: 2019/05/08 00:47:49 by midrissi         ###   ########.fr        #
+#    Updated: 2019/05/08 05:48:14 by midrissi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,7 +40,7 @@ NAME = 21sh
 cc = gcc
 C_FLAGS = -Wall -Wextra -Werror -g -v
 SRC_NAME = main.c utils.c lexer/lexer.c parser/parser.c lexer/utils.c \
-					lexer/print_lexer.c executor/executor.c
+			lexer/print_lexer.c executor/executor.c parser/ast_del.c
 OBJ_PATH = ./obj/
 LFT_PATH = ./libft/
 LFT_NAME = libft.a

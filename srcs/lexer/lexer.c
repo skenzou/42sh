@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/30 18:51:02 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/06 19:01:04 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/05/08 05:01:44 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ static int		join_if_2words(t_list **lexer, char *str, e_token_type type)
 }
 
 static void 		create_token(t_list **lexer, char *str,
-															e_token_type type, e_op_type op_type)
+										e_token_type type, e_op_type op_type)
 {
 	t_token token;
 	t_list *list;
@@ -147,8 +147,8 @@ int					build_lexer(char *input, t_list **lexer)
 			input++;
 			while (*input && *input != '\'' && *input != '"')
 				input++;
-			if (!*input || (*input != '\'' && *input != '"'))
-				return (0);
+			// if (!*input || (*input != '\'' && *input != '"'))
+			// 	return (0);
 			input++;
 		}
 		else

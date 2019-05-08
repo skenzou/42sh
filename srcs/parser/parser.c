@@ -6,23 +6,25 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/04 23:37:49 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/07 17:32:06 by ghamelek         ###   ########.fr       */
+/*   Updated: 2019/05/08 06:18:23 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-t_ast *newnode(t_token *item) 
-{ 
-	t_ast *temp =  (t_ast *)malloc(sizeof(t_ast)); 
-	if (item)
+t_ast *newnode(t_token *token, t_list *pointer)
+{
+	t_ast *node =  (t_ast *)malloc(sizeof(t_ast));
+
+	if (token)
 	{
-		temp->token = item;
+		node->token = token;
 	}
-		else
-		temp->token = NULL;
-	temp->left = temp->right = NULL; 
-	return temp;
+	else
+		node->token = NULL;
+	node->left = node->right = NULL;
+	node->list_pointer = pointer;
+	return node;
 }
 int		is_in_lexer(t_list *lexer, e_op_type optype)
 {
@@ -72,7 +74,7 @@ void	build_tree_op(t_list *lexer, t_ast **root, e_op_type optype)
 	if (prev)
 		prev->next = NULL;
 	if (!is_in_lexer(origin, optype) && !save1)
-	{	
+	{
 				if (is_in_lexer(origin, DBL_AND))
 					build_tree_op(origin, root, DBL_AND);
 				else if (is_in_lexer(origin, DBL_PIPE))
@@ -80,13 +82,12 @@ void	build_tree_op(t_list *lexer, t_ast **root, e_op_type optype)
 				else if (is_in_lexer(origin, PIPE))
 					build_tree_op(origin, root, PIPE);
 				else
-					*root = newnode((t_token *)(origin->content));
+					*root = newnode((t_token *)(origin->content), origin);
 	}
 	if (save1)
 	{
-
 		//	printf("1 / %s -- 2 / %s\n",((t_token *)(save1->content))->content, ((t_token *)(save2->content))->content);
-			*root = newnode((t_token *)(save1->content));
+			*root = newnode((t_token *)(save1->content), save1);
 			if (save2)
 			{
 				if (is_in_lexer(save2, DBL_AND))
@@ -96,16 +97,15 @@ void	build_tree_op(t_list *lexer, t_ast **root, e_op_type optype)
 				else if (is_in_lexer(save2, PIPE))
 					build_tree_op(save2, &((*root)->right), PIPE);
 				else
-					(*root)->right = newnode((t_token *)(save2->content));
+					(*root)->right = newnode((t_token *)(save2->content), save2);
 			}
 			build_tree_op(origin, &((*root)->left) , optype);
 	}
 }
 
 
-void inorder(t_ast *root,char *str) 
-{ 
-	static int row;
+void inorder(t_ast *root,char *str)
+{
 /*
 	root = root->right;
 	while (root)
@@ -113,14 +113,15 @@ void inorder(t_ast *root,char *str)
 		printf("row: %d %s --- %s \n", row, root->token->content,str);
 		root = root->left;
 	}
-*/	
-	if (root != NULL) 
-	{ 
+*/
+	if (root != NULL)
+	{
 		inorder(root->left,ft_strjoin(str , " - > left"));
 		if (root->token)
-			printf("row: %d %s --- %s \n", row, root->token->content,str);
+			printf("%s --- %s \n", root->token->content,str);
 		inorder(root->right,ft_strjoin(str ,"- > right"));
 	}
+	ft_strdel(&str);
 }
 
 void ast (t_list *lexer, t_ast **root, e_op_type optype)
@@ -161,6 +162,11 @@ char		*check_syntax_errors(t_list *tokens)
 	return (NULL);
 }
 
+void		handle_inhibitors(t_list *lexer)
+{
+	(void)lexer;
+}
+
 
 t_ast  *ft_parse(t_list *lexer)
 {
@@ -175,7 +181,7 @@ t_ast  *ft_parse(t_list *lexer)
 	ft_putstr_fd(error, 2);
 	ft_putendl_fd("'", 2);
 	}
-//	root = newnode(NULL);
+	handle_inhibitors(lexer);
 	if (is_in_lexer(lexer, SEMI))
 		ast(lexer, &root, SEMI);
 	else if (is_in_lexer(lexer, DBL_AND))
@@ -184,6 +190,6 @@ t_ast  *ft_parse(t_list *lexer)
 		ast(lexer, &root, DBL_PIPE);
 	else
 		ast(lexer, &root, PIPE);
-	inorder(root,"root");
+	inorder(root, ft_strdup("root"));
 	return root;
 }

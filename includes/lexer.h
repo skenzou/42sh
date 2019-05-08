@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/30 18:57:23 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/07 01:20:24 by ghamelek         ###   ########.fr       */
+/*   Updated: 2019/05/08 05:37:59 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,7 @@ typedef struct		s_oplist
 typedef struct		s_ast
 {
 	t_token			*token;
+	t_list			*list_pointer;
 	struct s_ast	*left;
 	struct s_ast	*right;
 }					t_ast;

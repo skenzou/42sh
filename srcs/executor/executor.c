@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/03 16:15:41 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/08 01:01:15 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/05/08 06:22:17 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,8 @@ void 		pipe_cmds(char **cmd1, char **cmd2, char **env)
 	close(fildes[1]);
 	wait(&pid);
 	wait(&pid);
+	ft_splitdel(cmd1);
+	ft_splitdel(cmd2);
 }
 
 void search_pipe(t_ast *root,char *str, char **env)
@@ -73,11 +75,12 @@ void search_pipe(t_ast *root,char *str, char **env)
 					ft_strsplit(root->right->token->content,' '),env);
 		search_pipe(root->right,ft_strjoin(str ,"- > right"), env);
 	}
+	ft_strdel(&str);
 }
 
 void ft_compiler(t_ast *root, char **env)
 {
-	search_pipe(root,"root",env);
+	search_pipe(root, ft_strdup("root"),env);
 }
 
 // void 	executor(char **argv, char **env)

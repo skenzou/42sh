@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/05 00:33:06 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/05 01:50:22 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/05/08 06:14:15 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void 	lex_delone(void *data, size_t size)
   {
     token = *((t_token *)(data));
     free(token.content);
+	free(data);
   }
 }
 
