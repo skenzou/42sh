@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/04 23:37:49 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/08 07:09:33 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/05/08 23:09:04 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -202,6 +202,44 @@ void			handle_inhibitors(t_list *lexer)
 	}
 }
 
+static void		join_redir(t_list *lexer)
+{
+	t_token *left;
+	t_token *redir;
+	t_token *right;
+	char	*temp;
+	t_list	*save_to_destroy;
+
+	left = (t_token *)lexer->content;
+	redir = (t_token *)lexer->next->content;
+	right = (t_token *)lexer->next->next->content;
+	temp = left->content;
+	left->content = ft_strcjoin(left->content, redir->content, ' ');
+	ft_strdel(&temp);
+	temp = left->content;
+	left->content = ft_strcjoin(left->content, right->content, ' ');
+	ft_strdel(&temp);
+	save_to_destroy = lexer->next;
+	lexer->next = lexer->next->next->next;
+	ft_lstdelone(&(save_to_destroy->next), lex_delone);
+	ft_lstdelone(&(save_to_destroy), lex_delone);
+}
+
+static void		handle_redir(t_list *lexer)
+{
+	t_token *curr;
+	t_token *next;
+
+	while (lexer && lexer->next)
+	{
+		curr = (t_token *)lexer->content;
+		next = (t_token *)lexer->next->content;
+		if (curr->type == TOKEN_WORD && next->type == TOKEN_REDIR)
+			join_redir(lexer);
+		lexer = lexer->next;
+	}
+}
+
 
 t_ast  *ft_parse(t_list *lexer)
 {
@@ -217,6 +255,7 @@ t_ast  *ft_parse(t_list *lexer)
 	ft_putendl_fd("'", 2);
 	}
 	handle_inhibitors(lexer);
+	handle_redir(lexer);
 	if (is_in_lexer(lexer, SEMI))
 		ast(lexer, &root, SEMI);
 	else if (is_in_lexer(lexer, DBL_AND))
