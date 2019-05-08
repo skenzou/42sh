@@ -6,21 +6,21 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/01 17:45:36 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/08 02:43:39 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/05/09 00:21:39 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sh21.h"
 
-int	add_cmd_to_history(char *string)
+int	add_cmd_to_history(char *str)
 {
 	if (g_shell->history->len)
-		if (!ft_strcmp(string, g_shell->history->data[g_shell->history->len - 1]))
+		if (!ft_strcmp(str, g_shell->history->data[g_shell->history->len - 1]))
 			return (1);
-	if (!(g_shell->history->data[g_shell->history->len++] = ft_strdup(string)))
+	if (!(g_shell->history->data[g_shell->history->len++] = ft_strdup(str)))
 		return (0);
 	g_shell->history->data[g_shell->history->len] = NULL;
-	if (!write_history(string))
+	if (!write_history(str))
 		return (-1);
 	return (1);
 }
@@ -79,7 +79,8 @@ int	read_history(void)
 		while ((ret = get_next_line(fd, &str, '#')) > 0)
 		{
 			g_shell->history->read++;
-			if (!(g_shell->history->data[g_shell->history->len++] = ft_strdup(str)))
+			if (!(g_shell->history->data[g_shell->history->len++] =
+					ft_strdup(str)))
 				return (-1);
 		}
 	}

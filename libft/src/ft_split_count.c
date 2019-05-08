@@ -1,35 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   arrow_events.c                                     :+:      :+:    :+:   */
+/*   ft_split_count.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/28 15:04:00 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/09 00:21:06 by aben-azz         ###   ########.fr       */
+/*   Created: 2019/05/09 00:15:03 by aben-azz          #+#    #+#             */
+/*   Updated: 2019/05/09 00:15:11 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "sh21.h"
+#include "libft.h"
 
-int		arrow_up_event(t_cap *tcap)
+int		ft_split_count(char **split)
 {
-	(void)tcap;
-	return (1);
-}
+	int i;
 
-int		arrow_down_event(t_cap *tcap)
-{
-	(void)tcap;
-	return (1);
-}
-
-int		arrow_right_event(t_cap *tcap)
-{
-	return (ft_right(tcap));
-}
-
-int		arrow_left_event(t_cap *tcap)
-{
-	return (ft_left(tcap));
+	i = 0;
+	if (split)
+	{
+		while (split[i])
+			i++;
+	}
+	return (i);
 }
