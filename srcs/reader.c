@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/28 15:31:17 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/08 07:08:11 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/05/08 08:10:03 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,6 +120,36 @@ void	ft_insert(char buff[4], t_cap *tcap)
 	i = -1;
 	while (++i < len)
 		ft_move_right(tcap);
+}
+
+void	ft_delete_n_char(t_cap *tcap, int pos, int len)
+{
+	char	*tmp;
+
+	tmp = ft_strdup(tcap->command);
+	ft_bzero(tcap->command, BUFFSIZE);
+	ft_strncpy(tcap->command, tmp, pos);
+	ft_strcpy(tcap->command + pos, tmp + pos + len);
+	ft_strdel(&tmp);
+	tcap->char_len = tcap->char_len - len;
+}
+
+void	ft_delete_back(t_cap *tcap)
+{
+	int		pos;
+
+	if (tcap->cursy == 0 && tcap->cursx == tcap->prompt_len)
+	{
+		tputs(tcap->sound, 1, ft_put_termcaps);
+		return ;
+	}
+	pos = tcap->cursy * (tcap->cursx_max + 1) + tcap->cursx - tcap->prompt_len;
+	pos--;
+	ft_clear_all_lines(tcap);
+	ft_delete_n_char(tcap, pos, 1);
+	ft_putstr(tcap->command);
+	ft_replace_cursor(tcap);
+	ft_move_left(tcap);
 }
 
 int			read_buffer(char buffer[4], t_cap *tcap)
