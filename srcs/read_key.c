@@ -6,13 +6,13 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/01 17:30:02 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/09 00:24:02 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/05/09 00:36:27 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sh21.h"
 
-int	is_key(char key[3])
+int		is_key(char key[3])
 {
 	if (key[0] == HOME_END1 && key[1] == HOME_END2)
 	{
@@ -28,7 +28,7 @@ int	is_key(char key[3])
 		return (-1);
 }
 
-int	read_key(char buffer, t_cap *tcap)
+int		read_key(char buffer, t_cap *tcap)
 {
 	int i;
 

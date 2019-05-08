@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/28 13:06:21 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/09 00:24:17 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/05/09 00:42:39 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,7 @@ int		arrow_down_event(t_cap *tcap);
 int		arrow_right_event(t_cap *tcap);
 int		arrow_left_event(t_cap *tcap);
 /*
-**	SHIFT_EVENTS.C
+**	SHIFT_ARROW_EVENTS.C
 */
 int		shift_arrow_up_event(t_cap *tcap);
 int		shift_arrow_down_event(t_cap *tcap);
@@ -149,18 +149,12 @@ void	ft_clear_all_lines(t_cap *tcap);
 */
 int		ft_put_termcaps(int c);
 char	**dup_env(char **env);
+void	display_prompt_prefix(void);
 /*
 **	SIGNAL_HANDLER.C
 */
 void	sigint_handler(int sig);
 void	sigwinch_handler(int sig);
-/*
-**	SIGNAL_HANDLER.C
-*/
-int		ft_left(t_cap *tcap);
-int		ft_right(t_cap *tcap);
-void	ft_replace_cursor(t_cap *tcap);
-
 /*
 **	READ_KEY.C
 */
@@ -185,7 +179,6 @@ int		ft_right(t_cap *tcap);
 */
 
 int		write_history(char *string);
-int		init_history(void);
 int		add_cmd_to_history(char *string);
 int		debug_history(void);
 int		read_history(void);
@@ -197,14 +190,14 @@ int		ft_insert(char buff[4], t_cap *tcap);
 int		ft_delete_n_char(t_cap *tcap, int pos, int len);
 int		ft_delete_back(t_cap *tcap);
 
-
+/*
+**INIT_STRUCT.c
+*/
+int		init_struct(t_term *trm, char **env);
 /*
 **	MAIN.C
 */
 
-int		fputchar(int c);
-int		exec_command(char *command);
-void	display_prompt_prefix(void);
 int		wcharlen(char nb);
 
 #endif
