@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/28 13:06:21 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/08 02:43:48 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/05/08 06:48:50 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,12 +73,21 @@ typedef struct	s_built
 }				t_built;
 typedef struct	s_cap
 {
-	unsigned int			cursx;
-	unsigned int			cursx_max;
-	unsigned int			cursy;
-	unsigned int			prompt_len;
-	unsigned int			char_len;
-	char					command[BUFFSIZE];
+	char		*up;
+	char		*down;
+	char		*right;
+	char		*left;
+	char		*chariot;
+	char		*clr_curr_line;
+	char		*clr_all_line;
+	char		*place_cursor;
+	char		*sound;
+	int			cursx;
+	int			cursx_max;
+	int			cursy;
+	int			prompt_len;
+	int			char_len;
+	char		command[BUFFSIZE];
 }				t_cap;
 typedef struct	s_event
 {
@@ -130,6 +139,8 @@ void	add_to_cmd(char buffer[4], int len);
 **	OTHERS.C
 */
 int		ft_put_termcaps(int c);
+void	ft_move_right(t_cap *tcap);
+void	ft_move_left(t_cap *tcap);
 /*
 **	SIGNAL_HANDLER.C
 */

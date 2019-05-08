@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/28 15:23:43 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/08 02:26:50 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/05/08 07:08:31 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,19 @@
 
 int		enter_event(t_cap *tcap)
 {
-	tcap->cursx = 0;
+	tcap->cursx = tcap->prompt_len;
+	tcap->cursy = 0;
+	if (tcap->char_len >= BUFFSIZE - 1)
+	{
+		tcap->command[BUFFSIZE - 2] = '\n';
+		tcap->command[BUFFSIZE - 1] = '\0';
+	}
+	else
+		tcap->command[tcap->char_len] = '\n';
 	if (add_cmd_to_history(tcap->command) == -1)
 		return (-1);
+	//ft_printf("curs {%d, %d} {%d, %d}\n", tcap->cursx, tcap->cursy, tcap->char_len, tcap->prompt_len);
+	tcap->char_len = 0;
 	ft_putchar('\n');
 	if (!ft_strcmp(tcap->command, "history"))
 	{
@@ -24,7 +34,7 @@ int		enter_event(t_cap *tcap)
 	}
 	else
 		handler(tcap->command);
-	ft_bzero(tcap->command, BUFFSIZE + 1);
+	ft_bzero(tcap->command, BUFFSIZE);
 	display_prompt_prefix();
 	return (1);
 }
@@ -57,8 +67,7 @@ int		ctrl_d_event(t_cap *tcap)
 int		tab_event(t_cap *tcap)
 {
 	(void)tcap;
-	ft_printf("tab\n");
-	display_prompt_prefix();
+	ft_printf("curs: {%d, %d}\n", tcap->cursx, tcap->cursy);
 	return (1);
 }
 

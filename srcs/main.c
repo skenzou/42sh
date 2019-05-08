@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/27 17:27:48 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/08 02:43:40 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/05/08 07:07:22 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,21 @@ int		init_termcaps(t_term *trm)
 	g_shell->history = ft_memalloc(sizeof(*g_shell->history));
 	g_shell->tcap = ft_memalloc(sizeof(*g_shell->tcap));
 	w = ft_memalloc(sizeof(*w));
-	if (tcgetattr(0, trm) == -1 || !g_shell->tcap|| !g_shell->history || !w)
+	if (tcgetattr(0, trm) == -1 || !g_shell->tcap || !g_shell->history || !w)
 		return (0);
 	g_shell->tcap->cursx_max = (ioctl(1, TIOCGWINSZ, w) ?
 		w->ws_col - 1 : tgetnum("co") - 1);
+	g_shell->tcap->cursy = 0;
 	free(w);
+	g_shell->tcap->up = tgetstr("up", NULL);
+	g_shell->tcap->down = tgetstr("sf", NULL);
+	g_shell->tcap->right = tgetstr("nd", NULL);
+	g_shell->tcap->left = tgetstr("le", NULL);
+	g_shell->tcap->chariot = tgetstr("cr", NULL);
+	g_shell->tcap->clr_curr_line = tgetstr("ce", NULL);
+	g_shell->tcap->clr_all_line = tgetstr("cd", NULL);
+	g_shell->tcap->place_cursor = tgetstr("ch", NULL);
+	g_shell->tcap->sound = tgetstr("bl", NULL);
 	trm->c_lflag &= ~(ICANON | ECHO);
 	trm->c_cc[VMIN] = 1;
 	trm->c_cc[VTIME] = 0;
@@ -86,6 +96,7 @@ void	display_prompt_prefix(void)
 	g_shell->tcap->prompt_len =
 		ft_strlen((string + ft_lastindexof(string, '/') + 1)) +
 			ft_strlen(name) + 4;
+	g_shell->tcap->cursx = g_shell->tcap->prompt_len;
 	ft_printf(PREFIX);
 	ft_printf(SUFFIX, (string + ft_lastindexof(string, '/') + 1), name);
 }
@@ -100,6 +111,7 @@ int		main(int ac, char **av, char **env)
 	init_env(env);
 
 	//ft_printf("xd\n");
+
 	if (!(tgetent(NULL, getenv("TERM"))) || !init_termcaps(&term))
 		return (-1);
 	if (init_history() == -1)

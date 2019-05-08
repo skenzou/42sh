@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/28 15:31:17 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/08 02:43:47 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/05/08 04:09:23 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,16 @@ void	sigint_handler(int sig)
 
 void	sigwinch_handler(int sig)
 {
+	struct winsize	*w;
+
 	if (sig == SIGWINCH)
 	{
-		ft_printf("redimensionnement: {%d, %d}", tgetnum("co"), tgetnum("li"));
 		signal(SIGWINCH, sigwinch_handler);
-		ft_printf("\n");
+		if (!(w = ft_memalloc(sizeof(*w))))
+			return ;
+		if (ioctl(1, TIOCGWINSZ, w))
+			g_shell->tcap->cursx_max =  w->ws_col - 1;
+		ft_printf("redimensionnement:{%d, %d}\n", tgetnum("co"), tgetnum("li"));
 		display_prompt_prefix();
 	}
 }
