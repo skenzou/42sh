@@ -6,14 +6,14 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/27 17:27:48 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/07 00:37:35 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/05/08 02:43:40 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sh21.h"
 #include <stdio.h>
 
-t_arrow_event g_arrow_event[] = {
+t_event g_arrow_event[] = {
 	{UP, &arrow_up_event},
 	{DOWN, &arrow_down_event},
 	{RIGHT, &arrow_right_event},
@@ -23,7 +23,7 @@ t_arrow_event g_arrow_event[] = {
 	{SHIFT_RIGHT, &shift_arrow_right_event},
 	{SHIFT_LEFT, &shift_arrow_left_event}
 };
-t_key_event g_key_event[] = {
+t_event g_key_event[] = {
 	{ENTER, &enter_event},
 	{BACKSPACE, &backspace_event},
 	{CTRL_R, &ctrl_r_event},
@@ -32,21 +32,26 @@ t_key_event g_key_event[] = {
 	{HOME, &home_event},
 	{END, &end_event}
 };
-t_curs	g_curs = (t_curs){
-	.x = 0,
-	.y = 0,
-	.prompt_len = 0,
-	.last = 0,
-};
-int		init_termcaps(t_term *term)
+t_shell *g_shell;
+
+int		init_termcaps(t_term *trm)
 {
-	if (tcgetattr(0, term) == -1)
+	struct winsize	*w;
+
+	if (!(g_shell = ft_memalloc(sizeof(*g_shell))))
 		return (0);
-	term->c_lflag &= ~(ICANON | ECHO);
-	term->c_cc[VMIN] = 1;
-	term->c_cc[VTIME] = 0;
-	if (tcsetattr(0, TCSADRAIN, term) == -1 ||
-		!(g_curs.command = ft_strnew(BUFFSIZE)))
+	g_shell->history = ft_memalloc(sizeof(*g_shell->history));
+	g_shell->tcap = ft_memalloc(sizeof(*g_shell->tcap));
+	w = ft_memalloc(sizeof(*w));
+	if (tcgetattr(0, trm) == -1 || !g_shell->tcap|| !g_shell->history || !w)
+		return (0);
+	g_shell->tcap->cursx_max = (ioctl(1, TIOCGWINSZ, w) ?
+		w->ws_col - 1 : tgetnum("co") - 1);
+	free(w);
+	trm->c_lflag &= ~(ICANON | ECHO);
+	trm->c_cc[VMIN] = 1;
+	trm->c_cc[VTIME] = 0;
+	if (tcsetattr(0, TCSADRAIN, trm) == -1)
 		return (0);
 	return (1);
 }
@@ -78,8 +83,9 @@ void	display_prompt_prefix(void)
 	name || (name = "21sh");
 	string = NULL;
 	string = getcwd(string, 20);
-	g_curs.prompt_len = ft_strlen((string + ft_lastindexof(string, '/') + 1)) +
-		ft_strlen(name) + 4;
+	g_shell->tcap->prompt_len =
+		ft_strlen((string + ft_lastindexof(string, '/') + 1)) +
+			ft_strlen(name) + 4;
 	ft_printf(PREFIX);
 	ft_printf(SUFFIX, (string + ft_lastindexof(string, '/') + 1), name);
 }
@@ -92,9 +98,11 @@ int		main(int ac, char **av, char **env)
 	(void)ac;
 	(void)av;
 	init_env(env);
-	if (init_history() == -1)
-		return (-1);
+
+	//ft_printf("xd\n");
 	if (!(tgetent(NULL, getenv("TERM"))) || !init_termcaps(&term))
+		return (-1);
+	if (init_history() == -1)
 		return (-1);
 	display_prompt_prefix();
 	while ("21sh")
@@ -103,12 +111,7 @@ int		main(int ac, char **av, char **env)
 		signal(SIGWINCH, sigwinch_handler);
 		ft_bzero(buffer, 4);
 		read(0, &buffer, 3);
-		if ((ft_isprint(buffer[0]) || wcharlen(buffer[0]) > 1) && buffer[0] != 62)
-		{
-			ft_printf("%s", buffer, buffer[0]);
-			add_to_cmd(buffer, -1, wcharlen(buffer[0]));
-		}
-		if (!read_buffer(buffer))
+		if (!read_buffer(buffer, g_shell->tcap))
 			return (-1);
 	}
 	return (0);

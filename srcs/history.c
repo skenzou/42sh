@@ -6,22 +6,20 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/01 17:45:36 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/07 00:48:10 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/05/08 02:43:39 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sh21.h"
 
-t_history *g_history;
-
 int	add_cmd_to_history(char *string)
 {
-	if (g_history->len)
-		if (!ft_strcmp(string, g_history->history[g_history->len - 1]))
+	if (g_shell->history->len)
+		if (!ft_strcmp(string, g_shell->history->data[g_shell->history->len - 1]))
 			return (1);
-	if (!(g_history->history[g_history->len++] = ft_strdup(string)))
+	if (!(g_shell->history->data[g_shell->history->len++] = ft_strdup(string)))
 		return (0);
-	g_history->history[g_history->len] = NULL;
+	g_shell->history->data[g_shell->history->len] = NULL;
 	if (!write_history(string))
 		return (-1);
 	return (1);
@@ -32,10 +30,10 @@ int	debug_history(void)
 	int i;
 
 	i = 0;
-	ft_printf("Len of history: %d;\n", g_history->len);
-	while (g_history->history[i])
+	ft_printf("Len of history: %d;\n", g_shell->history->len);
+	while (g_shell->history->data[i])
 	{
-		ft_printf("[%d]:  '%s';\n", i, g_history->history[i]);
+		ft_printf("[%d]:  '%s';\n", i, g_shell->history->data[i]);
 		i++;
 	}
 	return (1);
@@ -43,11 +41,9 @@ int	debug_history(void)
 
 int	init_history(void)
 {
-	if (!(g_history = malloc(sizeof(t_history))))
-		return (-1);
-	g_history->len = 0;
-	g_history->history[0] = NULL;
-	g_history->read = 0;
+	g_shell->history->len = 0;
+	g_shell->history->data[0] = NULL;
+	g_shell->history->read = 0;
 	if (read_history() == -1)
 		return (-1);
 	return (1);
@@ -82,8 +78,8 @@ int	read_history(void)
 	{
 		while ((ret = get_next_line(fd, &str, '#')) > 0)
 		{
-			g_history->read++;
-			if (!(g_history->history[g_history->len++] = ft_strdup(str)))
+			g_shell->history->read++;
+			if (!(g_shell->history->data[g_shell->history->len++] = ft_strdup(str)))
 				return (-1);
 		}
 	}

@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/28 13:06:21 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/07 00:36:12 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/05/08 02:43:48 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 # include <unistd.h>
 # include <math.h>
 # include <fcntl.h>
+#include <sys/ioctl.h>
 # define PREFIX "\x1b[32m➜ \x1b[0m\x1b[37m\x1b[1m"
 # define SUFFIX "%s\x1b[0m \x1b[1m\x1b[31m%s\x1b[0m\x1b[32m> \x1b[0m"
 # define HISTORY_FILE_NAME	"/Users/aben-azz/.21sh_history.log"
@@ -70,60 +71,61 @@ typedef struct	s_built
 	char			*builtin;
 	int				(*function)(char **argv);
 }				t_built;
-typedef struct	s_curs
+typedef struct	s_cap
 {
-	unsigned int			x;
-	unsigned int			y;
+	unsigned int			cursx;
+	unsigned int			cursx_max;
+	unsigned int			cursy;
 	unsigned int			prompt_len;
-	unsigned int			last;
-	char					*command;
-}				t_curs;
-typedef struct	s_arrow_event
+	unsigned int			char_len;
+	char					command[BUFFSIZE];
+}				t_cap;
+typedef struct	s_event
 {
 	int						key;
-	int						(*function)(void);
-}				t_arrow_event;
-typedef struct	s_key_event
-{
-	int						key;
-	int						(*function)(void);
-}				t_key_event;
+	int						(*function)(t_cap *tcap);
+}				t_event;
+
 typedef struct	s_history
 {
 	int						len;
 	int						read;
-	char					*history[MAX_HISTORY_LENGHT];
+	char					*data[MAX_HISTORY_LENGHT];
 }				t_history;
-extern t_arrow_event g_arrow_event[];
-extern t_key_event g_key_event[];
-extern t_history *g_history;
-extern t_curs g_curs;
+typedef struct	s_shell
+{
+	t_cap		*tcap;
+	t_history	*history;
+}				t_shell;
+extern t_event g_arrow_event[];
+extern t_event g_key_event[];
+extern t_shell *g_shell;
 /*
 **	ARROW_EVENTS.C
 */
-int		arrow_up_event();
-int		arrow_down_event();
-int		arrow_right_event();
-int		arrow_left_event();
-int		shift_arrow_up_event();
-int		shift_arrow_down_event();
-int		shift_arrow_right_event();
-int		shift_arrow_left_event();
+int		arrow_up_event(t_cap *tcap);
+int		arrow_down_event(t_cap *tcap);
+int		arrow_right_event(t_cap *tcap);
+int		arrow_left_event(t_cap *tcap);
+int		shift_arrow_up_event(t_cap *tcap);
+int		shift_arrow_down_event(t_cap *tcap);
+int		shift_arrow_right_event(t_cap *tcap);
+int		shift_arrow_left_event(t_cap *tcap);
 /*
 **	KEY_EVENTS.C
 */
-int		enter_event();
-int		backspace_event();
-int		ctrl_r_event();
-int		tab_event();
-int		home_event();
-int		end_event();
-int		ctrl_d_event();
+int		enter_event(t_cap *tcap);
+int		backspace_event(t_cap *tcap);
+int		ctrl_r_event(t_cap *tcap);
+int		tab_event(t_cap *tcap);
+int		home_event(t_cap *tcap);
+int		end_event(t_cap *tcap);
+int		ctrl_d_event(t_cap *tcap);
 /*
 **	READER.C
 */
-int		read_buffer(char buffer[4]);
-void	add_to_cmd(char buffer[4], int pos, int len);
+int		read_buffer(char buffer[4], t_cap *tcap);
+void	add_to_cmd(char buffer[4], int len);
 /*
 **	OTHERS.C
 */
@@ -138,14 +140,14 @@ void	sigwinch_handler(int sig);
 **	READ_KEY.C
 */
 int		is_key(char key[3]);
-int		read_key(char buffer);
+int		read_key(char buffer, t_cap *tcap);
 /*
 **	READ_ARROW.C
 */
 
 char	is_shift_arrow(char key[4]);
 int		is_arrow(char key[4]);
-int		read_arrow(char buffer);
+int		read_arrow(char buffer, t_cap *tcap);
 /*
 **	HISTORY.C
 */
@@ -161,7 +163,7 @@ int		read_history(void);
 
 int		fputchar(int c);
 int		exec_command(char *command);
-void		display_prompt_prefix(void);
+void	display_prompt_prefix(void);
 int		wcharlen(char nb);
 
 /*
