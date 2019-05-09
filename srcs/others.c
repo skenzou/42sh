@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/28 15:35:56 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/09 00:39:31 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/05/09 06:41:15 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ char	**dup_env(char **env)
 	p[i] = NULL;
 	return (p);
 }
+
 
 int		ft_put_termcaps(int c)
 {
@@ -49,4 +50,25 @@ void	display_prompt_prefix(void)
 	g_shell->tcap->cursx = g_shell->tcap->prompt_len;
 	ft_printf(PREFIX);
 	ft_printf(SUFFIX, (string + ft_lastindexof(string, '/') + 1), name);
+}
+
+char	*correct(char *string, char **possible, int *difference)
+{
+	size_t	distance;
+	int		i;
+	int		smallest;
+	size_t	dist;
+
+	i = -1;
+	distance = SIZE_MAX;
+	while (possible[++i])
+	{
+		if (distance > (dist = ft_levenshtein(string, possible[i])))
+		{
+			distance = dist;
+			smallest = i;
+		}
+	}
+	*difference = (int)distance;
+	return (possible[smallest]);
 }

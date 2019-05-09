@@ -41,7 +41,7 @@ all :
 	@#make -C $(LIBFT_DIR)
 	@make -j $(NAME)
 
-$(NAME):		$(LIBFT_LIB) $(OBJ_DIR) $(OBJS)
+$(NAME): $(LIBFT_LIB) $(OBJ_DIR) $(OBJS)
 	@$(CC) $(OBJS) -o $(NAME) \
 		-I $(INC_DIR) -I $(LIBFT_INC) $(LIBS) $(LIBFT_LIB) $(FLAGS) $(D_FLAGS)
 	@printf "\r\x1b[32m✅  DONE $(NAME)\033[0m\033[K\n"
@@ -53,7 +53,7 @@ $(OBJ_DIR) :
 	@mkdir -p $(OBJ_DIR)
 	@mkdir -p $(dir $(OBJS))
 
-$(OBJ_DIR)%.o :	$(SRC_DIR)%.c | $(OBJ_DIR)
+$(OBJ_DIR)%.o :	 $(SRC_DIR)%.c | $(OBJ_DIR)
 	@$(eval DONE=$(shell echo $$(($(INDEX)*20/$(NB)))))
 	@$(eval PERCENT=$(shell echo $$(($(INDEX)*100/$(NB)))))
 	@$(eval COLOR=$(shell echo $$(($(PERCENT)%35+196))))

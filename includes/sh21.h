@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/28 13:06:21 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/09 05:56:11 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/05/09 06:42:16 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,10 @@
 # include <math.h>
 # include <fcntl.h>
 #include <sys/ioctl.h>
-# define PREFIX "\x1b[32m➜ \x1b[0m\x1b[37m\x1b[1m"
-# define SUFFIX "%s\x1b[0m \x1b[1m\x1b[31m%s\x1b[0m\x1b[32m> \x1b[0m"
-# define HISTORY_FILE_NAME	"/Users/aben-azz/.21sh_history.log"
+# define PREFIX "\x1b[32m\x1b[1m➜  \x1b[0m\x1b[37m\x1b[1m"
+# define SUFFIX "%s\x1b[0m \x1b[1m\x1b[31m%s\x1b[0m\x1b[33m\x1b[1m ✗\x1b[0m"
+# define DEFAULT_HISTORY_FILE_NAME	".21sh_history"
+# define DEFAULT_ENV_FILE_NAME	".21sh_env"
 # define BUFFSIZE					4096
 # define ARROW_CODE1				27
 # define ARROW_CODE2				91
@@ -99,6 +100,7 @@ typedef struct	s_history
 {
 	int						len;
 	int						read;
+	char					file_name[BUFFSIZE];
 	int						position;
 	int						match[BUFFSIZE];
 	char					*data[MAX_HISTORY_LENGHT];
@@ -143,7 +145,7 @@ int		end_event(t_cap *tcap);
 /*
 **	READER.C
 */
-int		read_buffer(char buffer[4], t_cap *tcap);
+int		read_buffer(char *buffer, t_cap *tcap);
 void	ft_clear_all_lines(t_cap *tcap);
 
 /*
@@ -152,6 +154,7 @@ void	ft_clear_all_lines(t_cap *tcap);
 int		ft_put_termcaps(int c);
 char	**dup_env(char **env);
 void	display_prompt_prefix(void);
+char	*correct(char *string, char **possible, int *difference);
 /*
 **	SIGNAL_HANDLER.C
 */

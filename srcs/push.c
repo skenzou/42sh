@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 23:56:22 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/09 00:23:45 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/05/09 06:06:50 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int		ft_add_n_char(char buff[4], int pos, int len, t_cap *tcap)
 ** sinon on avance simplement le curseur d'un cran vers la droite
 */
 
-int		ft_insert(char buff[4], t_cap *tcap)
+int		ft_insert(char *buff, t_cap *tcap)
 {
 	int		position;
 	int		i;

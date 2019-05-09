@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/27 17:27:48 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/09 05:56:01 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/05/09 07:01:49 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,53 +51,44 @@ int				wcharlen(char nb)
 	}
 	return (count);
 }
-char	*possible[] = {
-	"echo",
-	"cd",
-	"man",
-	"ls",
-	"cat",
-	"alias",
-	"execve",
-	"main",
-	"chien",
-	"chat",
-	"wcharlen",
-	"nano",
-	NULL
-};
 
-char	*correct(char *string, char **possible, int *difference)
+int	read_custom_env(void)
 {
-	size_t	distance;
-	int i;
-	int smallest;
-	size_t dist;
+	char		*str;
+	int			i;
+	int			fd;
+	char		env_file[BUFFSIZE];
+	int			userlen;
 
-	i = -1;
-	distance = SIZE_MAX;
-	while (possible[++i])
+	i = 0;
+	userlen = ft_strlen(getenv("USER"));
+	ft_strcpy(env_file, "/Users/");
+	ft_strcpy(env_file + 7, getenv("USER"));
+	ft_strcpy(env_file + 7 + userlen, "/");
+	ft_strcpy(env_file + 7 + userlen + 1, DEFAULT_ENV_FILE_NAME);
+	env_file[8 + userlen + ft_strlen(DEFAULT_ENV_FILE_NAME)] = '\0';
+	fd = open(env_file, O_RDONLY);
+	ft_printf("fd file: %s %d\n", env_file, fd);
+	if (fd > 0)
 	{
-		if (distance > (dist = ft_levenshtein(string, possible[i])))
+		while (get_next_line(fd, &str, '\n') > 0)
 		{
-			distance = dist;
-			smallest = i;
+			ft_printf("ligne: %d |%s|\n", i, str);
+			i++;
 		}
 	}
-	*difference = (int)distance;
-	return (possible[smallest]);
+	close(fd);
+	return (1);
 }
 
 int				main(int ac, char **av, char **env)
 {
 	t_term	term;
 	char	buffer[4];
-	int distance;
 
 	(void)ac;
 	(void)av;
-	distance = 0;
-	//ft_printf("Distance de |%s| == %s et %d\n", av[1], correct(av[1], possible, &distance), distance);
+	read_custom_env();
 	if (!(tgetent(NULL, getenv("TERM"))) || !init_struct(&term, env))
 		return (-1);
 	display_prompt_prefix();

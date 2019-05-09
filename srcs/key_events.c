@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/28 15:23:43 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/09 05:55:47 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/05/09 06:08:00 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,16 +44,14 @@ int		backspace_event(t_cap *tcap)
 
 int		ctrl_r_event(t_cap *tcap)
 {
-	(void)tcap;
-	ft_printf("ctrl_r\n");
-	display_prompt_prefix();
+	ft_insert("ctrl_r", tcap);
 	return (1);
 }
 
 int		ctrl_d_event(t_cap *tcap)
 {
 	(void)tcap;
-	ft_printf("ctrl_d\n");
+	ft_insert("ctrl_d", tcap);
 	exit(0);
 	return (1);
 }
