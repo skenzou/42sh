@@ -6,13 +6,13 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/05 00:34:12 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/09 00:20:45 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/05/09 05:25:28 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-static void print_optype(e_op_type op_type)
+void print_optype(e_op_type op_type)
 {
 	ft_printf(ANSI_BCYAN"==>");
 	op_type == 0 ? ft_printf("SEMI" ANSI_RESET): 0;

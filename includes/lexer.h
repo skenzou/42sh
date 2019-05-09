@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/30 18:57:23 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/09 00:20:53 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/05/09 05:26:13 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,5 +92,6 @@ typedef struct		s_ast
 
 int			build_lexer(char *input, t_list **lexer);
 void 		print_lexer(t_list *lexer);
-void 	lex_delone(void *data, size_t size);
-void  lex_del_list(t_list **lexer);
+void		lex_delone(void *data, size_t size);
+void		lex_del_list(t_list **lexer);
+void		print_optype(e_op_type op_type);

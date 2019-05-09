@@ -6,21 +6,16 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/03 16:15:41 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/09 02:26:07 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/05/09 06:37:10 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-void 		redirect(char **cmd, char *path, char **env, char simple)
+void 		redirect(char **cmd, int fd, char **env)
 {
 	pid_t pid;
-	int fd;
 
-	if (simple) // redirection simple '>'
-		fd = open(path, O_RDWR | O_APPEND | O_CREAT | O_TRUNC, 0666); // ecraser un le contenu de fichier
-	else		// double redirection '>>'
-		fd = open(path, O_RDWR | O_APPEND | O_CREAT, 0666); // ecrire fin de fichier
 	pid = fork();
 	signal(SIGINT, sighandler);
 	if (pid == 0)
@@ -85,47 +80,175 @@ void search_pipe(t_ast *root,char *str, char **env)
 ** Exemple: ls > test
 ** renvoie "ls" et met 3 dans len.
 */
-static char		*get_cmd_from_redir(char *cmd, int *len, e_op_type *redir)
-{
-	char c;
+// static char		*get_cmd_from_redir(char *cmd, int *len, e_op_type *redir)
+// {
+// 	char c;
+//
+// 	*len = 0;
+// 	while (cmd[*len])
+// 	{
+// 		if (cmd[*len] == '\\')
+// 			*len+=2;
+// 		if ((cmd[*len] == '"' || cmd[*len] == '\'') && (c = cmd[*len]))
+// 		{
+// 			while (cmd[*len] && cmd[*len] != c)
+// 				(*len)++;
+// 			(*len)++;
+// 		}
+// 		if (!ft_strncmp(cmd + *len, ">>", 2) && (*redir = DBL_GREAT_DASH))
+// 			return (ft_strsub(cmd, 0, *len));
+// 		if (!ft_strncmp(cmd + *len, "<<", 2) && (*redir = DBL_LESS_DASH))
+// 			return (ft_strsub(cmd, 0, *len));
+// 		if (cmd[*len] == '>' && (*redir = GREAT))
+// 			return (ft_strsub(cmd, 0, *len));
+// 		if (cmd[*len] == '<' && (*redir = LESS))
+// 			return (ft_strsub(cmd, 0, *len));
+// 		(*len)++;
+// 	}
+// 	return (NULL);
+// }
 
-	*len = 0;
-	while (cmd[*len])
-	{
-		if (cmd[*len] == '\\')
-			*len+=2;
-		if ((cmd[*len] == '"' || cmd[*len] == '\'') && (c = cmd[*len]))
-		{
-			while (cmd[*len] && cmd[*len] != c)
-				(*len)++;
-			(*len)++;
-		}
-		if (!ft_strncmp(cmd + *len, ">>", 2) && (*redir = DBL_GREAT_DASH))
-			return (ft_strsub(cmd, 0, *len));
-		if (!ft_strncmp(cmd + *len, "<<", 2) && (*redir = DBL_LESS_DASH))
-			return (ft_strsub(cmd, 0, *len));
-		if (cmd[*len] == '>' && (*redir = GREAT))
-			return (ft_strsub(cmd, 0, *len));
-		if (cmd[*len] == '<' && (*redir = LESS))
-			return (ft_strsub(cmd, 0, *len));
-		(*len)++;
-	}
-	return (NULL);
+static char		*get_next_word(char **start)
+{
+	char *end;
+	int len;
+
+	end = ft_strchr(*start, ' ');
+	if (end)
+		len = end - *start;
+	else
+		len = ft_strlen(*start);
+	end = *start;
+	(*start) += (len - 1);
+	return (ft_strsub(end, 0, len));
 }
 
-void handle_redir(t_ast *root, char **env)
+static void		create_redir(t_list **redirs, char *dest, e_op_type redir_type)
 {
-	char *cmd;
-	char *path;
-	int	cmd_len;
-	e_op_type redir;
+	t_redir redir;
+	t_list *node;
 
-	cmd = get_cmd_from_redir(root->token->content, &cmd_len, &redir);
-	// ft_printf("cmd: |%s|\n",cmd);
-	path = root->token->content + cmd_len + 2 + (redir == DBL_LESS_DASH || redir == DBL_GREAT_DASH);
+	redir.dest = dest;
+	redir.op_type = redir_type;
+	node = ft_lstnew((void *)&redir, sizeof(redir));
+	if (!node)
+		ft_exit("Failed to malloc a node for my redir list");
+	ft_lstadd(redirs, node);
+}
+
+static e_op_type	get_redir_type(char **str)
+{
+	if (!ft_strncmp(*str, ">>", 2))
+	{
+		(*str)+=3;
+		return (DBL_GREAT);
+	}
+	if (!ft_strncmp(*str, "<<", 2))
+	{
+		(*str)+=3;
+		return (DBL_LESS);
+	}
+	if (**str == '>')
+	{
+		(*str)+=2;
+		return (GREAT);
+	}
+	if (**str == '<')
+	{
+		(*str)+=2;
+		return (LESS);
+	}
+	return (OTHER_OP);
+}
+
+static void		fill_redir_list(char *cmd, t_list **redirs)
+{
+	e_op_type optype;
+	char c;
+
+	while (*cmd)
+	{
+		if (*cmd == '\\')
+			cmd+=2;
+		if ((*cmd == '"' || *cmd == '\'') && (c = *cmd))
+		{
+			while (*cmd && *cmd != c)
+				cmd++;
+			cmd++;
+		}
+		optype = get_redir_type(&cmd);
+		if (optype != OTHER_OP)
+			create_redir(redirs, get_next_word(&cmd), optype);
+		cmd++;
+	}
+}
+
+int		open_file(t_redir *redir)
+{
+	int		fd;
+
+	fd = 0;
+	if (redir->op_type == GREAT) // redirection simple '>'
+		fd = open(redir->dest, O_RDWR | O_CREAT | O_TRUNC, 0666); // ecraser un le contenu de fichier
+	else if (redir->op_type == DBL_GREAT)		// double redirection '>>'
+		fd = open(redir->dest, O_RDWR | O_APPEND | O_CREAT, 0666); // ecrire fin de fichier
+	else if (redir->op_type == LESS) // redirection '<'
+		fd = open(redir->dest, O_RDONLY); // lire depuis le fichier
+	if (fd == -1)
+	{
+		if (errno == EACCES)
+			ft_putendl_fd("Permission denied", 2);
+		else if (errno == ENOENT)
+			ft_putendl_fd("No such file or directory", 2);
+		else if (errno == EISDIR)
+			ft_putendl_fd("Is a directory", 2);
+		else
+			ft_putendl_fd("open error", 2);
+	}
+	return (fd);
+}
+
+void	handle_redir(t_ast *root, char **env)
+{
+	// char *cmd;
+	// char *path;
+	// int	cmd_len;
+	// e_op_type redir;
+	t_list *redir;
+	t_list *temp;
+	int		fd;
+	int stdout;
+
+	redir = NULL;
+	(void)env;
+	stdout = dup(1);
+	// cmd = get_cmd_from_redir(root->token->content, &cmd_len, &redir);
+	// // ft_printf("cmd: |%s|\n",cmd);
+	// path = root->token->content + cmd_len + 2 + (redir == DBL_LESS_DASH || redir == DBL_GREAT_DASH);
 	// ft_printf("path: |%s|\n",path);
-	redirect(ft_strsplit(cmd, ' '), path, env, redir == GREAT);
-	ft_strdel(&cmd);
+	// redirect(ft_strsplit(cmd, ' '), path, env, redir == GREAT);
+	// ft_strdel(&cmd);
+	fill_redir_list(root->token->content, &redir);
+	ft_lstrev(&redir);
+	ft_printf("======================\n");
+	temp = redir;
+	while (temp)
+	{
+		print_optype(((t_redir *)temp->content)->op_type);
+		ft_printf(" dest: |%s|\n", ((t_redir *)temp->content)->dest);
+		temp = temp->next;
+	}
+	ft_printf("======================\n");
+	while (redir)
+	{
+		fd = open_file(redir->content);
+		((t_redir *)redir->content)->fd = fd;
+		// if (fd != -1)
+		// 	dup2(fd, stdout);
+		temp = redir;
+		redir = redir->next;
+	}
+	redirect(ft_strsplit("/bin/ls", ' '), ((t_redir *)temp->content)->fd, env);
 }
 
 void ft_execute(t_ast *root, char **env)

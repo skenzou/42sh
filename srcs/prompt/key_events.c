@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/28 15:23:43 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/08 08:07:17 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/05/09 05:49:55 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,13 @@ int		enter_event(t_cap *tcap)
 	//ft_printf("curs {%d, %d} {%d, %d}\n", tcap->cursx, tcap->cursy, tcap->char_len, tcap->prompt_len);
 	tcap->char_len = 0;
 	ft_putchar('\n');
-	if (!ft_strcmp(tcap->command, "history"))
+	if (!ft_strcmp(tcap->command, "history\n"))
 	{
 		debug_history();
+	}
+	else if (!ft_strcmp(tcap->command, "exit\n"))
+	{
+		exit(0);
 	}
 	else
 		handler(tcap->command);

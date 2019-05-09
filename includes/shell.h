@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 16:42:03 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/09 00:50:16 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/05/09 06:13:11 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # include "parser.h"
 # include "executor.h"
 # include "prompt.h"
+# include <errno.h>
 # define ANSI_RED		"\x1b[31m"
 # define ANSI_GREEN		"\x1b[32m"
 # define ANSI_YELLOW	"\x1b[33m"

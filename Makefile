@@ -6,7 +6,7 @@
 #    By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/03 09:24:41 by midrissi          #+#    #+#              #
-#    Updated: 2019/05/08 07:46:33 by aben-azz         ###   ########.fr        #
+#    Updated: 2019/05/09 05:33:36 by midrissi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 # **************************************************************************** #
@@ -39,7 +39,7 @@ MSG				=	Compiling 21sh
 
 NAME = 21sh
 cc = gcc
-C_FLAGS = -Wall -Wextra -Werror
+C_FLAGS = -Wall -Wextra -Werror -g -v
 SRC_NAME = handler.c utils.c lexer/lexer.c parser/parser.c lexer/utils.c \
 			lexer/print_lexer.c executor/executor.c parser/ast_del.c \
 			prompt/arrow_events.c prompt/reader.c prompt/history.c \
