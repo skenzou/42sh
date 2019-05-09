@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/30 18:51:02 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/08 05:01:44 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/05/09 00:27:18 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ static const t_oplist existing_token[] =
 	{"\t", 1, TOKEN_EAT, OTHER_OP},
 	{"\r", 1, TOKEN_EAT, OTHER_OP},
 	{"\f", 1, TOKEN_EAT, OTHER_OP},
+	{"\\", 1, TOKEN_BSLASH, OTHER_OP},
 	{"=", 1, TOKEN_EQUAL, OTHER_OP},
 	{NULL, 1, 0, OTHER_OP}
 };
@@ -90,6 +91,9 @@ static void 		create_token(t_list **lexer, char *str,
 
 	if (!str)
 		ft_exit("Malloc fail");
+	ft_putstr(str);
+	ft_putchar('|');
+	ft_putchar('\n');
 	if (join_if_2words(lexer, str, type))
 		return ;
 	if (op_type == SEMI && (*lexer == NULL || (*lexer &&
@@ -103,6 +107,7 @@ static void 		create_token(t_list **lexer, char *str,
 	token.type = type;
 	token.is_op = op_type != OTHER_OP;
 	token.op_type = op_type;
+	token.redir = 0;
 	list = ft_lstnew((void *)&token, sizeof(token));
 	if (!list)
 		ft_exit("Failed to malloc a node of my lexer list");
@@ -130,14 +135,19 @@ int					build_lexer(char *input, t_list **lexer)
 	prev = input;
 	while (input && *input)
 	{
-		while (*input && *input == '\\')
-			input++;
+		// while (*input && *input == '\\')
+		// 	input++;
 		curr = check_ops(input);
 		if ((curr.op || *input == '"' || *input == '\'') && prev != input)
 			create_token(lexer, ft_strsub(prev, 0, input - prev), TOKEN_WORD, OTHER_OP);
 		if (curr.op)
 		{
-			if (curr.type != TOKEN_EAT)
+			if (curr.type == TOKEN_BSLASH)
+			{
+				create_token(lexer, ft_strsub(input, 0, 2), TOKEN_WORD, OTHER_OP);
+				curr.len = 2;
+			}
+			else if (curr.type != TOKEN_EAT)
 				create_token(lexer, ft_strdup(curr.op), curr.type, curr.op_type);
 			input += curr.len;
 			prev = input;

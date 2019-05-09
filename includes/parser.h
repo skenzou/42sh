@@ -6,9 +6,10 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/05 00:53:00 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/08 05:46:28 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/05/08 23:39:54 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-t_ast    *ft_parse(t_list *lexer);
-void 	del_ast(t_ast **root);
+t_ast		*ft_parse(t_list *lexer);
+void		del_ast(t_ast **root);
+void		ft_execute(t_ast *root ,char **env);

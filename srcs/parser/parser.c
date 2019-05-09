@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/04 23:37:49 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/08 23:09:04 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/05/08 23:51:42 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,6 +159,9 @@ char		*check_syntax_errors(t_list *tokens)
 			return (next->content);
 		tokens = tokens->next;
 	}
+	curr = (t_token *)(tokens->content);
+	if (curr->type == TOKEN_REDIR)
+		return "\\n";
 	return (NULL);
 }
 
@@ -213,6 +216,7 @@ static void		join_redir(t_list *lexer)
 	left = (t_token *)lexer->content;
 	redir = (t_token *)lexer->next->content;
 	right = (t_token *)lexer->next->next->content;
+	left->redir = 1;
 	temp = left->content;
 	left->content = ft_strcjoin(left->content, redir->content, ' ');
 	ft_strdel(&temp);
@@ -235,7 +239,10 @@ static void		handle_redir(t_list *lexer)
 		curr = (t_token *)lexer->content;
 		next = (t_token *)lexer->next->content;
 		if (curr->type == TOKEN_WORD && next->type == TOKEN_REDIR)
+		{
 			join_redir(lexer);
+			continue ;
+		}
 		lexer = lexer->next;
 	}
 }
@@ -250,9 +257,10 @@ t_ast  *ft_parse(t_list *lexer)
 	error = check_syntax_errors(lexer);
 	if (error)
 	{
-	ft_putstr_fd(ANSI_RED"21sh: parse error near'", 2);
-	ft_putstr_fd(error, 2);
-	ft_putendl_fd("'", 2);
+		ft_putstr_fd(ANSI_RED"21sh: parse error near'", 2);
+		ft_putstr_fd(error, 2);
+		ft_putendl_fd("'", 2);
+		return (NULL);
 	}
 	handle_inhibitors(lexer);
 	handle_redir(lexer);

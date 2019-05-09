@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 16:42:03 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/08 07:43:27 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/05/09 00:50:16 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@
 # define QUOTE			'\''
 # define BSLASH			'\\'
 
-void		ft_compiler(t_ast *root ,char **env);
 void		print_prompt(void);
 void		sighandler(int sig);
 void 		ft_exit(char *str);

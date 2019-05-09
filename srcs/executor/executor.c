@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/03 16:15:41 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/08 06:22:17 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/05/09 02:26:07 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,12 @@ void 		redirect(char **cmd, char *path, char **env, char simple)
 	if (pid == 0)
 	{
 		dup2(fd, 1); // recupere stdout
-		dup2(fd, 2); // recupere stderr
+		// dup2(fd, 2); // recupere stderr
 		execve(cmd[0], cmd, env);
+		exit(1);
 	}
 	wait(&pid);
+	ft_splitdel(cmd);
 }
 
 void 		pipe_cmds(char **cmd1, char **cmd2, char **env)
@@ -77,10 +79,66 @@ void search_pipe(t_ast *root,char *str, char **env)
 	}
 	ft_strdel(&str);
 }
-
-void ft_compiler(t_ast *root, char **env)
+/*
+** Parcours mon token contenant une redirection et recupere la commande de cette
+** redirection et met dans len la length de la commande.
+** Exemple: ls > test
+** renvoie "ls" et met 3 dans len.
+*/
+static char		*get_cmd_from_redir(char *cmd, int *len, e_op_type *redir)
 {
-	search_pipe(root, ft_strdup("root"),env);
+	char c;
+
+	*len = 0;
+	while (cmd[*len])
+	{
+		if (cmd[*len] == '\\')
+			*len+=2;
+		if ((cmd[*len] == '"' || cmd[*len] == '\'') && (c = cmd[*len]))
+		{
+			while (cmd[*len] && cmd[*len] != c)
+				(*len)++;
+			(*len)++;
+		}
+		if (!ft_strncmp(cmd + *len, ">>", 2) && (*redir = DBL_GREAT_DASH))
+			return (ft_strsub(cmd, 0, *len));
+		if (!ft_strncmp(cmd + *len, "<<", 2) && (*redir = DBL_LESS_DASH))
+			return (ft_strsub(cmd, 0, *len));
+		if (cmd[*len] == '>' && (*redir = GREAT))
+			return (ft_strsub(cmd, 0, *len));
+		if (cmd[*len] == '<' && (*redir = LESS))
+			return (ft_strsub(cmd, 0, *len));
+		(*len)++;
+	}
+	return (NULL);
+}
+
+void handle_redir(t_ast *root, char **env)
+{
+	char *cmd;
+	char *path;
+	int	cmd_len;
+	e_op_type redir;
+
+	cmd = get_cmd_from_redir(root->token->content, &cmd_len, &redir);
+	// ft_printf("cmd: |%s|\n",cmd);
+	path = root->token->content + cmd_len + 2 + (redir == DBL_LESS_DASH || redir == DBL_GREAT_DASH);
+	// ft_printf("path: |%s|\n",path);
+	redirect(ft_strsplit(cmd, ' '), path, env, redir == GREAT);
+	ft_strdel(&cmd);
+}
+
+void ft_execute(t_ast *root, char **env)
+{
+	if (!root)
+		return ;
+	if (root->left)
+		ft_execute(root->left, env);
+	if (root->right)
+		ft_execute(root->right, env);
+	if (root->token->redir)
+		handle_redir(root, env);
+	// search_pipe(root, ft_strdup("root"),env);
 }
 
 // void 	executor(char **argv, char **env)

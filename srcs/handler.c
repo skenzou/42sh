@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   handler.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/29 17:39:49 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/08 07:30:21 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/05/08 23:35:19 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	handler(char *input)
 	ft_lstrev(&lexer);
 	print_lexer(lexer);
 	ast = ft_parse(lexer);
-	ft_compiler(ast, g_shell->env);
+	ft_execute(ast, g_shell->env);
 	del_ast(&ast);
 	lexer = NULL;
 }

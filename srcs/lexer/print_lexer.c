@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/05 00:34:12 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/08 04:23:00 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/05/09 00:20:45 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,8 @@ static void print_tokentype(e_token_type token_type)
 	token_type == 16 ? ft_printf("TOKEN_WORD "ANSI_RESET): 0;
 	token_type == 17 ? ft_printf("TOKEN_FOR "ANSI_RESET): 0;
 	token_type == 18 ? ft_printf("TOKEN_WHILE "ANSI_RESET): 0;
-	token_type == 19 ? ft_printf("TOKEN_NULL "ANSI_RESET): 0;
+	token_type == 19 ? ft_printf("TOKEN_BSLASH "ANSI_RESET): 0;
+	token_type == 20 ? ft_printf("TOKEN_NULL "ANSI_RESET): 0;
 }
 
 void 				print_lexer(t_list *lexer)
