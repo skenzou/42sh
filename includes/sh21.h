@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/28 13:06:21 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/09 06:42:16 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/05/09 23:43:30 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 # include <fcntl.h>
 #include <sys/ioctl.h>
 # define PREFIX "\x1b[32m\x1b[1m➜  \x1b[0m\x1b[37m\x1b[1m"
-# define SUFFIX "%s\x1b[0m \x1b[1m\x1b[31m%s\x1b[0m\x1b[33m\x1b[1m ✗\x1b[0m"
+# define SUFFIX "%s\x1b[0m \x1b[1m\x1b[31m%s\x1b[0m\x1b[33m\x1b[1m ✗ \x1b[0m"
 # define DEFAULT_HISTORY_FILE_NAME	".21sh_history"
 # define DEFAULT_ENV_FILE_NAME	".21sh_env"
 # define BUFFSIZE					4096
@@ -100,15 +100,17 @@ typedef struct	s_history
 {
 	int						len;
 	int						read;
-	char					file_name[BUFFSIZE];
+	char					*file_name;
 	int						position;
 	int						match[BUFFSIZE];
 	char					*data[MAX_HISTORY_LENGHT];
 }				t_history;
+
 typedef struct	s_shell
 {
 	t_cap		*tcap;
 	char		**env;
+	char		*var[256];
 	t_history	*history;
 }				t_shell;
 extern t_event g_arrow_event[];
@@ -141,7 +143,12 @@ int		ctrl_d_event(t_cap *tcap);
 */
 int		home_event(t_cap *tcap);
 int		end_event(t_cap *tcap);
-
+/*
+**	VAR.C
+*/
+int		read_var(char **var);
+char	*get_string_var(char *string, char **var);
+int		get_int_var(char *string, char **var);
 /*
 **	READER.C
 */
@@ -183,10 +190,10 @@ int		ft_right(t_cap *tcap);
 **	HISTORY.C
 */
 
-int		write_history(char *string);
-int		add_cmd_to_history(char *string);
-int		debug_history(void);
-int		read_history(void);
+int		write_history(char *string, t_history *history);
+int		add_cmd_to_history(char *string, t_history *history);
+int		debug_history(t_history *history);
+int		read_history(t_history *history);
 /*
 **PUSH.c
 */

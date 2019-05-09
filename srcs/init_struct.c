@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/09 00:37:47 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/09 07:01:48 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/05/09 23:43:57 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,19 @@ static int	init_history(t_history *history)
 	history->data[0] = NULL;
 	history->read = 0;
 	history->position = 0;
+	history->file_name = ft_strdup(get_string_var("HISTFILE", g_shell->var));
+	if (!history->file_name)
+		history->file_name = ft_strdup(DEFAULT_HISTORY_FILE_NAME);
 	ft_bzero(history->match, BUFFSIZE);
-	if (read_history() == -1)
+	if (read_history(history) == -1)
+		return (0);
+	return (1);
+}
+
+static int	init_var(char **var)
+{
+	ft_bzero(var, 256);
+	if (read_var(var) == -1)
 		return (0);
 	return (1);
 }
@@ -53,6 +64,7 @@ int			init_struct(t_term *trm, char **env)
 	g_shell->tcap = ft_memalloc(sizeof(*g_shell->tcap));
 	if (!(g_shell->env = dup_env(env)) || !g_shell->tcap || !g_shell->history)
 		return (-1);
+	init_var(g_shell->var);
 	init_termcap(g_shell->tcap);
 	init_history(g_shell->history);
 	trm->c_lflag &= ~(ICANON | ECHO);

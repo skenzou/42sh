@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/28 15:35:56 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/09 06:41:15 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/05/09 23:44:19 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ char	**dup_env(char **env)
 	return (p);
 }
 
-
 int		ft_put_termcaps(int c)
 {
 	write(1, &c, 1);
@@ -46,7 +45,7 @@ void	display_prompt_prefix(void)
 	string = getcwd(string, 20);
 	g_shell->tcap->prompt_len =
 		ft_strlen((string + ft_lastindexof(string, '/') + 1)) +
-			ft_strlen(name) + 4;
+			ft_strlen(name) + 6;
 	g_shell->tcap->cursx = g_shell->tcap->prompt_len;
 	ft_printf(PREFIX);
 	ft_printf(SUFFIX, (string + ft_lastindexof(string, '/') + 1), name);

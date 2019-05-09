@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/27 17:27:48 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/09 07:01:49 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/05/09 23:10:33 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,35 +52,6 @@ int				wcharlen(char nb)
 	return (count);
 }
 
-int	read_custom_env(void)
-{
-	char		*str;
-	int			i;
-	int			fd;
-	char		env_file[BUFFSIZE];
-	int			userlen;
-
-	i = 0;
-	userlen = ft_strlen(getenv("USER"));
-	ft_strcpy(env_file, "/Users/");
-	ft_strcpy(env_file + 7, getenv("USER"));
-	ft_strcpy(env_file + 7 + userlen, "/");
-	ft_strcpy(env_file + 7 + userlen + 1, DEFAULT_ENV_FILE_NAME);
-	env_file[8 + userlen + ft_strlen(DEFAULT_ENV_FILE_NAME)] = '\0';
-	fd = open(env_file, O_RDONLY);
-	ft_printf("fd file: %s %d\n", env_file, fd);
-	if (fd > 0)
-	{
-		while (get_next_line(fd, &str, '\n') > 0)
-		{
-			ft_printf("ligne: %d |%s|\n", i, str);
-			i++;
-		}
-	}
-	close(fd);
-	return (1);
-}
-
 int				main(int ac, char **av, char **env)
 {
 	t_term	term;
@@ -88,7 +59,6 @@ int				main(int ac, char **av, char **env)
 
 	(void)ac;
 	(void)av;
-	read_custom_env();
 	if (!(tgetent(NULL, getenv("TERM"))) || !init_struct(&term, env))
 		return (-1);
 	display_prompt_prefix();

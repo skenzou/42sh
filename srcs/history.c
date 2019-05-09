@@ -6,54 +6,44 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/01 17:45:36 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/09 07:01:47 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/05/09 23:44:14 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sh21.h"
 
-int	add_cmd_to_history(char *str)
+int	add_cmd_to_history(char *str, t_history *history)
 {
-	if (g_shell->history->len)
-		if (!ft_strcmp(str, g_shell->history->data[g_shell->history->len - 1]))
+	if (history->len)
+		if (!ft_strcmp(str, history->data[history->len - 1]))
 			return (1);
-	if (!(g_shell->history->data[g_shell->history->len++] = ft_strdup(str)))
+	if (!(history->data[history->len++] = ft_strdup(str)))
 		return (0);
-	g_shell->history->data[g_shell->history->len] = NULL;
-	if (!write_history(str))
+	history->data[history->len] = NULL;
+	if (!write_history(str, history))
 		return (-1);
 	return (1);
 }
 
-int	debug_history(void)
+int	debug_history(t_history *history)
 {
 	int i;
 
 	i = 0;
-	ft_printf("Len of history: %d;\n", g_shell->history->len);
-	while (g_shell->history->data[i])
+	ft_printf("Len of history: %d;\n", history->len);
+	while (history->data[i])
 	{
-		ft_printf("[%d]:  '%s';\n", i, g_shell->history->data[i]);
+		ft_printf("[%d]:  '%s';\n", i, history->data[i]);
 		i++;
 	}
 	return (1);
 }
 
-int	init_history(void)
-{
-	g_shell->history->len = 0;
-	g_shell->history->data[0] = NULL;
-	g_shell->history->read = 0;
-	if (read_history() == -1)
-		return (-1);
-	return (1);
-}
-
-int	write_history(char *string)
+int	write_history(char *string, t_history *history)
 {
 	int fd;
 
-	fd = open(HISTORY_FILE_NAME, O_RDWR | O_APPEND | O_CREAT, 0666);
+	fd = open(history->file_name, O_RDWR | O_APPEND | O_CREAT, 0666);
 	if (fd > 0)
 	{
 		ft_dprintf(fd, "%s#", string);
@@ -67,19 +57,19 @@ int	write_history(char *string)
 	return (-1);
 }
 
-int	read_history(void)
+int	read_history(t_history *history)
 {
 	char		*str;
 	int			ret;
 	int			fd;
 
-	fd = open(HISTORY_FILE_NAME, O_RDWR | O_APPEND | O_CREAT, 0666);
+	fd = open(DEFAULT_HISTORY_FILE_NAME, O_RDWR | O_APPEND | O_CREAT, 0666);
 	if (fd > 0)
 	{
 		while ((ret = get_next_line(fd, &str, '#')) > 0)
 		{
-			g_shell->history->read++;
-			if (!(g_shell->history->data[g_shell->history->len++] =
+			history->read++;
+			if (!(history->data[history->len++] =
 					ft_strdup(str)))
 				return (-1);
 		}
