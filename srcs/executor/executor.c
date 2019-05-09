@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/03 16:15:41 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/09 06:37:10 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/05/09 06:48:14 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -216,6 +216,7 @@ void	handle_redir(t_ast *root, char **env)
 	// e_op_type redir;
 	t_list *redir;
 	t_list *temp;
+	t_list *del;
 	int		fd;
 	int stdout;
 
@@ -230,6 +231,7 @@ void	handle_redir(t_ast *root, char **env)
 	// ft_strdel(&cmd);
 	fill_redir_list(root->token->content, &redir);
 	ft_lstrev(&redir);
+	del = redir;
 	ft_printf("======================\n");
 	temp = redir;
 	while (temp)
@@ -249,6 +251,7 @@ void	handle_redir(t_ast *root, char **env)
 		redir = redir->next;
 	}
 	redirect(ft_strsplit("/bin/ls", ' '), ((t_redir *)temp->content)->fd, env);
+	ft_lstdel(&del, redir_delone);
 }
 
 void ft_execute(t_ast *root, char **env)
