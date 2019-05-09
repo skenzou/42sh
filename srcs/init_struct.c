@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/09 00:37:47 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/09 00:43:04 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/05/09 02:26:14 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ static int	init_history(t_history *history)
 	history->len = 0;
 	history->data[0] = NULL;
 	history->read = 0;
+	history->position = 0;
+	ft_bzero(history->match, BUFFSIZE);
 	if (read_history() == -1)
 		return (0);
 	return (1);

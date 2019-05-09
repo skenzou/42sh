@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/27 17:27:48 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/09 00:42:44 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/05/09 05:56:01 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,14 +51,53 @@ int				wcharlen(char nb)
 	}
 	return (count);
 }
+char	*possible[] = {
+	"echo",
+	"cd",
+	"man",
+	"ls",
+	"cat",
+	"alias",
+	"execve",
+	"main",
+	"chien",
+	"chat",
+	"wcharlen",
+	"nano",
+	NULL
+};
+
+char	*correct(char *string, char **possible, int *difference)
+{
+	size_t	distance;
+	int i;
+	int smallest;
+	size_t dist;
+
+	i = -1;
+	distance = SIZE_MAX;
+	while (possible[++i])
+	{
+		if (distance > (dist = ft_levenshtein(string, possible[i])))
+		{
+			distance = dist;
+			smallest = i;
+		}
+	}
+	*difference = (int)distance;
+	return (possible[smallest]);
+}
 
 int				main(int ac, char **av, char **env)
 {
 	t_term	term;
 	char	buffer[4];
+	int distance;
 
 	(void)ac;
 	(void)av;
+	distance = 0;
+	//ft_printf("Distance de |%s| == %s et %d\n", av[1], correct(av[1], possible, &distance), distance);
 	if (!(tgetent(NULL, getenv("TERM"))) || !init_struct(&term, env))
 		return (-1);
 	display_prompt_prefix();

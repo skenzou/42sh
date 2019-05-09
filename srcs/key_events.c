@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/28 15:23:43 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/09 00:21:42 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/05/09 05:55:47 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ int		enter_event(t_cap *tcap)
 	tcap->char_len = 0;
 	if (!ft_strcmp(tcap->command, "history\n"))
 		debug_history();
+	else if (!ft_strcmp(tcap->command, "exit\n"))
+		exit(0);
 	else
 		ft_printf("\n%s", tcap->command);
 	ft_bzero(tcap->command, BUFFSIZE);

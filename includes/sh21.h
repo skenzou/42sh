@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/28 13:06:21 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/09 00:42:39 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/05/09 05:56:11 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@
 # define BACKSPACE					127
 # define ENTER						10
 # define CTRL_R						18
-# define CTRL_D						30
+# define CTRL_D						4
 # define TAB						9
 # define HOME_END1					27
 # define HOME_END2					91
@@ -99,6 +99,8 @@ typedef struct	s_history
 {
 	int						len;
 	int						read;
+	int						position;
+	int						match[BUFFSIZE];
 	char					*data[MAX_HISTORY_LENGHT];
 }				t_history;
 typedef struct	s_shell

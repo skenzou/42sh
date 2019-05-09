@@ -6,7 +6,7 @@
 #    By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/10/13 13:11:49 by aben-azz          #+#    #+#              #
-#    Updated: 2019/05/09 00:15:43 by aben-azz         ###   ########.fr        #
+#    Updated: 2019/05/09 04:06:35 by aben-azz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,7 +63,8 @@ ft_utoa_base.c ft_intlen_base.c min.c max.c ft_printf.c geters.c \
 handle_numbers.c handlers.c ft_lstrev.c ft_lstdestroy.c ft_count_words.c \
 ft_itoa_base.c rgb2dec.c ft_percent.c get_color_from_percent.c ft_rand.c \
 ft_is_space.c ft_strendswith.c ft_strstartswith.c ft_lastindexof.c \
-ft_strreplace.c ft_strsplitwhitespace.c ft_substr.c ft_split_count.c
+ft_strreplace.c ft_strsplitwhitespace.c ft_substr.c ft_split_count.c \
+ft_levenshtein.c
 all:
 	@make -j $(NAME)
 
