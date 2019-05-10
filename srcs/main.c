@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/27 17:27:48 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/09 23:10:33 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/05/10 02:43:38 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int				main(int ac, char **av, char **env)
 	(void)av;
 	if (!(tgetent(NULL, getenv("TERM"))) || !init_struct(&term, env))
 		return (-1);
-	display_prompt_prefix();
+	print_prompt_prefix();
 	while ("21sh")
 	{
 		signal(SIGINT, sigint_handler);

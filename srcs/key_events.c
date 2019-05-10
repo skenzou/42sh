@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/28 15:23:43 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/09 23:33:34 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/05/10 02:43:37 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int		enter_event(t_cap *tcap)
 	else
 		ft_printf("\n%s", tcap->command);
 	ft_bzero(tcap->command, BUFFSIZE);
-	display_prompt_prefix();
+	print_prompt_prefix();
 	return (1);
 }
 

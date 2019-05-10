@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/28 13:06:21 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/09 23:43:30 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/05/10 02:43:48 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,11 @@
 # include <unistd.h>
 # include <math.h>
 # include <fcntl.h>
-#include <sys/ioctl.h>
-# define PREFIX "\x1b[32m\x1b[1m➜  \x1b[0m\x1b[37m\x1b[1m"
-# define SUFFIX "%s\x1b[0m \x1b[1m\x1b[31m%s\x1b[0m\x1b[33m\x1b[1m ✗ \x1b[0m"
+# include <sys/ioctl.h>
+# define PROMPT1 "\x1b[32m\x1b[1m➜  \x1b[0m"
+# define PROMPT2 "\x1b[37m\x1b[1m%s \x1b[0m"
+# define PROMPT3 "\x1b[34mgit:(\x1b[0m\x1b[33m%s\x1b[34m) \x1b[0m"
+# define PROMPT4 "\x1b[1m\x1b[31m%s\x1b[0m\x1b[33m\x1b[1m ✗ \x1b[0m"
 # define DEFAULT_HISTORY_FILE_NAME	".21sh_history"
 # define DEFAULT_ENV_FILE_NAME	".21sh_env"
 # define BUFFSIZE					4096
@@ -55,8 +57,6 @@
 # define HOME						72
 # define END						70
 # define MAX_HISTORY_LENGHT			4096
-
-
 # define UNUSED			0
 # define DEBUG_LOG		0
 typedef struct	s_data
@@ -156,12 +156,16 @@ int		read_buffer(char *buffer, t_cap *tcap);
 void	ft_clear_all_lines(t_cap *tcap);
 
 /*
+** PROMPT_PREFIX.c
+*/
+void		print_prompt_prefix(void);
+/*
 **	OTHERS.C
 */
 int		ft_put_termcaps(int c);
 char	**dup_env(char **env);
-void	display_prompt_prefix(void);
 char	*correct(char *string, char **possible, int *difference);
+char	*get_git_status(void);
 /*
 **	SIGNAL_HANDLER.C
 */

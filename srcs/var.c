@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/09 23:42:34 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/09 23:44:25 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/05/10 02:43:46 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ int		read_var(char **var)
 	{
 		while (get_next_line(fd, &str, '\n') > 0)
 		{
-			if (!(var[i] = ft_strdup(str)))
-				return (-1);
+			if (!(var[i] = ft_strdup(str)) || !~ft_indexof(var[i], '='))
+				return (!~ft_indexof(var[i], '=') ? -2 : -1);
 			i++;
 		}
 		var[i] = NULL;

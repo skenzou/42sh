@@ -1,3 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2019/05/10 02:03:44 by aben-azz          #+#    #+#              #
+#    Updated: 2019/05/10 02:43:52 by aben-azz         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 _END			=	\x1b[0m
 _BOLD			=	\x1b[1m
 _UNDER		=	\x1b[4m
@@ -31,7 +43,7 @@ INC_DIR		=	includes/
 OBJ_DIR		=	obj/
 SRC_BASE 	= main.c arrow_events.c key_events.c reader.c signal_handler.c \
 others.c read_arrow.c read_key.c history.c push.c move.c shift_arrow_events.c \
-home_end_events.c init_struct.c var.c
+home_end_events.c init_struct.c var.c prompt_prefix.c
 SRCS			=	$(addprefix $(SRC_DIR), $(SRC_BASE))
 OBJS			=	$(addprefix $(OBJ_DIR), $(SRC_BASE:.c=.o))
 NB				=	$(words $(SRC_BASE))

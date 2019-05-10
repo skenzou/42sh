@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/28 15:35:56 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/09 23:44:19 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/05/10 02:43:39 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,21 +34,27 @@ int		ft_put_termcaps(int c)
 	return (1);
 }
 
-void	display_prompt_prefix(void)
+char	*get_git_status(void)
 {
-	char *string;
-	char *name;
+	char		*str;
+	int			i;
+	int			fd;
+	char		*status;
 
-	name = getenv("USER");
-	name || (name = "21sh");
-	string = NULL;
-	string = getcwd(string, 20);
-	g_shell->tcap->prompt_len =
-		ft_strlen((string + ft_lastindexof(string, '/') + 1)) +
-			ft_strlen(name) + 6;
-	g_shell->tcap->cursx = g_shell->tcap->prompt_len;
-	ft_printf(PREFIX);
-	ft_printf(SUFFIX, (string + ft_lastindexof(string, '/') + 1), name);
+	i = 0;
+	if ((fd = open(".git/HEAD", O_RDONLY)) > 0)
+	{
+		while (get_next_line(fd, &str, '\n') > 0)
+		{
+			if ((status = str + ft_lastindexof(str, '/') + 1))
+				return (status);
+			else
+				return (NULL);
+			i++;
+		}
+	}
+	close(fd);
+	return (NULL);
 }
 
 char	*correct(char *string, char **possible, int *difference)

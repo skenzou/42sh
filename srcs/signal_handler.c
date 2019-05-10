@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/28 15:31:17 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/09 23:44:22 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/05/10 02:43:45 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	sigint_handler(int sig)
 	{
 		signal(SIGINT, sigint_handler);
 		ft_printf("\n");
-		display_prompt_prefix();
+		print_prompt_prefix();
 		exit(0);
 	}
 }
@@ -35,6 +35,6 @@ void	sigwinch_handler(int sig)
 		if (ioctl(1, TIOCGWINSZ, w))
 			g_shell->tcap->cursx_max = w->ws_col - 1;
 		ft_printf("redimensionnement:{%d, %d}\n", tgetnum("co"), tgetnum("li"));
-		display_prompt_prefix();
+		print_prompt_prefix();
 	}
 }
