@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 23:56:22 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/10 02:43:41 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/05/10 08:54:53 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,24 +37,41 @@ int		ft_add_n_char(char buff[4], int pos, int len, t_cap *tcap)
 ** sinon on avance simplement le curseur d'un cran vers la droite
 */
 
+void	ft_clean_buff(t_cap *tcap)
+{
+	int		i;
+
+	i = 0;
+	while (tcap->command[i])
+	{
+		if (tcap->command[i] == '\n')
+		{
+			ft_bzero(tcap->command + i + 1, BUFFSIZE - i - 1);
+			break ;
+		}
+		if (tcap->command[i] == '\t')
+			tcap->command[i] = ' ';
+		i++;
+	}
+}
+
 int		ft_insert(char *buff, t_cap *tcap)
 {
 	int		position;
 	int		i;
 	int		len;
 
-	ft_printf("%s", buff);
 	if (tcap->char_len + ft_strlen(buff) >= BUFFSIZE - 2)
 		tputs(tcap->sound, 1, ft_put_termcaps);
 	else
 	{
 		i = -1;
 		len = ft_strlen(buff);
-		position = tcap->cursy * (tcap->cursx_max + 1) +
+		position = tcap->cursy * (tcap->cursx_max) +
 			tcap->cursx - tcap->prompt_len;
-		ft_clear_all_lines(tcap);
 		if (ft_add_n_char(buff, position, len, tcap) == -1)
 			return (-1);
+		ft_clear_all_lines(tcap);
 		ft_putstr(tcap->command);
 		ft_replace_cursor(tcap);
 		while (++i < len)

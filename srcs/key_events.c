@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/28 15:23:43 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/10 02:43:37 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/05/10 09:00:21 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 int		enter_event(t_cap *tcap)
 {
+	ft_printf("\x1b[0m");
 	tcap->cursx = tcap->prompt_len;
 	tcap->cursy = 0;
 	if (tcap->char_len >= BUFFSIZE - 1)
@@ -59,5 +60,6 @@ int		ctrl_d_event(t_cap *tcap)
 int		tab_event(t_cap *tcap)
 {
 	(void)tcap;
+	ft_printf("curs: {%d, %d}\n", tcap->cursy, tcap->cursx);
 	return (1);
 }

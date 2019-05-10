@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/28 13:06:21 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/10 02:43:48 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/05/10 05:51:04 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,38 +25,39 @@
 # include <math.h>
 # include <fcntl.h>
 # include <sys/ioctl.h>
-# define PROMPT1 "\x1b[32m\x1b[1m➜  \x1b[0m"
-# define PROMPT2 "\x1b[37m\x1b[1m%s \x1b[0m"
-# define PROMPT3 "\x1b[34mgit:(\x1b[0m\x1b[33m%s\x1b[34m) \x1b[0m"
-# define PROMPT4 "\x1b[1m\x1b[31m%s\x1b[0m\x1b[33m\x1b[1m ✗ \x1b[0m"
-# define DEFAULT_HISTORY_FILE_NAME	".21sh_history"
+# define PROMPT1 				"\x1b[0m\x1b[32m\x1b[1m➜  \x1b[0m"
+# define PROMPT2 				"\x1b[37m\x1b[1m%s \x1b[0m"
+# define PROMPT3 			"\x1b[34mgit:(\x1b[0m\x1b[33m%s\x1b[34m) \x1b[0m"
+# define PROMPT4 				"\x1b[1m\x1b[31m%s\x1b[0m\x1b[33m\x1b[1m ✗ "
+# define DEFAULT_HISTORY_NAME	".21sh_history"
 # define DEFAULT_ENV_FILE_NAME	".21sh_env"
-# define BUFFSIZE					4096
-# define ARROW_CODE1				27
-# define ARROW_CODE2				91
-# define UP							65
-# define DOWN						66
-# define RIGHT						67
-# define LEFT						68
-# define SHIFT_CODE1				27
-# define SHIFT_CODE2				91
-# define SHIFT_CODE3				49
-# define ARROW_CODE3				59
-# define ARROW_CODE4				50
-# define SHIFT_UP					75
-# define SHIFT_DOWN					76
-# define SHIFT_RIGHT				77
-# define SHIFT_LEFT					78
-# define BACKSPACE					127
-# define ENTER						10
-# define CTRL_R						18
-# define CTRL_D						4
-# define TAB						9
-# define HOME_END1					27
-# define HOME_END2					91
-# define HOME						72
-# define END						70
-# define MAX_HISTORY_LENGHT			4096
+# define DEFAULT_PROMPT_COLOR	"\x1b[27m"
+# define BUFFSIZE				4096
+# define ARROW_CODE1			27
+# define ARROW_CODE2			91
+# define UP						65
+# define DOWN					66
+# define RIGHT					67
+# define LEFT					68
+# define SHIFT_CODE1			27
+# define SHIFT_CODE2			91
+# define SHIFT_CODE3			49
+# define ARROW_CODE3			59
+# define ARROW_CODE4			50
+# define SHIFT_UP				75
+# define SHIFT_DOWN				76
+# define SHIFT_RIGHT			77
+# define SHIFT_LEFT				78
+# define BACKSPACE				127
+# define ENTER					10
+# define CTRL_R					18
+# define CTRL_D					4
+# define TAB					9
+# define HOME_END1				27
+# define HOME_END2				91
+# define HOME					72
+# define END					70
+# define MAX_HISTORY_LENGHT		4096
 # define UNUSED			0
 # define DEBUG_LOG		0
 typedef struct	s_data
@@ -190,6 +191,8 @@ int		read_arrow(char buffer, t_cap *tcap);
 void	ft_replace_cursor(t_cap *tcap);
 int		ft_left(t_cap *tcap);
 int		ft_right(t_cap *tcap);
+int		ft_up(t_cap *tcap);
+int		ft_down(t_cap *tcap);
 /*
 **	HISTORY.C
 */

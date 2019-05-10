@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/10 02:39:58 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/10 02:43:40 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/05/10 08:49:03 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,9 @@ static char	*make_prompt(char *format)
 	char	*prompt;
 
 	(void)format;
-	prompt = "xd ";
+	prompt = format;
+	g_shell->tcap->prompt_len = ft_strlen(prompt);
+	g_shell->tcap->cursx = g_shell->tcap->prompt_len;
 	return (prompt);
 }
 
@@ -53,7 +55,7 @@ void		print_prompt_prefix(void)
 	char *custom_prompt;
 
 	ps1 = get_string_var("PS1", g_shell->var);
-	if (!ft_strcmp(ps1, "null") && ps1)
+	if (ps1 && ft_strcmp(ps1, "NULL") && ft_strcmp(ps1, "null"))
 	{
 		if (!(custom_prompt = make_prompt(ps1)))
 			print_default_prompt_prefix();
@@ -62,4 +64,5 @@ void		print_prompt_prefix(void)
 	}
 	else
 		print_default_prompt_prefix();
+	ft_putstr(DEFAULT_PROMPT_COLOR);
 }

@@ -6,18 +6,44 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/28 15:31:17 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/10 02:43:43 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/05/10 08:58:29 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sh21.h"
 
+void	ft_go_up(size_t row)
+{
+	char	*res;
+
+	if (row == 0)
+		return ;
+	res = tgetstr("UP", NULL);
+	tputs(tgoto(res, 0, row), 0, ft_put_termcaps);
+}
+
 void	ft_clear_all_lines(t_cap *tcap)
 {
-	(void)tcap;
-	tputs(tgoto(tcap->place_cursor, UNUSED,
-		tcap->prompt_len + 1), 1, ft_put_termcaps);
-	tputs(tcap->clr_all_line, 1, ft_put_termcaps);
+	int		i;
+
+	i = tcap->cursy + 1;
+	while (--i > 0)
+		tputs(tcap->up, 1, ft_put_termcaps);
+	tputs(tgetstr("cr", NULL), 1, ft_put_termcaps);
+	i = -1;
+	while (++i < tcap->prompt_len + 1)
+		tputs(tcap->right, 1, ft_put_termcaps);
+	tputs(tgetstr("ce", NULL), 1, ft_put_termcaps);
+	if (tcap->char_len + tcap->prompt_len > tcap->cursx_max - 1)
+	{
+		tputs(tcap->down, 1, ft_put_termcaps);
+		tputs(tcap->carriage, 1, ft_put_termcaps);
+		tputs(tgetstr("cd", NULL), 1, ft_put_termcaps);
+		tputs(tcap->up, 1, ft_put_termcaps);
+		i = -1;
+		while (++i < tcap->prompt_len)
+			tputs(tcap->right, 1, ft_put_termcaps);
+	}
 }
 
 /*

@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/09 00:37:47 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/10 02:43:36 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/05/10 09:00:21 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static int	init_termcap(t_cap *tcap)
 
 	if (!(w = ft_memalloc(sizeof(*w))))
 		return (0);
-	tcap->cursx_max = (ioctl(1, TIOCGWINSZ, w) ? w->ws_col : tgetnum("co")) - 1;
+	tcap->cursx_max = (ioctl(1, TIOCGWINSZ, w) ? w->ws_col -1 : tgetnum("co") - 1);
 	tcap->cursy = 0;
 	free(w);
 	tcap->up = tgetstr("up", NULL);
@@ -41,7 +41,7 @@ static int	init_history(t_history *history)
 	history->position = 0;
 	history->file_name = ft_strdup(get_string_var("HISTFILE", g_shell->var));
 	if (!history->file_name)
-		history->file_name = ft_strdup(DEFAULT_HISTORY_FILE_NAME);
+		history->file_name = ft_strdup(DEFAULT_HISTORY_NAME);
 	ft_bzero(history->match, BUFFSIZE);
 	if (read_history(history) == -1)
 		return (0);

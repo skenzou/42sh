@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/01 17:45:36 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/10 02:43:35 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/05/10 09:00:19 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int	read_history(t_history *history)
 	int			ret;
 	int			fd;
 
-	fd = open(DEFAULT_HISTORY_FILE_NAME, O_RDWR | O_APPEND | O_CREAT, 0666);
+	fd = open(history->file_name, O_RDWR | O_APPEND | O_CREAT, 0666);
 	if (fd > 0)
 	{
 		while ((ret = get_next_line(fd, &str, '#')) > 0)

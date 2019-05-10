@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/09 00:03:36 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/10 02:43:39 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/05/10 09:00:11 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,19 @@ void	ft_replace_cursor(t_cap *tcap)
 		tputs(tcap->right, 1, ft_put_termcaps);
 }
 
+void	ft_go_to_eol(t_cap *tcap)
+{
+	int		i;
+
+	i = tcap->cursx;
+	while (i < tcap->cursx_max)
+	{
+		tputs(tcap->right, 1, ft_put_termcaps);
+		i++;
+	}
+	tcap->cursx = tcap->cursx_max;
+}
+
 /*
 ** ft_left
 ** Verifie si on est pas au debut du prompt, et au y 0, sinon tc envoi un BIP
@@ -51,6 +64,7 @@ int		ft_left(t_cap *tcap)
 	{
 		tputs(tcap->up, 1, ft_put_termcaps);
 		tcap->cursy--;
+		ft_go_to_eol(tcap);
 	}
 	else if (tcap->cursx != 0)
 	{
@@ -73,7 +87,7 @@ int		ft_right(t_cap *tcap)
 	if (tcap->cursy * (tcap->cursx_max + 1) + tcap->cursx + 1
 		== tcap->char_len + tcap->prompt_len + 1)
 		tputs(tcap->sound, 1, ft_put_termcaps);
-	else if (tcap->cursx + 1 == tcap->cursx_max)
+	else if (tcap->cursx == tcap->cursx_max)
 	{
 		tputs(tcap->down, 1, ft_put_termcaps);
 		tputs(tcap->carriage, 1, ft_put_termcaps);
@@ -85,5 +99,17 @@ int		ft_right(t_cap *tcap)
 		tputs(tcap->right, 1, ft_put_termcaps);
 		tcap->cursx++;
 	}
+	return (1);
+}
+
+int		ft_up(t_cap *tcap)
+{
+	tputs(tcap->up, 1, ft_put_termcaps);
+	return (1);
+}
+
+int		ft_down(t_cap *tcap)
+{
+	tputs(tcap->down, 1, ft_put_termcaps);
 	return (1);
 }
