@@ -6,13 +6,13 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/03 16:15:41 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/09 06:48:14 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/05/10 08:58:51 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-void 		redirect(char **cmd, int fd, char **env)
+void 		redirect(char **cmd, char **env)
 {
 	pid_t pid;
 
@@ -20,7 +20,7 @@ void 		redirect(char **cmd, int fd, char **env)
 	signal(SIGINT, sighandler);
 	if (pid == 0)
 	{
-		dup2(fd, 1); // recupere stdout
+		// dup2(fd, STDOUT_FILENO); // recupere stdout
 		// dup2(fd, 2); // recupere stderr
 		execve(cmd[0], cmd, env);
 		exit(1);
@@ -108,19 +108,63 @@ void search_pipe(t_ast *root,char *str, char **env)
 // 	return (NULL);
 // }
 
-static char		*get_next_word(char **start)
+static char		*go_to_next_word(char **start, char separator)
 {
-	char *end;
+	char *temp;
 	int len;
+	char c;
 
-	end = ft_strchr(*start, ' ');
-	if (end)
-		len = end - *start;
-	else
-		len = ft_strlen(*start);
-	end = *start;
-	(*start) += (len - 1);
-	return (ft_strsub(end, 0, len));
+	len = 0;
+	while ((*start)[len] && (*start)[len] != separator)
+	{
+		if ((*start)[len] == '\\')
+			len+=2;
+		if (((*start)[len] == '"' || (*start)[len] == '\'') && (c = (*start)[len]))
+		{
+			len++;
+			while ((*start)[len] && (*start)[len] != c)
+				len++;
+		}
+		len++;
+	}
+	temp = (*start);
+	(*start) += (len + ((*start)[len] != 0));
+	return (ft_strsub(temp, 0, len));
+	// end = ft_strchr(*start, ' ');
+	// if (end)
+	// 	len = end - *start;
+	// else
+	// 	len = ft_strlen(*start);
+	// end = *start;
+	// (*start) += (len - 1);
+	// return (ft_strsub(end, 0, len));
+}
+
+static char		*fetch_command(char **start)
+{
+	char *temp;
+	int len;
+	char c;
+
+	len = 0;
+	while ((*start)[len])
+	{
+		if ((*start)[len] == '\\')
+			len+=2;
+		if (((*start)[len] == '"' || (*start)[len] == '\'') && (c = (*start)[len]))
+		{
+			len++;
+			while ((*start)[len] && (*start)[len] != c)
+				len++;
+		}
+		if (!(*start)[len] || !ft_strncmp((*start) + len, ">>", 2) || !ft_strncmp((*start) + len, "<<", 2)
+			|| (*start)[len] == '>' || (*start)[len] == '<')
+			break ;
+		len++;
+	}
+	temp = (*start);
+	(*start) += len;
+	return (ft_strsub(temp, 0, len));
 }
 
 static void		create_redir(t_list **redirs, char *dest, e_op_type redir_type)
@@ -161,26 +205,22 @@ static e_op_type	get_redir_type(char **str)
 	return (OTHER_OP);
 }
 
-static void		fill_redir_list(char *cmd, t_list **redirs)
+static char		*fill_redir_list(char *cmd, t_list **redirs)
 {
 	e_op_type optype;
-	char c;
+	// char c;
+	// int i;
+	char *ret;
 
 	while (*cmd)
 	{
-		if (*cmd == '\\')
-			cmd+=2;
-		if ((*cmd == '"' || *cmd == '\'') && (c = *cmd))
-		{
-			while (*cmd && *cmd != c)
-				cmd++;
-			cmd++;
-		}
 		optype = get_redir_type(&cmd);
 		if (optype != OTHER_OP)
-			create_redir(redirs, get_next_word(&cmd), optype);
-		cmd++;
+			create_redir(redirs, go_to_next_word(&cmd, ' '), optype);
+		else
+			ret = fetch_command(&cmd);
 	}
+	return (ret);
 }
 
 int		open_file(t_redir *redir)
@@ -219,9 +259,11 @@ void	handle_redir(t_ast *root, char **env)
 	t_list *del;
 	int		fd;
 	int stdout;
+	char *cmd;
+	char **args;
+	int i;
 
 	redir = NULL;
-	(void)env;
 	stdout = dup(1);
 	// cmd = get_cmd_from_redir(root->token->content, &cmd_len, &redir);
 	// // ft_printf("cmd: |%s|\n",cmd);
@@ -229,10 +271,11 @@ void	handle_redir(t_ast *root, char **env)
 	// ft_printf("path: |%s|\n",path);
 	// redirect(ft_strsplit(cmd, ' '), path, env, redir == GREAT);
 	// ft_strdel(&cmd);
-	fill_redir_list(root->token->content, &redir);
+	cmd = fill_redir_list(root->token->content, &redir);
 	ft_lstrev(&redir);
 	del = redir;
 	ft_printf("======================\n");
+	ft_printf("cmd: |%s|\n", cmd);
 	temp = redir;
 	while (temp)
 	{
@@ -243,15 +286,22 @@ void	handle_redir(t_ast *root, char **env)
 	ft_printf("======================\n");
 	while (redir)
 	{
+		remove_quote(redir->content);
 		fd = open_file(redir->content);
 		((t_redir *)redir->content)->fd = fd;
-		// if (fd != -1)
-		// 	dup2(fd, stdout);
+		if (fd != -1)
+			dup2(fd, STDOUT_FILENO);
 		temp = redir;
 		redir = redir->next;
 	}
-	redirect(ft_strsplit("/bin/ls", ' '), ((t_redir *)temp->content)->fd, env);
+	i = -1;
+	args = ft_strsplit(cmd, ' ');
+	while (args[++i])
+		remove_quote(&args[i]);
+	redirect(ft_strsplit(cmd, ' '), env);
 	ft_lstdel(&del, redir_delone);
+	ft_strdel(&cmd);
+	dup2(stdout, STDOUT_FILENO); // restore stdout
 }
 
 void ft_execute(t_ast *root, char **env)
