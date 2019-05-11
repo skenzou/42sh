@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/09 00:37:47 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/10 09:00:21 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/05/11 23:34:16 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,15 @@ static int	init_termcap(t_cap *tcap)
 
 static int	init_history(t_history *history)
 {
+	char *string;
+
 	history->len = 0;
 	history->data[0] = NULL;
 	history->read = 0;
 	history->position = 0;
-	history->file_name = ft_strdup(get_string_var("HISTFILE", g_shell->var));
-	if (!history->file_name)
+	if ((string = get_string_var("HISTFILE", g_shell->var)))
+		history->file_name = ft_strdup(get_string_var("HISTFILE", g_shell->var));
+	else
 		history->file_name = ft_strdup(DEFAULT_HISTORY_NAME);
 	ft_bzero(history->match, BUFFSIZE);
 	if (read_history(history) == -1)
