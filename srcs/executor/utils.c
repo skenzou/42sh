@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/09 06:45:33 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/10 09:02:22 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/05/11 23:54:22 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void	remove_escape(char **str, int *start)
 	(*start) += !is_newline;
 }
 
-static void remove_chunk(char **str, int start, int end)
+static void realloc_without_quotes(char **str, int start, int end)
 {
 	char *tmp;
 
@@ -56,7 +56,7 @@ static void	remove_double(char **str, int *i)
 		else
 			(*i)++;
 	}
-	remove_chunk(str, start, *i);
+	realloc_without_quotes(str, start, *i);
 	(*i)--;
 }
 
@@ -68,7 +68,7 @@ static void	remove_single(char **str, int *i)
 	(*i)++;
 	while ((*str)[*i] && (*str)[*i] != '\'')
 		(*i)++;
-	remove_chunk(str, start, *i);
+	realloc_without_quotes(str, start, *i);
 	(*i)--;
 }
 

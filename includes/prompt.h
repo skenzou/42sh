@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 07:12:40 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/08 23:04:27 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/05/12 00:57:27 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,7 @@ typedef struct	s_cap
 	int			prompt_len;
 	int			char_len;
 	char		command[BUFFSIZE];
+	char		*prompt;
 }				t_cap;
 typedef struct	s_event
 {

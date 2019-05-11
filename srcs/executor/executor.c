@@ -6,13 +6,13 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/03 16:15:41 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/10 08:58:51 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/05/12 00:14:27 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-void 		redirect(char **cmd, char **env)
+void 		ft_fork(char **cmd, char **env)
 {
 	pid_t pid;
 
@@ -259,12 +259,17 @@ void	handle_redir(t_ast *root, char **env)
 	t_list *del;
 	int		fd;
 	int stdout;
+	int stdin;
 	char *cmd;
 	char **args;
 	int i;
 
 	redir = NULL;
-	stdout = dup(1);
+
+	// save STDOUT && STDIN
+	stdout = dup(STDOUT_FILENO);
+	stdin = dup(STDIN_FILENO);
+
 	// cmd = get_cmd_from_redir(root->token->content, &cmd_len, &redir);
 	// // ft_printf("cmd: |%s|\n",cmd);
 	// path = root->token->content + cmd_len + 2 + (redir == DBL_LESS_DASH || redir == DBL_GREAT_DASH);
@@ -274,6 +279,8 @@ void	handle_redir(t_ast *root, char **env)
 	cmd = fill_redir_list(root->token->content, &redir);
 	ft_lstrev(&redir);
 	del = redir;
+
+	//printing all the redirection to check if they are all right
 	ft_printf("======================\n");
 	ft_printf("cmd: |%s|\n", cmd);
 	temp = redir;
@@ -284,24 +291,40 @@ void	handle_redir(t_ast *root, char **env)
 		temp = temp->next;
 	}
 	ft_printf("======================\n");
+
+	//Apply all redirection
 	while (redir)
 	{
 		remove_quote(redir->content);
 		fd = open_file(redir->content);
 		((t_redir *)redir->content)->fd = fd;
 		if (fd != -1)
-			dup2(fd, STDOUT_FILENO);
+		{
+			if (((t_redir *)redir->content)->op_type == LESS)
+				dup2(fd, STDIN_FILENO);
+			else
+				dup2(fd, STDOUT_FILENO);
+		}
 		temp = redir;
 		redir = redir->next;
 	}
+
+	// remove quote from all args
 	i = -1;
 	args = ft_strsplit(cmd, ' ');
 	while (args[++i])
 		remove_quote(&args[i]);
-	redirect(ft_strsplit(cmd, ' '), env);
+
+	// Execut the cmd with a fork
+	ft_fork(ft_strsplit(cmd, ' '), env);
+
+	// Free the memory
 	ft_lstdel(&del, redir_delone);
 	ft_strdel(&cmd);
-	dup2(stdout, STDOUT_FILENO); // restore stdout
+
+	// restore STDOUT & STDIN
+	dup2(stdout, STDOUT_FILENO);
+	dup2(stdin, STDIN_FILENO);
 }
 
 void ft_execute(t_ast *root, char **env)

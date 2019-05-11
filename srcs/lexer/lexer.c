@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/30 18:51:02 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/09 00:27:18 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/05/11 23:50:18 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,12 +133,13 @@ int					build_lexer(char *input, t_list **lexer)
 	char		*prev;
 
 	prev = input;
+	input[ft_strlen(input) - 1] = '\0';
 	while (input && *input)
 	{
 		// while (*input && *input == '\\')
 		// 	input++;
 		curr = check_ops(input);
-		if ((curr.op || *input == '"' || *input == '\'') && prev != input)
+		if ((curr.op) && prev != input)
 			create_token(lexer, ft_strsub(prev, 0, input - prev), TOKEN_WORD, OTHER_OP);
 		if (curr.op)
 		{
