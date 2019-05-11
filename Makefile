@@ -6,7 +6,7 @@
 #    By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/10 02:03:44 by aben-azz          #+#    #+#              #
-#    Updated: 2019/05/10 02:43:52 by aben-azz         ###   ########.fr        #
+#    Updated: 2019/05/11 23:10:39 by aben-azz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,7 @@ _ICYAN		=	\x1b[46m
 _IWHITE		=	\x1b[47m
 NAME			=	21sh
 CC				=	gcc
-FLAGS			=	-Wall -Wextra -Werror
+FLAGS			=	-Wall -Wextra -Werror -g -v
 D_FLAGS		=	-g
 DELTA			=	$$(echo "$$(tput cols)-47"|bc)
 LIBFT_DIR	=	libft/
