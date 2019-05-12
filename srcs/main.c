@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/27 17:27:48 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/12 07:16:15 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/05/12 09:17:27 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,13 @@ t_event g_key_event[] = {
 };
 t_shell *g_shell;
 
+int		debug(void)
+{
+	int fd = open("./log.log", O_RDWR | O_APPEND, 0666);
+
+	return (fd);
+
+}
 int				wcharlen(char nb)
 {
 	int i;
@@ -83,8 +90,6 @@ char	*read_line(t_cap *tcap)
 
 	ft_bzero(tcap->command, BUFFSIZE);
 	print_prompt_prefix();
-	int fd = open("./log.log", O_RDWR | O_APPEND, 0666);
-	ft_dprintf(fd, "curs: {%d/%d, %d}len: %d prompt: %d\n", g_shell->tcap->cursx,g_shell->tcap->cursx_max, g_shell->tcap->cursy, g_shell->tcap->char_len, g_shell->tcap->prompt_len);
 	while ("21sh")
 	{
 		ft_bzero(buffer, 4);
@@ -98,10 +103,13 @@ char	*read_line(t_cap *tcap)
 
 int				handler(char *string)
 {
-	ft_printf("command: %s", string);
+	if (!ft_strcmp(string, "history\n"))
+		debug_history(g_shell->history);
+	else
+		ft_printf("command: %s", string);
+	g_shell->history->position = -1;
 	return (1);
 }
-
 
 int				main(int ac, char **av, char **env)
 {

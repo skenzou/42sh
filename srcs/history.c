@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/01 17:45:36 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/12 07:20:47 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/05/12 08:45:55 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int	add_cmd_to_history(char *str, t_history *history)
 			return (1);
 	if (!(history->data[history->len++] = ft_strdup(str)))
 		return (0);
+	history->position = history->read;
 	history->data[history->len] = NULL;
 	if (!write_history(str, history))
 		return (-1);
@@ -30,12 +31,12 @@ int	debug_history(t_history *history)
 	int i;
 
 	i = 0;
-	ft_printf("Len of history: %d;\n", history->len);
 	while (history->data[i])
 	{
 		ft_printf("[%d]:  '%s';\n", i, history->data[i]);
 		i++;
 	}
+	ft_printf("Len of history: %d;pos %d\n", history->len, history->position);
 	return (1);
 }
 

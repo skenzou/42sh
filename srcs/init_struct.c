@@ -6,13 +6,13 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/09 00:37:47 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/12 07:16:13 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/05/12 09:17:24 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sh21.h"
 
-static int	init_termcap(t_cap *tcap)
+int	init_termcap(t_cap *tcap)
 {
 	struct winsize	*w;
 
@@ -41,7 +41,7 @@ static int	init_history(t_history *history)
 	history->len = 0;
 	history->data[0] = NULL;
 	history->read = 0;
-	history->position = 0;
+	history->position = -1;
 	if ((string = get_string_var("HISTFILE", g_shell->var)))
 		history->file_name = ft_strjoin("/Users/", ft_strcjoin(getenv("USER"), string, '/'));
 	else

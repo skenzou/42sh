@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/28 13:06:21 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/12 06:08:25 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/05/12 09:08:44 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -216,11 +216,13 @@ void	ft_clean_buff(t_cap *tcap);
 **INIT_STRUCT.c
 */
 int		init_struct(t_term *trm, char **env);
+int		init_termcap(t_cap *tcap);
 /*
 **	MAIN.C
 */
 
 int		wcharlen(char nb);
 char	*read_line(t_cap *tcap);
+int		debug(void);
 
 #endif

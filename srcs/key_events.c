@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/28 15:23:43 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/12 07:16:14 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/05/12 09:17:27 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 int		enter_event(t_cap *tcap)
 {
 	(void)tcap;
+	g_shell->history->position = -1;
 	return (-2);
 }
 
@@ -37,9 +38,9 @@ int		ctrl_d_event(t_cap *tcap)
 	return (1);
 }
 
+
 int		tab_event(t_cap *tcap)
 {
 	(void)tcap;
-	ft_printf("curs: {%d, %d}\n", tcap->cursy, tcap->cursx);
 	return (1);
 }
