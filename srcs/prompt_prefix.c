@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/10 02:39:58 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/10 08:49:03 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/05/12 04:00:34 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,14 @@ void		print_prompt_prefix(void)
 {
 	char *ps1;
 	char *custom_prompt;
+	char *prompt;
 
+	prompt = g_shell->tcap->prompt;
+	if (prompt)
+	{
+		ft_printf("%s ", make_prompt(prompt));
+		return ;
+	}
 	ps1 = get_string_var("PS1", g_shell->var);
 	if (ps1 && ft_strcmp(ps1, "NULL") && ft_strcmp(ps1, "null"))
 	{

@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/09 00:03:36 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/10 09:00:11 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/05/12 04:00:37 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	ft_go_to_eol(t_cap *tcap)
 {
 	int		i;
 
-	i = tcap->cursx;
+	i = tcap->cursx + 1;
 	while (i < tcap->cursx_max)
 	{
 		tputs(tcap->right, 1, ft_put_termcaps);
@@ -89,6 +89,7 @@ int		ft_right(t_cap *tcap)
 		tputs(tcap->sound, 1, ft_put_termcaps);
 	else if (tcap->cursx == tcap->cursx_max)
 	{
+		//ft_printf("@");
 		tputs(tcap->down, 1, ft_put_termcaps);
 		tputs(tcap->carriage, 1, ft_put_termcaps);
 		tcap->cursy++;

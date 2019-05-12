@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/28 13:06:21 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/10 05:51:04 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/05/12 04:06:32 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,18 +20,18 @@
 # include <sys/stat.h>
 # include <sys/uio.h>
 # include <unistd.h>
-# include "libft.h"
 # include <unistd.h>
 # include <math.h>
 # include <fcntl.h>
+# include "libft.h"
 # include <sys/ioctl.h>
 # define PROMPT1 				"\x1b[0m\x1b[32m\x1b[1m➜  \x1b[0m"
-# define PROMPT2 				"\x1b[37m\x1b[1m%s \x1b[0m"
-# define PROMPT3 			"\x1b[34mgit:(\x1b[0m\x1b[33m%s\x1b[34m) \x1b[0m"
-# define PROMPT4 				"\x1b[1m\x1b[31m%s\x1b[0m\x1b[33m\x1b[1m ✗ "
+# define PROMPT2 				"\x1b[36m\x1b[1m%s \x1b[0m"
+# define PROMPT3 			"\x1b[1m\x1b[34mgit:(\x1b[31m%s\x1b[34m) \x1b[0m"
+# define PROMPT4 				"\x1b[1m\x1b[31m%s\x1b[0m\x1b[33m\x1b[1m ✗ \x1b[0m"
 # define DEFAULT_HISTORY_NAME	".21sh_history"
 # define DEFAULT_ENV_FILE_NAME	".21sh_env"
-# define DEFAULT_PROMPT_COLOR	"\x1b[27m"
+# define DEFAULT_PROMPT_COLOR	"\x1b[37m"
 # define BUFFSIZE				4096
 # define ARROW_CODE1			27
 # define ARROW_CODE2			91
@@ -90,6 +90,7 @@ typedef struct	s_cap
 	int			prompt_len;
 	int			char_len;
 	char		command[BUFFSIZE];
+	char		*prompt;
 }				t_cap;
 typedef struct	s_event
 {
@@ -208,6 +209,7 @@ int		ft_add_n_char(char buff[4], int pos, int len, t_cap *tcap);
 int		ft_insert(char buff[4], t_cap *tcap);
 int		ft_delete_n_char(t_cap *tcap, int pos, int len);
 int		ft_delete_back(t_cap *tcap);
+void	ft_clean_buff(t_cap *tcap);
 
 /*
 **INIT_STRUCT.c
@@ -218,5 +220,6 @@ int		init_struct(t_term *trm, char **env);
 */
 
 int		wcharlen(char nb);
+char	*read_line(t_cap *tcap);
 
 #endif

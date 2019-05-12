@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/28 15:23:43 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/10 09:00:21 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/05/12 04:00:38 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,8 @@
 
 int		enter_event(t_cap *tcap)
 {
-	ft_printf("\x1b[0m");
-	tcap->cursx = tcap->prompt_len;
-	tcap->cursy = 0;
-	if (tcap->char_len >= BUFFSIZE - 1)
-	{
-		tcap->command[BUFFSIZE - 2] = '\n';
-		tcap->command[BUFFSIZE - 1] = '\0';
-	}
-	else
-		tcap->command[tcap->char_len] = '\n';
-	if (add_cmd_to_history(tcap->command, g_shell->history) == -1)
-		return (-1);
-	tcap->char_len = 0;
-	if (!ft_strcmp(tcap->command, "history\n"))
-		debug_history(g_shell->history);
-	else if (!ft_strcmp(tcap->command, "exit\n"))
-		exit(0);
-	else
-		ft_printf("\n%s", tcap->command);
-	ft_bzero(tcap->command, BUFFSIZE);
-	print_prompt_prefix();
-	return (1);
+	(void)tcap;
+	return (-2);
 }
 
 int		backspace_event(t_cap *tcap)

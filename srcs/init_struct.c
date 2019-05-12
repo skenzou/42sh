@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/09 00:37:47 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/11 23:34:16 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/05/12 04:00:39 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ static int	init_termcap(t_cap *tcap)
 	tcap->cursx_max = (ioctl(1, TIOCGWINSZ, w) ? w->ws_col -1 : tgetnum("co") - 1);
 	tcap->cursy = 0;
 	free(w);
+	tcap->prompt = NULL;
 	tcap->up = tgetstr("up", NULL);
 	tcap->down = tgetstr("sf", NULL);
 	tcap->right = tgetstr("nd", NULL);
@@ -42,7 +43,7 @@ static int	init_history(t_history *history)
 	history->read = 0;
 	history->position = 0;
 	if ((string = get_string_var("HISTFILE", g_shell->var)))
-		history->file_name = ft_strdup(get_string_var("HISTFILE", g_shell->var));
+		history->file_name = ft_strjoin("/Users/", ft_strcjoin(getenv("USER"), string, '/'));
 	else
 		history->file_name = ft_strdup(DEFAULT_HISTORY_NAME);
 	ft_bzero(history->match, BUFFSIZE);
@@ -59,7 +60,7 @@ static int	init_var(char **var)
 	if ((state = read_var(var)) < 0)
 	{
 		if (state == -2)
-			ft_dprintf(2, "Erreur verifiez le fichier var\n");
+			ft_printf("Erreur verifiez le fichier var\n");
 		return (0);
 	}
 	return (1);

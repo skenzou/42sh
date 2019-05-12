@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/27 17:27:48 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/10 09:00:22 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/05/12 04:05:41 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,23 +52,67 @@ int				wcharlen(char nb)
 	return (count);
 }
 
+char	*clean_before_return(t_cap *tcap)
+{
+	ft_printf("\x1b[0m");
+	tcap->cursx = tcap->prompt_len;
+	tcap->cursy = 0;
+	if (tcap->char_len >= BUFFSIZE - 1)
+	{
+		tcap->command[BUFFSIZE - 2] = '\n';
+		tcap->command[BUFFSIZE - 1] = '\0';
+	}
+	else
+		tcap->command[tcap->char_len] = '\n';
+	if (add_cmd_to_history(tcap->command, g_shell->history) == -1)
+		return (NULL);
+	tcap->char_len = 0;
+	//tcap->command[ft_strlen(tcap->command) - 1] = '\0';
+	ft_printf("\n");
+	return (tcap->command);
+}
+
+char	*read_line(t_cap *tcap)
+{
+	char	buffer[4];
+	int		ret;
+
+	ret = 0;
+	signal(SIGINT, sigint_handler);
+	signal(SIGWINCH, sigwinch_handler);
+	ft_bzero(buffer, 4);
+	ft_bzero(tcap->command, BUFFSIZE);
+	print_prompt_prefix();
+	while ("21sh")
+	{
+		read(0, &buffer, 3);
+		if ((ret = read_buffer(buffer, tcap)) == -2)
+			return (clean_before_return(tcap));
+		else if (!ret)
+			return (NULL);
+	}
+}
+
+int				handler(char *string)
+{
+	ft_printf("command: %s", string);
+	return (1);
+}
 int				main(int ac, char **av, char **env)
 {
 	t_term	term;
-	char	buffer[4];
+	char	*string;
 
 	(void)ac;
 	(void)av;
 	if (!(tgetent(NULL, getenv("TERM"))) || !init_struct(&term, env))
 		return (-1);
-	print_prompt_prefix();
 	while ("21sh")
 	{
-		signal(SIGINT, sigint_handler);
-		signal(SIGWINCH, sigwinch_handler);
-		ft_bzero(buffer, 4);
-		read(0, &buffer, 3);
-		if (!read_buffer(buffer, g_shell->tcap))
+		if ((string = read_line(g_shell->tcap)) == NULL)
+			return (-1);
+
+		if (handler(string) == 0)
 			return (-1);
 	}
 	return (0);
