@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/01 17:45:36 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/12 02:40:44 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/05/12 03:20:43 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ int	debug_history(t_history *history)
 int	write_history(char *string, t_history *history)
 {
 	int fd;
-
 	fd = open(history->file_name, O_RDWR | O_APPEND | O_CREAT, 0666);
 	if (fd > 0)
 	{

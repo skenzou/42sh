@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 07:12:40 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/12 02:34:01 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/05/12 03:11:01 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -219,4 +219,6 @@ int		init_struct(t_term *trm, char **env);
 */
 
 int		wcharlen(char nb);
+char	*read_line(t_cap *tcap);
+
 #endif

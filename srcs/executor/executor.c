@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/03 16:15:41 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/12 00:14:27 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/05/12 03:45:34 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -248,6 +248,31 @@ int		open_file(t_redir *redir)
 	return (fd);
 }
 
+int handle_hdoc(t_redir *redir)
+{
+	char *input;
+	int fd;
+	char *eof;
+
+	fd = open(HERE_DOC_TMP, O_RDWR | O_CREAT | O_TRUNC, 0666);
+	input = NULL;
+	eof = ft_strjoin(redir->dest, "\n");
+	g_shell->tcap->prompt = "heredoc>";
+	while ("21sh")
+	{
+		input = read_line(g_shell->tcap);
+		if (!ft_strcmp(input, eof))
+			break ;
+		write(fd, input, ft_strlen(input));
+	}
+
+	g_shell->tcap->prompt = NULL;
+	free(eof);
+	close(fd);
+	fd = open(HERE_DOC_TMP, O_RDONLY);
+	return (fd);
+}
+
 void	handle_redir(t_ast *root, char **env)
 {
 	// char *cmd;
@@ -296,16 +321,21 @@ void	handle_redir(t_ast *root, char **env)
 	while (redir)
 	{
 		remove_quote(redir->content);
-		fd = open_file(redir->content);
-		((t_redir *)redir->content)->fd = fd;
+		if (((t_redir *)redir->content)->op_type == DBL_LESS)
+			fd = handle_hdoc(redir->content);
+		else
+		{
+			fd = open_file(redir->content);
+			((t_redir *)redir->content)->fd = fd;
+		}
 		if (fd != -1)
 		{
-			if (((t_redir *)redir->content)->op_type == LESS)
+			if (((t_redir *)redir->content)->op_type == LESS
+				|| ((t_redir *)redir->content)->op_type == DBL_LESS)
 				dup2(fd, STDIN_FILENO);
 			else
 				dup2(fd, STDOUT_FILENO);
 		}
-		temp = redir;
 		redir = redir->next;
 	}
 
@@ -316,7 +346,7 @@ void	handle_redir(t_ast *root, char **env)
 		remove_quote(&args[i]);
 
 	// Execut the cmd with a fork
-	ft_fork(ft_strsplit(cmd, ' '), env);
+	ft_fork(args, env);
 
 	// Free the memory
 	ft_lstdel(&del, redir_delone);

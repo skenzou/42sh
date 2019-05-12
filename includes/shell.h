@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 16:42:03 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/12 02:06:16 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/05/12 03:02:01 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@
 # define DQUOTE			'"'
 # define QUOTE			'\''
 # define BSLASH			'\\'
+# define HERE_DOC_TMP "/tmp/.21sh_tmp"
 
 void		print_prompt(void);
 void		sighandler(int sig);

@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/27 17:27:48 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/12 02:20:55 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/05/12 03:22:20 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,6 @@ int				main(int ac, char **av, char **env)
 
 		if (handler(string) == 0)
 			return (-1);
-		ft_printf("apres\n");
 	}
 	return (0);
 }
