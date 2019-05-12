@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 07:12:40 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/12 00:57:27 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/05/12 02:34:01 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,42 +20,43 @@
 # include <sys/stat.h>
 # include <sys/uio.h>
 # include <unistd.h>
-# include "../libft/includes/libft.h"
 # include <unistd.h>
 # include <math.h>
 # include <fcntl.h>
-#include <sys/ioctl.h>
-# define PREFIX "\x1b[32m➜ \x1b[0m\x1b[37m\x1b[1m"
-# define SUFFIX "%s\x1b[0m \x1b[1m\x1b[31m%s\x1b[0m\x1b[32m> \x1b[0m"
-# define HISTORY_FILE_NAME	"/Users/midrissi/.21sh_history.log"
-# define BUFFSIZE					4096
-# define ARROW_CODE1				27
-# define ARROW_CODE2				91
-# define UP							65
-# define DOWN						66
-# define RIGHT						67
-# define LEFT						68
-# define SHIFT_CODE1				27
-# define SHIFT_CODE2				91
-# define SHIFT_CODE3				49
-# define ARROW_CODE3				59
-# define ARROW_CODE4				50
-# define SHIFT_UP					75
-# define SHIFT_DOWN					76
-# define SHIFT_RIGHT				77
-# define SHIFT_LEFT					78
-# define BACKSPACE					127
-# define ENTER						10
-# define CTRL_R						18
-# define CTRL_D						30
-# define TAB						9
-# define HOME_END1					27
-# define HOME_END2					91
-# define HOME						72
-# define END						70
-# define MAX_HISTORY_LENGHT			4096
-
-
+# include <sys/ioctl.h>
+# define PROMPT1 				"\x1b[0m\x1b[32m\x1b[1m➜  \x1b[0m"
+# define PROMPT2 				"\x1b[36m\x1b[1m%s \x1b[0m"
+# define PROMPT3 			"\x1b[1m\x1b[34mgit:(\x1b[31m%s\x1b[34m) \x1b[0m"
+# define PROMPT4 				"\x1b[1m\x1b[31m%s\x1b[0m\x1b[33m\x1b[1m ✗ \x1b[0m"
+# define DEFAULT_HISTORY_NAME	".21sh_history"
+# define DEFAULT_ENV_FILE_NAME	".21sh_env"
+# define DEFAULT_PROMPT_COLOR	"\x1b[37m"
+# define BUFFSIZE				4096
+# define ARROW_CODE1			27
+# define ARROW_CODE2			91
+# define UP						65
+# define DOWN					66
+# define RIGHT					67
+# define LEFT					68
+# define SHIFT_CODE1			27
+# define SHIFT_CODE2			91
+# define SHIFT_CODE3			49
+# define ARROW_CODE3			59
+# define ARROW_CODE4			50
+# define SHIFT_UP				75
+# define SHIFT_DOWN				76
+# define SHIFT_RIGHT			77
+# define SHIFT_LEFT				78
+# define BACKSPACE				127
+# define ENTER					10
+# define CTRL_R					18
+# define CTRL_D					4
+# define TAB					9
+# define HOME_END1				27
+# define HOME_END2				91
+# define HOME					72
+# define END					70
+# define MAX_HISTORY_LENGHT		4096
 # define UNUSED			0
 # define DEBUG_LOG		0
 typedef struct	s_data
@@ -77,7 +78,7 @@ typedef struct	s_cap
 	char		*down;
 	char		*right;
 	char		*left;
-	char		*chariot;
+	char		*carriage;
 	char		*clr_curr_line;
 	char		*clr_all_line;
 	char		*place_cursor;
@@ -100,12 +101,17 @@ typedef struct	s_history
 {
 	int						len;
 	int						read;
+	char					*file_name;
+	int						position;
+	int						match[BUFFSIZE];
 	char					*data[MAX_HISTORY_LENGHT];
 }				t_history;
+
 typedef struct	s_shell
 {
 	t_cap		*tcap;
 	char		**env;
+	char		*var[256];
 	t_history	*history;
 }				t_shell;
 extern t_event g_arrow_event[];
@@ -118,6 +124,9 @@ int		arrow_up_event(t_cap *tcap);
 int		arrow_down_event(t_cap *tcap);
 int		arrow_right_event(t_cap *tcap);
 int		arrow_left_event(t_cap *tcap);
+/*
+**	SHIFT_ARROW_EVENTS.C
+*/
 int		shift_arrow_up_event(t_cap *tcap);
 int		shift_arrow_down_event(t_cap *tcap);
 int		shift_arrow_right_event(t_cap *tcap);
@@ -129,28 +138,40 @@ int		enter_event(t_cap *tcap);
 int		backspace_event(t_cap *tcap);
 int		ctrl_r_event(t_cap *tcap);
 int		tab_event(t_cap *tcap);
+int		ctrl_d_event(t_cap *tcap);
+/*
+**	HOME_END_EVENTS.C
+*/
 int		home_event(t_cap *tcap);
 int		end_event(t_cap *tcap);
-int		ctrl_d_event(t_cap *tcap);
+/*
+**	VAR.C
+*/
+int		read_var(char **var);
+char	*get_string_var(char *string, char **var);
+int		get_int_var(char *string, char **var);
 /*
 **	READER.C
 */
-int		read_buffer(char buffer[4], t_cap *tcap);
-void	add_to_cmd(char buffer[4], int len);
-void	ft_delete_n_char(t_cap *tcap, int pos, int len);
-void	ft_delete_back(t_cap *tcap);
+int		read_buffer(char *buffer, t_cap *tcap);
+void	ft_clear_all_lines(t_cap *tcap);
+
+/*
+** PROMPT_PREFIX.c
+*/
+void		print_prompt_prefix(void);
 /*
 **	OTHERS.C
 */
 int		ft_put_termcaps(int c);
-void	ft_move_right(t_cap *tcap);
-void	ft_move_left(t_cap *tcap);
+char	**dup_env(char **env);
+char	*correct(char *string, char **possible, int *difference);
+char	*get_git_status(void);
 /*
 **	SIGNAL_HANDLER.C
 */
 void	sigint_handler(int sig);
 void	sigwinch_handler(int sig);
-
 /*
 **	READ_KEY.C
 */
@@ -164,21 +185,38 @@ char	is_shift_arrow(char key[4]);
 int		is_arrow(char key[4]);
 int		read_arrow(char buffer, t_cap *tcap);
 /*
+** MOVE.C
+*/
+
+void	ft_replace_cursor(t_cap *tcap);
+int		ft_left(t_cap *tcap);
+int		ft_right(t_cap *tcap);
+int		ft_up(t_cap *tcap);
+int		ft_down(t_cap *tcap);
+/*
 **	HISTORY.C
 */
 
-int		write_history(char *string);
-int		init_history(void);
-int		add_cmd_to_history(char *string);
-int		debug_history(void);
-int		read_history(void);
+int		write_history(char *string, t_history *history);
+int		add_cmd_to_history(char *string, t_history *history);
+int		debug_history(t_history *history);
+int		read_history(t_history *history);
+/*
+**PUSH.c
+*/
+int		ft_add_n_char(char buff[4], int pos, int len, t_cap *tcap);
+int		ft_insert(char buff[4], t_cap *tcap);
+int		ft_delete_n_char(t_cap *tcap, int pos, int len);
+int		ft_delete_back(t_cap *tcap);
+void	ft_clean_buff(t_cap *tcap);
+
+/*
+**INIT_STRUCT.c
+*/
+int		init_struct(t_term *trm, char **env);
 /*
 **	MAIN.C
 */
 
-int		fputchar(int c);
-int		exec_command(char *command);
-void	display_prompt_prefix(void);
 int		wcharlen(char nb);
-
 #endif

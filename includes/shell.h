@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 16:42:03 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/09 06:13:11 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/05/12 02:06:16 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,5 +46,5 @@ void		sighandler(int sig);
 void 		ft_exit(char *str);
 void		sigfork(int sig);
 char		**dup_env(char **env);
-void		handler(char *input);
+int		handler(char *input);
 #endif

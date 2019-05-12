@@ -1,33 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   arrow_events.c                                     :+:      :+:    :+:   */
+/*   ft_indexof.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/28 15:04:00 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/12 02:09:13 by aben-azz         ###   ########.fr       */
+/*   Created: 2019/01/19 12:19:20 by aben-azz          #+#    #+#             */
+/*   Updated: 2019/03/13 12:00:14 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "shell.h"
+#include "libft.h"
 
-int		arrow_up_event(t_cap *tcap)
+int	ft_indexof(char *string, char c)
 {
-	return (ft_up(tcap));
-}
+	int i;
 
-int		arrow_down_event(t_cap *tcap)
-{
-	return (ft_down(tcap));
-}
-
-int		arrow_right_event(t_cap *tcap)
-{
-	return (ft_right(tcap));
-}
-
-int		arrow_left_event(t_cap *tcap)
-{
-	return (ft_left(tcap));
+	i = 0;
+	while (*(string + i))
+		if (*(string + i++) == c)
+			return (i - 1);
+	return (-1);
 }

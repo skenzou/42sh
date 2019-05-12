@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/04 23:37:49 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/08 23:51:42 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/05/12 02:37:58 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -253,6 +253,8 @@ t_ast  *ft_parse(t_list *lexer)
 	char *error;
 	t_ast *root;
 
+	if (!lexer)
+		return (NULL);
 	root = NULL;
 	error = check_syntax_errors(lexer);
 	if (error)

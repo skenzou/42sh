@@ -1,33 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   arrow_events.c                                     :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/28 15:04:00 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/12 02:09:13 by aben-azz         ###   ########.fr       */
+/*   Created: 2019/04/21 10:11:38 by aben-azz          #+#    #+#             */
+/*   Updated: 2019/04/21 11:26:31 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "shell.h"
+#include "libft.h"
 
-int		arrow_up_event(t_cap *tcap)
+char	*ft_substr(char *src, int m, int n)
 {
-	return (ft_up(tcap));
-}
+	int		len;
+	char	*dest;
+	int		i;
 
-int		arrow_down_event(t_cap *tcap)
-{
-	return (ft_down(tcap));
-}
-
-int		arrow_right_event(t_cap *tcap)
-{
-	return (ft_right(tcap));
-}
-
-int		arrow_left_event(t_cap *tcap)
-{
-	return (ft_left(tcap));
+	len = n - m;
+	if (!(dest = (char*)malloc(sizeof(char) * (len + 1))))
+		return (NULL);
+	i = m;
+	while (i < n && (*src != '\0'))
+	{
+		*dest = *(src + i++);
+		dest++;
+	}
+	*dest = '\0';
+	return (dest - len);
 }

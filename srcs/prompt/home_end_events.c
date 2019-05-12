@@ -1,45 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   key_events.c                                       :+:      :+:    :+:   */
+/*   home_end_events.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/28 15:23:43 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/12 02:09:17 by aben-azz         ###   ########.fr       */
+/*   Created: 2019/05/09 00:20:29 by aben-azz          #+#    #+#             */
+/*   Updated: 2019/05/12 02:40:52 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-int		enter_event(t_cap *tcap)
+int		home_event(t_cap *tcap)
 {
-	(void)tcap;
-	return (-2);
-}
-
-int		backspace_event(t_cap *tcap)
-{
-	return (ft_delete_back(tcap));
-}
-
-int		ctrl_r_event(t_cap *tcap)
-{
-	ft_insert("ctrl_r", tcap);
+	tputs(tgoto(tgetstr("ch", NULL), UNUSED,
+		tcap->prompt_len + 1), 1, ft_put_termcaps);
 	return (1);
 }
 
-int		ctrl_d_event(t_cap *tcap)
+int		end_event(t_cap *tcap)
 {
-	(void)tcap;
-	ft_insert("ctrl_d", tcap);
-	exit(0);
-	return (1);
-}
-
-int		tab_event(t_cap *tcap)
-{
-	(void)tcap;
-	ft_printf("curs: {%d, %d}\n", tcap->cursy, tcap->cursx);
+	tputs(tgoto(tgetstr("ch", NULL), UNUSED,
+		tcap->prompt_len + 1 + tcap->char_len), 1, ft_put_termcaps);
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/29 17:39:49 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/12 00:45:09 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/05/12 02:39:35 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ char		**dup_env(char **env)
 	return (p);
 }
 
-void	handler(char *input)
+int	handler(char *input)
 {
 	t_list	*lexer;
 	t_ast *ast;
@@ -42,4 +42,5 @@ void	handler(char *input)
 	ft_execute(ast, g_shell->env);
 	del_ast(&ast);
 	lexer = NULL;
+	return (1);
 }

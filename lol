@@ -1,0 +1,12 @@
+21sh
+Makefile
+README.md
+author
+draft
+file
+includes
+libft
+lol
+minishell
+obj
+srcs
