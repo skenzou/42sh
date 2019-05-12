@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/27 17:27:48 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/12 04:05:41 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/05/12 07:16:15 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,11 +80,14 @@ char	*read_line(t_cap *tcap)
 	ret = 0;
 	signal(SIGINT, sigint_handler);
 	signal(SIGWINCH, sigwinch_handler);
-	ft_bzero(buffer, 4);
+
 	ft_bzero(tcap->command, BUFFSIZE);
 	print_prompt_prefix();
+	int fd = open("./log.log", O_RDWR | O_APPEND, 0666);
+	ft_dprintf(fd, "curs: {%d/%d, %d}len: %d prompt: %d\n", g_shell->tcap->cursx,g_shell->tcap->cursx_max, g_shell->tcap->cursy, g_shell->tcap->char_len, g_shell->tcap->prompt_len);
 	while ("21sh")
 	{
+		ft_bzero(buffer, 4);
 		read(0, &buffer, 3);
 		if ((ret = read_buffer(buffer, tcap)) == -2)
 			return (clean_before_return(tcap));
@@ -98,6 +101,8 @@ int				handler(char *string)
 	ft_printf("command: %s", string);
 	return (1);
 }
+
+
 int				main(int ac, char **av, char **env)
 {
 	t_term	term;
@@ -111,7 +116,6 @@ int				main(int ac, char **av, char **env)
 	{
 		if ((string = read_line(g_shell->tcap)) == NULL)
 			return (-1);
-
 		if (handler(string) == 0)
 			return (-1);
 	}

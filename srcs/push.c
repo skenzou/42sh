@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 23:56:22 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/12 04:00:35 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/05/12 07:18:55 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,11 +67,11 @@ int		ft_insert(char *buff, t_cap *tcap)
 	{
 		i = -1;
 		len = ft_strlen(buff);
-		position = tcap->cursy * (tcap->cursx_max) +
+		position = tcap->cursy * (tcap->cursx_max + 1) +
 			(tcap->cursx) - tcap->prompt_len;
+		ft_clear_all_lines(tcap);
 		if (ft_add_n_char(buff, position, len, tcap) == -1)
 			return (-1);
-		ft_clear_all_lines(tcap);
 		ft_putstr(tcap->command);
 		ft_replace_cursor(tcap);
 		while (++i < len)

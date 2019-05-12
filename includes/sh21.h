@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/28 13:06:21 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/12 04:06:32 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/05/12 06:08:25 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,6 +114,7 @@ typedef struct	s_shell
 	char		**env;
 	char		*var[256];
 	t_history	*history;
+	int			fd;
 }				t_shell;
 extern t_event g_arrow_event[];
 extern t_event g_key_event[];
