@@ -6,11 +6,12 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 23:56:22 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/12 02:09:22 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/05/12 07:26:14 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
+
 
 int		ft_add_n_char(char buff[4], int pos, int len, t_cap *tcap)
 {
@@ -67,11 +68,11 @@ int		ft_insert(char *buff, t_cap *tcap)
 	{
 		i = -1;
 		len = ft_strlen(buff);
-		position = tcap->cursy * (tcap->cursx_max) +
+		position = tcap->cursy * (tcap->cursx_max + 1) +
 			(tcap->cursx) - tcap->prompt_len;
+		ft_clear_all_lines(tcap);
 		if (ft_add_n_char(buff, position, len, tcap) == -1)
 			return (-1);
-		ft_clear_all_lines(tcap);
 		ft_putstr(tcap->command);
 		ft_replace_cursor(tcap);
 		while (++i < len)

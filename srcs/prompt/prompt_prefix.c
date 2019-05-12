@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/10 02:39:58 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/12 02:34:01 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/05/12 07:27:19 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static char	*make_prompt(char *format)
 
 	(void)format;
 	prompt = format;
-	g_shell->tcap->prompt_len = ft_strlen(prompt);
+	g_shell->tcap->prompt_len = ft_strlen(prompt) + 1;
 	g_shell->tcap->cursx = g_shell->tcap->prompt_len;
 	return (prompt);
 }
@@ -37,7 +37,7 @@ static void	print_default_prompt_prefix(void)
 	!ft_strcmp(string, "/") && (string = "/");
 	g_shell->tcap->prompt_len =
 		ft_strlen((string + ft_lastindexof(string, '/') + 1)) +
-															ft_strlen(name) + 6;
+															ft_strlen(name) + 6 + 1;
 	ft_printf(PROMPT1);
 	ft_printf(PROMPT2, (string + ft_lastindexof(string, '/') + 1));
 	if (git)

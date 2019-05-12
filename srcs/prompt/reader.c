@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/28 15:31:17 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/12 02:07:26 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/05/12 07:26:35 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,10 @@ void	ft_clear_all_lines(t_cap *tcap)
 		tputs(tcap->up, 1, ft_put_termcaps);
 	tputs(tgetstr("cr", NULL), 1, ft_put_termcaps);
 	i = -1;
-	while (++i < tcap->prompt_len + 1)
+	while (++i < tcap->prompt_len)
 		tputs(tcap->right, 1, ft_put_termcaps);
 	tputs(tgetstr("ce", NULL), 1, ft_put_termcaps);
-	if (tcap->char_len + tcap->prompt_len + 1> tcap->cursx_max)
+	if (tcap->char_len + tcap->prompt_len > tcap->cursx_max + 1)
 	{
 		tputs(tcap->down, 1, ft_put_termcaps);
 		tputs(tcap->carriage, 1, ft_put_termcaps);

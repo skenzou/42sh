@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/27 17:27:48 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/12 03:22:20 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/05/12 07:27:49 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ char	*read_line(t_cap *tcap)
 	print_prompt_prefix();
 	while ("21sh")
 	{
+		ft_bzero(buffer, 4);
 		read(0, &buffer, 3);
 		if ((ret = read_buffer(buffer, tcap)) == -2)
 			return (clean_before_return(tcap));
