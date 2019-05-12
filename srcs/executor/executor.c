@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/03 16:15:41 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/12 03:45:34 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/05/12 03:52:35 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -265,7 +265,6 @@ int handle_hdoc(t_redir *redir)
 			break ;
 		write(fd, input, ft_strlen(input));
 	}
-
 	g_shell->tcap->prompt = NULL;
 	free(eof);
 	close(fd);
