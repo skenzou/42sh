@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/04 23:37:49 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/12 02:37:58 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/05/12 09:28:55 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -229,7 +229,7 @@ static void		join_redir(t_list *lexer)
 	ft_lstdelone(&(save_to_destroy), lex_delone);
 }
 
-static void		handle_redir(t_list *lexer)
+static void		join_all_redir(t_list *lexer)
 {
 	t_token *curr;
 	t_token *next;
@@ -247,11 +247,46 @@ static void		handle_redir(t_list *lexer)
 	}
 }
 
+// static void		create_redir(t_list **redirs, char *dest, e_op_type redir_type)
+// {
+// 	t_redir redir;
+// 	t_list *node;
+//
+// 	redir.dest = dest;
+// 	redir.op_type = redir_type;
+// 	node = ft_lstnew((void *)&redir, sizeof(redir));
+// 	if (!node)
+// 		ft_exit("Failed to malloc a node for my redir list");
+// 	ft_lstadd(redirs, node);
+// }
+//
+// static t_list		*handle_redir(t_list *lexer)
+// {
+// 	t_list *redir;
+// 	t_token *curr;
+// 	t_token *next;
+//
+// 	redir = NULL;
+// 	while (lexer)
+// 	{
+// 		curr = (t_token *)lexer->content;
+// 		if (curr->type == TOKEN_REDIR)
+// 		{
+// 			next = (t_token *)lexer->next->content;
+// 			create_redir(&redir, next->content, curr->op_type);
+// 		}
+//
+// 	}
+// 	ft_lstrev(&redir);
+// 	return (redir);
+// }
+
 
 t_ast  *ft_parse(t_list *lexer)
 {
 	char *error;
 	t_ast *root;
+	// t_list *redir;
 
 	if (!lexer)
 		return (NULL);
@@ -265,7 +300,8 @@ t_ast  *ft_parse(t_list *lexer)
 		return (NULL);
 	}
 	handle_inhibitors(lexer);
-	handle_redir(lexer);
+	// redir = handle_redir(lexer);
+	join_all_redir(lexer);
 	if (is_in_lexer(lexer, SEMI))
 		ast(lexer, &root, SEMI);
 	else if (is_in_lexer(lexer, DBL_AND))
