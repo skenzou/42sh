@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/03 16:15:41 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/13 07:51:48 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/05/14 00:05:23 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -283,7 +283,28 @@ int handle_hdoc(t_redir *redir)
 	return (fd);
 }
 
-static void		handle_redir(char **env)
+static void	expand_and_execute(char *cmd)
+{
+	char **args;
+	int i;
+
+	args = ft_strsplit(cmd, ' ');
+	i = -1;
+	while(args[++i])
+		remove_quote(&args[i]);
+	cmd = hash_table(args[0], g_shell->env);
+	if (cmd)
+	{
+		free(args[0]);
+		args[0] = cmd;
+		ft_fork(args, g_shell->env);
+	}
+	else
+		ft_splitdel(args);
+}
+
+
+static void		handle_redir()
 {
 	// char *cmd;
 	// char *path;
@@ -297,8 +318,6 @@ static void		handle_redir(char **env)
 	int stdout;
 	int stdin;
 	char *cmd;
-	char **args;
-	int i;
 	int tempfd;
 
 
@@ -356,22 +375,7 @@ static void		handle_redir(char **env)
 		redir = redir->next;
 		ft_lstdelone(&temp, redir_delone);
 	}
-	// remove quote from all args
-	i = -1;
-	args = ft_strsplit(cmd, ' ');
-	while (args[++i])
-		remove_quote(&args[i]);
-	cmd = hash_table(args[0], g_shell->env);
-
-	// Execut the cmd with a fork
-	if (cmd)
-	{
-		free(args[0]);
-		args[0] = cmd;
-		ft_fork(args, env);
-	}
-	else
-		ft_splitdel(args);
+	expand_and_execute(cmd);
 	// restore STDOUT & STDIN
 	dup2(stdout, STDOUT_FILENO);
 	dup2(stdin, STDIN_FILENO);
@@ -394,7 +398,9 @@ void	ft_execute(t_ast *root, char **env)
 	if (root->right)
 		ft_execute(root->right, env);
 	if (root->token->redir)
-		handle_redir(env);
+		handle_redir();
+	else
+		expand_and_execute(root->token->content);
 	// search_pipe(root, ft_strdup("root"),env);
 }
 

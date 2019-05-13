@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/01 17:45:36 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/13 07:31:07 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/05/13 23:53:24 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,10 @@ int	write_history(char *string, t_history *history)
 		close(fd);
 		return (1);
 	}
-	else
-	{
-		ft_printf("21sh: History:  Error opening file\n");
-	}
+	// else
+	// {
+	// 	ft_printf("21sh: History:  Error opening file\n");
+	// }
 	return (-1);
 }
 
