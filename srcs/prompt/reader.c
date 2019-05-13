@@ -6,21 +6,11 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/28 15:31:17 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/12 07:26:35 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/05/13 07:30:59 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
-
-void	ft_go_up(size_t row)
-{
-	char	*res;
-
-	if (row == 0)
-		return ;
-	res = tgetstr("UP", NULL);
-	tputs(tgoto(res, 0, row), 0, ft_put_termcaps);
-}
 
 void	ft_clear_all_lines(t_cap *tcap)
 {

@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/27 17:27:48 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/12 07:27:49 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/05/13 07:31:13 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,6 @@ char	*clean_before_return(t_cap *tcap)
 	if (add_cmd_to_history(tcap->command, g_shell->history) == -1)
 		return (NULL);
 	tcap->char_len = 0;
-	//tcap->command[ft_strlen(tcap->command) - 1] = '\0';
 	ft_printf("\n");
 	return (tcap->command);
 }
@@ -107,7 +106,6 @@ int				main(int ac, char **av, char **env)
 	{
 		if ((string = read_line(g_shell->tcap)) == NULL)
 			return (-1);
-
 		if (handler(string) == 0)
 			return (-1);
 	}

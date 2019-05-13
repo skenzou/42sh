@@ -6,13 +6,13 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/28 15:04:00 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/13 07:01:13 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/05/13 07:31:06 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-static void ft_clear_replace(t_cap *tcap)
+void ft_clear_replace(t_cap *tcap)
 {
 	ft_clear_all_lines(tcap);
 	ft_bzero(tcap->command, BUFFSIZE);
@@ -30,9 +30,13 @@ int        arrow_up_event(t_cap *tcap)
 	int			len;
 
 	h = g_shell->history;
-	h->position++;
+
 	if (h->position == h->len)
+	{
+		tputs(tcap->sound, 1, ft_put_termcaps);
 		return (1);
+	}
+	h->position++;
 	ft_clear_replace(tcap);
 	command = h->data[h->len - h->position - 1];
 	if (!command)

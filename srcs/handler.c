@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/29 17:39:49 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/13 05:19:29 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/05/13 07:24:12 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,13 @@ char		**dup_env(char **env)
 
 int	handler(char *input)
 {
+	if (!ft_strcmp(input, "exit\n"))
+		exit(0);
+	else if (!ft_strcmp(input, "history\n"))
+	{
+		debug_history(g_shell->history);
+		return (1);
+	}
 	build_lexer(input, &g_shell->lexer);
 	print_lexer(g_shell->lexer);
 	g_shell->ast = ft_parse(g_shell->lexer, &g_shell->redir);
