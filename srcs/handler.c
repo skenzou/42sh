@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/29 17:39:49 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/12 02:39:35 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/05/13 05:19:29 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,17 +30,11 @@ char		**dup_env(char **env)
 
 int	handler(char *input)
 {
-	t_list	*lexer;
-	t_ast *ast;
-
-	ast = NULL;
-	lexer = NULL;
-	build_lexer(input, &lexer);
-	ft_lstrev(&lexer);
-	print_lexer(lexer);
-	ast = ft_parse(lexer);
-	ft_execute(ast, g_shell->env);
-	del_ast(&ast);
-	lexer = NULL;
+	build_lexer(input, &g_shell->lexer);
+	print_lexer(g_shell->lexer);
+	g_shell->ast = ft_parse(g_shell->lexer, &g_shell->redir);
+	ft_execute(g_shell->ast, g_shell->env);
+	del_ast(&g_shell->ast);
+	g_shell->lexer = NULL;
 	return (1);
 }

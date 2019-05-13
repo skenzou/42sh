@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 07:12:40 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/12 03:11:01 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/05/13 07:02:42 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@
 # define MAX_HISTORY_LENGHT		4096
 # define UNUSED			0
 # define DEBUG_LOG		0
+
 typedef struct	s_data
 {
 	int				xd;
@@ -107,16 +108,8 @@ typedef struct	s_history
 	char					*data[MAX_HISTORY_LENGHT];
 }				t_history;
 
-typedef struct	s_shell
-{
-	t_cap		*tcap;
-	char		**env;
-	char		*var[256];
-	t_history	*history;
-}				t_shell;
 extern t_event g_arrow_event[];
 extern t_event g_key_event[];
-extern t_shell *g_shell;
 /*
 **	ARROW_EVENTS.C
 */

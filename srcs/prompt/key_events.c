@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/28 15:23:43 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/12 02:09:17 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/05/13 07:00:15 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 int		enter_event(t_cap *tcap)
 {
 	(void)tcap;
+	g_shell->history->position = -1;
 	return (-2);
 }
 

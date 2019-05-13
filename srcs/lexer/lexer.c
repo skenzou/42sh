@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/30 18:51:02 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/12 08:35:01 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/05/13 05:12:24 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ static int		join_if_2words(t_list **lexer, char *str, e_token_type type)
 	char *tmp;
 
 	if (type == TOKEN_WORD && *lexer &&
-		((t_token *)((*lexer)->content))->type == TOKEN_WORD)
+		((t_token *)((*lexer)->content))->type == TOKEN_WORD && (!(*lexer)->next || ((t_token *)(((*lexer)->next)->content))->type != TOKEN_REDIR))
 	{
 		token = (t_token *)(*lexer)->content;
 		tmp = token->content;
@@ -169,5 +169,6 @@ int					build_lexer(char *input, t_list **lexer)
 	}
 	if (prev != input)
 		create_token(lexer, ft_strsub(prev, 0, input - prev), TOKEN_WORD, OTHER_OP);
+	ft_lstrev(lexer);
 	return (1);
 }

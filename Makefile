@@ -6,7 +6,7 @@
 #    By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/03 09:24:41 by midrissi          #+#    #+#              #
-#    Updated: 2019/05/12 02:08:07 by aben-azz         ###   ########.fr        #
+#    Updated: 2019/05/13 07:04:14 by midrissi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 # **************************************************************************** #
@@ -39,7 +39,7 @@ MSG				=	Compiling 21sh
 
 NAME = 21sh
 cc = gcc
-C_FLAGS = -Wall -Wextra -Werror
+C_FLAGS = -Wall -Wextra -Werror -g -v
 SRC_NAME = handler.c utils.c lexer/lexer.c parser/parser.c lexer/utils.c \
 			lexer/print_lexer.c executor/executor.c parser/ast_del.c \
 			executor/utils.c prompt/main.c prompt/arrow_events.c \
@@ -47,7 +47,8 @@ SRC_NAME = handler.c utils.c lexer/lexer.c parser/parser.c lexer/utils.c \
 			prompt/others.c prompt/read_arrow.c prompt/read_key.c \
 			prompt/history.c prompt/push.c prompt/move.c \
 			prompt/shift_arrow_events.c prompt/home_end_events.c \
-			prompt/init_struct.c prompt/var.c prompt/prompt_prefix.c
+			prompt/init_struct.c prompt/var.c prompt/prompt_prefix.c \
+			executor/bin_hash.c
 OBJ_PATH = ./obj/
 LFT_PATH = ./libft/
 LFT_NAME = libft.a

@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/04 23:37:49 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/12 09:28:55 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/05/13 02:41:48 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -205,28 +205,48 @@ void			handle_inhibitors(t_list *lexer)
 	}
 }
 
-static void		join_redir(t_list *lexer)
-{
-	t_token *left;
-	t_token *redir;
-	t_token *right;
-	char	*temp;
-	t_list	*save_to_destroy;
+//  void		join_redir(t_list *lexer)
+// {
+// 	t_token *left;
+// 	t_token *redir;
+// 	t_token *right;
+// 	char	*temp;
+// 	t_list	*save_to_destroy;
+//
+// 	left = (t_token *)lexer->content;
+// 	redir = (t_token *)lexer->next->content;
+// 	right = (t_token *)lexer->next->next->content;
+// 	left->redir = 1;
+// 	temp = left->content;
+// 	left->content = ft_strcjoin(left->content, redir->content, ' ');
+// 	ft_strdel(&temp);
+// 	temp = left->content;
+// 	left->content = ft_strcjoin(left->content, right->content, ' ');
+// 	ft_strdel(&temp);
+// 	save_to_destroy = lexer->next;
+// 	lexer->next = lexer->next->next->next;
+// 	ft_lstdelone(&(save_to_destroy->next), lex_delone);
+// 	ft_lstdelone(&(save_to_destroy), lex_delone);
+// }
 
-	left = (t_token *)lexer->content;
-	redir = (t_token *)lexer->next->content;
-	right = (t_token *)lexer->next->next->content;
-	left->redir = 1;
-	temp = left->content;
-	left->content = ft_strcjoin(left->content, redir->content, ' ');
-	ft_strdel(&temp);
-	temp = left->content;
-	left->content = ft_strcjoin(left->content, right->content, ' ');
-	ft_strdel(&temp);
-	save_to_destroy = lexer->next;
-	lexer->next = lexer->next->next->next;
-	ft_lstdelone(&(save_to_destroy->next), lex_delone);
-	ft_lstdelone(&(save_to_destroy), lex_delone);
+static void		join_2(t_list *lexer)
+{
+	t_token *curr;
+	t_token *next;
+	t_list *tmp;
+	char	*del;
+
+	curr = (t_token *)lexer->content;
+	next = (t_token *)lexer->next->content;
+	curr->type = TOKEN_WORD;
+	if (curr->type == TOKEN_REDIR || next->type == TOKEN_REDIR)
+		curr->redir = 1;
+	tmp = lexer->next;
+	lexer->next = tmp->next;
+	del = curr->content;
+	curr->content = ft_strcjoin(curr->content, next->content, ' ');
+	free(del);
+	ft_lstdelone(&tmp, lex_delone);
 }
 
 static void		join_all_redir(t_list *lexer)
@@ -238,55 +258,73 @@ static void		join_all_redir(t_list *lexer)
 	{
 		curr = (t_token *)lexer->content;
 		next = (t_token *)lexer->next->content;
-		if (curr->type == TOKEN_WORD && next->type == TOKEN_REDIR)
+		if ((curr->type == TOKEN_WORD || curr->type == TOKEN_REDIR)
+			&& (next->type == TOKEN_WORD || next->type == TOKEN_REDIR))
 		{
-			join_redir(lexer);
+			join_2(lexer);
 			continue ;
 		}
 		lexer = lexer->next;
 	}
 }
 
-// static void		create_redir(t_list **redirs, char *dest, e_op_type redir_type)
-// {
-// 	t_redir redir;
-// 	t_list *node;
-//
-// 	redir.dest = dest;
-// 	redir.op_type = redir_type;
-// 	node = ft_lstnew((void *)&redir, sizeof(redir));
-// 	if (!node)
-// 		ft_exit("Failed to malloc a node for my redir list");
-// 	ft_lstadd(redirs, node);
-// }
-//
-// static t_list		*handle_redir(t_list *lexer)
-// {
-// 	t_list *redir;
-// 	t_token *curr;
-// 	t_token *next;
-//
-// 	redir = NULL;
-// 	while (lexer)
-// 	{
-// 		curr = (t_token *)lexer->content;
-// 		if (curr->type == TOKEN_REDIR)
-// 		{
-// 			next = (t_token *)lexer->next->content;
-// 			create_redir(&redir, next->content, curr->op_type);
-// 		}
-//
-// 	}
-// 	ft_lstrev(&redir);
-// 	return (redir);
-// }
+static void		create_redir(t_list **redirs, char *dest, e_op_type redir_type)
+{
+	t_redir redir;
+	t_list *node;
+
+	redir.dest = ft_strdup(dest);
+	redir.op_type = redir_type;
+	if (redir_type == OTHER_OP)
+		redir.end_of_leaf = 1;
+	else
+		redir.end_of_leaf = 0;
+	node = ft_lstnew((void *)&redir, sizeof(redir));
+	if (!node)
+		ft_exit("Failed to malloc a node for my redir list");
+	ft_lstadd(redirs, node);
+}
+
+static t_list		*handle_redir(t_list *lexer)
+{
+	t_list *redir;
+	t_token *curr;
+	t_token *next;
+	char	*cmd;
+	t_list	*prev;
+
+	redir = NULL;
+	prev = NULL;
+	cmd = NULL;
+	while (lexer)
+	{
+		curr = (t_token *)lexer->content;
+		if (curr->type == TOKEN_WORD && !cmd && (!prev || (prev
+			&& ((t_token *)prev->content)->type != TOKEN_REDIR)))
+				cmd = curr->content;
+		if (curr->type == TOKEN_REDIR)
+		{
+			next = (t_token *)lexer->next->content;
+			create_redir(&redir, next->content, curr->op_type);
+		}
+		else if (curr->type == TOKEN_CTL_OPERATOR
+			|| (curr->type != TOKEN_CTL_OPERATOR && !lexer->next))
+		{
+			create_redir(&redir, cmd, OTHER_OP);
+			cmd = NULL;
+		}
+		prev = lexer;
+		lexer = lexer->next;
+	}
+	ft_lstrev(&redir);
+	return (redir);
+}
 
 
-t_ast  *ft_parse(t_list *lexer)
+t_ast  *ft_parse(t_list *lexer, t_list **redir)
 {
 	char *error;
 	t_ast *root;
-	// t_list *redir;
 
 	if (!lexer)
 		return (NULL);
@@ -300,7 +338,7 @@ t_ast  *ft_parse(t_list *lexer)
 		return (NULL);
 	}
 	handle_inhibitors(lexer);
-	// redir = handle_redir(lexer);
+	*redir = handle_redir(lexer);
 	join_all_redir(lexer);
 	if (is_in_lexer(lexer, SEMI))
 		ast(lexer, &root, SEMI);

@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/05 00:34:12 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/09 05:25:28 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/05/13 01:59:50 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ void print_optype(e_op_type op_type)
 	op_type == 13 ? ft_printf("DBL_LESS_DASH"ANSI_RESET): 0;
 	op_type == 14 ? ft_printf("DBL_GREAT_DASH"ANSI_RESET): 0;
 	op_type == 15 ? ft_printf("CLOBBER"ANSI_RESET): 0;
+	op_type == 16 ? ft_printf("OTHER_OP"ANSI_RESET): 0;
 }
 
 static void print_tokentype(e_token_type token_type)

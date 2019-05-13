@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/03 16:15:41 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/12 08:55:41 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/05/13 06:48:20 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,119 +108,130 @@ void search_pipe(t_ast *root,char *str, char **env)
 // 	return (NULL);
 // }
 
-static char		*go_to_next_word(char **start, char separator)
+// static char		*go_to_next_word(char **start, char separator)
+// {
+// 	char *temp;
+// 	int len;
+// 	char c;
+//
+// 	len = 0;
+// 	while ((*start)[len] && (*start)[len] != separator)
+// 	{
+// 		if ((*start)[len] == '\\')
+// 			len+=2;
+// 		if (((*start)[len] == '"' || (*start)[len] == '\'') && (c = (*start)[len]))
+// 		{
+// 			len++;
+// 			while ((*start)[len] && (*start)[len] != c)
+// 				len++;
+// 		}
+// 		len++;
+// 	}
+// 	temp = (*start);
+// 	(*start) += (len + ((*start)[len] != 0));
+// 	return (ft_strsub(temp, 0, len));
+// 	// end = ft_strchr(*start, ' ');
+// 	// if (end)
+// 	// 	len = end - *start;
+// 	// else
+// 	// 	len = ft_strlen(*start);
+// 	// end = *start;
+// 	// (*start) += (len - 1);
+// 	// return (ft_strsub(end, 0, len));
+// }
+//
+// static char		*fetch_command(char **start)
+// {
+// 	char *temp;
+// 	int len;
+// 	char c;
+//
+// 	len = 0;
+// 	while ((*start)[len])
+// 	{
+// 		if ((*start)[len] == '\\')
+// 			len+=2;
+// 		if (((*start)[len] == '"' || (*start)[len] == '\'') && (c = (*start)[len]))
+// 		{
+// 			len++;
+// 			while ((*start)[len] && (*start)[len] != c)
+// 				len++;
+// 		}
+// 		if (!(*start)[len] || !ft_strncmp((*start) + len, ">>", 2) || !ft_strncmp((*start) + len, "<<", 2)
+// 			|| (*start)[len] == '>' || (*start)[len] == '<')
+// 			break ;
+// 		len++;
+// 	}
+// 	temp = (*start);
+// 	(*start) += len;
+// 	return (ft_strsub(temp, 0, len));
+// }
+
+// static void		create_redir(t_list **redirs, char *dest, e_op_type redir_type)
+// {
+// 	t_redir redir;
+// 	t_list *node;
+//
+// 	redir.dest = dest;
+// 	redir.op_type = redir_type;
+// 	node = ft_lstnew((void *)&redir, sizeof(redir));
+// 	if (!node)
+// 		ft_exit("Failed to malloc a node for my redir list");
+// 	ft_lstadd(redirs, node);
+// }
+//
+// static e_op_type	get_redir_type(char **str)
+// {
+// 	if (!ft_strncmp(*str, ">>", 2))
+// 	{
+// 		(*str)+=3;
+// 		return (DBL_GREAT);
+// 	}
+// 	if (!ft_strncmp(*str, "<<", 2))
+// 	{
+// 		(*str)+=3;
+// 		return (DBL_LESS);
+// 	}
+// 	if (**str == '>')
+// 	{
+// 		(*str)+=2;
+// 		return (GREAT);
+// 	}
+// 	if (**str == '<')
+// 	{
+// 		(*str)+=2;
+// 		return (LESS);
+// 	}
+// 	return (OTHER_OP);
+// }
+
+// static char		*fill_redir_list(char *cmd, t_list **redirs)
+// {
+// 	e_op_type optype;
+// 	// char c;
+// 	// int i;
+// 	char *ret;
+//
+// 	while (*cmd)
+// 	{
+// 		optype = get_redir_type(&cmd);
+// 		if (optype != OTHER_OP)
+// 			create_redir(redirs, go_to_next_word(&cmd, ' '), optype);
+// 		else
+// 			ret = fetch_command(&cmd);
+// 	}
+// 	return (ret);
+// }
+
+char	*get_curr_cmd(t_list *redir)
 {
-	char *temp;
-	int len;
-	char c;
-
-	len = 0;
-	while ((*start)[len] && (*start)[len] != separator)
+	while (redir)
 	{
-		if ((*start)[len] == '\\')
-			len+=2;
-		if (((*start)[len] == '"' || (*start)[len] == '\'') && (c = (*start)[len]))
-		{
-			len++;
-			while ((*start)[len] && (*start)[len] != c)
-				len++;
-		}
-		len++;
+		if (((t_redir *)redir->content)->end_of_leaf)
+			return (((t_redir *)redir->content)->dest);
+		redir = redir->next;
 	}
-	temp = (*start);
-	(*start) += (len + ((*start)[len] != 0));
-	return (ft_strsub(temp, 0, len));
-	// end = ft_strchr(*start, ' ');
-	// if (end)
-	// 	len = end - *start;
-	// else
-	// 	len = ft_strlen(*start);
-	// end = *start;
-	// (*start) += (len - 1);
-	// return (ft_strsub(end, 0, len));
-}
-
-static char		*fetch_command(char **start)
-{
-	char *temp;
-	int len;
-	char c;
-
-	len = 0;
-	while ((*start)[len])
-	{
-		if ((*start)[len] == '\\')
-			len+=2;
-		if (((*start)[len] == '"' || (*start)[len] == '\'') && (c = (*start)[len]))
-		{
-			len++;
-			while ((*start)[len] && (*start)[len] != c)
-				len++;
-		}
-		if (!(*start)[len] || !ft_strncmp((*start) + len, ">>", 2) || !ft_strncmp((*start) + len, "<<", 2)
-			|| (*start)[len] == '>' || (*start)[len] == '<')
-			break ;
-		len++;
-	}
-	temp = (*start);
-	(*start) += len;
-	return (ft_strsub(temp, 0, len));
-}
-
-static void		create_redir(t_list **redirs, char *dest, e_op_type redir_type)
-{
-	t_redir redir;
-	t_list *node;
-
-	redir.dest = dest;
-	redir.op_type = redir_type;
-	node = ft_lstnew((void *)&redir, sizeof(redir));
-	if (!node)
-		ft_exit("Failed to malloc a node for my redir list");
-	ft_lstadd(redirs, node);
-}
-
-static e_op_type	get_redir_type(char **str)
-{
-	if (!ft_strncmp(*str, ">>", 2))
-	{
-		(*str)+=3;
-		return (DBL_GREAT);
-	}
-	if (!ft_strncmp(*str, "<<", 2))
-	{
-		(*str)+=3;
-		return (DBL_LESS);
-	}
-	if (**str == '>')
-	{
-		(*str)+=2;
-		return (GREAT);
-	}
-	if (**str == '<')
-	{
-		(*str)+=2;
-		return (LESS);
-	}
-	return (OTHER_OP);
-}
-
-static char		*fill_redir_list(char *cmd, t_list **redirs)
-{
-	e_op_type optype;
-	// char c;
-	// int i;
-	char *ret;
-
-	while (*cmd)
-	{
-		optype = get_redir_type(&cmd);
-		if (optype != OTHER_OP)
-			create_redir(redirs, go_to_next_word(&cmd, ' '), optype);
-		else
-			ret = fetch_command(&cmd);
-	}
-	return (ret);
+	return (NULL);
 }
 
 int		open_file(t_redir *redir)
@@ -272,15 +283,16 @@ int handle_hdoc(t_redir *redir)
 	return (fd);
 }
 
-void	handle_redir(t_ast *root, char **env)
+static void		handle_redir(char **env)
 {
 	// char *cmd;
 	// char *path;
 	// int	cmd_len;
 	// e_op_type redir;
-	t_list *redir;
+	// t_list *redir;
 	t_list *temp;
-	t_list *del;
+	t_list *redir;
+	// t_list *del;
 	int		fd;
 	int stdout;
 	int stdin;
@@ -288,25 +300,23 @@ void	handle_redir(t_ast *root, char **env)
 	char **args;
 	int i;
 
-	redir = NULL;
 
 	// save STDOUT && STDIN
 	stdout = dup(STDOUT_FILENO);
 	stdin = dup(STDIN_FILENO);
-
 	// cmd = get_cmd_from_redir(root->token->content, &cmd_len, &redir);
 	// // ft_printf("cmd: |%s|\n",cmd);
 	// path = root->token->content + cmd_len + 2 + (redir == DBL_LESS_DASH || redir == DBL_GREAT_DASH);
 	// ft_printf("path: |%s|\n",path);
 	// redirect(ft_strsplit(cmd, ' '), path, env, redir == GREAT);
 	// ft_strdel(&cmd);
-	cmd = fill_redir_list(root->token->content, &redir);
-	ft_lstrev(&redir);
-	del = redir;
+	// cmd = fill_redir_list(root->token->content, &redir);
+	// ft_lstrev(&redir);
+	// del = redir;
+	redir = g_shell->redir;
 
 	//printing all the redirection to check if they are all right
 	ft_printf("======================\n");
-	ft_printf("cmd: |%s|\n", cmd);
 	temp = redir;
 	while (temp)
 	{
@@ -317,8 +327,9 @@ void	handle_redir(t_ast *root, char **env)
 	ft_printf("======================\n");
 
 	//Apply all redirection
-	while (redir)
+	while (redir && ((t_redir *)redir->content)->end_of_leaf == 0)
 	{
+		cmd = get_curr_cmd(redir);
 		remove_quote(redir->content);
 		if (((t_redir *)redir->content)->op_type == DBL_LESS)
 			fd = handle_hdoc(redir->content);
@@ -335,28 +346,41 @@ void	handle_redir(t_ast *root, char **env)
 			else
 				dup2(fd, STDOUT_FILENO);
 		}
+		temp = redir;
 		redir = redir->next;
+		ft_lstdelone(&temp, redir_delone);
 	}
-
 	// remove quote from all args
 	i = -1;
 	args = ft_strsplit(cmd, ' ');
 	while (args[++i])
 		remove_quote(&args[i]);
+	cmd = hash_table(args[0], g_shell->env);
 
 	// Execut the cmd with a fork
-	ft_fork(args, env);
-
-	// Free the memory
-	ft_lstdel(&del, redir_delone);
-	ft_strdel(&cmd);
-
+	if (cmd)
+	{
+		free(args[0]);
+		args[0] = cmd;
+		ft_fork(args, env);
+	}
+	else
+		ft_splitdel(args);
 	// restore STDOUT & STDIN
 	dup2(stdout, STDOUT_FILENO);
 	dup2(stdin, STDIN_FILENO);
+	ft_printf("save: %s\n", cmd);
+	if (redir)
+	{
+		g_shell->redir = redir->next;
+		ft_lstdelone(&redir, redir_delone);
+	}
+	else
+		g_shell->redir = redir;
+
 }
 
-void ft_execute(t_ast *root, char **env)
+void	ft_execute(t_ast *root, char **env)
 {
 	if (!root)
 		return ;
@@ -365,7 +389,7 @@ void ft_execute(t_ast *root, char **env)
 	if (root->right)
 		ft_execute(root->right, env);
 	if (root->token->redir)
-		handle_redir(root, env);
+		handle_redir(env);
 	// search_pipe(root, ft_strdup("root"),env);
 }
 

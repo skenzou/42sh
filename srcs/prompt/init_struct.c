@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/09 00:37:47 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/12 02:51:10 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/05/13 06:59:30 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static int	init_history(t_history *history)
 	history->len = 0;
 	history->data[0] = NULL;
 	history->read = 0;
-	history->position = 0;
+	history->position = -1;
 	if ((string = get_string_var("HISTFILE", g_shell->var)))
 		history->file_name = ft_strjoin("/Users/", ft_strcjoin(getenv("USER"), string, '/'));
 	else
@@ -72,6 +72,9 @@ int			init_struct(t_term *trm, char **env)
 		return (0);
 	g_shell->history = ft_memalloc(sizeof(*g_shell->history));
 	g_shell->tcap = ft_memalloc(sizeof(*g_shell->tcap));
+	g_shell->lexer = NULL;
+	g_shell->redir = NULL;
+	g_shell->ast = NULL;
 	if (!(g_shell->env = dup_env(env)) || !g_shell->tcap || !g_shell->history)
 		return (0);
 	if (!init_var(g_shell->var) || !init_termcap(g_shell->tcap) ||
