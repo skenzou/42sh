@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/04 23:37:49 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/13 02:41:48 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/05/14 00:52:23 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,23 +104,22 @@ void	build_tree_op(t_list *lexer, t_ast **root, e_op_type optype)
 }
 
 
-void inorder(t_ast *root,char *str)
+void print_ast(t_ast *root,char *str)
 {
-/*
-	root = root->right;
-	while (root)
-	{
-		printf("row: %d %s --- %s \n", row, root->token->content,str);
-		root = root->left;
-	}
-*/
+  int ret;
+
+  ret = ft_strcmp(str, "root");
+  if (!ret)
+    ft_printf("============================AST=============================\n");
 	if (root != NULL)
 	{
-		inorder(root->left,ft_strjoin(str , " - > left"));
+		print_ast(root->left,ft_strjoin(str , " - > left"));
 		if (root->token)
 			printf("%s --- %s \n", root->token->content,str);
-		inorder(root->right,ft_strjoin(str ,"- > right"));
+		print_ast(root->right,ft_strjoin(str ,"- > right"));
 	}
+  if (!ret)
+    ft_printf("============================================================\n");
 	ft_strdel(&str);
 }
 
@@ -285,6 +284,24 @@ static void		create_redir(t_list **redirs, char *dest, e_op_type redir_type)
 	ft_lstadd(redirs, node);
 }
 
+static t_list		*get_next_redir(t_list *lexer)
+{
+	t_list *save;
+	t_token *curr;
+
+	save = lexer;
+	while(lexer)
+	{
+		curr = (t_token *)lexer->content;
+		if (curr->type == TOKEN_REDIR)
+			return (save);
+		else if (curr->type == TOKEN_CTL_OPERATOR)
+			save = lexer->next;
+		lexer = lexer->next;
+	}
+	return (NULL);
+}
+
 static t_list		*handle_redir(t_list *lexer)
 {
 	t_list *redir;
@@ -296,6 +313,7 @@ static t_list		*handle_redir(t_list *lexer)
 	redir = NULL;
 	prev = NULL;
 	cmd = NULL;
+	lexer = get_next_redir(lexer);
 	while (lexer)
 	{
 		curr = (t_token *)lexer->content;
@@ -312,6 +330,9 @@ static t_list		*handle_redir(t_list *lexer)
 		{
 			create_redir(&redir, cmd, OTHER_OP);
 			cmd = NULL;
+			lexer = get_next_redir(lexer);
+			prev = NULL;
+			continue ;
 		}
 		prev = lexer;
 		lexer = lexer->next;
@@ -339,6 +360,8 @@ t_ast  *ft_parse(t_list *lexer, t_list **redir)
 	}
 	handle_inhibitors(lexer);
 	*redir = handle_redir(lexer);
+  if (g_shell->print_flags & PRINT_REDIR)
+    print_redir(*redir);
 	join_all_redir(lexer);
 	if (is_in_lexer(lexer, SEMI))
 		ast(lexer, &root, SEMI);
@@ -348,6 +371,7 @@ t_ast  *ft_parse(t_list *lexer, t_list **redir)
 		ast(lexer, &root, DBL_PIPE);
 	else
 		ast(lexer, &root, PIPE);
-	inorder(root, ft_strdup("root"));
+	if (g_shell->print_flags & PRINT_AST)
+		print_ast(root, ft_strdup("root"));
 	return root;
 }

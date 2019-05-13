@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/03 16:15:41 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/14 00:05:23 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/05/14 00:44:42 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -303,6 +303,18 @@ static void	expand_and_execute(char *cmd)
 		ft_splitdel(args);
 }
 
+void		print_redir(t_list *redir)
+{
+	ft_printf("===========================REDIR============================\n");
+	while (redir)
+	{
+		print_optype(((t_redir *)redir->content)->op_type);
+		ft_printf(" dest: |%s|\n", ((t_redir *)redir->content)->dest);
+		redir = redir->next;
+	}
+	ft_printf("============================================================\n");
+}
+
 
 static void		handle_redir()
 {
@@ -334,17 +346,6 @@ static void		handle_redir()
 	// ft_lstrev(&redir);
 	// del = redir;
 	redir = g_shell->redir;
-
-	//printing all the redirection to check if they are all right
-	ft_printf("======================\n");
-	temp = redir;
-	while (temp)
-	{
-		print_optype(((t_redir *)temp->content)->op_type);
-		ft_printf(" dest: |%s|\n", ((t_redir *)temp->content)->dest);
-		temp = temp->next;
-	}
-	ft_printf("======================\n");
 
 	//Apply all redirection
 	while (redir && ((t_redir *)redir->content)->end_of_leaf == 0)
@@ -399,7 +400,7 @@ void	ft_execute(t_ast *root, char **env)
 		ft_execute(root->right, env);
 	if (root->token->redir)
 		handle_redir();
-	else
+	else if (root->token->type == TOKEN_WORD)
 		expand_and_execute(root->token->content);
 	// search_pipe(root, ft_strdup("root"),env);
 }

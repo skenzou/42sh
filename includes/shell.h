@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 16:42:03 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/13 06:16:52 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/05/14 00:34:00 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,9 @@
 # define BSLASH			'\\'
 # define HERE_DOC_TMP "/tmp/.21sh_tmp"
 # define TABLE_SIZE 1999
+# define PRINT_LEXER  (1 << 0)
+# define PRINT_AST  (1 << 1)
+# define PRINT_REDIR (1 << 2)
 
 typedef struct	s_shell
 {
@@ -53,6 +56,7 @@ typedef struct	s_shell
 	char		*var[256];
 	t_history	*history;
 	t_hash_entry	*hash_table[TABLE_SIZE];
+  char    print_flags;
 }				t_shell;
 
 extern t_shell *g_shell;

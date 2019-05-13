@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/05 00:34:12 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/13 01:59:50 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/05/14 00:43:22 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ void 				print_lexer(t_list *lexer)
 	size_t len;
 	t_list *temp;
 
+	ft_printf("===========================LEXER============================\n");
 	len = 1;
 	temp = lexer;
 	while (temp)
@@ -86,5 +87,5 @@ void 				print_lexer(t_list *lexer)
 		if (lexer)
 			ft_putchar('\n');
 	}
-	ft_putchar('\n');
+	ft_printf("\n============================================================\n");
 }

@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/27 17:27:48 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/13 07:31:13 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/05/14 00:34:28 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,15 +93,29 @@ char	*read_line(t_cap *tcap)
 	}
 }
 
+static void check_flags(char **av, int ac)
+{
+	int i;
+
+	i = 0;
+	while (++i < ac)
+		if (!ft_strcmp(av[i], "-ast"))
+			g_shell->print_flags |= PRINT_AST;
+		else if (!ft_strcmp(av[i], "-lexer"))
+			g_shell->print_flags |= PRINT_LEXER;
+		else if (!ft_strcmp(av[i], "-redir"))
+			g_shell->print_flags |= PRINT_REDIR;
+}
+
 int				main(int ac, char **av, char **env)
 {
 	t_term	term;
 	char	*string;
 
-	(void)ac;
-	(void)av;
 	if (!(tgetent(NULL, getenv("TERM"))) || !init_struct(&term, env))
 		return (-1);
+	if (ac > 1)
+		check_flags(av, ac);
 	while ("21sh")
 	{
 		if ((string = read_line(g_shell->tcap)) == NULL)
