@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/03 16:15:41 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/13 06:48:20 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/05/13 07:42:57 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -369,7 +369,6 @@ static void		handle_redir(char **env)
 	// restore STDOUT & STDIN
 	dup2(stdout, STDOUT_FILENO);
 	dup2(stdin, STDIN_FILENO);
-	ft_printf("save: %s\n", cmd);
 	if (redir)
 	{
 		g_shell->redir = redir->next;
