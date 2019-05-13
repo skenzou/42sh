@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/03 16:15:41 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/13 07:42:57 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/05/13 07:51:48 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -299,6 +299,7 @@ static void		handle_redir(char **env)
 	char *cmd;
 	char **args;
 	int i;
+	int tempfd;
 
 
 	// save STDOUT && STDIN
@@ -332,7 +333,12 @@ static void		handle_redir(char **env)
 		cmd = get_curr_cmd(redir);
 		remove_quote(redir->content);
 		if (((t_redir *)redir->content)->op_type == DBL_LESS)
+		{
+			tempfd = dup(STDOUT_FILENO);
+			dup2(stdout, STDOUT_FILENO);
 			fd = handle_hdoc(redir->content);
+			dup2(tempfd, STDOUT_FILENO);
+		}
 		else
 		{
 			fd = open_file(redir->content);
