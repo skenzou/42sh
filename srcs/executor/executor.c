@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/03 16:15:41 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/14 10:45:18 by Mohamed          ###   ########.fr       */
+/*   Updated: 2019/05/14 11:31:08 by Mohamed          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -317,6 +317,25 @@ void		print_redir(t_list *redir)
 	ft_printf("============================================================\n");
 }
 
+static t_list *next_cmd(t_list *redir)
+{
+	t_list *temp;
+
+	while (redir && ((t_redir *)redir->content)->end_of_leaf == 0)
+	{
+		temp = redir;
+		redir = redir->next;
+		ft_lstdelone(&temp, redir_delone);
+	}
+	if (redir)
+	{
+		temp = redir;
+		redir = redir->next;
+		ft_lstdelone(&temp, redir_delone);
+	}
+	return (redir);
+}
+
 
 static void		handle_redir()
 {
@@ -378,6 +397,13 @@ static void		handle_redir()
 				dup2(fd, STDIN_FILENO);
 			else
 				dup2(fd, STDOUT_FILENO);
+		}
+		else
+		{
+			g_shell->redir = next_cmd(redir);
+			dup2(stdout, STDOUT_FILENO);
+			dup2(stdin, STDIN_FILENO);
+			return ;
 		}
 		temp = redir;
 		redir = redir->next;
