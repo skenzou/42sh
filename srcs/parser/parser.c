@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/04 23:37:49 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/14 06:28:37 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/05/14 10:39:50 by Mohamed          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -251,8 +251,7 @@ static void		join_2(t_list *lexer)
 	curr = (t_token *)lexer->content;
 	next = (t_token *)lexer->next->content;
 	curr->type = TOKEN_WORD;
-	if (curr->type == TOKEN_REDIR || next->type == TOKEN_REDIR)
-		curr->redir = 1;
+	curr->redir = 1;
 	tmp = lexer->next;
 	lexer->next = tmp->next;
 	curr->content = join_2tab(curr->content, next->content, curr->size, next->size);

@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/30 18:51:02 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/14 06:11:45 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/05/14 10:44:56 by Mohamed          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,6 @@ static const t_oplist existing_token[] =
 	{"\t", 1, TOKEN_EAT, OTHER_OP},
 	{"\r", 1, TOKEN_EAT, OTHER_OP},
 	{"\f", 1, TOKEN_EAT, OTHER_OP},
-	// {"\\", 1, TOKEN_BSLASH, OTHER_OP},
 	{"=", 1, TOKEN_EQUAL, OTHER_OP},
 	{NULL, 1, 0, OTHER_OP}
 };
@@ -117,7 +116,7 @@ static void 		create_token(t_list **lexer, char *str,
 	token.type = type;
 	token.is_op = op_type != OTHER_OP;
 	token.op_type = op_type;
-	token.redir = 0;
+	token.redir = op_type == TOKEN_REDIR;
 	list = ft_lstnew((void *)&token, sizeof(token));
 	if (!list)
 		ft_exit("Failed to malloc a node of my lexer list");

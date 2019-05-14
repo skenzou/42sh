@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/03 16:15:41 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/14 07:00:17 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/05/14 10:45:18 by Mohamed          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -296,12 +296,6 @@ static void	expand_and_execute(char **args)
 		free(args[0]);
 		args[0] = cmd;
 		ft_fork(args, g_shell->env);
-	}
-	else
-	{
-		ft_printf("xD\n");
-		ft_splitdel(args);
-
 	}
 }
 
