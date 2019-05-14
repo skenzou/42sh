@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hash.c                                             :+:      :+:    :+:   */
+/*   bin_hash.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/13 06:11:23 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/13 07:04:02 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/05/15 01:50:08 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +43,13 @@ static unsigned char *add_path(char **bin,unsigned char *argv)
 }
 
 
-static unsigned long hashCode(unsigned char *str)  // djb2 hash function
+static unsigned long hashCode(unsigned char *str)
 {
 	unsigned long hash = 5381;
 	int c;
 
 	while ((c = *str++))
-		hash = ((hash << 5) + hash) + c; /* hash * 33 + c */
+		hash = ((hash << 5) + hash) + c;
 
 	return (hash % TABLE_SIZE & 0xFFFFFFFF);
 }
@@ -59,7 +59,8 @@ static t_hash_entry *search(unsigned char* key) {
 
 	while(g_shell->hash_table[hashIndex] != NULL)
 	{
-		if(ft_strcmp((char*)g_shell->hash_table[hashIndex]->key,(char*)key) == 0)
+		if(ft_strcmp((char*)g_shell->hash_table[hashIndex]->key,
+															(char*)key) == 0)
 			return (g_shell->hash_table[hashIndex]);
 		++hashIndex;
 		hashIndex %= TABLE_SIZE;
@@ -86,7 +87,8 @@ static int insert(unsigned char *key, char **env) {
 	if(!key)
 		return (-1) ;
 	item->data = key;
-	while(g_shell->hash_table[hashIndex] != NULL && g_shell->hash_table[hashIndex]->key != NULL)  //error here
+	while(g_shell->hash_table[hashIndex] != NULL
+								&& g_shell->hash_table[hashIndex]->key != NULL)
 	{
 		++hashIndex;
 		hashIndex %= TABLE_SIZE;
@@ -96,23 +98,32 @@ static int insert(unsigned char *key, char **env) {
 }
 
 
-char *hash_table(char *str,char **env)
+int		hash_table(char **str, char **env)
 {
 	t_hash_entry *item;
+	char *copy;
 
 	item = NULL;
-	if(!(item = search((unsigned char *)str)))
+	copy = *str;
+	if(!(item = search((unsigned char *)copy)))
 	{
-		if(insert((unsigned char *)str,env) == 0)
-			return (ft_strdup((char*)search((unsigned char *)str)->data));
-		else
+		if(insert((unsigned char *)copy,env) == 0)
 		{
-			ft_putstr_fd(str, 2);
-			ft_putendl_fd(": command not found", 2);
+			*str = ft_strdup((char*)search((unsigned char *)copy)->data);
+			!(*str) ? exit(1) : 0;
+			free(copy);
+			return (check_file(*str));
 		}
+		else
+			return (NOT_FOUND);
 	}
 	if (item)
-		return (ft_strdup((char *)item->data));
+	{
+		*str = ft_strdup((char *)item->data);
+		!(*str) ? exit(1) : 0;
+		free(copy);
+		return (check_file(*str));
+	}
 	else
-		return (NULL);
+		return (NOT_FOUND);
 }

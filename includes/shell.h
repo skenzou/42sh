@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 16:42:03 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/14 00:34:00 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/05/15 01:27:44 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,23 @@
 # define PRINT_LEXER  (1 << 0)
 # define PRINT_AST  (1 << 1)
 # define PRINT_REDIR (1 << 2)
+# define MAX_PATH_LEN		4096
+# define NON_EXISTENT		1
+# define IS_DIRECTORY		2
+# define NO_RIGHT			3
+# define INV_ARG			4
+# define SETENV_USG			5
+# define UNSETENV_USG		6
+# define FAILFORK			7
+# define NOT_DIR			8
+# define ECHO_BUILTIN		9
+# define CD_BUILTIN			10
+# define SETENV_BUILTIN		11
+# define UNSETENV_BUILTIN	12
+# define ENV_BUILTIN		13
+# define EXIT_BUILTIN		14
+# define NOT_FOUND			15
+# define SETENV_INVALID_KEY	16
 
 typedef struct	s_shell
 {
@@ -66,5 +83,5 @@ void		sighandler(int sig);
 void 		ft_exit(char *str);
 void		sigfork(int sig);
 char		**dup_env(char **env);
-int		handler(char *input);
+int			handler(char *input);
 #endif

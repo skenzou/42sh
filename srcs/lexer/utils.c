@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/05 00:33:06 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/14 06:47:32 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/05/15 01:27:28 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,18 @@ void  lex_del_list(t_list **lexer)
 		ft_lstdelone(&temp, lex_delone);
 	}
   *lexer = NULL;
+}
+
+int		is_in_lexer(t_list *lexer, e_op_type optype)
+{
+	t_token *token;
+
+	while (lexer)
+	{
+		token = (t_token *)(lexer->content);
+		if (token->op_type == optype)
+			return (1);
+		lexer = lexer->next;
+	}
+	return (0);
 }

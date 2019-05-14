@@ -1,31 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ast_del.c                                          :+:      :+:    :+:   */
+/*   expansions.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/08 05:39:38 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/08 06:30:52 by midrissi         ###   ########.fr       */
+/*   Created: 2019/05/14 23:30:30 by midrissi          #+#    #+#             */
+/*   Updated: 2019/05/14 23:57:24 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "shell.h"
+#include "shell.h"
 
-static void		del_one_ast(t_ast *root)
+void		ft_expand(char **args)
 {
-	ft_lstdelone(&root->list_pointer, lex_delone);
-	free(root);
-}
+	int i;
 
-void 		del_ast(t_ast **root)
-{
-	if (!(*root))
-		return ;
-	if ((*root)->left)
-		del_ast(&(*root)->left);
-	if ((*root)->right)
-		del_ast(&(*root)->right);
-	del_one_ast(*root);
-	*root = NULL;
+	i = -1;
+	while(args[++i])
+		remove_quote(&args[i]);
 }

@@ -6,14 +6,13 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/24 11:44:34 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/15 00:02:29 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/05/15 01:04:32 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
-#include <errno.h>
+#include "shell.h"
 
-char			*get_homepath(char **env)
+static char			*get_homepath(char **env)
 {
 	int i;
 
@@ -41,25 +40,17 @@ static char		*get_oldpwd(char **env)
 
 static int		change_dir(char *path, char ***env)
 {
-	struct stat		buf;
+	int				err;
 	char			cwd[MAX_PATH_LEN];
 
-	if (!stat(path, &buf))
+	err = check_dir(path);
+	if (!err)
 	{
-		if (S_ISDIR(buf.st_mode) == 1)
-		{
-			if (!access(path, X_OK))
-			{
-				ft_setenv("OLDPWD", getcwd(cwd, sizeof(cwd)), env);
-				chdir(path);
-				ft_setenv("PWD", getcwd(cwd, sizeof(cwd)), env);
-				return (0);
-			}
-			return (NO_RIGHT);
-		}
-		return (NOT_DIR);
+		ft_setenv("OLDPWD", getcwd(cwd, sizeof(cwd)), env);
+		chdir(path);
+		ft_setenv("PWD", getcwd(cwd, sizeof(cwd)), env);
 	}
-	return (NON_EXISTENT);
+	return (err);
 }
 
 int				cd_builtin(int argc, char **argv, char ***env)
