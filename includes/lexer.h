@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/30 18:57:23 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/09 05:26:13 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/05/14 04:32:29 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,8 @@ typedef enum
 
 typedef struct		s_token
 {
-	char			*content;
+	char			**content;
+	size_t		size;
 	char			is_op;
 	e_op_type		op_type;
 	size_t			len;

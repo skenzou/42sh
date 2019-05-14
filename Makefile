@@ -6,7 +6,7 @@
 #    By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/03 09:24:41 by midrissi          #+#    #+#              #
-#    Updated: 2019/05/13 07:04:14 by midrissi         ###   ########.fr        #
+#    Updated: 2019/05/14 06:28:08 by midrissi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 # **************************************************************************** #
@@ -55,7 +55,8 @@ LFT_NAME = libft.a
 INC_PATH = ./includes
 SRC_PATH = ./srcs/
 OBJ_NAME = $(SRC_NAME:.c=.o)
-INC_FPATH = ./includes/shell.h ./includes/lexer.h ./includes/prompt.h
+INC_FPATH = ./includes/shell.h ./includes/lexer.h ./includes/prompt.h \
+						./includes/parser.h
 SRC = $(addprefix $(SRC_PATH),$(SRC_NAME))
 LONGEST			=	$(shell echo $(notdir $(SRC)) | tr " " "\n" | awk ' { if (\
 				length > x ) { x = length; y = $$0 } }END{ print y }' | wc -c)

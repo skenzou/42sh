@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/03 16:15:41 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/14 00:44:42 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/05/14 07:00:17 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ void 		ft_fork(char **cmd, char **env)
 		exit(1);
 	}
 	wait(&pid);
-	ft_splitdel(cmd);
 }
 
 void 		pipe_cmds(char **cmd1, char **cmd2, char **env)
@@ -68,8 +67,8 @@ void search_pipe(t_ast *root,char *str, char **env)
 	{
 		search_pipe(root->left,ft_strjoin(str , " - > left"),env);
 		if (root->token->op_type == PIPE)
-			pipe_cmds(ft_strsplit(root->left->token->content,' '),
-					ft_strsplit(root->right->token->content,' '),env);
+			pipe_cmds(root->left->token->content,
+					root->right->token->content, env);
 		search_pipe(root->right,ft_strjoin(str ,"- > right"), env);
 	}
 	ft_strdel(&str);
@@ -223,7 +222,7 @@ void search_pipe(t_ast *root,char *str, char **env)
 // 	return (ret);
 // }
 
-char	*get_curr_cmd(t_list *redir)
+char	**get_curr_cmd(t_list *redir)
 {
 	while (redir)
 	{
@@ -240,11 +239,11 @@ int		open_file(t_redir *redir)
 
 	fd = 0;
 	if (redir->op_type == GREAT) // redirection simple '>'
-		fd = open(redir->dest, O_RDWR | O_CREAT | O_TRUNC, 0666); // ecraser un le contenu de fichier
+		fd = open(redir->dest[0], O_RDWR | O_CREAT | O_TRUNC, 0666); // ecraser un le contenu de fichier
 	else if (redir->op_type == DBL_GREAT)		// double redirection '>>'
-		fd = open(redir->dest, O_RDWR | O_APPEND | O_CREAT, 0666); // ecrire fin de fichier
+		fd = open(redir->dest[0], O_RDWR | O_APPEND | O_CREAT, 0666); // ecrire fin de fichier
 	else if (redir->op_type == LESS) // redirection '<'
-		fd = open(redir->dest, O_RDONLY); // lire depuis le fichier
+		fd = open(redir->dest[0], O_RDONLY); // lire depuis le fichier
 	if (fd == -1)
 	{
 		if (errno == EACCES)
@@ -267,7 +266,7 @@ int handle_hdoc(t_redir *redir)
 
 	fd = open(HERE_DOC_TMP, O_RDWR | O_CREAT | O_TRUNC, 0666);
 	input = NULL;
-	eof = ft_strjoin(redir->dest, "\n");
+	eof = ft_strjoin(redir->dest[0], "\n");
 	g_shell->tcap->prompt = "heredoc>";
 	while ("21sh")
 	{
@@ -283,12 +282,11 @@ int handle_hdoc(t_redir *redir)
 	return (fd);
 }
 
-static void	expand_and_execute(char *cmd)
+static void	expand_and_execute(char **args)
 {
-	char **args;
 	int i;
+	char *cmd;
 
-	args = ft_strsplit(cmd, ' ');
 	i = -1;
 	while(args[++i])
 		remove_quote(&args[i]);
@@ -300,16 +298,26 @@ static void	expand_and_execute(char *cmd)
 		ft_fork(args, g_shell->env);
 	}
 	else
+	{
+		ft_printf("xD\n");
 		ft_splitdel(args);
+
+	}
 }
 
 void		print_redir(t_list *redir)
 {
+	t_redir *red;
+	int i;
+
 	ft_printf("===========================REDIR============================\n");
 	while (redir)
 	{
-		print_optype(((t_redir *)redir->content)->op_type);
-		ft_printf(" dest: |%s|\n", ((t_redir *)redir->content)->dest);
+		red = ((t_redir *)redir->content);
+		i = -1;
+		print_optype(red->op_type);
+		while (red->dest[++i])
+			ft_printf(" dest: |%s|\n", red->dest[i]);
 		redir = redir->next;
 	}
 	ft_printf("============================================================\n");
@@ -329,8 +337,10 @@ static void		handle_redir()
 	int		fd;
 	int stdout;
 	int stdin;
-	char *cmd;
+	char **cmd;
 	int tempfd;
+	int i;
+	t_redir *red;
 
 
 	// save STDOUT && STDIN
@@ -350,9 +360,12 @@ static void		handle_redir()
 	//Apply all redirection
 	while (redir && ((t_redir *)redir->content)->end_of_leaf == 0)
 	{
+		red = ((t_redir *)redir->content);
 		cmd = get_curr_cmd(redir);
-		remove_quote(redir->content);
-		if (((t_redir *)redir->content)->op_type == DBL_LESS)
+		i = -1;
+		while (red->dest[++i])
+			remove_quote(&(red->dest[i]));
+		if (red->op_type == DBL_LESS)
 		{
 			tempfd = dup(STDOUT_FILENO);
 			dup2(stdout, STDOUT_FILENO);
@@ -362,12 +375,12 @@ static void		handle_redir()
 		else
 		{
 			fd = open_file(redir->content);
-			((t_redir *)redir->content)->fd = fd;
+			red->fd = fd;
 		}
 		if (fd != -1)
 		{
-			if (((t_redir *)redir->content)->op_type == LESS
-				|| ((t_redir *)redir->content)->op_type == DBL_LESS)
+			if (red->op_type == LESS
+				|| red->op_type == DBL_LESS)
 				dup2(fd, STDIN_FILENO);
 			else
 				dup2(fd, STDOUT_FILENO);

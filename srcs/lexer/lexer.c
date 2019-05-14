@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/30 18:51:02 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/13 05:12:24 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/05/14 06:11:45 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,15 +79,15 @@ static const t_oplist existing_token[] =
 static int		join_if_2words(t_list **lexer, char *str, e_token_type type)
 {
 	t_token *token;
-	char *tmp;
+	size_t	i;
 
+	i = 0;
 	if (type == TOKEN_WORD && *lexer &&
 		((t_token *)((*lexer)->content))->type == TOKEN_WORD && (!(*lexer)->next || ((t_token *)(((*lexer)->next)->content))->type != TOKEN_REDIR))
 	{
 		token = (t_token *)(*lexer)->content;
-		tmp = token->content;
-		token->content = ft_strcjoin(tmp, str, ' ');
-		ft_strdel(&tmp);
+		token->content = realloc_new_tab(str, token->content, token->size);
+		token->size++;
 		return (1);
 	}
 	return (0);
@@ -109,7 +109,10 @@ static void 		create_token(t_list **lexer, char *str,
 			free(str);
 			return ;
 		}
-	token.content = str;
+	token.content = (char **)ft_memalloc((sizeof(char *) * 2));
+	token.content[0] = str;
+	token.content[1] = NULL;
+	token.size = 1;
 	token.len = ft_strlen(str);
 	token.type = type;
 	token.is_op = op_type != OTHER_OP;

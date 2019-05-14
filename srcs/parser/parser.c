@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/04 23:37:49 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/14 00:52:23 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/05/14 06:28:37 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,7 @@ void	build_tree_op(t_list *lexer, t_ast **root, e_op_type optype)
 void print_ast(t_ast *root,char *str)
 {
   int ret;
+	size_t i;
 
   ret = ft_strcmp(str, "root");
   if (!ret)
@@ -115,7 +116,12 @@ void print_ast(t_ast *root,char *str)
 	{
 		print_ast(root->left,ft_strjoin(str , " - > left"));
 		if (root->token)
-			printf("%s --- %s \n", root->token->content,str);
+		{
+			i = 0;
+			while (i < root->token->size)
+				ft_printf("%s ", root->token->content[i++]);
+			ft_printf("--- %s\n", str);
+		}
 		print_ast(root->right,ft_strjoin(str ,"- > right"));
 	}
   if (!ret)
@@ -147,15 +153,15 @@ char		*check_syntax_errors(t_list *tokens)
   t_token *next;
 
 	if (tokens && ((t_token *)(tokens->content))->type == TOKEN_CTL_OPERATOR)
-		return (((t_token *)(tokens->content))->content);
+		return (((t_token *)(tokens->content))->content[0]);
 	while (tokens && tokens->next)
 	{
 		curr = (t_token *)(tokens->content);
 		next = (t_token *)(tokens->next->content);
 		if (curr->type == TOKEN_REDIR && next->type != TOKEN_WORD)
-			return (next->content);
+			return (next->content[0]);
 		if (curr->type == TOKEN_CTL_OPERATOR && next->type == TOKEN_CTL_OPERATOR)
-			return (next->content);
+			return (next->content[0]);
 		tokens = tokens->next;
 	}
 	curr = (t_token *)(tokens->content);
@@ -194,12 +200,20 @@ static void		check_inhib(char *str, t_list *lexer)
 void			handle_inhibitors(t_list *lexer)
 {
 	t_token *token;
+	size_t i;
 
 	while (lexer)
 	{
 		token = (t_token *)lexer->content;
 		if (token->type == TOKEN_WORD)
-			check_inhib(token->content, lexer);
+		{
+			i = 0;
+			while (i < token->size)
+			{
+				check_inhib(token->content[0], lexer);
+				i++;
+			}
+		}
 		lexer = lexer->next;
 	}
 }
@@ -233,7 +247,6 @@ static void		join_2(t_list *lexer)
 	t_token *curr;
 	t_token *next;
 	t_list *tmp;
-	char	*del;
 
 	curr = (t_token *)lexer->content;
 	next = (t_token *)lexer->next->content;
@@ -242,9 +255,8 @@ static void		join_2(t_list *lexer)
 		curr->redir = 1;
 	tmp = lexer->next;
 	lexer->next = tmp->next;
-	del = curr->content;
-	curr->content = ft_strcjoin(curr->content, next->content, ' ');
-	free(del);
+	curr->content = join_2tab(curr->content, next->content, curr->size, next->size);
+	curr->size = curr->size + next->size;
 	ft_lstdelone(&tmp, lex_delone);
 }
 
@@ -267,12 +279,12 @@ static void		join_all_redir(t_list *lexer)
 	}
 }
 
-static void		create_redir(t_list **redirs, char *dest, e_op_type redir_type)
+static void		create_redir(t_list **redirs, char **dest, size_t size, e_op_type redir_type)
 {
 	t_redir redir;
 	t_list *node;
 
-	redir.dest = ft_strdup(dest);
+	redir.dest = dup_tab(dest, size);
 	redir.op_type = redir_type;
 	if (redir_type == OTHER_OP)
 		redir.end_of_leaf = 1;
@@ -307,8 +319,9 @@ static t_list		*handle_redir(t_list *lexer)
 	t_list *redir;
 	t_token *curr;
 	t_token *next;
-	char	*cmd;
+	char	**cmd;
 	t_list	*prev;
+	size_t cmd_size;
 
 	redir = NULL;
 	prev = NULL;
@@ -319,16 +332,19 @@ static t_list		*handle_redir(t_list *lexer)
 		curr = (t_token *)lexer->content;
 		if (curr->type == TOKEN_WORD && !cmd && (!prev || (prev
 			&& ((t_token *)prev->content)->type != TOKEN_REDIR)))
+			{
 				cmd = curr->content;
+				cmd_size = curr->size;
+			}
 		if (curr->type == TOKEN_REDIR)
 		{
 			next = (t_token *)lexer->next->content;
-			create_redir(&redir, next->content, curr->op_type);
+			create_redir(&redir, next->content, next->size, curr->op_type);
 		}
 		else if (curr->type == TOKEN_CTL_OPERATOR
 			|| (curr->type != TOKEN_CTL_OPERATOR && !lexer->next))
 		{
-			create_redir(&redir, cmd, OTHER_OP);
+			create_redir(&redir, cmd, cmd_size, OTHER_OP);
 			cmd = NULL;
 			lexer = get_next_redir(lexer);
 			prev = NULL;

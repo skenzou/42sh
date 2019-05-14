@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/05 00:34:12 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/14 00:43:22 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/05/14 05:59:59 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,21 +65,32 @@ void 				print_lexer(t_list *lexer)
 	t_token token;
 	size_t len;
 	t_list *temp;
+	size_t i;
 
 	ft_printf("===========================LEXER============================\n");
 	len = 1;
 	temp = lexer;
 	while (temp)
 	{
+		i = 0;
 		token = *((t_token *)(temp->content));
-		if (ft_strlen(token.content) > len)
-			len = ft_strlen(token.content);
+		while (i < token.size)
+		{
+			if (ft_strlen(token.content[i]) > len)
+				len = ft_strlen(token.content[i]);
+			i++;
+		}
 		temp = temp->next;
 	}
 	while (lexer)
 	{
+		i = 0;
 		token = *((t_token *)(lexer->content));
-		ft_printf("%-*s ", len, token.content);
+		while (i < token.size)
+		{
+			ft_printf("%-s ", token.content[i]);
+			i++;
+		}
 		print_tokentype(token.type);
 		if (token.is_op)
 			print_optype(token.op_type);

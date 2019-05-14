@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/06 13:42:50 by midrissi          #+#    #+#             */
-/*   Updated: 2019/02/15 01:11:16 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/05/14 03:47:31 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static size_t	get_substr_len(char const *s, int start, char c)
 	size_t len;
 
 	len = 0;
-	while (s[start] != c && s[start])
+	while (s[start] && s[start] != c)
 	{
 		start++;
 		len++;
