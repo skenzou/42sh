@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 00:40:57 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/15 01:38:45 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/05/15 06:01:10 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,24 @@ char		**get_curr_cmd(t_list *redir);
 int			open_file(t_redir *redir);
 int			is_path(char *str);
 int			check_dir(char *path);
+int			ft_fork_amper(char *path, char **command, char **env);
+int			update_pid_table(int pid, char **command);
+int 		jobs_builtin(char **command);
+int			init_pid();
+int 		kill_pids();
+
+typedef struct s_child t_child;
+
+struct s_child{
+		int		index;
+		int 	pid;
+		int		status;
+		char	*exec; //**
+		t_child *next;
+		t_child *prev;
+};
+
+extern t_child *g_pid_table;
 
 typedef struct s_hash_entry
 {

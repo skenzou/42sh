@@ -6,11 +6,9 @@
 #    By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/03 09:24:41 by midrissi          #+#    #+#              #
-#    Updated: 2019/05/15 01:52:04 by midrissi         ###   ########.fr        #
+#    Updated: 2019/05/15 05:55:28 by tlechien         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-# **************************************************************************** #
-
 
 _END			=	\x1b[0m
 _BOLD			=	\x1b[1m
@@ -40,27 +38,19 @@ MSG				=	Compiling 21sh
 NAME = 21sh
 cc = gcc
 C_FLAGS = -Wall -Wextra -Werror
-SRC_NAME = handler.c utils.c lexer/lexer.c parser/parser.c lexer/utils.c \
-			lexer/print_lexer.c executor/executor.c \
-			executor/utils.c prompt/main.c prompt/arrow_events.c \
-			prompt/key_events.c prompt/reader.c prompt/signal_handler.c \
-			prompt/others.c prompt/read_arrow.c prompt/read_key.c \
-			prompt/history.c prompt/push.c prompt/move.c \
-			prompt/shift_arrow_events.c prompt/home_end_events.c \
-			prompt/init_struct.c prompt/var.c prompt/prompt_prefix.c \
-			executor/bin_hash.c executor/cd_builtin.c executor/echo_builtin.c \
-			executor/expansions.c executor/unsetenv_builtin.c \
-			executor/setenv_builtin.c executor/pipe.c executor/redir_utils.c \
-			executor/ft_fork.c executor/handle_redir.c executor/exit_builtin.c \
-			executor/err_handler.c executor/quote_expansion.c \
-			executor/tab_utils.c parser/syntax_errors.c parser/redir_list.c \
-			parser/build_ast.c parser/ast.c parser/inhibitors.c
+SRC_PATH = ./srcs/
+SRC_LEXER = $(shell find srcs/lexer -type f -name "*.c")
+SRC_EXECUTOR = $(shell find srcs/executor -type f -name "*.c")
+SRC_PROMPT = $(shell find srcs/prompt -type f -name "*.c")
+SRC_PARSER = $(shell find srcs/parser -type f -name "*.c")
+SRC_ROOT = handler.c utils.c
+SRC_NAME = $(SRC_LEXER) $(SRC_EXECUTOR) $(SRC_PROMPT) $(SRC_PARSER) $(SRC_ROOT)
 OBJ_PATH = ./obj/
 LFT_PATH = ./libft/
 LFT_NAME = libft.a
 INC_PATH = ./includes
-SRC_PATH = ./srcs/
-OBJ_NAME = $(SRC_NAME:.c=.o)
+
+OBJ_NAME = $(shell echo $(SRC_NAME:.c=.o) | sed -e 's/srcs\///g')
 INC_FPATH = ./includes/shell.h ./includes/lexer.h ./includes/prompt.h \
 						./includes/parser.h
 SRC = $(addprefix $(SRC_PATH),$(SRC_NAME))

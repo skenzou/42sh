@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/14 23:33:19 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/15 03:45:20 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/05/15 06:18:54 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,14 @@ void		print_redir(t_list *redir)
 		red = ((t_redir *)redir->content);
 		i = -1;
 		print_optype(red->op_type);
+		ft_printf(" dest: |");
 		while (red->dest[++i])
-			ft_printf(" dest: |%s|\n", red->dest[i]);
+		{
+			ft_printf("%s", red->dest[i]);
+			if (red->dest[i + 1])
+				ft_putchar(' ');
+		}
+		ft_printf("|\n");
 		redir = redir->next;
 	}
 	ft_printf("============================================================\n");
@@ -70,13 +76,13 @@ int		open_file(t_redir *redir)
 	{
 		err = check_file(redir->dest[0]);
 		if (err == NO_RIGHT)
-			ft_putendl_fd("42sh: Permission denied: ", 2);
+			ft_putstr_fd("42sh: Permission denied: ", 2);
 		else if (err == NON_EXISTENT)
-			ft_putendl_fd("42sh: No such file or directory: ", 2);
+			ft_putstr_fd("42sh: No such file or directory: ", 2);
 		else if (err == IS_DIRECTORY)
-			ft_putendl_fd("42sh: Is a directory: ", 2);
+			ft_putstr_fd("42sh: Is a directory: ", 2);
 		else
-			ft_putendl_fd("42sh: Error while opening: ", 2);
+			ft_putstr_fd("42sh: Error while opening: ", 2);
 		ft_putendl_fd(redir->dest[0], 2);
 	}
 	return (fd);

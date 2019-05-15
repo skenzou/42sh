@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 01:22:04 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/15 01:23:47 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/05/15 06:46:38 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ static void		join_2(t_list *lexer)
 	t_token *curr;
 	t_token *next;
 	t_list *tmp;
+	char	**old;
 
 	curr = (t_token *)lexer->content;
 	next = (t_token *)lexer->next->content;
@@ -60,8 +61,10 @@ static void		join_2(t_list *lexer)
 	curr->redir = 1;
 	tmp = lexer->next;
 	lexer->next = tmp->next;
+	old = curr->content;
 	curr->content = join_2tab(curr->content, next->content, curr->size,
 																	next->size);
+	ft_splitdel(old);
 	curr->size = curr->size + next->size;
 	ft_lstdelone(&tmp, lex_delone);
 }
@@ -92,20 +95,31 @@ t_list		*create_redir_list(t_list *lexer)
 	t_token *next;
 	char	**cmd;
 	t_list	*prev;
-	size_t cmd_size;
+	size_t	cmd_size;
+	char	to_free;
 
 	redir = NULL;
 	prev = NULL;
 	cmd = NULL;
 	lexer = get_next_redir(lexer);
+	to_free = 0;
 	while (lexer)
 	{
 		curr = (t_token *)lexer->content;
-		if (curr->type == TOKEN_WORD && !cmd && (!prev || (prev
+		if (curr->type == TOKEN_WORD && (!prev || (prev
 			&& ((t_token *)prev->content)->type != TOKEN_REDIR)))
 			{
-				cmd = curr->content;
-				cmd_size = curr->size;
+				if (!cmd)
+				{
+					cmd = curr->content;
+					cmd_size = curr->size;
+				}
+				else
+				{
+					cmd = join_2tab(cmd, curr->content, cmd_size, curr->size);
+					cmd_size += curr->size;
+					to_free = 1;
+				}
 			}
 		if (curr->type == TOKEN_REDIR)
 		{
@@ -116,6 +130,8 @@ t_list		*create_redir_list(t_list *lexer)
 			|| (curr->type != TOKEN_CTL_OPERATOR && !lexer->next))
 		{
 			create_redir(&redir, cmd, cmd_size, OTHER_OP);
+			if (to_free && !(to_free = 0))
+				ft_splitdel(cmd);
 			cmd = NULL;
 			lexer = get_next_redir(lexer);
 			prev = NULL;

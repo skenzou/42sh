@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/27 17:27:48 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/14 00:34:28 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/05/15 06:00:39 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,10 @@ t_event g_key_event[] = {
 	{HOME, &home_event},
 	{END, &end_event}
 };
+
 t_shell *g_shell;
+
+t_child *g_pid_table;
 
 int				wcharlen(char nb)
 {
@@ -112,7 +115,8 @@ int				main(int ac, char **av, char **env)
 	t_term	term;
 	char	*string;
 
-	if (!(tgetent(NULL, getenv("TERM"))) || !init_struct(&term, env))
+	if (!(tgetent(NULL, getenv("TERM"))) || !init_struct(&term, env) ||
+			init_pid())
 		return (-1);
 	if (ac > 1)
 		check_flags(av, ac);
