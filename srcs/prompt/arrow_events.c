@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/28 15:04:00 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/13 07:42:56 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/05/15 07:48:33 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,55 +24,27 @@ void	ft_clear_replace(t_cap *tcap)
 
 int		arrow_up_event(t_cap *tcap)
 {
-	t_history	*h;
-	char		*string;
-	char		*command;
-	int			len;
-
-	h = g_shell->history;
-	if (h->position == h->len)
+	if (g_shell->autocomp->state)
 	{
-		tputs(tcap->sound, 1, ft_put_termcaps);
-		return (1);
+		;
 	}
-	h->position++;
-	ft_clear_replace(tcap);
-	command = h->data[h->len - h->position - 1];
-	if (!command)
-		return (1);
-	len = ft_strlen(command);
-	if (!len)
-		return (1);
-	string = ft_strnew(len);
-	ft_strncpy(string, command, len - 1);
-	ft_insert(string, tcap);
+	else
+	{
+		histo_up(tcap, g_shell->history);
+	}
 	return (1);
 }
 
 int		arrow_down_event(t_cap *tcap)
 {
-	t_history	*h;
-	char		*string;
-	char		*command;
-	int			len;
-
-	h = g_shell->history;
-	if (h->position == -1)
+	if (g_shell->autocomp->state)
 	{
-		tputs(tcap->sound, 1, ft_put_termcaps);
-		return (1);
+		;
 	}
-	h->position--;
-	ft_clear_replace(tcap);
-	command = h->data[h->len - h->position - 1];
-	if (!command)
-		return (1);
-	len = ft_strlen(command);
-	if (!len)
-		return (1);
-	string = ft_strnew(len);
-	ft_strncpy(string, command, len - 1);
-	ft_insert(string, tcap);
+	else
+	{
+		histo_down(tcap, g_shell->history);
+	}
 	return (1);
 }
 

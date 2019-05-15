@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 07:12:40 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/15 04:17:10 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/05/15 06:38:24 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,9 @@ typedef struct	s_tab
 	int						state;
 	int						pos;
 	int						len;
+	int						carry;
+	int						row;
+	int						col;
 }				t_ab;
 
 extern t_event g_arrow_event[];
@@ -219,9 +222,17 @@ void	ft_clean_buff(t_cap *tcap);
 */
 int		init_struct(t_term *trm, char **env);
 /*
+**COMPLETION.c
+*/
+int		ft_tab(t_cap *tcap, t_ab *autocomp);
+/*
+**HISTO_UP_DOWN.c
+*/
+int	histo_up(t_cap *tcap, t_history *h);
+int	histo_down(t_cap *tcap, t_history *h);
+/*
 **	MAIN.C
 */
-
 int		wcharlen(char nb);
 char	*read_line(t_cap *tcap);
 int		debug(void);
