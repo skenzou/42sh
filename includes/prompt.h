@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 07:12:40 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/15 06:38:24 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/05/15 07:58:22 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,8 @@ typedef struct	s_cap
 	char		*clr_all_line;
 	char		*place_cursor;
 	char		*sound;
+	char		*save;
+	char		*restore;
 	int			cursx;
 	int			cursx_max;
 	int			cursy;

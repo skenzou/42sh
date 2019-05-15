@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 06:02:13 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/15 07:48:32 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/05/15 07:58:23 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,9 @@ int		print_files(char *string, int max_offset, int i, t_ab *autocomp)
 	offset = max((max_offset + 2) - ft_strlen(string), 2);
 	if (i == autocomp->pos)
 	{
+		//ft_insert(string, g_shell->tcap);
+		//tputs(g_shell->tcap->restore, 1, ft_put_termcaps);
+		//ft_replace_cursor(g_shell->tcap);
 		len += ft_printf("\x1b[7m%-s\x1b[0m%-*0s", string, offset, "");
 	}
 	else
@@ -60,6 +63,7 @@ int		ft_tab(t_cap *tcap, t_ab *autocomp)
 		len = 0;
 		while (i[1] < autocomp->row)
 		{
+			tputs(tcap->save, 1, ft_put_termcaps);
 			len += print_files(string[i[0]], max_offset, i[0], autocomp);
 			i[1]++;
 			i[0]++;

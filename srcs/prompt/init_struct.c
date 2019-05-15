@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/09 00:37:47 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/15 03:56:16 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/05/15 07:54:46 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ static int	init_termcap(t_cap *tcap)
 	tcap->clr_all_line = tgetstr("cd", NULL);
 	tcap->place_cursor = tgetstr("ch", NULL);
 	tcap->sound = tgetstr("bl", NULL);
+	tcap->save = tgetstr("sc", NULL);
+	tcap->restore = tgetstr("rc", NULL);
 	return (1);
 }
 
