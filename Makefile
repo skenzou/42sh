@@ -3,90 +3,101 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+         #
+#    By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2019/05/10 02:03:44 by aben-azz          #+#    #+#              #
-#    Updated: 2019/05/12 00:28:14 by aben-azz         ###   ########.fr        #
+#    Created: 2019/02/03 09:24:41 by midrissi          #+#    #+#              #
+#    Updated: 2019/05/15 04:50:32 by aben-azz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+# **************************************************************************** #
+
 
 _END			=	\x1b[0m
 _BOLD			=	\x1b[1m
-_UNDER		=	\x1b[4m
+_UNDER			=	\x1b[4m
 _REV			=	\x1b[7m
 _GREY			=	\x1b[30m
 _RED			=	\x1b[31m
-_GREEN		=	\x1b[32m
-_YELLOW		=	\x1b[33m
+_GREEN			=	\x1b[32m
+_YELLOW			=	\x1b[33m
 _BLUE			=	\x1b[34m
-_PURPLE		=	\x1b[35m
+_PURPLE			=	\x1b[35m
 _CYAN			=	\x1b[36m
-_WHITE		=	\x1b[37m
-_IGREY		=	\x1b[40m
+_WHITE			=	\x1b[37m
+_IGREY			=	\x1b[40m
 _IRED			=	\x1b[41m
-_IGREEN		=	\x1b[42m
-_IYELLOW	=	\x1b[43m
-_IBLUE		=	\x1b[44m
-_IPURPLE	=	\x1b[45m
-_ICYAN		=	\x1b[46m
-_IWHITE		=	\x1b[47m
-NAME			=	21sh
-CC				=	gcc
-FLAGS			=	-Wall -Wextra -Werror
-D_FLAGS		=	-g
-DELTA			=	$$(echo "$$(tput cols)-47"|bc)
-LIBFT_DIR	=	libft/
-LIBFT_LIB	=	$(LIBFT_DIR)libft.a -ltermcap
-LIBFT_INC	=	$(LIBFT_DIR)includes/
-SRC_DIR		=	srcs/
-INC_DIR		=	includes/
-OBJ_DIR		=	obj/
-SRC_BASE 	= main.c arrow_events.c key_events.c reader.c signal_handler.c \
-others.c read_arrow.c read_key.c history.c push.c move.c shift_arrow_events.c \
-home_end_events.c init_struct.c var.c prompt_prefix.c
-SRCS			=	$(addprefix $(SRC_DIR), $(SRC_BASE))
-OBJS			=	$(addprefix $(OBJ_DIR), $(SRC_BASE:.c=.o))
-NB				=	$(words $(SRC_BASE))
-INDEX			=	0
+_IGREEN			=	\x1b[42m
+_IYELLOW		=	\x1b[43m
+_IBLUE			=	\x1b[44m
+_IPURPLE		=	\x1b[45m
+_ICYAN			=	\x1b[46m
+_IWHITE			=	\x1b[47m
+_MAGENTA		=	\x1b[35m
 
-all :
-	@#make -C $(LIBFT_DIR)
-	@make -j $(NAME)
+MSG				=	Compiling 21sh
+.PHONY: all, $(NAME), clean, fclean, re
 
-$(NAME): $(LIBFT_LIB) $(OBJ_DIR) $(OBJS)
-	@$(CC) $(OBJS) -o $(NAME) \
-		-I $(INC_DIR) -I $(LIBFT_INC) $(LIBS) $(LIBFT_LIB) $(FLAGS) $(D_FLAGS)
-	@printf "\r\x1b[32m✅  DONE $(NAME)\033[0m\033[K\n"
+NAME = 21sh
+cc = gcc
+C_FLAGS = -Wall -Wextra -Werror
+SRC_NAME = handler.c utils.c lexer/lexer.c parser/parser.c lexer/utils.c \
+			lexer/print_lexer.c executor/executor.c \
+			executor/utils.c prompt/main.c prompt/arrow_events.c \
+			prompt/key_events.c prompt/reader.c prompt/signal_handler.c \
+			prompt/others.c prompt/read_arrow.c prompt/read_key.c \
+			prompt/history.c prompt/push.c prompt/move.c \
+			prompt/shift_events.c prompt/home_end_events.c \
+			prompt/init_struct.c prompt/var.c prompt/prompt_prefix.c \
+			executor/bin_hash.c executor/cd_builtin.c executor/echo_builtin.c \
+			executor/expansions.c executor/unsetenv_builtin.c \
+			executor/setenv_builtin.c executor/pipe.c executor/redir_utils.c \
+			executor/ft_fork.c executor/handle_redir.c executor/exit_builtin.c \
+			executor/err_handler.c executor/quote_expansion.c \
+			executor/tab_utils.c parser/syntax_errors.c parser/redir_list.c \
+			parser/build_ast.c parser/ast.c parser/inhibitors.c
+OBJ_PATH = ./obj/
+LFT_PATH = ./libft/
+LFT_NAME = libft.a
+INC_PATH = ./includes
+SRC_PATH = ./srcs/
+OBJ_NAME = $(SRC_NAME:.c=.o)
+INC_FPATH = ./includes/shell.h ./includes/lexer.h ./includes/prompt.h \
+						./includes/parser.h
+SRC = $(addprefix $(SRC_PATH),$(SRC_NAME))
+LONGEST			=	$(shell echo $(notdir $(SRC)) | tr " " "\n" | awk ' { if (\
+				length > x ) { x = length; y = $$0 } }END{ print y }' | wc -c)
+OBJ = $(addprefix $(OBJ_PATH),$(OBJ_NAME))
+INC = $(addprefix -I,$(INC_PATH))
 
-$(LIBFT_LIB):
-	@make -C $(LIBFT_DIR)
+all: $(LFT_PATH)$(LFT_NAME) $(NAME)
 
-$(OBJ_DIR) :
-	@mkdir -p $(OBJ_DIR)
-	@mkdir -p $(dir $(OBJS))
+$(LFT_PATH)$(LFT_NAME):
+	@$(MAKE) -C $(LFT_PATH);
 
-$(OBJ_DIR)%.o :	 $(SRC_DIR)%.c | $(OBJ_DIR)
-	@$(eval DONE=$(shell echo $$(($(INDEX)*20/$(NB)))))
-	@$(eval PERCENT=$(shell echo $$(($(INDEX)*100/$(NB)))))
-	@$(eval COLOR=$(shell echo $$(($(PERCENT)%35+196))))
-	@$(eval TO_DO=$(shell echo $$((20-$(INDEX)*20/$(NB)))))
-	@printf "\r\033[38;5;11mCompiling %1.100s : %2d%% \033[48;5;%dm%*s\033[0m%*s\033[48;5;255m \033[0m \033[38;5;11m %*.*s\033[0m\033[K" $(NAME) $(PERCENT) $(COLOR) $(DONE) "" $(TO_DO) "" $(DELTA) $(DELTA) "$@"
-	@$(CC) $(FLAGS) $(D_FLAGS)  -c $< -o $@\
-		-I $(INC_DIR)\
-		-I $(LIBFT_INC)
-	@$(eval INDEX=$(shell echo $$(($(INDEX)+1))))
-clean:			cleanlib
-	@rm -rf $(OBJ_DIR)
-	@printf "\r\033[38;5;202m✖  clean $(NAME).\033[0m\033[K\n"
+$(NAME): $(OBJ)
+		@$(CC) -o $(NAME) -L $(LFT_PATH) -lft -ltermcap $^ -o $@
+		@printf "$(_BOLD)$(_RED)./$(NAME) is ready for use\n$(_END)"
 
-cleanlib:
-	@make -C $(LIBFT_DIR) clean
+$(OBJ_PATH)%.o: $(SRC_PATH)%.c $(INC_FPATH)
+		@mkdir -p $(OBJ_PATH)
+		@mkdir -p $(OBJ_PATH)/lexer
+		@mkdir -p $(OBJ_PATH)/parser
+		@mkdir -p $(OBJ_PATH)/executor
+		@mkdir -p $(OBJ_PATH)/prompt
+		@$(CC) $(C_FLAGS) $(INC) -o $@ -c $<
+		@printf "$(_BOLD)$(_BLUE)$(MSG)$(_END) $(_BOLD)$(_CYAN)%-$(LONGEST)s\
+		$(_END)" $(notdir $<)
+		@if test -s obj/$*.o; then \
+		printf "$(_GREEN) [SUCCES]\n$(_END)"; fi
 
-fclean:			clean fcleanlib
-	@rm -f $(NAME)
-	@printf "\r\033[38;5;196m❌  fclean $(NAME).\033[0m\033[K\n"
+clean:
+		@make -C $(LFT_PATH) clean
+		@rm -rf $(OBJ_PATH)
+		@echo "$(_BOLD)$(_RED)Sucesfuly removed all objects from minishell$(_END)"
 
-fcleanlib:		cleanlib
-	@make -C $(LIBFT_DIR) fclean
+fclean: clean
+		@make -C $(LFT_PATH) fclean
+		@rm -f $(NAME)
+		@echo "$(_BOLD)$(_RED)Sucessfuly removed ${NAME} from minishell$(_END)"
 
-re:				fclean all
+re: fclean all
