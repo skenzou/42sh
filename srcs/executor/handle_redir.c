@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/14 23:28:47 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/15 00:29:51 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/05/15 03:37:25 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,10 @@ static int handle_hdoc(t_redir *redir)
 
 	fd = open(HERE_DOC_TMP, O_RDWR | O_CREAT | O_TRUNC, 0666);
 	input = NULL;
-	eof = ft_strjoin(redir->dest[0], "\n");
+	if (!(eof = ft_strjoin(redir->dest[0], "\n")))
+		ft_exit("Malloc failed in handle_hdoc");
 	g_shell->tcap->prompt = "heredoc>";
-	while ("21sh")
+	while (42)
 	{
 		input = read_line(g_shell->tcap);
 		if (!ft_strcmp(input, eof))

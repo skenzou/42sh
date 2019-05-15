@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/05 00:33:06 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/15 01:27:28 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/05/15 03:43:32 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,20 +17,20 @@ void 	lex_delone(void *data, size_t size)
 	t_token token;
 
 	(void)size;
-  if (data)
-  {
-    token = *((t_token *)(data));
-    ft_splitdel(token.content);
-	free(data);
-  }
+	if (data)
+	{
+		token = *((t_token *)(data));
+		ft_splitdel(token.content);
+		free(data);
+	}
 }
 
 void  lex_del_list(t_list **lexer)
 {
 	t_list *temp;
-  t_list *list;
+	t_list *list;
 
-  list = *lexer;
+	list = *lexer;
 	while (list)
 	{
 		temp = list;

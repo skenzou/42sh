@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 01:18:26 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/15 01:20:08 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/05/15 03:42:27 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,10 @@ void 		del_ast(t_ast **root)
 
 t_ast *newnode(t_token *token, t_list *pointer)
 {
-	t_ast *node =  (t_ast *)malloc(sizeof(t_ast));
+	t_ast *node;
 
+	if (!(node =  (t_ast *)ft_memalloc(sizeof(t_ast))))
+		ft_exit("Malloc failed in newnode");
 	if (token)
 	{
 		node->token = token;

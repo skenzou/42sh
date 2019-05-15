@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 00:57:44 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/15 00:58:44 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/05/15 03:47:20 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ static void	remove_escape(char **str, int *start)
 
 	is_newline = (*str)[*start + 1] == '\n';
 	tmp = *str;
-	*str = ft_strnew(ft_strlen(*str) - (1 - is_newline));
+	if (!(*str = ft_strnew(ft_strlen(*str) - (1 - is_newline))))
+		ft_exit("Malloc failed in remove_escape");
 	ft_strncpy(*str, tmp, *start);
 	ft_strcpy(*str + *start, tmp + *start + 1 + is_newline);
 	free(tmp);
@@ -31,7 +32,8 @@ static void realloc_without_quotes(char **str, int start, int end)
 	char *tmp;
 
 	tmp = *str;
-	*str = ft_strnew(ft_strlen(*str) - 2);
+	if (!(*str = ft_strnew(ft_strlen(*str) - 2)))
+		ft_exit("Malloc failed in realloc_without_quotes");
 	ft_strncpy(*str, tmp, start);
 	ft_strncpy((*str) + start, tmp + start + 1, end - start - 1);
 	ft_strcpy((*str) + end - 1, tmp + end + 1);

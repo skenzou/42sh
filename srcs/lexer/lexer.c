@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/30 18:51:02 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/14 10:44:56 by Mohamed          ###   ########.fr       */
+/*   Updated: 2019/05/15 03:40:31 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,8 @@ static void 		create_token(t_list **lexer, char *str,
 			free(str);
 			return ;
 		}
-	token.content = (char **)ft_memalloc((sizeof(char *) * 2));
+	if (!(token.content = (char **)ft_memalloc((sizeof(char *) * 2))))
+		ft_exit("Malloc failed in create_token");
 	token.content[0] = str;
 	token.content[1] = NULL;
 	token.size = 1;

@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/04 23:37:49 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/15 01:28:30 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/05/15 03:41:17 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ t_ast  *ft_parse(t_list *lexer, t_list **redir)
 	}
 	handle_inhibitors(lexer);
 	*redir = create_redir_list(lexer);
-  if (g_shell->print_flags & PRINT_REDIR)
-    print_redir(*redir);
+	if (g_shell->print_flags & PRINT_REDIR)
+		print_redir(*redir);
 	join_all_redir(lexer);
 	if (is_in_lexer(lexer, SEMI))
 		build_ast(lexer, &root, SEMI);

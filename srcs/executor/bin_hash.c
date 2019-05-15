@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/13 06:11:23 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/15 01:50:08 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/05/15 03:50:51 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,11 @@ static unsigned char *add_path(char **bin,unsigned char *argv)
 	while (bin && bin[++i])
 	{
 		old_bin = *(bin + i);
-		bin[i] = ft_strjoin(bin[i], "/");
+		if (!(bin[i] = ft_strjoin(bin[i], "/")))
+			ft_exit("Malloc failed in add_path");
 		ft_strdel(&old_bin);
-		str = (unsigned char *)ft_strjoin(bin[i], (char *)argv);
+		if (!(str = (unsigned char *)ft_strjoin(bin[i], (char *)argv)))
+			ft_exit("Malloc failed in add_path");
 		if (access((char *)str, R_OK) == 0)
 			return str;
 	}
@@ -76,13 +78,15 @@ static int insert(unsigned char *key, char **env) {
 	char	**bin;
 	t_hash_entry *item;
 
-	item = (t_hash_entry*)ft_memalloc(sizeof(t_hash_entry));
+	if (!(item = (t_hash_entry*)ft_memalloc(sizeof(t_hash_entry))))
+		ft_exit("Malloc failed in insert");
 	item->key = key;
 
 	int hashIndex = hashCode(key);
 
 	path = my_env(env);
-	bin = ft_strsplit(path, ':');
+	if (!(bin = ft_strsplit(path, ':')))
+		ft_exit("Malloc failed in insert");
 	key = add_path(bin, key);
 	if(!key)
 		return (-1) ;
