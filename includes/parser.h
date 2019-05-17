@@ -1,0 +1,48 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parser.h                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/05/05 00:53:00 by midrissi          #+#    #+#             */
+/*   Updated: 2019/05/17 09:29:59 by tlechien         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#ifndef PARSER_H
+# define PARSER_H
+
+/*
+** ## INCLUDES ##
+*/
+
+# include "shell.h"
+
+/*
+** ## FUNCTIONS ##
+*/
+
+t_ast		*ft_parse(t_list *lexer, t_list **redir);
+void		del_ast(t_ast **root);
+void 		print_redir(t_list *redir);
+char		**realloc_new_tab(char *needle, char **old, size_t size);
+char		**join_2tab(char **curr, char **next, size_t curr_size, size_t next_size);
+char	 	**dup_tab(char **tab, size_t size);
+t_ast		*newnode(t_token *token, t_list *pointer);
+void		print_ast(t_ast *root,char *str);
+t_list		*create_redir_list(t_list *lexer);
+void		join_all_redir(t_list *lexer);
+char		*check_syntax_errors(t_list *tokens);
+void		build_ast(t_list *lexer, t_ast **root, e_op_type optype);
+void		handle_inhibitors(t_list *lexer);
+
+typedef struct		s_redir
+{
+	char			**dest;
+	e_op_type		op_type;
+	int				fd;
+	char			end_of_leaf;
+}					t_redir;
+
+#endif
