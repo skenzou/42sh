@@ -6,7 +6,7 @@
 /*   By: tlechien <tlechien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 04:40:55 by tlechien          #+#    #+#             */
-/*   Updated: 2019/05/16 07:22:03 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/05/17 09:50:05 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,13 +57,13 @@ int 	update_priority(int first)
     else
       if (!tmp_f || tmp_f->priority < ID_PRIORITY)
         tmp_f = g_pid_table;
-    if (((!tmp_s && !ID_PRIORITY) || ID_PRIORITY == 1))
+    if (((!tmp_s && !ID_PRIORITY) || ID_PRIORITY == 1) && g_pid_table != tmp_f)
         tmp_s = g_pid_table;
     g_pid_table = ID_PREV;
   }
-  (tmp_f && tmp_f->priority != -1) ? tmp_f->priority = 2 : 0;
   (tmp_s && (!tmp_s->priority || tmp_s->priority == 1)) ?
     tmp_s->priority = 1 : 0;
+  (tmp_f && tmp_f->priority != -1) ? tmp_f->priority = 2 : 0;
   g_pid_table = save;
 	return (0);
 }

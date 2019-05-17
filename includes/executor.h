@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 00:40:57 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/17 09:30:17 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/05/17 11:07:05 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,7 @@ int		    ft_waitprocess(pid_t pid, char **cmd);
 */
 
 int			update_pid_table(int pid, char **cmd, int status);
+int     display_pid_status(int index, char prio, int status, char **command);
 int 		jobs_builtin(char **cmd);
 int			init_pid(void);
 int 	  update_priority(int first);
@@ -115,9 +116,17 @@ int 		kill_pids(void);
 */
 
 int		  fg_builtin(char **cmd);
-int     search_priority(t_child **node);
-int     search_pid(t_child **node, char *str_pid);
-int     search_process(t_child **node, char *p_name);
 int     search_index(t_child **node, char *str_index);
+int     search_pid(t_child **node, char *str_pid, pid_t pid);
+int     search_priority(t_child **node);
+int     search_status(t_child **node, int status);
+int     search_process(t_child **node, char *p_name);
+
+/*
+** bg_builtin.c & dependencies
+*/
+
+int		  bg_builtin(char **cmd);
+int     bg_resume(t_child **node);
 
 #endif

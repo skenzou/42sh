@@ -6,7 +6,7 @@
 /*   By: tlechien <tlechien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 04:51:21 by tlechien          #+#    #+#             */
-/*   Updated: 2019/05/16 07:20:47 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/05/17 10:41:34 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ const char	*g_status[] = {
 ** Display child status.
 */
 
-static  int display_pid_status(int index, char prio, int status, char **command)
+int display_pid_status(int index, char prio, int status, char **command)
 {
 	char current;
 
@@ -62,6 +62,7 @@ static  int check_pid_status(t_child **node)
 		(*node)->status = S_CONT;
 	else
 		return (0);
+  update_priority(0); // ?
 	display_pid_status((*node)->index, (*node)->priority, (*node)->status,
 											&(*node)->exec);
 	ft_putendl((*node)->exec);

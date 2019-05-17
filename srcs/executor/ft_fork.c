@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/14 23:53:49 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/16 07:22:01 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/05/17 10:41:31 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 int		ft_waitprocess(pid_t pid, char **cmd)
 {
-	int status;
+	int       status;
+  t_child   *node;
 
 	waitpid(pid, &status, WUNTRACED);
   if (WIFEXITED(status))
@@ -24,6 +25,8 @@ int		ft_waitprocess(pid_t pid, char **cmd)
   else if (WSTOPSIG(status))
   {
     update_pid_table(pid, cmd, S_SUSP);
+    search_pid(&node, NULL, pid);
+    display_pid_status(node->index, ' ', S_SUSP, &(node->exec));
 		kill(pid, SIGINT); // idem ?
   }
 	return (1);
