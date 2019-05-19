@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 00:40:57 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/17 11:07:05 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/05/19 14:39:54 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,10 +105,10 @@ int		    ft_waitprocess(pid_t pid, char **cmd);
 */
 
 int			update_pid_table(int pid, char **cmd, int status);
-int     display_pid_status(int index, char prio, int status, char **command);
+int			display_pid_status(t_child *node, int option);
 int 		jobs_builtin(char **cmd);
 int			init_pid(void);
-int 	  update_priority(int first);
+int			update_priority(int first);
 int 		kill_pids(void);
 
 /*
