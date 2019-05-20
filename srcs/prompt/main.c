@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/27 17:27:48 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/15 23:32:00 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/05/20 14:09:36 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ t_event g_key_event[] = {
 };
 
 t_shell *g_shell;
-
 t_child *g_pid_table;
+char	**g_aliases;
 
 int				wcharlen(char nb)
 {

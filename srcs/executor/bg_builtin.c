@@ -6,15 +6,15 @@
 /*   By: tlechien <tlechien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 10:57:28 by tlechien          #+#    #+#             */
-/*   Updated: 2019/05/19 13:39:06 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/05/20 13:04:06 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/shell.h"
 
 /*
-** Builtin that resume interruped processus.
-**  Need protection on already finished process ??
+** Builtin that resumes interruped processus.
+**  Needs protection on already finished process ??
 */
 
 static	int	bg_all(void)

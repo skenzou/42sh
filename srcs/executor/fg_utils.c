@@ -6,14 +6,14 @@
 /*   By: tlechien <tlechien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/16 05:05:04 by tlechien          #+#    #+#             */
-/*   Updated: 2019/05/19 13:10:56 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/05/20 13:07:48 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/shell.h"
 
 /*
-** Search for an index in the pid_table.
+** Searches for an index in the pid_table.
 */
 
 int	search_index(t_child **node, char *str_index)
@@ -36,7 +36,7 @@ int	search_index(t_child **node, char *str_index)
 }
 
 /*
-** Search for a child pid in the pid_table.
+** Searches for a child pid in the pid_table.
 */
 
 int	search_pid(t_child **node, char *str_pid, pid_t pid)
@@ -59,7 +59,7 @@ int	search_pid(t_child **node, char *str_pid, pid_t pid)
 }
 
 /*
-** Search for the child with the highest priority in the pid_table.
+** Searches for the child with the highest priority in the pid_table.
 */
 
 int	search_priority(t_child **node)
@@ -81,7 +81,7 @@ int	search_priority(t_child **node)
 }
 
 /*
-** Search for the first child with the specified status in the pid_table.
+** Searches for the first child with the specified status in the pid_table.
 */
 
 int	search_status(t_child **node, int status)
@@ -102,7 +102,7 @@ int	search_status(t_child **node, int status)
 }
 
 /*
-** Search for the first occurence of a processus name in the pid_table.
+** Searches for the first occurence of a processus name in the pid_table.
 */
 
 int	search_process(t_child **node, char *p_name)

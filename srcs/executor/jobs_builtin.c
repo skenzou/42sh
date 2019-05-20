@@ -6,7 +6,7 @@
 /*   By: tlechien <tlechien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 04:51:21 by tlechien          #+#    #+#             */
-/*   Updated: 2019/05/19 14:46:35 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/05/20 13:07:00 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ const char	*g_status[] = {
 };
 
 /*
-** Display child status.
+** Displays child status.
 */
 
 int			display_pid_status(t_child *node, int option)
@@ -41,7 +41,7 @@ int			display_pid_status(t_child *node, int option)
 }
 
 /*
-** Check child status and update it.
+** Checks child status and update it.
 */
 
 static	int	check_pid_status(t_child **node, int option)
@@ -73,7 +73,7 @@ static	int	check_pid_status(t_child **node, int option)
 }
 
 /*
-** Recurse on the pid_table and display the bg processus.
+** Recurses on the pid_table and displays the bg processus.
 */
 
 static	int	rec_pid(t_child **node, int option)

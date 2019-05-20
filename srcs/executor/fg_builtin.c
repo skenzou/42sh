@@ -6,7 +6,7 @@
 /*   By: tlechien <tlechien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/16 05:04:02 by tlechien          #+#    #+#             */
-/*   Updated: 2019/05/19 13:08:21 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/05/20 13:06:16 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 /*
 ** Builtin that gives back focus to background processus.
-**  Need protection on already finished process ??
+**  Needs protection on already finished process ??
 */
 
 int	fg_builtin(char **cmd)

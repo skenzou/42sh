@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/05 00:53:00 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/17 09:29:59 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/05/19 15:06:42 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 # define PARSER_H
 
 /*
-** ## INCLUDES ##
+**	## INCLUDES ##
 */
 
 # include "shell.h"
 
 /*
-** ## FUNCTIONS ##
+**	## FUNCTIONS ##
 */
 
 t_ast		*ft_parse(t_list *lexer, t_list **redir);

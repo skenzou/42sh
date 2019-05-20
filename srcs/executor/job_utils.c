@@ -6,7 +6,7 @@
 /*   By: tlechien <tlechien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 04:40:55 by tlechien          #+#    #+#             */
-/*   Updated: 2019/05/19 13:03:27 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/05/20 13:06:37 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	kill_pids(void)
 }
 
 /*
-** Update statuses in pid_table.
+** Updates statuses in pid_table.
 */
 
 int	update_priority(int first)
@@ -69,7 +69,7 @@ int	update_priority(int first)
 }
 
 /*
-** Add a new node to the pid_table.
+** Adds a new node to the pid_table.
 */
 
 int	update_pid_table(int pid, char **command, int status)
