@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/29 17:39:49 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/14 23:56:08 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/05/21 15:18:38 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	handler(char *input)
 	build_lexer(input, &g_shell->lexer);
 	if (g_shell->print_flags & PRINT_LEXER)
 		print_lexer(g_shell->lexer);
-	g_shell->ast = ft_parse(g_shell->lexer, &g_shell->redir);
+	g_shell->ast = ft_parse(g_shell->lexer);
 	ft_execute_ast(g_shell->ast, g_shell->env);
 	del_ast(&g_shell->ast);
 	g_shell->lexer = NULL;

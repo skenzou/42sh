@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/30 18:51:02 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/15 06:38:41 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/05/21 17:43:38 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,36 @@ static const t_oplist existing_token[] =
 	{"7>&", 3, TOKEN_REDIR, GREAT_AND},
 	{"8>&", 3, TOKEN_REDIR, GREAT_AND},
 	{"9>&", 3, TOKEN_REDIR, GREAT_AND},
+	{"0<&", 3, TOKEN_REDIR, LESS_AND},
+	{"1<&", 3, TOKEN_REDIR, LESS_AND},
+	{"2<&", 3, TOKEN_REDIR, LESS_AND},
+	{"3<&", 3, TOKEN_REDIR, LESS_AND},
+	{"4<&", 3, TOKEN_REDIR, LESS_AND},
+	{"5<&", 3, TOKEN_REDIR, LESS_AND},
+	{"6<&", 3, TOKEN_REDIR, LESS_AND},
+	{"7<&", 3, TOKEN_REDIR, LESS_AND},
+	{"8<&", 3, TOKEN_REDIR, LESS_AND},
+	{"9<&", 3, TOKEN_REDIR, LESS_AND},
+	{"0>", 2, TOKEN_REDIR, GREAT},
+	{"1>", 2, TOKEN_REDIR, GREAT},
+	{"2>", 2, TOKEN_REDIR, GREAT},
+	{"3>", 2, TOKEN_REDIR, GREAT},
+	{"4>", 2, TOKEN_REDIR, GREAT},
+	{"5>", 2, TOKEN_REDIR, GREAT},
+	{"6>", 2, TOKEN_REDIR, GREAT},
+	{"7>", 2, TOKEN_REDIR, GREAT},
+	{"8>", 2, TOKEN_REDIR, GREAT},
+	{"9>", 2, TOKEN_REDIR, GREAT},
+	{"0<", 2, TOKEN_REDIR, LESS},
+	{"1<", 2, TOKEN_REDIR, LESS},
+	{"2<", 2, TOKEN_REDIR, LESS},
+	{"3<", 2, TOKEN_REDIR, LESS},
+	{"4<", 2, TOKEN_REDIR, LESS},
+	{"5<", 2, TOKEN_REDIR, LESS},
+	{"6<", 2, TOKEN_REDIR, LESS},
+	{"7<", 2, TOKEN_REDIR, LESS},
+	{"8<", 2, TOKEN_REDIR, LESS},
+	{"9<", 2, TOKEN_REDIR, LESS},
 	{"$(", 2, TOKEN_OP_CMD, OTHER_OP},
 	{"${", 2, TOKEN_OP_CURLY, OTHER_OP},
 	{">>", 2, TOKEN_REDIR, DBL_GREAT},

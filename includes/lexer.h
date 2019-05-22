@@ -6,18 +6,9 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/30 18:57:23 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/19 15:06:36 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/05/15 01:27:55 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#ifndef LEXER_H
-# define LEXER_H
-
-/*
-**	## INCLUDES ##
-*/
-
-# include "shell.h"
 
 /*
 ** les 5 premiers sont des TOKEN_CTL_OPERATOR
@@ -25,7 +16,6 @@
 ** les 10 suivant sont des TOKEN_REDIR cad des token de d'operateur de redirection
 ** OTHER_OP c'est tout ce qui n'est pas un TOKEN_REDIR ou un TOKEN_CTL_OPERATOR
 */
-
 typedef enum
 {
 	SEMI,			//  ;
@@ -99,11 +89,11 @@ typedef struct		s_ast
 	struct s_ast	*right;
 }					t_ast;
 
+
+
 int			build_lexer(char *input, t_list **lexer);
 void 		print_lexer(t_list *lexer);
 void		lex_delone(void *data, size_t size);
 void		lex_del_list(t_list **lexer);
 void		print_optype(e_op_type op_type);
 int			is_in_lexer(t_list *lexer, e_op_type optype);
-
-#endif

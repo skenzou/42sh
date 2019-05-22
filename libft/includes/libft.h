@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/04 13:56:36 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/12 02:14:57 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/05/21 12:01:57 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,4 +152,5 @@ size_t			ft_levenshtein_n(char *a, size_t length, char *b, size_t blen);
 size_t			ft_levenshtein(char *a, char *b);
 int				ft_indexof(char *string, char separator);
 char			*ft_substr(char *src, int m, int n);
+int				ft_isonly_digit(char *str);
 #endif

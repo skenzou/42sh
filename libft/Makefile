@@ -6,7 +6,7 @@
 #    By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/10/09 12:43:35 by midrissi          #+#    #+#              #
-#    Updated: 2019/05/12 02:15:48 by aben-azz         ###   ########.fr        #
+#    Updated: 2019/05/21 12:02:16 by midrissi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ ft_lstpushback.c ft_lstrev.c ft_lstdestroy.c ft_count_words.c ft_printf.c \
 numbers.c format_geters.c handlers.c ft_splitdel.c \
 ft_abs.c ft_get_color.c ft_percent.c ft_interpolate.c ft_split_count.c \
 ft_strcjoin.c ft_strsplitstr.c ft_count_words_str.c ft_lastindexof.c \
-ft_indexof.c ft_levenshtein.c ft_substr.c
+ft_indexof.c ft_levenshtein.c ft_substr.c ft_isonly_digit.c
 
 _END			=	\x1b[0m
 _BOLD			=	\x1b[1m

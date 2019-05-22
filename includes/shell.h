@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 16:42:03 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/17 10:44:09 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/05/21 14:23:15 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ typedef struct	s_shell
 	char		*var[256];
 	t_history	*history;
 	t_hash_entry	*hash_table[TABLE_SIZE];
+	int			fd_table[10];
   char    print_flags;
 }				t_shell;
 

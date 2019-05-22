@@ -6,13 +6,22 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 01:22:04 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/15 06:46:38 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/05/21 17:34:40 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-static void		create_redir(t_list **redirs, char **dest, size_t size,
+static int get_preceded_fd(char c, e_op_type redir_type)
+{
+	if (ft_isdigit(c))
+		return (c - 48);
+	else
+		return (redir_type == GREAT || redir_type == GREAT_AND
+				|| redir_type == DBL_GREAT);
+}
+
+static void		create_redir(char *red, char **dest, size_t size,
 														e_op_type redir_type)
 {
 	t_redir redir;
@@ -20,14 +29,13 @@ static void		create_redir(t_list **redirs, char **dest, size_t size,
 
 	redir.dest = dup_tab(dest, size);
 	redir.op_type = redir_type;
-	if (redir_type == OTHER_OP)
-		redir.end_of_leaf = 1;
-	else
-		redir.end_of_leaf = 0;
+	if (red)
+		redir.fd = get_preceded_fd(*red, redir_type);
+	redir.end_of_leaf = redir_type == OTHER_OP;
 	node = ft_lstnew((void *)&redir, sizeof(redir));
 	if (!node)
 		ft_exit("Failed to malloc a node for my redir list");
-	ft_lstadd(redirs, node);
+	ft_lstadd(&(g_shell->redir), node);
 }
 
 static t_list		*get_next_redir(t_list *lexer)
@@ -88,9 +96,8 @@ void		join_all_redir(t_list *lexer)
 	}
 }
 
-t_list		*create_redir_list(t_list *lexer)
+void		create_redir_list(t_list *lexer)
 {
-	t_list *redir;
 	t_token *curr;
 	t_token *next;
 	char	**cmd;
@@ -98,7 +105,6 @@ t_list		*create_redir_list(t_list *lexer)
 	size_t	cmd_size;
 	char	to_free;
 
-	redir = NULL;
 	prev = NULL;
 	cmd = NULL;
 	lexer = get_next_redir(lexer);
@@ -124,12 +130,12 @@ t_list		*create_redir_list(t_list *lexer)
 		if (curr->type == TOKEN_REDIR)
 		{
 			next = (t_token *)lexer->next->content;
-			create_redir(&redir, next->content, next->size, curr->op_type);
+			create_redir(curr->content[0], next->content, next->size, curr->op_type);
 		}
 		else if (curr->type == TOKEN_CTL_OPERATOR
 			|| (curr->type != TOKEN_CTL_OPERATOR && !lexer->next))
 		{
-			create_redir(&redir, cmd, cmd_size, OTHER_OP);
+			create_redir(NULL, cmd, cmd_size, OTHER_OP);
 			if (to_free && !(to_free = 0))
 				ft_splitdel(cmd);
 			cmd = NULL;
@@ -140,6 +146,5 @@ t_list		*create_redir_list(t_list *lexer)
 		prev = lexer;
 		lexer = lexer->next;
 	}
-	ft_lstrev(&redir);
-	return (redir);
+	ft_lstrev(&g_shell->redir);
 }

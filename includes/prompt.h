@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 07:12:40 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/19 15:06:56 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/05/13 07:22:17 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -196,7 +196,7 @@ int		add_cmd_to_history(char *string, t_history *history);
 int		debug_history(t_history *history);
 int		read_history(t_history *history);
 /*
-**	PUSH.c
+**PUSH.c
 */
 int		ft_add_n_char(char buff[4], int pos, int len, t_cap *tcap);
 int		ft_insert(char buff[4], t_cap *tcap);
@@ -205,7 +205,7 @@ int		ft_delete_back(t_cap *tcap);
 void	ft_clean_buff(t_cap *tcap);
 
 /*
-**	INIT_STRUCT.c
+**INIT_STRUCT.c
 */
 int		init_struct(t_term *trm, char **env);
 /*
