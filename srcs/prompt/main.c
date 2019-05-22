@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/27 17:27:48 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/20 14:09:36 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/05/20 14:49:59 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,7 +116,7 @@ int				main(int ac, char **av, char **env)
 	char	*string;
 
 	if (!(tgetent(NULL, getenv("TERM"))) || !init_struct(&term, env) ||
-			init_pid())
+			init_pid() || init_alias(TRUE))
 		return (-1);
 	if (ac > 1)
 		check_flags(av, ac);
@@ -127,6 +127,7 @@ int				main(int ac, char **av, char **env)
 		if (handler(string) == 0)
 			return (-1);
 	}
+	save_alias(TRUE);
 	kill_pids();
 	return (0);
 }
