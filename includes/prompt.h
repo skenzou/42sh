@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 07:12:40 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/13 07:22:17 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/05/22 17:53:20 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,67 +110,87 @@ typedef struct	s_history
 
 extern t_event g_arrow_event[];
 extern t_event g_key_event[];
+
 /*
 **	ARROW_EVENTS.C
 */
+
 int		arrow_up_event(t_cap *tcap);
 int		arrow_down_event(t_cap *tcap);
 int		arrow_right_event(t_cap *tcap);
 int		arrow_left_event(t_cap *tcap);
 void	ft_clear_replace(t_cap *tcap);
+
 /*
 **	SHIFT_ARROW_EVENTS.C
 */
+
 int		shift_arrow_up_event(t_cap *tcap);
 int		shift_arrow_down_event(t_cap *tcap);
 int		shift_arrow_right_event(t_cap *tcap);
 int		shift_arrow_left_event(t_cap *tcap);
+
 /*
 **	KEY_EVENTS.C
 */
+
 int		enter_event(t_cap *tcap);
 int		backspace_event(t_cap *tcap);
 int		ctrl_r_event(t_cap *tcap);
 int		tab_event(t_cap *tcap);
 int		ctrl_d_event(t_cap *tcap);
+
 /*
 **	HOME_END_EVENTS.C
 */
+
 int		home_event(t_cap *tcap);
 int		end_event(t_cap *tcap);
+
 /*
 **	VAR.C
 */
+
 int		read_var(char **var);
 char	*get_string_var(char *string, char **var);
 int		get_int_var(char *string, char **var);
+
 /*
 **	READER.C
 */
+
 int		read_buffer(char *buffer, t_cap *tcap);
 void	ft_clear_all_lines(t_cap *tcap);
 
 /*
 ** PROMPT_PREFIX.c
 */
+
 void		print_prompt_prefix(void);
+
 /*
 **	OTHERS.C
 */
+
 int		ft_put_termcaps(int c);
 char	**dup_env(char **env);
 char	*correct(char *string, char **possible, int *difference);
 char	*get_git_status(void);
+
 /*
 **	SIGNAL_HANDLER.C
 */
+
 void	sigint_handler(int sig);
 void	sigwinch_handler(int sig);
+
 /*
 **	READ_KEY.C
 */
+
 int		is_key(char key[3]);
 int		read_key(char buffer, t_cap *tcap);
+
 /*
 **	READ_ARROW.C
 */
@@ -178,6 +198,7 @@ int		read_key(char buffer, t_cap *tcap);
 char	is_shift_arrow(char key[4]);
 int		is_arrow(char key[4]);
 int		read_arrow(char buffer, t_cap *tcap);
+
 /*
 ** MOVE.C
 */
@@ -187,6 +208,7 @@ int		ft_left(t_cap *tcap);
 int		ft_right(t_cap *tcap);
 int		ft_up(t_cap *tcap);
 int		ft_down(t_cap *tcap);
+
 /*
 **	HISTORY.C
 */
@@ -195,9 +217,11 @@ int		write_history(char *string, t_history *history);
 int		add_cmd_to_history(char *string, t_history *history);
 int		debug_history(t_history *history);
 int		read_history(t_history *history);
+
 /*
 **PUSH.c
 */
+
 int		ft_add_n_char(char buff[4], int pos, int len, t_cap *tcap);
 int		ft_insert(char buff[4], t_cap *tcap);
 int		ft_delete_n_char(t_cap *tcap, int pos, int len);
@@ -207,7 +231,9 @@ void	ft_clean_buff(t_cap *tcap);
 /*
 **INIT_STRUCT.c
 */
+
 int		init_struct(t_term *trm, char **env);
+
 /*
 **	MAIN.C
 */

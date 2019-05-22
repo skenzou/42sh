@@ -6,78 +6,88 @@
 /*   By: tlechien <tlechien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 04:40:55 by tlechien          #+#    #+#             */
-/*   Updated: 2019/05/15 06:01:11 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/05/20 13:06:37 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "shell.h"
+#include "../../includes/shell.h"
 
-int	init_pid()
+int	init_pid(void)
 {
-	if (!(g_pid_table = (t_child*)malloc(sizeof(t_child))))
+	if (!(g_pid_table = (t_child*)ft_memalloc(sizeof(t_child))))
 		return (1);
-	g_pid_table->index = 0;
-	g_pid_table->prev = NULL;
-	g_pid_table->pid = 0;
-	g_pid_table->status = 0;
-	g_pid_table->exec = NULL;
-	g_pid_table->next = NULL;
 	return (0);
 }
 
-int kill_pids()
+int	kill_pids(void)
 {
-	while (g_pid_table->prev)
+	while (ID_PREV)
 	{
-		ft_printf("bg PID :%d is being killed.\n", g_pid_table->pid);
-		kill(g_pid_table->pid, SIGTERM);
-		ft_printf("command: %s ",g_pid_table->exec);
+		ft_printf("bg PID :%d is being killed.\n", ID_PID);
+		kill(ID_PID, SIGTERM);
+		ft_printf("command: %s ", ID_EXEC);
 		ft_printf("address: %p ", g_pid_table);
-		ft_printf("pids: %d\n", g_pid_table->pid);
-		g_pid_table = g_pid_table->prev;
+		ft_printf("pids: %d\n", ID_PID);
+		g_pid_table = ID_PREV;
 	}
 	return (0);
 }
 
 /*
-** Update statuses in pid_table.
+** Updates statuses in pid_table.
 */
 
-static int 	update_status()
+int	update_priority(int first)
 {
-	t_child *tmp;
+	t_child *tmp_f;
+	t_child *tmp_s;
+	t_child *save;
 
-	tmp = g_pid_table;
-
-	while (g_pid_table->prev)
+	save = g_pid_table;
+	tmp_f = NULL;
+	tmp_s = NULL;
+	while (ID_PREV)
 	{
-		(g_pid_table->status == 1) ? g_pid_table->status = 0 : 0;
-		(g_pid_table->status == 2) ? g_pid_table->status = 1 : 0;
-		g_pid_table = g_pid_table->prev;
+		if (first)
+		{
+			(ID_PRIORITY == 1) ? ID_PRIORITY = 0 : 0;
+			(ID_PRIORITY == 2) ? ID_PRIORITY = 1 : 0;
+			(ID_INDEX == first) ? ID_PRIORITY = 2 : 0;
+		}
+		else if (!tmp_f || tmp_f->priority < ID_PRIORITY)
+			tmp_f = g_pid_table;
+		if (((!tmp_s && !ID_PRIORITY) || ID_PRIORITY == 1) &&
+			g_pid_table != tmp_f)
+			tmp_s = g_pid_table;
+		g_pid_table = ID_PREV;
 	}
-  g_pid_table = tmp;
+	(tmp_s && (!tmp_s->priority || tmp_s->priority == 1)) ?
+		tmp_s->priority = 1 : 0;
+	(tmp_f && tmp_f->priority != -1) ? tmp_f->priority = 2 : 0;
+	g_pid_table = save;
 	return (0);
 }
 
 /*
-** Add a new node to the pid_table.
+** Adds a new node to the pid_table.
 */
 
-int		update_pid_table(int pid, char **command)
+int	update_pid_table(int pid, char **command, int status)
 {
-		t_child *new;
+	t_child *new;
 
-		if (!(new = (t_child*)malloc(sizeof(t_child))))
-			return (FAILFORK); //TODO malloc erroc
-		new->index = g_pid_table->index + 1;
-		new->pid = pid;
-		new->status = 2;
-		new->exec = ft_strdup(command[0]);  //TODO dup_env() + proteccc
-		new->next = NULL;
-		new->prev = g_pid_table;
-		update_status();
-		g_pid_table->next = new;
-		g_pid_table = new;
-		ft_printf("\n[%d] %d\n", new->index, new->pid);
-		return (0);
+	if (!(new = (t_child*)malloc(sizeof(t_child))))
+		return (FAILFORK); //TODO malloc erroc
+	new->index = g_pid_table->index + 1;
+	new->pid = pid;
+	new->status = status;
+	new->priority = 0;
+	new->exec = ft_strdup(command[0]);  //TODO dup_env() + proteccc
+	new->next = NULL;
+	new->prev = g_pid_table;
+	ID_NEXT = new;
+	g_pid_table = new;
+	update_priority((status == S_SUSP) ? new->index : 0);
+	ft_printf("\n[%d] %d\n", new->index, new->pid);
+	return (0);
 }

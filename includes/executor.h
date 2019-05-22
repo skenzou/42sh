@@ -6,9 +6,67 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 00:40:57 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/15 06:01:10 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/05/22 17:51:20 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#ifndef EXECUTOR_H
+# define EXECUTOR_H
+
+/*
+**	## INCLUDES ##
+*/
+
+# include "shell.h"
+
+/*
+**	## DEFINES ##
+*/
+
+# define S_RUN	0
+# define S_DONE 1
+# define S_SUSP	2
+# define S_CONT 3
+# define S_TERM 4
+# define ID_PRIORITY  g_pid_table->index
+# define ID_PID       g_pid_table->pid
+# define ID_INDEX     g_pid_table->index
+# define ID_STATUS    g_pid_table->status
+# define ID_EXEC      g_pid_table->exec
+# define ID_NEXT      g_pid_table->next
+# define ID_PREV      g_pid_table->prev
+# define ALIAS_FILE	".21sh_alias"
+
+/*
+**	## STRUCTURES ##
+*/
+
+typedef struct s_child t_child;
+
+struct s_child{
+	int				index;
+	pid_t			pid;
+	int				priority;
+	int				status;
+	char			*exec; //**
+	t_child			*next;
+	t_child			*prev;
+};
+
+typedef struct s_hash_entry
+{
+	unsigned char	*data;
+	unsigned char	*key;
+}				t_hash_entry;
+
+extern	t_child		*g_pid_table;
+extern	const char	*g_status[];
+extern	const char	*g_reserved[];
+extern	char		**g_aliases;
+
+/*
+** ## FUNCTIONS ##
+*/
 
 void		pipe_cmds(char **cmd1, char **cmd2, char **env);
 void		search_pipe(t_ast *root,char *str, char **env);
@@ -37,27 +95,63 @@ char		**get_curr_cmd(t_list *redir);
 int			open_file(t_redir *redir);
 int			is_path(char *str);
 int			check_dir(char *path);
-int			ft_fork_amper(char *path, char **command, char **env);
-int			update_pid_table(int pid, char **command);
-int 		jobs_builtin(char **command);
-int			init_pid();
-int 		kill_pids();
 
-typedef struct s_child t_child;
+/*
+**	ft_fork.c
+*/
 
-struct s_child{
-		int		index;
-		int 	pid;
-		int		status;
-		char	*exec; //**
-		t_child *next;
-		t_child *prev;
-};
+int		ft_fork(char **cmd, char **env);
+int		ft_fork_amper(char **cmd, char **env);
+int		ft_waitprocess(pid_t pid, char **cmd);
 
-extern t_child *g_pid_table;
+/*
+**	jobs_builtin.c & dependencies
+*/
 
-typedef struct s_hash_entry
-{
-	unsigned char *data;
-	unsigned char *key;
-}				t_hash_entry;
+int		update_pid_table(int pid, char **cmd, int status);
+int		display_pid_status(t_child *node, int option);
+int		jobs_builtin(char **cmd);
+int		init_pid(void);
+int		update_priority(int first);
+int		kill_pids(void);
+
+/*
+**	fg_builtin.c & dependencies
+*/
+
+int		fg_builtin(char **cmd);
+int		search_index(t_child **node, char *str_index);
+int		search_pid(t_child **node, char *str_pid, pid_t pid);
+int		search_priority(t_child **node);
+int		search_status(t_child **node, int status);
+int		search_process(t_child **node, char *p_name);
+
+/*
+**	bg_builtin.c & dependencies
+*/
+
+int		bg_builtin(char **cmd);
+int		bg_resume(t_child **node);
+
+/*
+**	alias_builtin.c & dependencies
+*/
+
+int		init_alias(int file);
+int		save_alias(int save);
+int		ft_arraylen(char **array);
+int		display_alias(void);
+int		is_reserved(char *key);
+int		is_alias(char *key);
+char 	*get_alias(char *key);
+int		alias_builtin(char **cmd);
+
+/*
+**	cd_builtin_posix.c & dependencies
+*/
+
+int		begin_with(char *env_key, char *str);
+int		search_env(char *var);
+char	*get_env(char *var);
+
+#endif

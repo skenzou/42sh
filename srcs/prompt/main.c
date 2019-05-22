@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/27 17:27:48 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/21 16:13:26 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/05/22 17:58:11 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ t_event g_key_event[] = {
 };
 
 t_shell *g_shell;
-
 t_child *g_pid_table;
+char	**g_aliases;
 
 int				wcharlen(char nb)
 {
@@ -116,7 +116,9 @@ static void init_fd_table()
 
 	i = -1;
 	while (++i < 10)
-		g_shell->fd_table[i] = dup(i);
+		if ((g_shell->fd_table[i] = dup(i)) == -1)
+			return (-1);
+	return (0);
 }
 
 int				main(int ac, char **av, char **env)
@@ -125,11 +127,10 @@ int				main(int ac, char **av, char **env)
 	char	*string;
 
 	if (!(tgetent(NULL, getenv("TERM"))) || !init_struct(&term, env) ||
-			init_pid())
+			init_pid()|| init_alias(TRUE) || init_fd_table())
 		return (-1);
 	if (ac > 1)
 		check_flags(av, ac);
-	init_fd_table();
 	while ("21sh")
 	{
 		if ((string = read_line(g_shell->tcap)) == NULL)
@@ -137,5 +138,7 @@ int				main(int ac, char **av, char **env)
 		if (handler(string) == 0)
 			return (-1);
 	}
+	save_alias(TRUE);
+	kill_pids();
 	return (0);
 }
