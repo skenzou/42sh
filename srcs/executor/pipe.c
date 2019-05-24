@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/14 23:58:59 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/24 15:53:42 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/05/24 17:26:49 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,14 +54,14 @@ static void		pipe_cmd(char **cmd, t_pipe **pipes, size_t nbpipes, int redir)
 		close(pipes[g_shell->curr_pipe]->pipe[1]);
 		if (g_shell->curr_pipe < nbpipes - 1)
 			dup2(pipes[g_shell->curr_pipe + 1]->pipe[1], STDOUT_FILENO);
-		if (!(ft_pre_execution(&cmd, redir)))
+		if (!(g_shell->lastsignal = ft_pre_execution(&cmd, redir)))
 			execve(cmd[0], cmd, g_shell->env);
 		exit(1);
 	}
 	close(pipes[g_shell->curr_pipe]->pipe[0]);
 	close(pipes[g_shell->curr_pipe]->pipe[1]);
 	if (g_shell->curr_pipe == nbpipes -1)
-		ft_waitprocess(pid, cmd);
+		g_shell->lastsignal = ft_waitprocess(pid, cmd);
 }
 
 static void		parse_pipes(t_ast *root, t_pipe **pipes, size_t nbpipes)

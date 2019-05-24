@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 07:12:40 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/22 17:53:20 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/05/24 17:24:36 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 # include <fcntl.h>
 # include <sys/ioctl.h>
 # define PROMPT1 				"\x1b[0m\x1b[32m\x1b[1m➜  \x1b[0m"
+# define PROMPT1_ERR 				"\x1b[0m\x1b[31m\x1b[1m➜  \x1b[0m"
 # define PROMPT2 				"\x1b[36m\x1b[1m%s \x1b[0m"
 # define PROMPT3 			"\x1b[1m\x1b[34mgit:(\x1b[31m%s\x1b[34m) \x1b[0m"
 # define PROMPT4 				"\x1b[1m\x1b[31m%s\x1b[0m\x1b[33m\x1b[1m ✗ \x1b[0m"

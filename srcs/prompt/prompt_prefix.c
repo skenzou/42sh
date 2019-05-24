@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/10 02:39:58 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/13 07:32:22 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/05/24 17:25:15 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,10 @@ static void	print_default_prompt_prefix(void)
 	g_shell->tcap->prompt_len =
 		ft_strlen((string + ft_lastindexof(string, '/') + 1)) +
 															ft_strlen(name) + 6 + 1;
-	ft_printf(PROMPT1);
+	if (g_shell->lastsignal)
+		ft_printf(PROMPT1_ERR);
+	else
+		ft_printf(PROMPT1);
 	ft_printf(PROMPT2, (string + ft_lastindexof(string, '/') + 1));
 	if (git)
 	{
