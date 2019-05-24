@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 01:14:21 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/15 03:39:26 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/05/15 06:06:32 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,14 +42,14 @@ char		**join_2tab(char **curr, char **next, size_t curr_size,
 	i = 0;
 	while (i < curr_size)
 	{
-		new[i] = curr[i];
+		if (!(new[i] = ft_strdup(curr[i])))
+			ft_exit("Malloc failed in join_2tab");
 		i++;
 	}
 	j = 0;
 	while (j < next_size)
 		if (!(new[i++] = ft_strdup(next[j++])))
 			ft_exit("Malloc failed in join_2tab");
-	free(curr);
 	new[i] = NULL;
 	return (new);
 }

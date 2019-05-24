@@ -6,11 +6,9 @@
 #    By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/03 09:24:41 by midrissi          #+#    #+#              #
-#    Updated: 2019/05/15 05:48:52 by aben-azz         ###   ########.fr        #
+#    Updated: 2019/05/25 00:46:30 by aben-azz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-# **************************************************************************** #
-
 
 _END			=	\x1b[0m
 _BOLD			=	\x1b[1m
@@ -34,10 +32,10 @@ _ICYAN			=	\x1b[46m
 _IWHITE			=	\x1b[47m
 _MAGENTA		=	\x1b[35m
 
-MSG				=	Compiling 21sh
+MSG				=	Compiling 42sh
 .PHONY: all, $(NAME), clean, fclean, re
 
-NAME = 21sh
+NAME = 42sh
 cc = gcc
 C_FLAGS = -Wall -Wextra -Werror
 SRC_PATH = ./srcs/
@@ -89,7 +87,7 @@ clean:
 
 fclean: clean
 		@make -C $(LFT_PATH) fclean
-		@rm -f $(NAME)
+		@rm -f $(NAME) .21sh_alias
 		@echo "$(_BOLD)$(_RED)Sucessfuly removed ${NAME} from minishell$(_END)"
 
 re: fclean all

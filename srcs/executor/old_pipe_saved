@@ -1,0 +1,176 @@
+static void 		pipe_2cmds(char **cmd1, char **cmd2, t_pipe **pipes, size_t nbpipes)
+{
+	pid_t pid;
+
+	pid = fork();
+	signal(SIGINT, sighandler);
+	if (pid == 0)
+	{
+		close(pipes[g_shell->curr_pipe]->pipe[0]);
+		dup2(pipes[g_shell->curr_pipe]->pipe[1], STDOUT_FILENO); /* recupere stdout de ma 1ere commande */
+		if (!(ft_pipe_pre_execution(cmd1)))
+			execve(cmd1[0], cmd1, g_shell->env);
+		exit(1);
+	}
+	pid = fork();
+	signal(SIGINT, sighandler);
+	if (pid == 0)
+	{
+		close(pipes[g_shell->curr_pipe]->pipe[1]);
+		dup2(pipes[g_shell->curr_pipe]->pipe[0], STDIN_FILENO); /* recupere la sortie de pipe dans stdin de ma 2 eme commande */
+		if (g_shell->curr_pipe < nbpipes - 1)
+		{
+			dup2(pipes[g_shell->curr_pipe + 1]->pipe[1], STDOUT_FILENO);
+			close(pipes[g_shell->curr_pipe]->pipe[0]);
+		}
+		if (!(ft_pipe_pre_execution(cmd2)))
+			execve(cmd2[0], cmd2, g_shell->env);
+		exit(1);
+	}
+	close(pipes[g_shell->curr_pipe]->pipe[0]);
+	close(pipes[g_shell->curr_pipe]->pipe[1]);
+	wait(&pid);
+	wait(&pid);
+}
+
+static void		pipe_cmd(char **cmd, t_pipe **pipes, size_t nbpipes)
+{
+	pid_t pid;
+
+	pid = fork();
+	signal(SIGINT, sighandler);
+	if (pid == 0)
+	{
+		dup2(pipes[g_shell->curr_pipe]->pipe[0], STDIN_FILENO);
+		close(pipes[g_shell->curr_pipe]->pipe[0]);
+		close(pipes[g_shell->curr_pipe]->pipe[1]);
+		if (g_shell->curr_pipe < nbpipes - 1)
+			dup2(pipes[g_shell->curr_pipe + 1]->pipe[1], STDOUT_FILENO);
+		if (!(ft_pipe_pre_execution(cmd)))
+			execve(cmd[0], cmd, g_shell->env);
+		exit(1);
+	}
+	close(pipes[g_shell->curr_pipe]->pipe[0]);
+	close(pipes[g_shell->curr_pipe]->pipe[1]);
+	wait(&pid);
+}
+
+int			ft_pre_execution(char **cmd)
+{
+	int id;
+
+	ft_expand(cmd);
+	id = get_builtin(args[0]);
+	return (id);
+}
+
+int		exec_one_leaf(t_ast *root)
+{
+	char **cmd;
+
+	if (!root)
+		return (0);
+	if (root->token->redir)
+		cmd = handle_redir();
+	else
+		cmd = root->token->content;
+	execve(cmd[0], cmd, g_shell->env);
+	return (1);
+}
+
+int			pipe_cmds(t_ast *root)
+{
+	int fildes[2];
+	pid_t pid;
+
+	if (root && root->left && root->left->left)
+		exit(pipe_cmds(root->left));
+	pipe(fildes);
+	pid = fork();
+	signal(SIGINT, sigfork);
+	if (pid == 0)
+	{
+		close(fildes[0]);
+		dup2(fildes[1], STDOUT_FILENO);
+		if (root->left && root->left->token->type != PIPE)
+			exit(exec_one_leaf(root->left));
+	}
+	else if (pid > 0)
+	{
+		close(fildes[1]);
+		dup2(fildes[0], STDIN_FILENO);
+			// exit(pipe_cmds(root->right));
+		exit(exec_one_leaf(root->right));
+	}
+	close(fildes[0]);
+	close(fildes[1]);
+	wait(&pid);
+	return (1);
+}
+
+void		exec_with_pipes(char **cmd, t_pipe **pipes, size_t nbpipes, int left)
+{
+	pid_t pid;
+
+	pid = fork();
+	if (pid == 0)
+	{
+		if (left)
+		{
+			// ft_putendl_fd(cmd[0], g_shell->fd_table[2]);
+			dup2(pipes[g_shell->curr_pipe]->pipe[1], STDOUT_FILENO);
+			close(pipes[g_shell->curr_pipe]->pipe[0]);
+			// close(pipes[g_shell->curr_pipe]->pipe[1]);
+		}
+		else
+		{
+			if (g_shell->curr_pipe < nbpipes - 1)
+			{
+				// ft_putendl_fd(cmd[0], g_shell->fd_table[2]);
+				dup2(pipes[g_shell->curr_pipe]->pipe[0], STDIN_FILENO);
+				dup2(pipes[g_shell->curr_pipe + 1]->pipe[1], STDOUT_FILENO);
+				close(pipes[g_shell->curr_pipe]->pipe[0]);
+				close(pipes[g_shell->curr_pipe]->pipe[1]);
+				close(pipes[g_shell->curr_pipe + 1]->pipe[0]);
+				close(pipes[g_shell->curr_pipe + 1]->pipe[1]);
+			}
+			else if (g_shell->curr_pipe == nbpipes - 1)
+			{
+				// ft_putendl_fd(cmd[0], g_shell->fd_table[2]);
+				// close(pipes[g_shell->curr_pipe]->pipe[1]);
+				dup2(pipes[g_shell->curr_pipe]->pipe[0], STDIN_FILENO);
+				close(pipes[g_shell->curr_pipe]->pipe[0]);
+				// close(pipes[g_shell->curr_pipe]->pipe[1]);
+			}
+		}
+		// ft_putendl_fd(cmd[0], g_shell->fd_table[2]);
+		execve(cmd[0], cmd, g_shell->env);
+		ft_putnbr_fd(left, g_shell->fd_table[2]);
+		ft_putendl_fd(cmd[0], g_shell->fd_table[2]);
+		exit(1);
+	}
+	wait(&pid);
+}
+
+void exec_cmd(struct comType cmd) {
+    execvp(cmd->cmd, cmd->params);
+}
+
+void pipeCmds(struct comType* cmds) {
+    int fd[cmds_length * 2] = {0};
+    pid_t pid = 0;
+    for (int i = 0; i < cmds_length; i++) {
+        if (pid = fork() == 0) {
+            //child: make this cmd's output the other cmd's input
+            pipe(fd + (2*i) );
+            close(STDOUT);
+            dup(fd[i]);
+            if(i > 0) {
+                close(STDIN);
+                dup(fd[i-1]);
+            }
+            exec_cmd(cmds[i]);
+            close(fd[i]);
+        }
+    }
+}

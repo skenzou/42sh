@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/27 17:27:48 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/15 03:40:54 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/05/25 00:37:16 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,12 @@ t_event g_key_event[] = {
 	{HOME, &home_event},
 	{END, &end_event}
 };
-t_shell *g_shell;
 
-int		wcharlen(char nb)
+t_shell *g_shell;
+t_child *g_pid_table;
+char	**g_aliases;
+
+int				wcharlen(char nb)
 {
 	int i;
 	int count;
@@ -52,7 +55,6 @@ int		wcharlen(char nb)
 	}
 	return (count);
 }
-
 int debug(void)
 {
 	int fd;
@@ -100,21 +102,57 @@ char	*read_line(t_cap *tcap)
 	}
 }
 
-int		main(int ac, char **av, char **env)
+static void check_flags(char **av, int ac)
+{
+	int i;
+
+	i = 0;
+	while (++i < ac)
+		if (!ft_strcmp(av[i], "-ast"))
+			g_shell->print_flags |= PRINT_AST;
+		else if (!ft_strcmp(av[i], "-lexer"))
+			g_shell->print_flags |= PRINT_LEXER;
+		else if (!ft_strcmp(av[i], "-redir"))
+			g_shell->print_flags |= PRINT_REDIR;
+}
+
+static int init_fd_table()
+{
+	int i;
+
+	i = -1;
+	while (++i < 10)
+		if ((g_shell->fd_table[i] = dup(i)) == -1)
+			return (-1);
+	return (0);
+}
+
+int				main(int ac, char **av, char **env)
 {
 	t_term	term;
 	char	*string;
+	struct termios s_termios;
+	struct termios s_termios_backup;
 
-	(void)ac;
-	(void)av;
-	if (!(tgetent(NULL, getenv("TERM"))) || !init_struct(&term, env))
+	tcgetattr(0, &s_termios);
+	tcgetattr(0, &s_termios_backup);
+	s_termios.c_lflag &= ~(ICANON);
+	s_termios.c_lflag &= ~(ECHO);
+	if (!(tgetent(NULL, getenv("TERM"))) || !init_struct(&term, env) ||
+			init_pid()|| init_alias(1) || init_fd_table())
 		return (-1);
+	if (ac > 1)
+		check_flags(av, ac);
 	while ("21sh")
 	{
+		tcsetattr(0, 0, &s_termios);
 		if ((string = read_line(g_shell->tcap)) == NULL)
 			return (-1);
+		tcsetattr(0, 0, &s_termios_backup);
 		if (handler(string) == 0)
 			return (-1);
 	}
+	save_alias(1);
+	kill_pids();
 	return (0);
 }

@@ -3,13 +3,36 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+         #
+#    By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2018/10/13 13:11:49 by aben-azz          #+#    #+#              #
-#    Updated: 2019/05/15 00:22:48 by aben-azz         ###   ########.fr        #
+#    Created: 2018/10/09 12:43:35 by midrissi          #+#    #+#              #
+#    Updated: 2019/05/25 00:45:07 by aben-azz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
+NAME = libft.a
+SRC = ft_atoi.c ft_isalnum.c ft_bzero.c ft_isalpha.c \
+ft_isascii.c ft_isdigit.c ft_isprint.c ft_itoa.c \
+ft_lstadd.c ft_lstdel.c ft_lstdelone.c ft_lstiter.c \
+ft_lstmap.c ft_lstnew.c ft_memalloc.c ft_memccpy.c \
+ft_memchr.c ft_memcmp.c ft_memcpy.c ft_memdel.c \
+ft_memmove.c ft_memset.c ft_putchar.c ft_putchar_fd.c \
+ft_putendl.c ft_putendl_fd.c ft_putnbr.c ft_putnbr_fd.c \
+ft_putstr.c ft_putstr_fd.c ft_strcat.c ft_strchr.c \
+ft_strclr.c ft_strcmp.c ft_strcpy.c ft_strdel.c \
+ft_strdup.c ft_strequ.c ft_striter.c ft_striteri.c \
+ft_strjoin.c ft_strlcat.c ft_strlen.c ft_strmap.c \
+ft_strtrim.c ft_strsplit.c ft_strstr.c ft_strsub.c \
+ft_toupper.c ft_strmapi.c ft_strncat.c ft_strncmp.c \
+ft_strncpy.c ft_strnequ.c ft_strnew.c ft_strnstr.c \
+ft_strrchr.c ft_tolower.c get_next_line.c ft_itoa_base.c \
+ft_nputchar.c ft_ftoa.c ft_utoa_base.c ft_count_char.c \
+ft_lstpushback.c ft_lstrev.c ft_lstdestroy.c ft_count_words.c ft_printf.c \
+numbers.c format_geters.c handlers.c ft_splitdel.c \
+ft_abs.c ft_get_color.c ft_percent.c ft_interpolate.c ft_split_count.c \
+ft_strcjoin.c ft_strsplitstr.c ft_count_words_str.c ft_lastindexof.c \
+ft_indexof.c ft_levenshtein.c ft_substr.c ft_isonly_digit.c ft_strlen2.c \
+ft_splitdup.c min.c max.c
 
 _END			=	\x1b[0m
 _BOLD			=	\x1b[1m
@@ -31,68 +54,46 @@ _IBLUE			=	\x1b[44m
 _IPURPLE		=	\x1b[45m
 _ICYAN			=	\x1b[46m
 _IWHITE			=	\x1b[47m
-NAME			=	libft.a
-CC				=	gcc
-AR				=	ar -rc
-MKDIR			=	mkdir -p
-RM				=	/bin/rm -rf
-W_FLAGS			=	-Wall -Wextra -Werror -Ofast
-FLAGS			=	$(W_FLAGS)
-DELTA			=	$$(echo "$$(tput cols)-47"|bc)
-SRCS			=	$(addprefix $(SRC_DIR), $(SRC_BASE))
-OBJS			=	$(addprefix $(OBJ_DIR), $(SRC_BASE:.c=.o))
-NB				=	$(words $(SRC_BASE))
-INDEX			=	0
-SRC_DIR			=	src/
-INC_DIR			=	includes/
-OBJ_DIR			=	objs/
+MSG					= Compiling the libft:
 
-SRC_BASE				=	ft_counti.c ft_round.c ft_intlen.c ft_ftoa.c ft_pow.c \
-ft_count.c ft_indexof.c ft_isupper.c ft_islower.c ft_atoi.c ft_isalnum.c \
-ft_bzero.c ft_isascii.c ft_isdigit.c ft_isprint.c ft_itoa.c ft_lstadd.c  \
-ft_lstdelone.c ft_lstiter.c ft_lstmap.c ft_lstnew.c ft_memalloc.c ft_memccpy.c \
-ft_lstdel.c ft_memchr.c ft_memcmp.c ft_memcpy.c ft_memdel.c ft_memmove.c \
-ft_memset.c ft_putchar.c ft_putchar_fd.c ft_putendl.c ft_putendl_fd.c \
-ft_putnbr_fd.c ft_putstr.c ft_putstr_fd.c ft_strcat.c ft_strchr.c ft_strclr.c \
-ft_strcmp.c ft_strcpy.c ft_strdel.c ft_strdup.c ft_strequ.c ft_striter.c \
-ft_striteri.c ft_strjoin.c ft_strlcat.c ft_strlen.c ft_strmap.c ft_strtrim.c \
-ft_strsplit.c ft_strstr.c ft_strsub.c ft_toupper.c ft_strmapi.c ft_strncat.c \
-ft_strncmp.c ft_strncpy.c ft_strnequ.c ft_strnew.c ft_strnstr.c ft_strrchr.c \
-ft_putnbr.c ft_isalpha.c ft_tolower.c get_next_line.c ft_repeat_char.c \
-ft_utoa_base.c ft_intlen_base.c min.c max.c ft_printf.c geters.c \
-handle_numbers.c handlers.c ft_lstrev.c ft_lstdestroy.c ft_count_words.c \
-ft_itoa_base.c rgb2dec.c ft_percent.c get_color_from_percent.c ft_rand.c \
-ft_is_space.c ft_strendswith.c ft_strstartswith.c ft_lastindexof.c \
-ft_strreplace.c ft_strsplitwhitespace.c ft_substr.c ft_split_count.c \
-ft_levenshtein.c ft_strcjoin.c ft_splitdel.c
-all:
-	@make -j $(NAME)
+OBJPATH			= obj/
+SRCPATH			=	srcs/
 
-$(NAME): $(OBJ_DIR) $(OBJS)
-	@$(AR) $(NAME) $(OBJS)
-	@ranlib $(NAME)
-	@printf "\r\x1b[32m✅  DONE $(NAME)\033[0m\033[K\n"
+SRCS := $(SRC:%=$(SRCPATH)%)
+OBJ := $(SRC:%.c=$(OBJPATH)%.o)
 
-$(OBJ_DIR)%.o: $(SRC_DIR)%.c | $(OBJ_DIR)
-	@$(eval DONE=$(shell echo $$(($(INDEX)*20/$(NB)))))
-	@$(eval PERCENT=$(shell echo $$(($(INDEX)*100/$(NB)))))
-	@$(eval COLOR=$(shell echo $$(($(PERCENT)%35+196))))
-	@$(eval TO_DO=$(shell echo $$((20-$(INDEX)*20/$(NB)))))
-	@printf "\r\033[38;5;11mCompiling %1.100s : %2d%% \033[48;5;%dm%*s\033[0m%*s\033[48;5;255m \033[0m \033[38;5;11m %*.*s\033[0m\033[K" $(NAME) $(PERCENT) $(COLOR) $(DONE) "" $(TO_DO) "" $(DELTA) $(DELTA) "$@"
-	@$(CC) $(FLAGS) -c $< -o $@ -I $(INC_DIR)
-	@$(eval INDEX=$(shell echo $$(($(INDEX)+1))))
+COMP = gcc
+CFLAGS = -Wall -Wextra -Werror -I./includes -c
+AR = ar rcs
 
-$(OBJ_DIR):
-	@$(MKDIR) $(OBJ_DIR)
-	@$(MKDIR) $(dir $(OBJS))
+LONGEST			=	$(shell echo $(notdir $(SRCS)) | tr " " "\n" | awk ' { if (\
+				length > x ) { x = length; y = $$0 } }END{ print y }' | wc -c)
+
+all: $(NAME)
+
+$(NAME): $(OBJ)
+	@echo "$(_BOLD)$(_PURPLE)Making ${NAME}...$(_END)"
+	@$(AR) $(NAME) $(OBJ)
+	@echo "$(_BOLD)$(_GREEN)${NAME} is ready for use$(_END)"
+
+$(OBJ): obj/%.o: srcs/%.c
+	@if ! test -d $(OBJPATH); then \
+	mkdir -p $(OBJPATH); fi
+	@$(COMP) $(CFLAGS) -o $@ $<
+	@printf "$(_BOLD)$(_BLUE)$(MSG)$(_END) $(_BOLD)$(_CYAN)%-$(LONGEST)s\
+	$(_END)" $(notdir $<)
+	@if test -s obj/$*.o; then \
+	printf "$(_GREEN)[SUCCESS]\n$(_END)";\
+	else \
+	printf "$(_RED)[ERROR]\n$(_END)"; fi
 
 clean:
-	@$(RM) $(OBJ_DIR)
-	@printf "\r\033[38;5;202m✖  clean $(NAME)\033[0m\033[K\n"
+	@rm -rf $(OBJPATH)
+	@echo "$(_BOLD)$(_RED)Sucessfuly removed all objects from the libft$(_END)"
 
 fclean: clean
-	@$(RM) $(NAME)
-	@printf "\r\033[38;5;196m❌  fclean $(NAME)\033[0m\033[K\n"
+	@rm -f $(NAME)
+	@echo "$(_BOLD)$(_RED)Sucessfuly removed ${NAME} from the libft$(_END)"
 
 re: fclean all
 

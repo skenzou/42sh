@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/28 15:23:43 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/15 07:51:55 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/05/25 00:47:00 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 int		enter_event(t_cap *tcap)
 {
 	(void)tcap;
-	if (g_shell->autocomp->state)
-		g_shell->autocomp->state = 0;
 	g_shell->history->position = -1;
 	return (-2);
 }
@@ -52,7 +50,6 @@ int		tab_event(t_cap *tcap)
 	else
 	{
 		autocomp->pos++;
-		ft_dprintf(debug(), "pos: %d\n", autocomp->pos);
 		if (autocomp->pos == autocomp->len)
 			autocomp->pos = 0;
 

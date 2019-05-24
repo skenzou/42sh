@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   shell0.h                                           :+:      :+:    :+:   */
+/*   shell.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 16:42:03 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/15 04:51:41 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/05/25 00:36:24 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,9 +72,12 @@ typedef struct	s_shell
 	t_ast		*ast;
 	char		*var[256];
 	t_history	*history;
-	t_ab		*autocomp;
 	t_hash_entry	*hash_table[TABLE_SIZE];
-  char    print_flags;
+	int			fd_table[10];
+	char    print_flags;
+	char		lastsignal;
+	size_t		curr_pipe;
+	t_ab		*autocomp;
 }				t_shell;
 
 extern t_shell *g_shell;

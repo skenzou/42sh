@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/29 19:09:23 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/08 06:08:15 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/05/24 15:33:28 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	sigfork(int sig)
 {
 	if (sig == SIGINT)
 	{
-		ft_putendl("");
+		ft_putchar('\n');
 		signal(SIGINT, sigfork);
 	}
 }
@@ -37,8 +37,7 @@ void	sighandler(int sig)
 {
 	if (sig == SIGINT)
 	{
-		ft_printf("\n");
-		print_prompt();
+		ft_putchar('\n');
 		signal(SIGINT, sighandler);
 	}
 }

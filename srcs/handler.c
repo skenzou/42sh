@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/29 17:39:49 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/15 04:52:58 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/05/24 18:32:47 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,19 +30,26 @@ char		**dup_env(char **env)
 
 int	handler(char *input)
 {
-	if (!ft_strcmp(input, "exit\n"))
-		exit(0);
-	else if (!ft_strcmp(input, "history\n"))
+	t_list *redir;
+
+	if (!ft_strcmp(input, "history\n"))
 	{
 		debug_history(g_shell->history);
 		return (1);
 	}
+	if (!(input = ft_strdup(input)))
+		exit(1); //TODO + free input ??
+	input[ft_strlen(input) - 1] = '\0';
+ 	input = parse_aliases(input, input, input);
 	build_lexer(input, &g_shell->lexer);
 	if (g_shell->print_flags & PRINT_LEXER)
 		print_lexer(g_shell->lexer);
-	g_shell->ast = ft_parse(g_shell->lexer, &g_shell->redir);
+	g_shell->ast = ft_parse(g_shell->lexer);
+	redir = g_shell->redir;
 	ft_execute_ast(g_shell->ast, g_shell->env);
+	ft_lstdel(&redir, redir_delone);
 	del_ast(&g_shell->ast);
+	g_shell->redir = NULL;
 	g_shell->lexer = NULL;
 	return (1);
 }

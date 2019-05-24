@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/09 00:37:47 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/15 07:54:46 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/05/25 00:37:50 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,6 @@ int			init_struct(t_term *trm, char **env)
 		return (0);
 	g_shell->history = ft_memalloc(sizeof(*g_shell->history));
 	g_shell->tcap = ft_memalloc(sizeof(*g_shell->tcap));
-	g_shell->autocomp = ft_memalloc(sizeof(*g_shell->autocomp));
 	if (!(g_shell->env = dup_env(env)) || !g_shell->tcap || !g_shell->history)
 		return (0);
 	if (!init_var(g_shell->var) || !init_termcap(g_shell->tcap) ||

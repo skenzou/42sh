@@ -6,14 +6,14 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 01:26:02 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/15 01:26:24 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/05/15 05:39:07 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
 
 /*
-** Cherche si un erreur de syntax existing_token
+** Cherche si une erreur de syntax est presente
 ** Renvoie une erreur si un TOKEN_REDIR est pas suivie d'un TOKEN_WORD ou
 ** si deux TOKEN_CTL_OPERATOR se suivent (pour l'instant)
 */

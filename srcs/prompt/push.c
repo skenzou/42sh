@@ -6,29 +6,14 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 23:56:22 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/15 03:59:57 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/05/13 07:32:21 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-int		is_wdigit(char buff)
-{
-	return ((buff & (1 << 0)) == 1 && (buff & (1 << 1)) == 0);
-}
 
-void		print_str(char *buff, int fd)
-{
-	ft_dprintf(fd, "{");
-	while (*buff)
-	{
-		ft_dprintf(fd, "%hh#X|", *buff);
-		buff++;
-	}
-	ft_dprintf(fd, "}\n");
-}
-
-int		ft_add_n_char(char *buff, int pos, int len, t_cap *tcap)
+int		ft_add_n_char(char buff[4], int pos, int len, t_cap *tcap)
 {
 	char	*tmp;
 
@@ -40,8 +25,7 @@ int		ft_add_n_char(char *buff, int pos, int len, t_cap *tcap)
 	ft_strncpy(tcap->command, tmp, pos);
 	ft_strncpy(tcap->command + pos, buff, len);
 	ft_strcpy(tcap->command + pos + len, tmp + pos);
-	print_str(tcap->command, debug());
-	tcap->char_len += len;
+	tcap->char_len = tcap->char_len + len;
 	ft_strdel(&tmp);
 	return (1);
 }
