@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 00:40:57 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/22 17:51:20 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/05/24 14:15:06 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,11 @@ typedef struct s_hash_entry
 	unsigned char	*key;
 }				t_hash_entry;
 
+typedef struct s_pipe
+{
+	int			pipe[2];
+}				t_pipe;
+
 extern	t_child		*g_pid_table;
 extern	const char	*g_status[];
 extern	const char	*g_reserved[];
@@ -68,20 +73,17 @@ extern	char		**g_aliases;
 ** ## FUNCTIONS ##
 */
 
-void		pipe_cmds(char **cmd1, char **cmd2, char **env);
-void		search_pipe(t_ast *root,char *str, char **env);
+void		handle_pipe(t_ast *root);
 void		redir_delone(void *data, size_t size);
 int			ft_fork(char **cmd, char **env);
 void		remove_quote(char **str);
 int			hash_table(char **str,char **env);
 void		expand_and_execute(char **args);
-void		handle_redir();
+char		**handle_redir();
 void		print_redir(t_list *redir);
 int			check_file(char *path);
 void		ft_execute_ast(t_ast *root , char **env);
-void		ft_execute(char **args);
 void		ft_expand(char **args);
-void 		pipe_cmds(char **cmd1, char **cmd2, char **env);
 int			unsetenv_builtin(int ac, char **av, char ***env);
 int			setenv_builtin(int ac, char **av, char ***env);
 int			is_set(char *key, char **env);
@@ -95,6 +97,8 @@ char		**get_curr_cmd(t_list *redir);
 int			open_file(t_redir *redir);
 int			is_path(char *str);
 int			check_dir(char *path);
+void 		restore_fd();
+int			ft_pre_execution(char ***args, int redir);
 
 /*
 **	ft_fork.c

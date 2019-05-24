@@ -6,41 +6,94 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/14 23:58:59 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/14 23:59:07 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/05/24 14:16:59 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-void 		pipe_cmds(char **cmd1, char **cmd2, char **env)
+static size_t			ft_count_pipes(t_ast *root)
 {
-	int fildes[2];
+	size_t nbpipes;
+
+	nbpipes = 0;
+	while (root && root->left)
+	{
+		root = root->left;
+		nbpipes++;
+	}
+	return (nbpipes);
+}
+
+static void 		first_pipe(char **cmd1, t_pipe **pipes, int redir)
+{
 	pid_t pid;
 
-	pipe(fildes);
 	pid = fork();
-	signal(SIGINT, sigfork);
+	signal(SIGINT, sighandler);
 	if (pid == 0)
 	{
-		close(fildes[0]);
-		dup2(fildes[1], STDOUT_FILENO);
-		dup2(fildes[1], STDERR_FILENO);
-		execve(cmd1[0], cmd1, env);
+		close(pipes[g_shell->curr_pipe]->pipe[0]);
+		dup2(pipes[g_shell->curr_pipe]->pipe[1], STDOUT_FILENO);
+		if (!(ft_pre_execution(&cmd1, redir)))
+			execve(cmd1[0], cmd1, g_shell->env);
 		exit(1);
 	}
+	wait(&pid);
+}
+
+static void		pipe_cmd(char **cmd, t_pipe **pipes, size_t nbpipes, int redir)
+{
+	pid_t pid;
+
 	pid = fork();
-	signal(SIGINT, sigfork);
+	signal(SIGINT, sighandler);
 	if (pid == 0)
 	{
-		close(fildes[1]);
-		dup2(fildes[0], STDIN_FILENO);
-		execve(cmd2[0], cmd2, env);
+		dup2(pipes[g_shell->curr_pipe]->pipe[0], STDIN_FILENO);
+		close(pipes[g_shell->curr_pipe]->pipe[0]);
+		close(pipes[g_shell->curr_pipe]->pipe[1]);
+		if (g_shell->curr_pipe < nbpipes - 1)
+			dup2(pipes[g_shell->curr_pipe + 1]->pipe[1], STDOUT_FILENO);
+		if (!(ft_pre_execution(&cmd, redir)))
+			execve(cmd[0], cmd, g_shell->env);
 		exit(1);
 	}
-	close(fildes[0]);
-	close(fildes[1]);
+	close(pipes[g_shell->curr_pipe]->pipe[0]);
+	close(pipes[g_shell->curr_pipe]->pipe[1]);
 	wait(&pid);
-	wait(&pid);
-	ft_splitdel(cmd1);
-	ft_splitdel(cmd2);
+}
+
+static void		parse_pipes(t_ast *root, t_pipe **pipes, size_t nbpipes)
+{
+	if (root->left && root->left->left)
+		parse_pipes(root->left, pipes, nbpipes);
+	if (root->left->token->op_type != PIPE)
+		first_pipe(root->left->token->content, pipes, root->left->token->redir);
+	pipe_cmd(root->right->token->content, pipes, nbpipes, root->right->token->redir);
+	g_shell->curr_pipe++;
+}
+
+void		handle_pipe(t_ast *root)
+{
+	t_pipe		**pipes;
+	size_t	nbpipes;
+	size_t	i;
+
+	g_shell->curr_pipe = 0;
+	nbpipes = ft_count_pipes(root);
+	if (!(pipes = (t_pipe **)ft_memalloc(sizeof(t_pipe *) * nbpipes)))
+		ft_exit("Malloc failed");
+	i = 0;
+	while (i < nbpipes)
+	{
+		if (!(pipes[i] = (t_pipe *)ft_memalloc(sizeof(t_pipe))))
+			ft_exit("Malloc failed");
+		pipe(pipes[i++]->pipe);
+	}
+	parse_pipes(root, pipes, nbpipes);
+	i = 0;
+	while (i < nbpipes)
+		free(pipes[i++]);
+	free(pipes);
 }

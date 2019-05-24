@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/27 17:27:48 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/22 17:58:11 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/05/23 19:08:13 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ static void check_flags(char **av, int ac)
 			g_shell->print_flags |= PRINT_REDIR;
 }
 
-static void init_fd_table()
+static int init_fd_table()
 {
 	int i;
 
@@ -125,20 +125,28 @@ int				main(int ac, char **av, char **env)
 {
 	t_term	term;
 	char	*string;
+	struct termios s_termios;
+	struct termios s_termios_backup;
 
+	tcgetattr(0, &s_termios);
+	tcgetattr(0, &s_termios_backup);
+	s_termios.c_lflag &= ~(ICANON);
+	s_termios.c_lflag &= ~(ECHO);
 	if (!(tgetent(NULL, getenv("TERM"))) || !init_struct(&term, env) ||
-			init_pid()|| init_alias(TRUE) || init_fd_table())
+			init_pid()|| init_alias(1) || init_fd_table())
 		return (-1);
 	if (ac > 1)
 		check_flags(av, ac);
 	while ("21sh")
 	{
+		tcsetattr(0, 0, &s_termios);
 		if ((string = read_line(g_shell->tcap)) == NULL)
 			return (-1);
+		tcsetattr(0, 0, &s_termios_backup);
 		if (handler(string) == 0)
 			return (-1);
 	}
-	save_alias(TRUE);
+	save_alias(1);
 	kill_pids();
 	return (0);
 }

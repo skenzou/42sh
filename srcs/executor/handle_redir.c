@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/14 23:28:47 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/21 17:54:33 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/05/24 14:31:13 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ static int		handle_redir_and(t_redir *redir)
 	return (fd);
 }
 
-static void restore_fd()
+void restore_fd()
 {
 	int i;
 
@@ -90,7 +90,7 @@ static void restore_fd()
 		dup2(g_shell->fd_table[i], i);
 }
 
-void			handle_redir()
+char		**handle_redir()
 {
 	t_list *temp;
 	t_list *redir;
@@ -121,22 +121,16 @@ void			handle_redir()
 		else
 		{
 			g_shell->redir = next_cmd(redir);
-			restore_fd();
-			return ;
+			return (NULL);
 		}
 		if (red->op_type == GREAT_AND)
 			dup2(fd, STDERR_FILENO);
 		temp = redir;
 		redir = redir->next;
-		ft_lstdelone(&temp, redir_delone);
 	}
-	ft_execute(cmd);
-	restore_fd();
 	if (redir)
-	{
 		g_shell->redir = redir->next;
-		ft_lstdelone(&redir, redir_delone);
-	}
 	else
 		g_shell->redir = redir;
+	return (cmd);
 }
