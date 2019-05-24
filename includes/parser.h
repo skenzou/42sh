@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/05 00:53:00 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/22 17:52:08 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/05/24 19:10:51 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void		print_ast(t_ast *root,char *str);
 void		create_redir_list(t_list *lexer);
 void		join_all_redir(t_list *lexer);
 char		*check_syntax_errors(t_list *tokens);
-void		build_ast(t_list *lexer, t_ast **root, e_op_type optype);
+void		build_ast(t_list *lexer, t_ast **root, e_op_type optype1, e_op_type optype2);
 void		handle_inhibitors(t_list *lexer);
 
 typedef struct		s_redir
