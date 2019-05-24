@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/14 23:58:59 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/24 14:16:59 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/05/24 15:30:01 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ static void 		first_pipe(char **cmd1, t_pipe **pipes, int redir)
 			execve(cmd1[0], cmd1, g_shell->env);
 		exit(1);
 	}
-	wait(&pid);
 }
 
 static void		pipe_cmd(char **cmd, t_pipe **pipes, size_t nbpipes, int redir)
@@ -61,7 +60,7 @@ static void		pipe_cmd(char **cmd, t_pipe **pipes, size_t nbpipes, int redir)
 	}
 	close(pipes[g_shell->curr_pipe]->pipe[0]);
 	close(pipes[g_shell->curr_pipe]->pipe[1]);
-	wait(&pid);
+	ft_waitprocess(pid, cmd);
 }
 
 static void		parse_pipes(t_ast *root, t_pipe **pipes, size_t nbpipes)
