@@ -6,7 +6,7 @@
 #    By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/03 09:24:41 by midrissi          #+#    #+#              #
-#    Updated: 2019/05/22 13:45:18 by midrissi         ###   ########.fr        #
+#    Updated: 2019/05/24 15:35:27 by midrissi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,10 +32,10 @@ _ICYAN			=	\x1b[46m
 _IWHITE			=	\x1b[47m
 _MAGENTA		=	\x1b[35m
 
-MSG				=	Compiling 21sh
+MSG				=	Compiling 42sh
 .PHONY: all, $(NAME), clean, fclean, re
 
-NAME = 21sh
+NAME = 42sh
 cc = gcc
 C_FLAGS = -Wall -Wextra -Werror
 SRC_PATH = ./srcs/

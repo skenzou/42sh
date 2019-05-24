@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/14 23:58:59 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/24 15:30:01 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/05/24 15:53:42 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static void 		first_pipe(char **cmd1, t_pipe **pipes, int redir)
 	pid_t pid;
 
 	pid = fork();
-	signal(SIGINT, sighandler);
+	signal(SIGINT, sigfork);
 	if (pid == 0)
 	{
 		close(pipes[g_shell->curr_pipe]->pipe[0]);
@@ -46,7 +46,7 @@ static void		pipe_cmd(char **cmd, t_pipe **pipes, size_t nbpipes, int redir)
 	pid_t pid;
 
 	pid = fork();
-	signal(SIGINT, sighandler);
+	signal(SIGINT, sigfork);
 	if (pid == 0)
 	{
 		dup2(pipes[g_shell->curr_pipe]->pipe[0], STDIN_FILENO);
@@ -60,7 +60,8 @@ static void		pipe_cmd(char **cmd, t_pipe **pipes, size_t nbpipes, int redir)
 	}
 	close(pipes[g_shell->curr_pipe]->pipe[0]);
 	close(pipes[g_shell->curr_pipe]->pipe[1]);
-	ft_waitprocess(pid, cmd);
+	if (g_shell->curr_pipe == nbpipes -1)
+		ft_waitprocess(pid, cmd);
 }
 
 static void		parse_pipes(t_ast *root, t_pipe **pipes, size_t nbpipes)
