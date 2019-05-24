@@ -6,7 +6,7 @@
 /*   By: tlechien <tlechien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/19 15:02:25 by tlechien          #+#    #+#             */
-/*   Updated: 2019/05/24 17:34:55 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/05/24 18:24:03 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,8 @@ int	is_alias(char *key)
 	i = -1;
 	while (g_aliases[++i])
 	{
-		if (*g_aliases[i] && !ft_strncmp(key, g_aliases[i], len))
+		if (*g_aliases[i] && !ft_strncmp(key, g_aliases[i], len) &&
+			g_aliases[i][len]== '=')
 			return (i);
 	}
 	return (-1);
