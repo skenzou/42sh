@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/30 18:51:02 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/21 17:43:38 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/05/24 18:16:33 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,7 +154,7 @@ static void 		create_token(t_list **lexer, char *str,
 	ft_lstadd(lexer, list);
 }
 
-static t_oplist		check_ops(char *str)
+t_oplist		check_ops(char *str)
 {
 	const t_oplist *curr;
 	int		i;
@@ -173,7 +173,6 @@ int					build_lexer(char *input, t_list **lexer)
 	char		*prev;
 
 	prev = input;
-	input[ft_strlen(input) - 1] = '\0';
 	while (input && *input)
 	{
 		if (*input == '\\')
