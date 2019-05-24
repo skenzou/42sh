@@ -6,7 +6,7 @@
 /*   By: tlechien <tlechien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/19 15:02:25 by tlechien          #+#    #+#             */
-/*   Updated: 2019/05/20 14:41:39 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/05/24 17:34:55 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ int	is_alias(char *key)
 	i = -1;
 	while (g_aliases[++i])
 	{
-		if (!ft_strncmp(key, g_aliases[i], len))
+		if (*g_aliases[i] && !ft_strncmp(key, g_aliases[i], len))
 			return (i);
 	}
 	return (-1);
@@ -86,11 +86,19 @@ char *get_alias(char *key)
 {
 	int		i;
 	int		len;
+	char	*value;
 
 	len = (key) ? ft_strlen(key) : 0;
 	if (!is_reserved(key))
 		return (NULL);
-	if ((i = is_alias(key)))
-		return (g_aliases[i] + len);
+	if ((i = is_alias(key)) >= 0)
+	{
+		value = g_aliases[i]+ len + 1;
+		len = 0;
+		while (value[len] != '\0' && value[len] != '\n')
+			len++;
+		value = ft_strsub(value, 0, len);
+		return (value);
+	}
 	return (NULL);
 }

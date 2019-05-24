@@ -6,7 +6,7 @@
 #    By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/03 09:24:41 by midrissi          #+#    #+#              #
-#    Updated: 2019/05/24 15:35:27 by midrissi         ###   ########.fr        #
+#    Updated: 2019/05/24 17:49:41 by tlechien         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -87,7 +87,7 @@ clean:
 
 fclean: clean
 		@make -C $(LFT_PATH) fclean
-		@rm -f $(NAME)
+		@rm -f $(NAME) .21sh_alias
 		@echo "$(_BOLD)$(_RED)Sucessfuly removed ${NAME} from minishell$(_END)"
 
 re: fclean all

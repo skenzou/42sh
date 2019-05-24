@@ -6,7 +6,7 @@
 /*   By: tlechien <tlechien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/19 16:01:10 by tlechien          #+#    #+#             */
-/*   Updated: 2019/05/20 14:41:38 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/05/24 17:46:52 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,28 +23,105 @@ int	init_alias(int file)
 	char	*line;
 	int		ret;
 
-	fd = (file) ? open(ALIAS_FILE, O_RDONLY | O_CREAT | O_TRUNC, S_IRUSR |
+	fd = (file) ? open(ALIAS_FILE, O_RDONLY | O_CREAT, S_IRUSR |
 		S_IWUSR) : 0;
 	i = 1;
 	ret = 0;
 	//if (fd == -1)
 	//	error(1); TODO
-	if (fd)
+
+	while (fd && (ret = get_next_line(fd, &line, '\n')) == 1)
 	{
-		while ((ret = get_next_line(fd, &line, '\n')) == 1)
-		{
-			free(line);
-			i++;
-		}
+		free(line);
+		i++;
 	}
 	if (ret == -1 || (file && close(fd) == -1) || (file && (fd = open(
-		ALIAS_FILE, O_RDONLY | O_TRUNC, S_IRUSR | S_IWUSR)) == -1))
+		ALIAS_FILE, O_RDONLY, S_IRUSR | S_IWUSR)) == -1))
 		return (1);
 	g_aliases =(char **)ft_memalloc(sizeof(char *) * i);
 	i = -1;
 	while (file && (ret = get_next_line(fd, &line, '\n')) == 1)
 		g_aliases[++i] = line;
 	return (((file && close(fd) == -1) || ret == -1)? 1 : 0);
+}
+
+/*
+**	Substitute aliases in the command line.
+*/
+
+char *substitute_alias(char **origin, char *line, int size)
+{
+	char	*p1;
+	char	*p2;
+	char	*tmp;
+	int		len;
+	int		offset;
+
+	tmp = ft_strsub(line, 0, size);
+	p2 = get_alias(tmp); ft_strdel(&tmp);
+	if (!p2)
+		return (line);
+	len = ft_strlen2(p2);
+	offset = line - *origin;
+	if (!(p1 = (offset) ? ft_strsub(*origin, 0, line - *origin): ft_strdup("")))
+		exit(1); //TODO
+	if (!(tmp = ft_strjoin(p1, p2)))
+		exit(1); //TODO
+	ft_strdel(&p1) ; ft_strdel(&p2);
+	if (!(p1 = ft_strjoin(tmp, line + size)))
+		exit(1); //TODO
+	(tmp)? ft_strdel(&tmp): 0;
+	ft_strdel(origin);
+	*origin = p1;
+	return(&p1[len + offset]);
+}
+
+/*
+**	Parses the line and substitute the aliases.
+*/
+
+char *parse_aliases(char *line)
+{
+	char		*origin;
+	t_oplist	curr;
+	char		*prev;
+	int 		is_first;
+
+	is_first = 1;
+	origin = line;
+	line[ft_strlen(line) - 1] = '\0';
+	prev = line;
+	while (*line && *line)
+	{
+		if (*line == '\\')
+			line += 2;
+		curr = check_ops(line);
+		if ((curr.op) && prev != line && is_first)
+		{
+			line = substitute_alias(&origin, prev, line - prev);//TODO check if alias
+			is_first = 0;
+		}
+		if (curr.op)
+		{
+			if (curr.type == TOKEN_CTL_OPERATOR)
+				is_first = 1;
+			line += curr.len;
+			prev = line;
+		}
+		else if (*line == '\'' || *line == '"')
+		{
+			line++;
+			while (*line && *line != '\'' && *line != '"')
+				line++;
+			line++;
+		}
+		else
+			line++;
+
+	}
+	if (prev != line && is_first)
+		line = substitute_alias(&origin, prev, line - prev);//TODO check if alias
+	return (origin);
 }
 
 /*
@@ -58,7 +135,7 @@ int save_alias(int save)
 	int		err;
 
 	if ((i = -1) && save && (fd = open(ALIAS_FILE, O_WRONLY | O_CREAT |
-		S_IRUSR | S_IWUSR)) == -1)
+		O_TRUNC | S_IRUSR | S_IWUSR)) == -1)
 		return (1);
 	err = 0;
 	while (g_aliases[++i])

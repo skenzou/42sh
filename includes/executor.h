@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 00:40:57 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/24 14:15:06 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/05/24 16:20:56 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,6 +142,8 @@ int		bg_resume(t_child **node);
 */
 
 int		init_alias(int file);
+char	*parse_aliases(char *line);
+char	*substitute_alias(char **origin, char *line, int size);
 int		save_alias(int save);
 int		ft_arraylen(char **array);
 int		display_alias(void);

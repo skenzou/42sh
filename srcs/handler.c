@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/29 17:39:49 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/24 16:19:27 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/05/24 17:47:05 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,9 @@ int	handler(char *input)
 		debug_history(g_shell->history);
 		return (1);
 	}
+	if (!(input = ft_strdup(input)))
+		exit(1); //TODO + free input ??
+ 	input = parse_aliases(input);
 	build_lexer(input, &g_shell->lexer);
 	if (g_shell->print_flags & PRINT_LEXER)
 		print_lexer(g_shell->lexer);
