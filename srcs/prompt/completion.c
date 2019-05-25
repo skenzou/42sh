@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 06:02:13 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/25 07:56:58 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/05/25 08:25:03 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ int		ft_tab(t_cap *tcap, t_ab *autocomp)
 	int row;
 	int col;
 	int i;
+	char *command;
 
 	get_words_completion(autocomp, ".");
 	init_autocomp(autocomp);
@@ -106,7 +107,8 @@ int		ft_tab(t_cap *tcap, t_ab *autocomp)
 	}
 	ft_replace_cursor(tcap);
 	ft_move(tcap, "up", autocomp->col + (autocomp->carry > 0 ? 1 : +1));
+	command = ft_strjoin(autocomp->match, g_shell->autocomp->data[g_shell->autocomp->pos].name);
 	ft_clear_replace(tcap);
-	ft_insert(g_shell->autocomp->data[g_shell->autocomp->pos].name, tcap);
+	ft_insert(command, tcap);
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/28 15:31:17 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/25 05:54:56 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/05/25 08:23:10 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int		read_buffer(char buffer[4], t_cap *tcap)
 {
 	char key;
 
-	if (ft_isprint(buffer[0]) || wcharlen(buffer[0]) > 1)
+	if ((ft_isprint(buffer[0]) || wcharlen(buffer[0]) >1 ) && buffer[0] != SPACE)
 		return (ft_insert(buffer, tcap));
 	if (is_arrow(buffer))
 		return (read_arrow(buffer[2], tcap));

@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 07:12:40 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/25 07:13:26 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/05/25 08:21:16 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@
 # define SHIFT_RIGHT			77
 # define SHIFT_LEFT				78
 # define BACKSPACE				127
+# define SPACE					32
 # define ENTER					10
 # define CTRL_R					18
 # define CTRL_D					4
@@ -126,6 +127,7 @@ typedef struct	s_tab
 	int						row;
 	int						col;
 	int						max_offset;
+	char					*match;
 	t_file					data[MAX_HISTORY_LENGHT];
 }				t_ab;
 typedef struct	s_history
@@ -170,6 +172,7 @@ int		backspace_event(t_cap *tcap);
 int		ctrl_r_event(t_cap *tcap);
 int		tab_event(t_cap *tcap);
 int		ctrl_d_event(t_cap *tcap);
+int		space_event(t_cap *tcap);
 
 /*
 **	HOME_END_EVENTS.C

@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/27 17:27:48 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/25 07:59:27 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/05/25 08:19:26 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@ t_event g_key_event[] = {
 	{CTRL_D, &ctrl_d_event},
 	{TAB, &tab_event},
 	{HOME, &home_event},
-	{END, &end_event}
+	{END, &end_event},
+	{SPACE, &space_event}
 };
 
 t_shell *g_shell;
@@ -78,7 +79,7 @@ char	*clean_before_return(t_cap *tcap)
 		return (NULL);
 	tcap->char_len = 0;
 	tputs(tcap->clr_all_line, 1, ft_put_termcaps);
-	ft_printf("\n", tcap->command);
+	ft_printf("\n");
 	return (tcap->command);
 }
 
