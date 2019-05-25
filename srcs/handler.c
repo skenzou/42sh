@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/29 17:39:49 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/24 18:32:47 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/05/25 02:10:03 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ char		**dup_env(char **env)
 int	handler(char *input)
 {
 	t_list *redir;
-
 	if (!ft_strcmp(input, "history\n"))
 	{
 		debug_history(g_shell->history);

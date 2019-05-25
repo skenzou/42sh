@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 07:12:40 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/25 00:46:20 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/05/25 02:30:10 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 # define PROMPT1_ERR 				"\x1b[0m\x1b[31m\x1b[1m➜  \x1b[0m"
 # define PROMPT2 				"\x1b[36m\x1b[1m%s \x1b[0m"
 # define PROMPT3 			"\x1b[1m\x1b[34mgit:(\x1b[31m%s\x1b[34m) \x1b[0m"
-# define PROMPT4 				"\x1b[1m\x1b[31m%s\x1b[0m\x1b[33m\x1b[1m ✗ \x1b[0m"
+# define PROMPT4 			"\x1b[1m\x1b[31m%s\x1b[0m\x1b[33m\x1b[1m ✗ \x1b[0m"
 # define DEFAULT_HISTORY_NAME	".21sh_history"
 # define DEFAULT_ENV_FILE_NAME	".21sh_env"
 # define DEFAULT_PROMPT_COLOR	"\x1b[37m"
@@ -219,8 +219,7 @@ int		read_arrow(char buffer, t_cap *tcap);
 void	ft_replace_cursor(t_cap *tcap);
 int		ft_left(t_cap *tcap);
 int		ft_right(t_cap *tcap);
-int		ft_up(t_cap *tcap);
-int		ft_down(t_cap *tcap);
+int		ft_move(t_cap *tcap, char *string, int n);
 
 /*
 **	HISTORY.C
@@ -255,7 +254,7 @@ int		ft_tab(t_cap *tcap, t_ab *autocomp);
 **INIT_STRUCT.c
 */
 
-int		init_struct(t_term *trm, char **env);
+int		init_struct(char **env);
 
 /*
 **	MAIN.C

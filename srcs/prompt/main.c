@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/27 17:27:48 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/25 00:37:16 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/05/25 02:29:47 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ int				wcharlen(char nb)
 	}
 	return (count);
 }
+
 int debug(void)
 {
 	int fd;
@@ -129,29 +130,23 @@ static int init_fd_table()
 
 int				main(int ac, char **av, char **env)
 {
-	t_term	term;
 	char	*string;
-	struct termios s_termios;
-	struct termios s_termios_backup;
 
-	tcgetattr(0, &s_termios);
-	tcgetattr(0, &s_termios_backup);
-	s_termios.c_lflag &= ~(ICANON);
-	s_termios.c_lflag &= ~(ECHO);
-	if (!(tgetent(NULL, getenv("TERM"))) || !init_struct(&term, env) ||
-			init_pid()|| init_alias(1) || init_fd_table())
+	if (!(tgetent(NULL, getenv("TERM"))) || !init_struct(env) ||
+			init_pid() || init_alias(1) || init_fd_table())
 		return (-1);
 	if (ac > 1)
 		check_flags(av, ac);
 	while ("21sh")
 	{
-		tcsetattr(0, 0, &s_termios);
-		if ((string = read_line(g_shell->tcap)) == NULL)
+		tcsetattr(0, TCSADRAIN, g_shell->term);
+		if (!(string = read_line(g_shell->tcap)))
 			return (-1);
-		tcsetattr(0, 0, &s_termios_backup);
-		if (handler(string) == 0)
+		tcsetattr(0, TCSADRAIN, g_shell->term_backup);
+		if (!handler(string))
 			return (-1);
 	}
+	tcsetattr(0, TCSADRAIN, g_shell->term_backup);
 	save_alias(1);
 	kill_pids();
 	return (0);

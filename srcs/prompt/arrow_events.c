@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/28 15:04:00 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/25 00:34:57 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/05/25 01:40:27 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,10 @@ int		arrow_down_event(t_cap *tcap)
 
 int		arrow_right_event(t_cap *tcap)
 {
-	return (ft_right(tcap));
+	return (ft_move(tcap, "right", 1));
 }
 
 int		arrow_left_event(t_cap *tcap)
 {
-	return (ft_left(tcap));
+	return (ft_move(tcap, "left", 1));
 }

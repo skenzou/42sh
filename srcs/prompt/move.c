@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/09 00:03:36 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/13 07:32:23 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/05/25 02:17:11 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,30 +21,15 @@ void	ft_replace_cursor(t_cap *tcap)
 	remainder = (tcap->char_len + tcap->prompt_len) % (tcap->cursx_max + 1);
 	if (remainder == 0)
 		i--;
-	while (i > 0)
-	{
-		tputs(tcap->up, 1, ft_put_termcaps);
-		i--;
-	}
-	i = -1;
-	while (++i < tcap->cursy)
-		tputs(tcap->down, 1, ft_put_termcaps);
+	ft_move(tcap, "up", i);
+	ft_move(tcap, "down", tcap->cursy);
 	tputs(tcap->carriage, 1, ft_put_termcaps);
-	i = -1;
-	while (++i < tcap->cursx)
-		tputs(tcap->right, 1, ft_put_termcaps);
+	ft_move(tcap, "!right", tcap->cursx);
 }
 
 void	ft_go_to_eol(t_cap *tcap)
 {
-	int		i;
-
-	i = tcap->cursx + 1;
-	while (i < tcap->cursx_max)
-	{
-		tputs(tcap->right, 1, ft_put_termcaps);
-		i++;
-	}
+	ft_move(tcap, "!right", tcap->cursx_max - (tcap->cursx));
 	tcap->cursx = tcap->cursx_max;
 }
 
@@ -102,14 +87,22 @@ int		ft_right(t_cap *tcap)
 	return (1);
 }
 
-int		ft_up(t_cap *tcap)
+int		ft_move(t_cap *tcap, char *string, int n)
 {
-	tputs(tcap->up, 1, ft_put_termcaps);
-	return (1);
-}
-
-int		ft_down(t_cap *tcap)
-{
-	tputs(tcap->down, 1, ft_put_termcaps);
+	while (n--)
+	{
+		if (!ft_strcmp(string, "right"))
+			ft_right(tcap);
+		else if (!ft_strcmp(string, "down"))
+			tputs(tcap->down, 1, ft_put_termcaps);
+		else if (!ft_strcmp(string, "left"))
+			ft_left(tcap);
+		else if (!ft_strcmp(string, "!left"))
+			tputs(tcap->left, 1, ft_put_termcaps);
+		else if (!ft_strcmp(string, "!right"))
+			tputs(tcap->right, 1, ft_put_termcaps);
+		else if (!ft_strcmp(string, "up"))
+			tputs(tcap->up, 1, ft_put_termcaps);
+	}
 	return (1);
 }

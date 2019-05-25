@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/28 15:23:43 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/25 00:47:00 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/05/25 01:41:12 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ int		tab_event(t_cap *tcap)
 		autocomp->pos++;
 		if (autocomp->pos == autocomp->len)
 			autocomp->pos = 0;
-
 	}
 	ft_tab(tcap, autocomp);
 	return (1);
