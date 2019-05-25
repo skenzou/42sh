@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/10 02:39:58 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/25 06:01:25 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/05/25 06:13:42 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static void	print_default_prompt_prefix(void)
 	char *git;
 	int prompt_len;
 	name = getenv("USER");
-	name || (name = "21sh");
+	name || (name = "42sh");
 	string = NULL;
 	string = getcwd(string, 20);
 	git = get_git_status();

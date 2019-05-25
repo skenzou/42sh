@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 07:12:40 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/25 05:49:39 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/05/25 07:13:26 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # include <unistd.h>
 # include <math.h>
 # include <fcntl.h>
+# include <dirent.h>
 # include <sys/ioctl.h>
 # define PROMPT1 				"\x1b[0m\x1b[32m\x1b[1m➜  \x1b[0m"
 # define PROMPT1_ERR 				"\x1b[0m\x1b[31m\x1b[1m➜  \x1b[0m"
@@ -59,6 +60,7 @@
 # define HOME					72
 # define END					70
 # define MAX_HISTORY_LENGHT		4096
+# define MAX_PATH		PATH_MAX
 # define UNUSED			0
 # define DEBUG_LOG		0
 
@@ -70,6 +72,10 @@ typedef struct	s_data
 char					**g_env;
 typedef struct stat	t_stat;
 typedef struct termios	t_term;
+typedef struct stat			t_stat;
+typedef struct dirent		t_dirent;
+typedef struct passwd		t_passwd;
+typedef struct group		t_group;
 typedef struct	s_built
 {
 	char			*builtin;
@@ -97,6 +103,15 @@ typedef struct	s_cap
 	char		command[BUFFSIZE];
 	char		*prompt;
 }				t_cap;
+
+typedef struct				s_file
+{
+	t_stat					stats;
+	char					*name;
+	char					*path;
+	char					full_path[MAX_PATH];
+}							t_file;
+
 typedef struct	s_event
 {
 	int						key;
@@ -110,6 +125,8 @@ typedef struct	s_tab
 	int						carry;
 	int						row;
 	int						col;
+	int						max_offset;
+	t_file					data[MAX_HISTORY_LENGHT];
 }				t_ab;
 typedef struct	s_history
 {
