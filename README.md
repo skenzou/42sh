@@ -2,10 +2,10 @@
 
 ## Current tasks
 
-Midrissi : core of the project (parser, lexer, executor, ...)
-Aben-azz : termcaps
-Ghamelek : type_builtin/test_builtin ?
-tlechien : cd_builtin/job_control
+- Midrissi : core of the project (parser, lexer, executor, ...)
+- Aben-azz : termcaps
+- Ghamelek : type_builtin/test_builtin ?
+- tlechien : cd_builtin/job_control
 
 ## TODO
 
