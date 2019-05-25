@@ -6,13 +6,13 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 23:56:22 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/25 03:04:02 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/05/25 07:42:36 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-int		ft_add_n_char(char buff[4], int pos, int len, t_cap *tcap)
+int		ft_add_n_char(char *buff, int pos, int len, t_cap *tcap)
 {
 	char	*tmp;
 
@@ -57,6 +57,7 @@ void	ft_clean_buff(t_cap *tcap)
 
 int		ft_insert(char *buff, t_cap *tcap)
 {
+
 	int		position;
 	int		len;
 
