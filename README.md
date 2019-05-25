@@ -2,10 +2,10 @@
 
 ## Current tasks
 
-Missidri : core > pipes
-Aben-azz : t_caps ?
-Ghamelek : type_builtin ?
-tlechien : cd_builtin
+Midrissi : core of the project (parser, lexer, executor, ...)
+Aben-azz : termcaps
+Ghamelek : type_builtin/test_builtin ?
+tlechien : cd_builtin/job_control
 
 ## TODO
 
