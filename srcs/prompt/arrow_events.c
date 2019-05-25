@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/28 15:04:00 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/25 04:50:53 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/05/25 04:59:08 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,9 +77,7 @@ int		arrow_down_event(t_cap *tcap)
 			new_y = 0;
 		}
 		else if (new_y > autocomp->row - 1 && new_x == autocomp->col - 1)
-		{
 			new_y = 0;
-		}
 		g_shell->autocomp->pos = (new_y * autocomp->col) + new_x;
 		ft_tab(tcap, autocomp);
 	}
@@ -91,15 +89,22 @@ int		arrow_down_event(t_cap *tcap)
 int		arrow_right_event(t_cap *tcap)
 {
 	t_ab	*autocomp;
-	int		x;
-	int		y;
+	int		new_x;
+	int		new_y;
 
 	autocomp = g_shell->autocomp;
 	if (g_shell->autocomp->state)
 	{
-		x = autocomp->pos % autocomp->row;
-		y = autocomp->pos / autocomp->col;
-		dprintf(debug(), "pos: {%d, %d, %d, %d, %d}\n", x, y, autocomp->pos, autocomp->col, autocomp->row);
+		new_x = autocomp->pos % autocomp->row;
+		new_y = autocomp->pos / autocomp->col;
+		new_x++;
+		if (new_x > autocomp->col - 1 && (new_y < autocomp->row - 1))
+		{
+			new_x = 0;
+			new_y++;
+		}
+		g_shell->autocomp->pos = (new_y * autocomp->col) + new_x;
+		ft_tab(tcap, autocomp);
 	}
 	else
 		return (ft_move(tcap, "right", 1));

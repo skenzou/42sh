@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 07:12:40 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/25 02:30:10 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/05/25 05:49:39 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,7 @@ typedef struct	s_cap
 	int			cursx_max;
 	int			cursy;
 	int			prompt_len;
+	int			init_len;
 	int			char_len;
 	char		command[BUFFSIZE];
 	char		*prompt;
