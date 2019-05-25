@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 06:02:13 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/25 02:18:58 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/05/25 04:50:50 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int		print_name(t_ab *autocomp, char *string, int i, int max_offset)
 		ft_putstr("\x1b[7m");
 	ft_putstr(string);
 	ft_putstr("\x1b[0m");
-	ft_move(g_shell->tcap, "right", max_offset - ft_strlen(string) + 1);
+	ft_move(g_shell->tcap, "!right", max_offset - ft_strlen(string) + 2);
 	return (1);
 }
 
@@ -64,14 +64,13 @@ int		ft_tab(t_cap *tcap, t_ab *autocomp)
 		ft_move(tcap, "down", 1);
 		col++;
 	}
-	dprintf(debug(), "carry: %d\n", autocomp->carry);
 	if (autocomp->carry > 0)
 	{
-		while (autocomp->carry--)
+		row = autocomp->carry;
+		while (row--)
 			print_name(autocomp, string[i], i, max_offset) && i++;
-		autocomp->col++;
 	}
 	ft_replace_cursor(tcap);
-	ft_move(tcap, "up", autocomp->col);
+	ft_move(tcap, "up", autocomp->col + (autocomp->carry > 0));
 	return (1);
 }
