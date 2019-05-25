@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/24 11:44:34 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/15 01:04:32 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/05/25 13:46:13 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,5 @@ int				cd_builtin(int argc, char **argv, char ***env)
 		else
 			err = change_dir(argv[1], env);
 	}
-	if (err)
-		err_handler(err, path ? path : argv[1]);
-	return (0);
+	return (err);
 }

@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 00:40:57 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/24 18:31:12 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/05/25 13:40:50 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ extern	char		**g_aliases;
 ** ## FUNCTIONS ##
 */
 
+int			exec_builtin(char **builtin, int id, char ***env);
 void		handle_pipe(t_ast *root);
 void		redir_delone(void *data, size_t size);
 int			ft_fork(char **cmd, char **env);
@@ -98,7 +99,7 @@ int			open_file(t_redir *redir);
 int			is_path(char *str);
 int			check_dir(char *path);
 void 		restore_fd();
-int			ft_pre_execution(char ***args, int redir);
+int			ft_pre_execution(char ***args, int redir, int *builtin);
 
 /*
 **	ft_fork.c

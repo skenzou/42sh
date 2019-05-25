@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/24 13:50:03 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/24 14:16:41 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/05/25 13:33:23 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,52 +29,25 @@ static int		get_builtin(char *cmd)
 	return (0);
 }
 
-static void		exec_builtin(char **builtin, int id, char ***env)
-{
-	int	ac;
-	int	err_id;
-
-	ac = ft_split_count(builtin);
-	err_id = 0;
-	if (id == ECHO_BUILTIN)
-		err_id = echo_builtin(ac, builtin);
-	if (id == CD_BUILTIN)
-		err_id = cd_builtin(ac, builtin, env);
-	if (id == ENV_BUILTIN && ac == 1)
-		print_env(*env);
-	if (id == SETENV_BUILTIN)
-		err_id = setenv_builtin(ac, builtin, env);
-	if (id == UNSETENV_BUILTIN)
-		err_id = unsetenv_builtin(ac, builtin, env);
-	if (id == EXIT_BUILTIN)
-		exit_builtin();
-	if (err_id != 0)
-		err_handler(err_id, builtin[0]);
-}
-
-int		ft_pre_execution(char ***args, int redir)
+int		ft_pre_execution(char ***args, int redir, int *builtin)
 {
 	int err;
-	int id;
 
 	err = 0;
 	if (redir)
 		*args = handle_redir();
+	if (!(*args))
+		return (-1);
 	ft_expand(*args);
-	id = get_builtin((*args)[0]);
-	if (id)
-	{
-		exec_builtin(*args, id, &g_shell->env);
-		err = -1;
-	}
-	else
+	*builtin = get_builtin((*args)[0]);
+	if (!(*builtin))
 	{
 		if (is_path((*args)[0]))
 			err = check_file((*args)[0]);
 		else
 			err = hash_table(&((*args)[0]), g_shell->env);
 	}
-	if (err && err != -1)
+	if (err)
 		err_handler(err, (*args)[0]);
 	return (err);
 }

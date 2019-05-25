@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/14 23:28:47 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/24 14:44:49 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/05/25 13:11:59 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,13 +45,11 @@ static t_list *next_cmd(t_list *redir)
 	{
 		temp = redir;
 		redir = redir->next;
-		ft_lstdelone(&temp, redir_delone);
 	}
 	if (redir)
 	{
 		temp = redir;
 		redir = redir->next;
-		ft_lstdelone(&temp, redir_delone);
 	}
 	return (redir);
 }
