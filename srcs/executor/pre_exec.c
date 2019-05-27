@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/24 13:50:03 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/25 13:33:23 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/05/27 20:06:10 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ static int		get_builtin(char *cmd)
 		return (ENV_BUILTIN);
 	else if (ft_strcmp(cmd, "exit") == 0)
 		return (EXIT_BUILTIN);
+	else if (ft_strcmp(cmd, "set") == 0)
+		return (SET_BUILTIN);
 	return (0);
 }
 
@@ -34,6 +36,9 @@ int		ft_pre_execution(char ***args, int redir, int *builtin)
 	int err;
 
 	err = 0;
+	handle_intern_var(*args);
+	if (!(*args)[0])
+		return (0);
 	if (redir)
 		*args = handle_redir();
 	if (!(*args))

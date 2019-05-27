@@ -6,13 +6,13 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 18:46:30 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/15 00:11:43 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/05/27 19:45:36 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-int						is_set(char *key, char **env)
+int						get_indexof_key(char *key, char **env)
 {
 	int i;
 	int len;
@@ -54,7 +54,7 @@ void					ft_setenv(char *key, char *value, char ***env)
 
 	key = ft_strjoin(key, "=");
 	key == NULL ? exit(1) : 0;
-	i = is_set(key, *env);
+	i = get_indexof_key(key, *env);
 	if (i >= 0)
 	{
 		temp = (*env)[i];
@@ -85,7 +85,7 @@ int						setenv_builtin(int ac, char **av, char ***env)
 	if (ac > 1 && check_key(av[1]))
 		return (SETENV_INVALID_KEY);
 	if (ac == 1)
-		print_env(*env);
+		print_split(*env);
 	if (ac == 2)
 		ft_setenv(av[1], NULL, env);
 	if (ac == 3)

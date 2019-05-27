@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/30 18:51:02 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/25 12:10:04 by Mohamed          ###   ########.fr       */
+/*   Updated: 2019/05/27 17:16:50 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ static const t_oplist existing_token[] =
 	{"\t", 1, TOKEN_EAT, OTHER_OP},
 	{"\r", 1, TOKEN_EAT, OTHER_OP},
 	{"\f", 1, TOKEN_EAT, OTHER_OP},
-	{"=", 1, TOKEN_EQUAL, OTHER_OP},
+	// {"=", 1, TOKEN_EQUAL, OTHER_OP},
 	{NULL, 1, 0, OTHER_OP}
 };
 

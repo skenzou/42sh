@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 01:14:21 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/15 06:06:32 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/05/27 20:03:18 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,27 @@ char	 **dup_tab(char **old, size_t size)
 	}
 	new[i] = NULL;
 	return (new);
+}
+
+void		remove_n_first_entries(char **args, int n)
+{
+	int i;
+	int count;
+	int j;
+
+	if (!n)
+		return ;
+	i = 0;
+	j = n;
+	count = ft_split_count(args);
+	while (j < count)
+	{
+		if (i < n)
+			ft_strdel(&args[i]);
+		args[i++] = args[j++];
+	}
+	while (i <= count)
+		args[i++] = NULL;
 }
 
 char		**join_2tab(char **curr, char **next, size_t curr_size,

@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 16:42:03 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/24 16:37:10 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/05/27 18:54:58 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,11 +62,13 @@
 # define EXIT_BUILTIN		14
 # define NOT_FOUND			15
 # define SETENV_INVALID_KEY	16
+# define SET_BUILTIN		17
 
 typedef struct	s_shell
 {
 	t_cap		*tcap;
 	char		**env;
+	char		**intern;
 	t_list		*redir;
 	t_list		*lexer;
 	t_ast		*ast;
@@ -74,7 +76,7 @@ typedef struct	s_shell
 	t_history	*history;
 	t_hash_entry	*hash_table[TABLE_SIZE];
 	int			fd_table[10];
-	char    print_flags;
+	char		print_flags;
 	char		lastsignal;
 	size_t		curr_pipe;
 }				t_shell;

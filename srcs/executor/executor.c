@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/03 16:15:41 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/25 13:46:53 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/05/27 19:52:00 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,15 @@ int		exec_builtin(char **builtin, int id, char ***env)
 	if (id == CD_BUILTIN)
 		err_id = cd_builtin(ac, builtin, env);
 	if (id == ENV_BUILTIN && ac == 1)
-		print_env(*env);
+		print_split(*env);
 	if (id == SETENV_BUILTIN)
 		err_id = setenv_builtin(ac, builtin, env);
 	if (id == UNSETENV_BUILTIN)
 		err_id = unsetenv_builtin(ac, builtin, env);
 	if (id == EXIT_BUILTIN)
 		exit_builtin();
+	if (id == SET_BUILTIN)
+		set_builtin();
 	if (err_id)
 		err_handler(err_id, builtin[0]);
 	return (err_id);
