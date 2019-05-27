@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/14 23:58:59 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/27 19:51:04 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/05/28 00:49:21 by Mohamed          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,9 @@ static int		ft_pipe_exec(char **cmd, int redir)
 
 	g_shell->lastsignal = ft_pre_execution(&cmd, redir, &builtin);
 	if (!g_shell->lastsignal && !builtin)
-		execve(cmd[0], cmd, g_shell->env);
+		execve(cmd[0], cmd, g_shell->env_tmp);
 	if (!g_shell->lastsignal && builtin)
-		g_shell->lastsignal = exec_builtin(cmd, builtin, &g_shell->env);
+		g_shell->lastsignal = exec_builtin(cmd, builtin, &g_shell->env_tmp);
 	return (g_shell->lastsignal);
 }
 
@@ -77,8 +77,12 @@ static void		parse_pipes(t_ast *root, t_pipe **pipes, size_t nbpipes)
 	if (root->left && root->left->left)
 		parse_pipes(root->left, pipes, nbpipes);
 	if (root->left->token->op_type != PIPE)
+	{
 		first_pipe(root->left->token->content, pipes, root->left->token->redir);
+		ft_post_exec();
+	}
 	pipe_cmd(root->right->token->content, pipes, nbpipes, root->right->token->redir);
+	ft_post_exec();
 	g_shell->curr_pipe++;
 }
 

@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 00:40:57 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/27 20:00:59 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/05/28 00:53:52 by Mohamed          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ int			get_indexof_key(char *key, char **env);
 void		ft_setenv(char *key, char *value, char ***env);
 int			echo_builtin(int argc, char **argv);
 void		exit_builtin(void);
-int			cd_builtin(int argc, char **argv, char ***env);
+int			cd_builtin(int argc, char **argv, char **env);
 void		err_handler(int err_id, char *str);
 void		print_split(char **split);
 char		**get_curr_cmd(t_list *redir);
@@ -103,6 +103,7 @@ int			ft_pre_execution(char ***args, int redir, int *builtin);
 void		remove_n_first_entries(char **old, int n);
 int			set_builtin();
 void		handle_intern_var(char **args);
+void			ft_post_exec();
 
 /*
 **	ft_fork.c

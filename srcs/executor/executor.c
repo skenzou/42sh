@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/03 16:15:41 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/27 19:52:00 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/05/28 01:04:56 by Mohamed          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int		exec_builtin(char **builtin, int id, char ***env)
 	if (id == ECHO_BUILTIN)
 		err_id = echo_builtin(ac, builtin);
 	if (id == CD_BUILTIN)
-		err_id = cd_builtin(ac, builtin, env);
+		err_id = cd_builtin(ac, builtin, *env);
 	if (id == ENV_BUILTIN && ac == 1)
 		print_split(*env);
 	if (id == SETENV_BUILTIN)
@@ -38,17 +38,28 @@ int		exec_builtin(char **builtin, int id, char ***env)
 	return (err_id);
 }
 
+void			ft_post_exec()
+{
+	if (g_shell->env != g_shell->env_tmp)
+		ft_splitdel(g_shell->env_tmp);
+	if (g_shell->intern != g_shell->intern_tmp)
+		ft_splitdel(g_shell->intern_tmp);
+	g_shell->env_tmp = g_shell->env;
+	g_shell->intern_tmp = g_shell->intern;
+}
+
 static void		ft_execute(char **args, int redir)
 {
 	int builtin;
 
 	g_shell->lastsignal = ft_pre_execution(&args, redir, &builtin);
 	if (!g_shell->lastsignal && !builtin)
-		g_shell->lastsignal = ft_fork(args, g_shell->env);
+		g_shell->lastsignal = ft_fork(args, g_shell->env_tmp);
 	if (!g_shell->lastsignal && builtin)
-		g_shell->lastsignal = exec_builtin(args, builtin, &g_shell->env);
+		g_shell->lastsignal = exec_builtin(args, builtin, &g_shell->env_tmp);
 	if (redir)
 		restore_fd();
+	ft_post_exec();
 }
 
 void	ft_execute_ast(t_ast *root, char **env)

@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 16:42:03 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/27 18:54:58 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/05/27 23:26:22 by Mohamed          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,8 @@ typedef struct	s_shell
 	t_cap		*tcap;
 	char		**env;
 	char		**intern;
+	char		**env_tmp;
+	char		**intern_tmp;
 	t_list		*redir;
 	t_list		*lexer;
 	t_ast		*ast;
