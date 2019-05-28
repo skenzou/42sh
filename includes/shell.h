@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 16:42:03 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/27 23:26:22 by Mohamed          ###   ########.fr       */
+/*   Updated: 2019/05/28 17:10:09 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,8 @@
 # define NOT_FOUND			15
 # define SETENV_INVALID_KEY	16
 # define SET_BUILTIN		17
+# define EXPORT_BUILTIN		18
+# define UNSET_BUILTIN		19
 
 typedef struct	s_shell
 {

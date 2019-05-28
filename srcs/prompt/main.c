@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/27 17:27:48 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/25 13:52:02 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/05/28 14:55:25 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,6 +135,8 @@ int				main(int ac, char **av, char **env)
 	if (!(tgetent(NULL, getenv("TERM"))) || !init_struct(&term, env) ||
 			init_pid()|| init_alias(1) || init_fd_table())
 		return (-1);
+	g_shell->env_tmp = g_shell->env;
+	g_shell->intern_tmp = g_shell->intern;
 	if (ac > 1)
 		check_flags(av, ac);
 	while ("21sh")

@@ -6,13 +6,13 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 20:26:58 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/27 19:18:56 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/05/28 13:57:50 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-static char		**removekey(char *key, int keylen, char **env)
+char		**removekey(char *key, int keylen, char **env)
 {
 	char	**fresh_env;
 	int		count;

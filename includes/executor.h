@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 00:40:57 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/28 00:53:52 by Mohamed          ###   ########.fr       */
+/*   Updated: 2019/05/28 17:09:50 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,9 @@ extern	char		**g_aliases;
 ** ## FUNCTIONS ##
 */
 
+int			unset_builtin(int ac, char **av);
+int			export_builtin(int ac, char **av);
+char		**removekey(char *key, int keylen, char **env);
 int			exec_builtin(char **builtin, int id, char ***env);
 void		handle_pipe(t_ast *root);
 void		redir_delone(void *data, size_t size);

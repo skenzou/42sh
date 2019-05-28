@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/24 13:50:03 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/27 20:06:10 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/05/28 17:10:53 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,10 @@ static int		get_builtin(char *cmd)
 		return (EXIT_BUILTIN);
 	else if (ft_strcmp(cmd, "set") == 0)
 		return (SET_BUILTIN);
+	else if (ft_strcmp(cmd, "export") == 0)
+		return (EXPORT_BUILTIN);
+	else if (ft_strcmp(cmd, "unset") == 0)
+		return (UNSET_BUILTIN);
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/03 16:15:41 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/28 01:04:56 by Mohamed          ###   ########.fr       */
+/*   Updated: 2019/05/28 17:10:28 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,10 @@ int		exec_builtin(char **builtin, int id, char ***env)
 		exit_builtin();
 	if (id == SET_BUILTIN)
 		set_builtin();
+	if (id == EXPORT_BUILTIN)
+		export_builtin(ac, builtin);
+	if (id == UNSET_BUILTIN)
+		unset_builtin(ac, builtin);
 	if (err_id)
 		err_handler(err_id, builtin[0]);
 	return (err_id);
