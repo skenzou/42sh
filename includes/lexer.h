@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/30 18:57:23 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/24 14:51:13 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/05/28 19:05:05 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,7 @@ typedef struct		s_oplist
 
 typedef struct		s_ast
 {
+	char			job;
 	t_token			*token;
 	t_list			*list_pointer;
 	struct s_ast	*left;
