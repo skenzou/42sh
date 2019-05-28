@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/03 16:15:41 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/28 19:13:14 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/05/28 20:28:39 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ int		exec_builtin(char **builtin, int id, char ***env)
 		export_builtin(ac, builtin);
 	if (id == UNSET_BUILTIN)
 		unset_builtin(ac, builtin);
+	if (id == JOBS_BUILTIN)
+		jobs_builtin(builtin);
 	if (err_id)
 		err_handler(err_id, builtin[0]);
 	return (err_id);
@@ -44,6 +46,11 @@ int		exec_builtin(char **builtin, int id, char ***env)
 
 void			ft_post_exec()
 {
+	char *str;
+
+	if (!(str = ft_itoa(g_shell->lastsignal)))
+		ft_exit("Maloc failed in ft_post_exec");
+	ft_setenv("?", str, &g_shell->intern);
 	if (g_shell->env != g_shell->env_tmp)
 		ft_splitdel(g_shell->env_tmp);
 	if (g_shell->intern != g_shell->intern_tmp)
@@ -52,13 +59,18 @@ void			ft_post_exec()
 	g_shell->intern_tmp = g_shell->intern;
 }
 
-static void		ft_execute(char **args, int redir)
+static void		ft_execute(char **args, int redir, int background)
 {
 	int builtin;
 
 	g_shell->lastsignal = ft_pre_execution(&args, redir, &builtin);
 	if (!g_shell->lastsignal && !builtin)
-		g_shell->lastsignal = ft_fork(args, g_shell->env_tmp);
+	{
+		if (!background)
+			g_shell->lastsignal = ft_fork(args, g_shell->env_tmp);
+		else
+			g_shell->lastsignal = ft_fork_amper(args, g_shell->env_tmp);
+	}
 	if (!g_shell->lastsignal && builtin)
 		g_shell->lastsignal = exec_builtin(args, builtin, &g_shell->env_tmp);
 	if (redir)
@@ -66,7 +78,7 @@ static void		ft_execute(char **args, int redir)
 	ft_post_exec();
 }
 
-void	ft_execute_ast(t_ast *root, char **env)
+void	ft_execute_ast(t_ast *root)
 {
 	if (!root)
 		return ;
@@ -82,13 +94,13 @@ void	ft_execute_ast(t_ast *root, char **env)
 		&& root->left->right->token->op_type == TOKEN_WORD)
 		root->left->right->job = 1;
 	if (root->left)
-		ft_execute_ast(root->left, env);
+		ft_execute_ast(root->left);
 	if (root->left && root->token->op_type == DBL_AND && g_shell->lastsignal)
 		return ;
 	if (root->left && root->token->op_type == DBL_PIPE && !g_shell->lastsignal)
 		return ;
 	if (root->right)
-		ft_execute_ast(root->right, env);
+		ft_execute_ast(root->right);
 	if (root->token->type == TOKEN_WORD)
-		ft_execute(root->token->content, root->token->redir);
+		ft_execute(root->token->content, root->token->redir, root->job);
 }

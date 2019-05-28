@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/29 17:39:49 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/25 13:11:05 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/05/28 20:17:26 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int	handler(char *input)
 		print_lexer(g_shell->lexer);
 	g_shell->ast = ft_parse(g_shell->lexer);
 	redir = g_shell->redir;
-	ft_execute_ast(g_shell->ast, g_shell->env);
+	ft_execute_ast(g_shell->ast);
 	ft_lstdel(&redir, redir_delone);
 	del_ast(&g_shell->ast);
 	g_shell->redir = NULL;
