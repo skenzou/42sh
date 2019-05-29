@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 00:57:44 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/15 03:47:20 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/05/29 19:22:39 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,8 @@ void 		remove_quote(char **str)
 {
 	int i;
 
+	if (!*str)
+		return ;
 	i = 0;
 	while ((*str)[i])
 	{

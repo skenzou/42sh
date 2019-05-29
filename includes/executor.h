@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 00:40:57 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/29 17:01:50 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/05/29 19:00:26 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,8 @@ extern	char		**g_aliases;
 ** ## FUNCTIONS ##
 */
 
+void		param_expansion(char **ptr);
+char	*get_key_value(char *key, char **tab);
 void   	tilde_expansion(char **ptr);
 int			unset_builtin(int ac, char **av);
 int			export_builtin(int ac, char **av);

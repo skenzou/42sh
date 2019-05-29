@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/30 18:51:02 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/29 15:51:17 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/05/29 19:03:21 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 static const t_oplist existing_token[] =
 {
-	{"$((", 3, TOKEN_OP_ARITHM, OTHER_OP},
 	{">>-", 3, TOKEN_REDIR, DBL_GREAT_DASH},
 	{"<<-", 3, TOKEN_REDIR, DBL_LESS_DASH},
 	{"0>&", 3, TOKEN_REDIR, GREAT_AND},
@@ -57,8 +56,6 @@ static const t_oplist existing_token[] =
 	{"7<", 2, TOKEN_REDIR, LESS},
 	{"8<", 2, TOKEN_REDIR, LESS},
 	{"9<", 2, TOKEN_REDIR, LESS},
-	{"$(", 2, TOKEN_OP_CMD, OTHER_OP},
-	{"${", 2, TOKEN_OP_CURLY, OTHER_OP},
 	{">>", 2, TOKEN_REDIR, DBL_GREAT},
 	{"<<", 2, TOKEN_REDIR, DBL_LESS},
 	{"||", 2, TOKEN_CTL_OPERATOR, DBL_PIPE},
@@ -67,31 +64,12 @@ static const t_oplist existing_token[] =
 	{"<&", 2, TOKEN_REDIR, LESS_AND},
 	{">&", 2, TOKEN_REDIR, GREAT_AND},
 	{"&&", 2, TOKEN_CTL_OPERATOR, DBL_AND},
-	{"{ ", 2, TOKEN_OP_BRA, OTHER_OP},
-	{"{\n", 2, TOKEN_OP_BRA, OTHER_OP},
-	{"{\v", 2, TOKEN_OP_BRA, OTHER_OP},
-	{"{\t", 2, TOKEN_OP_BRA, OTHER_OP},
-	{"{\r", 2, TOKEN_OP_BRA, OTHER_OP},
-	{"{\f", 2, TOKEN_OP_BRA, OTHER_OP},
-	{" {", 2, TOKEN_CL_BRA, OTHER_OP},
-	{"\n{", 2, TOKEN_CL_BRA, OTHER_OP},
-	{"\v{", 2, TOKEN_CL_BRA, OTHER_OP},
-	{"\t{", 2, TOKEN_CL_BRA, OTHER_OP},
-	{"\r{", 2, TOKEN_CL_BRA, OTHER_OP},
-	{"\f{", 2, TOKEN_CL_BRA, OTHER_OP},
 	{";;", 2, TOKEN_CTL_OPERATOR, DBL_SEMI},
 	{"! ", 2, TOKEN_NEG, OTHER_OP},
-	{"}", 1, TOKEN_CL_BRA, OTHER_OP},
 	{"|", 1, TOKEN_CTL_OPERATOR, PIPE},
 	{"&", 1, TOKEN_CTL_OPERATOR, AND},
-	{"(", 1, TOKEN_OP_PAR, OTHER_OP},
-	{")", 1, TOKEN_CL_PAR, OTHER_OP},
 	{">", 1, TOKEN_REDIR, GREAT},
 	{"<", 1, TOKEN_REDIR, LESS},
-	{"(", 1, TOKEN_OP_PAR, OTHER_OP},
-	{")", 1, TOKEN_CL_PAR, OTHER_OP},
-	{"{", 1, TOKEN_OP_CURLY, OTHER_OP},
-	{"}", 1, TOKEN_CL_CURLY, OTHER_OP},
 	{";", 1, TOKEN_CTL_OPERATOR, SEMI},
 	{" ", 1, TOKEN_EAT, OTHER_OP},
 	{"\n", 1, TOKEN_EAT, OTHER_OP},

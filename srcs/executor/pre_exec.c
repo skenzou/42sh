@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/24 13:50:03 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/29 17:02:14 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/05/29 19:33:59 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,15 +50,18 @@ int		ft_pre_execution(char ***args, int redir, int *builtin)
 	if (!(*args))
 		return (-1);
 	ft_expand(*args);
-	*builtin = get_builtin((*args)[0]);
-	if (!(*builtin))
+	if ((*args)[0])
 	{
-		if (is_path((*args)[0]))
-			err = check_file((*args)[0]);
-		else
-			err = hash_table(&((*args)[0]), g_shell->env);
+		*builtin = get_builtin((*args)[0]);
+		if (!(*builtin))
+		{
+			if (is_path((*args)[0]))
+				err = check_file((*args)[0]);
+			else
+				err = hash_table(&((*args)[0]), g_shell->env);
+		}
+		if (err)
+			err_handler(err, (*args)[0]);
 	}
-	if (err)
-		err_handler(err, (*args)[0]);
 	return (err);
 }
