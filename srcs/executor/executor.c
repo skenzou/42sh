@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/03 16:15:41 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/28 20:28:39 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/05/29 20:38:54 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,13 +48,13 @@ void			ft_post_exec()
 {
 	char *str;
 
-	if (!(str = ft_itoa(g_shell->lastsignal)))
-		ft_exit("Maloc failed in ft_post_exec");
-	ft_setenv("?", str, &g_shell->intern);
 	if (g_shell->env != g_shell->env_tmp)
 		ft_splitdel(g_shell->env_tmp);
 	if (g_shell->intern != g_shell->intern_tmp)
 		ft_splitdel(g_shell->intern_tmp);
+	if (!(str = ft_itoa(g_shell->lastsignal)))
+		ft_exit("Maloc failed in ft_post_exec");
+	ft_setenv("?", str, &g_shell->intern);
 	g_shell->env_tmp = g_shell->env;
 	g_shell->intern_tmp = g_shell->intern;
 }
@@ -71,7 +71,7 @@ static void		ft_execute(char **args, int redir, int background)
 		else
 			g_shell->lastsignal = ft_fork_amper(args, g_shell->env_tmp);
 	}
-	if (!g_shell->lastsignal && builtin)
+	if (!g_shell->lastsignal && builtin > 0)
 		g_shell->lastsignal = exec_builtin(args, builtin, &g_shell->env_tmp);
 	if (redir)
 		restore_fd();

@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/14 23:28:47 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/25 13:11:59 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/05/29 20:56:36 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,5 +130,6 @@ char		**handle_redir()
 		g_shell->redir = redir->next;
 	else
 		g_shell->redir = redir;
+	ft_expand(cmd);
 	return (cmd);
 }
