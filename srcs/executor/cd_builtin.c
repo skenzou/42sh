@@ -6,13 +6,13 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/24 11:44:34 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/28 00:29:27 by Mohamed          ###   ########.fr       */
+/*   Updated: 2019/05/29 16:31:49 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-static char			*get_homepath(char **env)
+char			*get_homepath(char **env)
 {
 	int i;
 

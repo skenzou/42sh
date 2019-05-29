@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/30 18:51:02 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/27 17:16:50 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/05/29 15:51:17 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -173,7 +173,7 @@ int					build_lexer(char *input, t_list **lexer)
 	prev = input;
 	while (input && *input)
 	{
-		if (*input == '\\')
+		if (*input == '\\' && *(input + 1))
 			input += 2;
 		curr = check_ops(input);
 		if ((curr.op) && prev != input)

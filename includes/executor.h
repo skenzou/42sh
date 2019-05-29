@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 00:40:57 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/28 20:17:14 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/05/29 17:01:50 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ extern	char		**g_aliases;
 ** ## FUNCTIONS ##
 */
 
+void   	tilde_expansion(char **ptr);
 int			unset_builtin(int ac, char **av);
 int			export_builtin(int ac, char **av);
 char		**removekey(char *key, int keylen, char **env);
@@ -87,7 +88,7 @@ char		**handle_redir();
 void		print_redir(t_list *redir);
 int			check_file(char *path);
 void		ft_execute_ast(t_ast *root);
-void		ft_expand(char **args);
+void			ft_expand(char **args);
 int			unsetenv_builtin(int ac, char **av, char ***env);
 int			setenv_builtin(int ac, char **av, char ***env);
 int			get_indexof_key(char *key, char **env);
@@ -107,6 +108,7 @@ void		remove_n_first_entries(char **old, int n);
 int			set_builtin();
 void		handle_intern_var(char **args);
 void			ft_post_exec();
+char			*get_homepath(char **env);
 
 /*
 **	ft_fork.c
