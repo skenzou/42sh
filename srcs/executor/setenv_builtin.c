@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 18:46:30 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/27 19:45:36 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/05/30 14:39:52 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,17 +78,22 @@ static int				check_key(char *str)
 	return (0);
 }
 
-int						setenv_builtin(int ac, char **av, char ***env)
+int						setenv_builtin(int ac, char **av)
 {
+	int same;
+
+	same = g_shell->env == g_shell->env_tmp;
 	if (ac > 3)
 		return (SETENV_USG);
 	if (ac > 1 && check_key(av[1]))
 		return (SETENV_INVALID_KEY);
 	if (ac == 1)
-		print_split(*env);
+		print_split(g_shell->env);
 	if (ac == 2)
-		ft_setenv(av[1], NULL, env);
+		ft_setenv(av[1], NULL, &g_shell->env);
 	if (ac == 3)
-		ft_setenv(av[1], av[2], env);
+		ft_setenv(av[1], av[2], &g_shell->env);
+	if (same)
+		g_shell->env_tmp = g_shell->env;
 	return (0);
 }

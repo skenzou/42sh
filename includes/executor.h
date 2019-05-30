@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 00:40:57 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/29 19:00:26 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/05/30 14:40:31 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,8 +91,8 @@ void		print_redir(t_list *redir);
 int			check_file(char *path);
 void		ft_execute_ast(t_ast *root);
 void			ft_expand(char **args);
-int			unsetenv_builtin(int ac, char **av, char ***env);
-int			setenv_builtin(int ac, char **av, char ***env);
+int			unsetenv_builtin(int ac, char **av);
+int			setenv_builtin(int ac, char **av);
 int			get_indexof_key(char *key, char **env);
 void		ft_setenv(char *key, char *value, char ***env);
 int			echo_builtin(int argc, char **argv);
