@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/28 15:23:43 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/25 08:25:02 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/05/27 06:27:33 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,20 @@
 
 int		enter_event(t_cap *tcap)
 {
-	(void)tcap;
+	t_ab *autocomp;
+
+	autocomp = g_shell->autocomp;
 	g_shell->history->position = -1;
-	g_shell->autocomp->state = 0;
-	g_shell->autocomp->pos = 0;
+	if (autocomp->state)
+	{
+		autocomp->state = 0;
+		ft_clear_replace(tcap);
+		tputs(tcap->clr_all_line, 1, ft_put_termcaps);
+		ft_insert(ft_strjoin(autocomp->match,
+			autocomp->data[autocomp->pos].name), tcap);
+		autocomp->pos = 0;
+		return (1);
+	}
 	return (-2);
 }
 

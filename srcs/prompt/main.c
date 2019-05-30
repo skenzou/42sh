@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/27 17:27:48 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/25 08:19:26 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/05/27 00:21:25 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,9 @@ char	*read_line(t_cap *tcap)
 	while ("21sh")
 	{
 		ft_bzero(buffer, 4);
+		tcsetattr(0, TCSADRAIN, g_shell->term);
 		read(0, &buffer, 3);
+		tcsetattr(0, TCSADRAIN, g_shell->term_backup);
 		if ((ret = read_buffer(buffer, tcap)) == -2)
 			return (clean_before_return(tcap));
 		else if (!ret)
@@ -141,14 +143,12 @@ int				main(int ac, char **av, char **env)
 		check_flags(av, ac);
 	while ("21sh")
 	{
-		tcsetattr(0, TCSADRAIN, g_shell->term);
+
 		if (!(string = read_line(g_shell->tcap)))
 			return (-1);
-		tcsetattr(0, TCSADRAIN, g_shell->term_backup);
 		if (!handler(string))
 			return (-1);
 	}
-	tcsetattr(0, TCSADRAIN, g_shell->term_backup);
 	save_alias(1);
 	kill_pids();
 	return (0);

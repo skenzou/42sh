@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/28 15:04:00 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/25 06:13:16 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/05/27 06:43:44 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,59 +25,55 @@ void	ft_clear_replace(t_cap *tcap)
 int		arrow_up_event(t_cap *tcap)
 {
 	t_ab	*autocomp;
-	int		new_x;
-	int		new_y;
+	int		x;
 
 	if ((autocomp = g_shell->autocomp) && g_shell->autocomp->state)
 	{
-		new_x = autocomp->pos % autocomp->row;
-		new_y = (autocomp->pos / autocomp->col) - 1;
-		if (new_y < 0 && new_x > 0 && --new_x)
+		x = autocomp->pos % autocomp->row;
+		if (autocomp->pos - autocomp->row > -1)
+			autocomp->pos -= autocomp->row;
+		else
 		{
-			(new_x < 0) && (new_x = 0);
-			new_y = autocomp->col - 1;
-			(autocomp->carry && new_x + 1 <= autocomp->carry) && new_y++;
+
+			if (x < autocomp->carry)
+			{
+				autocomp->pos = autocomp->len - 1;
+				if (autocomp->pos)
+					autocomp->pos -= autocomp->carry - x - 1;
+			}
+			else
+			{
+				autocomp->pos = autocomp->len - 1;
+				autocomp->pos -= autocomp->carry;
+				autocomp->pos -= autocomp->row - x - 1;
+			}
 		}
-		else if (new_y < 0 && new_x == 0)
-		{
-			new_y = autocomp->col - 1;
-			(autocomp->carry && new_x <= autocomp->carry) && new_y++;
-		}
-		g_shell->autocomp->pos = (new_y * autocomp->col) + new_x;
-		ft_tab(tcap, autocomp);
+		return (ft_tab(tcap, autocomp));
 	}
-	else
-		histo_up(tcap, g_shell->history);
-	return (1);
+	return (histo_up(tcap, g_shell->history));
 }
 
 int		arrow_down_event(t_cap *tcap)
 {
 	t_ab	*autocomp;
 	int		new_x;
-	int		new_y;
 
 	autocomp = g_shell->autocomp;
+	new_x = autocomp->pos % autocomp->row;
 	if (g_shell->autocomp->state)
 	{
-		new_x = autocomp->pos % autocomp->row;
-		new_y = (autocomp->pos / autocomp->col) + 1;
-		if ((new_y > (autocomp->row - 1 + (autocomp->carry > new_x))) &&
-													new_x < autocomp->col - 1)
+		if (autocomp->pos + autocomp->row < autocomp->len)
+			autocomp->pos += autocomp->row;
+		else
 		{
-			new_x++;
-			if (new_x > autocomp->col - 1)
-				new_x = autocomp->col - 1;
-			new_y = 0;
+			if (new_x < autocomp->carry)
+				autocomp->pos = new_x;
+			else
+				autocomp->pos = new_x;
 		}
-		else if (new_y > autocomp->row - 1 && new_x == autocomp->col - 1)
-			new_y = 0;
-		g_shell->autocomp->pos = (new_y * autocomp->col) + new_x;
-		ft_tab(tcap, autocomp);
+		return (ft_tab(tcap, autocomp));
 	}
-	else
-		histo_down(tcap, g_shell->history);
-	return (1);
+	return (histo_down(tcap, g_shell->history));
 }
 
 int		arrow_right_event(t_cap *tcap)
@@ -90,11 +86,9 @@ int		arrow_right_event(t_cap *tcap)
 		autocomp->pos++;
 		if (autocomp->pos == autocomp->len)
 			autocomp->pos = 0;
-		ft_tab(tcap, autocomp);
+		return (ft_tab(tcap, autocomp));
 	}
-	else
-		return (ft_move(tcap, "right", 1));
-	return (1);
+	return (ft_move(tcap, "right", 1));
 }
 
 int		arrow_left_event(t_cap *tcap)
@@ -107,9 +101,7 @@ int		arrow_left_event(t_cap *tcap)
 		autocomp->pos--;
 		if (autocomp->pos == -1)
 			autocomp->pos = autocomp->len - 1;
-		ft_tab(tcap, autocomp);
+		return (ft_tab(tcap, autocomp));
 	}
-	else
-		return (ft_move(tcap, "left", 1));
-	return (1);
+	return (ft_move(tcap, "left", 1));;
 }

@@ -1,307 +1,559 @@
 pos: 0
-pos: 0
-pos: 0
-pos: 0
-pos: 0
-pos: 0
-file: 42sh
-pos: 0
-file: 42sh
-pos: 0
-file: 42sh
-pos: 0
-file: 42sh
-pos: 0
-file: 42sh
-file: author
-file: includes
-file: libft
-file: log.log
-file: Makefile
-file: obj
-file: README.md
-file: srcs
-file: type de completion.note
-carry: 1, 3
-pos: 0
-carry: 1, 3
-pos: 0
-pos: 0
-carry: 1, 3
-pos: 0
-carry: 1, 3
-pos: 0
-carry: 0, 0
-pos: 0
-carry: 0, 0
-pos: 0
-carry: 0, 0
-pos: 0
-carry: 0, 0
-pos: 0
-carry: 0, 0
+ avant o 
 pos: 1
-carry: 1, 3
+ avant o o 42sh
 pos: 2
-carry: 1, 3
+ avant o o 42sho author
+pos: 0
+ avant o 
+pos: 1
+ avant o 42sh
+pos: 2
+ avant o author
 pos: 3
-carry: 1, 3
+ avant o includes
 pos: 4
-carry: 1, 3
+ avant o libft
 pos: 5
-carry: 1, 3
+ avant o log.log
+pos: 5
+ avant o Makefile weiruro wuriowe ruewoiruqwoiruwqioruqworiw qui 
 pos: 6
-carry: 1, 3
+ avant o Makefile weiruro wuriowe ruewoiruqwoiruwqioruqworiw qui Makefile
+pos: 0
+ avant o 
+pos: 0
+ avant ewirueowrueowqurowpruwrueowurepwu roweiur oewueowur woiu o 
+pos: 0
+ avant o 
+pos: 1
+ avant o 42sh
+pos: 1
+ avant o author werweiurwwoeiur oweiru owieur wur woeiu o 
+pos: 0
+ avant o ewru o
+pos: 0
+ avant o 
+pos: 0
+ avant o 
+pos: 1
+ avant o 42sh
+pos: 2
+ avant o author
+pos: 3
+ avant o includes
+pos: 3
+ avant o libft ruoiqweur qow o 
+pos: 4
+ avant o libft ruoiqweur qow o libft
+pos: 5
+ avant o libft ruoiqweur qow o log.log
+pos: 6
+ avant o libft ruoiqweur qow o Makefile
 pos: 7
-carry: 1, 3
+ avant o libft ruoiqweur qow o obj
 pos: 8
-carry: 1, 3
+ avant o libft ruoiqweur qow o README.md
 pos: 9
-carry: 1, 3
+ avant o libft ruoiqweur qow o srcs
+pos: 9
+ avant o libft ruoiqweur qow o type de completion.note o 
 pos: 0
-carry: 1, 3
-pos: 1
-carry: 1, 3
+ avant oruqwoiru qwopureoiruewopruwporupewruuweoiruewouo o 
 pos: 0
-carry: 0, 0
+ avant o 
 pos: 1
-carry: 1, 3
+ avant 
 pos: 2
-carry: 1, 3
+ avant 
 pos: 3
-carry: 1, 3
+ avant 
+pos: 0
+ avant o 
+pos: 1
+ avant 
+pos: 0
+ avant o 
+pos: 1
+ avant 
+pos: 2
+ avant 
+pos: 3
+ avant 
 pos: 4
-carry: 1, 3
+ avant 
 pos: 5
-carry: 1, 3
+ avant 
 pos: 6
-carry: 1, 3
+ avant 
+pos: 0
+ avant o 
+pos: 1
+ avant 
+pos: 2
+ avant 
+pos: 3
+ avant 
+pos: 4
+ avant 
+pos: 0
+ avant O WEIOWU ioueouw oi 
+pos: 0
+ avant 
+pos: 0
+ avant ioewuoi 
+pos: 0
+ avant o 
+pos: 1
+ avant 
+pos: 0
+ avant O 
+pos: 1
+ avant O 
+pos: 2
+ avant O 
+pos: 3
+ avant O 
+pos: 4
+ avant O o
+pos: 5
+ avant O o
+pos: 6
+ avant O o
+pos: 6
+ avant O o 
 pos: 7
-carry: 1, 3
+ avant O o 
 pos: 8
-carry: 1, 3
+ avant O o 
 pos: 9
-carry: 1, 3
+ avant O o 
 pos: 0
-carry: 1, 3
+ avant O o 
 pos: 1
-carry: 1, 3
+ avant O o 
 pos: 2
-carry: 1, 3
+ avant O o 
 pos: 3
-carry: 1, 3
+ avant O o 
 pos: 4
-carry: 1, 3
+ avant O o 
 pos: 5
-carry: 1, 3
+ avant O o 
+pos: 5
+ avant O o  eirewo 
 pos: 6
-carry: 1, 3
+ avant O o  eirewo 
 pos: 7
-carry: 1, 3
+ avant O o  eirewo 
 pos: 8
-carry: 1, 3
-pos: 9
-carry: 1, 3
+ avant O o  eirewo 
+pos: 8
+ avant O o  eirewo  
 pos: 0
-carry: 0, 0
+ avant o 
 pos: 1
-carry: 1, 3
+ avant o 
 pos: 2
-carry: 1, 3
+ avant o 
 pos: 3
-carry: 1, 3
-pos: 4
-carry: 1, 3
-pos: 5
-carry: 1, 3
-pos: 6
-carry: 1, 3
-carry: 1, 3
-carry: 1, 3
-carry: 1, 3
-carry: 1, 3
-carry: 1, 3
-carry: 1, 3
-carry: 1, 3
-carry: 1, 3
-carry: 1, 3
-carry: 1, 3
-carry: 1, 3
-carry: 1, 3
-carry: 1, 3
-carry: 1, 3
-carry: 1, 3
-carry: 1, 3
-carry: 1, 3
+ avant o 
 pos: 0
-carry: 0, 0
+ avant o 
 pos: 1
-carry: 1, 3
+ avant o 
 pos: 2
-carry: 1, 3
+ avant o 
 pos: 3
-carry: 1, 3
+ avant o 
 pos: 4
-carry: 1, 3
+ avant o 
 pos: 5
-carry: 1, 3
+ avant o 
 pos: 6
-carry: 1, 3
+ avant o 
+pos: 6
+ avant o  o 
 pos: 7
-carry: 1, 3
+ avant o  o 
 pos: 8
-carry: 1, 3
+ avant o  o 
 pos: 9
-carry: 1, 3
+ avant o  o 
 pos: 0
-carry: 1, 3
+ avant o  o 
 pos: 1
-carry: 1, 3
+ avant o  o 
+pos: 0
+ avant o 
+pos: 1
+ avant o 
+pos: 0
+ avant o 
+pos: 0
+ avant o 
+pos: 1
+ avant o 
 pos: 2
-carry: 1, 3
+ avant o 
+pos: 0
+ avant o 
+pos: 1
+ avant o 
+pos: 2
+ avant o 
+pos: 0
+ avant o 42sh
+pos: 1
+ avant o 42sh
+pos: 2
+ avant o 42sh
 pos: 3
-carry: 1, 3
+ avant o 42sh
 pos: 4
-carry: 1, 3
+ avant o 42sh
+pos: 0
+ avant o 
+pos: 1
+ avant o 
+pos: 2
+ avant o 
+pos: 3
+ avant o 
+pos: 4
+ avant o 
 pos: 5
-carry: 1, 3
+ avant o 
+pos: 0
+ avant o 
+pos: 1
+ avant o 
+pos: 2
+ avant o 
+pos: 0
+ avant o
+pos: 1
+ avant o
+pos: 2
+ avant o
+pos: 3
+ avant o
+pos: 0
+ avant o 
+pos: 1
+ avant o 
+pos: 2
+ avant o 
+pos: 3
+ avant o 
+pos: 4
+ avant o 
+pos: 5
+ avant o 
 pos: 6
-carry: 1, 3
+ avant o 
 pos: 7
-carry: 1, 3
-pos: 8
-carry: 1, 3
-pos: 9
-carry: 1, 3
+ avant o 
 pos: 0
-carry: 1, 3
+ avant o 
+pos: 0
+ avant o 
 pos: 1
-carry: 1, 3
+ avant o 
 pos: 2
-carry: 1, 3
+ avant o 
 pos: 3
-carry: 1, 3
+ avant o 
 pos: 4
-carry: 1, 3
+ avant o 
 pos: 5
-carry: 1, 3
+ avant o 
 pos: 6
-carry: 1, 3
+ avant o 
 pos: 7
-carry: 1, 3
+ avant o 
 pos: 8
-carry: 1, 3
+ avant o 
 pos: 9
-carry: 1, 3
+ avant o 
 pos: 0
-carry: 1, 3
-pos: 0
-carry: 0, 0
-carry: 0, 0
-carry: 1, 3
-carry: 1, 3
-carry: 1, 3
-carry: 1, 3
-pos: 0
-carry: 1, 3
+ avant o 
 pos: 1
-carry: 1, 3
+ avant o 
 pos: 2
-carry: 1, 3
+ avant o 
 pos: 3
-carry: 1, 3
+ avant o 
 pos: 4
-carry: 1, 3
+ avant o 
 pos: 5
-carry: 1, 3
-carry: 1, 3
-carry: 1, 3
-carry: 1, 3
-carry: 1, 3
-carry: 1, 3
-pos: 0
-carry: 0, 0
-pos: 1
-carry: 1, 3
-pos: 2
-carry: 1, 3
-pos: 3
-carry: 1, 3
-carry: 0, 0
-carry: 1, 3
-pos: 0
-carry: 1, 3
-pos: 1
-carry: 1, 3
-pos: 2
-carry: 1, 3
-pos: 3
-carry: 1, 3
-pos: 4
-carry: 1, 3
-pos: 5
-carry: 1, 3
+ avant o 
 pos: 6
-carry: 1, 3
+ avant o 
 pos: 7
-carry: 1, 3
+ avant o 
 pos: 8
-carry: 1, 3
-pos: 9
-carry: 1, 3
+ avant o 
 pos: 0
-carry: 1, 3
-carry: 1, 3
-carry: 1, 3
-carry: 1, 3
-carry: 1, 3
-carry: 1, 3
-carry: 1, 3
-carry: 1, 3
-carry: 1, 3
-carry: 1, 3
-carry: 1, 3
-carry: 1, 3
-carry: 1, 3
-carry: 1, 3
-carry: 1, 3
-carry: 1, 3
-carry: 1, 3
-carry: 1, 3
-carry: 1, 3
-carry: 1, 3
-carry: 1, 3
-carry: 1, 3
-carry: 1, 3
-carry: 1, 3
-carry: 1, 3
-carry: 1, 3
-carry: 1, 3
-carry: 1, 3
-carry: 1, 3
-carry: 1, 3
-carry: 1, 3
-carry: 1, 3
-carry: 1, 3
-carry: 1, 3
-carry: 1, 3
-carry: 1, 3
-carry: 1, 3
-carry: 1, 3
-carry: 1, 3
-carry: 1, 3
-carry: 1, 3
-carry: 1, 3
-carry: 1, 3
-carry: 1, 3
-carry: 1, 3
-carry: 1, 3
-carry: 1, 3
-carry: 1, 3
-carry: 1, 3
-carry: 1, 3
-carry: 1, 3
-carry: 1, 3
-carry: 1, 3
-carry: 1, 3
-carry: 1, 3
+ avant o 
+pos: 0
+ avant o 
+pos: 0
+ avant cd 
+pos: 1
+ avant cd 
+pos: 2
+ avant cd 
+pos: 0
+ avant echo "xd" && echo "lol
+pos: 0
+ avant echo "xd" && echo "lol o 
+pos: 1
+ avant echo "xd" && echo "lol o 
+pos: 2
+ avant echo "xd" && echo "lol o 
+pos: 3
+ avant echo "xd" && echo "lol o 
+pos: 4
+ avant echo "xd" && echo "lol o 
+pos: 5
+ avant echo "xd" && echo "lol o 
+pos: 0
+ avant o 
+pos: 1
+ avant o 
+pos: 2
+ avant o 
+pos: 3
+ avant o 
+pos: 4
+ avant o 
+pos: 5
+ avant o 
+pos: 6
+ avant o 
+pos: 7
+ avant o 
+pos: 8
+ avant o 
+pos: 9
+ avant o 
+pos: 0
+ avant o 
+pos: 1
+ avant o 
+pos: 2
+ avant o 
+pos: 3
+ avant o 
+pos: 4
+ avant o 
+pos: 5
+ avant o 
+pos: 6
+ avant o 
+pos: 7
+ avant o 
+pos: 8
+ avant o 
+pos: 9
+ avant o 
+pos: 0
+ avant o 
+pos: 1
+ avant o 
+ avant o 
+ avant o 
+ avant o 
+ avant o 
+ avant o 
+ avant o 
+ avant o 
+ avant o 
+ avant o 
+ avant o 
+ avant o 
+ avant o 
+ avant o 
+ avant o 
+ avant o 
+ avant o 
+ avant o 
+ avant o 
+ avant o 
+ avant o 
+ avant o 
+ avant o 
+ avant o 
+ avant o 
+ avant o 
+ avant o 
+ avant o 
+ avant o 
+ avant o 
+ avant o 
+ avant o 
+pos: 0
+ avant o 
+pos: 1
+ avant o 
+pos: 2
+ avant o 
+ avant o 
+ avant o 
+ avant o 
+ avant o 
+ avant o 
+ avant o 
+ avant o 
+pos: 0
+ avant o 
+pos: 1
+ avant o 
+pos: 2
+ avant o 
+pos: 3
+ avant o 
+pos: 4
+ avant o 
+pos: 5
+ avant o 
+pos: 6
+ avant o 
+pos: 7
+ avant o 
+pos: 8
+ avant o 
+pos: 9
+ avant o 
+pos: 0
+ avant o 
+pos: 1
+ avant o 
+pos: 2
+ avant o 
+pos: 3
+ avant o 
+ avant o 
+ avant o 
+ avant o 
+ avant o 
+ avant o 
+ avant o 
+ avant o 
+ avant o 
+ avant o 
+ avant o 
+ avant o 
+ avant o 
+ avant o 
+ avant o 
+ avant o 
+ avant o 
+ avant o 
+ avant o 
+ avant o 
+ avant o 
+ avant o 
+ avant o 
+ avant o 
+ avant o 
+ avant o 
+ avant o 
+ avant o 
+ avant o 
+ avant o 
+ avant o 
+ avant o 
+ avant o 
+ avant o 
+ avant o 
+ avant o 
+ avant o 
+ avant o 
+ avant o 
+ avant o 
+ avant o 
+ avant o 
+ avant o 
+ avant o 
+ avant o 
+ avant o 
+ avant o 
+ avant o 
+ avant o 
+ avant o 
+ avant o 
+ avant o 
+ avant o 
+ avant o 
+ avant o 
+ avant o 
+ avant o 
+ avant o 
+ avant o 
+ avant o 
+ avant o 
+ avant o 
+ avant o 
+ avant o 
+ avant o 
+ avant o 
+ avant o 
+ avant o 
+ avant o 
+ avant o 
+ avant o 
+ avant o 
+ avant o 
+ avant o 
+ avant o 
+ avant o 
+ avant o 
+ avant o 
+ avant o 
+ avant o 
+ avant o 
+ avant o 
+ avant o 
+ avant o 
+ avant o 
+ avant o 
+ avant o 
+ avant o 
+ avant o 
+ avant o 
+ avant o 
+ avant o 
+pos: 0
+ avant cd 
+pos: 1
+ avant cd 
+pos: 2
+ avant cd 
+pos: 3
+ avant cd 
+pos: 4
+ avant cd 
+pos: 5
+ avant cd 
+pos: 6
+ avant cd 
+pos: 0
+ avant cd obj
+pos: 0
+ avant cd obj 
+pos: 1
+ avant cd obj
+pos: 2
+ avant cd obj
+pos: 3
+ avant cd obj
+pos: 4
+ avant cd obj
+pos: 5
+ avant cd obj
+pos: 6
+ avant cd obj
+pos: 7
+ avant cd obj
