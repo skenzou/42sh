@@ -1,31 +1,32 @@
-# 42sh
+# 21sh
 
 ## Current tasks
 
-- Midrissi : core of the project (parser, lexer, executor, ...)
-- Aben-azz : termcaps
-- Ghamelek : type_builtin/test_builtin
-- tlechien : cd_builtin/job_control
+missidri : core > pipes
+aben-azz : termcaps/prompt
+ghamelek : type_builtin ?
+tlechien : jobs controls, cd_builtin
+
+## TODO ACHRAF
+- Mot selectionné a l'endroit du curseur durant l'autocompletion
+- !!, !word, !number, !-number
+- CTRL-R
+- Completion automatique si path ou si env_var
+- fc ? (Pas sur que ce soit dans termcaps, a voir)
+- Gestion du redimensionnement de fenetre
+- Couleurs dans l'autocompletion
+- Gestion des leaks
+- Copy/cut/past
+- Home et End evenement
+- SHIFT_UP et SHIFT_DOWN pour se deplacer dans une commande en haut et en bas
+- Bonus
+	- Autocompletion en fonction de la commande, ex:
+		- cd => que des dossier
+		- ls => fichier/dossier
+		- man => fichier present dans le dossier man
 
 ## TODO
 
-- Complete management of the history:
-	◦ Expansions:
-	∗ !!
-	∗ !word
-	∗ !number
-	∗ !-number
-	◦ Saving to a file so that it can be used over several sessions
-	◦ Built-in fc (all POSIX options)
-	◦ Incremental search in the history with CTRL-R
-- Contextual dynamic completion of commands, built-ins, files, internal and environment variables. What is meant by contextual? re-we use the “ls /” command
-and your cursor is on the /, then a contextual completion will only propose the
-content of the root folder and not the commands or built-ins. Same for this case:
-“echo ${S”, the completion should only propose variable names that start with S,
-whether internal or environmental.
-- builtin test
-- intern shell variables
-- POSIX norme on builtins
 - Merge alias feature and add builtin to the list.
 - Add '&' and merge job feature.
 - Signal monitoring.
