@@ -1,559 +1,116 @@
-pos: 0
- avant o 
-pos: 1
- avant o o 42sh
-pos: 2
- avant o o 42sho author
-pos: 0
- avant o 
-pos: 1
- avant o 42sh
-pos: 2
- avant o author
-pos: 3
- avant o includes
-pos: 4
- avant o libft
-pos: 5
- avant o log.log
-pos: 5
- avant o Makefile weiruro wuriowe ruewoiruqwoiruwqioruqworiw qui 
-pos: 6
- avant o Makefile weiruro wuriowe ruewoiruqwoiruwqioruqworiw qui Makefile
-pos: 0
- avant o 
-pos: 0
- avant ewirueowrueowqurowpruwrueowurepwu roweiur oewueowur woiu o 
-pos: 0
- avant o 
-pos: 1
- avant o 42sh
-pos: 1
- avant o author werweiurwwoeiur oweiru owieur wur woeiu o 
-pos: 0
- avant o ewru o
-pos: 0
- avant o 
-pos: 0
- avant o 
-pos: 1
- avant o 42sh
-pos: 2
- avant o author
-pos: 3
- avant o includes
-pos: 3
- avant o libft ruoiqweur qow o 
-pos: 4
- avant o libft ruoiqweur qow o libft
-pos: 5
- avant o libft ruoiqweur qow o log.log
-pos: 6
- avant o libft ruoiqweur qow o Makefile
-pos: 7
- avant o libft ruoiqweur qow o obj
-pos: 8
- avant o libft ruoiqweur qow o README.md
-pos: 9
- avant o libft ruoiqweur qow o srcs
-pos: 9
- avant o libft ruoiqweur qow o type de completion.note o 
-pos: 0
- avant oruqwoiru qwopureoiruewopruwporupewruuweoiruewouo o 
-pos: 0
- avant o 
-pos: 1
- avant 
-pos: 2
- avant 
-pos: 3
- avant 
-pos: 0
- avant o 
-pos: 1
- avant 
-pos: 0
- avant o 
-pos: 1
- avant 
-pos: 2
- avant 
-pos: 3
- avant 
-pos: 4
- avant 
-pos: 5
- avant 
-pos: 6
- avant 
-pos: 0
- avant o 
-pos: 1
- avant 
-pos: 2
- avant 
-pos: 3
- avant 
-pos: 4
- avant 
-pos: 0
- avant O WEIOWU ioueouw oi 
-pos: 0
- avant 
-pos: 0
- avant ioewuoi 
-pos: 0
- avant o 
-pos: 1
- avant 
-pos: 0
- avant O 
-pos: 1
- avant O 
-pos: 2
- avant O 
-pos: 3
- avant O 
-pos: 4
- avant O o
-pos: 5
- avant O o
-pos: 6
- avant O o
-pos: 6
- avant O o 
-pos: 7
- avant O o 
-pos: 8
- avant O o 
-pos: 9
- avant O o 
-pos: 0
- avant O o 
-pos: 1
- avant O o 
-pos: 2
- avant O o 
-pos: 3
- avant O o 
-pos: 4
- avant O o 
-pos: 5
- avant O o 
-pos: 5
- avant O o  eirewo 
-pos: 6
- avant O o  eirewo 
-pos: 7
- avant O o  eirewo 
-pos: 8
- avant O o  eirewo 
-pos: 8
- avant O o  eirewo  
-pos: 0
- avant o 
-pos: 1
- avant o 
-pos: 2
- avant o 
-pos: 3
- avant o 
-pos: 0
- avant o 
-pos: 1
- avant o 
-pos: 2
- avant o 
-pos: 3
- avant o 
-pos: 4
- avant o 
-pos: 5
- avant o 
-pos: 6
- avant o 
-pos: 6
- avant o  o 
-pos: 7
- avant o  o 
-pos: 8
- avant o  o 
-pos: 9
- avant o  o 
-pos: 0
- avant o  o 
-pos: 1
- avant o  o 
-pos: 0
- avant o 
-pos: 1
- avant o 
-pos: 0
- avant o 
-pos: 0
- avant o 
-pos: 1
- avant o 
-pos: 2
- avant o 
-pos: 0
- avant o 
-pos: 1
- avant o 
-pos: 2
- avant o 
-pos: 0
- avant o 42sh
-pos: 1
- avant o 42sh
-pos: 2
- avant o 42sh
-pos: 3
- avant o 42sh
-pos: 4
- avant o 42sh
-pos: 0
- avant o 
-pos: 1
- avant o 
-pos: 2
- avant o 
-pos: 3
- avant o 
-pos: 4
- avant o 
-pos: 5
- avant o 
-pos: 0
- avant o 
-pos: 1
- avant o 
-pos: 2
- avant o 
-pos: 0
- avant o
-pos: 1
- avant o
-pos: 2
- avant o
-pos: 3
- avant o
-pos: 0
- avant o 
-pos: 1
- avant o 
-pos: 2
- avant o 
-pos: 3
- avant o 
-pos: 4
- avant o 
-pos: 5
- avant o 
-pos: 6
- avant o 
-pos: 7
- avant o 
-pos: 0
- avant o 
-pos: 0
- avant o 
-pos: 1
- avant o 
-pos: 2
- avant o 
-pos: 3
- avant o 
-pos: 4
- avant o 
-pos: 5
- avant o 
-pos: 6
- avant o 
-pos: 7
- avant o 
-pos: 8
- avant o 
-pos: 9
- avant o 
-pos: 0
- avant o 
-pos: 1
- avant o 
-pos: 2
- avant o 
-pos: 3
- avant o 
-pos: 4
- avant o 
-pos: 5
- avant o 
-pos: 6
- avant o 
-pos: 7
- avant o 
-pos: 8
- avant o 
-pos: 0
- avant o 
-pos: 0
- avant o 
+position vaut: 9|f|
+position vaut: 4| |
+position vaut: 1| |
+position vaut: 1| |
+position vaut: 1| |
+position vaut: 1| |
+position vaut: 1| |
+position vaut: 4| |
+position vaut: 3| |
+position vaut: 1| |
+position vaut: 1| |
+position vaut: 1| |
+position vaut: 5|f|
+position vaut: 5|e|
+position vaut: 22|i|
+position vaut: 5|f|
+position vaut: 5|e|
+position vaut: 22|i|
+position vaut: 5|f|
+position vaut: 5|e|
+position vaut: 22|i|
+position vaut: 5|f|
+position vaut: 2|f|
+position vaut: 2|f|
+position vaut: 2|f|
+position vaut: 5|e|
+position vaut: 4|c|
+position vaut: 17|f|
+position vaut: 5|e|
+position vaut: 16|i|
+position vaut: 6|f|
+position vaut: 5|e|
+position vaut: 4|c|
+position vaut: 20|f|
+position vaut: 29| |
+position vaut: 29| |
+position vaut: 29| |
+position vaut: 29| |
+position vaut: 29| |
+position vaut: 29| |
+position vaut: 29| |
+position vaut: 29| |
+position vaut: 29| |
+position vaut: 6| |
+position vaut: 6| |
+position vaut: 6| |
+position vaut: 5| |
+position vaut: 6| |
+position vaut: 6| |
+position vaut: 6| |
+position vaut: 6| |
+position vaut: 6| |
+position vaut: 6| |
+position vaut: 6| |
+position vaut: 6| |
+position vaut: 3| |
+position vaut: -31776| |
+position vaut: -31776| |
+position vaut: 6| |
+position vaut: 3| |
+position vaut: -31776| |
+position vaut: -31776| |
+position vaut: 19| |
+position vaut: 16| |
+position vaut: -31776| |
+position vaut: 54| |
+position vaut: 48| |
+position vaut: 23| |
+position vaut: -31776| |
+position vaut: 54| |
+position vaut: 48| |
+position vaut: 23| |
+position vaut: 6| |
+position vaut: 6| |
+position vaut: 6| |
+position vaut: 6| |
+position vaut: 6| |
+position vaut: 7| |
+position vaut: 3| |
+position vaut: -31864| |
+position vaut: 3| |
+position vaut: -31864| |
+position vaut: -31864| |
+position vaut: 33| |
+position vaut: 30| |
+position vaut: -31864| |
+position vaut: 1
+position vaut: 12
+position vaut: 5
+position vaut: 14
+position vaut: 31810
+position vaut: 31782
+position vaut: 31782
+position vaut: 12
+position vaut: 5
+position vaut: 14
+position vaut: 31810
 pos: 0
  avant cd 
 pos: 1
  avant cd 
-pos: 2
  avant cd 
 pos: 0
- avant echo "xd" && echo "lol
-pos: 0
- avant echo "xd" && echo "lol o 
-pos: 1
- avant echo "xd" && echo "lol o 
-pos: 2
- avant echo "xd" && echo "lol o 
-pos: 3
- avant echo "xd" && echo "lol o 
-pos: 4
- avant echo "xd" && echo "lol o 
-pos: 5
- avant echo "xd" && echo "lol o 
-pos: 0
- avant o 
-pos: 1
- avant o 
-pos: 2
- avant o 
-pos: 3
- avant o 
-pos: 4
- avant o 
-pos: 5
- avant o 
-pos: 6
- avant o 
-pos: 7
- avant o 
-pos: 8
- avant o 
-pos: 9
- avant o 
-pos: 0
- avant o 
-pos: 1
- avant o 
-pos: 2
- avant o 
-pos: 3
- avant o 
-pos: 4
- avant o 
-pos: 5
- avant o 
-pos: 6
- avant o 
-pos: 7
- avant o 
-pos: 8
- avant o 
-pos: 9
- avant o 
-pos: 0
- avant o 
-pos: 1
- avant o 
- avant o 
- avant o 
- avant o 
- avant o 
- avant o 
- avant o 
- avant o 
- avant o 
- avant o 
- avant o 
- avant o 
- avant o 
- avant o 
- avant o 
- avant o 
- avant o 
- avant o 
- avant o 
- avant o 
- avant o 
- avant o 
- avant o 
- avant o 
- avant o 
- avant o 
- avant o 
- avant o 
- avant o 
- avant o 
- avant o 
- avant o 
-pos: 0
- avant o 
-pos: 1
- avant o 
-pos: 2
- avant o 
- avant o 
- avant o 
- avant o 
- avant o 
- avant o 
- avant o 
- avant o 
-pos: 0
- avant o 
-pos: 1
- avant o 
-pos: 2
- avant o 
-pos: 3
- avant o 
-pos: 4
- avant o 
-pos: 5
- avant o 
-pos: 6
- avant o 
-pos: 7
- avant o 
-pos: 8
- avant o 
-pos: 9
- avant o 
-pos: 0
- avant o 
-pos: 1
- avant o 
-pos: 2
- avant o 
-pos: 3
- avant o 
- avant o 
- avant o 
- avant o 
- avant o 
- avant o 
- avant o 
- avant o 
- avant o 
- avant o 
- avant o 
- avant o 
- avant o 
- avant o 
- avant o 
- avant o 
- avant o 
- avant o 
- avant o 
- avant o 
- avant o 
- avant o 
- avant o 
- avant o 
- avant o 
- avant o 
- avant o 
- avant o 
- avant o 
- avant o 
- avant o 
- avant o 
- avant o 
- avant o 
- avant o 
- avant o 
- avant o 
- avant o 
- avant o 
- avant o 
- avant o 
- avant o 
- avant o 
- avant o 
- avant o 
- avant o 
- avant o 
- avant o 
- avant o 
- avant o 
- avant o 
- avant o 
- avant o 
- avant o 
- avant o 
- avant o 
- avant o 
- avant o 
- avant o 
- avant o 
- avant o 
- avant o 
- avant o 
- avant o 
- avant o 
- avant o 
- avant o 
- avant o 
- avant o 
- avant o 
- avant o 
- avant o 
- avant o 
- avant o 
- avant o 
- avant o 
- avant o 
- avant o 
- avant o 
- avant o 
- avant o 
- avant o 
- avant o 
- avant o 
- avant o 
- avant o 
- avant o 
- avant o 
- avant o 
- avant o 
- avant o 
- avant o 
-pos: 0
- avant cd 
-pos: 1
- avant cd 
-pos: 2
- avant cd 
-pos: 3
- avant cd 
-pos: 4
- avant cd 
-pos: 5
- avant cd 
-pos: 6
- avant cd 
-pos: 0
- avant cd obj
-pos: 0
- avant cd obj 
-pos: 1
- avant cd obj
-pos: 2
- avant cd obj
-pos: 3
- avant cd obj
-pos: 4
- avant cd obj
-pos: 5
- avant cd obj
-pos: 6
- avant cd obj
-pos: 7
- avant cd obj
+ avant cd includes 
+position vaut: 3
+position vaut: 16
+position vaut: 31726
+position vaut: 16
+position vaut: 31726
+position vaut: 31719
+position vaut: 16
+position vaut: 31726
+position vaut: 31719
+position vaut: 31719
+position vaut: 16
+position vaut: 31726

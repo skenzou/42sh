@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/04 13:56:36 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/25 00:40:10 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/05/30 05:21:14 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,4 +157,5 @@ size_t			ft_strlen2(const char *str);
 char			**ft_splitdup(char **src);
 int				min(int a, int b);
 int				max(int a, int b);
+int				ft_nlastindexof(char *string, char c, int n);
 #endif

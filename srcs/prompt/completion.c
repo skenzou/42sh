@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 06:02:13 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/27 06:24:38 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/05/30 06:40:15 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ int		init_autocomp(t_cap *tcap, t_ab *autocomp)
 	autocomp->row = g_shell->tcap->cursx_max / (max(max_offset + 2, 1));
 	autocomp->col = autocomp->len / max(autocomp->row, 1);
 	autocomp->carry = autocomp->len % max(autocomp->row, 1);
-	dprintf(debug(), " avant %s\n", tcap->command);
 	return (max_offset);
 }
 

@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/27 17:27:48 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/30 05:06:50 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/05/30 06:40:14 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,10 +57,11 @@ int				wcharlen(char nb)
 	return (count);
 }
 
-int debug(void)
+int		debug(void)
 {
 	int fd;
-	return  (fd = open("log.log", O_RDWR | O_APPEND | O_CREAT, 0666));
+
+	return (fd = open("log.log", O_RDWR | O_APPEND | O_CREAT, 0666));
 }
 
 char	*clean_before_return(t_cap *tcap)

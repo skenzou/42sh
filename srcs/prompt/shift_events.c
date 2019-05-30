@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/28 15:04:00 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/30 05:03:38 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/05/30 06:40:17 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,35 @@ int		shift_arrow_down_event(t_cap *tcap)
 
 int		shift_arrow_right_event(t_cap *tcap)
 {
-	(void)tcap;
-	ft_insert("right", tcap);
+	int index;
+
+	index = ft_indexof(tcap->command + (tcap->cursx - tcap->prompt_len), ' ');
+	while (((tcap->cursx - tcap->prompt_len) + index) < tcap->char_len)
+		if (tcap->command[(tcap->cursx - tcap->prompt_len) + index] == ' ')
+			index++;
+		else
+			break ;
+	if (index)
+		ft_move(tcap, "right", index);
+	else
+		tputs(tcap->sound, 1, ft_put_termcaps);
 	return (1);
 }
 
 int		shift_arrow_left_event(t_cap *tcap)
 {
-	(void)tcap;
-	ft_insert("left", tcap);
+	int position;
+	int i;
+
+	i = 0;
+	position = tcap->cursx - tcap->prompt_len - 1;
+	if (tcap->command[position] == ' ')
+		while (tcap->command[position] == ' ')
+			position--;
+	if (tcap->command[position] != ' ')
+		while (tcap->command[position] != ' ')
+			position--;
+	ft_move(tcap, "left", ((tcap->cursx - tcap->prompt_len) - position) - 1);
 	return (1);
 }
 
