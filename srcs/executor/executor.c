@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/03 16:15:41 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/30 14:41:54 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/05/30 16:55:24 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,10 @@ int		exec_builtin(char **builtin, int id, char ***env)
 		unset_builtin(ac, builtin);
 	if (id == JOBS_BUILTIN)
 		jobs_builtin(builtin);
+	if (id == TYPE_BUILTIN)
+		type_builtin(ac, builtin);
+	if (id == TEST_BUILTIN)
+		test_builtin(ac, builtin);
 	if (err_id)
 		err_handler(err_id, builtin[0]);
 	return (err_id);

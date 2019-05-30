@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 18:46:30 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/30 14:39:52 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/05/30 15:36:59 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void					ft_setenv(char *key, char *value, char ***env)
 	char	*temp;
 
 	key = ft_strjoin(key, "=");
-	key == NULL ? exit(1) : 0;
+	key == NULL ? ft_exit("Malloc failed in ft_setenv") : 0;
 	i = get_indexof_key(key, *env);
 	if (i >= 0)
 	{
