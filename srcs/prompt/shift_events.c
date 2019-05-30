@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   shift_arrow_events.c                               :+:      :+:    :+:   */
+/*   shift_events.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/28 15:04:00 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/25 00:46:03 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/05/30 05:03:38 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,14 @@ int		shift_arrow_down_event(t_cap *tcap)
 int		shift_arrow_right_event(t_cap *tcap)
 {
 	(void)tcap;
+	ft_insert("right", tcap);
 	return (1);
 }
 
 int		shift_arrow_left_event(t_cap *tcap)
 {
 	(void)tcap;
+	ft_insert("left", tcap);
 	return (1);
 }
 

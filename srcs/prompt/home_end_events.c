@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/09 00:20:29 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/27 06:51:58 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/05/30 05:03:11 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ int		home_event(t_cap *tcap)
 
 int		end_event(t_cap *tcap)
 {
+	(void)tcap;
 	;
 	return (1);
 }

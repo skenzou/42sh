@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/27 17:27:48 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/27 00:21:25 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/05/30 05:06:50 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ int debug(void)
 
 char	*clean_before_return(t_cap *tcap)
 {
+	tcsetattr(0, TCSADRAIN, g_shell->term_backup);
 	ft_printf("\x1b[0m");
 	tcap->cursx = tcap->prompt_len;
 	tcap->cursy = 0;
@@ -99,11 +100,13 @@ char	*read_line(t_cap *tcap)
 		ft_bzero(buffer, 4);
 		tcsetattr(0, TCSADRAIN, g_shell->term);
 		read(0, &buffer, 3);
-		tcsetattr(0, TCSADRAIN, g_shell->term_backup);
 		if ((ret = read_buffer(buffer, tcap)) == -2)
 			return (clean_before_return(tcap));
 		else if (!ret)
+		{
+			tcsetattr(0, TCSADRAIN, g_shell->term_backup);
 			return (NULL);
+		}
 	}
 }
 
@@ -143,7 +146,6 @@ int				main(int ac, char **av, char **env)
 		check_flags(av, ac);
 	while ("21sh")
 	{
-
 		if (!(string = read_line(g_shell->tcap)))
 			return (-1);
 		if (!handler(string))
