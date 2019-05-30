@@ -2,10 +2,10 @@
 
 ## Current tasks
 
-missidri : core > pipes
-aben-azz : termcaps/prompt
-ghamelek : type_builtin ?
-tlechien : jobs controls, cd_builtin
+- missidri : core > pipes
+- aben-azz : termcaps/prompt
+- ghamelek : type_builtin ?
+- tlechien : jobs controls, cd_builtin
 
 ## TODO ACHRAF
 - Mot selectionné a l'endroit du curseur durant l'autocompletion
