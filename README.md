@@ -31,6 +31,7 @@
 		- ls => fichier/dossier
 		- man => fichier present dans le dossier man
 - Floation point exception avec fleche du bas
+- Protection getenv fichier historique
 
 ## DEBUG
 

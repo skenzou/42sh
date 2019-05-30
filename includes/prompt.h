@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 07:12:40 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/30 20:19:18 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/05/30 20:34:17 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@
 # define PROMPT2 				"\x1b[36m\x1b[1m%s \x1b[0m"
 # define PROMPT3 			"\x1b[1m\x1b[34mgit:(\x1b[31m%s\x1b[34m) \x1b[0m"
 # define PROMPT4 			"\x1b[1m\x1b[31m%s\x1b[0m\x1b[33m\x1b[1m ✗ \x1b[0m"
-# define DEFAULT_HISTORY_NAME	".21sh_history"
-# define DEFAULT_ENV_FILE_NAME	".21sh_env"
+# define DEFAULT_HISTORY_NAME	".42sh_history"
+# define DEFAULT_ENV_FILE_NAME	".42sh_env"
 # define DEFAULT_PROMPT_COLOR	"\x1b[37m"
 # define BUFFSIZE				4096
 # define ARROW_CODE1			27
