@@ -1,22 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
+/*   ft_max.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: midrissi <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/10/08 10:59:20 by midrissi          #+#    #+#             */
-/*   Updated: 2018/10/08 11:00:43 by midrissi         ###   ########.fr       */
+/*   Created: 2019/02/08 04:38:01 by aben-azz          #+#    #+#             */
+/*   Updated: 2019/05/30 20:05:12 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putendl_fd(char const *s, int fd)
+int		ft_max(int a, int b)
 {
-	if (s)
-	{
-		ft_putstr_fd(s, fd);
-		ft_putchar_fd('\n', fd);
-	}
+	return (a > b ? a : b);
 }

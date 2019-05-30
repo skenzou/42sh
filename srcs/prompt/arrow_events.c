@@ -6,13 +6,13 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/28 15:04:00 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/13 07:40:29 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/05/27 06:43:44 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-void ft_clear_replace(t_cap *tcap)
+void	ft_clear_replace(t_cap *tcap)
 {
 	ft_clear_all_lines(tcap);
 	ft_bzero(tcap->command, BUFFSIZE);
@@ -22,67 +22,86 @@ void ft_clear_replace(t_cap *tcap)
 	ft_replace_cursor(tcap);
 }
 
-int        arrow_up_event(t_cap *tcap)
+int		arrow_up_event(t_cap *tcap)
 {
-	t_history	*h;
-	char		*string;
-	char		*command;
-	int			len;
+	t_ab	*autocomp;
+	int		x;
 
-	h = g_shell->history;
-
-	if (h->position == h->len)
+	if ((autocomp = g_shell->autocomp) && g_shell->autocomp->state)
 	{
-		tputs(tcap->sound, 1, ft_put_termcaps);
-		return (1);
+		x = autocomp->pos % autocomp->row;
+		if (autocomp->pos - autocomp->row > -1)
+			autocomp->pos -= autocomp->row;
+		else
+		{
+
+			if (x < autocomp->carry)
+			{
+				autocomp->pos = autocomp->len - 1;
+				if (autocomp->pos)
+					autocomp->pos -= autocomp->carry - x - 1;
+			}
+			else
+			{
+				autocomp->pos = autocomp->len - 1;
+				autocomp->pos -= autocomp->carry;
+				autocomp->pos -= autocomp->row - x - 1;
+			}
+		}
+		return (ft_tab(tcap, autocomp));
 	}
-	h->position++;
-	ft_clear_replace(tcap);
-	command = h->data[h->len - h->position - 1];
-	if (!command)
-		return (1);
-	len = ft_strlen(command);
-	if (!len)
-		return (1);
-	string = ft_strnew(len);
-	ft_strncpy(string, command, len - 1);
-	ft_insert(string, tcap);
-	return (1);
+	return (histo_up(tcap, g_shell->history));
 }
 
 int		arrow_down_event(t_cap *tcap)
 {
-	t_history	*h;
-	char		*string;
-	char		*command;
-	int			len;
+	t_ab	*autocomp;
+	int		new_x;
 
-	h = g_shell->history;
-	if (h->position == -1)
+	autocomp = g_shell->autocomp;
+	new_x = autocomp->pos % autocomp->row;
+	if (g_shell->autocomp->state)
 	{
-		tputs(tcap->sound, 1, ft_put_termcaps);
-		return (1);
+		if (autocomp->pos + autocomp->row < autocomp->len)
+			autocomp->pos += autocomp->row;
+		else
+		{
+			if (new_x < autocomp->carry)
+				autocomp->pos = new_x;
+			else
+				autocomp->pos = new_x;
+		}
+		return (ft_tab(tcap, autocomp));
 	}
-	h->position--;
-	ft_clear_replace(tcap);
-	command = h->data[h->len - h->position - 1];
-	if (!command)
-		return (1);
-	len = ft_strlen(command);
-	if (!len)
-		return (1);
-	string = ft_strnew(len);
-	ft_strncpy(string, command, len - 1);
-	ft_insert(string, tcap);
-	return (1);
+	return (histo_down(tcap, g_shell->history));
 }
 
 int		arrow_right_event(t_cap *tcap)
 {
-	return (ft_right(tcap));
+	t_ab	*autocomp;
+
+	autocomp = g_shell->autocomp;
+	if (g_shell->autocomp->state)
+	{
+		autocomp->pos++;
+		if (autocomp->pos == autocomp->len)
+			autocomp->pos = 0;
+		return (ft_tab(tcap, autocomp));
+	}
+	return (ft_move(tcap, "right", 1));
 }
 
 int		arrow_left_event(t_cap *tcap)
 {
-	return (ft_left(tcap));
+	t_ab	*autocomp;
+
+	autocomp = g_shell->autocomp;
+	if (g_shell->autocomp->state)
+	{
+		autocomp->pos--;
+		if (autocomp->pos == -1)
+			autocomp->pos = autocomp->len - 1;
+		return (ft_tab(tcap, autocomp));
+	}
+	return (ft_move(tcap, "left", 1));;
 }

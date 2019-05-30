@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/04 13:56:36 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/23 10:42:18 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/05/30 20:16:52 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,5 +155,8 @@ char			*ft_substr(char *src, int m, int n);
 int				ft_isonly_digit(char *str);
 size_t			ft_strlen2(const char *str);
 char			**ft_splitdup(char **src);
-
+int				ft_min(int a, int b);
+int				ft_max(int a, int b);
+void			ft_exit(char *msg);
+int				ft_nlastindexof(char *string, char c, int n);
 #endif

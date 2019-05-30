@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 16:42:03 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/30 16:52:08 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/05/30 20:19:04 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,14 +86,13 @@ typedef struct	s_shell
 	char		print_flags;
 	char		lastsignal;
 	size_t		curr_pipe;
+	t_ab		*autocomp;
+	t_term		*term;
+	t_term		*term_backup;
 }				t_shell;
 
 extern t_shell *g_shell;
 
-void		print_prompt(void);
-void		sighandler(int sig);
-void 		ft_exit(char *str);
-void		sigfork(int sig);
 char		**dup_env(char **env);
 int			handler(char *input);
 #endif

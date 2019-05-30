@@ -8,26 +8,29 @@
 - tlechien : cd_builtin/jobs control/signal monitoring/alias
 
 ## TODO
-
-- Complete management of the history:
-	◦ Expansions:
-	∗ !!
-	∗ !word
-	∗ !number
-	∗ !-number
-	◦ Saving to a file so that it can be used over several sessions
-	◦ Built-in fc (all POSIX options)
-	◦ Incremental search in the history with CTRL-R
-- Contextual dynamic completion of commands, built-ins, files, internal and environment variables. What is meant by contextual? re-we use the “ls /” command
-and your cursor is on the /, then a contextual completion will only propose the
-content of the root folder and not the commands or built-ins. Same for this case:
-“echo ${S”, the completion should only propose variable names that start with S,
-whether internal or environmental.
 - builtin test
 - POSIX norme on builtins
 - Signal monitoring.
 - Error management.
 
+## TODO ACHRAF
+- Mot selectionné a l'endroit du curseur durant l'autocompletion
+- !!, !word, !number, !-number
+- CTRL-R
+- Completion automatique si path ou si env_var
+- fc ? (Pas sur que ce soit dans termcaps, a voir)
+- Gestion du redimensionnement de fenetre
+- Couleurs dans l'autocompletion
+- Gestion des leaks
+- Copy/cut/past
+- Home et End evenement
+- SHIFT_UP et SHIFT_DOWN pour se deplacer dans une commande en haut et en bas
+- Bonus
+	- Autocompletion en fonction de la commande, ex:
+		- cd => que des dossier
+		- ls => fichier/dossier
+		- man => fichier present dans le dossier man
+- Floation point exception avec fleche du bas
 
 ## DEBUG
 

@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 00:40:57 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/30 16:51:00 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/05/30 17:30:42 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ extern	char		**g_aliases;
 ** ## FUNCTIONS ##
 */
 
+int		get_builtin(char *cmd);
 int		test_builtin(int ac, char **args);
 int		type_builtin(int ac, char **args);
 void		param_expansion(char **ptr);

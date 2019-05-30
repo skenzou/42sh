@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/01 17:30:02 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/13 07:32:19 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/05/25 08:19:13 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int		is_key(char key[3])
 			return (-1);
 	}
 	else if (key[0] == ENTER || key[0] == BACKSPACE || key[0] == CTRL_R ||
-											key[0] == CTRL_D || key[0] == TAB)
+						key[0] == CTRL_D || key[0] == TAB || key[0] == SPACE)
 		return (key[0]);
 	else
 		return (-1);

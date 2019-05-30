@@ -6,14 +6,13 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 23:56:22 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/13 07:32:21 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/05/25 07:42:36 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-
-int		ft_add_n_char(char buff[4], int pos, int len, t_cap *tcap)
+int		ft_add_n_char(char *buff, int pos, int len, t_cap *tcap)
 {
 	char	*tmp;
 
@@ -58,15 +57,14 @@ void	ft_clean_buff(t_cap *tcap)
 
 int		ft_insert(char *buff, t_cap *tcap)
 {
+
 	int		position;
-	int		i;
 	int		len;
 
 	if (tcap->char_len + ft_strlen(buff) >= BUFFSIZE - 2)
 		tputs(tcap->sound, 1, ft_put_termcaps);
 	else
 	{
-		i = -1;
 		len = ft_strlen(buff);
 		position = tcap->cursy * (tcap->cursx_max + 1) +
 			(tcap->cursx) - tcap->prompt_len;
@@ -75,8 +73,7 @@ int		ft_insert(char *buff, t_cap *tcap)
 			return (-1);
 		ft_putstr(tcap->command);
 		ft_replace_cursor(tcap);
-		while (++i < len)
-			ft_right(tcap);
+		ft_move(tcap, "right", len);
 	}
 	return (1);
 }

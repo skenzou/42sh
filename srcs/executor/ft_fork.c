@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/14 23:53:49 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/28 19:51:33 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/05/30 20:23:25 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int		ft_fork_amper(char **cmd, char **env)
 	pid_t	pid;
 
 	pid = fork();
-	signal(SIGINT, sighandler);
+	signal(SIGINT, sigfork);
 	if (!pid)
 		execve(cmd[0], cmd, env);
 	if (pid < 0)
@@ -69,7 +69,7 @@ int	ft_fork(char **cmd, char **env)
 	pid_t pid;
 
 	pid = fork();
-	//signal(SIGINT, sighandler);
+	signal(SIGINT, sigfork);
 	if (pid == 0)
 	{
 		execve(cmd[0], cmd, env);

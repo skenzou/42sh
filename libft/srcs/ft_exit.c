@@ -1,22 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
+/*   ft_exit.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: midrissi <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/10/08 10:59:20 by midrissi          #+#    #+#             */
-/*   Updated: 2018/10/08 11:00:43 by midrissi         ###   ########.fr       */
+/*   Created: 2019/05/30 20:17:06 by midrissi          #+#    #+#             */
+/*   Updated: 2019/05/30 20:17:40 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putendl_fd(char const *s, int fd)
+void		ft_exit(char *msg)
 {
-	if (s)
-	{
-		ft_putstr_fd(s, fd);
-		ft_putchar_fd('\n', fd);
-	}
+	ft_putendl_fd(msg, 2);
+	exit(1);
 }

@@ -6,13 +6,13 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/24 13:50:03 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/30 16:57:50 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/05/30 17:30:34 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-static int		get_builtin(char *cmd)
+int		get_builtin(char *cmd)
 {
 	if (ft_strcmp(cmd, "echo") == 0)
 		return (ECHO_BUILTIN);
