@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 01:14:21 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/27 20:03:18 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/05/31 20:43:28 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ char	 **dup_tab(char **old, size_t size)
 	char **new;
 	size_t i;
 
+	size = ft_split_count(old);
 	new = (char **)ft_memalloc(sizeof(char *) * (size + 1));
 	!new ? ft_exit("Failed to allocate a new char** in realloc_new_tab"): 0;
 	i = 0;

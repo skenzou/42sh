@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/14 23:28:47 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/29 20:56:36 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/05/31 20:28:53 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,12 +70,14 @@ static int		handle_redir_and(t_redir *redir)
 			fd = -1;
 		}
 	}
-	else
+	else if (redir->op_type == LESS_AND)
 	{
 		ft_putstr_fd("42sh: ", 2);
 		ft_putstr_fd(redir->dest[0], 2);
 		ft_putendl_fd(": ambigous redirect", 2);
 	}
+	else if (redir->op_type == GREAT_AND)
+		fd = open_file(redir);
 	return (fd);
 }
 

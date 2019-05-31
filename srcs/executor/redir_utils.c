@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/14 23:33:19 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/29 20:56:58 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/05/31 20:56:59 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void		print_redir(t_list *redir)
 	{
 		red = ((t_redir *)redir->content);
 		i = -1;
+		ft_printf("fd: %d\n", red->fd);
 		print_optype(red->op_type);
 		ft_printf(" dest: |");
 		while (red->dest[++i])
@@ -66,7 +67,7 @@ int		open_file(t_redir *redir)
 	int		err;
 
 	fd = 0;
-	if (redir->op_type == GREAT)
+	if (redir->op_type == GREAT || redir->op_type == GREAT_AND)
 		fd = open(redir->dest[0], O_RDWR | O_CREAT | O_TRUNC, 0666);
 	else if (redir->op_type == DBL_GREAT)
 		fd = open(redir->dest[0], O_RDWR | O_APPEND | O_CREAT, 0666);

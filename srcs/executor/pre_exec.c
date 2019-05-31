@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/24 13:50:03 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/30 17:30:34 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/05/31 20:37:43 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int		ft_pre_execution(char ***args, int redir, int *builtin)
 	{
 		if (redir)
 			*args = handle_redir();
-		if (!(*args))
+		if (!(*args) || !(*args)[0])
 			return (-1);
 		*builtin = get_builtin((*args)[0]);
 		if (!(*builtin))
