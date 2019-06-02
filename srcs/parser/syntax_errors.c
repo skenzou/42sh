@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 01:26:02 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/29 15:55:16 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/06/02 03:28:21 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ char		*check_syntax_errors(t_list *tokens)
 		tokens = tokens->next;
 	}
 	curr = (t_token *)(tokens->content);
-	if (curr->type == TOKEN_REDIR)
+	if (curr->type == TOKEN_REDIR || curr->op_type == PIPE)
 		return "\\n";
 	return (NULL);
 }

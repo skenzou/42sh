@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/28 13:22:00 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/28 17:04:38 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/06/02 03:34:44 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,11 @@
 
 void	env_to_env(char *key)
 {
-	int key_index;
 	char *entry;
 
-	key_index = get_indexof_key(key, g_shell->env_tmp);
-	if (key_index >= 0)
+	entry = get_key_value(key, g_shell->env_tmp);
+	if (entry)
 	{
-		entry = g_shell->env_tmp[key_index];
 		if (entry[ft_strlen(key) + 1])
 			ft_setenv(key, entry + ft_strlen(key) + 1, &g_shell->env);
 		else
@@ -30,15 +28,13 @@ void	env_to_env(char *key)
 
 void	intern_to_env(char *key)
 {
-	int		key_index;
 	char	*entry;
 	char	same;
 
 	same = g_shell->intern_tmp == g_shell->intern;
-	key_index = get_indexof_key(key, g_shell->intern_tmp);
-	if (key_index >= 0)
+	entry = get_key_value(key, g_shell->intern_tmp);
+	if (entry)
 	{
-		entry = g_shell->intern_tmp[key_index];
 		if (entry[ft_strlen(key) + 1])
 			ft_setenv(key, entry + ft_strlen(key) + 1, &g_shell->env);
 		else

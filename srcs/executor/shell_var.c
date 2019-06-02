@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/27 19:17:30 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/29 20:32:40 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/06/02 04:04:40 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,15 @@ void	check_intern_var(char *needle, char ***env, char ***intern)
 {
 	int i;
 	char *key;
+	char *entry;
 
 	i = 0;
 	while(needle[i] && needle[i] != '=')
 		i++;
 	if (!(key = ft_strsub(needle, 0, i)))
-		ft_exit("Malloc in check_intern_var failed");
-	if (get_indexof_key(key, g_shell->env) >= 0)
+		ft_exit("Malloc failed in check_intern_var failed");
+	entry = get_key_value(key, g_shell->env);
+	if (entry)
 		ft_setenv(key, needle + i + 1, env);
 	else
 		ft_setenv(key, needle + i + 1, intern);
