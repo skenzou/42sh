@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 16:42:03 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/30 20:19:04 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/06/02 14:57:10 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,7 @@ typedef struct	s_shell
 	t_ab		*autocomp;
 	t_term		*term;
 	t_term		*term_backup;
+	t_list		*temp_redir;
 }				t_shell;
 
 extern t_shell *g_shell;

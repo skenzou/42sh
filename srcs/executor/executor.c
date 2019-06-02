@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/03 16:15:41 by midrissi          #+#    #+#             */
-/*   Updated: 2019/06/02 03:13:53 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/06/02 15:02:16 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ static void		ft_execute(char **args, int redir, int background)
 	if (!g_shell->lastsignal && builtin > 0)
 		g_shell->lastsignal = exec_builtin(args, builtin, &g_shell->env_tmp);
 	if (redir)
-		restore_fd();
+		close_fd();
 	ft_post_exec(NULL);
 }
 

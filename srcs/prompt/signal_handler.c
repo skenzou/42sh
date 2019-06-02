@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/28 15:31:17 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/30 21:02:19 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/06/02 15:04:19 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	sigfork(int sig)
 {
 	if (sig == SIGINT)
 	{
-		restore_fd();
+		close_fd();
 		ft_putchar('\n');
 		signal(SIGINT, sigfork);
 	}

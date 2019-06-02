@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 00:40:57 by midrissi          #+#    #+#             */
-/*   Updated: 2019/06/02 03:00:05 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/06/02 15:03:23 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,7 @@ char		**get_curr_cmd(t_list *redir);
 int			open_file(t_redir *redir);
 int			is_path(char *str);
 int			check_dir(char *path);
-void 		restore_fd();
+void 		close_fd();
 int			ft_pre_execution(char ***args, int redir, int *builtin);
 void		remove_n_first_entries(char **old, int n);
 int			set_builtin();
