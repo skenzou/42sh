@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 00:40:57 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/30 17:30:42 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/06/02 03:00:05 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ extern	char		**g_aliases;
 ** ## FUNCTIONS ##
 */
 
+void	go_to_next_cmd(t_list *redir);
 int		get_builtin(char *cmd);
 int		test_builtin(int ac, char **args);
 int		type_builtin(int ac, char **args);
@@ -112,7 +113,7 @@ int			ft_pre_execution(char ***args, int redir, int *builtin);
 void		remove_n_first_entries(char **old, int n);
 int			set_builtin();
 void		handle_intern_var(char **args);
-void			ft_post_exec();
+void			ft_post_exec(t_ast *root);
 char			*get_homepath(char **env);
 
 /*

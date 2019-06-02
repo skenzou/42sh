@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/14 23:33:19 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/31 20:56:59 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/06/02 02:45:16 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,20 @@ char	**get_curr_cmd(t_list *redir)
 		redir = redir->next;
 	}
 	return (NULL);
+}
+
+void	go_to_next_cmd(t_list *redir)
+{
+	while (redir)
+	{
+		if (((t_redir *)redir->content)->end_of_leaf)
+		{
+			g_shell->redir = redir->next;
+			return ;
+		}
+		else
+			redir = redir->next;
+	}
 }
 
 void 	redir_delone(void *data, size_t size)

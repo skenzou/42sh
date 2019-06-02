@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/03 16:15:41 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/31 20:58:27 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/06/02 03:13:53 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int		exec_builtin(char **builtin, int id, char ***env)
 	return (err_id);
 }
 
-void			ft_post_exec()
+void			ft_post_exec(t_ast *root)
 {
 	char *str;
 
@@ -61,6 +61,8 @@ void			ft_post_exec()
 	ft_setenv("?", str, &g_shell->intern);
 	g_shell->env_tmp = g_shell->env;
 	g_shell->intern_tmp = g_shell->intern;
+	if (root && root->token->redir)
+		go_to_next_cmd(g_shell->redir);
 }
 
 static void		ft_execute(char **args, int redir, int background)
@@ -79,7 +81,7 @@ static void		ft_execute(char **args, int redir, int background)
 		g_shell->lastsignal = exec_builtin(args, builtin, &g_shell->env_tmp);
 	if (redir)
 		restore_fd();
-	ft_post_exec();
+	ft_post_exec(NULL);
 }
 
 void	ft_execute_ast(t_ast *root)
