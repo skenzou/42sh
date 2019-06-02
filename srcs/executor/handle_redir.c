@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/14 23:28:47 by midrissi          #+#    #+#             */
-/*   Updated: 2019/06/02 15:59:19 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/06/02 16:09:00 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,15 +121,18 @@ char		**handle_redir()
 			fd = handle_hdoc(redir->content);
 			dup2(tempfd, STDOUT_FILENO);
 		}
-		else if (ft_strequ(red->dest[0], "-"))
-		{
-			close(red->fd);
-			temp = redir;
-			redir = redir->next;
-			continue ;
-		}
 		else if (red->op_type == GREAT_AND || red->op_type == LESS_AND)
-			fd = handle_redir_and(red);
+		{
+			if (ft_strequ(red->dest[0], "-"))
+			{
+				close(red->fd);
+				temp = redir;
+				redir = redir->next;
+				continue ;
+			}
+			else
+				fd = handle_redir_and(red);
+		}
 		else
 			fd = open_file(redir->content);
 		if (fd != -1)
