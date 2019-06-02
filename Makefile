@@ -6,7 +6,7 @@
 #    By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/03 09:24:41 by midrissi          #+#    #+#              #
-#    Updated: 2019/05/25 00:46:30 by aben-azz         ###   ########.fr        #
+#    Updated: 2019/05/30 20:22:06 by midrissi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,7 +43,7 @@ SRC_LEXER = $(shell find srcs/lexer -type f -name "*.c")
 SRC_EXECUTOR = $(shell find srcs/executor -type f -name "*.c")
 SRC_PROMPT = $(shell find srcs/prompt -type f -name "*.c")
 SRC_PARSER = $(shell find srcs/parser -type f -name "*.c")
-SRC_ROOT = handler.c utils.c
+SRC_ROOT = handler.c
 SRC_NAME = $(SRC_LEXER) $(SRC_EXECUTOR) $(SRC_PROMPT) $(SRC_PARSER) $(SRC_ROOT)
 OBJ_PATH = ./obj/
 LFT_PATH = ./libft/

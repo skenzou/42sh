@@ -1,11 +1,17 @@
-# 21sh
+# 42sh
 
 ## Current tasks
 
-- missidri : core > pipes
-- aben-azz : termcaps/prompt
-- ghamelek : type_builtin ?
-- tlechien : jobs controls, cd_builtin
+- Midrissi : core of the project (parser, lexer, executor, ...)
+- Aben-azz : termcaps/prompt
+- Ghamelek : test_builtin/has_table
+- tlechien : cd_builtin/jobs control/signal monitoring/alias
+
+## TODO
+- builtin test
+- POSIX norme on builtins
+- Signal monitoring.
+- Error management.
 
 ## TODO ACHRAF
 - Mot selectionné a l'endroit du curseur durant l'autocompletion
@@ -24,16 +30,8 @@
 		- cd => que des dossier
 		- ls => fichier/dossier
 		- man => fichier present dans le dossier man
-
-## TODO
-
-- Merge alias feature and add builtin to the list.
-- Add '&' and merge job feature.
-- Signal monitoring.
-- Error management.
-- test_builtin
-- substitution ??
-
+- Floation point exception avec fleche du bas
+- Protection getenv fichier historique
 
 ## DEBUG
 

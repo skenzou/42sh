@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/09 00:37:47 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/25 02:33:28 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/05/30 20:36:00 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,15 @@ static int	init_var(char **var)
 	return (1);
 }
 
+
+static int	init_autocomp(t_ab *autocomp)
+{
+	autocomp->state = 0;
+	autocomp->pos = 0;
+	return (1);
+}
+
+
 int			init_struct(char **env)
 {
 	if (!(g_shell = ft_memalloc(sizeof(*g_shell))))
@@ -74,17 +83,19 @@ int			init_struct(char **env)
 	g_shell->autocomp = ft_memalloc(sizeof(*g_shell->autocomp));
 	g_shell->term = ft_memalloc(sizeof(*g_shell->term));
 	g_shell->term_backup = ft_memalloc(sizeof(*g_shell->term_backup));
-	if (tcgetattr(0, g_shell->term_backup) == -1 ||
-											tcgetattr(0, g_shell->term) == -1)
+	if (tcgetattr(0, g_shell->term_backup) == -1 || !~tcgetattr(0, g_shell->term))
 		return (0);
-	if (!(g_shell->env = dup_env(env)) || !g_shell->tcap || !g_shell->history)
+	if (!(g_shell->env = dup_env(env)) || !g_shell->tcap || !g_shell->history ||
+		!g_shell->autocomp)
 		return (0);
 	if (!init_var(g_shell->var) || !init_termcap(g_shell->tcap) ||
-												!init_history(g_shell->history))
+				!init_history(g_shell->history) || !init_autocomp(g_shell->autocomp))
 		return (0);
 	g_shell->term->c_lflag &= ~(ICANON | ECHO);
 	g_shell->term->c_cc[VMIN] = 1;
 	g_shell->term->c_cc[VTIME] = 0;
+	g_shell->env_tmp = g_shell->env;
+	g_shell->intern_tmp = g_shell->intern;
 	if (tcsetattr(0, TCSADRAIN, g_shell->term) == -1)
 		return (0);
 	return (1);

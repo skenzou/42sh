@@ -1,19 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exit_builtin.c                                     :+:      :+:    :+:   */
+/*   ft_min.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/03/24 20:05:06 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/29 17:32:55 by midrissi         ###   ########.fr       */
+/*   Created: 2019/02/08 04:38:01 by aben-azz          #+#    #+#             */
+/*   Updated: 2019/05/30 20:05:07 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "shell.h"
+#include "libft.h"
 
-void	exit_builtin(void)
+int		ft_min(int a, int b)
 {
-	ft_printf("exit\n");
-	exit(0);
+	return (a > b ? b : a);
 }

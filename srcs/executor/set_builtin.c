@@ -1,18 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_max.c                                           :+:      :+:    :+:   */
+/*   set_builtin.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/08 04:38:01 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/03/13 16:02:06 by aben-azz         ###   ########.fr       */
+/*   Created: 2019/05/27 17:25:38 by midrissi          #+#    #+#             */
+/*   Updated: 2019/05/28 14:03:23 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "shell.h"
 
-int	max(int a, int b)
+int		set_builtin()
 {
-	return (a > b ? a : b);
+	print_split(g_shell->env);
+	print_split(g_shell->intern);
+	return (0);
 }

@@ -1,18 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   min.c                                              :+:      :+:    :+:   */
+/*   ft_exit.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/08 04:38:01 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/03/13 16:19:49 by aben-azz         ###   ########.fr       */
+/*   Created: 2019/05/30 20:17:06 by midrissi          #+#    #+#             */
+/*   Updated: 2019/05/30 20:17:40 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	min(int a, int b)
+void		ft_exit(char *msg)
 {
-	return (a > b ? b : a);
+	ft_putendl_fd(msg, 2);
+	exit(1);
 }

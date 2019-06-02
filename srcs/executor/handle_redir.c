@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/14 23:28:47 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/24 14:44:49 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/06/02 16:09:00 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,13 +45,11 @@ static t_list *next_cmd(t_list *redir)
 	{
 		temp = redir;
 		redir = redir->next;
-		ft_lstdelone(&temp, redir_delone);
 	}
 	if (redir)
 	{
 		temp = redir;
 		redir = redir->next;
-		ft_lstdelone(&temp, redir_delone);
 	}
 	return (redir);
 }
@@ -72,19 +70,30 @@ static int		handle_redir_and(t_redir *redir)
 			fd = -1;
 		}
 	}
-	else
+	else if (redir->op_type == LESS_AND)
 	{
 		ft_putstr_fd("42sh: ", 2);
 		ft_putstr_fd(redir->dest[0], 2);
 		ft_putendl_fd(": ambigous redirect", 2);
 	}
+	else if (redir->op_type == GREAT_AND)
+		fd = open_file(redir);
 	return (fd);
 }
 
-void restore_fd()
+void close_fd()
 {
 	int i;
+	t_list *redir;
 
+	redir = g_shell->temp_redir;
+	while (redir && ((t_redir *)redir->content)->end_of_leaf == 0)
+	{
+		if (((t_redir *)redir->content)->op_type != DBL_LESS)
+			close(((t_redir *)redir->content)->fd);
+		redir = redir->next;
+	}
+	g_shell->temp_redir = NULL;
 	i = -1;
 	while(++i < 10)
 		dup2(g_shell->fd_table[i], i);
@@ -113,7 +122,17 @@ char		**handle_redir()
 			dup2(tempfd, STDOUT_FILENO);
 		}
 		else if (red->op_type == GREAT_AND || red->op_type == LESS_AND)
-			fd = handle_redir_and(red);
+		{
+			if (ft_strequ(red->dest[0], "-"))
+			{
+				close(red->fd);
+				temp = redir;
+				redir = redir->next;
+				continue ;
+			}
+			else
+				fd = handle_redir_and(red);
+		}
 		else
 			fd = open_file(redir->content);
 		if (fd != -1)
@@ -128,9 +147,11 @@ char		**handle_redir()
 		temp = redir;
 		redir = redir->next;
 	}
+	g_shell->temp_redir = g_shell->redir;
 	if (redir)
 		g_shell->redir = redir->next;
 	else
 		g_shell->redir = redir;
+	ft_expand(cmd);
 	return (cmd);
 }

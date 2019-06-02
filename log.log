@@ -1,119 +1,3 @@
-position vaut: 9|f|
-position vaut: 4| |
-position vaut: 1| |
-position vaut: 1| |
-position vaut: 1| |
-position vaut: 1| |
-position vaut: 1| |
-position vaut: 4| |
-position vaut: 3| |
-position vaut: 1| |
-position vaut: 1| |
-position vaut: 1| |
-position vaut: 5|f|
-position vaut: 5|e|
-position vaut: 22|i|
-position vaut: 5|f|
-position vaut: 5|e|
-position vaut: 22|i|
-position vaut: 5|f|
-position vaut: 5|e|
-position vaut: 22|i|
-position vaut: 5|f|
-position vaut: 2|f|
-position vaut: 2|f|
-position vaut: 2|f|
-position vaut: 5|e|
-position vaut: 4|c|
-position vaut: 17|f|
-position vaut: 5|e|
-position vaut: 16|i|
-position vaut: 6|f|
-position vaut: 5|e|
-position vaut: 4|c|
-position vaut: 20|f|
-position vaut: 29| |
-position vaut: 29| |
-position vaut: 29| |
-position vaut: 29| |
-position vaut: 29| |
-position vaut: 29| |
-position vaut: 29| |
-position vaut: 29| |
-position vaut: 29| |
-position vaut: 6| |
-position vaut: 6| |
-position vaut: 6| |
-position vaut: 5| |
-position vaut: 6| |
-position vaut: 6| |
-position vaut: 6| |
-position vaut: 6| |
-position vaut: 6| |
-position vaut: 6| |
-position vaut: 6| |
-position vaut: 6| |
-position vaut: 3| |
-position vaut: -31776| |
-position vaut: -31776| |
-position vaut: 6| |
-position vaut: 3| |
-position vaut: -31776| |
-position vaut: -31776| |
-position vaut: 19| |
-position vaut: 16| |
-position vaut: -31776| |
-position vaut: 54| |
-position vaut: 48| |
-position vaut: 23| |
-position vaut: -31776| |
-position vaut: 54| |
-position vaut: 48| |
-position vaut: 23| |
-position vaut: 6| |
-position vaut: 6| |
-position vaut: 6| |
-position vaut: 6| |
-position vaut: 6| |
-position vaut: 7| |
-position vaut: 3| |
-position vaut: -31864| |
-position vaut: 3| |
-position vaut: -31864| |
-position vaut: -31864| |
-position vaut: 33| |
-position vaut: 30| |
-position vaut: -31864| |
-position vaut: 1
-position vaut: 12
-position vaut: 5
-position vaut: 14
-position vaut: 31810
-position vaut: 31782
-position vaut: 31782
-position vaut: 12
-position vaut: 5
-position vaut: 14
-position vaut: 31810
-pos: 0
- avant cd 
-pos: 1
- avant cd 
- avant cd 
-pos: 0
- avant cd includes 
-position vaut: 3
-position vaut: 16
-position vaut: 31726
-position vaut: 16
-position vaut: 31726
-position vaut: 31719
-position vaut: 16
-position vaut: 31726
-position vaut: 31719
-position vaut: 31719
-position vaut: 16
-position vaut: 31726
 pos: 0
 pos: 1
 pos: 2
@@ -122,8 +6,14 @@ pos: 4
 pos: 5
 pos: 6
 pos: 7
+pos: 8
 pos: 0
+pos: 1
 pos: 0
+pos: 1
+pos: 2
+pos: 3
+pos: 4
 pos: 0
 pos: 1
 pos: 2
@@ -135,3 +25,96 @@ pos: 1
 pos: 2
 pos: 3
 pos: 4
+pos: 5
+pos: 6
+pos: 7
+pos: 8
+pos: 0
+pos: 1
+pos: 2
+pos: 3
+pos: 0
+pos: 1
+pos: 2
+pos: 3
+pos: 0
+pos: 1
+pos: 2
+pos: 3
+pos: 4
+pos: 5
+pos: 6
+pos: 7
+pos: 8
+pos: 0
+pos: 1
+pos: 0
+pos: 1
+pos: 2
+pos: 3
+pos: 4
+pos: 5
+pos: 6
+pos: 7
+pos: 8
+pos: 0
+pos: 1
+pos: 2
+pos: 0
+pos: 1
+pos: 2
+pos: 3
+pos: 4
+pos: 5
+pos: 6
+pos: 7
+pos: 8
+pos: 0
+pos: 1
+pos: 2
+pos: 3
+pos: 4
+pos: 5
+pos: 6
+pos: 7
+pos: 8
+pos: 0
+pos: 1
+pos: 2
+pos: 3
+pos: 4
+pos: 5
+pos: 6
+pos: 7
+pos: 8
+pos: 0
+pos: 1
+pos: 2
+pos: 3
+pos: 4
+pos: 6
+pos: 0
+pos: 0
+pos: 1
+pos: 2
+pos: 3
+pos: 0
+pos: 1
+pos: 2
+pos: 0
+pos: 1
+pos: 2
+pos: 3
+pos: 4
+pos: 5
+pos: 6
+pos: 7
+pos: 8
+pos: 9
+pos: 10
+pos: 0
+pos: 1
+pos: 2
+pos: 3
+pos: 4
+pos: 5

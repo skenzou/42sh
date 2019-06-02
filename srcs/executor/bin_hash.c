@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/13 06:11:23 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/15 03:50:51 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/05/30 15:54:06 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,8 @@ static int insert(unsigned char *key, char **env) {
 	int hashIndex = hashCode(key);
 
 	path = my_env(env);
+	if (!path)
+		return (NOT_FOUND);
 	if (!(bin = ft_strsplit(path, ':')))
 		ft_exit("Malloc failed in insert");
 	key = add_path(bin, key);

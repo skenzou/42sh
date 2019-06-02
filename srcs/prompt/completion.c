@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 06:02:13 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/30 19:44:22 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/05/30 20:05:52 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ int		init_autocomp(t_cap *tcap, t_ab *autocomp)
 
 	(void)tcap;
 	max_offset = autocomp->max_offset;
-	autocomp->row = g_shell->tcap->cursx_max / (max(max_offset + 2, 1));
-	autocomp->col = autocomp->len / max(autocomp->row, 1);
-	autocomp->carry = autocomp->len % max(autocomp->row, 1);
+	autocomp->row = g_shell->tcap->cursx_max / (ft_max(max_offset + 2, 1));
+	autocomp->col = autocomp->len / ft_max(autocomp->row, 1);
+	autocomp->carry = autocomp->len % ft_max(autocomp->row, 1);
 	return (max_offset);
 }
 
@@ -76,7 +76,7 @@ void		get_words_completion(t_ab *autocomp, char *path)
 			{
 				autocomp->data[autocomp->len] = create_file(d->d_name, path);
 				autocomp->max_offset =
-								max(autocomp->max_offset, ft_strlen(d->d_name));
+								ft_max(autocomp->max_offset, ft_strlen(d->d_name));
 				autocomp->len++;
 			}
 		}

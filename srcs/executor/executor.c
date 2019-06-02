@@ -6,22 +6,85 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/03 16:15:41 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/24 17:04:57 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/06/02 15:02:16 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-static void		ft_execute(char **args, int redir)
+int		exec_builtin(char **builtin, int id, char ***env)
 {
-	g_shell->lastsignal = ft_pre_execution(&args, redir);
-	if (!g_shell->lastsignal)
-		g_shell->lastsignal = ft_fork(args, g_shell->env);
-	if (redir)
-		restore_fd();
+	int	ac;
+	int	err_id;
+
+	ac = ft_split_count(builtin);
+	err_id = 0;
+	if (id == ECHO_BUILTIN)
+		err_id = echo_builtin(ac, builtin);
+	if (id == CD_BUILTIN)
+		err_id = cd_builtin(ac, builtin, *env);
+	if (id == ENV_BUILTIN && ac == 1)
+		print_split(*env);
+	if (id == SETENV_BUILTIN)
+		err_id = setenv_builtin(ac, builtin);
+	if (id == UNSETENV_BUILTIN)
+		err_id = unsetenv_builtin(ac, builtin);
+	if (id == EXIT_BUILTIN)
+		exit_builtin();
+	if (id == SET_BUILTIN)
+		set_builtin();
+	if (id == EXPORT_BUILTIN)
+		export_builtin(ac, builtin);
+	if (id == UNSET_BUILTIN)
+		unset_builtin(ac, builtin);
+	if (id == JOBS_BUILTIN)
+		jobs_builtin(builtin);
+	if (id == TYPE_BUILTIN)
+		type_builtin(ac, builtin);
+	if (id == TEST_BUILTIN)
+		test_builtin(ac, builtin);
+	if (err_id)
+		err_handler(err_id, builtin[0]);
+	return (err_id);
 }
 
-void	ft_execute_ast(t_ast *root, char **env)
+void			ft_post_exec(t_ast *root)
+{
+	char *str;
+
+	if (g_shell->env != g_shell->env_tmp)
+		ft_splitdel(g_shell->env_tmp);
+	if (g_shell->intern != g_shell->intern_tmp)
+		ft_splitdel(g_shell->intern_tmp);
+	if (!(str = ft_itoa(g_shell->lastsignal)))
+		ft_exit("Maloc failed in ft_post_exec");
+	ft_setenv("?", str, &g_shell->intern);
+	g_shell->env_tmp = g_shell->env;
+	g_shell->intern_tmp = g_shell->intern;
+	if (root && root->token->redir)
+		go_to_next_cmd(g_shell->redir);
+}
+
+static void		ft_execute(char **args, int redir, int background)
+{
+	int builtin;
+
+	g_shell->lastsignal = ft_pre_execution(&args, redir, &builtin);
+	if (!g_shell->lastsignal && !builtin)
+	{
+		if (!background)
+			g_shell->lastsignal = ft_fork(args, g_shell->env_tmp);
+		else
+			g_shell->lastsignal = ft_fork_amper(args, g_shell->env_tmp);
+	}
+	if (!g_shell->lastsignal && builtin > 0)
+		g_shell->lastsignal = exec_builtin(args, builtin, &g_shell->env_tmp);
+	if (redir)
+		close_fd();
+	ft_post_exec(NULL);
+}
+
+void	ft_execute_ast(t_ast *root)
 {
 	if (!root)
 		return ;
@@ -30,16 +93,20 @@ void	ft_execute_ast(t_ast *root, char **env)
 		handle_pipe(root);
 		return ;
 	}
+	if (root->token->op_type == AND && root->left
+							&& root->left->token->op_type == TOKEN_WORD)
+		root->left->job = 1;
+	if (root->token->op_type == AND && root->left && root->left->right
+		&& root->left->right->token->op_type == TOKEN_WORD)
+		root->left->right->job = 1;
 	if (root->left)
-		ft_execute_ast(root->left, env);
+		ft_execute_ast(root->left);
 	if (root->left && root->token->op_type == DBL_AND && g_shell->lastsignal)
 		return ;
 	if (root->left && root->token->op_type == DBL_PIPE && !g_shell->lastsignal)
 		return ;
 	if (root->right)
-		ft_execute_ast(root->right, env);
-	if (root->token->redir)
-		ft_execute(root->token->content, 1);
-	else if (root->token->type == TOKEN_WORD)
-		ft_execute(root->token->content, 0);
+		ft_execute_ast(root->right);
+	if (root->token->type == TOKEN_WORD)
+		ft_execute(root->token->content, root->token->redir, root->job);
 }

@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/29 17:39:49 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/25 02:10:03 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/05/30 14:42:35 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ char		**dup_env(char **env)
 int	handler(char *input)
 {
 	t_list *redir;
+
 	if (!ft_strcmp(input, "history\n"))
 	{
 		debug_history(g_shell->history);
@@ -45,7 +46,7 @@ int	handler(char *input)
 		print_lexer(g_shell->lexer);
 	g_shell->ast = ft_parse(g_shell->lexer);
 	redir = g_shell->redir;
-	ft_execute_ast(g_shell->ast, g_shell->env);
+	ft_execute_ast(g_shell->ast);
 	ft_lstdel(&redir, redir_delone);
 	del_ast(&g_shell->ast);
 	g_shell->redir = NULL;

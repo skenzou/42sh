@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 00:40:57 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/24 18:31:12 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/06/02 15:03:23 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,17 @@ extern	char		**g_aliases;
 ** ## FUNCTIONS ##
 */
 
+void	go_to_next_cmd(t_list *redir);
+int		get_builtin(char *cmd);
+int		test_builtin(int ac, char **args);
+int		type_builtin(int ac, char **args);
+void		param_expansion(char **ptr);
+char	*get_key_value(char *key, char **tab);
+void   	tilde_expansion(char **ptr);
+int			unset_builtin(int ac, char **av);
+int			export_builtin(int ac, char **av);
+char		**removekey(char *key, int keylen, char **env);
+int			exec_builtin(char **builtin, int id, char ***env);
 void		handle_pipe(t_ast *root);
 void		redir_delone(void *data, size_t size);
 int			ft_fork(char **cmd, char **env);
@@ -82,23 +93,28 @@ void		expand_and_execute(char **args);
 char		**handle_redir();
 void		print_redir(t_list *redir);
 int			check_file(char *path);
-void		ft_execute_ast(t_ast *root , char **env);
-void		ft_expand(char **args);
-int			unsetenv_builtin(int ac, char **av, char ***env);
-int			setenv_builtin(int ac, char **av, char ***env);
-int			is_set(char *key, char **env);
+void		ft_execute_ast(t_ast *root);
+void			ft_expand(char **args);
+int			unsetenv_builtin(int ac, char **av);
+int			setenv_builtin(int ac, char **av);
+int			get_indexof_key(char *key, char **env);
 void		ft_setenv(char *key, char *value, char ***env);
 int			echo_builtin(int argc, char **argv);
 void		exit_builtin(void);
-int			cd_builtin(int argc, char **argv, char ***env);
+int			cd_builtin(int argc, char **argv, char **env);
 void		err_handler(int err_id, char *str);
-void		print_env(char **env);
+void		print_split(char **split);
 char		**get_curr_cmd(t_list *redir);
 int			open_file(t_redir *redir);
 int			is_path(char *str);
 int			check_dir(char *path);
-void 		restore_fd();
-int			ft_pre_execution(char ***args, int redir);
+void 		close_fd();
+int			ft_pre_execution(char ***args, int redir, int *builtin);
+void		remove_n_first_entries(char **old, int n);
+int			set_builtin();
+void		handle_intern_var(char **args);
+void			ft_post_exec(t_ast *root);
+char			*get_homepath(char **env);
 
 /*
 **	ft_fork.c

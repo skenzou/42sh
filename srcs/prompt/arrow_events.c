@@ -58,10 +58,10 @@ int		arrow_down_event(t_cap *tcap)
 	t_ab	*autocomp;
 	int		new_x;
 
-	autocomp = g_shell->autocomp;
-	new_x = autocomp->pos % autocomp->row;
 	if (g_shell->autocomp->state)
 	{
+		autocomp = g_shell->autocomp;
+		new_x = autocomp->pos % autocomp->row;
 		if (autocomp->pos + autocomp->row < autocomp->len)
 			autocomp->pos += autocomp->row;
 		else

@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/14 23:33:19 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/21 17:01:23 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/06/02 02:45:16 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void		print_redir(t_list *redir)
 	{
 		red = ((t_redir *)redir->content);
 		i = -1;
+		ft_printf("fd: %d\n", red->fd);
 		print_optype(red->op_type);
 		ft_printf(" dest: |");
 		while (red->dest[++i])
@@ -47,6 +48,20 @@ char	**get_curr_cmd(t_list *redir)
 	return (NULL);
 }
 
+void	go_to_next_cmd(t_list *redir)
+{
+	while (redir)
+	{
+		if (((t_redir *)redir->content)->end_of_leaf)
+		{
+			g_shell->redir = redir->next;
+			return ;
+		}
+		else
+			redir = redir->next;
+	}
+}
+
 void 	redir_delone(void *data, size_t size)
 {
 	t_redir *redir;
@@ -66,7 +81,7 @@ int		open_file(t_redir *redir)
 	int		err;
 
 	fd = 0;
-	if (redir->op_type == GREAT)
+	if (redir->op_type == GREAT || redir->op_type == GREAT_AND)
 		fd = open(redir->dest[0], O_RDWR | O_CREAT | O_TRUNC, 0666);
 	else if (redir->op_type == DBL_GREAT)
 		fd = open(redir->dest[0], O_RDWR | O_APPEND | O_CREAT, 0666);

@@ -1,43 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   test_builtin.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/29 19:09:23 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/24 15:33:28 by midrissi         ###   ########.fr       */
+/*   Created: 2019/05/30 16:50:09 by midrissi          #+#    #+#             */
+/*   Updated: 2019/05/30 16:58:06 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-void	print_prompt(void)
+int		test_builtin(int ac, char **args)
 {
-	ft_printf(ANSI_BBLUE "-> " ANSI_RESET);
-	ft_printf(ANSI_BCYAN "%s" ANSI_RESET, "42sh");
-	ft_printf(ANSI_BBLUE "> "ANSI_RESET);
-}
-
-void ft_exit(char *str)
-{
-	ft_putendl_fd(str, 2);
-	exit(1);
-}
-void	sigfork(int sig)
-{
-	if (sig == SIGINT)
-	{
-		ft_putchar('\n');
-		signal(SIGINT, sigfork);
-	}
-}
-
-void	sighandler(int sig)
-{
-	if (sig == SIGINT)
-	{
-		ft_putchar('\n');
-		signal(SIGINT, sighandler);
-	}
+	(void)ac;
+	(void)args;
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/14 23:58:59 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/24 17:26:49 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/06/02 03:00:53 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,19 @@ static size_t			ft_count_pipes(t_ast *root)
 	return (nbpipes);
 }
 
-static void 		first_pipe(char **cmd1, t_pipe **pipes, int redir)
+static int		ft_pipe_exec(char **cmd, int redir)
+{
+	int builtin;
+
+	g_shell->lastsignal = ft_pre_execution(&cmd, redir, &builtin);
+	if (!g_shell->lastsignal && !builtin)
+		execve(cmd[0], cmd, g_shell->env_tmp);
+	if (!g_shell->lastsignal && builtin)
+		g_shell->lastsignal = exec_builtin(cmd, builtin, &g_shell->env_tmp);
+	return (g_shell->lastsignal);
+}
+
+static void 		first_pipe(char **cmd, t_pipe **pipes, int redir)
 {
 	pid_t pid;
 
@@ -35,9 +47,7 @@ static void 		first_pipe(char **cmd1, t_pipe **pipes, int redir)
 	{
 		close(pipes[g_shell->curr_pipe]->pipe[0]);
 		dup2(pipes[g_shell->curr_pipe]->pipe[1], STDOUT_FILENO);
-		if (!(ft_pre_execution(&cmd1, redir)))
-			execve(cmd1[0], cmd1, g_shell->env);
-		exit(1);
+		exit(ft_pipe_exec(cmd, redir));
 	}
 }
 
@@ -54,9 +64,7 @@ static void		pipe_cmd(char **cmd, t_pipe **pipes, size_t nbpipes, int redir)
 		close(pipes[g_shell->curr_pipe]->pipe[1]);
 		if (g_shell->curr_pipe < nbpipes - 1)
 			dup2(pipes[g_shell->curr_pipe + 1]->pipe[1], STDOUT_FILENO);
-		if (!(g_shell->lastsignal = ft_pre_execution(&cmd, redir)))
-			execve(cmd[0], cmd, g_shell->env);
-		exit(1);
+		exit(ft_pipe_exec(cmd, redir));
 	}
 	close(pipes[g_shell->curr_pipe]->pipe[0]);
 	close(pipes[g_shell->curr_pipe]->pipe[1]);
@@ -69,8 +77,12 @@ static void		parse_pipes(t_ast *root, t_pipe **pipes, size_t nbpipes)
 	if (root->left && root->left->left)
 		parse_pipes(root->left, pipes, nbpipes);
 	if (root->left->token->op_type != PIPE)
+	{
 		first_pipe(root->left->token->content, pipes, root->left->token->redir);
+		ft_post_exec(root->left);
+	}
 	pipe_cmd(root->right->token->content, pipes, nbpipes, root->right->token->redir);
+	ft_post_exec(root->right);
 	g_shell->curr_pipe++;
 }
 
