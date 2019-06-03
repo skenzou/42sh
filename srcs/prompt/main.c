@@ -32,7 +32,7 @@ t_event g_key_event[] = {
 	{TAB, &tab_event},
 	{HOME, &home_event},
 	{END, &end_event},
-//	{SPACE, &space_event}
+	{SPACE, &space_event}
 };
 
 t_shell *g_shell;

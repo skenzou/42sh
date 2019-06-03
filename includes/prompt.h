@@ -263,8 +263,8 @@ int	histo_down(t_cap *tcap, t_history *h);
 **PUSH.c
 */
 
-int		ft_add_n_char(char buff[4], int pos, int len, t_cap *tcap);
-int		ft_insert(char buff[4], t_cap *tcap);
+int		ft_add_n_char(char *buff, int pos, int len, t_cap *tcap);
+int		ft_insert(char *buff, t_cap *tcap);
 int		ft_delete_n_char(t_cap *tcap, int pos, int len);
 int		ft_delete_back(t_cap *tcap);
 void	ft_clean_buff(t_cap *tcap);

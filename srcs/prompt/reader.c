@@ -33,16 +33,19 @@ void	ft_clear_all_lines(t_cap *tcap)
 **right = tcap->right;
 **left = tcap->left;
 oui	oui
-ls -l && echo "jpp le premier est ok"
-ls -a && echo "jpp le deuxieme aussi xd"
-ls -l && echo "jpp le quatrieme"
-ls -a && echo "jpp le cinq"
+ls -l && echo "0jpp le premier est ok" && ls -a && echo "jpp le deuxieme aussi xd"
+ls -l && echo "8jpp le premier est ok" && ls -a && echo "jpp le deuxieme aussi xd"
+ls -l && echo "6jpp le premier est ok" && ls -a && echo "jpp le deuxieme aussi xd"
+ls -l && echo "1jpp le premier est ok"
+ls -l && echo "2jpp le premier est ok"
+ls -l && echo "3jpp le premier est ok"
 */
 
 int	handle_eol(char *buffer, t_cap *tcap)
 {
 	char str[2];
 
+	enter_event(tcap);
 	ft_bzero(str, 2);
 	ft_bzero(tcap->carry, 2);
 	if (buffer[0] == '\n')
@@ -77,10 +80,12 @@ int		read_buffer(char *buffer, t_cap *tcap)
 {
 	char key;
 
-	dprintf(debug(), "avant {%c, %c, %c}|%s|\n",buffer[0], buffer[1], buffer[2], buffer);
+	dprintf(debug(), "avant {%d, %d, %d}|%s|\n",buffer[0], buffer[1], buffer[2], buffer);
 	 if (~ft_indexof(buffer, '\n'))
 	 	return (handle_eol(buffer, tcap));
-	else if ((ft_isprint(buffer[0]) || wcharlen(buffer[0]) >1 )/*&& buffer[0] != SPACE*/)
+	else if (buffer[0] == SPACE && !buffer[1] && !buffer[2])
+		return (space_event(tcap));
+	else if ((ft_isprint(buffer[0]) || wcharlen(buffer[0]) >1 ))
 		return (ft_insert(buffer, tcap));
 	else if (is_arrow(buffer))
 		return (read_arrow(buffer[2], tcap));
