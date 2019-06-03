@@ -102,6 +102,8 @@ typedef struct	s_cap
 	int			init_len;
 	int			char_len;
 	char		command[BUFFSIZE];
+	int			overflow;
+	char		carry[2];
 	char		*prompt;
 }				t_cap;
 

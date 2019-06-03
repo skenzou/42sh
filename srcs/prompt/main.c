@@ -70,17 +70,11 @@ char	*clean_before_return(t_cap *tcap)
 	ft_printf("\x1b[0m");
 	tcap->cursx = tcap->prompt_len;
 	tcap->cursy = 0;
-	if (tcap->char_len >= BUFFSIZE - 1)
-	{
-		tcap->command[BUFFSIZE - 2] = '\n';
-		tcap->command[BUFFSIZE - 1] = '\0';
-	}
-	else
-		tcap->command[tcap->char_len] = '\n';
+	tcap->command[tcap->char_len] = '\n';
 	if (add_cmd_to_history(tcap->command, g_shell->history) == -1)
 		return (NULL);
 	tcap->char_len = 0;
-	tputs(tcap->clr_all_line, 1, ft_put_termcaps);
+	//tputs(tcap->clr_all_line, 1, ft_put_termcaps);
 	ft_printf("\n");
 	return (tcap->command);
 }
@@ -96,6 +90,12 @@ char	*read_line(t_cap *tcap)
 	ft_bzero(buffer, 4);
 	ft_bzero(tcap->command, BUFFSIZE);
 	print_prompt_prefix();
+	if (tcap->overflow)
+	{
+		ft_insert(tcap->carry, tcap);
+		ft_bzero(tcap->carry, 2);
+		tcap->overflow = 0;
+	}
 	while ("21sh")
 	{
 		ft_bzero(buffer, 4);

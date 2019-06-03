@@ -61,6 +61,7 @@ int		ft_insert(char *buff, t_cap *tcap)
 	int		position;
 	int		len;
 
+	//dprintf(debug(), "passed '%s'\n", buff);
 	if (tcap->char_len + ft_strlen(buff) >= BUFFSIZE - 2)
 		tputs(tcap->sound, 1, ft_put_termcaps);
 	else
@@ -95,6 +96,7 @@ int		ft_delete_n_char(t_cap *tcap, int pos, int len)
 int		ft_delete_back(t_cap *tcap)
 {
 	int		pos;
+
 
 	if (tcap->cursy == 0 && tcap->cursx == tcap->prompt_len)
 	{

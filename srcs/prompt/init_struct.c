@@ -34,6 +34,8 @@ static int	init_termcap(t_cap *tcap)
 	tcap->sound = tgetstr("bl", NULL);
 	tcap->save = tgetstr("sc", NULL);
 	tcap->restore = tgetstr("rc", NULL);
+	tcap->overflow = 0;
+	ft_bzero(tcap->carry, 2);
 	return (1);
 }
 

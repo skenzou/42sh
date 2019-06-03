@@ -20,7 +20,7 @@ void	sigint_handler(int sig)
 		ft_printf("\n");
 		g_shell->lastsignal = 1;
 		print_prompt_prefix();
-		// exit(0);
+		exit(0);
 	}
 }
 

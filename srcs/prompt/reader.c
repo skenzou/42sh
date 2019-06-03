@@ -33,15 +33,51 @@ void	ft_clear_all_lines(t_cap *tcap)
 **down = tcap->down;
 **right = tcap->right;
 **left = tcap->left;
+oui	oui
+ls -l
+ls -a
 */
 
-int		read_buffer(char buffer[4], t_cap *tcap)
+int	handle_eol(char *buffer, t_cap *tcap)
+{
+	(void)buffer;
+	char str[2];
+	(void)tcap;
+	if (buffer[0] == '\n')
+	{
+		ft_insert(buffer + 1, tcap);
+		return (-2);
+	}
+	else if (buffer[1] == '\n')
+	{
+		ft_bzero(str, 2);
+		str[0] = buffer[0];
+		ft_insert(buffer, tcap);
+		tcap->overflow = 1;
+		ft_bzero(tcap->carry, 2);
+		tcap->carry[0] = buffer[2];
+		return (-2);
+	}
+	else
+	{
+		ft_strncpy(str, buffer, 2);
+		ft_insert(str, tcap);
+		return (-2);
+	}
+
+	return (1);
+}
+
+int		read_buffer(char *buffer, t_cap *tcap)
 {
 	char key;
 
-	if ((ft_isprint(buffer[0]) || wcharlen(buffer[0]) >1 ) && buffer[0] != SPACE)
+//dprintf(debug(), "{%d, %d, %d}'\n",buffer[0], buffer[1], buffer[2]);
+	 if (~ft_indexof(buffer, '\n'))
+	 	return (handle_eol(buffer, tcap));
+	else if ((ft_isprint(buffer[0]) || wcharlen(buffer[0]) >1 ) && buffer[0] != SPACE)
 		return (ft_insert(buffer, tcap));
-	if (is_arrow(buffer))
+	else if (is_arrow(buffer))
 		return (read_arrow(buffer[2], tcap));
 	else if ((key = is_shift_arrow(buffer)) != -1)
 		return (read_arrow(key + 10, tcap));
