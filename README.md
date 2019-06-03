@@ -30,7 +30,7 @@
 		- cd => que des dossier
 		- ls => fichier/dossier
 		- man => fichier present dans le dossier man
-- Floation point exception avec fleche du bas
+- [✓] Floation point exception avec fleche du bas
 - Protection getenv fichier historique
 
 ## DEBUG
