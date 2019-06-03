@@ -36,17 +36,17 @@ int		backspace_event(t_cap *tcap)
 	return (ft_delete_back(tcap));
 }
 
-int		space_event(t_cap *tcap)
-{
-	ft_insert(" ", tcap);
-	if (g_shell->autocomp->state)
-	{
-		tputs(tcap->clr_all_line, 1, ft_put_termcaps);
-		g_shell->autocomp->match = ft_strdup(tcap->command);
-		g_shell->autocomp->state = 0;
-	}
-	return (1);
-}
+// int		space_event(t_cap *tcap)
+// {
+// 	ft_insert(" ", tcap);
+// 	if (g_shell->autocomp->state)
+// 	{
+// 		tputs(tcap->clr_all_line, 1, ft_put_termcaps);
+// 		g_shell->autocomp->match = ft_strdup(tcap->command);
+// 		g_shell->autocomp->state = 0;
+// 	}
+// 	return (1);
+// }
 
 int		ctrl_r_event(t_cap *tcap)
 {

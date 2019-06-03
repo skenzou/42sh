@@ -27,39 +27,44 @@ void	ft_clear_all_lines(t_cap *tcap)
 		ft_move(tcap, "!right", tcap->prompt_len);
 	}
 }
-
 /*
 **up = tcap->up;
 **down = tcap->down;
 **right = tcap->right;
 **left = tcap->left;
 oui	oui
-ls -l
-ls -a
+ls -l && echo "jpp le premier est ok"
+ls -a && echo "jpp le deuxieme aussi xd"
+ls -l && echo "jpp le quatrieme"
+ls -a && echo "jpp le cinq"
 */
 
 int	handle_eol(char *buffer, t_cap *tcap)
 {
-	(void)buffer;
 	char str[2];
-	(void)tcap;
+
+	ft_bzero(str, 2);
+	ft_bzero(tcap->carry, 2);
 	if (buffer[0] == '\n')
 	{
-		ft_insert(buffer + 1, tcap);
+		tcap->carry[0] = buffer[1];
+		tcap->carry[1] = buffer[2];
+		//dprintf(debug(), "4on rentre dans eol \n");
+		tcap->overflow = 1;
 		return (-2);
 	}
 	else if (buffer[1] == '\n')
 	{
-		ft_bzero(str, 2);
+		//dprintf(debug(), "5on rentre dans eol \n");
 		str[0] = buffer[0];
-		ft_insert(buffer, tcap);
+		ft_insert(str, tcap);
 		tcap->overflow = 1;
-		ft_bzero(tcap->carry, 2);
 		tcap->carry[0] = buffer[2];
 		return (-2);
 	}
 	else
 	{
+		//dprintf(debug(), "6on rentre dans eol \n");
 		ft_strncpy(str, buffer, 2);
 		ft_insert(str, tcap);
 		return (-2);
@@ -72,10 +77,10 @@ int		read_buffer(char *buffer, t_cap *tcap)
 {
 	char key;
 
-//dprintf(debug(), "{%d, %d, %d}'\n",buffer[0], buffer[1], buffer[2]);
+	dprintf(debug(), "avant {%c, %c, %c}|%s|\n",buffer[0], buffer[1], buffer[2], buffer);
 	 if (~ft_indexof(buffer, '\n'))
 	 	return (handle_eol(buffer, tcap));
-	else if ((ft_isprint(buffer[0]) || wcharlen(buffer[0]) >1 ) && buffer[0] != SPACE)
+	else if ((ft_isprint(buffer[0]) || wcharlen(buffer[0]) >1 )/*&& buffer[0] != SPACE*/)
 		return (ft_insert(buffer, tcap));
 	else if (is_arrow(buffer))
 		return (read_arrow(buffer[2], tcap));

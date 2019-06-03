@@ -32,7 +32,7 @@ t_event g_key_event[] = {
 	{TAB, &tab_event},
 	{HOME, &home_event},
 	{END, &end_event},
-	{SPACE, &space_event}
+//	{SPACE, &space_event}
 };
 
 t_shell *g_shell;
@@ -81,13 +81,13 @@ char	*clean_before_return(t_cap *tcap)
 
 char	*read_line(t_cap *tcap)
 {
-	char	buffer[4];
+	char	buffer[3];
 	int		ret;
 
 	ret = 0;
 	signal(SIGINT, sigint_handler);
 	signal(SIGWINCH, sigwinch_handler);
-	ft_bzero(buffer, 4);
+	ft_bzero(buffer, 3);
 	ft_bzero(tcap->command, BUFFSIZE);
 	print_prompt_prefix();
 	if (tcap->overflow)
@@ -98,7 +98,7 @@ char	*read_line(t_cap *tcap)
 	}
 	while ("21sh")
 	{
-		ft_bzero(buffer, 4);
+		ft_bzero(buffer, 3);
 		tcsetattr(0, TCSADRAIN, g_shell->term);
 		read(0, &buffer, 3);
 		if ((ret = read_buffer(buffer, tcap)) == -2)
