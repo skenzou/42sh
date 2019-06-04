@@ -35,7 +35,10 @@
 
 ## DEBUG
 
-error commands that require prompt reading
+- FPE: Down arrow while typing a command;
+- unable to exit autocompletion when started;
+- autocompletion doesn't work with for example ../../
+- job research not working just yet (crashes)
 
 ## DONE
 
