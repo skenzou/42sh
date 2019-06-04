@@ -6,7 +6,11 @@
 /*   By: tlechien <tlechien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 10:57:28 by tlechien          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2019/05/20 13:04:06 by tlechien         ###   ########.fr       */
+=======
+/*   Updated: 2019/06/04 22:20:46 by tlechien         ###   ########.fr       */
+>>>>>>> tlechien
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,16 +29,28 @@ static	int	bg_all(void)
 	search_status(node, S_SUSP);
 	if (node)
 		return (bg_resume(node));
+<<<<<<< HEAD
 	ft_putendl("bg: no current job\n");
 	return (1);
 }
 
 int			bg_builtin(char **cmd)
+=======
+	err_display("bg: no current job\n", NULL, NULL);
+	return (1);
+}
+
+int			bg_builtin(int ac, char **cmd)
+>>>>>>> tlechien
 {
 	t_child	**node;
 	int		i;
 	int		ret;
 
+<<<<<<< HEAD
+=======
+	(void)ac;
+>>>>>>> tlechien
 	ret = 0;
 	node = NULL;
 	if ((i = 1) && cmd[0] && !cmd[1])
@@ -49,9 +65,15 @@ int			bg_builtin(char **cmd)
 		i++;
 	}
 	if (!node && (ret = 1))
+<<<<<<< HEAD
 		ft_printf("bg: %s: no such job\n", cmd[i]);
 	else if (ret)
 		ft_printf("bg: job already in background");
+=======
+		err_display("bg: ", cmd[i],": no such job\n");
+	else if (ret)
+		err_display("bg: job already in background", NULL, NULL);
+>>>>>>> tlechien
 	return (ret);
 }
 

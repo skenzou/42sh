@@ -6,7 +6,11 @@
 /*   By: tlechien <tlechien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 04:51:21 by tlechien          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2019/06/04 19:57:27 by tlechien         ###   ########.fr       */
+=======
+/*   Updated: 2019/06/04 22:22:09 by tlechien         ###   ########.fr       */
+>>>>>>> tlechien
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,7 +144,11 @@ int			jobs_builtin(int ac, char **cmd)
 	char	options;
 	char	*pod[2];
 	int		i;
+<<<<<<< HEAD
 	t_child	**node;
+=======
+	t_child	*node;
+>>>>>>> tlechien
 
 	(void)ac;
 	cmd++;
@@ -154,12 +162,23 @@ int			jobs_builtin(int ac, char **cmd)
 		return (all_pid(g_pid_table, options));
 	while (cmd[i] && !(node = NULL))
 	{
+<<<<<<< HEAD
 		if ((*cmd[i] == '%' && (search_pid(node, cmd[i] + 1, 0) ||
 		search_process(node, cmd[i] + 1) || search_index(node, cmd[i] + 1))))
 			return (ft_printf("jobs : job not found: %s\n", cmd[i] + 1));
 		else if (search_process(node, cmd[i]))
 			return (ft_printf("jobs : job not found: %s\n", cmd[i]));
 		display_pid_status(*node, options);
+=======
+		//search_pid(&node,cmd[i] + 1, 0);
+		//ft_printf("pid:[%d] %d %d %-10s    \n", node->index, node->pid,node->priority, node->exec);
+		if ((*cmd[i] == '%' && !(!search_pid(&node, cmd[i] + 1, 0) ||
+		!search_process(&node, cmd[i] + 1) || !search_index(&node, cmd[i] + 1))))
+			return (err_display("jobs : job not found: ", cmd[i] + 1, "\n"));
+		else if (*cmd[i] != '%' && search_process(&node, cmd[i]))
+			return (err_display("jobs : job not found: ", cmd[i], "\n"));
+		display_pid_status(node, options);
+>>>>>>> tlechien
 		i++;
 	}
 	return (0);
