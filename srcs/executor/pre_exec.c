@@ -6,13 +6,13 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/24 13:50:03 by midrissi          #+#    #+#             */
-/*   Updated: 2019/06/04 19:14:32 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/06/04 21:19:24 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-#define NB_BUILTINS 12
+#define NB_BUILTINS 14
 
 static const t_builtin g_builtins[NB_BUILTINS] = {
 	{"echo", &echo_builtin},
@@ -25,6 +25,8 @@ static const t_builtin g_builtins[NB_BUILTINS] = {
 	{"export", &export_builtin},
 	{"unset", &unset_builtin},
 	{"jobs", &jobs_builtin},
+	{"fg", &fg_builtin},
+	{"bg", &bg_builtin},
 	{"type", &type_builtin},
 	{"test", &test_builtin},
 };

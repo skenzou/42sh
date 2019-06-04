@@ -6,11 +6,19 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 00:14:11 by midrissi          #+#    #+#             */
-/*   Updated: 2019/06/04 02:28:32 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/06/04 22:22:26 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
+
+int		err_display(char *start, char *mid, char *end)
+{
+	(start) ? ft_putstr_fd(start, 2): 0;
+	(mid) ? ft_putstr_fd(mid, 2): 0;
+	(end) ? ft_putstr_fd(end, 2): 0;
+	return (1);
+}
 
 static	void err_helper(char *error, char *cause)
 {

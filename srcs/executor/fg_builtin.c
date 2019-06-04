@@ -6,7 +6,7 @@
 /*   By: tlechien <tlechien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/16 05:04:02 by tlechien          #+#    #+#             */
-/*   Updated: 2019/05/20 13:06:16 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/06/04 22:20:37 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,13 @@
 **  Needs protection on already finished process ??
 */
 
-int	fg_builtin(char **cmd)
+int	fg_builtin(int ac, char **cmd)
 {
 	t_child	**node;
 	int		i;
 	int		ret;
 
+	(void)ac;
 	ret = 0;
 	node = NULL;
 	if ((i = 1) && cmd[0] && !cmd[1])
@@ -30,7 +31,7 @@ int	fg_builtin(char **cmd)
 		search_priority(node);
 		if (node)
 			return (ft_waitprocess((*node)->pid, cmd));
-		ft_putendl("fg: no current job\n");
+		err_display("fg: no current job\n", NULL, NULL);
 		return (1);
 	}
 	while (cmd[i] && *cmd[i] == '%')
@@ -42,5 +43,5 @@ int	fg_builtin(char **cmd)
 			return (ret);
 		i++;
 	}
-	return ((node) ? (ft_printf("fg: %s: no such job\n", cmd[i]) || 1) : 0);
+	return ((node) ? (err_display("fg: ", cmd[i], ": no such job\n")) : 0);
 }

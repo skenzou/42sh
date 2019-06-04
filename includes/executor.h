@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 00:40:57 by midrissi          #+#    #+#             */
-/*   Updated: 2019/06/04 19:48:34 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/06/04 22:18:25 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,16 +81,16 @@ extern	char		**g_aliases;
 ** ## FUNCTIONS ##
 */
 
-void	redir_errors(int err_id, char *dest, int fd);
-int		env_builtin(int ac, char **av);
-void	go_to_next_cmd(t_list *redir);
-t_builtin		*get_builtin(char *cmd);
+void		redir_errors(int err_id, char *dest, int fd);
+int			env_builtin(int ac, char **av);
+void		go_to_next_cmd(t_list *redir);
+t_builtin	*get_builtin(char *cmd);
 // int		get_builtin(char *cmd);
-int		test_builtin(int ac, char **args);
-int		type_builtin(int ac, char **args);
+int			test_builtin(int ac, char **args);
+int			type_builtin(int ac, char **args);
 void		param_expansion(char **ptr);
-char	*get_key_value(char *key, char **tab);
-void   	tilde_expansion(char **ptr);
+char		*get_key_value(char *key, char **tab);
+void   		tilde_expansion(char **ptr);
 int			unset_builtin(int ac, char **av);
 int			export_builtin(int ac, char **av);
 char		**removekey(char *key, int keylen, char **env);
@@ -105,7 +105,7 @@ char		**handle_redir();
 void		print_redir(t_list *redir);
 int			check_file(char *path);
 void		ft_execute_ast(t_ast *root);
-void			ft_expand(char **args);
+void		ft_expand(char **args);
 int			unsetenv_builtin(int ac, char **av);
 int			setenv_builtin(int ac, char **av);
 int			get_indexof_key(char *key, char **env);
@@ -124,9 +124,10 @@ int			ft_pre_execution(char ***args, int redir, t_builtin **builtin);
 void		remove_n_first_entries(char **old, int n);
 int			set_builtin();
 void		handle_intern_var(char **args);
-void			ft_post_exec(t_ast *root);
-char			*get_homepath(char **env);
+void		ft_post_exec(t_ast *root);
+char		*get_homepath(char **env);
 int			is_key_valid(char *key);
+int			err_display(char *start, char *mid, char *end);
 
 /*
 **	ft_fork.c
@@ -152,7 +153,7 @@ int		kill_pids(void);
 **	fg_builtin.c & dependencies
 */
 
-int		fg_builtin(char **cmd);
+int		fg_builtin(int ac, char **cmd);
 int		search_index(t_child **node, char *str_index);
 int		search_pid(t_child **node, char *str_pid, pid_t pid);
 int		search_priority(t_child **node);
@@ -163,7 +164,7 @@ int		search_process(t_child **node, char *p_name);
 **	bg_builtin.c & dependencies
 */
 
-int		bg_builtin(char **cmd);
+int		bg_builtin(int ac, char **cmd);
 int		bg_resume(t_child **node);
 
 /*
