@@ -14,14 +14,45 @@
 
 int		home_event(t_cap *tcap)
 {
-	tputs(tgoto(tgetstr("ch", NULL), UNUSED,
-		tcap->prompt_len + 1), 1, ft_put_termcaps);
+
+	ft_move(tcap, "left", tcap->cursx);
+	while (tcap->cursy)
+	{
+		tcap->cursx = 0;
+		tcap->cursy--;
+		ft_move(tcap, "up", 1);
+	}
+	ft_move(tcap, "right", tcap->prompt_len);
+	tcap->cursx = tcap->prompt_len;
 	return (1);
 }
 
 int		end_event(t_cap *tcap)
 {
-	(void)tcap;
-	;
+	int i;
+	int reste;
+	int y_reste;
+
+	if (tcap->char_len + tcap->prompt_len > (tcap->cursx_max))
+	{
+		reste = tcap->char_len - (tcap->cursx_max - tcap->prompt_len) - 1;
+		y_reste = reste / tcap->cursx_max;
+		if (tcap->cursx < (tcap->cursx_max - 1) && !tcap->cursy)
+		{
+			ft_move(tcap, "down", 1);
+			tcap->cursy++;
+			tcap->cursx = 0;
+		}
+		i = tcap->cursy - 2;
+		while (++i < y_reste)
+		{
+			ft_move(tcap, "down", 1);
+			tcap->cursy++;
+			tcap->cursx = 0;
+		}
+		ft_move(tcap, "right", ((reste % tcap->cursx_max) - y_reste) - tcap->cursx);
+	}
+	else
+		ft_move(tcap, "right", tcap->char_len - (tcap->cursx - tcap->prompt_len));
 	return (1);
 }

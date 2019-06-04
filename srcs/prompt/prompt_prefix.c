@@ -83,4 +83,5 @@ void		print_prompt_prefix(void)
 	else
 		print_default_prompt_prefix();
 	ft_putstr(DEFAULT_PROMPT_COLOR);
+	tputs(g_shell->tcap->save, 1, ft_put_termcaps);
 }

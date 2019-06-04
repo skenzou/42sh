@@ -80,7 +80,7 @@ int		read_buffer(char *buffer, t_cap *tcap)
 {
 	char key;
 
-	dprintf(debug(), "avant {%d, %d, %d}|%s|\n",buffer[0], buffer[1], buffer[2], buffer);
+	//dprintf(debug(), "avant {%d, %d, %d}|%s|\n",buffer[0], buffer[1], buffer[2], buffer);
 	 if (~ft_indexof(buffer, '\n'))
 	 	return (handle_eol(buffer, tcap));
 	else if (buffer[0] == SPACE && !buffer[1] && !buffer[2])
