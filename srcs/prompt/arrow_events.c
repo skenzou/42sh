@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/28 15:04:00 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/27 06:43:44 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/06/04 23:43:02 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ int		arrow_up_event(t_cap *tcap)
 			autocomp->pos -= autocomp->row;
 		else
 		{
-
 			if (x < autocomp->carry)
 			{
 				autocomp->pos = autocomp->len - 1;

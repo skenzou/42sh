@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/04 13:56:36 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/30 20:16:52 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/06/05 00:31:53 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,4 +159,5 @@ int				ft_min(int a, int b);
 int				ft_max(int a, int b);
 void			ft_exit(char *msg);
 int				ft_nlastindexof(char *string, char c, int n);
+int				ft_isspace(int c);
 #endif

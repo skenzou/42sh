@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/09 00:20:29 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/30 05:03:11 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/06/04 23:53:31 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,17 @@
 
 int		home_event(t_cap *tcap)
 {
-
-	ft_move(tcap, "left", tcap->cursx);
+	if (tcap->cursx == tcap->prompt_len && (!tcap->cursy))
+		return (1);
+	ft_move(tcap, "up", 1);
+	ft_move(tcap, "down", 1);
 	while (tcap->cursy)
 	{
 		tcap->cursx = 0;
 		tcap->cursy--;
 		ft_move(tcap, "up", 1);
 	}
-	ft_move(tcap, "right", tcap->prompt_len);
+	ft_move(tcap, "!right", tcap->prompt_len);
 	tcap->cursx = tcap->prompt_len;
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/28 15:23:43 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/30 20:51:53 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/06/05 00:34:12 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,17 +70,17 @@ int		tab_event(t_cap *tcap)
 	t_ab *autocomp;
 
 	autocomp = g_shell->autocomp;
-	if (!autocomp->state)
-	{
-		autocomp->state = 1;
-		autocomp->match = ft_strdup(tcap->command);
-	}
-	else
-	{
-		autocomp->pos++;
-		if (autocomp->pos == autocomp->len)
-			autocomp->pos = 0;
-	}
+	// if (!autocomp->state)
+	// {
+	// 	autocomp->state = 1;
+	// 	autocomp->match = ft_strdup(tcap->command);
+	// }
+	// else
+	// {
+	// 	autocomp->pos++;
+	// 	if (autocomp->pos == autocomp->len)
+	// 		autocomp->pos = 0;
+	// }
 	dprintf(debug(), "pos: %d\n", autocomp->pos);
 	ft_tab(tcap, autocomp);
 	return (1);

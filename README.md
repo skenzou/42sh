@@ -14,6 +14,8 @@
 - Error management.
 
 ## TODO ACHRAF
+- [✓] Floation point exception avec fleche du bas
+- [✓] Home et End evenement
 - Mot selectionné a l'endroit du curseur durant l'autocompletion
 - !!, !word, !number, !-number
 - CTRL-R
@@ -23,14 +25,13 @@
 - Couleurs dans l'autocompletion
 - Gestion des leaks
 - Copy/cut/past
-- Home et End evenement
+- Deplacement par mots a regler
 - SHIFT_UP et SHIFT_DOWN pour se deplacer dans une commande en haut et en bas
 - Bonus
 	- Autocompletion en fonction de la commande, ex:
 		- cd => que des dossier
 		- ls => fichier/dossier
 		- man => fichier present dans le dossier man
-- [✓] Floation point exception avec fleche du bas
 - Protection getenv fichier historique
 
 ## DEBUG

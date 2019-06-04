@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 06:02:13 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/30 20:05:52 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/06/05 00:49:44 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,67 +61,91 @@ t_file			create_file(char *name, char *path)
 	return (file);
 }
 
-void		get_words_completion(t_ab *autocomp, char *path)
+void		get_words_completion(t_ab *autocomp, t_cap *tcap)
 {
-	t_dirent	*d;
-	DIR			*dir;
+	(void)autocomp;
+	char **argv;
+	int i;
 
-	autocomp->len = 0;
-	autocomp->max_offset = 0;
-	ft_bzero(autocomp->data, sizeof(autocomp->data));
-	if ((dir = opendir(".")))
-		while ((d = readdir(dir)))
-		{
-			if (d->d_name[0] != '.')
-			{
-				autocomp->data[autocomp->len] = create_file(d->d_name, path);
-				autocomp->max_offset =
-								ft_max(autocomp->max_offset, ft_strlen(d->d_name));
-				autocomp->len++;
-			}
-		}
-	closedir(dir);
+	i = (tcap->cursx - tcap->prompt_len);
+	argv = ft_strsplit(tcap->command, ' ');
+	if (i && ft_isspace(tcap->command[i - 1]) && (i + 1 < tcap->char_len &&
+											ft_isspace(tcap->command[i + 1])))
+	{
+		dprintf(debug(), "|%c| Space aucun mot\n", tcap->command[i]);
+	}
+	else if ((ft_isspace(tcap->command[i]) && (i + 1 < tcap->char_len &&
+											ft_isprint(tcap->command[i - 1]))))
+	{
+		dprintf(debug(), "|%c| Printable fin de mot\n", tcap->command[i]);
+	}
+	else if ((i && ft_isspace(tcap->command[i - 1])) || !i)
+	{
+		dprintf(debug(), "|%c| Printable debut de mot\n", tcap->command[i]);
+	}
+	else if (i == tcap->char_len)
+	{
+		dprintf(debug(), "|%c| Printable fin de ligne\n", tcap->command[i]);
+	}
+	else
+	{
+		dprintf(debug(), "|%c| Printable dans le mot\n", tcap->command[i]);
+	}
 }
+
+// void		get_current_dir_completion(t_ab *autocomp, char *path)
+// {
+// 	t_dirent	*d;
+// 	DIR			*dir;
+//
+// 	autocomp->len = 0;
+// 	autocomp->max_offset = 0;
+// 	ft_bzero(autocomp->data, sizeof(autocomp->data));
+// 	if ((dir = opendir(".")))
+// 		while ((d = readdir(dir)))
+// 		{
+// 			if (d->d_name[0] != '.')
+// 			{
+// 				autocomp->data[autocomp->len] = create_file(d->d_name, path);
+// 				autocomp->max_offset =
+// 								ft_max(autocomp->max_offset, ft_strlen(d->d_name));
+// 				autocomp->len++;
+// 			}
+// 		}
+// 	closedir(dir);
+// }
 
 int		ft_tab(t_cap *tcap, t_ab *autocomp)
 {
-	int row;
-	int col;
-	int i;
-	//char *command;
+	// int row;
+	// int col;
+	// int i;
 
-	get_words_completion(autocomp, ".");
-	init_autocomp(tcap, autocomp);
-	i = 0;
-	col = -1;
-	tputs(tcap->clr_all_line, 1, ft_put_termcaps);
-	ft_move(tcap, "down", 1);
-	while (++col < autocomp->col)
-	{
-		row = -1;
-		while (++row < autocomp->row)
-			print_name(autocomp, autocomp->data[i].name, i) && i++;
-		ft_move(tcap, "down", 1);
-	}
-	if (autocomp->carry > 0)
-	{
-		row = autocomp->carry;
-		while (row--)
-			print_name(autocomp, autocomp->data[i].name, i) && i++;
-	}
-	ft_replace_cursor(tcap);
-	i = 0;
-	while (i < autocomp->col + (autocomp->carry > 0 ? 1 : +1))
-	{
-		ft_move(tcap, "up", 1);
-		//tputs(tcap->clr_curr_line, 1, ft_put_termcaps);
-		i++;
-	}
-
-	// g_shell->autocomp->state = 0;
-	// ft_clear_replace(tcap);
+	get_words_completion(autocomp, tcap);
+	// init_autocomp(tcap, autocomp);
+	// i = 0;
+	// col = -1;
 	// tputs(tcap->clr_all_line, 1, ft_put_termcaps);
-	// ft_insert(ft_strjoin(g_shell->autocomp->match, g_shell->autocomp->data[g_shell->autocomp->pos].name), tcap);
-	// g_shell->autocomp->pos = 0;
+	// ft_move(tcap, "down", 1);
+	// while (++col < autocomp->col)
+	// {
+	// 	row = -1;
+	// 	while (++row < autocomp->row)
+	// 		print_name(autocomp, autocomp->data[i].name, i) && i++;
+	// 	ft_move(tcap, "down", 1);
+	// }
+	// if (autocomp->carry > 0)
+	// {
+	// 	row = autocomp->carry;
+	// 	while (row--)
+	// 		print_name(autocomp, autocomp->data[i].name, i) && i++;
+	// }
+	// ft_replace_cursor(tcap);
+	// i = 0;
+	// while (i < autocomp->col + (autocomp->carry > 0 ? 1 : +1))
+	// {
+	// 	ft_move(tcap, "up", 1);
+	// 	i++;
+	// }
 	return (1);
 }
