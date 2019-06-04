@@ -6,11 +6,7 @@
 /*   By: tlechien <tlechien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/16 05:05:04 by tlechien          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2019/05/20 13:07:48 by tlechien         ###   ########.fr       */
-=======
-/*   Updated: 2019/06/04 22:08:44 by tlechien         ###   ########.fr       */
->>>>>>> tlechien
+/*   Updated: 2019/06/04 22:31:14 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,16 +25,6 @@ int	search_index(t_child **node, char *str_index)
 	index = ft_atoi(str_index);
 	while (tmp->prev)
 	{
-<<<<<<< HEAD
-		if (tmp->index == index)
-		{
-			node = &tmp;
-			break ;
-		}
-		tmp = tmp->prev;
-	}
-	return ((node) ? 0 : 1);
-=======
 		if (tmp->index == index && tmp->status != S_TERM)
 		{
 			*node = tmp;
@@ -47,7 +33,6 @@ int	search_index(t_child **node, char *str_index)
 		tmp = tmp->prev;
 	}
 	return (1);
->>>>>>> tlechien
 }
 
 /*
@@ -63,16 +48,6 @@ int	search_pid(t_child **node, char *str_pid, pid_t pid)
 	tmp = g_pid_table;
 	while (tmp->prev)
 	{
-<<<<<<< HEAD
-		if (tmp->pid == pid)
-		{
-			node = &tmp;
-			break ;
-		}
-		tmp = tmp->prev;
-	}
-	return ((node) ? 0 : 1);
-=======
 		if (tmp->pid == pid && tmp->status != S_TERM)
 		{
 			*node = tmp;
@@ -81,7 +56,6 @@ int	search_pid(t_child **node, char *str_pid, pid_t pid)
 		tmp = tmp->prev;
 	}
 	return (1);
->>>>>>> tlechien
 }
 
 /*
@@ -95,26 +69,15 @@ int	search_priority(t_child **node)
 	tmp = g_pid_table;
 	while (tmp->prev)
 	{
-<<<<<<< HEAD
-		if (tmp->priority == 2)
-		{
-			node = &tmp;
-			break ;
-=======
 		if (tmp->priority == 2 && tmp->status != S_TERM)
 		{
 			*node = tmp;
 			return (0);
->>>>>>> tlechien
 		}
 		(tmp->priority == 1) ? node = &tmp : 0;
 		tmp = tmp->prev;
 	}
-<<<<<<< HEAD
-	return ((node) ? 0 : 1);
-=======
 	return (1);
->>>>>>> tlechien
 }
 
 /*
@@ -130,21 +93,12 @@ int	search_status(t_child **node, int status)
 	{
 		if (tmp->status == status)
 		{
-<<<<<<< HEAD
-			node = &tmp;
-			break ;
-		}
-		tmp = tmp->prev;
-	}
-	return ((node) ? 0 : 1);
-=======
 			*node = tmp;
 			return (0);
 		}
 		tmp = tmp->prev;
 	}
 	return (1);
->>>>>>> tlechien
 }
 
 /*
@@ -158,16 +112,6 @@ int	search_process(t_child **node, char *p_name)
 	tmp = g_pid_table;
 	while (tmp->prev)
 	{
-<<<<<<< HEAD
-		if (!ft_strcmp(tmp->exec, p_name)) //exec[0]
-		{
-			node = &tmp;
-			break ;
-		}
-		tmp = tmp->prev;
-	}
-	return ((node) ? 0 : 1);
-=======
 		if (!ft_strcmp(tmp->exec, p_name) && tmp->status != S_TERM) //exec[0]
 		{
 			*node = tmp;
@@ -176,5 +120,4 @@ int	search_process(t_child **node, char *p_name)
 		tmp = tmp->prev;
 	}
 	return (1);
->>>>>>> tlechien
 }

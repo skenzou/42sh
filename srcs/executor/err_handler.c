@@ -6,18 +6,12 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 00:14:11 by midrissi          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2019/06/04 02:28:32 by midrissi         ###   ########.fr       */
-=======
-/*   Updated: 2019/06/04 22:22:26 by tlechien         ###   ########.fr       */
->>>>>>> tlechien
+/*   Updated: 2019/06/04 22:31:20 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-<<<<<<< HEAD
-=======
 int		err_display(char *start, char *mid, char *end)
 {
 	(start) ? ft_putstr_fd(start, 2): 0;
@@ -26,7 +20,6 @@ int		err_display(char *start, char *mid, char *end)
 	return (1);
 }
 
->>>>>>> tlechien
 static	void err_helper(char *error, char *cause)
 {
 		ft_putstr_fd(error, 2);

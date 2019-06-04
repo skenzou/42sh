@@ -6,11 +6,7 @@
 /*   By: tlechien <tlechien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 10:57:28 by tlechien          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2019/05/20 13:04:06 by tlechien         ###   ########.fr       */
-=======
-/*   Updated: 2019/06/04 22:20:46 by tlechien         ###   ########.fr       */
->>>>>>> tlechien
+/*   Updated: 2019/06/04 22:45:01 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,53 +23,38 @@ static	int	bg_all(void)
 
 	node = NULL;
 	search_status(node, S_SUSP);
-	if (node)
+	if (node )
 		return (bg_resume(node));
-<<<<<<< HEAD
-	ft_putendl("bg: no current job\n");
-	return (1);
-}
-
-int			bg_builtin(char **cmd)
-=======
 	err_display("bg: no current job\n", NULL, NULL);
 	return (1);
 }
 
 int			bg_builtin(int ac, char **cmd)
->>>>>>> tlechien
 {
-	t_child	**node;
+	t_child	*node;
 	int		i;
 	int		ret;
 
-<<<<<<< HEAD
-=======
 	(void)ac;
->>>>>>> tlechien
 	ret = 0;
 	node = NULL;
-	if ((i = 1) && cmd[0] && !cmd[1])
+	if ((i = 1) && !cmd[i])
 		return (bg_all());
 	while (cmd[i] && *cmd[i] == '%')
 	{
-		if (search_pid(node, ++cmd[i], 0) && search_process(node, cmd[i])
-			&& search_index(node, cmd[i]))
-			break ;
-		if ((ret = bg_resume(node)))
+		if ((*cmd[i] == '%' && !(!search_pid(&node, cmd[i] + 1, 0) ||
+		!search_process(&node, cmd[i] + 1) || !search_index(&node, cmd[i] + 1))))
+			return (err_display("bg : job not found: ", cmd[i] + 1, "\n"));
+		else if (*cmd[i] != '%' && search_process(&node, cmd[i]))
+			return (err_display("bg : job not found: ", cmd[i], "\n"));;
+		if ((ret = bg_resume(&node)))
 			break ;
 		i++;
 	}
 	if (!node && (ret = 1))
-<<<<<<< HEAD
-		ft_printf("bg: %s: no such job\n", cmd[i]);
-	else if (ret)
-		ft_printf("bg: job already in background");
-=======
 		err_display("bg: ", cmd[i],": no such job\n");
 	else if (ret)
 		err_display("bg: job already in background", NULL, NULL);
->>>>>>> tlechien
 	return (ret);
 }
 
