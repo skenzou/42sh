@@ -6,7 +6,7 @@
 /*   By: tlechien <tlechien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 04:51:21 by tlechien          #+#    #+#             */
-/*   Updated: 2019/05/20 13:07:00 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/06/03 21:18:08 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,12 +89,13 @@ static	int	rec_pid(t_child **node, int option)
 ** Builtin that displays background processus with some infos.
 */
 
-int			jobs_builtin(char **cmd)
+int			jobs_builtin(int ac, char **cmd)
 {
 	int		option;
 	int		i;
 	t_child	**node;
 
+	(void)ac;
 	(void)cmd; //verify that command is str + 1;
 	if ((i = 0) || cmd || !cmd[0])
 		return (rec_pid(&g_pid_table, 0));

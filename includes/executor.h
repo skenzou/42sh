@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 00:40:57 by midrissi          #+#    #+#             */
-/*   Updated: 2019/06/02 15:03:23 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/06/04 04:17:16 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,12 @@ typedef struct s_pipe
 	int			pipe[2];
 }				t_pipe;
 
+typedef struct set_builtin
+{
+	char		*cmd;
+	int			(*function)(int ac, char **av);
+}				t_builtin;
+
 extern	t_child		*g_pid_table;
 extern	const char	*g_status[];
 extern	const char	*g_reserved[];
@@ -73,8 +79,11 @@ extern	char		**g_aliases;
 ** ## FUNCTIONS ##
 */
 
+void	redir_errors(int err_id, char *dest, int fd);
+int		env_builtin(int ac, char **av);
 void	go_to_next_cmd(t_list *redir);
-int		get_builtin(char *cmd);
+t_builtin		*get_builtin(char *cmd);
+// int		get_builtin(char *cmd);
 int		test_builtin(int ac, char **args);
 int		type_builtin(int ac, char **args);
 void		param_expansion(char **ptr);
@@ -100,8 +109,8 @@ int			setenv_builtin(int ac, char **av);
 int			get_indexof_key(char *key, char **env);
 void		ft_setenv(char *key, char *value, char ***env);
 int			echo_builtin(int argc, char **argv);
-void		exit_builtin(void);
-int			cd_builtin(int argc, char **argv, char **env);
+int			exit_builtin(int ac, char **av);
+int			cd_builtin(int argc, char **argv);
 void		err_handler(int err_id, char *str);
 void		print_split(char **split);
 char		**get_curr_cmd(t_list *redir);
@@ -109,12 +118,13 @@ int			open_file(t_redir *redir);
 int			is_path(char *str);
 int			check_dir(char *path);
 void 		close_fd();
-int			ft_pre_execution(char ***args, int redir, int *builtin);
+int			ft_pre_execution(char ***args, int redir, t_builtin **builtin);
 void		remove_n_first_entries(char **old, int n);
 int			set_builtin();
 void		handle_intern_var(char **args);
 void			ft_post_exec(t_ast *root);
 char			*get_homepath(char **env);
+int			is_key_valid(char *key);
 
 /*
 **	ft_fork.c
@@ -130,7 +140,7 @@ int		ft_waitprocess(pid_t pid, char **cmd);
 
 int		update_pid_table(int pid, char **cmd, int status);
 int		display_pid_status(t_child *node, int option);
-int		jobs_builtin(char **cmd);
+int		jobs_builtin(int ac, char **av);
 int		init_pid(void);
 int		update_priority(int first);
 int		kill_pids(void);

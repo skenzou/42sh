@@ -6,47 +6,11 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/03 16:15:41 by midrissi          #+#    #+#             */
-/*   Updated: 2019/06/02 15:02:16 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/06/04 00:19:27 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
-
-int		exec_builtin(char **builtin, int id, char ***env)
-{
-	int	ac;
-	int	err_id;
-
-	ac = ft_split_count(builtin);
-	err_id = 0;
-	if (id == ECHO_BUILTIN)
-		err_id = echo_builtin(ac, builtin);
-	if (id == CD_BUILTIN)
-		err_id = cd_builtin(ac, builtin, *env);
-	if (id == ENV_BUILTIN && ac == 1)
-		print_split(*env);
-	if (id == SETENV_BUILTIN)
-		err_id = setenv_builtin(ac, builtin);
-	if (id == UNSETENV_BUILTIN)
-		err_id = unsetenv_builtin(ac, builtin);
-	if (id == EXIT_BUILTIN)
-		exit_builtin();
-	if (id == SET_BUILTIN)
-		set_builtin();
-	if (id == EXPORT_BUILTIN)
-		export_builtin(ac, builtin);
-	if (id == UNSET_BUILTIN)
-		unset_builtin(ac, builtin);
-	if (id == JOBS_BUILTIN)
-		jobs_builtin(builtin);
-	if (id == TYPE_BUILTIN)
-		type_builtin(ac, builtin);
-	if (id == TEST_BUILTIN)
-		test_builtin(ac, builtin);
-	if (err_id)
-		err_handler(err_id, builtin[0]);
-	return (err_id);
-}
 
 void			ft_post_exec(t_ast *root)
 {
@@ -67,18 +31,18 @@ void			ft_post_exec(t_ast *root)
 
 static void		ft_execute(char **args, int redir, int background)
 {
-	int builtin;
+	t_builtin	*builtin;
 
 	g_shell->lastsignal = ft_pre_execution(&args, redir, &builtin);
-	if (!g_shell->lastsignal && !builtin)
+	if (!g_shell->lastsignal && !builtin && args && args[0])
 	{
 		if (!background)
 			g_shell->lastsignal = ft_fork(args, g_shell->env_tmp);
 		else
 			g_shell->lastsignal = ft_fork_amper(args, g_shell->env_tmp);
 	}
-	if (!g_shell->lastsignal && builtin > 0)
-		g_shell->lastsignal = exec_builtin(args, builtin, &g_shell->env_tmp);
+	if (!g_shell->lastsignal && builtin)
+		g_shell->lastsignal = builtin->function(ft_split_count(args), args);
 	if (redir)
 		close_fd();
 	ft_post_exec(NULL);

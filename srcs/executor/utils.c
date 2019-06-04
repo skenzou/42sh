@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/09 06:45:33 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/29 19:51:34 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/06/04 05:31:29 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ char	*get_key_value(char *key, char **taba)
 		while (*entry && *entry != '=')
 			entry++;
 		free(key);
-		return (*entry ? entry + 1 : entry);
+		entry += (*entry == '=');
+		return (ft_strlen(entry) ? entry : NULL);
 	}
 	free(key);
 	return (NULL);

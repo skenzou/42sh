@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/13 06:11:23 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/30 15:54:06 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/06/04 04:25:45 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,9 +71,8 @@ static t_hash_entry *search(unsigned char* key) {
 	return NULL;
 }
 
-static int insert(unsigned char *key, char **env) {
-
-
+static int insert(unsigned char *key, char **env)
+{
 	char	*path;
 	char	**bin;
 	t_hash_entry *item;

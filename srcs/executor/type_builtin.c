@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/30 15:14:34 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/30 19:44:58 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/06/04 00:16:59 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #define	IS_BIN 2
 #define	IS_ALIAS 3
 
-void	type_output(char *input, char *value, char type)
+static void		type_output(char *input, char *value, char type)
 {
 	if (type == IS_BUILTIN)
 		ft_printf("%s is a shell builtin\n", input);
@@ -27,32 +27,43 @@ void	type_output(char *input, char *value, char type)
 	if (type == NOT_FOUND)
 		ft_printf("%s not found\n", input);
 }
-
-int		type_builtin(int ac, char **args)
+static int		find_name(char *str)
 {
-	char *copy;
-	int i;
+	char	*copy;
+	int		ret;
 
-	i = 0;
+	ret = 0;
 	copy = NULL;
-	while (++i < ac)
+	if (is_alias(str) >= 0)
 	{
-		if (is_alias(args[i]) >= 0)
-		{
-			copy = get_alias(args[i]);
-			type_output(args[i], copy, IS_ALIAS);
-		}
-		else if (get_builtin(args[i]) > 0)
-			type_output(args[i], NULL, IS_BUILTIN);
+		copy = get_alias(str);
+		type_output(str, copy, IS_ALIAS);
+	}
+	else if (get_builtin(str))
+		type_output(str, NULL, IS_BUILTIN);
+	else
+	{
+		copy = ft_strdup(str);
+		if (hash_table(&copy, g_shell->env_tmp) == 0)
+			type_output(str, copy, IS_BIN);
 		else
 		{
-			copy = ft_strdup(args[i]);
-			if (hash_table(&copy, g_shell->env_tmp) == 0)
-				type_output(args[i], copy, IS_BIN);
-			else
-				type_output(args[i], NULL, NOT_FOUND);
+			type_output(str, NULL, NOT_FOUND);
+			ret = 1;
 		}
-		ft_strdel(&copy);
 	}
-	return (0);
+	ft_strdel(&copy);
+	return (ret);
+}
+
+int				type_builtin(int ac, char **args)
+{
+	int		i;
+	int		ret;
+
+	i = 0;
+	ret = ac < 2;
+	while (++i < ac)
+		ret = (find_name(args[i]) || ret == 1);
+	return (ret);
 }

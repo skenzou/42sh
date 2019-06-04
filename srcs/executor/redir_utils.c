@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/14 23:33:19 by midrissi          #+#    #+#             */
-/*   Updated: 2019/06/02 02:45:16 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/06/03 23:36:48 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,15 +90,9 @@ int		open_file(t_redir *redir)
 	if (fd == -1)
 	{
 		err = check_file(redir->dest[0]);
-		if (err == NO_RIGHT)
-			ft_putstr_fd("42sh: Permission denied: ", 2);
-		else if (err == NON_EXISTENT)
-			ft_putstr_fd("42sh: No such file or directory: ", 2);
-		else if (err == IS_DIRECTORY)
-			ft_putstr_fd("42sh: Is a directory: ", 2);
-		else
-			ft_putstr_fd("42sh: Error while opening: ", 2);
-		ft_putendl_fd(redir->dest[0], 2);
+		if (!err)
+			err = OPEN_ERR;
+		err_handler(err, redir->dest[0]);
 	}
 	return (fd);
 }

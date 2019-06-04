@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/14 23:58:59 by midrissi          #+#    #+#             */
-/*   Updated: 2019/06/02 03:00:53 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/06/03 21:11:41 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,13 @@ static size_t			ft_count_pipes(t_ast *root)
 
 static int		ft_pipe_exec(char **cmd, int redir)
 {
-	int builtin;
+	t_builtin *builtin;
 
 	g_shell->lastsignal = ft_pre_execution(&cmd, redir, &builtin);
 	if (!g_shell->lastsignal && !builtin)
 		execve(cmd[0], cmd, g_shell->env_tmp);
 	if (!g_shell->lastsignal && builtin)
-		g_shell->lastsignal = exec_builtin(cmd, builtin, &g_shell->env_tmp);
+		g_shell->lastsignal = builtin->function(ft_split_count(cmd), cmd);
 	return (g_shell->lastsignal);
 }
 

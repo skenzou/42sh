@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/27 19:17:30 by midrissi          #+#    #+#             */
-/*   Updated: 2019/06/02 04:04:40 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/06/04 03:32:52 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,15 +33,33 @@ void	check_intern_var(char *needle, char ***env, char ***intern)
 
 int		is_var(char *needle)
 {
-	if (!ft_isalpha(*(needle++)))
+	if (!needle || ft_isdigit(*needle))
 		return (0);
 	while (*needle && *needle != '=')
 	{
-		if (!ft_isalnum(*needle))
+		if (!ft_isalnum(*needle) && *needle != '_')
 			return (0);
 		needle++;
 	}
 	return (*needle);
+}
+
+static void		reorder_tabs(char *str, char **env, char **intern)
+{
+	if (str)
+	{
+		g_shell->env_tmp = env;
+		g_shell->intern_tmp = intern;
+	}
+	else
+	{
+		ft_splitdel(g_shell->env);
+		ft_splitdel(g_shell->intern);
+		g_shell->env = env;
+		g_shell->intern = intern;
+		g_shell->env_tmp = g_shell->env;
+		g_shell->intern_tmp = g_shell->intern;
+	}
 }
 
 void		handle_intern_var(char **args)
@@ -62,18 +80,5 @@ void		handle_intern_var(char **args)
 		return ;
 	}
 	remove_n_first_entries(args, i);
-	if (args[0])
-	{
-		g_shell->env_tmp = env;
-		g_shell->intern_tmp = intern;
-	}
-	else
-	{
-		ft_splitdel(g_shell->env);
-		ft_splitdel(g_shell->intern);
-		g_shell->env = env;
-		g_shell->intern = intern;
-		g_shell->env_tmp = g_shell->env;
-		g_shell->intern_tmp = g_shell->intern;
-	}
+	reorder_tabs(args[0], env, intern);
 }

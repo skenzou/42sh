@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/24 11:44:34 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/30 15:44:35 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/06/04 05:31:49 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,20 @@ static int		change_dir(char *path)
 	return (err);
 }
 
-int				cd_builtin(int argc, char **argv, char **env)
+int				cd_err(int err_id, char *dest)
+{
+	if (err_id == NON_EXISTENT)
+		ft_putstr_fd("cd: no such file or directory: ", 2);
+	if (err_id == NOT_DIR)
+		ft_putstr_fd("cd: not a directory: ", 2);
+	if (err_id == NO_RIGHT)
+		ft_putstr_fd("cd: permission denied: ", 2);
+	if (err_id)
+		ft_putendl_fd(dest, 2);
+	return (err_id > 0);
+}
+
+int				cd_builtin(int argc, char **argv)
 {
 	char	*path;
 	int		err;
@@ -67,13 +80,13 @@ int				cd_builtin(int argc, char **argv, char **env)
 	same = g_shell->env == g_shell->env_tmp;
 	path = NULL;
 	err = 0;
-	if (argc == 1 && (path = get_homepath(env)))
+	if (argc == 1 && (path = get_key_value("HOME", g_shell->env_tmp)))
 		err = change_dir(path);
 	else if (argc > 1)
 	{
 		if (ft_strlen(argv[1]) == 1 && argv[1][0] == '-')
 		{
-			path = get_oldpwd(env);
+			path = get_oldpwd(g_shell->env);
 			if (!path)
 			{
 				ft_putendl_fd("42sh: cd: OLDPWD not set", 2);
@@ -88,5 +101,5 @@ int				cd_builtin(int argc, char **argv, char **env)
 	}
 	if (same)
 		g_shell->env_tmp = g_shell->env;
-	return (err);
+	return (cd_err(err, argv[1]));
 }

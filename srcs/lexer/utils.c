@@ -6,15 +6,15 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/05 00:33:06 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/15 03:43:32 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/06/04 04:51:52 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-void 	lex_delone(void *data, size_t size)
+void		lex_delone(void *data, size_t size)
 {
-	t_token token;
+	t_token		token;
 
 	(void)size;
 	if (data)
@@ -25,10 +25,10 @@ void 	lex_delone(void *data, size_t size)
 	}
 }
 
-void  lex_del_list(t_list **lexer)
+void		lex_del_list(t_list **lexer)
 {
-	t_list *temp;
-	t_list *list;
+	t_list		*temp;
+	t_list		*list;
 
 	list = *lexer;
 	while (list)
@@ -37,12 +37,12 @@ void  lex_del_list(t_list **lexer)
 		list = list->next;
 		ft_lstdelone(&temp, lex_delone);
 	}
-  *lexer = NULL;
+	*lexer = NULL;
 }
 
-int		is_in_lexer(t_list *lexer, e_op_type optype)
+int			is_in_lexer(t_list *lexer, e_op_type optype)
 {
-	t_token *token;
+	t_token		*token;
 
 	while (lexer)
 	{
