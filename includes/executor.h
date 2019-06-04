@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 00:40:57 by midrissi          #+#    #+#             */
-/*   Updated: 2019/06/04 04:17:16 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/06/04 19:48:34 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 # define S_SUSP	2
 # define S_CONT 3
 # define S_TERM 4
-# define ID_PRIORITY  g_pid_table->index
+# define ID_PRIORITY  g_pid_table->priority
 # define ID_PID       g_pid_table->pid
 # define ID_INDEX     g_pid_table->index
 # define ID_STATUS    g_pid_table->status
@@ -36,6 +36,8 @@
 # define ID_NEXT      g_pid_table->next
 # define ID_PREV      g_pid_table->prev
 # define ALIAS_FILE	".21sh_alias"
+# define OPT_L 1
+# define OPT_P 2
 
 /*
 **	## STRUCTURES ##
@@ -138,9 +140,10 @@ int		ft_waitprocess(pid_t pid, char **cmd);
 **	jobs_builtin.c & dependencies
 */
 
-int		update_pid_table(int pid, char **cmd, int status);
-int		display_pid_status(t_child *node, int option);
-int		jobs_builtin(int ac, char **av);
+int		add_pid(int pid, char **cmd, int status);
+int		update_pid_table(void);
+int		display_pid_status(t_child *node, char option);
+int		jobs_builtin(int ac, char **cmd);
 int		init_pid(void);
 int		update_priority(int first);
 int		kill_pids(void);
@@ -185,5 +188,13 @@ int		alias_builtin(char **cmd);
 int		begin_with(char *env_key, char *str);
 int		search_env(char *var);
 char	*get_env(char *var);
+
+/*
+**	get_options.c
+*/
+
+int		ft_flags(char c, char *flags, char *opt);
+int		get_options(char *flags, char *opt, char *str, int (*usage)());
+int		params(char **flags, int ac, char **av, int (*usage)());
 
 #endif

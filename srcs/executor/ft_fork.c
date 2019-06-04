@@ -6,11 +6,15 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/14 23:53:49 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/30 20:54:34 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/06/04 19:11:31 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/shell.h"
+
+/*
+** Displays special signal caught while listening to a child.
+*/
 
 static void    display_signal(int status, char *cmd)
 {
@@ -28,6 +32,12 @@ static void    display_signal(int status, char *cmd)
 		ft_printf(ANSI_RED"[ERR] %d ended unexpectedly\n"ANSI_RESET, cmd);
 }
 
+/*
+** Checks the status of a processus.
+** Returns exit value for regular exits,
+** Returns -1 for anormal exits and update_pid_table.
+*/
+
 int    ft_waitprocess(pid_t pid, char **cmd)
 {
 	int        status;
@@ -40,7 +50,7 @@ int    ft_waitprocess(pid_t pid, char **cmd)
 		kill(pid, SIGTERM); // proteccc ? err = -1
 	else if (WSTOPSIG(status))
 	{
-		update_pid_table(pid, cmd, S_SUSP);
+		add_pid(pid, cmd, S_SUSP);
 		search_pid(&node, NULL, pid);
 		display_pid_status(node, 0);
 		kill(pid, SIGINT); // idem ?
@@ -48,6 +58,11 @@ int    ft_waitprocess(pid_t pid, char **cmd)
 	display_signal(status, cmd[0]);
 	return (-1);
 }
+
+/*
+** Forks without waiting for a return signal from the process and add him to
+** the g_pid_table.
+*/
 
 int		ft_fork_amper(char **cmd, char **env)
 {
@@ -60,7 +75,7 @@ int		ft_fork_amper(char **cmd, char **env)
 	if (pid < 0)
 		return (FAILFORK); // fork
 	if (!waitpid(pid, &pid, WNOHANG))
-		return (update_pid_table(pid, cmd, S_RUN));
+		return (add_pid(pid, cmd, S_RUN));
 	return (0);
 }
 

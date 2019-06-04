@@ -6,7 +6,7 @@
 /*   By: tlechien <tlechien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 04:51:21 by tlechien          #+#    #+#             */
-/*   Updated: 2019/06/03 21:18:08 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/06/04 19:57:27 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,18 +24,20 @@ const char	*g_status[] = {
 ** Displays child status.
 */
 
-int			display_pid_status(t_child *node, int option)
+int			display_pid_status(t_child *node, char option)
 {
 	char current;
 
 	current = (node->priority < 1) ? ' ' : '-';
 	(node->priority == 2) ? current = '+' : 0;
-	if (option)
-		ft_printf("[%d] %d %c %-10s    ", node->index, node->pid,
-		node->priority, node->status);
+	if (option & OPT_L)
+		ft_printf("[%d] %d %c %-10s    \n", node->index, node->pid,
+		current, node->exec);
+	else if (option & OPT_P)
+		ft_printf("%d\n", node->pid);
 	else
-		ft_printf("[%d] %c %-10s    ", node->index, node->priority,
-		node->status);
+		ft_printf("[%d] %c %-10s    \n", node->index, current,
+		node->exec);
 	//display_array(g_pid_table->exec); -> print_env(g_pid_table->exec);
 	return (0);
 }
@@ -43,8 +45,42 @@ int			display_pid_status(t_child *node, int option)
 /*
 ** Checks child status and update it.
 */
+int	update_pid_table(void)
+{
+	int	status;
+	int prio;
 
-static	int	check_pid_status(t_child **node, int option)
+	while(ID_PREV && ID_PREV->index)
+		g_pid_table = ID_PREV;
+	while (g_pid_table && g_pid_table->index)
+	{
+		 prio = ID_PRIORITY;
+		if (!waitpid(ID_PID, &status, WNOHANG))
+			(ID_STATUS != S_SUSP) ? ID_STATUS = 0 : 0;
+		else if (WIFEXITED(status))
+		{
+			(prio != -1 && ID_PID) ? display_pid_status(g_pid_table, 0) : 0;
+			ID_PRIORITY = -1;
+			ID_STATUS = S_DONE;
+		}
+		else if (WIFSIGNALED(status))
+		{
+			(prio != -1 && ID_PID) ? display_pid_status(g_pid_table, 0) : 0;
+			ID_PRIORITY = -1;
+			ID_STATUS = S_TERM;
+		}
+		else if (WSTOPSIG(status))
+			ID_STATUS = S_CONT;
+		if (!ID_NEXT)
+			break;
+		g_pid_table = ID_NEXT;
+	}
+	update_priority(0); // ?s
+	return (0);
+}
+
+/*
+static	int	check_pid_status(t_child **node, char option)
 {
 	int	status;
 
@@ -67,22 +103,32 @@ static	int	check_pid_status(t_child **node, int option)
 	else
 		return (0);
 	update_priority(0); // ?s
-	display_pid_status(*node, option);
-	ft_putendl((*node)->exec);
+	//display_pid_status(*node, option);
+	//ft_putendl((*node)->exec);
 	return (0); // return display_pid_status
-}
+}*/
 
 /*
 ** Recurses on the pid_table and displays the bg processus.
 */
 
-static	int	rec_pid(t_child **node, int option)
+static int	all_pid(t_child *node, char option)
 {
-	if ((*node)->prev)
-		rec_pid(&(*node)->prev, option);
-	if ((*node)->priority != -1)
-		check_pid_status(node, option);
+	while (node->prev)
+		node = node->prev;
+	while (node)
+	{
+		if (node->priority != -1 && node->pid)
+			display_pid_status(node, option);
+		node = node->next;
+	}
 	return (0);
+}
+
+static int usage_jobs(void)
+{
+	ft_putstr_fd("usage: jobs [-l|-p] [job_id...]\n", 2);
+	return (-1);
 }
 
 /*
@@ -91,30 +137,30 @@ static	int	rec_pid(t_child **node, int option)
 
 int			jobs_builtin(int ac, char **cmd)
 {
-	int		option;
+	char	options;
+	char	*pod[2];
 	int		i;
 	t_child	**node;
 
 	(void)ac;
-	(void)cmd; //verify that command is str + 1;
-	if ((i = 0) || cmd || !cmd[0])
-		return (rec_pid(&g_pid_table, 0));
-	if (!(option = 0) && cmd && *cmd[0] && *cmd[0] == '-')
+	cmd++;
+	i = 0;
+	options = 0;
+	pod[0] = &options;
+	pod[1] = "lp";
+	if ((i = params(pod, ft_arraylen(cmd), cmd, usage_jobs)) == -1)
+		return (1);
+	if (!cmd || !cmd[i])
+		return (all_pid(g_pid_table, options));
+	while (cmd[i] && !(node = NULL))
 	{
-		if (!ft_strcmp(cmd[1], "-p") && cmd++)
-			option = 1;
-		else if (!ft_strcmp(cmd[1], "-l") && cmd++)
-			option = 2;
-		else
-			return (ft_printf("usage: jobs [-l|-p] [job_id...]\n") || 1);
-	}
-	while (cmd[i] && *cmd[i] == '%' && !(node = NULL))
-	{
-		if (search_pid(node, ++cmd[i], 0) && search_process(node, cmd[i])
-			&& search_index(node, cmd[i]))
-			break ;
-		check_pid_status(node, option);
+		if ((*cmd[i] == '%' && (search_pid(node, cmd[i] + 1, 0) ||
+		search_process(node, cmd[i] + 1) || search_index(node, cmd[i] + 1))))
+			return (ft_printf("jobs : job not found: %s\n", cmd[i] + 1));
+		else if (search_process(node, cmd[i]))
+			return (ft_printf("jobs : job not found: %s\n", cmd[i]));
+		display_pid_status(*node, options);
 		i++;
 	}
-	return ((!node) ? ft_printf("jobs : job not found: %s", cmd[i]) || 1 : 0);
+	return (0);
 }

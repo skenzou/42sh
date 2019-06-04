@@ -6,7 +6,7 @@
 /*   By: tlechien <tlechien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/19 15:02:25 by tlechien          #+#    #+#             */
-/*   Updated: 2019/05/24 18:24:03 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/06/04 19:12:09 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int		ft_arraylen(char **array)
 	i = 0;
 	while (array && array[i])
 		i++;
-	return (0);
+	return (i);
 }
 
 /*

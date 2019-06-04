@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/27 17:27:48 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/30 20:48:52 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/06/04 19:06:43 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,8 +145,9 @@ int				main(int ac, char **av, char **env)
 		return (-1);
 	if (ac > 1)
 		check_flags(av, ac);
-	while ("21sh")
+	while ("42sh")
 	{
+		update_pid_table();
 		if (!(string = read_line(g_shell->tcap)))
 			return (-1);
 		if (!handler(string))
