@@ -6,104 +6,71 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/03 16:15:41 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/15 01:49:42 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/06/04 00:19:27 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-static int		get_builtin(char *cmd)
+void			ft_post_exec(t_ast *root)
 {
-	if (ft_strcmp(cmd, "echo") == 0)
-		return (ECHO_BUILTIN);
-	else if (ft_strcmp(cmd, "cd") == 0)
-		return (CD_BUILTIN);
-	else if (ft_strcmp(cmd, "setenv") == 0)
-		return (SETENV_BUILTIN);
-	else if (ft_strcmp(cmd, "unsetenv") == 0)
-		return (UNSETENV_BUILTIN);
-	else if (ft_strcmp(cmd, "env") == 0)
-		return (ENV_BUILTIN);
-	else if (ft_strcmp(cmd, "exit") == 0)
-		return (EXIT_BUILTIN);
-	return (0);
+	char *str;
+
+	if (g_shell->env != g_shell->env_tmp)
+		ft_splitdel(g_shell->env_tmp);
+	if (g_shell->intern != g_shell->intern_tmp)
+		ft_splitdel(g_shell->intern_tmp);
+	if (!(str = ft_itoa(g_shell->lastsignal)))
+		ft_exit("Maloc failed in ft_post_exec");
+	ft_setenv("?", str, &g_shell->intern);
+	g_shell->env_tmp = g_shell->env;
+	g_shell->intern_tmp = g_shell->intern;
+	if (root && root->token->redir)
+		go_to_next_cmd(g_shell->redir);
 }
 
-static void		exec_builtin(char **builtin, int id, char ***env)
+static void		ft_execute(char **args, int redir, int background)
 {
-	int	ac;
-	int	err_id;
+	t_builtin	*builtin;
 
-	ac = ft_split_count(builtin);
-	err_id = 0;
-	if (id == ECHO_BUILTIN)
-		err_id = echo_builtin(ac, builtin);
-	if (id == CD_BUILTIN)
-		err_id = cd_builtin(ac, builtin, env);
-	if (id == ENV_BUILTIN && ac == 1)
-		print_env(*env);
-	if (id == SETENV_BUILTIN)
-		err_id = setenv_builtin(ac, builtin, env);
-	if (id == UNSETENV_BUILTIN)
-		err_id = unsetenv_builtin(ac, builtin, env);
-	if (id == EXIT_BUILTIN)
-		exit_builtin();
-	if (err_id != 0)
-		err_handler(err_id, builtin[0]);
-}
-
-static int		exec_binpath(char **bin, char **env)
-{
-	struct stat	buff;
-
-	if (stat(bin[0], &buff) == -1)
-		return (NON_EXISTENT);
-	if (S_ISREG(buff.st_mode) == 1 && !access(bin[0], X_OK))
-		return (ft_fork(bin, env));
-	else if (access(bin[0], X_OK) != 0)
-		return (NO_RIGHT);
-	else if (S_ISDIR(buff.st_mode) == 1)
-		return (IS_DIRECTORY);
-	return (0);
-}
-
-void	ft_execute(char **args)
-{
-	char *cmd;
-	int id;
-	int err;
-
-	cmd = NULL;
-	err = 0;
-	ft_expand(args);
-	id = get_builtin(args[0]);
-	if (id)
-		exec_builtin(args, id, &g_shell->env);
-	else
+	g_shell->lastsignal = ft_pre_execution(&args, redir, &builtin);
+	if (!g_shell->lastsignal && !builtin && args && args[0])
 	{
-		if (is_path(args[0]))
-			err = exec_binpath(args, g_shell->env);
+		if (!background)
+			g_shell->lastsignal = ft_fork(args, g_shell->env_tmp);
 		else
-		{
-			if ((err = hash_table(&args[0], g_shell->env)) == 0)
-				err = ft_fork(args, g_shell->env);
-		}
+			g_shell->lastsignal = ft_fork_amper(args, g_shell->env_tmp);
 	}
-	if (err)
-		err_handler(err, args[0]);
+	if (!g_shell->lastsignal && builtin)
+		g_shell->lastsignal = builtin->function(ft_split_count(args), args);
+	if (redir)
+		close_fd();
+	ft_post_exec(NULL);
 }
 
-
-void	ft_execute_ast(t_ast *root, char **env)
+void	ft_execute_ast(t_ast *root)
 {
 	if (!root)
 		return ;
+	if (root->token->op_type == PIPE)
+	{
+		handle_pipe(root);
+		return ;
+	}
+	if (root->token->op_type == AND && root->left
+							&& root->left->token->op_type == TOKEN_WORD)
+		root->left->job = 1;
+	if (root->token->op_type == AND && root->left && root->left->right
+		&& root->left->right->token->op_type == TOKEN_WORD)
+		root->left->right->job = 1;
 	if (root->left)
-		ft_execute_ast(root->left, env);
+		ft_execute_ast(root->left);
+	if (root->left && root->token->op_type == DBL_AND && g_shell->lastsignal)
+		return ;
+	if (root->left && root->token->op_type == DBL_PIPE && !g_shell->lastsignal)
+		return ;
 	if (root->right)
-		ft_execute_ast(root->right, env);
-	if (root->token->redir)
-		handle_redir();
-	else if (root->token->type == TOKEN_WORD)
-		ft_execute	(root->token->content);
+		ft_execute_ast(root->right);
+	if (root->token->type == TOKEN_WORD)
+		ft_execute(root->token->content, root->token->redir, root->job);
 }

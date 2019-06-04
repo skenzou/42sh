@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/01 17:31:35 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/13 07:32:20 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/05/25 00:34:30 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ char	is_shift_arrow(char key[4])
 			if (k[2] == RIGHT || k[2] == UP || k[2] == LEFT || k[2] == DOWN)
 				return (k[2]);
 	}
+	else if (key[0] == SHIFT_CODE1 && key[1] == SHIFT_CODE2)
+		return (key[2] == SHIFT_TAB ? key[2] - 10 : -1);
 	else
 		return (-1);
 	return (-1);

@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 01:26:49 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/15 03:26:30 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/05/29 16:54:06 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,27 @@ static void		check_inhib(char *str, t_list *lexer, int i)
 
 	while (*str)
 	{
-		if (*str == DQUOTE || *str == QUOTE || *str == BSLASH)
+		if (*str == BSLASH)
+		{
+			str++;
+			if (*str)
+				str++;
+			else
+			{
+				exec_inhib(BSLASH, lexer, i);
+				return ;
+			}
+		}
+		if (*str == DQUOTE || *str == QUOTE)
 		{
 			inhib = *str++;
 			while (*str && *str != inhib)
-				str++;
+			{
+				if (*str == BSLASH && *(str + 1))
+					str += 2;
+				else
+					str++;
+			}
 			if (!*str)
 			{
 				exec_inhib(inhib, lexer, i);

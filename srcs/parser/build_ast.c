@@ -6,13 +6,13 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 01:28:47 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/15 01:51:38 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/06/03 20:48:23 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-void	build_ast(t_list *lexer, t_ast **root, e_op_type optype)
+void	build_ast(t_list *lexer, t_ast **root, e_op_type optype1, e_op_type optype2)
 {
 	t_list *save2;
 	t_list *save1;
@@ -29,8 +29,7 @@ void	build_ast(t_list *lexer, t_ast **root, e_op_type optype)
 	while(lexer)
 	{
 		token = (t_token*)(lexer->content);
-		//printf("test: %s\n", token->content);
-		if (token->op_type == optype)
+		if (token->op_type == optype1 || (optype2 != OTHER_OP && token->op_type == optype2))
 		{
 			save1 = prev;
 			save2 = lexer->next;
@@ -43,14 +42,15 @@ void	build_ast(t_list *lexer, t_ast **root, e_op_type optype)
 		save1 = save1->next;
 	if (prev)
 		prev->next = NULL;
-	if (!is_in_lexer(origin, optype) && !save1)
+	if ((!is_in_lexer(origin, optype1) ||
+			(optype2 != OTHER_OP && !is_in_lexer(origin, optype2))) && !save1)
 	{
 				if (is_in_lexer(origin, DBL_AND))
-					build_ast(origin, root, DBL_AND);
+					build_ast(origin, root, DBL_AND, OTHER_OP);
 				else if (is_in_lexer(origin, DBL_PIPE))
-					build_ast(origin, root, DBL_PIPE);
+					build_ast(origin, root, DBL_PIPE, OTHER_OP);
 				else if (is_in_lexer(origin, PIPE))
-					build_ast(origin, root, PIPE);
+					build_ast(origin, root, PIPE, OTHER_OP);
 				else
 					*root = newnode((t_token *)(origin->content), origin);
 	}
@@ -60,14 +60,14 @@ void	build_ast(t_list *lexer, t_ast **root, e_op_type optype)
 			if (save2)
 			{
 				if (is_in_lexer(save2, DBL_AND))
-					build_ast(save2, &((*root)->right), DBL_AND);
+					build_ast(save2, &((*root)->right), DBL_AND, OTHER_OP);
 				else if (is_in_lexer(save2, DBL_PIPE))
-					build_ast(save2, &((*root)->right), DBL_PIPE);
+					build_ast(save2, &((*root)->right), DBL_PIPE, OTHER_OP);
 				else if (is_in_lexer(save2, PIPE))
-					build_ast(save2, &((*root)->right), PIPE);
+					build_ast(save2, &((*root)->right), PIPE, OTHER_OP);
 				else
 					(*root)->right = newnode((t_token *)(save2->content), save2);
 			}
-			build_ast(origin, &((*root)->left) , optype);
+			build_ast(origin, &((*root)->left) , optype1, optype2);
 	}
 }

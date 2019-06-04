@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/14 23:33:19 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/15 06:18:54 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/06/03 23:36:48 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void		print_redir(t_list *redir)
 	{
 		red = ((t_redir *)redir->content);
 		i = -1;
+		ft_printf("fd: %d\n", red->fd);
 		print_optype(red->op_type);
 		ft_printf(" dest: |");
 		while (red->dest[++i])
@@ -47,6 +48,20 @@ char	**get_curr_cmd(t_list *redir)
 	return (NULL);
 }
 
+void	go_to_next_cmd(t_list *redir)
+{
+	while (redir)
+	{
+		if (((t_redir *)redir->content)->end_of_leaf)
+		{
+			g_shell->redir = redir->next;
+			return ;
+		}
+		else
+			redir = redir->next;
+	}
+}
+
 void 	redir_delone(void *data, size_t size)
 {
 	t_redir *redir;
@@ -66,7 +81,7 @@ int		open_file(t_redir *redir)
 	int		err;
 
 	fd = 0;
-	if (redir->op_type == GREAT)
+	if (redir->op_type == GREAT || redir->op_type == GREAT_AND)
 		fd = open(redir->dest[0], O_RDWR | O_CREAT | O_TRUNC, 0666);
 	else if (redir->op_type == DBL_GREAT)
 		fd = open(redir->dest[0], O_RDWR | O_APPEND | O_CREAT, 0666);
@@ -75,15 +90,9 @@ int		open_file(t_redir *redir)
 	if (fd == -1)
 	{
 		err = check_file(redir->dest[0]);
-		if (err == NO_RIGHT)
-			ft_putstr_fd("42sh: Permission denied: ", 2);
-		else if (err == NON_EXISTENT)
-			ft_putstr_fd("42sh: No such file or directory: ", 2);
-		else if (err == IS_DIRECTORY)
-			ft_putstr_fd("42sh: Is a directory: ", 2);
-		else
-			ft_putstr_fd("42sh: Error while opening: ", 2);
-		ft_putendl_fd(redir->dest[0], 2);
+		if (!err)
+			err = OPEN_ERR;
+		err_handler(err, redir->dest[0]);
 	}
 	return (fd);
 }

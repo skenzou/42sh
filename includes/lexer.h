@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/30 18:57:23 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/19 15:06:36 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/06/04 04:40:37 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,10 +75,9 @@ typedef enum
 typedef struct		s_token
 {
 	char			**content;
-	size_t		size;
+	size_t			size;
 	char			is_op;
 	e_op_type		op_type;
-	size_t			len;
 	e_token_type	type;
 	char			redir;
 }					t_token;
@@ -93,6 +92,7 @@ typedef struct		s_oplist
 
 typedef struct		s_ast
 {
+	char			job;
 	t_token			*token;
 	t_list			*list_pointer;
 	struct s_ast	*left;
@@ -105,5 +105,6 @@ void		lex_delone(void *data, size_t size);
 void		lex_del_list(t_list **lexer);
 void		print_optype(e_op_type op_type);
 int			is_in_lexer(t_list *lexer, e_op_type optype);
+t_oplist	check_ops(char *str);
 
 #endif

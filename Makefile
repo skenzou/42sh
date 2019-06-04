@@ -6,7 +6,7 @@
 #    By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/03 09:24:41 by midrissi          #+#    #+#              #
-#    Updated: 2019/05/15 05:55:28 by tlechien         ###   ########.fr        #
+#    Updated: 2019/05/30 20:22:06 by midrissi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,10 +32,10 @@ _ICYAN			=	\x1b[46m
 _IWHITE			=	\x1b[47m
 _MAGENTA		=	\x1b[35m
 
-MSG				=	Compiling 21sh
+MSG				=	Compiling 42sh
 .PHONY: all, $(NAME), clean, fclean, re
 
-NAME = 21sh
+NAME = 42sh
 cc = gcc
 C_FLAGS = -Wall -Wextra -Werror
 SRC_PATH = ./srcs/
@@ -43,7 +43,7 @@ SRC_LEXER = $(shell find srcs/lexer -type f -name "*.c")
 SRC_EXECUTOR = $(shell find srcs/executor -type f -name "*.c")
 SRC_PROMPT = $(shell find srcs/prompt -type f -name "*.c")
 SRC_PARSER = $(shell find srcs/parser -type f -name "*.c")
-SRC_ROOT = handler.c utils.c
+SRC_ROOT = handler.c
 SRC_NAME = $(SRC_LEXER) $(SRC_EXECUTOR) $(SRC_PROMPT) $(SRC_PARSER) $(SRC_ROOT)
 OBJ_PATH = ./obj/
 LFT_PATH = ./libft/
@@ -87,7 +87,7 @@ clean:
 
 fclean: clean
 		@make -C $(LFT_PATH) fclean
-		@rm -f $(NAME)
+		@rm -f $(NAME) .21sh_alias
 		@echo "$(_BOLD)$(_RED)Sucessfuly removed ${NAME} from minishell$(_END)"
 
 re: fclean all

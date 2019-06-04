@@ -1,37 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   shift_arrow_events.c                               :+:      :+:    :+:   */
+/*   ft_nlastindexof.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/28 15:04:00 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/13 07:32:19 by aben-azz         ###   ########.fr       */
+/*   Created: 2019/03/28 04:14:43 by aben-azz          #+#    #+#             */
+/*   Updated: 2019/05/30 05:22:56 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "shell.h"
+#include "libft.h"
 
-int		shift_arrow_up_event(t_cap *tcap)
+int	ft_nlastindexof(char *string, char c, int n)
 {
-	(void)tcap;
-	return (1);
-}
+	int i;
+	int j;
 
-int		shift_arrow_down_event(t_cap *tcap)
-{
-	(void)tcap;
-	return (1);
-}
-
-int		shift_arrow_right_event(t_cap *tcap)
-{
-	(void)tcap;
-	return (1);
-}
-
-int		shift_arrow_left_event(t_cap *tcap)
-{
-	(void)tcap;
-	return (1);
+	j = ft_strlen(string) - n;
+	i = 0;
+	while (string[--j])
+	{
+		if (string[j] == c)
+			return (j);
+	}
+	return (-1);
 }

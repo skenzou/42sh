@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 00:40:57 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/20 13:15:18 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/06/04 19:48:34 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 # define S_SUSP	2
 # define S_CONT 3
 # define S_TERM 4
-# define ID_PRIORITY  g_pid_table->index
+# define ID_PRIORITY  g_pid_table->priority
 # define ID_PID       g_pid_table->pid
 # define ID_INDEX     g_pid_table->index
 # define ID_STATUS    g_pid_table->status
@@ -36,6 +36,8 @@
 # define ID_NEXT      g_pid_table->next
 # define ID_PREV      g_pid_table->prev
 # define ALIAS_FILE	".21sh_alias"
+# define OPT_L 1
+# define OPT_P 2
 
 /*
 **	## STRUCTURES ##
@@ -59,6 +61,17 @@ typedef struct s_hash_entry
 	unsigned char	*key;
 }				t_hash_entry;
 
+typedef struct s_pipe
+{
+	int			pipe[2];
+}				t_pipe;
+
+typedef struct set_builtin
+{
+	char		*cmd;
+	int			(*function)(int ac, char **av);
+}				t_builtin;
+
 extern	t_child		*g_pid_table;
 extern	const char	*g_status[];
 extern	const char	*g_reserved[];
@@ -68,32 +81,52 @@ extern	char		**g_aliases;
 ** ## FUNCTIONS ##
 */
 
-void	pipe_cmds(char **cmd1, char **cmd2, char **env);
-void	search_pipe(t_ast *root,char *str, char **env);
-void	redir_delone(void *data, size_t size);
-void	remove_quote(char **str);
-int		hash_table(char **str,char **env);
-void	expand_and_execute(char **args);
-void	handle_redir();
-void	print_redir(t_list *redir);
-int		check_file(char *path);
-void	ft_execute_ast(t_ast *root , char **env);
-void	ft_execute(char **args);
-void	ft_expand(char **args);
-void	pipe_cmds(char **cmd1, char **cmd2, char **env);
-int		unsetenv_builtin(int ac, char **av, char ***env);
-int		setenv_builtin(int ac, char **av, char ***env);
-int		is_set(char *key, char **env);
-void	ft_setenv(char *key, char *value, char ***env);
-int		echo_builtin(int argc, char **argv);
-void	exit_builtin(void);
-int		cd_builtin(int argc, char **argv, char ***env);
-void	err_handler(int err_id, char *str);
-void	print_env(char **env);
-char	**get_curr_cmd(t_list *redir);
-int		open_file(t_redir *redir);
-int		is_path(char *str);
-int		check_dir(char *path);
+void	redir_errors(int err_id, char *dest, int fd);
+int		env_builtin(int ac, char **av);
+void	go_to_next_cmd(t_list *redir);
+t_builtin		*get_builtin(char *cmd);
+// int		get_builtin(char *cmd);
+int		test_builtin(int ac, char **args);
+int		type_builtin(int ac, char **args);
+void		param_expansion(char **ptr);
+char	*get_key_value(char *key, char **tab);
+void   	tilde_expansion(char **ptr);
+int			unset_builtin(int ac, char **av);
+int			export_builtin(int ac, char **av);
+char		**removekey(char *key, int keylen, char **env);
+int			exec_builtin(char **builtin, int id, char ***env);
+void		handle_pipe(t_ast *root);
+void		redir_delone(void *data, size_t size);
+int			ft_fork(char **cmd, char **env);
+void		remove_quote(char **str);
+int			hash_table(char **str,char **env);
+void		expand_and_execute(char **args);
+char		**handle_redir();
+void		print_redir(t_list *redir);
+int			check_file(char *path);
+void		ft_execute_ast(t_ast *root);
+void			ft_expand(char **args);
+int			unsetenv_builtin(int ac, char **av);
+int			setenv_builtin(int ac, char **av);
+int			get_indexof_key(char *key, char **env);
+void		ft_setenv(char *key, char *value, char ***env);
+int			echo_builtin(int argc, char **argv);
+int			exit_builtin(int ac, char **av);
+int			cd_builtin(int argc, char **argv);
+void		err_handler(int err_id, char *str);
+void		print_split(char **split);
+char		**get_curr_cmd(t_list *redir);
+int			open_file(t_redir *redir);
+int			is_path(char *str);
+int			check_dir(char *path);
+void 		close_fd();
+int			ft_pre_execution(char ***args, int redir, t_builtin **builtin);
+void		remove_n_first_entries(char **old, int n);
+int			set_builtin();
+void		handle_intern_var(char **args);
+void			ft_post_exec(t_ast *root);
+char			*get_homepath(char **env);
+int			is_key_valid(char *key);
 
 /*
 **	ft_fork.c
@@ -107,9 +140,10 @@ int		ft_waitprocess(pid_t pid, char **cmd);
 **	jobs_builtin.c & dependencies
 */
 
-int		update_pid_table(int pid, char **cmd, int status);
-int		display_pid_status(t_child *node, int option);
-int		jobs_builtin(char **cmd);
+int		add_pid(int pid, char **cmd, int status);
+int		update_pid_table(void);
+int		display_pid_status(t_child *node, char option);
+int		jobs_builtin(int ac, char **cmd);
 int		init_pid(void);
 int		update_priority(int first);
 int		kill_pids(void);
@@ -137,6 +171,8 @@ int		bg_resume(t_child **node);
 */
 
 int		init_alias(int file);
+char	*parse_aliases(char *line, char *origin, char *prev);
+char	*substitute_alias(char **origin, char *line, int size);
 int		save_alias(int save);
 int		ft_arraylen(char **array);
 int		display_alias(void);
@@ -144,5 +180,21 @@ int		is_reserved(char *key);
 int		is_alias(char *key);
 char 	*get_alias(char *key);
 int		alias_builtin(char **cmd);
+
+/*
+**	cd_builtin_posix.c & dependencies
+*/
+
+int		begin_with(char *env_key, char *str);
+int		search_env(char *var);
+char	*get_env(char *var);
+
+/*
+**	get_options.c
+*/
+
+int		ft_flags(char c, char *flags, char *opt);
+int		get_options(char *flags, char *opt, char *str, int (*usage)());
+int		params(char **flags, int ac, char **av, int (*usage)());
 
 #endif

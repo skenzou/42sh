@@ -6,13 +6,13 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 18:46:30 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/15 00:11:43 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/06/04 04:17:08 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-int						is_set(char *key, char **env)
+int						get_indexof_key(char *key, char **env)
 {
 	int i;
 	int len;
@@ -53,8 +53,8 @@ void					ft_setenv(char *key, char *value, char ***env)
 	char	*temp;
 
 	key = ft_strjoin(key, "=");
-	key == NULL ? exit(1) : 0;
-	i = is_set(key, *env);
+	key == NULL ? ft_exit("Malloc failed in ft_setenv") : 0;
+	i = get_indexof_key(key, *env);
 	if (i >= 0)
 	{
 		temp = (*env)[i];
@@ -67,28 +67,45 @@ void					ft_setenv(char *key, char *value, char ***env)
 	value ? ft_strdel(&key) : 0;
 }
 
-static int				check_key(char *str)
+int			is_key_valid(char *key)
 {
-	while (*str)
+	if (!key || ft_isdigit(*key))
+		return (0);
+	while (*key)
 	{
-		if (!ft_isalnum(*str))
-			return (1);
-		str++;
+		if (!ft_isalnum(*key) && *key != '_')
+			return (0);
+		key++;
 	}
-	return (0);
+	return (1);
 }
 
-int						setenv_builtin(int ac, char **av, char ***env)
+static int				setenv_err(int err_id)
 {
+	if (err_id == SETENV_USG)
+		ft_putendl_fd("usage: setenv [<Key> <Value> | <Key>]", 2);
+	if (err_id == SETENV_INVALID_KEY)
+		ft_putendl_fd(
+			"setenv: Variable name must contain alphanumeric characters.", 2);
+	return (1);
+}
+
+int						setenv_builtin(int ac, char **av)
+{
+	int same;
+
+	same = g_shell->env == g_shell->env_tmp;
 	if (ac > 3)
-		return (SETENV_USG);
-	if (ac > 1 && check_key(av[1]))
-		return (SETENV_INVALID_KEY);
+		return (setenv_err(SETENV_USG));
+	if (ac > 1 && !is_key_valid(av[1]))
+		return (setenv_err(SETENV_INVALID_KEY));
 	if (ac == 1)
-		print_env(*env);
+		print_split(g_shell->env);
 	if (ac == 2)
-		ft_setenv(av[1], NULL, env);
+		ft_setenv(av[1], NULL, &g_shell->env);
 	if (ac == 3)
-		ft_setenv(av[1], av[2], env);
+		ft_setenv(av[1], av[2], &g_shell->env);
+	if (same)
+		g_shell->env_tmp = g_shell->env;
 	return (0);
 }
