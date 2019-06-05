@@ -44,9 +44,9 @@
 		commit -m ""
 	- export/env_var
 		env_var=
-	- cp/mv/rm:
+	- cp/mv/rm/test:
 		fichier/dossier
-	- switch:
+	- sh:
 		.sh/executable
 	- fg/jobs_builtin:
 		pid
