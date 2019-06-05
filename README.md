@@ -16,22 +16,30 @@
 ## TODO ACHRAF
 - [✓] Floation point exception avec fleche du bas
 - [✓] Home et End evenement
-- Mot selectionné a l'endroit du curseur durant l'autocompletion
-- !!, !word, !number, !-number
-- CTRL-R
-- Completion automatique si path ou si env_var
-- fc ? (Pas sur que ce soit dans termcaps, a voir)
+- La gestion complète de l’historique :
+	• Les expansions :
+		◦ !! **commande precedente dans lhisto**
+		◦ !*word* **cherche la premiere commande matchant avec word dans lhisto**
+		◦ !*number* **cherche la n ieme commande dans lhisto**
+		◦ !-*number* **cherche le number ieme precedent dans lhisto**
+	• Le built-in fc (toutes les options POSIX)
+		◦-e *editor* **Specifie un editeur, si pa specifie la variable FCEDIT le
+																	specifie**
+
+		◦-l **affiche les N premiere commande de l'histo + ID**
+
+		◦-n	 **N'affiche pas les ID quand -l est appelé**
+
+		◦-r	 **Inverse l'ordre de tri**
+
+		◦-s	 **Re-executer une commande sans ouvrir lediteur**
+	• Recherche incrémentale dans l’historique avec CTRL-R
 - Gestion du redimensionnement de fenetre
-- Couleurs dans l'autocompletion
 - Gestion des leaks
 - Copy/cut/past
 - Deplacement par mots a regler
 - SHIFT_UP et SHIFT_DOWN pour se deplacer dans une commande en haut et en bas
-- Bonus
-	- Autocompletion en fonction de la commande, ex:
-		- cd => que des dossier
-		- ls => fichier/dossier
-		- man => fichier present dans le dossier man
+- Smart autocompletion
 - Protection getenv fichier historique
 
 ## DEBUG
