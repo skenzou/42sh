@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 06:02:13 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/06/05 05:09:54 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/06/05 06:12:12 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void		get_words_completion(t_ab *autocomp, t_cap *tcap)
 	char **argv;
 	int i;
 
-	i = (tcap->cursx - tcap->prompt_len);
+	i = tcap->cursy * (tcap->cursx_max + 1) + (tcap->cursx) - tcap->prompt_len;
 	argv = ft_strsplit(tcap->command, ' ');
 	if (i && ft_isspace(tcap->command[i - 1]) && (i + 1 < tcap->char_len &&
 											ft_isspace(tcap->command[i + 1])))
