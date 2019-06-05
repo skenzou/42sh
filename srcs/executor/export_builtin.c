@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/28 13:22:00 by midrissi          #+#    #+#             */
-/*   Updated: 2019/06/04 05:12:28 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/06/05 09:07:24 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,36 +40,35 @@ static int			check_options(int ac, char **av)
 {
 	int i;
 
-	av++;
-	if (**av == '-' && *((*av) + 1))
+	if (ac > 1)
 	{
-		i = 0;
-		while ((*av)[++i])
-			if ((*av)[i] != 'p')
-			{
-				ft_putstr_fd("42sh: export: -", 2);
-				ft_putchar_fd((*av)[i], 2);
-				ft_putendl_fd(": invalid option", 2);
-				return (1);
-			}
-		if (ac == 2)
-			print_split(g_shell->env);
+		av++;
+		if (**av == '-' && *((*av) + 1))
+		{
+			i = 0;
+			while ((*av)[++i])
+				if ((*av)[i] != 'p')
+				{
+					ft_putstr_fd("42sh: export: -", 2);
+					ft_putchar_fd((*av)[i], 2);
+					ft_putendl_fd(": invalid option", 2);
+					return (1);
+				}
+			if (ac == 2)
+				print_split(g_shell->env);
+		}
 	}
-	if (ac == 1)
+	else
 		print_split(g_shell->env);
 	return (0);
 }
 
 static int			exec_export(char *key, char *ptr)
 {
-	ft_printf("ptr: %s\n", ptr);
 	if (is_key_valid(key))
 	{
 		if (!ptr)
-		{
-			ft_printf("intern_to_env\n");
 			intern_to_env(key);
-		}
 		else
 			ft_setenv(key, ptr + 1, &g_shell->env);
 		return (0);

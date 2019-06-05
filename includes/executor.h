@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 00:40:57 by midrissi          #+#    #+#             */
-/*   Updated: 2019/06/04 22:31:11 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/06/05 09:09:37 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ typedef struct s_hash_entry
 {
 	unsigned char	*data;
 	unsigned char	*key;
+	size_t			hit;
 }				t_hash_entry;
 
 typedef struct s_pipe
@@ -81,6 +82,10 @@ extern	char		**g_aliases;
 ** ## FUNCTIONS ##
 */
 
+t_hash_entry	*hash_search(unsigned char* key);
+t_hash_entry	*hash_insert(unsigned char *key, char **env);
+int		hash_builtin(int ac, char **av);
+void		ft_expand_one(char **ptr);
 void		redir_errors(int err_id, char *dest, int fd);
 int			env_builtin(int ac, char **av);
 void		go_to_next_cmd(t_list *redir);

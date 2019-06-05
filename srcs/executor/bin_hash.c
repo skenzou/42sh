@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/13 06:11:23 by midrissi          #+#    #+#             */
-/*   Updated: 2019/06/04 04:25:45 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/06/05 09:08:00 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ static unsigned long hashCode(unsigned char *str)
 	return (hash % TABLE_SIZE & 0xFFFFFFFF);
 }
 
-static t_hash_entry *search(unsigned char* key) {
+t_hash_entry *hash_search(unsigned char* key) {
 	int hashIndex = hashCode(key);
 
 	while(g_shell->hash_table[hashIndex] != NULL)
@@ -67,30 +67,39 @@ static t_hash_entry *search(unsigned char* key) {
 		++hashIndex;
 		hashIndex %= TABLE_SIZE;
 	}
-
-	return NULL;
+	return (NULL);
 }
 
-static int insert(unsigned char *key, char **env)
+static void		add_index(int hashindex)
+{
+	t_list *new;
+
+	if (!(new = ft_lstnew((void *)&hashindex, sizeof(int))))
+		ft_exit("Malloc failed");
+	ft_lstpushback(&g_shell->hash_indexes, new);
+}
+
+t_hash_entry *hash_insert(unsigned char *key, char **env)
 {
 	char	*path;
 	char	**bin;
 	t_hash_entry *item;
 
 	if (!(item = (t_hash_entry*)ft_memalloc(sizeof(t_hash_entry))))
-		ft_exit("Malloc failed in insert");
+		ft_exit("Malloc failed in hash_insert");
 	item->key = key;
-
+	if (!(item->key = (unsigned char *)ft_strdup((char *)key)))
+		ft_exit("Malloc failed in hash_insert");
 	int hashIndex = hashCode(key);
-
 	path = my_env(env);
 	if (!path)
-		return (NOT_FOUND);
+		return (NULL);
 	if (!(bin = ft_strsplit(path, ':')))
-		ft_exit("Malloc failed in insert");
+		ft_exit("Malloc failed in hash_insert");
 	key = add_path(bin, key);
 	if(!key)
-		return (-1) ;
+		return (NULL) ;
+	add_index(hashIndex);
 	item->data = key;
 	while(g_shell->hash_table[hashIndex] != NULL
 								&& g_shell->hash_table[hashIndex]->key != NULL)
@@ -98,8 +107,10 @@ static int insert(unsigned char *key, char **env)
 		++hashIndex;
 		hashIndex %= TABLE_SIZE;
 	}
+	item->hit = 1;
 	g_shell->hash_table[hashIndex] = item;
-	return (0);
+	ft_splitdel(bin);
+	return (item);
 }
 
 
@@ -110,25 +121,25 @@ int		hash_table(char **str, char **env)
 
 	item = NULL;
 	copy = *str;
-	if(!(item = search((unsigned char *)copy)))
+	if(!(item = hash_search((unsigned char *)copy)))
 	{
-		if(insert((unsigned char *)copy,env) == 0)
+		if((item = hash_insert((unsigned char *)copy,env)))
 		{
-			*str = ft_strdup((char*)search((unsigned char *)copy)->data);
-			!(*str) ? exit(1) : 0;
+			item->hit = 1;
+			*str = ft_strdup((char*)item->data);
+			!(*str) ? ft_exit("Malloc failed in hash_table") : 0;
 			free(copy);
 			return (check_file(*str));
 		}
 		else
 			return (NOT_FOUND);
 	}
-	if (item)
+	else
 	{
+		item->hit++;
 		*str = ft_strdup((char *)item->data);
-		!(*str) ? exit(1) : 0;
+		!(*str) ? ft_exit("Malloc failed in hash_table") : 0;
 		free(copy);
 		return (check_file(*str));
 	}
-	else
-		return (NOT_FOUND);
 }

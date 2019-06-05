@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 16:42:03 by midrissi          #+#    #+#             */
-/*   Updated: 2019/06/04 02:21:14 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/06/05 09:08:43 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@
 
 typedef struct	s_shell
 {
+	t_list		*hash_indexes;
 	t_cap		*tcap;
 	char		**env;
 	char		**intern;

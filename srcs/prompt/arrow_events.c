@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/28 15:04:00 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/27 06:43:44 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/06/05 09:05:43 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,10 +58,10 @@ int		arrow_down_event(t_cap *tcap)
 	t_ab	*autocomp;
 	int		new_x;
 
-	autocomp = g_shell->autocomp;
-	new_x = autocomp->pos % autocomp->row;
 	if (g_shell->autocomp->state)
 	{
+		autocomp = g_shell->autocomp;
+		new_x = autocomp->pos % autocomp->row;
 		if (autocomp->pos + autocomp->row < autocomp->len)
 			autocomp->pos += autocomp->row;
 		else
