@@ -78,17 +78,19 @@ int	handle_eol(char *buffer, t_cap *tcap)
 
 int		read_buffer(char *buffer, t_cap *tcap)
 {
-	char key;
+	int key;
 
 	//dprintf(debug(), "avant {%d, %d, %d}|%s|\n",buffer[0], buffer[1], buffer[2], buffer);
 	 if (~ft_indexof(buffer, '\n'))
 	 	return (handle_eol(buffer, tcap));
 	else if (buffer[0] == SPACE && !buffer[1] && !buffer[2])
 		return (space_event(tcap));
-	else if ((ft_isprint(buffer[0]) || wcharlen(buffer[0]) >1 ))
+	else if (ft_isprint(buffer[0]))
 		return (ft_insert(buffer, tcap));
 	else if (is_arrow(buffer))
 		return (read_arrow(buffer[2], tcap));
+	else if ((key = is_alt(buffer)) != -1)
+		return (1);
 	else if ((key = is_shift_arrow(buffer)) != -1)
 		return (read_arrow(key + 10, tcap));
 	else if ((key = is_key(buffer)) != -1)

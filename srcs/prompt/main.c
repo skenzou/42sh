@@ -34,6 +34,11 @@ t_event g_key_event[] = {
 	{END, &end_event},
 	{SPACE, &space_event}
 };
+t_event g_alt_event[] = {
+	{COPY, &ft_copy},
+	{CUT, &ft_cut},
+	{PASTE, &ft_paste}
+};
 
 t_shell *g_shell;
 t_child *g_pid_table;

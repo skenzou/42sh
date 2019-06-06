@@ -32,7 +32,8 @@ numbers.c format_geters.c handlers.c ft_splitdel.c \
 ft_abs.c ft_get_color.c ft_percent.c ft_interpolate.c ft_split_count.c \
 ft_strcjoin.c ft_strsplitstr.c ft_count_words_str.c ft_lastindexof.c \
 ft_indexof.c ft_levenshtein.c ft_substr.c ft_isonly_digit.c ft_strlen2.c \
-ft_splitdup.c ft_min.c ft_max.c ft_nlastindexof.c ft_exit.c ft_isspace.c
+ft_splitdup.c ft_min.c ft_max.c ft_nlastindexof.c ft_exit.c ft_isspace.c \
+ft_strreplace.c
 
 _END			=	\x1b[0m
 _BOLD			=	\x1b[1m

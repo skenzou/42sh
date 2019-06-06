@@ -29,6 +29,7 @@
 # define BUFF_SIZE 32
 # define FD_MAX OPEN_MAX
 
+char			*ft_strreplace(char *orig, char *rep, char *with);
 int				get_next_line(int fd, char **line, char separator);
 void			*ft_memset(void *b, int c, size_t len);
 void			ft_bzero(void *s, size_t n);

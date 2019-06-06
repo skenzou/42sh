@@ -24,6 +24,7 @@
 # include <math.h>
 # include <fcntl.h>
 # include <dirent.h>
+# include <curses.h>
 # include <sys/ioctl.h>
 # define PROMPT1 				"\x1b[0m\x1b[32m\x1b[1m➜  \x1b[0m"
 # define PROMPT1_ERR 				"\x1b[0m\x1b[31m\x1b[1m➜  \x1b[0m"
@@ -43,6 +44,9 @@
 # define SHIFT_CODE1			27
 # define SHIFT_CODE2			91
 # define SHIFT_CODE3			49
+# define ALT_CODE1				27
+# define ALT_CODE2				27
+# define ALT_CODE3				91
 # define ARROW_CODE3			59
 # define ARROW_CODE4			50
 # define SHIFT_UP				75
@@ -60,6 +64,9 @@
 # define HOME_END2				91
 # define HOME					72
 # define END					70
+# define COPY					0
+# define CUT					-120
+# define PASTE					-102
 # define MAX_HISTORY_LENGHT		4096
 # define MAX_PATH		PATH_MAX
 # define UNUSED			0
@@ -105,7 +112,16 @@ typedef struct	s_cap
 	int			overflow;
 	char		carry[2];
 	char		*prompt;
+
 }				t_cap;
+
+typedef struct				s_cc
+{
+	int						state;
+	int						from;
+	int						to;
+	char					copied[BUFFSIZE];
+}							t_cc;
 
 typedef struct				s_file
 {
@@ -144,6 +160,7 @@ typedef struct	s_history
 
 extern t_event g_arrow_event[];
 extern t_event g_key_event[];
+extern t_event g_alt_event[];
 
 /*
 **	ARROW_EVENTS.C
@@ -182,7 +199,14 @@ int		space_event(t_cap *tcap);
 
 int		home_event(t_cap *tcap);
 int		end_event(t_cap *tcap);
+/*
+**	COPY_CUT.C
+*/
 
+
+int		ft_copy(t_cap *tcap);
+int		ft_cut(t_cap *tcap);
+int		ft_paste(t_cap *tcap);
 /*
 **	VAR.C
 */
@@ -234,7 +258,12 @@ int		read_key(char buffer, t_cap *tcap);
 char	is_shift_arrow(char key[4]);
 int		is_arrow(char key[4]);
 int		read_arrow(char buffer, t_cap *tcap);
+/*
+**	READ_ALT.C
+*/
 
+
+int		is_alt(char *key);
 /*
 ** MOVE.C
 */

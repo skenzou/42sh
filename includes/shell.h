@@ -87,6 +87,7 @@ typedef struct	s_shell
 	char		lastsignal;
 	size_t		curr_pipe;
 	t_ab		*autocomp;
+	t_cc		*copy_cut;
 	t_term		*term;
 	t_term		*term_backup;
 	t_list		*temp_redir;

@@ -76,6 +76,16 @@ static int	init_autocomp(t_ab *autocomp)
 }
 
 
+static int	init_copy_cut(t_cc *copy_cut)
+{
+	copy_cut->state = 0;
+	copy_cut->from = -1;
+	copy_cut->to = -1;
+	ft_bzero(copy_cut->copied, BUFFSIZE);
+	return (1);
+}
+
+
 int			init_struct(char **env)
 {
 	if (!(g_shell = ft_memalloc(sizeof(*g_shell))))
@@ -83,15 +93,17 @@ int			init_struct(char **env)
 	g_shell->history = ft_memalloc(sizeof(*g_shell->history));
 	g_shell->tcap = ft_memalloc(sizeof(*g_shell->tcap));
 	g_shell->autocomp = ft_memalloc(sizeof(*g_shell->autocomp));
+	g_shell->copy_cut = ft_memalloc(sizeof(*g_shell->copy_cut));
 	g_shell->term = ft_memalloc(sizeof(*g_shell->term));
 	g_shell->term_backup = ft_memalloc(sizeof(*g_shell->term_backup));
 	if (tcgetattr(0, g_shell->term_backup) == -1 || !~tcgetattr(0, g_shell->term))
 		return (0);
 	if (!(g_shell->env = dup_env(env)) || !g_shell->tcap || !g_shell->history ||
-		!g_shell->autocomp)
+		!g_shell->autocomp || !g_shell->copy_cut)
 		return (0);
 	if (!init_var(g_shell->var) || !init_termcap(g_shell->tcap) ||
-				!init_history(g_shell->history) || !init_autocomp(g_shell->autocomp))
+		!init_history(g_shell->history) || !init_autocomp(g_shell->autocomp) ||
+											!init_copy_cut(g_shell->copy_cut))
 		return (0);
 	g_shell->term->c_lflag &= ~(ICANON | ECHO);
 	g_shell->term->c_cc[VMIN] = 1;
