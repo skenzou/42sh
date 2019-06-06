@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/28 13:22:00 by midrissi          #+#    #+#             */
-/*   Updated: 2019/06/05 09:07:24 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/06/06 00:16:05 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,36 @@
 
 void	env_to_env(char *key)
 {
-	char *entry;
+	char *value;
 
-	entry = get_key_value(key, g_shell->env_tmp);
-	ft_setenv(key, entry, &g_shell->env);
+	value = get_key_value(key, g_shell->env_tmp);
+	if (value)
+		if (!(value = ft_strdup(value)))
+			ft_exit("Malloc failed in intern_to_env");
+	ft_expand_one(&value);
+	ft_setenv(key, value, &g_shell->env);
+	ft_strdel(&value);
 }
 
 void	intern_to_env(char *key)
 {
-	char	*entry;
+	char	*value;
 	char	same;
 
 	same = g_shell->intern_tmp == g_shell->intern;
-	entry = get_key_value(key, g_shell->intern_tmp);
-	ft_setenv(key, entry, &g_shell->env);
+	value = get_key_value(key, g_shell->intern_tmp);
+	if (value)
+		if (!(value = ft_strdup(value)))
+			ft_exit("Malloc failed in intern_to_env");
+	ft_expand_one(&value);
+	ft_setenv(key, value, &g_shell->env);
 	g_shell->intern_tmp =
 						removekey(key, ft_strlen(key), g_shell->intern_tmp);
 	if (same)
 		g_shell->intern = g_shell->intern_tmp;
 	else
 		env_to_env(key);
+	ft_strdel(&value);
 }
 
 static int			check_options(int ac, char **av)
@@ -65,12 +75,20 @@ static int			check_options(int ac, char **av)
 
 static int			exec_export(char *key, char *ptr)
 {
+	char	*value;
+
 	if (is_key_valid(key))
 	{
 		if (!ptr)
 			intern_to_env(key);
 		else
-			ft_setenv(key, ptr + 1, &g_shell->env);
+		{
+			if (!(value = ft_strdup(ptr + 1)))
+				ft_exit("Malloc failed in exec_export");
+			ft_expand_one(&value);
+			ft_setenv(key, value, &g_shell->env);
+			ft_strdel(&value);
+		}
 		return (0);
 	}
 	else

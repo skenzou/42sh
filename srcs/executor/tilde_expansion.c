@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/29 16:11:24 by midrissi          #+#    #+#             */
-/*   Updated: 2019/06/04 01:21:15 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/06/06 02:10:26 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void				tilde_expansion(char **ptr)
 
 	if (!(str = *ptr) || *str++ != '~')
 		return ;
-	if (!(home = ft_strdup(get_homepath(g_shell->env))))
+	if (!(home = ft_strdup(get_key_value("HOME", g_shell->env))))
 		home = get_home_from_pwuid();
 	if (!(*str))
 		str = home;

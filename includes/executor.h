@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 00:40:57 by midrissi          #+#    #+#             */
-/*   Updated: 2019/06/05 09:09:37 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/06/06 04:19:53 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,9 @@ extern	char		**g_aliases;
 ** ## FUNCTIONS ##
 */
 
+char			*join_path(char *path, char *dir);
+char			*test_full_paths(char *entry, char *dir);
+char			*get_path(char *dir);
 t_hash_entry	*hash_search(unsigned char* key);
 t_hash_entry	*hash_insert(unsigned char *key, char **env);
 int		hash_builtin(int ac, char **av);

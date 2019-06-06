@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/30 16:50:09 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/30 16:58:06 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/06/05 22:53:27 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 int		test_builtin(int ac, char **args)
 {
+	print_split(args);
 	(void)ac;
 	(void)args;
 	return (0);
