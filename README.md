@@ -16,6 +16,7 @@
 ## TODO ACHRAF
 - [✓] Floation point exception avec fleche du bas
 - [✓] Home et End evenement
+- [✓] Copy/cut/past
 - La gestion complète de l’historique :
 	- Les expansions :
 		- !! **commande precedente dans lhisto**
@@ -31,7 +32,6 @@
 	- Recherche incrémentale dans l’historique avec CTRL-R
 - Gestion du redimensionnement de fenetre
 - Gestion des leaks
-- Copy/cut/past
 - Deplacement par mots a regler
 - SHIFT_UP et SHIFT_DOWN pour se deplacer dans une commande en haut et en bas
 - Smart autocompletion
