@@ -12,14 +12,16 @@
 
 #include "shell.h"
 
-static int	init_termcap(t_cap *tcap)
+int	init_termcap(t_cap *tcap)
 {
 	struct winsize	*w;
 
 	if (!(w = ft_memalloc(sizeof(*w))))
 		return (0);
-	tcap->cursx_max = (ioctl(1, TIOCGWINSZ, w) ? w->ws_col : tgetnum("co"));
-	tcap->cursx_max--;
+	if (ioctl(1, TIOCGWINSZ, w) != 0)
+		tcap->cursx_max = tgetnum("co") - 1;
+	else
+		tcap->cursx_max = w->ws_col - 1;
 	tcap->cursy = 0;
 	free(w);
 	tcap->prompt = NULL;

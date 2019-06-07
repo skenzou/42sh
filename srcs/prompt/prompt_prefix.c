@@ -23,6 +23,17 @@ static char	*make_prompt(char *format)
 	return (prompt);
 }
 
+int get_prompt_lenght(void)
+{
+	int len;
+
+	len = 0;
+
+
+	return (len);
+}
+
+
 static void	print_default_prompt_prefix(void)
 {
 	char *string;

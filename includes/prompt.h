@@ -118,7 +118,7 @@ typedef struct	s_cap
 typedef struct				s_cc
 {
 	int						state;
-	int						type; 
+	int						type;
 	int						from;
 	int						to;
 	char					copied[BUFFSIZE];
@@ -308,7 +308,7 @@ int		ft_tab(t_cap *tcap, t_ab *autocomp);
 */
 
 int		init_struct(char **env);
-
+int		init_termcap(t_cap *tcap);
 /*
 **	MAIN.C
 */
