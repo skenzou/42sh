@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 00:40:57 by midrissi          #+#    #+#             */
-/*   Updated: 2019/06/06 04:19:53 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/06/07 06:31:05 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,12 @@ extern	char		**g_aliases;
 ** ## FUNCTIONS ##
 */
 
+int		handle_hdoc(t_redir *redir);
+int		is_special_char(char c);
+void		parse_pipes(t_ast *root, t_pipe **pipes, size_t nbpipes);
+int		change_dir(char *path, char flag);
+char			*get_oldpwd(char **env);
+int				cd_err(int err_id, char *dest);
 char			*join_path(char *path, char *dir);
 char			*test_full_paths(char *entry, char *dir);
 char			*get_path(char *dir);

@@ -6,27 +6,27 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 00:14:11 by midrissi          #+#    #+#             */
-/*   Updated: 2019/06/04 22:31:20 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/06/07 05:59:42 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-int		err_display(char *start, char *mid, char *end)
+int				err_display(char *start, char *mid, char *end)
 {
-	(start) ? ft_putstr_fd(start, 2): 0;
-	(mid) ? ft_putstr_fd(mid, 2): 0;
-	(end) ? ft_putstr_fd(end, 2): 0;
+	(start) ? ft_putstr_fd(start, 2) : 0;
+	(mid) ? ft_putstr_fd(mid, 2) : 0;
+	(end) ? ft_putstr_fd(end, 2) : 0;
 	return (1);
 }
 
-static	void err_helper(char *error, char *cause)
+static void		err_helper(char *error, char *cause)
 {
-		ft_putstr_fd(error, 2);
-		ft_putendl_fd(cause, 2);
+	ft_putstr_fd(error, 2);
+	ft_putendl_fd(cause, 2);
 }
 
-void	err_handler(int err_id, char *str)
+void			err_handler(int err_id, char *str)
 {
 	if (err_id == NON_EXISTENT)
 		err_helper("42sh: No such file or directory: ", str);
@@ -42,7 +42,7 @@ void	err_handler(int err_id, char *str)
 		err_helper("42sh: Error while opening: ", str);
 }
 
-void	redir_errors(int err_id, char *dest, int fd)
+void			redir_errors(int err_id, char *dest, int fd)
 {
 	ft_putstr_fd("42sh: ", 2);
 	if (err_id == BAD_FD)

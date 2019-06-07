@@ -6,20 +6,20 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 01:14:21 by midrissi          #+#    #+#             */
-/*   Updated: 2019/06/03 20:32:27 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/06/07 06:23:48 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-char	 **dup_tab(char **old, size_t size)
+char		**dup_tab(char **old, size_t size)
 {
-	char **new;
-	size_t i;
+	char	**new;
+	size_t	i;
 
 	size = ft_split_count(old);
 	new = (char **)ft_memalloc(sizeof(char *) * (size + 1));
-	!new ? ft_exit("Failed to allocate a new char** in realloc_new_tab"): 0;
+	!new ? ft_exit("Failed to allocate a new char** in realloc_new_tab") : 0;
 	i = 0;
 	while (i < size)
 	{
@@ -33,9 +33,9 @@ char	 **dup_tab(char **old, size_t size)
 
 void		remove_n_first_entries(char **args, int n)
 {
-	int i;
-	int count;
-	int j;
+	int		i;
+	int		count;
+	int		j;
 
 	if (!n)
 		return ;
@@ -55,9 +55,9 @@ void		remove_n_first_entries(char **args, int n)
 char		**join_2tab(char **curr, char **next, size_t curr_size,
 															size_t next_size)
 {
-	char **new;
-	size_t i;
-	size_t j;
+	char	**new;
+	size_t	i;
+	size_t	j;
 
 	new = (char **)ft_memalloc(sizeof(char *) * (curr_size + next_size + 1));
 	!new ? ft_exit("Failed to allocate a new char** in realloc_new_tab") : 0;
@@ -78,8 +78,8 @@ char		**join_2tab(char **curr, char **next, size_t curr_size,
 
 char		**realloc_new_tab(char *needle, char **old, size_t size)
 {
-	char **new;
-	size_t i;
+	char	**new;
+	size_t	i;
 
 	size = ft_split_count(old);
 	new = (char **)ft_memalloc(sizeof(char *) * (size + 2));

@@ -6,13 +6,13 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 00:57:44 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/29 19:22:39 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/06/07 06:16:05 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-static void	remove_escape(char **str, int *start)
+static void		remove_escape(char **str, int *start)
 {
 	char *tmp;
 	char is_newline;
@@ -27,7 +27,7 @@ static void	remove_escape(char **str, int *start)
 	(*start) += !is_newline;
 }
 
-static void realloc_without_quotes(char **str, int start, int end)
+static void		realloc_without_quotes(char **str, int start, int end)
 {
 	char *tmp;
 
@@ -40,12 +40,7 @@ static void realloc_without_quotes(char **str, int start, int end)
 	free(tmp);
 }
 
-static int	is_special_char(char c)
-{
-	return (c == '$' || c == '\\' || c == '"' || c == '`' || c == '\n');
-}
-
-static void	remove_double(char **str, int *i)
+static void		remove_double(char **str, int *i)
 {
 	int start;
 
@@ -62,7 +57,7 @@ static void	remove_double(char **str, int *i)
 	(*i)--;
 }
 
-static void	remove_single(char **str, int *i)
+static void		remove_single(char **str, int *i)
 {
 	int start;
 
@@ -74,7 +69,7 @@ static void	remove_single(char **str, int *i)
 	(*i)--;
 }
 
-void 		remove_quote(char **str)
+void			remove_quote(char **str)
 {
 	int i;
 

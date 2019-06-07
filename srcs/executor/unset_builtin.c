@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/28 16:41:44 by midrissi          #+#    #+#             */
-/*   Updated: 2019/06/04 00:02:53 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/06/07 06:27:32 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static void		unset_key(char *str)
 {
-	char *key;
-	int key_index;
+	char	*key;
+	int		key_index;
 
 	if (!(key = ft_strjoin(str, "=")))
 		ft_exit("Malloc failed in unset_builtin");
@@ -29,11 +29,11 @@ static void		unset_key(char *str)
 	ft_strdel(&key);
 }
 
-int		unset_builtin(int ac, char **av)
+int				unset_builtin(int ac, char **av)
 {
 	int		i;
-	char 	same_env;
-	char 	same_intern;
+	char	same_env;
+	char	same_intern;
 
 	i = -1;
 	same_env = g_shell->env == g_shell->env_tmp;

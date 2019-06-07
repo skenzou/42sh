@@ -6,15 +6,15 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/30 15:14:34 by midrissi          #+#    #+#             */
-/*   Updated: 2019/06/04 00:16:59 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/06/07 06:26:18 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-#define	IS_BUILTIN 1
-#define	IS_BIN 2
-#define	IS_ALIAS 3
+#define IS_BUILTIN 1
+#define IS_BIN 2
+#define IS_ALIAS 3
 
 static void		type_output(char *input, char *value, char type)
 {
@@ -27,6 +27,7 @@ static void		type_output(char *input, char *value, char type)
 	if (type == NOT_FOUND)
 		ft_printf("%s not found\n", input);
 }
+
 static int		find_name(char *str)
 {
 	char	*copy;

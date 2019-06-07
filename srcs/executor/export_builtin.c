@@ -6,13 +6,13 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/28 13:22:00 by midrissi          #+#    #+#             */
-/*   Updated: 2019/06/06 00:16:05 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/06/07 06:02:22 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-void	env_to_env(char *key)
+void			env_to_env(char *key)
 {
 	char *value;
 
@@ -25,7 +25,7 @@ void	env_to_env(char *key)
 	ft_strdel(&value);
 }
 
-void	intern_to_env(char *key)
+void			intern_to_env(char *key)
 {
 	char	*value;
 	char	same;
@@ -46,7 +46,7 @@ void	intern_to_env(char *key)
 	ft_strdel(&value);
 }
 
-static int			check_options(int ac, char **av)
+static int		check_options(int ac, char **av)
 {
 	int i;
 
@@ -73,7 +73,7 @@ static int			check_options(int ac, char **av)
 	return (0);
 }
 
-static int			exec_export(char *key, char *ptr)
+static int		exec_export(char *key, char *ptr)
 {
 	char	*value;
 
@@ -100,7 +100,7 @@ static int			exec_export(char *key, char *ptr)
 	}
 }
 
-int		export_builtin(int ac, char **av)
+int				export_builtin(int ac, char **av)
 {
 	int		i;
 	char	*ptr;
@@ -109,7 +109,7 @@ int		export_builtin(int ac, char **av)
 
 	if (check_options(ac, av))
 		return (1);
-	i = ft_strnequ(av[1], "-p", 2);;
+	i = ft_strnequ(av[1], "-p", 2);
 	ret = 0;
 	while (++i < ac)
 	{

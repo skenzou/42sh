@@ -6,13 +6,13 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/04 23:39:19 by midrissi          #+#    #+#             */
-/*   Updated: 2019/06/05 09:06:56 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/06/07 06:04:47 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-static void				print_htable()
+static void			print_htable(void)
 {
 	t_list	*list;
 	int		i;
@@ -33,7 +33,7 @@ static void				print_htable()
 	}
 }
 
-static void				empty_table()
+static void			empty_table(void)
 {
 	t_list	*list;
 	int		i;
@@ -50,7 +50,7 @@ static void				empty_table()
 	ft_lstdestroy(&g_shell->hash_indexes);
 }
 
-static int				check_options(int ac, char **av)
+static int			check_options(int ac, char **av)
 {
 	int i;
 
@@ -83,7 +83,7 @@ static void			hash_err(char *str)
 	ft_putendl_fd(": not found", 2);
 }
 
-int		hash_builtin(int ac, char **av)
+int					hash_builtin(int ac, char **av)
 {
 	int				ret;
 	int				i;
@@ -100,7 +100,7 @@ int		hash_builtin(int ac, char **av)
 			item->hit = 0;
 		else
 		{
-			if(!(item = hash_insert((unsigned char *)av[i], g_shell->env)))
+			if (!(item = hash_insert((unsigned char *)av[i], g_shell->env)))
 			{
 				ret++;
 				hash_err(av[i]);

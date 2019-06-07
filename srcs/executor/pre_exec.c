@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/24 13:50:03 by midrissi          #+#    #+#             */
-/*   Updated: 2019/06/05 09:06:26 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/06/07 06:14:28 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ t_builtin		*get_builtin(char *cmd)
 	return (NULL);
 }
 
-int		ft_pre_execution(char ***args, int redir, t_builtin **builtin)
+int				ft_pre_execution(char ***args, int redir, t_builtin **builtin)
 {
 	int err;
 

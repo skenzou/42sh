@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 18:46:30 by midrissi          #+#    #+#             */
-/*   Updated: 2019/06/04 04:17:08 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/06/07 06:20:07 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,19 +65,6 @@ void					ft_setenv(char *key, char *value, char ***env)
 	else
 		*env = !value ? addkey(key, NULL, *env) : addkey(key, value, *env);
 	value ? ft_strdel(&key) : 0;
-}
-
-int			is_key_valid(char *key)
-{
-	if (!key || ft_isdigit(*key))
-		return (0);
-	while (*key)
-	{
-		if (!ft_isalnum(*key) && *key != '_')
-			return (0);
-		key++;
-	}
-	return (1);
 }
 
 static int				setenv_err(int err_id)

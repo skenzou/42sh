@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/14 23:53:49 by midrissi          #+#    #+#             */
-/*   Updated: 2019/06/04 19:11:31 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/06/07 06:03:19 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 ** Displays special signal caught while listening to a child.
 */
 
-static void    display_signal(int status, char *cmd)
+static void		display_signal(int status, char *cmd)
 {
 	if (status == SIGALRM)
 		ft_printf(ANSI_RED"[TIMEOUT] %s\n"ANSI_RESET, cmd);
@@ -38,10 +38,10 @@ static void    display_signal(int status, char *cmd)
 ** Returns -1 for anormal exits and update_pid_table.
 */
 
-int    ft_waitprocess(pid_t pid, char **cmd)
+int				ft_waitprocess(pid_t pid, char **cmd)
 {
-	int        status;
-	t_child    *node;
+	int			status;
+	t_child		*node;
 
 	waitpid(pid, &status, WUNTRACED);
 	if (WIFEXITED(status))
@@ -64,7 +64,7 @@ int    ft_waitprocess(pid_t pid, char **cmd)
 ** the g_pid_table.
 */
 
-int		ft_fork_amper(char **cmd, char **env)
+int				ft_fork_amper(char **cmd, char **env)
 {
 	pid_t	pid;
 
@@ -79,7 +79,7 @@ int		ft_fork_amper(char **cmd, char **env)
 	return (0);
 }
 
-int	ft_fork(char **cmd, char **env)
+int				ft_fork(char **cmd, char **env)
 {
 	pid_t pid;
 
