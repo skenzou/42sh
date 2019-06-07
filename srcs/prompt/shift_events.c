@@ -60,35 +60,54 @@ int		shift_arrow_down_event(t_cap *tcap)
 
 int		shift_arrow_right_event(t_cap *tcap)
 {
-	int index;
+	int p;
 
-	index = ft_indexof(tcap->command + (tcap->cursx - tcap->prompt_len), ' ');
-	while (((tcap->cursx - tcap->prompt_len) + index) < tcap->char_len)
-		if (tcap->command[(tcap->cursx - tcap->prompt_len) + index] == ' ')
-			index++;
-		else
-			break ;
-	if (index)
-		ft_move(tcap, "right", index);
-	else
+	p = tcap->cursy * (tcap->cursx_max + 1) + (tcap->cursx) - tcap->prompt_len;
+	if (p == tcap->char_len)
+	{
 		tputs(tcap->sound, 1, ft_put_termcaps);
+		return (1);
+	}
+	while (tcap->command[p] && tcap->command[p] != ' ')
+	{
+		ft_move(tcap, "right", 1);
+		p++;
+	}
+	while (tcap->command[p] == ' ')
+	{
+		ft_move(tcap, "right", 1);
+		p++;
+	}
 	return (1);
 }
 
 int		shift_arrow_left_event(t_cap *tcap)
 {
-	int position;
-	int i;
+	int p;
 
-	i = 0;
-	position = tcap->cursx - tcap->prompt_len - 1;
-	if (tcap->command[position] == ' ')
-		while (tcap->command[position] == ' ')
-			position--;
-	if (tcap->command[position] != ' ')
-		while (tcap->command[position] != ' ')
-			position--;
-	ft_move(tcap, "left", ((tcap->cursx - tcap->prompt_len) - position) - 1);
+	p = tcap->cursy * (tcap->cursx_max + 1) + (tcap->cursx) - tcap->prompt_len;
+
+	if (p)
+	{
+		ft_move(tcap, "left", 1);
+		p--;
+	}
+	else
+	{
+		tputs(tcap->sound, 1, ft_put_termcaps);
+		return (1);
+	}
+	while (p && tcap->command[p] == ' ')
+	{
+		ft_move(tcap, "left", 1);
+		p--;
+	}
+	while (p && tcap->command[p] && tcap->command[p] != ' ')
+	{
+		ft_move(tcap, "left", 1);
+		p--;
+	}
+	p && ft_move(tcap, "right", 1);
 	return (1);
 }
 
