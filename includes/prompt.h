@@ -118,6 +118,7 @@ typedef struct	s_cap
 typedef struct				s_cc
 {
 	int						state;
+	int						type; 
 	int						from;
 	int						to;
 	char					copied[BUFFSIZE];

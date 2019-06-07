@@ -17,6 +17,7 @@
 - [✓] Floation point exception avec fleche du bas
 - [✓] Home et End evenement
 - [✓] Copy/cut/past
+- [✓] SHIFT_UP et SHIFT_DOWN pour se deplacer dans une commande en haut et en bas
 - La gestion complète de l’historique :
 	- Les expansions :
 		- !! **commande precedente dans lhisto**
@@ -33,7 +34,7 @@
 - Gestion du redimensionnement de fenetre
 - Gestion des leaks
 - Deplacement par mots a regler
-- SHIFT_UP et SHIFT_DOWN pour se deplacer dans une commande en haut et en bas
+
 - Smart autocompletion
 - Protection getenv fichier historique
 

@@ -14,13 +14,47 @@
 
 int		shift_arrow_up_event(t_cap *tcap)
 {
-	(void)tcap;
+	if (!tcap->cursy || tcap->char_len + tcap->prompt_len < tcap->cursx_max + 2)
+		tputs(tcap->sound, 1, ft_put_termcaps);
+	else if (tcap->cursy == 1)
+	{
+		if (tcap->cursx >= tcap->prompt_len)
+		{
+			ft_move(tcap, "up", 1);
+			tcap->cursy--;
+		}
+		else
+			home_event(tcap);
+	}
+	else
+	{
+		ft_move(tcap, "up", 1);
+		tcap->cursy--;
+	}
 	return (1);
 }
 
 int		shift_arrow_down_event(t_cap *tcap)
 {
-	(void)tcap;
+	int p;
+	int ligne;
+
+	p = tcap->cursy * (tcap->cursx_max + 1) + (tcap->cursx) - tcap->prompt_len;
+	ligne = (tcap->char_len - p) - (tcap->cursx_max + 1 - tcap->cursx);
+	if (tcap->char_len + tcap->prompt_len < tcap->cursx_max + 2 || ligne < 0)
+		tputs(tcap->sound, 1, ft_put_termcaps);
+	else
+	{
+		ft_move(tcap, "down", 1);
+		tcap->cursy++;
+		if (tcap->cursx <= ligne)
+			ft_move(tcap, "!right", tcap->cursx);
+		else
+		{
+			ft_move(tcap, "!right", ligne);
+			tcap->cursx = ligne;
+		}
+	}
 	return (1);
 }
 

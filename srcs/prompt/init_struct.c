@@ -81,6 +81,7 @@ static int	init_copy_cut(t_cc *copy_cut)
 	copy_cut->state = 0;
 	copy_cut->from = -1;
 	copy_cut->to = -1;
+	copy_cut->type = -1;
 	ft_bzero(copy_cut->copied, BUFFSIZE);
 	return (1);
 }

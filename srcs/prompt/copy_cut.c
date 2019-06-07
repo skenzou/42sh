@@ -19,9 +19,12 @@ int		ft_copy(t_cap *tcap)
 	i = tcap->cursy * (tcap->cursx_max + 1) + (tcap->cursx) - tcap->prompt_len;
 	t_cc *copy_cut;
 	copy_cut = g_shell->copy_cut;
+	if (copy_cut->type != 0)
+		return (1);
 	if (copy_cut->state)
 	{
 		copy_cut->to = i;
+		copy_cut->type = -1;
 		if (copy_cut->to > copy_cut->from)
 		{
 			ft_bzero(copy_cut->copied, BUFFSIZE);
@@ -33,6 +36,7 @@ int		ft_copy(t_cap *tcap)
 	{
 		copy_cut->from = i;
 		copy_cut->state = 1;
+		copy_cut->type = 0;
 	}
 	return (1);
 }
@@ -46,9 +50,12 @@ int		ft_cut(t_cap *tcap)
 	t_cc *copy_cut;
 	int a = -1;
 	copy_cut = g_shell->copy_cut;
-	if (copy_cut->state)
+	if (copy_cut->type != 1)
+		return (1);
+	else if (copy_cut->state)
 	{
 		copy_cut->to = i;
+		copy_cut->type = -1;
 		if (copy_cut->to > copy_cut->from)
 		{
 			ft_bzero(copy_cut->copied, BUFFSIZE);
@@ -62,6 +69,7 @@ int		ft_cut(t_cap *tcap)
 	{
 		copy_cut->from = i;
 		copy_cut->state = 1;
+		copy_cut->type = 1;
 	}
 	return (1);
 }
