@@ -1,5 +1,6 @@
 # 42sh
 
+## NE PAS OUBLIER DE SUPPRIMER L'HISTORIQUE SINON CA VA BUG
 ## Current tasks
 
 - Midrissi : core of the project (parser, lexer, executor, ...)
