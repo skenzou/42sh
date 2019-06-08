@@ -112,8 +112,17 @@ typedef struct	s_cap
 	int			overflow;
 	char		carry[2];
 	char		*prompt;
-
 }				t_cap;
+
+typedef struct				s_ctrl_r
+{
+	int						state;
+	int						index;
+	int						not_found;
+	char				 	data[BUFFSIZE];
+	char				 	found[BUFFSIZE];
+}							t_ctrl_r;
+
 
 typedef struct				s_cc
 {
@@ -229,6 +238,14 @@ void	ft_clear_all_lines(t_cap *tcap);
 
 void		print_prompt_prefix(void);
 
+/*
+** CTRL_R.c
+*/
+
+int		add_buffer_ctrl_r(char *buffer, t_ctrl_r *ctrl_r);
+int 	back_i_search(t_ctrl_r *ctrl_r, t_cap *tcap);
+int		clear_before_ctrl_r(t_cap *tcap, t_ctrl_r *ctrl_r);
+int 	end_ctrl_r(t_ctrl_r *ctrl_r);
 /*
 **	OTHERS.C
 */

@@ -1,827 +1,1094 @@
-p 2 15
-p 2 15
-p 2 15
-p 2 15
-p 2 15
-p 2 15
-p 2 15
-p 2 2/15
-p 2 3/15
-p 2 4/15
-p 2 5/15
-p 2 6/15
-p 2 7/15
-p 2 8/15
-p 2 9/15
-p 2 10/15
-p 2 11/15
-p 2 12/15
-p 2 13/15
-p 2 14/15
-p 2 15/15
-p 2 0/15
-p 2 1/15
-p 2 2/15
-p 2 3/15
-p 34 34/34
-p 34 17/34
-p 34 18/34
-p 34 19/34
-p 34 20/34
-p 34 21/34
-p 34 22/34
-p 34 23/34
-p 34 24/34
-p 34 25/34
-p 34 26/34
-p 34 27/34
-p 34 34/34
-p 34 0/34
-p 34 1/34
-p 34 2/34
-p 34 3/34
-p 34 7/15
-p 34 8/15
-p 34 34/49
-p 34 35/49
-p 34 36/49
-p 34 37/49
-p 34 38/49
-p 34 39/49
-p 34 40/49
-p 34 41/49
-p 34 42/49
-p 34 43/49
-p 34 44/49
-p 34 45/49
-p 34 46/77
-p 34 47/77
-p 34 48/77
-p 34 49/77
-p 34 50/77
-p 34 51/77
-p 34 52/77
-p 34 53/77
-p 34 54/77
-p 34 55/77
-p 34 56/77
-p 34 57/77
-p 34 58/77
-p 34 59/77
-p 34 60/77
-p 34 61/77
-p 34 62/77
-p 34 63/77
-p 34 64/77
-p 34 65/77
-p 34 66/77
-p 34 67/77
-p 34 68/77
-p 34 69/77
-p 34 70/77
-p 34 71/77
-p 34 72/77
-p 34 73/77
-p 34 74/77
-p 34 75/77
-p 34 76/77
-p 34 77/77
-p 34 0/77
-p 34 1/77
-p 34 2/77
-p 34 3/77
-p 34 4/77
-p 34 5/77
-p 34 6/77
-p 34 7/77
-p 34 8/77
-p 34 9/77
-p 34 10/77
-p 34 11/77
-p 34 12/77
-p 34 13/77
-p 34 14/77
-p 34 15/77
-p 34 16/77
-p 34 18/77
-p 34 19/77
-p 34 20/77
-p 34 21/77
-p 34 22/77
-p 34 23/77
-p 34 24/77
-p 34 25/77
-p 34 26/77
-p 34 27/77
-p 34 29/77
-p 34 30/77
-p 34 31/77
-p 34 32/77
-p 34 33/77
-p 34 34/77
-p 34 35/77
-p 34 36/77
-p 34 37/77
-p 34 38/77
-p 34 39/77
-p 34 40/77
-p 34 41/77
-p 34 42/77
-p 34 43/77
-p 34 45/77
-p 34 46/77
-p 34 47/77
-p 34 48/77
-p 34 49/77
-p 34 50/77
-p 34 51/77
-p 34 52/77
-p 34 53/77
-p 34 54/77
-p 34 55/77
-p 34 56/77
-p 34 57/77
-p 34 58/77
-p 34 59/77
-p 34 60/77
-p 34 61/77
-p 34 62/77
-p 34 63/77
-p 34 64/77
-p 34 65/77
-p 34 66/77
-p 34 34/77
-p 34 34/77
-p 34 35/77
-p 34 36/77
-p 34 37/77
-p 34 38/77
-p 34 39/77
-p 34 40/77
-p 34 41/77
-p 34 42/77
-p 34 43/77
-p 8 18/25
-p 8 19/25
-p 8 20/25
-p 8 21/25
-p 8 22/25
-p 8 23/25
-p 8 24/25
-p 8 25/25
-p 8 0/25
-p 8 1/25
-p 8 2/25
-p 8 3/25
-p 8 4/25
-p 8 5/25
-p 8 6/25
-p 8 7/25
-p 8 8/25
-p 8 9/25
-p 8 10/25
-p 8 11/25
-p 8 12/25
-p 8 13/25
-p 8 14/25
-p 8 15/25
-p 8 16/25
-p 8 17/25
-p 8 18/25
-p 8 19/25
-p 8 20/25
-p 8 21/25
-p 8 22/25
-p 8 23/25
-p 8 24/25
-p 8 25/25
-p 8 0/25
-p 8 1/25
-p 8 2/25
-p 8 3/25
-p 8 4/25
-p 8 5/25
-p 8 2/13
-p 8 3/13
-p 8 4/13
-p 8 5/13
-p 8 6/13
-p 8 7/13
-p 8 8/13
-p 8 9/13
-p 8 10/13
-p 8 11/13
-p 8 12/13
-p 8 13/13
-p 8 0/13
-p 8 1/13
-p 8 2/13
-p 8 3/13
-p 8 4/13
-p 8 5/13
-p 8 6/13
-p 8 7/13
-p 8 8/13
-p 8 9/13
-p 8 10/13
-p 8 11/13
-p 8 12/13
-p 8 13/13
-p 8 0/13
-p 8 1/13
-p 8 2/13
-p 8 3/13
-p 8 4/13
-p 8 5/13
-p 8 6/13
-p 8 7/13
-p 8 8/13
-p 8 9/13
-p 8 10/13
-p 8 11/13
-p 8 12/13
-p 8 13/13
-p 8 0/13
-p 8 1/13
-p 8 2/13
-p 8 3/13
-p 8 4/13
-p 8 5/13
-p 8 6/13
-p 8 7/13
-p 8 8/13
-p 8 9/13
-p 8 10/13
-p 8 11/13
-p 8 12/13
-p 8 13/13
-p 8 0/13
-p 8 1/13
-p 8 2/13
-p 8 3/13
-p 8 4/13
-p 8 5/13
-p 8 6/13
-p 8 7/13
-p 8 8/13
-p 8 9/13
-p 8 10/13
-p 8 11/13
-p 8 12/13
-p 8 13/13
-p 8 0/13
-p 8 1/13
-p 8 2/13
-p 8 3/13
-p 8 4/13
-p 8 5/13
-p 8 6/13
-p 8 7/13
-p 8 8/13
-p 8 9/13
-p 8 10/13
-p 8 11/13
-p 8 12/13
-p 8 13/13
-p 8 0/13
-p 8 1/13
-p 8 2/13
-p 8 3/13
-p 8 4/13
-p 8 5/13
-p 8 6/13
-p 8 7/13
-p 8 8/13
-p 8 9/13
-p 8 10/13
-p 8 11/13
-p 8 12/13
-p 8 13/13
-p 8 0/13
-p 8 1/13
-p 8 2/13
-p 8 3/13
-p 8 4/13
-p 8 5/13
-p 8 6/13
-p 8 7/13
-p 8 8/13
-p 8 9/13
-p 8 10/13
-p 8 11/13
-p 8 12/13
-p 8 13/13
-p 8 0/13
-p 8 1/13
-p 8 2/13
-p 8 3/13
-p 8 4/13
-p 8 5/13
-p 8 6/13
-p 8 7/13
-p 8 8/13
-p 8 9/13
-p 8 10/13
-p 8 11/13
-p 8 12/13
-p 8 13/13
-p 8 0/13
-p 8 1/13
-p 8 2/13
-p 8 3/13
-p 8 4/13
-p 8 5/13
-p 8 6/13
-p 8 7/13
-p 8 8/13
-p 8 9/13
-p 8 10/13
-p 8 11/13
-p 8 12/13
-p 8 13/13
-p 8 0/13
-p 8 1/13
-p 8 2/13
-p 8 3/13
-p 8 4/13
-p 8 5/13
-p 8 6/13
-p 8 7/13
-p 8 8/13
-p 8 9/13
-p 8 10/13
-p 8 11/13
-p 8 12/13
-p 8 13/13
-p 8 0/13
-p 8 1/13
-p 8 2/13
-p 8 3/13
-p 8 7/68
-p 8 8/68
-p 8 9/68
-p 8 10/68
-p 8 11/68
-p 8 12/68
-p 8 13/68
-p 8 14/68
-p 8 15/68
-p 8 16/68
-p 8 17/68
-p 8 18/68
-p 8 19/68
-p 8 20/68
-p 8 21/68
-p 8 22/68
-p 8 23/68
-p 8 24/68
-p 8 25/68
-p 8 26/68
-p 8 27/68
-p 8 28/68
-p 8 29/68
-p 8 30/68
-p 8 31/68
-p 8 32/68
-p 8 33/68
-p 8 34/68
-p 8 35/68
-p 8 36/68
-p 8 37/68
-p 8 38/68
-p 8 39/68
-p 8 40/68
-p 8 41/68
-p 8 42/68
-p 8 43/68
-p 8 44/68
-p 8 45/68
-p 8 46/68
-p 8 47/68
-p 8 48/68
-p 8 49/68
-p 34 34/68
-p 34 35/68
-p 34 36/68
-p 34 37/68
-p 34 38/68
-p 34 39/68
-p 34 40/68
-p 34 41/68
-p 34 42/68
-p 34 43/68
-p 34 44/68
-p 34 45/68
-p 34 46/96
-p 34 47/96
-p 34 48/96
-p 34 49/96
-p 34 50/96
-p 34 51/96
-p 34 52/96
-p 34 53/96
-p 34 54/96
-p 34 55/96
-p 34 56/96
-p 34 57/96
-p 34 58/96
-p 34 59/96
-p 34 60/96
-p 34 61/96
-p 34 62/96
-p 34 63/96
-p 34 64/96
-p 34 65/96
-p 34 66/96
-p 34 67/96
-p 34 68/96
-p 34 69/96
-p 34 70/96
-p 34 71/96
-p 34 72/96
-p 34 73/96
-p 34 74/96
-p 34 75/96
-p 34 76/96
-p 34 77/96
-p 34 78/96
-p 34 79/96
-p 34 80/96
-p 34 81/96
-p 34 82/96
-p 34 83/96
-p 34 84/96
-p 34 85/96
-p 34 86/96
-p 34 87/96
-p 34 88/96
-p 34 89/96
-p 34 90/96
-p 34 91/96
-p 34 92/96
-p 34 93/96
-p 34 94/96
-p 34 95/96
-p 34 96/96
-p 34 0/96
-p 34 1/96
-p 34 2/96
-p 34 3/96
-p 34 4/96
-p 34 5/96
-p 34 6/96
-p 34 7/96
-p 34 8/96
-p 34 9/96
-p 34 10/96
-p 34 11/96
-p 34 12/96
-p 34 13/96
-p 34 14/96
-p 34 15/96
-p 34 34/96
-p 34 34/96
-p 34 35/96
-p 34 36/96
-p 34 37/96
-p 34 38/96
-p 34 39/96
-p 34 40/96
-p 34 41/96
-p 34 42/96
-p 34 34/96
-p 34 34/96
-p 34 35/96
-p 34 36/96
-p 34 37/96
-p 34 38/96
-p 34 39/96
-p 34 40/96
-p 34 41/96
-p 34 42/96
-p 34 43/96
-p 34 44/96
-p 34 45/96
-p 34 46/96
-p 34 47/96
-p 34 48/96
-p 34 49/96
-p 34 50/96
-p 34 51/96
-p 34 52/96
-p 6 25/27
-p 6 26/27
-p 6 27/27
-p 6 0/27
-p 6 1/27
-p 6 2/27
-p 6 3/27
-p 6 4/27
-p 6 5/27
-p 6 6/27
-p 6 7/27
-p 6 8/27
-p 6 9/27
-p 6 10/27
-p 6 11/27
-p 6 12/27
-p 6 13/27
-p 6 14/27
-p 6 15/27
-p 6 16/27
-p 6 17/27
-p 6 18/27
-p 6 19/27
-p 6 20/27
-p 6 21/27
-p 6 22/27
-p 6 23/27
-p 6 24/27
-p 6 25/27
-p 6 26/27
-p 6 27/27
-p 6 0/27
-p 34 27/57
-p 34 28/57
-p 34 29/57
-p 34 30/57
-p 34 31/57
-p 34 32/57
-p 34 33/57
-p 34 34/57
-p 34 35/57
-p 34 36/57
-p 34 37/57
-p 34 38/57
-p 34 39/57
-p 12 10/21
-p 12 11/21
-p 12 12/21
-p 12 13/21
-p 12 14/21
-p 12 15/21
-p 12 16/21
-p 12 17/21
-p 12 18/21
-p 12 19/21
-p 12 20/21
-p 12 21/21
-p 12 0/21
-p 12 1/21
-p 12 2/21
-p 12 3/21
-p 12 4/21
-p 12 5/21
-p 12 6/21
-p 6 5/6
-p 6 6/6
-p 6 0/6
-p 6 1/6
-p 6 2/6
-p 6 3/6
-p 6 4/6
-p 6 5/6
-p 6 6/6
-p 6 0/6
-p 6 1/6
-p 6 2/6
-p 6 3/6
-p 6 4/6
-p 6 5/6
-p 6 6/6
-p 6 0/6
-p 6 1/6
-p 6 2/6
-p 6 3/6
-p 6 4/6
-p 6 5/6
-p 6 6/6
-p 6 0/6
-p 6 1/6
-p 6 2/6
-p 6 3/6
-p 6 6/6
-p 34 34/49
-p 34 35/49
-p 34 36/49
-p 34 37/49
-p 34 38/49
-p 34 39/49
-p 34 40/49
-p 34 41/49
-p 34 42/49
-p 34 43/49
-p 34 44/49
-p 34 34/49
-p 34 34/49
-p 34 35/49
-p 34 36/49
-p 34 37/49
-p 34 38/49
-p 34 39/49
-p 34 40/49
-p 34 41/49
-p 34 42/49
-p 34 43/49
-p 34 34/49
-p 34 34/49
-p 34 42/49
-p 34 43/49
-p 34 42/49
-p 34 43/49
-p 34 34/49
-p 34 34/49
-p 34 34/49
-p 34 35/49
-p 34 36/49
-p 34 37/49
-p 34 38/49
-p 34 39/49
-p 34 40/49
-p 34 41/49
-p 34 34/49
-p 34 35/49
-p 34 36/49
-p 34 37/49
-p 34 38/49
-p 34 39/49
-p 34 40/49
-p 34 41/49
-p 34 42/49
-p 34 43/49
-p 34 44/49
-p 34 45/49
-p 34 46/49
-p 34 47/49
-p 34 48/49
-p 34 49/49
-p 34 0/49
-p 34 1/49
-p 34 2/49
-p 34 3/49
-p 34 4/49
-p 34 5/49
-p 34 6/49
-p 34 7/49
-p 34 8/49
-p 34 9/49
-p 34 10/49
-p 34 11/49
-p 34 12/49
-p 34 34/49
-p 34 35/49
-p 34 36/49
-p 34 37/49
-p 34 38/49
-p 34 39/49
-p 34 40/49
-p 34 41/49
-p 34 42/49
-p 34 43/49
-p 34 44/49
-p 34 45/49
-p 34 46/49
-p 34 47/49
-p 34 48/49
-p 34 49/49
-p 34 0/49
-p 34 1/49
-p 34 2/49
-p 34 3/49
-p 34 4/49
-p 34 5/49
-p 34 6/49
-p 34 7/49
-p 34 8/49
-p 34 9/49
-p 34 10/49
-p 34 11/49
-p 34 12/49
-p 34 11/49
-p 34 12/49
-p 34 13/49
-p 34 14/49
-p 34 34/49
-p 34 35/49
-p 34 36/49
-p 34 37/49
-p 34 38/49
-p 34 39/49
-p 34 40/49
-p 34 41/49
-p 34 42/49
-p 34 43/49
-p 34 44/49
-p 34 45/49
-p 34 46/49
-p 34 47/49
-p 34 48/49
-p 34 49/49
-p 34 0/49
-p 34 1/49
-p 34 2/49
-p 34 3/49
-p 34 4/49
-p 34 5/49
-p 34 6/49
-p 34 7/49
-p 34 8/49
-p 34 9/49
-p 34 10/49
-p 34 11/49
-p 34 12/49
-p 34 13/49
-p 34 14/49
-p 34 15/49
-p 34 16/49
-p 34 34/49
-p 34 35/49
-p 34 36/49
-p 34 37/49
-p 34 38/49
-p 34 39/49
-p 34 40/49
-p 34 41/49
-p 34 42/49
-p 34 43/49
-p 34 44/49
-p 34 45/49
-p 34 46/49
-p 34 47/49
-p 34 48/49
-p 34 49/49
-p 34 0/49
-p 34 1/49
-p 34 2/49
-p 34 3/49
-p 34 4/49
-p 34 5/49
-p 34 6/49
-p 34 7/49
-p 34 8/49
-p 34 9/49
-p 34 10/49
-p 34 34/49
-p 34 35/49
-p 34 36/49
-p 34 37/49
-p 34 38/49
-p 34 39/49
-p 34 40/49
-p 34 41/49
-p 34 42/49
-p 34 43/49
-p 34 44/49
-p 34 43/49
-p 34 44/49
-p 34 45/49
-p 34 46/49
-p 34 47/49
-p 34 48/49
-p 34 49/49
-p 34 0/49
-p 34 1/49
-p 34 2/49
-p 34 3/49
-p 34 4/49
-p 34 5/49
-p 34 6/49
-p 34 7/49
-p 34 8/49
-p 34 9/49
-p 34 10/49
-p 34 11/49
-p 34 12/49
-p 34 13/49
-p 34 14/49
-p 34 15/49
-p 34 16/49
-p 34 34/49
-p 34 35/49
-p 34 36/49
-p 34 37/49
-p 34 38/49
-p 34 39/49
-p 34 40/49
-p 34 41/49
-p 34 42/49
-p 34 43/49
-p 34 44/49
-p 34 45/49
-p 34 46/49
-p 34 47/49
-p 34 48/49
-p 34 49/49
-p 34 0/49
-p 34 1/49
-p 34 2/49
-p 34 3/49
-p 34 4/49
-p 34 5/49
-p 34 6/49
-p 34 7/49
-p 34 8/49
-p 34 9/49
-p 34 10/49
-p 34 11/49
-p 34 12/49
+compare lol
+ == g|4
+compare git add jpp
+ == g|12
+compare git add jpp
+ == d|12
+compare lol
+ == d|4
+compare git add jpp
+ == d|12
+compare pote 
+ == d|6
+compare grosse
+ok mec
+ == d|14
+compare xd
+ == d|3
+compare ptet
+ == d|5
+compare non
+ == d|4
+compare jpp de ouf
+ == d|11
+compare ok mec
+ == d|7
+compare oui
+ == d|4
+compare jpp de ouf
+ == d|11
+compare ok mec
+ == d|7
+compare git add jpp
+ == de|12
+compare lol
+ == de|4
+compare git add jpp
+ == de|12
+compare pote 
+ == de|6
+compare grosse
+ok mec
+ == de|14
+compare xd
+ == de|3
+compare ptet
+ == de|5
+compare non
+ == de|4
+compare jpp de ouf
+ == de|11
+compare ok mec
+ == de|7
+compare oui
+ == de|4
+compare jpp de ouf
+ == de|11
+compare ok mec
+ == de|7
+compare git add jpp
+ == def|12
+compare lol
+ == def|4
+compare git add jpp
+ == def|12
+compare pote 
+ == def|6
+compare grosse
+ok mec
+ == def|14
+compare xd
+ == def|3
+compare ptet
+ == def|5
+compare non
+ == def|4
+compare jpp de ouf
+ == def|11
+compare ok mec
+ == def|7
+compare oui
+ == def|4
+compare jpp de ouf
+ == def|11
+compare ok mec
+ == def|7
+compare default
+ == g|8
+compare git add jpp
+ == g|12
+compare default
+ == gi|8
+compare git add jpp
+ == gi|12
+compare default
+ == git|8
+compare git add jpp
+ == git|12
+compare default
+ == git |8
+compare git add jpp
+ == git |12
+compare default
+ == git a|8
+compare git add jpp
+ == git a|12
+compare default
+ == git ad|8
+compare git add jpp
+ == git ad|12
+compare default
+ == git add|8
+compare git add jpp
+ == git add|12
+compare default
+ == git add |8
+compare git add jpp
+ == git add |12
+compare default
+ == git add j|8
+compare git add jpp
+ == git add j|12
+compare default
+ == git add jp|8
+compare git add jpp
+ == git add jp|12
+compare default
+ == git add jpp|8
+compare git add jpp
+ == git add jpp|12
+compare git add jpp
+ == g|12
+compare git add jpp
+ == gr|12
+compare default
+ == gr|8
+compare git add jpp
+ == gr|12
+compare lol
+ == gr|4
+compare git add jpp
+ == gr|12
+compare pote 
+ == gr|6
+compare grosse
+ok mec
+ == gr|14
+compare git add jpp
+ == gro|12
+compare default
+ == gro|8
+compare git add jpp
+ == gro|12
+compare lol
+ == gro|4
+compare git add jpp
+ == gro|12
+compare pote 
+ == gro|6
+compare grosse
+ok mec
+ == gro|14
+compare git add jpp
+ == o|12
+compare default
+ == o|8
+compare git add jpp
+ == o|12
+compare lol
+ == o|4
+compare git add jpp
+ == o|12
+compare pote 
+ == o|6
+compare grosse
+ok mec
+ == o|14
+compare xd
+ == o|3
+compare ptet
+ == o|5
+compare non
+ == o|4
+compare jpp de ouf
+ == o|11
+compare ok mec
+ == o|7
+compare git add jpp
+ == ok|12
+compare default
+ == ok|8
+compare git add jpp
+ == ok|12
+compare lol
+ == ok|4
+compare git add jpp
+ == ok|12
+compare pote 
+ == ok|6
+compare grosse
+ok mec
+ == ok|14
+compare xd
+ == ok|3
+compare ptet
+ == ok|5
+compare non
+ == ok|4
+compare jpp de ouf
+ == ok|11
+compare ok mec
+ == ok|7
+compare git add jpp
+ == okm|12
+compare default
+ == okm|8
+compare git add jpp
+ == okm|12
+compare lol
+ == okm|4
+compare git add jpp
+ == okm|12
+compare pote 
+ == okm|6
+compare grosse
+ok mec
+ == okm|14
+compare xd
+ == okm|3
+compare ptet
+ == okm|5
+compare non
+ == okm|4
+compare jpp de ouf
+ == okm|11
+compare ok mec
+ == okm|7
+compare oui
+ == okm|4
+compare jpp de ouf
+ == okm|11
+compare ok mec
+ == okm|7
+compare git add jpp
+ == okme|12
+compare default
+ == okme|8
+compare git add jpp
+ == okme|12
+compare lol
+ == okme|4
+compare git add jpp
+ == okme|12
+compare pote 
+ == okme|6
+compare grosse
+ok mec
+ == okme|14
+compare xd
+ == okme|3
+compare ptet
+ == okme|5
+compare non
+ == okme|4
+compare jpp de ouf
+ == okme|11
+compare ok mec
+ == okme|7
+compare oui
+ == okme|4
+compare jpp de ouf
+ == okme|11
+compare ok mec
+ == okme|7
+compare git add jpp
+ == okmec|12
+compare default
+ == okmec|8
+compare git add jpp
+ == okmec|12
+compare lol
+ == okmec|4
+compare git add jpp
+ == okmec|12
+compare pote 
+ == okmec|6
+compare grosse
+ok mec
+ == okmec|14
+compare xd
+ == okmec|3
+compare ptet
+ == okmec|5
+compare non
+ == okmec|4
+compare jpp de ouf
+ == okmec|11
+compare ok mec
+ == okmec|7
+compare oui
+ == okmec|4
+compare jpp de ouf
+ == okmec|11
+compare ok mec
+ == okmec|7
+compare defaut
+ == g|7
+compare git add jpp
+ == g|12
+compare defaut
+ == gi|7
+compare git add jpp
+ == gi|12
+compare defaut
+ == git|7
+compare git add jpp
+ == git|12
+compare git add jpp
+ == g|12
+compare git add jpp
+ == gr|12
+compare defaut
+ == gr|7
+compare git add jpp
+ == gr|12
+compare default
+ == gr|8
+compare git add jpp
+ == gr|12
+compare lol
+ == gr|4
+compare git add jpp
+ == gr|12
+compare pote 
+ == gr|6
+compare grosse
+ok mec
+ == gr|14
+compare git add jpp
+ == gro|12
+compare defaut
+ == gro|7
+compare git add jpp
+ == gro|12
+compare default
+ == gro|8
+compare git add jpp
+ == gro|12
+compare lol
+ == gro|4
+compare git add jpp
+ == gro|12
+compare pote 
+ == gro|6
+compare grosse
+ok mec
+ == gro|14
+compare jpp xd
+ == j|7
+compare jpp xd
+ == j|7
+compare jpp xd
+ == jp|7
+compare jpp xd
+ == e|7
+compare echo xd
+ == e|8
+compare t vrmt un tare
+ == t|15
+compare t vrmt un tare
+ == t|15
+compare t vrmt un tare
+ == t |15
+compare t vrmt un tare
+ == t u|15
+compare t un ouf
+ == t u|9
+compare eerer
+ == o|6
+compare 
+ == o|1
+compare t un ouf
+ == o|9
+compare t vrmt un tare
+ == o|15
+compare t un ouf
+ == o|9
+compare ok mon pote
+ == o|12
+compare eerer
+ == ok|6
+compare 
+ == ok|1
+compare t un ouf
+ == ok|9
+compare t vrmt un tare
+ == ok|15
+compare t un ouf
+ == ok|9
+compare ok mon pote
+ == ok|12
+compare ok mon pote
+ == f|12
+compare eerer
+ == f|6
+compare 
+ == f|1
+compare t un ouf
+ == f|9
+compare t vrmt un tare
+ == f|15
+compare t un ouf
+ == f|9
+compare ok mon pote
+ == f|12
+compare ok mon pote
+ == fd|12
+compare eerer
+ == fd|6
+compare 
+ == fd|1
+compare t un ouf
+ == fd|9
+compare t vrmt un tare
+ == fd|15
+compare t un ouf
+ == fd|9
+compare ok mon pote
+ == fd|12
+compare ok mon pote
+ == fdf|12
+compare eerer
+ == fdf|6
+compare 
+ == fdf|1
+compare t un ouf
+ == fdf|9
+compare t vrmt un tare
+ == fdf|15
+compare t un ouf
+ == fdf|9
+compare ok mon pote
+ == fdf|12
+compare ok mon pote
+ == fdfd|12
+compare eerer
+ == fdfd|6
+compare 
+ == fdfd|1
+compare t un ouf
+ == fdfd|9
+compare t vrmt un tare
+ == fdfd|15
+compare t un ouf
+ == fdfd|9
+compare ok mon pote
+ == fdfd|12
+compare ok mon pote
+ == fdfdf|12
+compare eerer
+ == fdfdf|6
+compare 
+ == fdfdf|1
+compare t un ouf
+ == fdfdf|9
+compare t vrmt un tare
+ == fdfdf|15
+compare t un ouf
+ == fdfdf|9
+compare ok mon pote
+ == fdfdf|12
+compare ouais
+ == f|6
+compare ok mon pote
+ == f|12
+compare eerer
+ == f|6
+compare 
+ == f|1
+compare t un ouf
+ == f|9
+compare t vrmt un tare
+ == f|15
+compare t un ouf
+ == f|9
+compare ok mon pote
+ == f|12
+compare ouais
+ == fk|6
+compare ok mon pote
+ == fk|12
+compare eerer
+ == fk|6
+compare 
+ == fk|1
+compare t un ouf
+ == fk|9
+compare t vrmt un tare
+ == fk|15
+compare t un ouf
+ == fk|9
+compare ok mon pote
+ == fk|12
+compare ouais
+ == fkd|6
+compare ok mon pote
+ == fkd|12
+compare eerer
+ == fkd|6
+compare 
+ == fkd|1
+compare t un ouf
+ == fkd|9
+compare t vrmt un tare
+ == fkd|15
+compare t un ouf
+ == fkd|9
+compare ok mon pote
+ == fkd|12
+compare ouais
+ == fkds|6
+compare ok mon pote
+ == fkds|12
+compare eerer
+ == fkds|6
+compare 
+ == fkds|1
+compare t un ouf
+ == fkds|9
+compare t vrmt un tare
+ == fkds|15
+compare t un ouf
+ == fkds|9
+compare ok mon pote
+ == fkds|12
+compare ouais
+ == fkdsj|6
+compare ok mon pote
+ == fkdsj|12
+compare eerer
+ == fkdsj|6
+compare 
+ == fkdsj|1
+compare t un ouf
+ == fkdsj|9
+compare t vrmt un tare
+ == fkdsj|15
+compare t un ouf
+ == fkdsj|9
+compare ok mon pote
+ == fkdsj|12
+compare ouais
+ == fkdsjl|6
+compare ok mon pote
+ == fkdsjl|12
+compare eerer
+ == fkdsjl|6
+compare 
+ == fkdsjl|1
+compare t un ouf
+ == fkdsjl|9
+compare t vrmt un tare
+ == fkdsjl|15
+compare t un ouf
+ == fkdsjl|9
+compare ok mon pote
+ == fkdsjl|12
+compare ouais
+ == fkdsjlf|6
+compare ok mon pote
+ == fkdsjlf|12
+compare eerer
+ == fkdsjlf|6
+compare 
+ == fkdsjlf|1
+compare t un ouf
+ == fkdsjlf|9
+compare t vrmt un tare
+ == fkdsjlf|15
+compare t un ouf
+ == fkdsjlf|9
+compare ok mon pote
+ == fkdsjlf|12
+compare ouais
+ == fkdsjlfd|6
+compare ok mon pote
+ == fkdsjlfd|12
+compare eerer
+ == fkdsjlfd|6
+compare 
+ == fkdsjlfd|1
+compare t un ouf
+ == fkdsjlfd|9
+compare t vrmt un tare
+ == fkdsjlfd|15
+compare t un ouf
+ == fkdsjlfd|9
+compare ok mon pote
+ == fkdsjlfd|12
+compare ouais
+ == fkdsjlfdj|6
+compare ok mon pote
+ == fkdsjlfdj|12
+compare eerer
+ == fkdsjlfdj|6
+compare 
+ == fkdsjlfdj|1
+compare t un ouf
+ == fkdsjlfdj|9
+compare t vrmt un tare
+ == fkdsjlfdj|15
+compare t un ouf
+ == fkdsjlfdj|9
+compare ok mon pote
+ == fkdsjlfdj|12
+compare ouais
+ == fkdsjlfdjs|6
+compare ok mon pote
+ == fkdsjlfdjs|12
+compare eerer
+ == fkdsjlfdjs|6
+compare 
+ == fkdsjlfdjs|1
+compare t un ouf
+ == fkdsjlfdjs|9
+compare t vrmt un tare
+ == fkdsjlfdjs|15
+compare t un ouf
+ == fkdsjlfdjs|9
+compare ok mon pote
+ == fkdsjlfdjs|12
+compare ouais
+ == fkdsjlfdjsf|6
+compare ok mon pote
+ == fkdsjlfdjsf|12
+compare eerer
+ == fkdsjlfdjsf|6
+compare 
+ == fkdsjlfdjsf|1
+compare t un ouf
+ == fkdsjlfdjsf|9
+compare t vrmt un tare
+ == fkdsjlfdjsf|15
+compare t un ouf
+ == fkdsjlfdjsf|9
+compare ok mon pote
+ == fkdsjlfdjsf|12
+compare ouais
+ == fkdsjlfdjsfl|6
+compare ok mon pote
+ == fkdsjlfdjsfl|12
+compare eerer
+ == fkdsjlfdjsfl|6
+compare 
+ == fkdsjlfdjsfl|1
+compare t un ouf
+ == fkdsjlfdjsfl|9
+compare t vrmt un tare
+ == fkdsjlfdjsfl|15
+compare t un ouf
+ == fkdsjlfdjsfl|9
+compare ok mon pote
+ == fkdsjlfdjsfl|12
+compare ouais
+ == fkdsjlfdjsflk|6
+compare ok mon pote
+ == fkdsjlfdjsflk|12
+compare eerer
+ == fkdsjlfdjsflk|6
+compare 
+ == fkdsjlfdjsflk|1
+compare t un ouf
+ == fkdsjlfdjsflk|9
+compare t vrmt un tare
+ == fkdsjlfdjsflk|15
+compare t un ouf
+ == fkdsjlfdjsflk|9
+compare ok mon pote
+ == fkdsjlfdjsflk|12
+compare ouais
+ == fkdsjlfdjsflks|6
+compare ok mon pote
+ == fkdsjlfdjsflks|12
+compare eerer
+ == fkdsjlfdjsflks|6
+compare 
+ == fkdsjlfdjsflks|1
+compare t un ouf
+ == fkdsjlfdjsflks|9
+compare t vrmt un tare
+ == fkdsjlfdjsflks|15
+compare t un ouf
+ == fkdsjlfdjsflks|9
+compare ok mon pote
+ == fkdsjlfdjsflks|12
+compare ouais
+ == fkdsjlfdjsflksd|6
+compare ok mon pote
+ == fkdsjlfdjsflksd|12
+compare eerer
+ == fkdsjlfdjsflksd|6
+compare 
+ == fkdsjlfdjsflksd|1
+compare t un ouf
+ == fkdsjlfdjsflksd|9
+compare t vrmt un tare
+ == fkdsjlfdjsflksd|15
+compare t un ouf
+ == fkdsjlfdjsflksd|9
+compare ok mon pote
+ == fkdsjlfdjsflksd|12
+compare ouais
+ == fkdsjlfdjsflksdj|6
+compare ok mon pote
+ == fkdsjlfdjsflksdj|12
+compare eerer
+ == fkdsjlfdjsflksdj|6
+compare 
+ == fkdsjlfdjsflksdj|1
+compare t un ouf
+ == fkdsjlfdjsflksdj|9
+compare t vrmt un tare
+ == fkdsjlfdjsflksdj|15
+compare t un ouf
+ == fkdsjlfdjsflksdj|9
+compare ok mon pote
+ == fkdsjlfdjsflksdj|12
+compare ouais
+ == fkdsjlfdjsflksdjf|6
+compare ok mon pote
+ == fkdsjlfdjsflksdjf|12
+compare eerer
+ == fkdsjlfdjsflksdjf|6
+compare 
+ == fkdsjlfdjsflksdjf|1
+compare t un ouf
+ == fkdsjlfdjsflksdjf|9
+compare t vrmt un tare
+ == fkdsjlfdjsflksdjf|15
+compare t un ouf
+ == fkdsjlfdjsflksdjf|9
+compare ok mon pote
+ == fkdsjlfdjsflksdjf|12
+compare ouais
+ == fkdsjlfdjsflksdjfl|6
+compare ok mon pote
+ == fkdsjlfdjsflksdjfl|12
+compare eerer
+ == fkdsjlfdjsflksdjfl|6
+compare 
+ == fkdsjlfdjsflksdjfl|1
+compare t un ouf
+ == fkdsjlfdjsflksdjfl|9
+compare t vrmt un tare
+ == fkdsjlfdjsflksdjfl|15
+compare t un ouf
+ == fkdsjlfdjsflksdjfl|9
+compare ok mon pote
+ == fkdsjlfdjsflksdjfl|12
+compare ouais
+ == fkdsjlfdjsflksdjflk|6
+compare ok mon pote
+ == fkdsjlfdjsflksdjflk|12
+compare eerer
+ == fkdsjlfdjsflksdjflk|6
+compare 
+ == fkdsjlfdjsflksdjflk|1
+compare t un ouf
+ == fkdsjlfdjsflksdjflk|9
+compare t vrmt un tare
+ == fkdsjlfdjsflksdjflk|15
+compare t un ouf
+ == fkdsjlfdjsflksdjflk|9
+compare ok mon pote
+ == fkdsjlfdjsflksdjflk|12
+compare ouais
+ == fkdsjlfdjsflksdjflks|6
+compare ok mon pote
+ == fkdsjlfdjsflksdjflks|12
+compare eerer
+ == fkdsjlfdjsflksdjflks|6
+compare 
+ == fkdsjlfdjsflksdjflks|1
+compare t un ouf
+ == fkdsjlfdjsflksdjflks|9
+compare t vrmt un tare
+ == fkdsjlfdjsflksdjflks|15
+compare t un ouf
+ == fkdsjlfdjsflksdjflks|9
+compare ok mon pote
+ == fkdsjlfdjsflksdjflks|12
+compare ouais
+ == fkdsjlfdjsflksdjflksd|6
+compare ok mon pote
+ == fkdsjlfdjsflksdjflksd|12
+compare eerer
+ == fkdsjlfdjsflksdjflksd|6
+compare 
+ == fkdsjlfdjsflksdjflksd|1
+compare t un ouf
+ == fkdsjlfdjsflksdjflksd|9
+compare t vrmt un tare
+ == fkdsjlfdjsflksdjflksd|15
+compare t un ouf
+ == fkdsjlfdjsflksdjflksd|9
+compare ok mon pote
+ == fkdsjlfdjsflksdjflksd|12
+compare ouais
+ == fkdsjlfdjsflksdjflksdj|6
+compare ok mon pote
+ == fkdsjlfdjsflksdjflksdj|12
+compare eerer
+ == fkdsjlfdjsflksdjflksdj|6
+compare 
+ == fkdsjlfdjsflksdjflksdj|1
+compare t un ouf
+ == fkdsjlfdjsflksdjflksdj|9
+compare t vrmt un tare
+ == fkdsjlfdjsflksdjflksdj|15
+compare t un ouf
+ == fkdsjlfdjsflksdjflksdj|9
+compare ok mon pote
+ == fkdsjlfdjsflksdjflksdj|12
+compare ouais
+ == fkdsjlfdjsflksdjflksdjf|6
+compare ok mon pote
+ == fkdsjlfdjsflksdjflksdjf|12
+compare eerer
+ == fkdsjlfdjsflksdjflksdjf|6
+compare 
+ == fkdsjlfdjsflksdjflksdjf|1
+compare t un ouf
+ == fkdsjlfdjsflksdjflksdjf|9
+compare t vrmt un tare
+ == fkdsjlfdjsflksdjflksdjf|15
+compare t un ouf
+ == fkdsjlfdjsflksdjflksdjf|9
+compare ok mon pote
+ == fkdsjlfdjsflksdjflksdjf|12
+compare ouais
+ == fkdsjlfdjsflksdjflksdjfl|6
+compare ok mon pote
+ == fkdsjlfdjsflksdjflksdjfl|12
+compare eerer
+ == fkdsjlfdjsflksdjflksdjfl|6
+compare 
+ == fkdsjlfdjsflksdjflksdjfl|1
+compare t un ouf
+ == fkdsjlfdjsflksdjflksdjfl|9
+compare t vrmt un tare
+ == fkdsjlfdjsflksdjflksdjfl|15
+compare t un ouf
+ == fkdsjlfdjsflksdjflksdjfl|9
+compare ok mon pote
+ == fkdsjlfdjsflksdjflksdjfl|12
+compare ouais
+ == fkdsjlfdjsflksdjflksdjflk|6
+compare ok mon pote
+ == fkdsjlfdjsflksdjflksdjflk|12
+compare eerer
+ == fkdsjlfdjsflksdjflksdjflk|6
+compare 
+ == fkdsjlfdjsflksdjflksdjflk|1
+compare t un ouf
+ == fkdsjlfdjsflksdjflksdjflk|9
+compare t vrmt un tare
+ == fkdsjlfdjsflksdjflksdjflk|15
+compare t un ouf
+ == fkdsjlfdjsflksdjflksdjflk|9
+compare ok mon pote
+ == fkdsjlfdjsflksdjflksdjflk|12
+compare ouais
+ == fkdsjlfdjsflksdjflksdjflkd|6
+compare ok mon pote
+ == fkdsjlfdjsflksdjflksdjflkd|12
+compare eerer
+ == fkdsjlfdjsflksdjflksdjflkd|6
+compare 
+ == fkdsjlfdjsflksdjflksdjflkd|1
+compare t un ouf
+ == fkdsjlfdjsflksdjflksdjflkd|9
+compare t vrmt un tare
+ == fkdsjlfdjsflksdjflksdjflkd|15
+compare t un ouf
+ == fkdsjlfdjsflksdjflksdjflkd|9
+compare ok mon pote
+ == fkdsjlfdjsflksdjflksdjflkd|12
+compare ouais
+ == fkdsjlfdjsflksdjflksdjflkds|6
+compare ok mon pote
+ == fkdsjlfdjsflksdjflksdjflkds|12
+compare eerer
+ == fkdsjlfdjsflksdjflksdjflkds|6
+compare 
+ == fkdsjlfdjsflksdjflksdjflkds|1
+compare t un ouf
+ == fkdsjlfdjsflksdjflksdjflkds|9
+compare t vrmt un tare
+ == fkdsjlfdjsflksdjflksdjflkds|15
+compare t un ouf
+ == fkdsjlfdjsflksdjflksdjflkds|9
+compare ok mon pote
+ == fkdsjlfdjsflksdjflksdjflkds|12
+compare ouais
+ == fkdsjlfdjsflksdjflksdjflkdsj|6
+compare ok mon pote
+ == fkdsjlfdjsflksdjflksdjflkdsj|12
+compare eerer
+ == fkdsjlfdjsflksdjflksdjflkdsj|6
+compare 
+ == fkdsjlfdjsflksdjflksdjflkdsj|1
+compare t un ouf
+ == fkdsjlfdjsflksdjflksdjflkdsj|9
+compare t vrmt un tare
+ == fkdsjlfdjsflksdjflksdjflkdsj|15
+compare t un ouf
+ == fkdsjlfdjsflksdjflksdjflkdsj|9
+compare ok mon pote
+ == fkdsjlfdjsflksdjflksdjflkdsj|12
+compare ouais
+ == fkdsjlfdjsflksdjflksdjflkdsjf|6
+compare ok mon pote
+ == fkdsjlfdjsflksdjflksdjflkdsjf|12
+compare eerer
+ == fkdsjlfdjsflksdjflksdjflkdsjf|6
+compare 
+ == fkdsjlfdjsflksdjflksdjflkdsjf|1
+compare t un ouf
+ == fkdsjlfdjsflksdjflksdjflkdsjf|9
+compare t vrmt un tare
+ == fkdsjlfdjsflksdjflksdjflkdsjf|15
+compare t un ouf
+ == fkdsjlfdjsflksdjflksdjflkdsjf|9
+compare ok mon pote
+ == fkdsjlfdjsflksdjflksdjflkdsjf|12
+compare ouais
+ == fkdsjlfdjsflksdjflksdjflkdsjfk|6
+compare ok mon pote
+ == fkdsjlfdjsflksdjflksdjflkdsjfk|12
+compare eerer
+ == fkdsjlfdjsflksdjflksdjflkdsjfk|6
+compare 
+ == fkdsjlfdjsflksdjflksdjflkdsjfk|1
+compare t un ouf
+ == fkdsjlfdjsflksdjflksdjflkdsjfk|9
+compare t vrmt un tare
+ == fkdsjlfdjsflksdjflksdjflkdsjfk|15
+compare t un ouf
+ == fkdsjlfdjsflksdjflksdjflkdsjfk|9
+compare ok mon pote
+ == fkdsjlfdjsflksdjflksdjflkdsjfk|12
+compare ouais
+ == fkdsjlfdjsflksdjflksdjflkdsjfkd|6
+compare ok mon pote
+ == fkdsjlfdjsflksdjflksdjflkdsjfkd|12
+compare eerer
+ == fkdsjlfdjsflksdjflksdjflkdsjfkd|6
+compare 
+ == fkdsjlfdjsflksdjflksdjflkdsjfkd|1
+compare t un ouf
+ == fkdsjlfdjsflksdjflksdjflkdsjfkd|9
+compare t vrmt un tare
+ == fkdsjlfdjsflksdjflksdjflkdsjfkd|15
+compare t un ouf
+ == fkdsjlfdjsflksdjflksdjflkdsjfkd|9
+compare ok mon pote
+ == fkdsjlfdjsflksdjflksdjflkdsjfkd|12
+compare ouais
+ == fkdsjlfdjsflksdjflksdjflkdsjfkdk|6
+compare ok mon pote
+ == fkdsjlfdjsflksdjflksdjflkdsjfkdk|12
+compare eerer
+ == fkdsjlfdjsflksdjflksdjflkdsjfkdk|6
+compare 
+ == fkdsjlfdjsflksdjflksdjflkdsjfkdk|1
+compare t un ouf
+ == fkdsjlfdjsflksdjflksdjflkdsjfkdk|9
+compare t vrmt un tare
+ == fkdsjlfdjsflksdjflksdjflkdsjfkdk|15
+compare t un ouf
+ == fkdsjlfdjsflksdjflksdjflkdsjfkdk|9
+compare ok mon pote
+ == fkdsjlfdjsflksdjflksdjflkdsjfkdk|12
+compare ouais
+ == fkdsjlfdjsflksdjflksdjflkdsjfkdkd|6
+compare ok mon pote
+ == fkdsjlfdjsflksdjflksdjflkdsjfkdkd|12
+compare eerer
+ == fkdsjlfdjsflksdjflksdjflkdsjfkdkd|6
+compare 
+ == fkdsjlfdjsflksdjflksdjflkdsjfkdkd|1
+compare t un ouf
+ == fkdsjlfdjsflksdjflksdjflkdsjfkdkd|9
+compare t vrmt un tare
+ == fkdsjlfdjsflksdjflksdjflkdsjfkdkd|15
+compare t un ouf
+ == fkdsjlfdjsflksdjflksdjflkdsjfkdkd|9
+compare ok mon pote
+ == fkdsjlfdjsflksdjflksdjflkdsjfkdkd|12
+compare ouais
+ == fkdsjlfdjsflksdjflksdjflkdsjfkdkdk|6
+compare ok mon pote
+ == fkdsjlfdjsflksdjflksdjflkdsjfkdkdk|12
+compare eerer
+ == fkdsjlfdjsflksdjflksdjflkdsjfkdkdk|6
+compare 
+ == fkdsjlfdjsflksdjflksdjflkdsjfkdkdk|1
+compare t un ouf
+ == fkdsjlfdjsflksdjflksdjflkdsjfkdkdk|9
+compare t vrmt un tare
+ == fkdsjlfdjsflksdjflksdjflkdsjfkdkdk|15
+compare t un ouf
+ == fkdsjlfdjsflksdjflksdjflkdsjfkdkdk|9
+compare ok mon pote
+ == fkdsjlfdjsflksdjflksdjflkdsjfkdkdk|12
+compare ouais
+ == fkdsjlfdjsflksdjflksdjflkdsjfkdkdkd|6
+compare ok mon pote
+ == fkdsjlfdjsflksdjflksdjflkdsjfkdkdkd|12
+compare eerer
+ == fkdsjlfdjsflksdjflksdjflkdsjfkdkdkd|6
+compare 
+ == fkdsjlfdjsflksdjflksdjflkdsjfkdkdkd|1
+compare t un ouf
+ == fkdsjlfdjsflksdjflksdjflkdsjfkdkdkd|9
+compare t vrmt un tare
+ == fkdsjlfdjsflksdjflksdjflkdsjfkdkdkd|15
+compare t un ouf
+ == fkdsjlfdjsflksdjflksdjflkdsjfkdkdkd|9
+compare ok mon pote
+ == fkdsjlfdjsflksdjflksdjflkdsjfkdkdkd|12
+compare ouais
+ == fkdsjlfdjsflksdjflksdjflkdsjfkdkdkdk|6
+compare ok mon pote
+ == fkdsjlfdjsflksdjflksdjflkdsjfkdkdkdk|12
+compare eerer
+ == fkdsjlfdjsflksdjflksdjflkdsjfkdkdkdk|6
+compare 
+ == fkdsjlfdjsflksdjflksdjflkdsjfkdkdkdk|1
+compare t un ouf
+ == fkdsjlfdjsflksdjflksdjflkdsjfkdkdkdk|9
+compare t vrmt un tare
+ == fkdsjlfdjsflksdjflksdjflkdsjfkdkdkdk|15
+compare t un ouf
+ == fkdsjlfdjsflksdjflksdjflkdsjfkdkdkdk|9
+compare ok mon pote
+ == fkdsjlfdjsflksdjflksdjflkdsjfkdkdkdk|12
+compare ouais
+ == fkdsjlfdjsflksdjflksdjflkdsjfkdkdkdkd|6
+compare ok mon pote
+ == fkdsjlfdjsflksdjflksdjflkdsjfkdkdkdkd|12
+compare eerer
+ == fkdsjlfdjsflksdjflksdjflkdsjfkdkdkdkd|6
+compare 
+ == fkdsjlfdjsflksdjflksdjflkdsjfkdkdkdkd|1
+compare t un ouf
+ == fkdsjlfdjsflksdjflksdjflkdsjfkdkdkdkd|9
+compare t vrmt un tare
+ == fkdsjlfdjsflksdjflksdjflkdsjfkdkdkdkd|15
+compare t un ouf
+ == fkdsjlfdjsflksdjflksdjflkdsjfkdkdkdkd|9
+compare ok mon pote
+ == fkdsjlfdjsflksdjflksdjflkdsjfkdkdkdkd|12
+compare ouais
+ == fkdsjlfdjsflksdjflksdjflkdsjfkdkdkdkdk|6
+compare ok mon pote
+ == fkdsjlfdjsflksdjflksdjflkdsjfkdkdkdkdk|12
+compare eerer
+ == fkdsjlfdjsflksdjflksdjflkdsjfkdkdkdkdk|6
+compare 
+ == fkdsjlfdjsflksdjflksdjflkdsjfkdkdkdkdk|1
+compare t un ouf
+ == fkdsjlfdjsflksdjflksdjflkdsjfkdkdkdkdk|9
+compare t vrmt un tare
+ == fkdsjlfdjsflksdjflksdjflkdsjfkdkdkdkdk|15
+compare t un ouf
+ == fkdsjlfdjsflksdjflksdjflkdsjfkdkdkdkdk|9
+compare ok mon pote
+ == fkdsjlfdjsflksdjflksdjflkdsjfkdkdkdkdk|12
+compare ouais
+ == fkdsjlfdjsflksdjflksdjflkdsjfkdkdkdkdkd|6
+compare ok mon pote
+ == fkdsjlfdjsflksdjflksdjflkdsjfkdkdkdkdkd|12
+compare eerer
+ == fkdsjlfdjsflksdjflksdjflkdsjfkdkdkdkdkd|6
+compare 
+ == fkdsjlfdjsflksdjflksdjflkdsjfkdkdkdkdkd|1
+compare t un ouf
+ == fkdsjlfdjsflksdjflksdjflkdsjfkdkdkdkdkd|9
+compare t vrmt un tare
+ == fkdsjlfdjsflksdjflksdjflkdsjfkdkdkdkdkd|15
+compare t un ouf
+ == fkdsjlfdjsflksdjflksdjflkdsjfkdkdkdkdkd|9
+compare ok mon pote
+ == fkdsjlfdjsflksdjflksdjflkdsjfkdkdkdkdkd|12

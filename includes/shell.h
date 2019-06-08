@@ -88,6 +88,7 @@ typedef struct	s_shell
 	size_t		curr_pipe;
 	t_ab		*autocomp;
 	t_cc		*copy_cut;
+	t_ctrl_r	*ctrl_r;
 	t_term		*term;
 	t_term		*term_backup;
 	t_list		*temp_redir;

@@ -81,7 +81,12 @@ int		read_buffer(char *buffer, t_cap *tcap)
 	int key;
 
 	//dprintf(debug(), "avant {%d, %d, %d}|%s|\n",buffer[0], buffer[1], buffer[2], buffer);
-	 if (~ft_indexof(buffer, '\n'))
+	key = 0;
+	if (g_shell->ctrl_r->state && ft_isprint(buffer[0]))
+		return (add_buffer_ctrl_r(buffer, g_shell->ctrl_r));
+	else if (g_shell->ctrl_r->state && buffer[0] == ENTER)
+		return (end_ctrl_r(g_shell->ctrl_r));
+	else if (~ft_indexof(buffer, '\n'))
 	 	return (handle_eol(buffer, tcap));
 	else if (buffer[0] == SPACE && !buffer[1] && !buffer[2])
 		return (space_event(tcap));

@@ -42,12 +42,17 @@ int	debug_history(t_history *history)
 int	write_history(char *string, t_history *history)
 {
 	int fd;
+
+	if (!ft_strlen(string) || !ft_strcmp(string, " \n") ||
+		!ft_strcmp(string, "\n"))
+		return (1);
 	fd = open(history->file_name, O_RDWR | O_APPEND | O_CREAT, 0666);
 	if (fd > 0)
 	{
 		//ft_dprintf(fd, "%s#", string);
-		ft_putstr_fd(string, fd);
-		ft_putchar_fd('#', fd);
+		write(fd, string, ft_strlen(string) - 1);
+		//ft_putstr_fd(string, fd);
+		ft_putchar_fd(1, fd);
 		close(fd);
 		return (1);
 	}
@@ -64,10 +69,9 @@ int	read_history(t_history *history)
 	int			ret;
 	int			fd;
 
-	fd = open(history->file_name, O_RDWR | O_APPEND | O_CREAT, 0666);
-	if (fd > 0)
+	if (fd = open(history->file_name, O_RDWR | O_APPEND | O_CREAT, 0666)) > 0)
 	{
-		while ((ret = get_next_line(fd, &str, '#')) > 0)
+		while ((ret = get_next_line(fd, &str, 1)) > 0)
 		{
 			history->read++;
 			if (!(history->data[history->len++] =

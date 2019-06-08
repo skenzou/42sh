@@ -61,8 +61,6 @@ int		ft_insert(char *buff, t_cap *tcap)
 	int		position;
 	int		len;
 
-	dprintf(debug(), "p %d %d/%d\n",tcap->prompt_len, tcap->cursx, tcap->cursx_max);
-
 	if (tcap->char_len + ft_strlen(buff) >= BUFFSIZE - 2)
 		tputs(tcap->sound, 1, ft_put_termcaps);
 	else

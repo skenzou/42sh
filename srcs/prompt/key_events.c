@@ -33,7 +33,19 @@ int		enter_event(t_cap *tcap)
 
 int		backspace_event(t_cap *tcap)
 {
-	return (ft_delete_back(tcap));
+	t_ctrl_r *ctrl_r;
+
+	ctrl_r = g_shell->ctrl_r;
+	if (ctrl_r->state)
+	{
+		ctrl_r->index--;
+		ctrl_r->index = ft_max(ctrl_r->index, 0);
+		ctrl_r->data[ctrl_r->index] = '\0';
+		return (clear_before_ctrl_r(tcap, ctrl_r));
+	}
+	else
+		return (ft_delete_back(tcap));
+	return (1);
 }
 
 int		space_event(t_cap *tcap)
@@ -52,7 +64,20 @@ int		space_event(t_cap *tcap)
 
 int		ctrl_r_event(t_cap *tcap)
 {
-	ft_insert("ctrl_r", tcap);
+	t_ctrl_r *ctrl_r;
+
+	(void)tcap;
+	ctrl_r = g_shell->ctrl_r;
+	if ((ctrl_r->state = !ctrl_r->state))
+	{
+		ctrl_r->index = 0;
+		return (back_i_search(ctrl_r, tcap));
+	}
+	else
+	{
+		ft_bzero(ctrl_r->data, BUFFSIZE);
+		ctrl_r->index = 0;
+	}
 	return (1);
 }
 

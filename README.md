@@ -19,7 +19,7 @@
 - [✓] Copy/cut/past
 - [✓] SHIFT_UP et SHIFT_DOWN pour se deplacer dans une commande en haut et en bas
 - [✓] Gestion du redimensionnement de fenetre
-- [✓] Deplacement par mots a regler
+- [✓] Recherche incrémentale dans l’historique avec CTRL-R
 - La gestion complète de l’historique :
 	- Les expansions :
 		- !! **commande precedente dans lhisto**
@@ -32,8 +32,6 @@
 		- n	 **N'affiche pas les ID quand -l est appelé**
 		- r	 **Inverse l'ordre de tri**
 		- s	 **Re-executer une commande sans ouvrir lediteur**
-	- Recherche incrémentale dans l’historique avec CTRL-R
-
 - Smart autocompletion
 - Protection getenv fichier historique
 - Gestion des leaks
