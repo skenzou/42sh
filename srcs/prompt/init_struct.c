@@ -43,32 +43,25 @@ int	init_termcap(t_cap *tcap)
 
 static int	init_history(t_history *history)
 {
+	char *home;
+
+	if (!(home = getenv("HOME")))
+	{
+		if (!(history->file_name = ft_strcjoin(home, ".42sh_history", '/')))
+			return (0);
+	}
+	else
+		if (!(history->file_name = ft_strdup(".42sh_history")))
+			return (0);
 	history->len = 0;
 	history->data[0] = NULL;
 	history->read = 0;
 	history->position = -1;
-	history->file_name = ft_strjoin("/Users/",
-						ft_strcjoin(getenv("USER"), DEFAULT_HISTORY_NAME, '/'));
 	ft_bzero(history->match, BUFFSIZE);
 	if (read_history(history) == -1)
 		return (0);
 	return (1);
 }
-
-static int	init_var(char **var)
-{
-	int state;
-
-	ft_bzero(var, 256);
-	if ((state = read_var(var)) < 0)
-	{
-		if (state == -2)
-			ft_printf("Erreur verifiez le fichier var\n");
-		return (0);
-	}
-	return (1);
-}
-
 
 static int	init_autocomp(t_ab *autocomp)
 {
@@ -109,7 +102,7 @@ int			init_struct(char **env)
 	if (!(g_shell->env = dup_env(env)) || !g_shell->tcap || !g_shell->history ||
 		!g_shell->autocomp || !g_shell->copy_cut)
 		return (0);
-	if (!init_var(g_shell->var) || !init_termcap(g_shell->tcap) ||
+	if (!init_termcap(g_shell->tcap) ||
 		!init_history(g_shell->history) || !init_autocomp(g_shell->autocomp) ||
 					!init_copy_cut_ctrl_r(g_shell->copy_cut, g_shell->ctrl_r))
 		return (0);

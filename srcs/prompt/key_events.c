@@ -55,13 +55,13 @@ int		space_event(t_cap *tcap)
 	index = 0;
 	if (g_shell->autocomp->state)
 	{
-		tputs(tcap->clr_all_line, 1, ft_put_termcaps);
-		ft_insert(g_shell->autocomp->data[g_shell->autocomp->pos].name, tcap);
-		g_shell->autocomp->match = ft_strdup(tcap->command);
-		g_shell->autocomp->state = 0;
-		g_shell->autocomp->pos = 0;
+		// tputs(tcap->clr_all_line, 1, ft_put_termcaps);
+		// ft_insert(g_shell->autocomp->data[g_shell->autocomp->pos].name, tcap);
+		// g_shell->autocomp->match = ft_strdup(tcap->command);
+		// g_shell->autocomp->state = 0;
+		// g_shell->autocomp->pos = 0;
 	}
-	if (~(index = ft_lastindexof(tcap->command, '!')))
+	else if (~(index = ft_lastindexof(tcap->command, '!')))
 		expansion_history(tcap->command, tcap, index);
 	ft_insert(" ", tcap);
 	return (1);

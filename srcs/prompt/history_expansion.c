@@ -59,7 +59,6 @@ static int number_expansion(char *string, t_cap *tcap, int index, int rev)
 	a = 0;
 	ft_strncpy(exp, string + index + 1 + rev, (tcap->char_len - index - rev));
 	a = atoi(exp);
-	//dprintf(debug(), "a: %d| %s\n", a, exp);
 	if (a > 0 && a < history->len)
 	{
 		i = -1;

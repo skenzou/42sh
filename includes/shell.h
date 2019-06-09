@@ -79,7 +79,6 @@ typedef struct	s_shell
 	t_list		*redir;
 	t_list		*lexer;
 	t_ast		*ast;
-	char		*var[256];
 	t_history	*history;
 	t_hash_entry	*hash_table[TABLE_SIZE];
 	int			fd_table[10];

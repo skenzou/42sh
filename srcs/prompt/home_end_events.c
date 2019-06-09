@@ -38,7 +38,7 @@ int		end_event(t_cap *tcap)
 	if (tcap->char_len + tcap->prompt_len > (tcap->cursx_max))
 	{
 		reste = tcap->char_len - (tcap->cursx_max - tcap->prompt_len) - 1;
-		y_reste = reste / tcap->cursx_max;
+		y_reste = reste / ft_max(tcap->cursx_max, 1);
 		if (tcap->cursx < (tcap->cursx_max - 1) && !tcap->cursy)
 		{
 			ft_move(tcap, "down", 1);
@@ -52,7 +52,8 @@ int		end_event(t_cap *tcap)
 			tcap->cursy++;
 			tcap->cursx = 0;
 		}
-		ft_move(tcap, "right", ((reste % tcap->cursx_max) - y_reste) - tcap->cursx);
+		ft_move(tcap, "right", ((reste % ft_max(tcap->cursx_max, 1)) - y_reste)
+																- tcap->cursx);
 	}
 	else
 		ft_move(tcap, "right", tcap->char_len - (tcap->cursx - tcap->prompt_len));

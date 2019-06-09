@@ -27,19 +27,6 @@ void	ft_clear_all_lines(t_cap *tcap)
 		ft_move(tcap, "!right", tcap->prompt_len);
 	}
 }
-/*
-**up = tcap->up;
-**down = tcap->down;
-**right = tcap->right;
-**left = tcap->left;
-oui	oui
-ls -l && echo "0jpp le premier est ok" && ls -a && echo "jpp le deuxieme aussi xd"
-ls -l && echo "8jpp le premier est ok" && ls -a && echo "jpp le deuxieme aussi xd"
-ls -l && echo "6jpp le premier est ok" && ls -a && echo "jpp le deuxieme aussi xd"
-ls -l && echo "1jpp le premier est ok"
-ls -l && echo "2jpp le premier est ok"
-ls -l && echo "3jpp le premier est ok"
-*/
 
 int	handle_eol(char *buffer, t_cap *tcap)
 {

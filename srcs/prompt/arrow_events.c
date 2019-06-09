@@ -29,7 +29,7 @@ int		arrow_up_event(t_cap *tcap)
 
 	if ((autocomp = g_shell->autocomp) && g_shell->autocomp->state)
 	{
-		x = autocomp->pos % autocomp->row;
+		x = autocomp->pos % ft_max(autocomp->row, 1);
 		if (autocomp->pos - autocomp->row > -1)
 			autocomp->pos -= autocomp->row;
 		else
@@ -60,7 +60,7 @@ int		arrow_down_event(t_cap *tcap)
 	if (g_shell->autocomp->state)
 	{
 		autocomp = g_shell->autocomp;
-		new_x = autocomp->pos % autocomp->row;
+		new_x = autocomp->pos % ft_max(autocomp->row, 1);
 		if (autocomp->pos + autocomp->row < autocomp->len)
 			autocomp->pos += autocomp->row;
 		else
