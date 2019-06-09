@@ -14,11 +14,14 @@
 
 int	add_cmd_to_history(char *str, t_history *history)
 {
+
 	if (history->len)
 		if (!ft_strcmp(str, history->data[history->len - 1]))
 			return (1);
 	if (!(history->data[history->len++] = ft_strdup(str)))
 		return (0);
+	history->data[history->len - 1][ft_strlen(str) - 1]	= '\0';
+	//dprintf(debug(), "history: |%s|\n", history->data[history->len - 1]);
 	history->data[history->len] = NULL;
 	if (!write_history(str, history))
 		return (-1);
@@ -69,7 +72,7 @@ int	read_history(t_history *history)
 	int			ret;
 	int			fd;
 
-	if (fd = open(history->file_name, O_RDWR | O_APPEND | O_CREAT, 0666)) > 0)
+	if ((fd = open(history->file_name, O_RDWR | O_APPEND | O_CREAT, 0666)) > 0)
 	{
 		while ((ret = get_next_line(fd, &str, 1)) > 0)
 		{

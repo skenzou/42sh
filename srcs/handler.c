@@ -32,6 +32,7 @@ int	handler(char *input)
 {
 	t_list *redir;
 
+	dprintf(debug(), "str: |%s|\n", input);
 	if (!ft_strcmp(input, "history\n"))
 	{
 		debug_history(g_shell->history);

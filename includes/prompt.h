@@ -321,6 +321,10 @@ void	ft_clean_buff(t_cap *tcap);
 */
 int		ft_tab(t_cap *tcap, t_ab *autocomp);
 /*
+** HISTORY_EXPANSION.c
+*/
+int expansion_history(char *string, t_cap *tcap, int index);
+/*
 **INIT_STRUCT.c
 */
 

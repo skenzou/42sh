@@ -50,7 +50,9 @@ int		backspace_event(t_cap *tcap)
 
 int		space_event(t_cap *tcap)
 {
-	ft_insert(" ", tcap);
+	int index;
+
+	index = 0;
 	if (g_shell->autocomp->state)
 	{
 		tputs(tcap->clr_all_line, 1, ft_put_termcaps);
@@ -59,6 +61,9 @@ int		space_event(t_cap *tcap)
 		g_shell->autocomp->state = 0;
 		g_shell->autocomp->pos = 0;
 	}
+	if (~(index = ft_lastindexof(tcap->command, '!')))
+		expansion_history(tcap->command, tcap, index);
+	ft_insert(" ", tcap);
 	return (1);
 }
 

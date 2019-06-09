@@ -21,12 +21,12 @@
 - [✓] SHIFT_UP et SHIFT_DOWN pour se deplacer dans une commande en haut et en bas
 - [✓] Gestion du redimensionnement de fenetre
 - [✓] Recherche incrémentale dans l’historique avec CTRL-R
+- [✓] Les expansions :
+	- [✓] !! **commande precedente dans lhisto**
+	- [✓] !*word* **cherche la premiere commande matchant avec word dans lhisto**
+	- [✓] !*number* **cherche la n ieme commande dans lhisto**
+	- [✓] !-*number* **cherche le number ieme precedent dans lhisto**
 - La gestion complète de l’historique :
-	- Les expansions :
-		- !! **commande precedente dans lhisto**
-		- !*word* **cherche la premiere commande matchant avec word dans lhisto**
-		- !*number* **cherche la n ieme commande dans lhisto**
-		- !-*number* **cherche le number ieme precedent dans lhisto**
 	- Le built-in fc (toutes les options POSIX)
 		- e *editor* **Specifie un editeur, si pa specifie la variable FCEDIT le specifie**
 		- l **affiche les N premiere commande de l'histo + ID**
