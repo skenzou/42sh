@@ -136,8 +136,8 @@ typedef struct				s_cc
 typedef struct				s_file
 {
 	t_stat					stats;
-	char					*name;
-	char					*path;
+	char					name[MAX_PATH];
+	char					path[MAX_PATH];
 	char					full_path[MAX_PATH];
 }							t_file;
 
@@ -156,7 +156,7 @@ typedef struct	s_tab
 	int						col;
 	int						max_offset;
 	char					*match;
-	t_file					data[MAX_HISTORY_LENGHT];
+	char					*data[MAX_HISTORY_LENGHT];
 }				t_ab;
 typedef struct	s_history
 {
