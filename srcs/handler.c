@@ -32,17 +32,13 @@ int	handler(char *input)
 {
 	t_list *redir;
 
-	dprintf(debug(), "str: |%s|\n", input);
 	if (!ft_strcmp(input, "history\n"))
 	{
 		debug_history(g_shell->history);
 		return (1);
 	}
 	if (!(input = ft_strdup(input)))
-	{
-		dprintf(debug(), "xdddd\n");
 		exit(1); //TODO + free input ??
-	}
 	input[ft_strlen(input) - 1] = '\0';
  	input = parse_aliases(input, input, input);
 	build_lexer(input, &g_shell->lexer);

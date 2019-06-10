@@ -73,6 +73,12 @@ int		read_buffer(char *buffer, t_cap *tcap)
 		return (add_buffer_ctrl_r(buffer, g_shell->ctrl_r));
 	else if (g_shell->ctrl_r->state && buffer[0] == ENTER)
 		return (end_ctrl_r(g_shell->ctrl_r));
+	else if (g_shell->autocomp->state &&
+							(buffer[0] == ENTER && !buffer[1] && !buffer[2]))
+	{
+		enter_event(tcap);
+		ft_bzero(buffer, 3);
+	}
 	else if (~ft_indexof(buffer, '\n'))
 	 	return (handle_eol(buffer, tcap));
 	else if (buffer[0] == SPACE && !buffer[1] && !buffer[2])

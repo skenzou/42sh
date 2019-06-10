@@ -45,7 +45,7 @@ static int	init_history(t_history *history)
 {
 	char *home;
 
-	if (!(home = getenv("HOME")))
+	if ((home = getenv("HOME")))
 	{
 		if (!(history->file_name = ft_strcjoin(home, ".42sh_history", '/')))
 			return (0);

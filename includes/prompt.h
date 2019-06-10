@@ -156,6 +156,8 @@ typedef struct	s_tab
 	int						col;
 	int						max_offset;
 	char					*match;
+	int 					type;
+	char                    comp[BUFFSIZE];
 	char					*data[MAX_HISTORY_LENGHT];
 }				t_ab;
 typedef struct	s_history
