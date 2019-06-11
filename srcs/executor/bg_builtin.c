@@ -6,7 +6,7 @@
 /*   By: tlechien <tlechien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 10:57:28 by tlechien          #+#    #+#             */
-/*   Updated: 2019/06/04 22:45:01 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/06/11 18:11:35 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static	int	bg_all(void)
 	t_child	**node;
 
 	node = NULL;
-	search_status(node, S_SUSP);
+	search_status(node, ID_SUSP);
 	if (node )
 		return (bg_resume(node));
 	err_display("bg: no current job\n", NULL, NULL);
@@ -60,9 +60,9 @@ int			bg_builtin(int ac, char **cmd)
 
 int			bg_resume(t_child **node)
 {
-	if (!node || (*node)->status != S_SUSP || kill((*node)->pid, SIGCONT))
+	if (!node || (*node)->status != ID_SUSP || kill((*node)->pid, SIGCONT))
 		return (1);
 	(*node)->priority = 0;
-	(*node)->status = S_RUN;
+	(*node)->status = ID_RUN;
 	return (0);
 }

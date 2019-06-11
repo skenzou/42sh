@@ -6,12 +6,11 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/27 17:27:48 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/06/05 09:05:26 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/06/11 19:55:24 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
-#include <stdio.h>
 
 t_event g_arrow_event[] = {
 	{UP, &arrow_up_event},
@@ -148,11 +147,12 @@ int				main(int ac, char **av, char **env)
 		check_flags(av, ac);
 	while ("42sh")
 	{
-		update_pid_table();
+		init_signal();
 		if (!(string = read_line(g_shell->tcap)))
 			return (-1);
 		if (!handler(string))
 			return (-1);
+		update_pid_table();
 	}
 	save_alias(1);
 	kill_pids();

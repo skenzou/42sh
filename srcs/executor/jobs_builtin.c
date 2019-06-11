@@ -6,7 +6,7 @@
 /*   By: tlechien <tlechien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 04:51:21 by tlechien          #+#    #+#             */
-/*   Updated: 2019/06/04 22:31:13 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/06/11 21:13:04 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,29 @@ const char	*g_status[] = {
 	"terminated"
 };
 
+int display_pid_long(t_child *node, int fd)
+{
+	char current;
+	char *stat;
+
+	(s_get_values(node->status, NULL, NULL, &stat)) ? stat = "running": 0;
+	current = (node->priority < 1) ? ' ' : '-';
+	(node->priority == 2) ? current = '+' : 0;
+	ft_putchar_fd('[', fd);
+	ft_putnbr_fd(node->index, fd);
+	ft_putstr_fd("] ", fd);
+	ft_putchar_fd(current, fd);
+	ft_putchar_fd(' ', fd);
+	ft_putnbr_fd(node->pid, fd);
+	ft_putchar_fd(' ', fd);
+	ft_putstr_fd(stat, fd);
+	write (fd,"                       ", 23 - ft_strlen2(stat));
+	ft_putstr_fd(node->exec, fd);
+	ft_putchar_fd('\n', fd);
+	//print_prompt_prefix();
+	return (0);
+}
+
 /*
 ** Displays child status.
 */
@@ -27,17 +50,22 @@ const char	*g_status[] = {
 int			display_pid_status(t_child *node, char option)
 {
 	char current;
+	char *stat;
 
+	(s_get_values(node->status, NULL, NULL, &stat)) ? stat = "running": 0;
+	(node->status == SIGHUP) ? stat = "done": 0;
 	current = (node->priority < 1) ? ' ' : '-';
 	(node->priority == 2) ? current = '+' : 0;
 	if (option & OPT_L)
-		ft_printf("[%d] %d %c %-10s    \n", node->index, node->pid,
-		current, node->exec);
+		ft_printf("[%d] %c %d %-22s %s\n", node->index, current, node->pid,
+		stat, node->exec);
 	else if (option & OPT_P)
 		ft_printf("%d\n", node->pid);
 	else
-		ft_printf("[%d] %c %-10s    \n", node->index, current,
-		node->exec);
+		ft_printf("[%d] %c %-22s %s\n", node->index, current,
+		stat, node->exec);
+	if (node->status == SIGHUP)
+		print_prompt_prefix();
 	//display_array(g_pid_table->exec); -> print_env(g_pid_table->exec);
 	return (0);
 }
@@ -54,23 +82,22 @@ int	update_pid_table(void)
 		g_pid_table = ID_PREV;
 	while (g_pid_table && g_pid_table->index)
 	{
-		 prio = ID_PRIORITY;
-		if (!waitpid(ID_PID, &status, WNOHANG))
-			(ID_STATUS != S_SUSP) ? ID_STATUS = 0 : 0;
+		prio = ID_PRIORITY;
+		if (!waitpid(ID_PID, &status, WNOHANG | WUNTRACED | WCONTINUED))
+			;
+		else if (WIFCONTINUED(status))
+			ID_STATUS = 0;
 		else if (WIFEXITED(status))
 		{
-			(prio != -1 && ID_PID) ? display_pid_status(g_pid_table, 0) : 0;
 			ID_PRIORITY = -1;
-			ID_STATUS = S_DONE;
+			ID_STATUS = ID_DONE;
+			display_pid_status(g_pid_table, 0);
+			remove_pid();
 		}
 		else if (WIFSIGNALED(status))
-		{
-			(prio != -1 && ID_PID) ? display_pid_status(g_pid_table, 0) : 0;
-			ID_PRIORITY = -1;
-			ID_STATUS = S_TERM;
-		}
-		else if (WSTOPSIG(status))
-			ID_STATUS = S_CONT;
+			s_child_handler(WTERMSIG(status));
+		else if (WIFSTOPPED(status))
+			s_child_handler(WSTOPSIG(status));
 		if (!ID_NEXT)
 			break;
 		g_pid_table = ID_NEXT;

@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 00:40:57 by midrissi          #+#    #+#             */
-/*   Updated: 2019/06/07 06:31:05 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/06/11 19:38:18 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,11 @@
 **	## DEFINES ##
 */
 
-# define S_RUN	0
-# define S_DONE 1
-# define S_SUSP	2
-# define S_CONT 3
-# define S_TERM 4
+# define ID_RUN		0
+# define ID_DONE	SIGHUP
+# define ID_SUSP	SIGTSTP
+# define ID_CONT	SIGCONT
+# define ID_TERM	SIGTERM
 # define ID_PRIORITY  g_pid_table->priority
 # define ID_PID       g_pid_table->pid
 # define ID_INDEX     g_pid_table->index
@@ -38,6 +38,12 @@
 # define ALIAS_FILE	".21sh_alias"
 # define OPT_L 1
 # define OPT_P 2
+# define S_SIZE		27
+# define S_TERM		0
+# define S_ABN		1
+# define S_IGN		2
+# define S_STOP		3
+# define S_CONT		4
 
 /*
 **	## STRUCTURES ##
@@ -73,10 +79,19 @@ typedef struct set_builtin
 	int			(*function)(int ac, char **av);
 }				t_builtin;
 
+typedef struct	s_signal
+{
+	int			sig;
+	int			action;
+	char		*handler;
+	char		*status;
+}				t_signal;
+
 extern	t_child		*g_pid_table;
 extern	const char	*g_status[];
 extern	const char	*g_reserved[];
 extern	char		**g_aliases;
+extern	t_signal	*s_signal[];
 
 /*
 ** ## FUNCTIONS ##
@@ -103,7 +118,7 @@ t_builtin	*get_builtin(char *cmd);
 int			test_builtin(int ac, char **args);
 int			type_builtin(int ac, char **args);
 void		param_expansion(char **ptr);
-char		*get_key_value(char *key, char **tab);
+char		*get_key_value(char *key, char **array);
 void   		tilde_expansion(char **ptr);
 int			unset_builtin(int ac, char **av);
 int			export_builtin(int ac, char **av);
@@ -162,6 +177,8 @@ int		jobs_builtin(int ac, char **cmd);
 int		init_pid(void);
 int		update_priority(int first);
 int		kill_pids(void);
+int 	display_pid_long(t_child *node, int fd);
+int		remove_pid(void);
 
 /*
 **	fg_builtin.c & dependencies
@@ -211,5 +228,15 @@ char	*get_env(char *var);
 int		ft_flags(char c, char *flags, char *opt);
 int		get_options(char *flags, char *opt, char *str, int (*usage)());
 int		params(char **flags, int ac, char **av, int (*usage)());
+
+/*
+**	signals.c
+*/
+
+void 	sigchld_handler();
+void 	init_signal(void);
+int 	s_get_values(int status, int *action, char **handler, char **stat);
+void	s_child_handler(int status);
+void	resetsign(void);
 
 #endif

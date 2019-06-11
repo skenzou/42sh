@@ -6,7 +6,7 @@
 /*   By: tlechien <tlechien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/16 05:04:02 by tlechien          #+#    #+#             */
-/*   Updated: 2019/06/04 22:42:00 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/06/11 19:23:52 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ int	fg_builtin(int ac, char **cmd)
 	if ((i = 1) && !cmd[i])
 	{
 		search_priority(&node);
-		if (node && node->status != S_TERM)
-			return (ft_waitprocess(node->pid, cmd));
+		if (node && node->status != ID_TERM)
+			return (ft_waitprocess(node->pid, &node->exec));
 		err_display("fg: no current job\n", NULL, NULL);
 		return (1);
 	}
