@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 00:40:57 by midrissi          #+#    #+#             */
-/*   Updated: 2019/06/11 19:38:18 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/06/12 13:43:00 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -230,13 +230,14 @@ int		get_options(char *flags, char *opt, char *str, int (*usage)());
 int		params(char **flags, int ac, char **av, int (*usage)());
 
 /*
-**	signals.c
+**	signals.c & dependencies
 */
 
 void 	sigchld_handler();
 void 	init_signal(void);
 int 	s_get_values(int status, int *action, char **handler, char **stat);
-void	s_child_handler(int status);
+void	s_child_handler(int status, t_child *node);
 void	resetsign(void);
+int 	waitabit(int time);
 
 #endif

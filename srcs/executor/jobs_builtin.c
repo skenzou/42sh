@@ -6,7 +6,7 @@
 /*   By: tlechien <tlechien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 04:51:21 by tlechien          #+#    #+#             */
-/*   Updated: 2019/06/11 21:13:04 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/06/12 13:47:50 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,9 +95,9 @@ int	update_pid_table(void)
 			remove_pid();
 		}
 		else if (WIFSIGNALED(status))
-			s_child_handler(WTERMSIG(status));
+			s_child_handler(status, g_pid_table);
 		else if (WIFSTOPPED(status))
-			s_child_handler(WSTOPSIG(status));
+			s_child_handler(status, g_pid_table);
 		if (!ID_NEXT)
 			break;
 		g_pid_table = ID_NEXT;

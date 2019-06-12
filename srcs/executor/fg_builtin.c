@@ -6,18 +6,53 @@
 /*   By: tlechien <tlechien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/16 05:04:02 by tlechien          #+#    #+#             */
-/*   Updated: 2019/06/11 19:23:52 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/06/12 13:03:19 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/shell.h"
+
+static int	waitfg(t_child *node)
+{
+	int       	status;
+	//char		*handler;
+	//char		*stat;
+
+	signal(SIGCHLD, SIG_DFL);
+	signal(SIGINT, sigchld_handler);
+	if (node && node->status != 0)
+	{
+		node->status = SIGCONT;
+		kill(node->pid, SIGCONT);
+		display_pid_long(node, 2);
+	}
+	tcsetpgrp(0, (node->pid));
+	waitpid(node->pid, &status, WUNTRACED);
+	if (WIFEXITED(status))
+	{
+		ID_PRIORITY = -1;
+		ID_STATUS = ID_DONE;
+		display_pid_status(g_pid_table, 0);
+		remove_pid();
+	}
+	else if (WIFSIGNALED(status))
+		s_child_handler(WTERMSIG(status), node);
+	else if (WIFSTOPPED(status))
+	{
+		s_child_handler(WSTOPSIG(status), node);
+	}
+	tcsetpgrp(0, getpgrp());
+	signal(SIGINT, sigint_handler);
+	signal(SIGCHLD, sigchld_handler);
+	return (0);
+}
 
 /*
 ** Builtin that gives back focus to background processus.
 **  Needs protection on already finished process ??
 */
 
-int	fg_builtin(int ac, char **cmd)
+int			fg_builtin(int ac, char **cmd)
 {
 	t_child	*node;
 	int		i;
@@ -30,7 +65,7 @@ int	fg_builtin(int ac, char **cmd)
 	{
 		search_priority(&node);
 		if (node && node->status != ID_TERM)
-			return (ft_waitprocess(node->pid, &node->exec));
+			return (waitfg(node));
 		err_display("fg: no current job\n", NULL, NULL);
 		return (1);
 	}
@@ -41,7 +76,7 @@ int	fg_builtin(int ac, char **cmd)
 			return (err_display("fg : job not found: ", cmd[i] + 1, "\n"));
 		else if (*cmd[i] != '%' && search_process(&node, cmd[i]))
 			return (err_display("fg : job not found: ", cmd[i], "\n"));;
-		if ((ret = ft_waitprocess(node->pid, cmd)))
+		if ((ret = waitfg(node)))
 			return (ret);
 		i++;
 	}

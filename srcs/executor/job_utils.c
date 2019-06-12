@@ -6,7 +6,7 @@
 /*   By: tlechien <tlechien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 04:40:55 by tlechien          #+#    #+#             */
-/*   Updated: 2019/06/11 18:14:52 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/06/12 13:50:01 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,7 @@ int	add_pid(int pid, char **command, int status)
 
 	if (!(new = (t_child*)malloc(sizeof(t_child))))
 		exit(FAILFORK); //TODO malloc erroc
+	setpgid(0, 0);
 	new->index = g_pid_table->index + 1;
 	new->pid = pid;
 	new->status = status;
