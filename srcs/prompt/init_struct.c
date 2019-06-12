@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/09 00:37:47 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/30 20:36:00 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/06/12 05:48:37 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,8 @@ static int	init_history(t_history *history)
 		if (!(history->file_name = ft_strcjoin(home, ".42sh_history", '/')))
 			return (0);
 	}
-	else
-		if (!(history->file_name = ft_strdup(".42sh_history")))
-			return (0);
+	else if (!(history->file_name = ft_strdup(".42sh_history")))
+		return (0);
 	history->len = 0;
 	history->data[0] = NULL;
 	history->read = 0;
@@ -70,7 +69,6 @@ static int	init_autocomp(t_ab *autocomp)
 	return (1);
 }
 
-
 static int	init_copy_cut_ctrl_r(t_cc *copy_cut, t_ctrl_r *ctrl_r)
 {
 	copy_cut->state = 0;
@@ -84,7 +82,6 @@ static int	init_copy_cut_ctrl_r(t_cc *copy_cut, t_ctrl_r *ctrl_r)
 	ft_bzero(ctrl_r->data, BUFFSIZE);
 	return (1);
 }
-
 
 int			init_struct(char **env)
 {

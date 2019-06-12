@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   completion.c                                       :+:      :+:    :+:   */
+/*   copy_cut.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 06:02:13 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/06/05 06:12:12 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/06/12 05:47:25 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int		ft_copy(t_cap *tcap)
 	i = tcap->cursy * (tcap->cursx_max + 1) + (tcap->cursx) - tcap->prompt_len;
 	t_cc *copy_cut;
 	copy_cut = g_shell->copy_cut;
-	if (copy_cut->type != 0)
+	if (copy_cut->type != 0 && ~copy_cut->type)
 		return (1);
 	if (copy_cut->state)
 	{
@@ -41,7 +41,6 @@ int		ft_copy(t_cap *tcap)
 	return (1);
 }
 
-
 int		ft_cut(t_cap *tcap)
 {
 	int i;
@@ -50,7 +49,7 @@ int		ft_cut(t_cap *tcap)
 	t_cc *copy_cut;
 	int a = -1;
 	copy_cut = g_shell->copy_cut;
-	if (copy_cut->type != 1)
+	if (copy_cut->type != 1 && ~copy_cut->type)
 		return (1);
 	else if (copy_cut->state)
 	{

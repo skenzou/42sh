@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 06:02:13 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/06/05 06:12:12 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/06/12 05:54:11 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,19 +103,16 @@ void comp_path(t_cap *tcap, char *path)
 	autocomp->len = 0;
 	autocomp->max_offset = 0;
 	autocomp->match = ft_strdup(complet_path);
-	//ft_bzero(autocomp->data, sizeof(autocomp->data));
 	if ((dir = opendir(complet_path)))
 		while ((d = readdir(dir)))
 		{
 			if (d->d_name[0] != '.')
 			{
 				create_file(d->d_name, path, autocomp);
-				//dprintf(debug(), "autocomp->data: |%s|\n", autocomp->data[autocomp->len]);
 				autocomp->max_offset =
 						ft_max(autocomp->max_offset,
 									ft_strlen(autocomp->data[autocomp->len]));
 				autocomp->len++;
-
 			}
 		}
 }
@@ -188,7 +185,6 @@ int is_first_arg(t_cap *tcap, int pos)
 		return (1);
 	else if (~(index_separator = ft_indexof(tcap->command, ' ')))
 	{
-		//dprintf(debug(), "separator: %d\n", index_separator);
 		if (pos - 1 < index_separator)
 			return (1);
 	}
@@ -226,13 +222,11 @@ int get_command_comp(t_cap *tcap, int index)
 			if ((dir = opendir(*split_path)))
 				while ((d = readdir(dir)))
 				{
-					//dprintf(debug(), "dir |%s|, %s\n", *split_path, d->d_name);
 					if (!ft_strncmp(d->d_name, autocomp->comp, len))
 					{
 						if (d->d_name[0] != '.')
 						{
 							create_file(d->d_name, path, autocomp);
-							//dprintf(debug(), "autocomp->data: |%s|\n", autocomp->data[autocomp->len]);
 							autocomp->max_offset =
 									ft_max(autocomp->max_offset, ft_strlen(autocomp->data[autocomp->len]));
 							autocomp->len++;
@@ -371,28 +365,6 @@ int		get_words_completion(t_ab *autocomp, t_cap *tcap)
 	tputs(tcap->sound, 1, ft_put_termcaps);
 	return (0);
 }
-
-// void		get_current_dir_completion(t_ab *autocomp, char *path)
-// {
-// 	t_dirent	*d;
-// 	DIR			*dir;
-//
-// 	autocomp->len = 0;
-// 	autocomp->max_offset = 0;
-// 	ft_bzero(autocomp->data, sizeof(autocomp->data));
-// 	if ((dir = opendir(".")))
-// 		while ((d = readdir(dir)))
-// 		{
-// 			if (d->d_name[0] != '.')
-// 			{
-// 				autocomp->data[autocomp->len] = create_file(d->d_name, path);
-// 				autocomp->max_offset =
-// 								ft_max(autocomp->max_offset, ft_strlen(d->d_name));
-// 				autocomp->len++;
-// 			}
-// 		}
-// 	closedir(dir);
-// }
 
 int		ft_tab(t_cap *tcap, t_ab *autocomp)
 {
