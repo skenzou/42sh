@@ -6,7 +6,7 @@
 /*   By: tlechien <tlechien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 04:40:55 by tlechien          #+#    #+#             */
-/*   Updated: 2019/06/04 19:52:04 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/06/11 18:14:52 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,19 @@ int	update_priority(int first)
 	g_pid_table = save;
 	(tmp_s && tmp_s->priority != -1) ? tmp_s->priority = 1 : 0;
 	(tmp_f && tmp_f->priority != -1) ? tmp_f->priority = 2 : 0;
+	return (0);
+}
+
+int	remove_pid(void)
+{
+	t_child *curr;
+
+	curr = (ID_NEXT)? ID_NEXT : ID_PREV;
+	(ID_PREV) ? ID_PREV->next = ID_NEXT : 0;
+	(ID_NEXT) ? ID_NEXT->prev = ID_PREV : 0;
+	ft_strdel(&ID_EXEC);
+	free (g_pid_table);
+	g_pid_table = curr;
 	return (0);
 }
 

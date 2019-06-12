@@ -6,38 +6,13 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/14 23:28:47 by midrissi          #+#    #+#             */
-/*   Updated: 2019/06/04 03:08:16 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/06/07 06:31:52 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-static int handle_hdoc(t_redir *redir)
-{
-	char *input;
-	int fd;
-	char *eof;
-
-	fd = open(HERE_DOC_TMP, O_RDWR | O_CREAT | O_TRUNC, 0666);
-	input = NULL;
-	if (!(eof = ft_strjoin(redir->dest[0], "\n")))
-		ft_exit("Malloc failed in handle_hdoc");
-	g_shell->tcap->prompt = "heredoc>";
-	while (42)
-	{
-		input = read_line(g_shell->tcap);
-		if (!ft_strcmp(input, eof))
-			break ;
-		write(fd, input, ft_strlen(input));
-	}
-	g_shell->tcap->prompt = NULL;
-	free(eof);
-	close(fd);
-	fd = open(HERE_DOC_TMP, O_RDONLY);
-	return (fd);
-}
-
-static t_list *next_cmd(t_list *redir)
+static t_list	*next_cmd(t_list *redir)
 {
 	while (redir && ((t_redir *)redir->content)->end_of_leaf == 0)
 		redir = redir->next;
@@ -72,24 +47,6 @@ static int		handle_redir_and(t_redir *redir)
 	return (fd);
 }
 
-void close_fd()
-{
-	int i;
-	t_list *redir;
-
-	redir = g_shell->temp_redir;
-	while (redir && ((t_redir *)redir->content)->end_of_leaf == 0)
-	{
-		if (((t_redir *)redir->content)->op_type != DBL_LESS)
-			close(((t_redir *)redir->content)->fd);
-		redir = redir->next;
-	}
-	g_shell->temp_redir = NULL;
-	i = -1;
-	while(++i < 10)
-		dup2(g_shell->fd_table[i], i);
-}
-
 static int		restore_stdout_and_exec_hdoc(t_redir *redir)
 {
 	int		tempfd;
@@ -102,7 +59,7 @@ static int		restore_stdout_and_exec_hdoc(t_redir *redir)
 	return (fd);
 }
 
-int		exec_redir(t_redir *redir)
+static int		exec_redir(t_redir *redir)
 {
 	int		fd;
 
@@ -125,7 +82,7 @@ int		exec_redir(t_redir *redir)
 	return (0);
 }
 
-char		**handle_redir()
+char			**handle_redir(void)
 {
 	t_list *redir;
 

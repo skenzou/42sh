@@ -6,12 +6,11 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/27 17:27:48 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/06/04 19:06:43 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/06/11 19:55:24 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
-#include <stdio.h>
 
 t_event g_arrow_event[] = {
 	{UP, &arrow_up_event},
@@ -143,15 +142,17 @@ int				main(int ac, char **av, char **env)
 	if (!(tgetent(NULL, getenv("TERM"))) || !init_struct(env) ||
 			init_pid() || init_alias(1) || init_fd_table())
 		return (-1);
+	ft_bzero((void *)g_shell->hash_table, TABLE_SIZE);
 	if (ac > 1)
 		check_flags(av, ac);
 	while ("42sh")
 	{
-		update_pid_table();
+		init_signal();
 		if (!(string = read_line(g_shell->tcap)))
 			return (-1);
 		if (!handler(string))
 			return (-1);
+		update_pid_table();
 	}
 	save_alias(1);
 	kill_pids();

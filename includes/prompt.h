@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 07:12:40 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/30 20:34:17 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/06/11 19:45:08 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -217,6 +217,7 @@ char	*get_git_status(void);
 void	sigfork(int sig);
 void	sigint_handler(int sig);
 void	sigwinch_handler(int sig);
+void 	sigtstp_handler(int sig);
 
 /*
 **	READ_KEY.C

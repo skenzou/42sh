@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/03 16:15:41 by midrissi          #+#    #+#             */
-/*   Updated: 2019/06/04 00:19:27 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/06/07 05:59:58 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static void		ft_execute(char **args, int redir, int background)
 	ft_post_exec(NULL);
 }
 
-void	ft_execute_ast(t_ast *root)
+void			ft_execute_ast(t_ast *root)
 {
 	if (!root)
 		return ;

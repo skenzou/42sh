@@ -6,100 +6,106 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/24 11:44:34 by midrissi          #+#    #+#             */
-/*   Updated: 2019/06/04 05:31:49 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/06/07 05:44:29 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-char			*get_homepath(char **env)
+static int			check_options(int ac, char **av, char *flag)
 {
 	int i;
 
-	i = -1;
-	while (env[++i])
+	*flag = 0;
+	if (ac > 1)
 	{
-		if (!ft_strncmp(env[i], "HOME=", 5))
-			return (env[i] + 5);
-	}
-	return (NULL);
-}
-
-static char		*get_oldpwd(char **env)
-{
-	int i;
-	char *str;
-
-	i = -1;
-	while (env[++i])
-	{
-		if (!ft_strncmp(env[i], "OLDPWD=", 7))
+		av++;
+		if (ft_strequ(*av, "--"))
 		{
-			if (!(str = ft_strdup(env[i] + 7)))
-				ft_exit("Malloc failed in get_oldpwd");
-			return (str);
+			*flag = '-';
+			return (0);
+		}
+		if (**av == '-' && *((*av) + 1) && !(i = 0))
+		{
+			while ((*av)[++i])
+				if ((*av)[i] != 'L' && (*av)[i] != 'P')
+				{
+					ft_putstr_fd("42sh: cd: -", 2);
+					ft_putchar_fd((*av)[i], 2);
+					ft_putendl_fd(": invalid option", 2);
+					return (1);
+				}
+			*flag = (*av)[i - 1];
 		}
 	}
-	return (NULL);
+	return (0);
 }
 
-static int		change_dir(char *path)
+static	int			cd_home(char flag)
 {
-	int				err;
-	char			cwd[MAX_PATH_LEN];
+	char *value;
 
-	err = check_dir(path);
-	if (!err)
+	value = get_key_value("HOME", g_shell->env_tmp);
+	if (!value)
+		value = get_key_value("HOME", g_shell->intern_tmp);
+	if (value)
+		return (change_dir(value, flag));
+	else
 	{
-		ft_setenv("OLDPWD", getcwd(cwd, sizeof(cwd)), &g_shell->env);
-		chdir(path);
-		ft_setenv("PWD", getcwd(cwd, sizeof(cwd)), &g_shell->env);
+		ft_putendl_fd("42sh: cd: HOME not set", 2);
+		return (1);
 	}
-	return (err);
 }
 
-int				cd_err(int err_id, char *dest)
-{
-	if (err_id == NON_EXISTENT)
-		ft_putstr_fd("cd: no such file or directory: ", 2);
-	if (err_id == NOT_DIR)
-		ft_putstr_fd("cd: not a directory: ", 2);
-	if (err_id == NO_RIGHT)
-		ft_putstr_fd("cd: permission denied: ", 2);
-	if (err_id)
-		ft_putendl_fd(dest, 2);
-	return (err_id > 0);
-}
-
-int				cd_builtin(int argc, char **argv)
+static int			cd_oldpwd(char flag)
 {
 	char	*path;
-	int		err;
+	int		ret;
+
+	ret = 0;
+	path = get_oldpwd(g_shell->env_tmp);
+	if (!path)
+		path = get_oldpwd(g_shell->intern_tmp);
+	if (!path)
+	{
+		ft_putendl_fd("42sh: cd: OLDPWD not set", 2);
+		return (1);
+	}
+	ft_printf("%s\n", path);
+	ret = change_dir(path, flag);
+	ft_strdel(&path);
+	return (ret);
+}
+
+static int			regular_cd(char *dir, char flag)
+{
+	int		ret;
+	char	*path;
+
+	path = get_path(dir);
+	ret = change_dir(path, flag);
+	ft_strdel(&path);
+	return (ret);
+}
+
+int					cd_builtin(int ac, char **av)
+{
 	int		same;
+	char	flag;
+	int		ret;
 
 	same = g_shell->env == g_shell->env_tmp;
-	path = NULL;
-	err = 0;
-	if (argc == 1 && (path = get_key_value("HOME", g_shell->env_tmp)))
-		err = change_dir(path);
-	else if (argc > 1)
-	{
-		if (ft_strlen(argv[1]) == 1 && argv[1][0] == '-')
-		{
-			path = get_oldpwd(g_shell->env);
-			if (!path)
-			{
-				ft_putendl_fd("42sh: cd: OLDPWD not set", 2);
-				return (1);
-			}
-			ft_printf("%s\n", path);
-			err = change_dir(path);
-			ft_strdel(&path);
-		}
-		else
-			err = change_dir(argv[1]);
-	}
+	if (check_options(ac, av, &flag))
+		return (1);
+	if (flag)
+		av++ && ac--;
+	if (ac == 1)
+		ret = cd_home(flag);
+	else if (ac > 1 && ft_strequ(av[1], "-"))
+		ret = cd_oldpwd(flag);
+	else
+		ret = regular_cd(av[1], flag);
 	if (same)
 		g_shell->env_tmp = g_shell->env;
-	return (cd_err(err, argv[1]));
+	return (ret);
 }

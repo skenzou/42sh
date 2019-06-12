@@ -6,32 +6,37 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/27 19:17:30 by midrissi          #+#    #+#             */
-/*   Updated: 2019/06/04 03:32:52 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/06/07 06:22:11 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-void	check_intern_var(char *needle, char ***env, char ***intern)
+static void			check_intern_var(char *needle, char ***env, char ***intern)
 {
-	int i;
-	char *key;
-	char *entry;
+	int		i;
+	char	*key;
+	char	*entry;
+	char	*value;
 
 	i = 0;
-	while(needle[i] && needle[i] != '=')
+	while (needle[i] && needle[i] != '=')
 		i++;
 	if (!(key = ft_strsub(needle, 0, i)))
 		ft_exit("Malloc failed in check_intern_var failed");
+	if (!(value = ft_strdup(needle + i + 1)))
+		ft_exit("Malloc failed in check_intern_var failed");
 	entry = get_key_value(key, g_shell->env);
+	ft_expand_one(&value);
 	if (entry)
-		ft_setenv(key, needle + i + 1, env);
+		ft_setenv(key, value, env);
 	else
-		ft_setenv(key, needle + i + 1, intern);
+		ft_setenv(key, value, intern);
 	ft_strdel(&key);
+	ft_strdel(&value);
 }
 
-int		is_var(char *needle)
+static int			is_var(char *needle)
 {
 	if (!needle || ft_isdigit(*needle))
 		return (0);
@@ -44,7 +49,7 @@ int		is_var(char *needle)
 	return (*needle);
 }
 
-static void		reorder_tabs(char *str, char **env, char **intern)
+static void			reorder_tabs(char *str, char **env, char **intern)
 {
 	if (str)
 	{
@@ -62,11 +67,11 @@ static void		reorder_tabs(char *str, char **env, char **intern)
 	}
 }
 
-void		handle_intern_var(char **args)
+void				handle_intern_var(char **args)
 {
-	int i;
-	char **env;
-	char **intern;
+	int		i;
+	char	**env;
+	char	**intern;
 
 	i = 0;
 	env = ft_splitdup(g_shell->env);

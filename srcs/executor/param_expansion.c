@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/29 17:34:20 by midrissi          #+#    #+#             */
-/*   Updated: 2019/06/03 21:37:26 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/06/07 06:09:40 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,13 +86,12 @@ char		*simple_dollar(char *old, char *ptr, int *i)
 	free(old);
 	free(key);
 	return (ptr);
-
 }
 
 void		param_expansion(char **ptr)
 {
-	char *str;
-	int i;
+	char	*str;
+	int		i;
 
 	str = *ptr;
 	i = 0;
@@ -100,7 +99,7 @@ void		param_expansion(char **ptr)
 	{
 		if (str[i] == BSLASH && str[i + 1])
 			i++;
-		else if (str[i] == '$' && str [i+ 1] == '{')
+		else if (str[i] == '$' && str[i + 1] == '{')
 		{
 			if (!goto_closing_brace(str + i + 2))
 				return ;

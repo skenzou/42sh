@@ -6,13 +6,13 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/24 13:50:03 by midrissi          #+#    #+#             */
-/*   Updated: 2019/06/04 22:31:12 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/06/07 06:14:28 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-#define NB_BUILTINS 14
+#define NB_BUILTINS 15
 
 static const t_builtin g_builtins[NB_BUILTINS] = {
 	{"echo", &echo_builtin},
@@ -29,6 +29,7 @@ static const t_builtin g_builtins[NB_BUILTINS] = {
 	{"bg", &bg_builtin},
 	{"type", &type_builtin},
 	{"test", &test_builtin},
+	{"hash", &hash_builtin},
 };
 
 t_builtin		*get_builtin(char *cmd)
@@ -42,7 +43,7 @@ t_builtin		*get_builtin(char *cmd)
 	return (NULL);
 }
 
-int		ft_pre_execution(char ***args, int redir, t_builtin **builtin)
+int				ft_pre_execution(char ***args, int redir, t_builtin **builtin)
 {
 	int err;
 
