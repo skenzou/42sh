@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/27 17:27:48 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/06/12 13:50:22 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/06/12 15:47:49 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,7 @@ char	*read_line(t_cap *tcap)
 	signal(SIGWINCH, sigwinch_handler);
 	ft_bzero(buffer, 4);
 	ft_bzero(tcap->command, BUFFSIZE);
+	waitabit(2000000);
 	print_prompt_prefix();
 	while ("21sh")
 	{

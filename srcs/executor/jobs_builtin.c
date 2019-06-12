@@ -6,7 +6,7 @@
 /*   By: tlechien <tlechien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 04:51:21 by tlechien          #+#    #+#             */
-/*   Updated: 2019/06/12 13:47:50 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/06/12 15:52:48 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ int display_pid_long(t_child *node, int fd)
 	write (fd,"                       ", 23 - ft_strlen2(stat));
 	ft_putstr_fd(node->exec, fd);
 	ft_putchar_fd('\n', fd);
-	//print_prompt_prefix();
 	return (0);
 }
 
@@ -95,9 +94,9 @@ int	update_pid_table(void)
 			remove_pid();
 		}
 		else if (WIFSIGNALED(status))
-			s_child_handler(status, g_pid_table);
+			s_child_handler(WTERMSIG(status), g_pid_table);
 		else if (WIFSTOPPED(status))
-			s_child_handler(status, g_pid_table);
+			s_child_handler(WSTOPSIG(status), g_pid_table);
 		if (!ID_NEXT)
 			break;
 		g_pid_table = ID_NEXT;

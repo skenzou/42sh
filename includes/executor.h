@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 00:40:57 by midrissi          #+#    #+#             */
-/*   Updated: 2019/06/12 13:43:00 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/06/12 15:46:52 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -238,6 +238,6 @@ void 	init_signal(void);
 int 	s_get_values(int status, int *action, char **handler, char **stat);
 void	s_child_handler(int status, t_child *node);
 void	resetsign(void);
-int 	waitabit(int time);
+int		waitabit(int);
 
 #endif

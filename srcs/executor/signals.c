@@ -6,7 +6,7 @@
 /*   By: tlechien <tlechien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/07 19:31:16 by tlechien          #+#    #+#             */
-/*   Updated: 2019/06/12 13:45:04 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/06/12 15:54:29 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,6 @@ void s_child_handler(int status, t_child *node)
 	}
 	else
 		display_pid_long(node, 1);
-	return ;
 }
 
 int s_get_values(int status, int *action, char **handler, char **stat)
@@ -89,7 +88,6 @@ void sigchld_handler()
 {
 	update_pid_table();
 	signal(SIGCHLD, sigchld_handler);
-	waitabit(20000000);
 }
 
 void	resetsign(void)

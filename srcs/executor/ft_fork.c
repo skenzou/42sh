@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/14 23:53:49 by midrissi          #+#    #+#             */
-/*   Updated: 2019/06/12 13:50:15 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/06/12 15:38:17 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,14 @@ int				ft_waitprocess(pid_t pid, char **cmd)
 		return ((WEXITSTATUS(status)));
 	else if (WIFSIGNALED(status))
 	{
-		s_get_values(status, NULL, &handler, &stat);
-		if (status != SIGINT)
-		{
-			err_display(ANSI_RED"42sh : ", cmd[0], ": ");
-			err_display(handler, ": ", stat);
-			ft_putendl_fd(ANSI_RESET, 2);
-		}
-	}
+ 		s_get_values(status, NULL, &handler, &stat);
+ 		if (status != SIGINT)
+ 		{
+ 			err_display(ANSI_RED"42sh : ", cmd[0], ": ");
+ 			err_display(handler, ": ", stat);
+ 			ft_putendl_fd(ANSI_RESET, 2);
+ 		}
+ 	}
 	else if (WSTOPSIG(status))
 	{
 		add_pid(pid, cmd, ID_SUSP);
@@ -67,6 +67,7 @@ int				ft_fork_amper(char **cmd, char **env)
 	{
 		resetsign();
 		dup2(0,0);
+		setpgid(0, 0);
 		execve(cmd[0], cmd, env);
 		exit(1);
 	}
@@ -74,12 +75,7 @@ int				ft_fork_amper(char **cmd, char **env)
 	close(fd[0]);
 	setpgid(pid, 0);
 	if (!waitpid(pid, &pid, WNOHANG))
-	{
-		add_pid(pid, cmd, ID_RUN);
-		waitabit(20000000);
-		return (0);
-	}
-	ft_putendl("here");
+		return (add_pid(pid, cmd, ID_RUN));
 	return (0);
 }
 
