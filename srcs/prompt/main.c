@@ -6,11 +6,12 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/27 17:27:48 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/06/12 15:47:49 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/06/12 16:56:44 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
+#include <stdio.h>
 
 t_event g_arrow_event[] = {
 	{UP, &arrow_up_event},
@@ -32,6 +33,11 @@ t_event g_key_event[] = {
 	{HOME, &home_event},
 	{END, &end_event},
 	{SPACE, &space_event}
+};
+t_event g_alt_event[] = {
+	{COPY, &ft_copy},
+	{CUT, &ft_cut},
+	{PASTE, &ft_paste}
 };
 
 t_shell *g_shell;
@@ -69,36 +75,36 @@ char	*clean_before_return(t_cap *tcap)
 	ft_printf("\x1b[0m");
 	tcap->cursx = tcap->prompt_len;
 	tcap->cursy = 0;
-	if (tcap->char_len >= BUFFSIZE - 1)
-	{
-		tcap->command[BUFFSIZE - 2] = '\n';
-		tcap->command[BUFFSIZE - 1] = '\0';
-	}
-	else
-		tcap->command[tcap->char_len] = '\n';
+	tcap->command[tcap->char_len] = '\n';
 	if (add_cmd_to_history(tcap->command, g_shell->history) == -1)
 		return (NULL);
 	tcap->char_len = 0;
-	tputs(tcap->clr_all_line, 1, ft_put_termcaps);
+	//tputs(tcap->clr_all_line, 1, ft_put_termcaps);
 	ft_printf("\n");
 	return (tcap->command);
 }
 
 char	*read_line(t_cap *tcap)
 {
-	char	buffer[4];
+	char	buffer[3];
 	int		ret;
 
 	ret = 0;
 	signal(SIGINT, sigint_handler);
 	signal(SIGWINCH, sigwinch_handler);
-	ft_bzero(buffer, 4);
+	ft_bzero(buffer, 3);
 	ft_bzero(tcap->command, BUFFSIZE);
 	waitabit(2000000);
 	print_prompt_prefix();
-	while ("21sh")
+	if (tcap->overflow)
 	{
-		ft_bzero(buffer, 4);
+		ft_insert(tcap->carry, tcap);
+		ft_bzero(tcap->carry, 2);
+		tcap->overflow = 0;
+	}
+	while ("42sh")
+	{
+		ft_bzero(buffer, 3);
 		tcsetattr(0, TCSADRAIN, g_shell->term);
 		read(0, &buffer, 3);
 		if ((ret = read_buffer(buffer, tcap)) == -2)

@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/28 15:31:17 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/06/12 13:43:04 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/06/12 16:58:03 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,17 +36,22 @@ void	sigfork(int sig)
 
 void	sigwinch_handler(int sig)
 {
-	struct winsize	*w;
+	t_cap *tcap;
+	int p;
+	int prompt_len;
 
+	tcap = g_shell->tcap;
+	p = tcap->cursy * (tcap->cursx_max + 1) + (tcap->cursx) - tcap->prompt_len;
+	prompt_len = tcap->init_len;
 	if (sig == SIGWINCH)
 	{
-		signal(SIGWINCH, sigwinch_handler);
-		if (!(w = ft_memalloc(sizeof(*w))))
-			return ;
-		if (ioctl(1, TIOCGWINSZ, w))
-			g_shell->tcap->cursx_max = w->ws_col - 1;
-		ft_printf("redimensionnement:{%d, %d}\n", tgetnum("co"), tgetnum("li"));
-		print_prompt_prefix();
+		init_termcap(tcap);
+		if (prompt_len >= g_shell->tcap->cursx_max + 1)
+			tcap->prompt_len = prompt_len % (tcap->cursx_max + 1);
+		else
+			tcap->prompt_len = prompt_len;
+		tcap->cursy = (p + tcap->prompt_len) / (tcap->cursx_max + 1);
+		tcap->cursx = (p + tcap->prompt_len) % (tcap->cursx_max + 1);
 	}
 }
 

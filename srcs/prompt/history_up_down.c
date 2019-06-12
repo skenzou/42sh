@@ -32,7 +32,7 @@ int	histo_up(t_cap *tcap, t_history *h)
 	if (!len)
 		return (1);
 	string = ft_strnew(len);
-	ft_strncpy(string, command, len - 1);
+	ft_strncpy(string, command, len);
 	ft_insert(string, tcap);
 	return (1);
 }

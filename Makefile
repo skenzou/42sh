@@ -6,7 +6,7 @@
 #    By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/03 09:24:41 by midrissi          #+#    #+#              #
-#    Updated: 2019/06/12 16:07:55 by tlechien         ###   ########.fr        #
+#    Updated: 2019/06/12 16:44:44 by midrissi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -82,10 +82,27 @@ EXEC 		= $(addprefix $(SRC_PATH)executor/,$(_EXEC))
 _EXEC_O 	:= $(_EXEC:.c=.o)
 EXEC_O 		:= $(EXEC:.c=.o)
 
-_PROMPT 	= arrow_events.c completion.c history.c history_up_down.c \
-			home_end_events.c init_struct.c key_events.c main.c move.c \
-			others.c prompt_prefix.c push.c read_arrow.c read_key.c reader.c \
-			shift_events.c signal_handler.c var.c
+_PROMPT 	= arrow_events.c \
+			completion.c \
+			copy_cut.c \
+			ctrl_r.c \
+			history.c \
+			history_expansion.c \
+			history_up_down.c \
+			home_end_events.c \
+			init_struct.c \
+			key_events.c \
+			main.c \
+			move.c \
+			others.c \
+			prompt_prefix.c \
+			push.c \
+			read_alt.c \
+			read_arrow.c \
+			read_key.c \
+			reader.c \
+			shift_events.c \
+			signal_handler.c
 PROMPT 		= $(addprefix $(SRC_PATH)prompt/,$(_PROMPT))
 _PROMPT_O 	:= $(_PROMPT:.c=.o)
 PROMPT_O 	:= $(PROMPT:.c=.o)

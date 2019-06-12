@@ -96,6 +96,7 @@ int		ft_delete_back(t_cap *tcap)
 {
 	int		pos;
 
+
 	if (tcap->cursy == 0 && tcap->cursx == tcap->prompt_len)
 	{
 		tputs(tcap->sound, 1, ft_put_termcaps);

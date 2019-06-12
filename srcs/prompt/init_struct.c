@@ -6,20 +6,22 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/09 00:37:47 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/30 20:36:00 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/06/12 05:48:37 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-static int	init_termcap(t_cap *tcap)
+int	init_termcap(t_cap *tcap)
 {
 	struct winsize	*w;
 
 	if (!(w = ft_memalloc(sizeof(*w))))
 		return (0);
-	tcap->cursx_max = (ioctl(1, TIOCGWINSZ, w) ? w->ws_col : tgetnum("co"));
-	tcap->cursx_max--;
+	if (ioctl(1, TIOCGWINSZ, w) != 0)
+		tcap->cursx_max = tgetnum("co") - 1;
+	else
+		tcap->cursx_max = w->ws_col - 1;
 	tcap->cursy = 0;
 	free(w);
 	tcap->prompt = NULL;
@@ -34,34 +36,50 @@ static int	init_termcap(t_cap *tcap)
 	tcap->sound = tgetstr("bl", NULL);
 	tcap->save = tgetstr("sc", NULL);
 	tcap->restore = tgetstr("rc", NULL);
+	tcap->overflow = 0;
+	ft_bzero(tcap->carry, 2);
 	return (1);
 }
 
 static int	init_history(t_history *history)
 {
+	char *home;
+
+	if ((home = getenv("HOME")))
+	{
+		if (!(history->file_name = ft_strcjoin(home, ".42sh_history", '/')))
+			return (0);
+	}
+	else if (!(history->file_name = ft_strdup(".42sh_history")))
+		return (0);
 	history->len = 0;
 	history->data[0] = NULL;
 	history->read = 0;
 	history->position = -1;
-	history->file_name = ft_strjoin("/Users/",
-						ft_strcjoin(getenv("USER"), DEFAULT_HISTORY_NAME, '/'));
 	ft_bzero(history->match, BUFFSIZE);
 	if (read_history(history) == -1)
 		return (0);
 	return (1);
 }
 
-static int	init_var(char **var)
+static int	init_autocomp(t_ab *autocomp)
 {
-	int state;
+	autocomp->state = 0;
+	autocomp->pos = 0;
+	return (1);
+}
 
-	ft_bzero(var, 256);
-	if ((state = read_var(var)) < 0)
-	{
-		if (state == -2)
-			ft_printf("Erreur verifiez le fichier var\n");
-		return (0);
-	}
+static int	init_copy_cut_ctrl_r(t_cc *copy_cut, t_ctrl_r *ctrl_r)
+{
+	copy_cut->state = 0;
+	copy_cut->from = -1;
+	copy_cut->to = -1;
+	copy_cut->type = -1;
+	ctrl_r->state = 0;
+	ctrl_r->index = 0;
+	ctrl_r->not_found = 0;
+	ft_bzero(copy_cut->copied, BUFFSIZE);
+	ft_bzero(ctrl_r->data, BUFFSIZE);
 	return (1);
 }
 
@@ -72,15 +90,18 @@ int			init_struct(char **env)
 	g_shell->history = ft_memalloc(sizeof(*g_shell->history));
 	g_shell->tcap = ft_memalloc(sizeof(*g_shell->tcap));
 	g_shell->autocomp = ft_memalloc(sizeof(*g_shell->autocomp));
+	g_shell->copy_cut = ft_memalloc(sizeof(*g_shell->copy_cut));
+	g_shell->ctrl_r = ft_memalloc(sizeof(*g_shell->ctrl_r));
 	g_shell->term = ft_memalloc(sizeof(*g_shell->term));
 	g_shell->term_backup = ft_memalloc(sizeof(*g_shell->term_backup));
-	if (tcgetattr(0, g_shell->term_backup) == -1 ||
-											tcgetattr(0, g_shell->term) == -1)
+	if (tcgetattr(0, g_shell->term_backup) == -1 || !~tcgetattr(0, g_shell->term))
 		return (0);
-	if (!(g_shell->env = dup_env(env)) || !g_shell->tcap || !g_shell->history)
+	if (!(g_shell->env = dup_env(env)) || !g_shell->tcap || !g_shell->history ||
+		!g_shell->autocomp || !g_shell->copy_cut)
 		return (0);
-	if (!init_var(g_shell->var) || !init_termcap(g_shell->tcap) ||
-												!init_history(g_shell->history))
+	if (!init_termcap(g_shell->tcap) ||
+		!init_history(g_shell->history) || !init_autocomp(g_shell->autocomp) ||
+					!init_copy_cut_ctrl_r(g_shell->copy_cut, g_shell->ctrl_r))
 		return (0);
 	g_shell->term->c_lflag &= ~(ICANON | ECHO);
 	g_shell->term->c_cc[VMIN] = 1;
