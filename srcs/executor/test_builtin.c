@@ -6,7 +6,7 @@
 /*   By: ghamelek <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/02 00:34:44 by ghamelek          #+#    #+#             */
-/*   Updated: 2019/06/11 15:58:47 by ghamelek         ###   ########.fr       */
+/*   Updated: 2019/06/12 15:39:15 by ghamelek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,14 +69,14 @@ static int	binary_test(char **av)
 		return (arithmetic_test(av,"-lt"));	
 	else if (!ft_strcmp(av[2],"-le")) 						 
 		return (arithmetic_test(av,"-le"));	
-	else if(av[1][0] == '-')
+	else if(av[2][0] == '-')
 	{	
 		ft_putstr_fd("42sh: unknown condition: ",2);
 		ft_putendl_fd(av[1], 2);
 		return (2);
 	}
 	ft_putstr_fd("42sh: parse error: condition expected: ",2);
-	ft_putendl_fd(av[1], 2);
+	ft_putendl_fd(av[2], 2);
 	return (1);
 }
 
@@ -140,7 +140,7 @@ int		test_builtin(int ac, char **av)
 	int not ;
 
 	i = 0;
-	while (av[++i] && !ft_strcmp(av[i],"!") && (j = 1))
+	while ((j = 1) && av[++i] && !ft_strcmp(av[i],"!"))
 		ft_strdel(&av[i]);
 	not =  ((i - 1) && !(i % 2));
 	ac = ac - i +  not;
