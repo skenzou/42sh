@@ -6,7 +6,7 @@
 /*   By: tlechien <tlechien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/07 19:31:16 by tlechien          #+#    #+#             */
-/*   Updated: 2019/06/11 21:06:25 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/06/14 01:28:18 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ t_signal	g_signals[S_SIZE] = {
 	{SIGXFSZ	, S_ABN	, "XFSZ"	, "file size limit exceeded"},
 };
 
-void s_child_handler(int status)
+void s_child_handler(int status, t_child *node)
 {
 	int action;
 	char *handler;
@@ -50,19 +50,20 @@ void s_child_handler(int status)
 
 	if (s_get_values(status, &action, &handler, &stat))
 		return ;
-	ft_printf("debug: err child : %s: %s\n", handler, stat);
-	ID_STATUS = status;
+	//ft_printf("debug: err child : %s: %s\n", handler, stat);
+	node->status = status;
 	if (status == SIGINT)
 	{
-		kill(g_pid_table->pid, SIGHUP);
+		kill(node->pid, SIGHUP);
 		remove_pid();
 	}
 	else if (action != S_CONT && action != S_STOP)
 	{
-		display_pid_long(g_pid_table, 2);
+		display_pid_long(node, 2);
 		remove_pid();
 	}
-	return ;
+	else
+		display_pid_long(node, 1);
 }
 
 int s_get_values(int status, int *action, char **handler, char **stat)
@@ -85,13 +86,8 @@ int s_get_values(int status, int *action, char **handler, char **stat)
 
 void sigchld_handler()
 {
-	struct timespec	slp;
-
-	slp.tv_sec = 0;
-	slp.tv_nsec = 200000;
 	update_pid_table();
 	signal(SIGCHLD, sigchld_handler);
-	nanosleep(&slp, NULL);
 }
 
 void	resetsign(void)
@@ -107,7 +103,7 @@ void init_signal(void)
 {
 	signal(SIGTTOU, SIG_IGN);
 	signal(SIGTTIN, SIG_IGN);
-	signal(SIGTSTP, sigtstp_handler);
+	signal(SIGTSTP, sigtstp_dflhandler);
 	signal(SIGINT, sigint_handler);
 	signal(SIGWINCH, sigwinch_handler);
 	signal(SIGCHLD, sigchld_handler);

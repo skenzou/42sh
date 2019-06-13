@@ -28,21 +28,67 @@ void	ft_clear_all_lines(t_cap *tcap)
 	}
 }
 
-/*
-**up = tcap->up;
-**down = tcap->down;
-**right = tcap->right;
-**left = tcap->left;
-*/
-
-int		read_buffer(char buffer[4], t_cap *tcap)
+int	handle_eol(char *buffer, t_cap *tcap)
 {
-	char key;
+	char str[2];
 
-	if ((ft_isprint(buffer[0]) || wcharlen(buffer[0]) >1 ) && buffer[0] != SPACE)
+	enter_event(tcap);
+	ft_bzero(str, 2);
+	ft_bzero(tcap->carry, 2);
+	if (buffer[0] == '\n')
+	{
+		tcap->carry[0] = buffer[1];
+		tcap->carry[1] = buffer[2];
+		//dprintf(debug(), "4on rentre dans eol \n");
+		tcap->overflow = 1;
+		return (-2);
+	}
+	else if (buffer[1] == '\n')
+	{
+		//dprintf(debug(), "5on rentre dans eol \n");
+		str[0] = buffer[0];
+		ft_insert(str, tcap);
+		tcap->overflow = 1;
+		tcap->carry[0] = buffer[2];
+		return (-2);
+	}
+	else
+	{
+		//dprintf(debug(), "6on rentre dans eol \n");
+		ft_strncpy(str, buffer, 2);
+		ft_insert(str, tcap);
+		return (-2);
+	}
+
+	return (1);
+}
+
+int		read_buffer(char *buffer, t_cap *tcap)
+{
+	int key;
+
+	//dprintf(debug(), "avant {%d, %d, %d}|%s|\n",buffer[0], buffer[1], buffer[2], buffer);
+	key = 0;
+	if (g_shell->ctrl_r->state && ft_isprint(buffer[0]))
+		return (add_buffer_ctrl_r(buffer, g_shell->ctrl_r));
+	else if (g_shell->ctrl_r->state && buffer[0] == ENTER)
+		return (end_ctrl_r(g_shell->ctrl_r));
+	else if (g_shell->autocomp->state &&
+							(buffer[0] == ENTER && !buffer[1] && !buffer[2]))
+	{
+		enter_event(tcap);
+		ft_bzero(buffer, 3);
+	}
+	else if (~ft_indexof(buffer, '\n'))
+	 	return (handle_eol(buffer, tcap));
+	else if (buffer[0] == SPACE && !buffer[1] && !buffer[2])
+		return (space_event(tcap));
+	else if (ft_isprint(buffer[0]))
 		return (ft_insert(buffer, tcap));
-	if (is_arrow(buffer))
+	else if (is_arrow(buffer))
 		return (read_arrow(buffer[2], tcap));
+	else if ((key = is_alt(buffer)) != -1)
+		return (1);
 	else if ((key = is_shift_arrow(buffer)) != -1)
 		return (read_arrow(key + 10, tcap));
 	else if ((key = is_key(buffer)) != -1)

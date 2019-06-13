@@ -6,7 +6,7 @@
 /*   By: tlechien <tlechien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 10:57:28 by tlechien          #+#    #+#             */
-/*   Updated: 2019/06/11 18:11:35 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/06/14 01:12:09 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,21 @@
 **  Needs protection on already finished process ??
 */
 
-static	int	bg_all(void)
+static	int	bg_all(t_child *node)
 {
-	t_child	**node;
+	int		job_done;
 
-	node = NULL;
-	search_status(node, ID_SUSP);
-	if (node )
-		return (bg_resume(node));
-	err_display("bg: no current job\n", NULL, NULL);
-	return (1);
+	job_done = 0;
+	while (node->prev)
+		node = node->prev;
+	while (node)
+	{
+		if (node->pid && (node->status == ID_SUSP || node->status == SIGSTOP
+		|| node->status == SIGTTIN || node->status == SIGTTOU) && ++job_done)
+			bg_resume(&node);
+		node = node->next;
+	}
+	return ((job_done) ? 0 : err_display("bg: no current job\n", NULL, NULL));
 }
 
 int			bg_builtin(int ac, char **cmd)
@@ -39,7 +44,7 @@ int			bg_builtin(int ac, char **cmd)
 	ret = 0;
 	node = NULL;
 	if ((i = 1) && !cmd[i])
-		return (bg_all());
+		return (bg_all(g_pid_table));
 	while (cmd[i] && *cmd[i] == '%')
 	{
 		if ((*cmd[i] == '%' && !(!search_pid(&node, cmd[i] + 1, 0) ||
@@ -54,15 +59,18 @@ int			bg_builtin(int ac, char **cmd)
 	if (!node && (ret = 1))
 		err_display("bg: ", cmd[i],": no such job\n");
 	else if (ret)
-		err_display("bg: job already in background", NULL, NULL);
+		err_display("bg: job already in background\n", NULL, NULL);
 	return (ret);
 }
 
 int			bg_resume(t_child **node)
 {
-	if (!node || (*node)->status != ID_SUSP || kill((*node)->pid, SIGCONT))
+	if (!node || ((*node)->status != ID_SUSP && (*node)->status != SIGSTOP  &&
+	(*node)->status != SIGTTIN && (*node)->status != SIGTTOU) ||
+	kill((*node)->pid, SIGCONT))
 		return (1);
 	(*node)->priority = 0;
 	(*node)->status = ID_RUN;
+	display_pid_long(*node, 1);
 	return (0);
 }

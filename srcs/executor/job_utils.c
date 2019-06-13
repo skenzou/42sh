@@ -6,7 +6,7 @@
 /*   By: tlechien <tlechien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 04:40:55 by tlechien          #+#    #+#             */
-/*   Updated: 2019/06/11 18:14:52 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/06/12 16:04:03 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,22 @@ int	init_pid(void)
 
 int	kill_pids(void)
 {
-	while (ID_PREV)
+	while (ID_PID != 0)
 	{
-		ft_printf("bg PID :%d is being killed.\n", ID_PID);
-		kill(ID_PID, SIGTERM);
-		ft_printf("command: %s ", ID_EXEC);
-		ft_printf("address: %p ", g_pid_table);
-		ft_printf("pids: %d\n", ID_PID);
-		g_pid_table = ID_PREV;
+		//ft_printf("bg PID :%d is being killed.\n", ID_PID);
+		if (!kill(ID_PID, SIGHUP))
+			ID_STATUS = SIGHUP;
+		else if (!kill(ID_PID, SIGTERM))
+			ID_STATUS = SIGTERM;
+		else
+		{
+			err_display(ANSI_RED"42sh: can't kill process: ", ID_EXEC,
+			": pid >");
+			ft_putnbr_fd(ID_PID, 2);
+			ft_putendl_fd(ANSI_RESET, 2);
+		}
+		display_pid_long(g_pid_table, 2);
+		remove_pid();
 	}
 	return (0);
 }

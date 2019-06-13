@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/28 15:04:00 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/06/05 09:05:43 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/06/04 23:43:02 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,11 @@ int		arrow_up_event(t_cap *tcap)
 
 	if ((autocomp = g_shell->autocomp) && g_shell->autocomp->state)
 	{
-		x = autocomp->pos % autocomp->row;
+		x = autocomp->pos % ft_max(autocomp->row, 1);
 		if (autocomp->pos - autocomp->row > -1)
 			autocomp->pos -= autocomp->row;
 		else
 		{
-
 			if (x < autocomp->carry)
 			{
 				autocomp->pos = autocomp->len - 1;
@@ -61,7 +60,7 @@ int		arrow_down_event(t_cap *tcap)
 	if (g_shell->autocomp->state)
 	{
 		autocomp = g_shell->autocomp;
-		new_x = autocomp->pos % autocomp->row;
+		new_x = autocomp->pos % ft_max(autocomp->row, 1);
 		if (autocomp->pos + autocomp->row < autocomp->len)
 			autocomp->pos += autocomp->row;
 		else

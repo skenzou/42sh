@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 16:42:03 by midrissi          #+#    #+#             */
-/*   Updated: 2019/06/11 19:17:20 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/06/12 16:45:18 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,8 @@ typedef struct	s_shell
 	char		lastsignal;
 	size_t		curr_pipe;
 	t_ab		*autocomp;
+	t_cc		*copy_cut;
+	t_ctrl_r	*ctrl_r;
 	t_term		*term;
 	t_term		*term_backup;
 	t_list		*temp_redir;

@@ -6,7 +6,7 @@
 #    By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/03 09:24:41 by midrissi          #+#    #+#              #
-#    Updated: 2019/06/11 18:18:35 by tlechien         ###   ########.fr        #
+#    Updated: 2019/06/13 23:19:53 by tlechien         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -76,15 +76,33 @@ _EXEC 		= alias_builtin.c alias_init.c alias_utils.c bg_builtin.c tools.c\
 			set_builtin.c setenv_builtin.c shell_var.c tab_utils.c \
 			test_builtin.c tilde_expansion.c type_builtin.c unset_builtin.c \
 			unsetenv_builtin.c cd_builtin_utils.c hash_builtin.c \
-			cd_builtin_chdir.c parse_pipes.c utils2.c handle_hdoc.c signals.c
+			cd_builtin_chdir.c parse_pipes.c utils2.c handle_hdoc.c signals.c \
+			signals_utils.c
 EXEC 		= $(addprefix $(SRC_PATH)executor/,$(_EXEC))
 _EXEC_O 	:= $(_EXEC:.c=.o)
 EXEC_O 		:= $(EXEC:.c=.o)
 
-_PROMPT 	= arrow_events.c completion.c history.c history_up_down.c \
-			home_end_events.c init_struct.c key_events.c main.c move.c \
-			others.c prompt_prefix.c push.c read_arrow.c read_key.c reader.c \
-			shift_events.c signal_handler.c var.c
+_PROMPT 	= arrow_events.c \
+			completion.c \
+			copy_cut.c \
+			ctrl_r.c \
+			history.c \
+			history_expansion.c \
+			history_up_down.c \
+			home_end_events.c \
+			init_struct.c \
+			key_events.c \
+			main.c \
+			move.c \
+			others.c \
+			prompt_prefix.c \
+			push.c \
+			read_alt.c \
+			read_arrow.c \
+			read_key.c \
+			reader.c \
+			shift_events.c \
+			signal_handler.c
 PROMPT 		= $(addprefix $(SRC_PATH)prompt/,$(_PROMPT))
 _PROMPT_O 	:= $(_PROMPT:.c=.o)
 PROMPT_O 	:= $(PROMPT:.c=.o)

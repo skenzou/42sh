@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/14 23:53:49 by midrissi          #+#    #+#             */
-/*   Updated: 2019/06/11 21:21:06 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/06/14 01:30:14 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,24 +26,28 @@ int				ft_waitprocess(pid_t pid, char **cmd)
 	char		*stat;
 
 	signal(SIGCHLD, SIG_DFL);
+	signal(SIGTSTP, sigtstp_handler);
 	waitpid(pid, &status, WUNTRACED);
 	if (WIFEXITED(status))
 		return ((WEXITSTATUS(status)));
 	else if (WIFSIGNALED(status))
-		kill(pid, SIGTERM); // proteccc ? err = -1
+	{
+ 		s_get_values(status, NULL, &handler, &stat);
+ 		if (status != SIGINT)
+ 		{
+ 			err_display(ANSI_RED"42sh : ", cmd[0], ": ");
+ 			err_display(handler, ": ", stat);
+ 			ft_putendl_fd(ANSI_RESET, 2);
+ 		}
+ 	}
 	else if (WSTOPSIG(status))
 	{
 		add_pid(pid, cmd, ID_SUSP);
 		search_pid(&node, NULL, pid);
 		display_pid_status(node, 0);
 	}
-	else
-	{
-		s_get_values(status, NULL, &handler, &stat);
-		if (handler && stat)
-			ft_printf("err process\n"/*, handler, stat*/);
-	}
 	signal(SIGCHLD, sigchld_handler);
+	signal(SIGTSTP, sigtstp_dflhandler);
 	return (-1);
 }
 
