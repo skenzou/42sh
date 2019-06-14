@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 01:28:47 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/24 19:18:13 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/06/03 20:48:23 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ void	build_ast(t_list *lexer, t_ast **root, e_op_type optype1, e_op_type optype2
 	while(lexer)
 	{
 		token = (t_token*)(lexer->content);
-		//printf("test: %s\n", token->content);
 		if (token->op_type == optype1 || (optype2 != OTHER_OP && token->op_type == optype2))
 		{
 			save1 = prev;

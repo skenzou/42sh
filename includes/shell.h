@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 16:42:03 by midrissi          #+#    #+#             */
-/*   Updated: 2019/06/02 14:57:10 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/06/12 16:45:18 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,14 @@
 # include <sys/wait.h>
 # include <sys/types.h>
 # include <sys/stat.h>
+# include <pwd.h>
+# include <uuid/uuid.h>
 # include "lexer.h"
 # include "parser.h"
 # include "executor.h"
 # include "prompt.h"
 # include <errno.h>
+# include <time.h>
 # define ANSI_RED		"\x1b[31m"
 # define ANSI_GREEN		"\x1b[32m"
 # define ANSI_YELLOW	"\x1b[33m"
@@ -68,9 +71,13 @@
 # define JOBS_BUILTIN		21
 # define TYPE_BUILTIN		22
 # define TEST_BUILTIN		23
+# define OPEN_ERR			24
+# define AMBIGOUS_REDIRECT	25
+# define BAD_FD				26
 
 typedef struct	s_shell
 {
+	t_list		*hash_indexes;
 	t_cap		*tcap;
 	char		**env;
 	char		**intern;
@@ -79,6 +86,7 @@ typedef struct	s_shell
 	t_list		*redir;
 	t_list		*lexer;
 	t_ast		*ast;
+	char		*var[256];
 	t_history	*history;
 	t_hash_entry	*hash_table[TABLE_SIZE];
 	int			fd_table[10];

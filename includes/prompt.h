@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 07:12:40 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/30 20:34:17 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/06/14 01:42:51 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,6 +157,7 @@ typedef struct	s_tab
 	int						max_offset;
 	char					*match;
 	int 					type;
+	char                    after[BUFFSIZE];
 	char                    comp[BUFFSIZE];
 	char					*data[MAX_HISTORY_LENGHT];
 }				t_ab;
@@ -211,6 +212,7 @@ int		space_event(t_cap *tcap);
 
 int		home_event(t_cap *tcap);
 int		end_event(t_cap *tcap);
+
 /*
 **	COPY_CUT.C
 */
@@ -219,6 +221,7 @@ int		end_event(t_cap *tcap);
 int		ft_copy(t_cap *tcap);
 int		ft_cut(t_cap *tcap);
 int		ft_paste(t_cap *tcap);
+
 /*
 **	VAR.C
 */
@@ -248,6 +251,7 @@ int		add_buffer_ctrl_r(char *buffer, t_ctrl_r *ctrl_r);
 int 	back_i_search(t_ctrl_r *ctrl_r, t_cap *tcap);
 int		clear_before_ctrl_r(t_cap *tcap, t_ctrl_r *ctrl_r);
 int 	end_ctrl_r(t_ctrl_r *ctrl_r);
+
 /*
 **	OTHERS.C
 */
@@ -260,9 +264,12 @@ char	*get_git_status(void);
 /*
 **	SIGNAL_HANDLER.C
 */
+
 void	sigfork(int sig);
 void	sigint_handler(int sig);
 void	sigwinch_handler(int sig);
+void 	sigtstp_handler(int sig);
+void 	sigtstp_dflhandler(int sig);
 
 /*
 **	READ_KEY.C
@@ -278,12 +285,13 @@ int		read_key(char buffer, t_cap *tcap);
 char	is_shift_arrow(char key[4]);
 int		is_arrow(char key[4]);
 int		read_arrow(char buffer, t_cap *tcap);
+
 /*
 **	READ_ALT.C
 */
 
-
 int		is_alt(char *key);
+
 /*
 ** MOVE.C
 */
@@ -305,6 +313,7 @@ int		read_history(t_history *history);
 /*
 **HISTO_UP_DOWN.c
 */
+
 int	histo_up(t_cap *tcap, t_history *h);
 int	histo_down(t_cap *tcap, t_history *h);
 
@@ -321,17 +330,22 @@ void	ft_clean_buff(t_cap *tcap);
 /*
 **COMPLETION.c
 */
+
 int		ft_tab(t_cap *tcap, t_ab *autocomp);
+
 /*
 ** HISTORY_EXPANSION.c
 */
+
 int expansion_history(char *string, t_cap *tcap, int index);
+
 /*
 **INIT_STRUCT.c
 */
 
 int		init_struct(char **env);
 int		init_termcap(t_cap *tcap);
+
 /*
 **	MAIN.C
 */
@@ -339,4 +353,5 @@ int		init_termcap(t_cap *tcap);
 int		wcharlen(char nb);
 char	*read_line(t_cap *tcap);
 int		debug(void);
+
 #endif

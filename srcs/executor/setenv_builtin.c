@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 18:46:30 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/30 15:36:59 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/06/07 06:20:07 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,15 +67,14 @@ void					ft_setenv(char *key, char *value, char ***env)
 	value ? ft_strdel(&key) : 0;
 }
 
-static int				check_key(char *str)
+static int				setenv_err(int err_id)
 {
-	while (*str)
-	{
-		if (!ft_isalnum(*str))
-			return (1);
-		str++;
-	}
-	return (0);
+	if (err_id == SETENV_USG)
+		ft_putendl_fd("usage: setenv [<Key> <Value> | <Key>]", 2);
+	if (err_id == SETENV_INVALID_KEY)
+		ft_putendl_fd(
+			"setenv: Variable name must contain alphanumeric characters.", 2);
+	return (1);
 }
 
 int						setenv_builtin(int ac, char **av)
@@ -84,9 +83,9 @@ int						setenv_builtin(int ac, char **av)
 
 	same = g_shell->env == g_shell->env_tmp;
 	if (ac > 3)
-		return (SETENV_USG);
-	if (ac > 1 && check_key(av[1]))
-		return (SETENV_INVALID_KEY);
+		return (setenv_err(SETENV_USG));
+	if (ac > 1 && !is_key_valid(av[1]))
+		return (setenv_err(SETENV_INVALID_KEY));
 	if (ac == 1)
 		print_split(g_shell->env);
 	if (ac == 2)

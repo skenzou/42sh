@@ -1,8 +1,7 @@
 # 42sh
 
-## NE PAS OUBLIER DE SUPPRIMER L'HISTORIQUE SINON CA VA BUG
-
 ## Current tasks
+
 - Midrissi : core of the project (parser, lexer, executor, ...)
 - Aben-azz : termcaps/prompt
 - Ghamelek : test_builtin/has_table
@@ -13,33 +12,33 @@
 - POSIX norme on builtins
 - Signal monitoring.
 - Error management.
-- Le built-in fc (toutes les options POSIX)
-	- e *editor* **Specifie un editeur, si pa specifie la variable FCEDIT le specifie**
-	- l **affiche les N premiere commande de l'histo + ID**
-	- n	 **N'affiche pas les ID quand -l est appelé**
-	- r	 **Inverse l'ordre de tri**
-	- s	 **Re-executer une commande sans ouvrir lediteur**
-
-## DONE ACHRAF
-- [✓] Floation point exception avec fleche du bas
-- [✓] Home et End evenement
-- [✓] Copy/cut/past
-- [✓] SHIFT_UP et SHIFT_DOWN pour se deplacer dans une commande en haut et en bas
-- [✓] Gestion du redimensionnement de fenetre
-- [✓] Recherche incrémentale dans l’historique avec CTRL-R
-- [✓] Les expansions :
-	- [✓] !! **commande precedente dans lhisto**
-	- [✓] !*word* **cherche la premiere commande matchant avec word dans lhisto**
-	- [✓] !*number* **cherche la n ieme commande dans lhisto**
-	- [✓] !-*number* **cherche le number ieme precedent dans lhisto**
-- [✓] Protection getenv fichier historique
 
 ## TODO ACHRAF
-- Smart autocompletion
+- Mot selectionné a l'endroit du curseur durant l'autocompletion
+- !!, !word, !number, !-number
+- CTRL-R
+- Completion automatique si path ou si env_var
+- fc ? (Pas sur que ce soit dans termcaps, a voir)
+- Gestion du redimensionnement de fenetre
+- Couleurs dans l'autocompletion
 - Gestion des leaks
+- Copy/cut/past
+- Home et End evenement
+- SHIFT_UP et SHIFT_DOWN pour se deplacer dans une commande en haut et en bas
+- Bonus
+	- Autocompletion en fonction de la commande, ex:
+		- cd => que des dossier
+		- ls => fichier/dossier
+		- man => fichier present dans le dossier man
+- Floation point exception avec fleche du bas
+- Protection getenv fichier historique
 
 ## DEBUG
-error commands that require prompt reading
+
+- FPE: Down arrow while typing a command;
+- unable to exit autocompletion when started;
+- autocompletion doesn't work with for example ../../
+- job research not working just yet (crashes)
 
 ## DONE
 

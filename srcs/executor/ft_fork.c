@@ -6,72 +6,85 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/14 23:53:49 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/30 20:54:34 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/06/14 03:25:30 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/shell.h"
 
-static void    display_signal(int status, char *cmd)
-{
-	if (status == SIGALRM)
-		ft_printf(ANSI_RED"[TIMEOUT] %s\n"ANSI_RESET, cmd);
-	else if (status == SIGSEGV)
-		ft_printf(ANSI_RED"[SEGV] %s\n"ANSI_RESET, cmd);
-	else if (status == SIGBUS)
-		ft_printf(ANSI_RED"[BUSE] %d\n"ANSI_RESET, cmd);
-	else if (status == SIGABRT)
-		ft_printf(ANSI_RED"[ABRT] %d\n"ANSI_RESET, cmd);
-	else if (status == SIGFPE)
-		ft_printf(ANSI_RED"[FPE] %d\n"ANSI_RESET, cmd);
-	else
-		ft_printf(ANSI_RED"[ERR] %d ended unexpectedly\n"ANSI_RESET, cmd);
-}
+/*
+** Checks the status of a processus.
+** Returns exit value for regular exits,
+** Returns -1 for anormal exits and update_pid_table.
+*/
 
-int    ft_waitprocess(pid_t pid, char **cmd)
+int				ft_waitprocess(pid_t pid, char **cmd)
 {
-	int        status;
-	t_child    *node;
+	int       	status;
+	t_child   	*node;
+	char		*handler;
+	char		*stat;
 
+	signal(SIGTSTP, sigtstp_handler);
 	waitpid(pid, &status, WUNTRACED);
+	tcsetpgrp(0, getpid());
 	if (WIFEXITED(status))
 		return ((WEXITSTATUS(status)));
 	else if (WIFSIGNALED(status))
-		kill(pid, SIGTERM); // proteccc ? err = -1
+	{
+ 		s_get_values(status, NULL, &handler, &stat);
+ 		if (status != SIGINT)
+ 		{
+ 			err_display(ANSI_RED"42sh : ", cmd[0], ": ");
+ 			err_display(handler, ": ", stat);
+ 			ft_putendl_fd(ANSI_RESET, 2);
+ 		}
+ 	}
 	else if (WSTOPSIG(status))
 	{
-		update_pid_table(pid, cmd, S_SUSP);
+		add_pid(pid, cmd, ID_SUSP);
 		search_pid(&node, NULL, pid);
 		display_pid_status(node, 0);
-		kill(pid, SIGINT); // idem ?
 	}
-	display_signal(status, cmd[0]);
+	signal(SIGTSTP, sigtstp_dflhandler);
 	return (-1);
 }
 
-int		ft_fork_amper(char **cmd, char **env)
+/*
+** Forks without waiting for a return signal from the process and add him to
+** the g_pid_table.
+*/
+
+int				ft_fork_amper(char **cmd, char **env)
 {
 	pid_t	pid;
 
 	pid = fork();
-	signal(SIGINT, sigfork);
-	if (!pid)
-		execve(cmd[0], cmd, env);
 	if (pid < 0)
 		return (FAILFORK); // fork
+	if (!pid)
+	{
+		resetsign();
+		setpgid(0, 0);
+		execve(cmd[0], cmd, env);
+		exit(1);
+	}
 	if (!waitpid(pid, &pid, WNOHANG))
-		return (update_pid_table(pid, cmd, S_RUN));
+		return (add_pid(pid, cmd, ID_RUN));
 	return (0);
 }
 
-int	ft_fork(char **cmd, char **env)
+int				ft_fork(char **cmd, char **env)
 {
 	pid_t pid;
 
 	pid = fork();
 	signal(SIGINT, sigfork);
+	setpgid(getpid(), getpid());
 	if (pid == 0)
 	{
+		setpgid(0, 0);
+		tcsetpgrp(0, getpgrp());
 		execve(cmd[0], cmd, env);
 		exit(1);
 	}

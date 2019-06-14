@@ -6,63 +6,52 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/27 19:17:30 by midrissi          #+#    #+#             */
-/*   Updated: 2019/06/02 04:04:40 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/06/07 06:22:11 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-void	check_intern_var(char *needle, char ***env, char ***intern)
+static void			check_intern_var(char *needle, char ***env, char ***intern)
 {
-	int i;
-	char *key;
-	char *entry;
+	int		i;
+	char	*key;
+	char	*entry;
+	char	*value;
 
 	i = 0;
-	while(needle[i] && needle[i] != '=')
+	while (needle[i] && needle[i] != '=')
 		i++;
 	if (!(key = ft_strsub(needle, 0, i)))
 		ft_exit("Malloc failed in check_intern_var failed");
+	if (!(value = ft_strdup(needle + i + 1)))
+		ft_exit("Malloc failed in check_intern_var failed");
 	entry = get_key_value(key, g_shell->env);
+	ft_expand_one(&value);
 	if (entry)
-		ft_setenv(key, needle + i + 1, env);
+		ft_setenv(key, value, env);
 	else
-		ft_setenv(key, needle + i + 1, intern);
+		ft_setenv(key, value, intern);
 	ft_strdel(&key);
+	ft_strdel(&value);
 }
 
-int		is_var(char *needle)
+static int			is_var(char *needle)
 {
-	if (!ft_isalpha(*(needle++)))
+	if (!needle || ft_isdigit(*needle))
 		return (0);
 	while (*needle && *needle != '=')
 	{
-		if (!ft_isalnum(*needle))
+		if (!ft_isalnum(*needle) && *needle != '_')
 			return (0);
 		needle++;
 	}
 	return (*needle);
 }
 
-void		handle_intern_var(char **args)
+static void			reorder_tabs(char *str, char **env, char **intern)
 {
-	int i;
-	char **env;
-	char **intern;
-
-	i = 0;
-	env = ft_splitdup(g_shell->env);
-	intern = ft_splitdup(g_shell->intern);
-	while (args[i] && is_var(args[i]))
-		check_intern_var(args[i++], &env, &intern);
-	if (!i)
-	{
-		ft_splitdel(env);
-		ft_splitdel(intern);
-		return ;
-	}
-	remove_n_first_entries(args, i);
-	if (args[0])
+	if (str)
 	{
 		g_shell->env_tmp = env;
 		g_shell->intern_tmp = intern;
@@ -76,4 +65,25 @@ void		handle_intern_var(char **args)
 		g_shell->env_tmp = g_shell->env;
 		g_shell->intern_tmp = g_shell->intern;
 	}
+}
+
+void				handle_intern_var(char **args)
+{
+	int		i;
+	char	**env;
+	char	**intern;
+
+	i = 0;
+	env = ft_splitdup(g_shell->env);
+	intern = ft_splitdup(g_shell->intern);
+	while (args[i] && is_var(args[i]))
+		check_intern_var(args[i++], &env, &intern);
+	if (!i)
+	{
+		ft_splitdel(env);
+		ft_splitdel(intern);
+		return ;
+	}
+	remove_n_first_entries(args, i);
+	reorder_tabs(args[0], env, intern);
 }

@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/14 23:33:19 by midrissi          #+#    #+#             */
-/*   Updated: 2019/06/02 02:45:16 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/06/07 06:17:44 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void		print_redir(t_list *redir)
 {
-	t_redir *red;
-	int i;
+	t_redir		*red;
+	int			i;
 
 	ft_printf("===========================REDIR============================\n");
 	while (redir)
@@ -37,7 +37,7 @@ void		print_redir(t_list *redir)
 	ft_printf("============================================================\n");
 }
 
-char	**get_curr_cmd(t_list *redir)
+char		**get_curr_cmd(t_list *redir)
 {
 	while (redir)
 	{
@@ -48,7 +48,7 @@ char	**get_curr_cmd(t_list *redir)
 	return (NULL);
 }
 
-void	go_to_next_cmd(t_list *redir)
+void		go_to_next_cmd(t_list *redir)
 {
 	while (redir)
 	{
@@ -62,7 +62,7 @@ void	go_to_next_cmd(t_list *redir)
 	}
 }
 
-void 	redir_delone(void *data, size_t size)
+void		redir_delone(void *data, size_t size)
 {
 	t_redir *redir;
 
@@ -75,7 +75,7 @@ void 	redir_delone(void *data, size_t size)
 	}
 }
 
-int		open_file(t_redir *redir)
+int			open_file(t_redir *redir)
 {
 	int		fd;
 	int		err;
@@ -90,15 +90,9 @@ int		open_file(t_redir *redir)
 	if (fd == -1)
 	{
 		err = check_file(redir->dest[0]);
-		if (err == NO_RIGHT)
-			ft_putstr_fd("42sh: Permission denied: ", 2);
-		else if (err == NON_EXISTENT)
-			ft_putstr_fd("42sh: No such file or directory: ", 2);
-		else if (err == IS_DIRECTORY)
-			ft_putstr_fd("42sh: Is a directory: ", 2);
-		else
-			ft_putstr_fd("42sh: Error while opening: ", 2);
-		ft_putendl_fd(redir->dest[0], 2);
+		if (!err)
+			err = OPEN_ERR;
+		err_handler(err, redir->dest[0]);
 	}
 	return (fd);
 }

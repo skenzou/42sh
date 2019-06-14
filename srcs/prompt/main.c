@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/27 17:27:48 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/30 20:48:52 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/06/12 16:56:44 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,7 @@ char	*read_line(t_cap *tcap)
 	signal(SIGWINCH, sigwinch_handler);
 	ft_bzero(buffer, 3);
 	ft_bzero(tcap->command, BUFFSIZE);
+	waitabit(2000000);
 	print_prompt_prefix();
 	if (tcap->overflow)
 	{
@@ -101,7 +102,7 @@ char	*read_line(t_cap *tcap)
 		ft_bzero(tcap->carry, 2);
 		tcap->overflow = 0;
 	}
-	while ("21sh")
+	while ("42sh")
 	{
 		ft_bzero(buffer, 3);
 		tcsetattr(0, TCSADRAIN, g_shell->term);
@@ -148,14 +149,17 @@ int				main(int ac, char **av, char **env)
 	if (!(tgetent(NULL, getenv("TERM"))) || !init_struct(env) ||
 			init_pid() || init_alias(1) || init_fd_table())
 		return (-1);
+	ft_bzero((void *)g_shell->hash_table, TABLE_SIZE);
 	if (ac > 1)
 		check_flags(av, ac);
-	while ("21sh")
+	while ("42sh")
 	{
+		init_signal();
 		if (!(string = read_line(g_shell->tcap)))
 			return (-1);
 		if (!handler(string))
 			return (-1);
+		update_pid_table();
 	}
 	save_alias(1);
 	kill_pids();

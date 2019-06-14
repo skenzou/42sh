@@ -6,13 +6,13 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/30 18:51:02 by midrissi          #+#    #+#             */
-/*   Updated: 2019/06/02 14:44:01 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/06/04 04:44:27 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-static const t_oplist existing_token[] =
+static const t_oplist g_existing_token[] =
 {
 	{">>-", 3, TOKEN_REDIR, DBL_GREAT_DASH},
 	{"<<-", 3, TOKEN_REDIR, DBL_LESS_DASH},
@@ -66,7 +66,6 @@ static const t_oplist existing_token[] =
 	{">&", 2, TOKEN_REDIR, GREAT_AND},
 	{"&&", 2, TOKEN_CTL_OPERATOR, DBL_AND},
 	{";;", 2, TOKEN_CTL_OPERATOR, DBL_SEMI},
-	{"! ", 2, TOKEN_NEG, OTHER_OP},
 	{"|", 1, TOKEN_CTL_OPERATOR, PIPE},
 	{"&", 1, TOKEN_CTL_OPERATOR, AND},
 	{">", 1, TOKEN_REDIR, GREAT},
@@ -78,18 +77,18 @@ static const t_oplist existing_token[] =
 	{"\t", 1, TOKEN_EAT, OTHER_OP},
 	{"\r", 1, TOKEN_EAT, OTHER_OP},
 	{"\f", 1, TOKEN_EAT, OTHER_OP},
-	// {"=", 1, TOKEN_EQUAL, OTHER_OP},
 	{NULL, 1, 0, OTHER_OP}
 };
 
-static int		join_if_2words(t_list **lexer, char *str, e_token_type type)
+static int			join_if_2words(t_list **lexer, char *str, e_token_type type)
 {
-	t_token *token;
-	size_t	i;
+	t_token		*token;
+	size_t		i;
 
 	i = 0;
 	if (type == TOKEN_WORD && *lexer &&
-		((t_token *)((*lexer)->content))->type == TOKEN_WORD && (!(*lexer)->next || ((t_token *)(((*lexer)->next)->content))->type != TOKEN_REDIR))
+		((t_token *)((*lexer)->content))->type == TOKEN_WORD && (!(*lexer)->next
+		|| ((t_token *)(((*lexer)->next)->content))->type != TOKEN_REDIR))
 	{
 		token = (t_token *)(*lexer)->content;
 		token->content = realloc_new_tab(str, token->content, token->size);
@@ -99,11 +98,11 @@ static int		join_if_2words(t_list **lexer, char *str, e_token_type type)
 	return (0);
 }
 
-static void 		create_token(t_list **lexer, char *str,
+static void			create_token(t_list **lexer, char *str,
 										e_token_type type, e_op_type op_type)
 {
-	t_token token;
-	t_list *list;
+	t_token		token;
+	t_list		*list;
 
 	if (!str)
 		ft_exit("Malloc fail");
@@ -111,37 +110,56 @@ static void 		create_token(t_list **lexer, char *str,
 		return ;
 	if (op_type == SEMI && (*lexer == NULL || (*lexer &&
 		((t_token *)((*lexer)->content))->op_type == SEMI)))
-		{
-			free(str);
-			return ;
-		}
+	{
+		free(str);
+		return ;
+	}
 	if (!(token.content = (char **)ft_memalloc((sizeof(char *) * 2))))
 		ft_exit("Malloc failed in create_token");
 	token.content[0] = str;
 	token.content[1] = NULL;
 	token.size = 1;
-	token.len = ft_strlen(str);
 	token.type = type;
 	token.is_op = op_type != OTHER_OP;
 	token.op_type = op_type;
 	token.redir = op_type == TOKEN_REDIR;
-	list = ft_lstnew((void *)&token, sizeof(token));
-	if (!list)
+	if (!(list = ft_lstnew((void *)&token, sizeof(token))))
 		ft_exit("Failed to malloc a node of my lexer list");
 	ft_lstadd(lexer, list);
 }
 
-t_oplist		check_ops(char *str)
+t_oplist			check_ops(char *str)
 {
-	const t_oplist *curr;
-	int		i;
+	const t_oplist		*curr;
+	int					i;
 
-	curr = existing_token;
+	curr = g_existing_token;
 	i = -1;
 	while (curr[++i].op)
 		if (ft_strncmp(str, curr[i].op, curr[i].len) == 0)
 			return (curr[i]);
 	return (curr[i]);
+}
+
+static void			build_lexer_helper(t_list **lexer,
+									t_oplist *curr, char **input, char **prev)
+{
+	if (curr->op)
+	{
+		if (curr->type != TOKEN_EAT)
+			create_token(lexer, ft_strdup(curr->op), curr->type, curr->op_type);
+		*input += curr->len;
+		*prev = *input;
+	}
+	else if (**input == '\'' || **input == '"')
+	{
+		(*input)++;
+		while (**input && **input != '\'' && **input != '"')
+			(*input)++;
+		(*input)++;
+	}
+	else
+		(*input)++;
 }
 
 int					build_lexer(char *input, t_list **lexer)
@@ -156,28 +174,13 @@ int					build_lexer(char *input, t_list **lexer)
 			input += 2;
 		curr = check_ops(input);
 		if ((curr.op) && prev != input)
-			create_token(lexer, ft_strsub(prev, 0, input - prev), TOKEN_WORD, OTHER_OP);
-		if (curr.op)
-		{
-		 	if (curr.type != TOKEN_EAT)
-				create_token(lexer, ft_strdup(curr.op), curr.type, curr.op_type);
-			input += curr.len;
-			prev = input;
-		}
-		else if (*input == '\'' || *input == '"')
-		{
-			input++;
-			while (*input && *input != '\'' && *input != '"')
-				input++;
-			// if (!*input || (*input != '\'' && *input != '"'))
-			// 	return (0);
-			input++;
-		}
-		else
-			input++;
+			create_token(lexer, ft_strsub(prev, 0, input - prev),
+														TOKEN_WORD, OTHER_OP);
+		build_lexer_helper(lexer, &curr, &input, &prev);
 	}
 	if (prev != input)
-		create_token(lexer, ft_strsub(prev, 0, input - prev), TOKEN_WORD, OTHER_OP);
+		create_token(lexer, ft_strsub(prev, 0, input - prev),
+														TOKEN_WORD, OTHER_OP);
 	ft_lstrev(lexer);
 	return (1);
 }

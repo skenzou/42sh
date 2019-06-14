@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/04 13:56:36 by midrissi          #+#    #+#             */
-/*   Updated: 2019/06/05 00:31:53 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/06/12 16:59:12 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@
 # define BUFF_SIZE 32
 # define FD_MAX OPEN_MAX
 
-char			*ft_strreplace(char *orig, char *rep, char *with);
 int				get_next_line(int fd, char **line, char separator);
 void			*ft_memset(void *b, int c, size_t len);
 void			ft_bzero(void *s, size_t n);
@@ -161,4 +160,5 @@ int				ft_max(int a, int b);
 void			ft_exit(char *msg);
 int				ft_nlastindexof(char *string, char c, int n);
 int				ft_isspace(int c);
+char			*ft_strreplace(char *orig, char *rep, char *with);
 #endif

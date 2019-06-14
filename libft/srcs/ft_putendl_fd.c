@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: midrissi <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/08 10:59:20 by midrissi          #+#    #+#             */
-/*   Updated: 2018/10/08 11:00:43 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/06/04 05:18:33 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,6 @@ void	ft_putendl_fd(char const *s, int fd)
 	if (s)
 	{
 		ft_putstr_fd(s, fd);
-		ft_putchar_fd('\n', fd);
 	}
+	ft_putchar_fd('\n', fd);
 }

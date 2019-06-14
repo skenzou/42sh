@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/28 15:31:17 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/06/02 15:04:19 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/06/14 01:41:35 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,9 @@ void	sigint_handler(int sig)
 	{
 		signal(SIGINT, sigint_handler);
 		ft_printf("\n");
-		g_shell->lastsignal = 1;
 		print_prompt_prefix();
+		g_shell->lastsignal = 1;
+		ft_clear_replace(g_shell->tcap);
 		exit(0);
 	}
 }
@@ -53,4 +54,19 @@ void	sigwinch_handler(int sig)
 		tcap->cursy = (p + tcap->prompt_len) / (tcap->cursx_max + 1);
 		tcap->cursx = (p + tcap->prompt_len) % (tcap->cursx_max + 1);
 	}
+}
+
+void 	sigtstp_dflhandler(int sig)
+{
+	if (sig == SIGTSTP)
+ 	{
+		ft_putchar(7);
+		signal(SIGTSTP, sigtstp_dflhandler);
+	}
+}
+
+void 	sigtstp_handler(int sig)
+{
+	if (sig == SIGTSTP)
+		signal(SIGTSTP, sigtstp_handler);
 }
