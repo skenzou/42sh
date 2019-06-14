@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 06:28:16 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/30 20:37:14 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/06/14 02:11:53 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int	histo_down(t_cap *tcap, t_history *h)
 	if (!len)
 		return (1);
 	string = ft_strnew(len);
-	ft_strncpy(string, command, len - 1);
+	ft_strncpy(string, command, len);
 	ft_insert(string, tcap);
 	return (1);
 }

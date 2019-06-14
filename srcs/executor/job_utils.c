@@ -6,7 +6,7 @@
 /*   By: tlechien <tlechien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 04:40:55 by tlechien          #+#    #+#             */
-/*   Updated: 2019/06/12 16:04:03 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/06/14 05:43:25 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	kill_pids(void)
 			ft_putendl_fd(ANSI_RESET, 2);
 		}
 		display_pid_long(g_pid_table, 2);
-		remove_pid();
+		remove_pid(g_pid_table);
 	}
 	return (0);
 }
@@ -82,16 +82,17 @@ int	update_priority(int first)
 	return (0);
 }
 
-int	remove_pid(void)
+int	remove_pid(t_child *node)
 {
 	t_child *curr;
 
-	curr = (ID_NEXT)? ID_NEXT : ID_PREV;
-	(ID_PREV) ? ID_PREV->next = ID_NEXT : 0;
-	(ID_NEXT) ? ID_NEXT->prev = ID_PREV : 0;
-	ft_strdel(&ID_EXEC);
-	free (g_pid_table);
-	g_pid_table = curr;
+	curr = (node->next)? node->next : node->prev;
+	(node->prev) ? (node->prev)->next = node->next : 0;
+	(node->next) ? (node->next)->prev = node->prev : 0;
+	ft_strdel(&node->exec);
+	if (g_pid_table == node)
+		g_pid_table = curr;
+	free (node);
 	return (0);
 }
 
@@ -102,18 +103,24 @@ int	remove_pid(void)
 int	add_pid(int pid, char **command, int status)
 {
 	t_child *new;
-
+	while (ID_PREV)
+		g_pid_table = ID_PREV;
+	while (ID_NEXT && ID_NEXT->index == ID_INDEX + 1)
+		g_pid_table = ID_NEXT;
 	if (!(new = (t_child*)malloc(sizeof(t_child))))
 		exit(FAILFORK); //TODO malloc erroc
-	new->index = g_pid_table->index + 1;
+	new->index = ID_INDEX + 1;
 	new->pid = pid;
 	new->status = status;
 	new->priority = 0;
 	new->exec = ft_strdup(command[0]);  //TODO dup_env() + proteccc
-	new->next = NULL;
+	new->next = ID_NEXT;
 	new->prev = g_pid_table;
+	(new->next) ? new->next->prev = new : 0;
 	ID_NEXT = new;
-	g_pid_table = new;
+	while (ID_NEXT)
+		g_pid_table = ID_NEXT;
+	setpgid(pid, 0);
 	update_priority(new->index);
 	ft_printf("[%d] %d\n", new->index, new->pid);
 	return (0);

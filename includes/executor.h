@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 00:40:57 by midrissi          #+#    #+#             */
-/*   Updated: 2019/06/12 15:46:52 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/06/14 03:46:35 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -178,7 +178,7 @@ int		init_pid(void);
 int		update_priority(int first);
 int		kill_pids(void);
 int 	display_pid_long(t_child *node, int fd);
-int		remove_pid(void);
+int		remove_pid(t_child *node);
 
 /*
 **	fg_builtin.c & dependencies

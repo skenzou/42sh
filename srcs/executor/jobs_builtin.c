@@ -6,7 +6,7 @@
 /*   By: tlechien <tlechien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 04:51:21 by tlechien          #+#    #+#             */
-/*   Updated: 2019/06/12 15:52:48 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/06/14 03:51:04 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ int	update_pid_table(void)
 			ID_PRIORITY = -1;
 			ID_STATUS = ID_DONE;
 			display_pid_status(g_pid_table, 0);
-			remove_pid();
+			remove_pid(g_pid_table);
 		}
 		else if (WIFSIGNALED(status))
 			s_child_handler(WTERMSIG(status), g_pid_table);

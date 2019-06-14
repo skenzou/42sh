@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/14 23:53:49 by midrissi          #+#    #+#             */
-/*   Updated: 2019/06/12 15:38:17 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/06/14 03:25:30 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,9 @@ int				ft_waitprocess(pid_t pid, char **cmd)
 	char		*handler;
 	char		*stat;
 
-	signal(SIGCHLD, SIG_DFL);
+	signal(SIGTSTP, sigtstp_handler);
 	waitpid(pid, &status, WUNTRACED);
+	tcsetpgrp(0, getpid());
 	if (WIFEXITED(status))
 		return ((WEXITSTATUS(status)));
 	else if (WIFSIGNALED(status))
@@ -45,7 +46,7 @@ int				ft_waitprocess(pid_t pid, char **cmd)
 		search_pid(&node, NULL, pid);
 		display_pid_status(node, 0);
 	}
-	signal(SIGCHLD, sigchld_handler);
+	signal(SIGTSTP, sigtstp_dflhandler);
 	return (-1);
 }
 
@@ -57,23 +58,17 @@ int				ft_waitprocess(pid_t pid, char **cmd)
 int				ft_fork_amper(char **cmd, char **env)
 {
 	pid_t	pid;
-	int		fd[2];
 
 	pid = fork();
-	signal(SIGINT, sigfork);
 	if (pid < 0)
 		return (FAILFORK); // fork
 	if (!pid)
 	{
 		resetsign();
-		dup2(0,0);
 		setpgid(0, 0);
 		execve(cmd[0], cmd, env);
 		exit(1);
 	}
-	dup2(fd[0], 0);
-	close(fd[0]);
-	setpgid(pid, 0);
 	if (!waitpid(pid, &pid, WNOHANG))
 		return (add_pid(pid, cmd, ID_RUN));
 	return (0);
@@ -85,8 +80,11 @@ int				ft_fork(char **cmd, char **env)
 
 	pid = fork();
 	signal(SIGINT, sigfork);
+	setpgid(getpid(), getpid());
 	if (pid == 0)
 	{
+		setpgid(0, 0);
+		tcsetpgrp(0, getpgrp());
 		execve(cmd[0], cmd, env);
 		exit(1);
 	}

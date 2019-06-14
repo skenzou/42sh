@@ -6,7 +6,7 @@
 /*   By: tlechien <tlechien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/16 05:04:02 by tlechien          #+#    #+#             */
-/*   Updated: 2019/06/12 13:03:19 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/06/14 05:46:04 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,16 @@
 static int	waitfg(t_child *node)
 {
 	int       	status;
-	//char		*handler;
-	//char		*stat;
 
 	signal(SIGCHLD, SIG_DFL);
 	signal(SIGINT, sigchld_handler);
+	signal(SIGTSTP, sigtstp_handler);
 	if (node && node->status != 0)
 	{
 		node->status = SIGCONT;
 		kill(node->pid, SIGCONT);
-		display_pid_long(node, 2);
 	}
+	display_pid_long(node, 1);
 	tcsetpgrp(0, (node->pid));
 	waitpid(node->pid, &status, WUNTRACED);
 	if (WIFEXITED(status))
@@ -33,17 +32,14 @@ static int	waitfg(t_child *node)
 		ID_PRIORITY = -1;
 		ID_STATUS = ID_DONE;
 		display_pid_status(g_pid_table, 0);
-		remove_pid();
+		remove_pid(node);
 	}
 	else if (WIFSIGNALED(status))
 		s_child_handler(WTERMSIG(status), node);
 	else if (WIFSTOPPED(status))
-	{
 		s_child_handler(WSTOPSIG(status), node);
-	}
 	tcsetpgrp(0, getpgrp());
-	signal(SIGINT, sigint_handler);
-	signal(SIGCHLD, sigchld_handler);
+	init_signal();
 	return (0);
 }
 

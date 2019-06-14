@@ -6,7 +6,7 @@
 /*   By: tlechien <tlechien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/07 19:31:16 by tlechien          #+#    #+#             */
-/*   Updated: 2019/06/12 15:54:29 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/06/14 03:47:16 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,12 +55,12 @@ void s_child_handler(int status, t_child *node)
 	if (status == SIGINT)
 	{
 		kill(node->pid, SIGHUP);
-		remove_pid();
+		remove_pid(node);
 	}
 	else if (action != S_CONT && action != S_STOP)
 	{
 		display_pid_long(node, 2);
-		remove_pid();
+		remove_pid(node);
 	}
 	else
 		display_pid_long(node, 1);
@@ -103,7 +103,7 @@ void init_signal(void)
 {
 	signal(SIGTTOU, SIG_IGN);
 	signal(SIGTTIN, SIG_IGN);
-	signal(SIGTSTP, sigtstp_handler);
+	signal(SIGTSTP, sigtstp_dflhandler);
 	signal(SIGINT, sigint_handler);
 	signal(SIGWINCH, sigwinch_handler);
 	signal(SIGCHLD, sigchld_handler);
