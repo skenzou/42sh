@@ -6,7 +6,7 @@
 #    By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/10/09 12:43:35 by midrissi          #+#    #+#              #
-#    Updated: 2019/06/12 16:58:44 by midrissi         ###   ########.fr        #
+#    Updated: 2019/06/14 05:58:59 by tlechien         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,7 +57,7 @@ _ICYAN			=	\x1b[46m
 _IWHITE			=	\x1b[47m
 MSG				= $(_BOLD)$(_BLUE)Compiling the libft:$(_END)
 
-OBJPATH			= obj/
+OBJPATH			= .obj/
 SRCPATH			=	srcs/
 
 SRCS			:= $(SRC:%=$(SRCPATH)%)
@@ -77,9 +77,8 @@ $(NAME): $(OBJ)
 	@$(AR) $(NAME) $(OBJ)
 	@echo "\r\033[K$(_BOLD)$(_GREEN)${NAME} is ready for use$(_END)"
 
-$(OBJ): obj/%.o: srcs/%.c
-	@if ! test -d $(OBJPATH); then \
-	mkdir -p $(OBJPATH); fi
+$(OBJ): $(OBJPATH)%.o: $(SRCPATH)%.c
+	@mkdir -p $(OBJPATH)
 	@$(COMP) $(CFLAGS) -o $@ $<
 	@printf "\r\033[K$(MSG) $(_BOLD)$(_CYAN)%-$(LONGEST)s\$(_END)" $(notdir $<)
 
