@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/27 17:27:48 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/06/12 16:56:44 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/06/15 15:50:39 by ghamelek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,7 +142,7 @@ static int init_fd_table()
 	return (0);
 }
 
-int				main(int ac, char **av, char **env)
+int				main(int ac, char **av, const char **env)
 {
 	char	*string;
 

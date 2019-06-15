@@ -6,27 +6,11 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/28 15:35:56 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/06/05 05:30:24 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/06/15 17:50:09 by ghamelek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
-
-// char	**dup_env(char **env)
-// {
-// 	char	**p;
-// 	int		i;
-//
-// 	i = ft_split_count(env);
-// 	if (!(p = (char **)ft_memalloc(sizeof(char *) * (i + 1))))
-// 		return (NULL);
-// 	i = -1;
-// 	while (env[++i])
-// 		if (!(p[i] = ft_strdup(env[i])))
-// 			return (NULL);
-// 	p[i] = NULL;
-// 	return (p);
-// }
 
 int		ft_put_termcaps(int c)
 {
@@ -42,14 +26,25 @@ char	*get_git_status(void)
 	char		*status;
 
 	i = 0;
+	status = NULL;
 	if ((fd = open(".git/HEAD", O_RDONLY)) > 0)
 	{
 		while (get_next_line(fd, &str, '\n') > 0)
 		{
 			if ((status = str + ft_lastindexof(str, '/') + 1))
+			{
+				if (!(status = ft_strdup(status)))
+					ft_exit("Malloc failed in get_git_status");
+				ft_strdel(&str);
 				return (status);
+
+			}
 			else
+			{
+				ft_strdel(&str);
 				return (NULL);
+			}
+			ft_strdel(&str);
 			i++;
 		}
 	}

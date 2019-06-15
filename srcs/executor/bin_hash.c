@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/13 06:11:23 by midrissi          #+#    #+#             */
-/*   Updated: 2019/06/05 09:08:00 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/06/15 16:27:09 by ghamelek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,13 @@ static unsigned char *add_path(char **bin,unsigned char *argv)
 			ft_exit("Malloc failed in add_path");
 		if (access((char *)str, R_OK) == 0)
 			return str;
+		ft_strdel((char **)&str);
 	}
 	return (NULL);
 }
 
 
-static unsigned long hashCode(unsigned char *str)
+static unsigned long hashCode(const unsigned char *str)
 {
 	unsigned long hash = 5381;
 	int c;
@@ -95,7 +96,9 @@ t_hash_entry *hash_insert(unsigned char *key, char **env)
 	if (!path)
 		return (NULL);
 	if (!(bin = ft_strsplit(path, ':')))
-		ft_exit("Malloc failed in hash_insert");
+		{
+			ft_exit("Malloc failed in hash_insert");
+			}
 	key = add_path(bin, key);
 	if(!key)
 		return (NULL) ;
@@ -128,7 +131,7 @@ int		hash_table(char **str, char **env)
 			item->hit = 1;
 			*str = ft_strdup((char*)item->data);
 			!(*str) ? ft_exit("Malloc failed in hash_table") : 0;
-			free(copy);
+			ft_strdel(&copy);
 			return (check_file(*str));
 		}
 		else
@@ -139,7 +142,7 @@ int		hash_table(char **str, char **env)
 		item->hit++;
 		*str = ft_strdup((char *)item->data);
 		!(*str) ? ft_exit("Malloc failed in hash_table") : 0;
-		free(copy);
+		ft_strdel(&copy);
 		return (check_file(*str));
 	}
 }

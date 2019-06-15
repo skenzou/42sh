@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 06:28:16 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/06/14 02:11:53 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/06/15 15:14:12 by ghamelek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ int	histo_up(t_cap *tcap, t_history *h)
 	string = ft_strnew(len);
 	ft_strncpy(string, command, len);
 	ft_insert(string, tcap);
+	ft_strdel(&string);
 	return (1);
 }
 
@@ -59,5 +60,6 @@ int	histo_down(t_cap *tcap, t_history *h)
 	string = ft_strnew(len);
 	ft_strncpy(string, command, len);
 	ft_insert(string, tcap);
+	ft_strdel(&string);
 	return (1);
 }

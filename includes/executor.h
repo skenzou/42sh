@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 00:40:57 by midrissi          #+#    #+#             */
-/*   Updated: 2019/06/14 03:46:35 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/06/15 16:46:42 by ghamelek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,7 +122,7 @@ char		*get_key_value(char *key, char **array);
 void   		tilde_expansion(char **ptr);
 int			unset_builtin(int ac, char **av);
 int			export_builtin(int ac, char **av);
-char		**removekey(char *key, int keylen, char **env);
+char		**removekey(char *key, int keylen,const char **env);
 int			exec_builtin(char **builtin, int id, char ***env);
 void		handle_pipe(t_ast *root);
 void		redir_delone(void *data, size_t size);

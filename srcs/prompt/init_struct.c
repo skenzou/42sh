@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/09 00:37:47 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/06/12 05:48:37 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/06/15 15:48:08 by ghamelek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ static int	init_copy_cut_ctrl_r(t_cc *copy_cut, t_ctrl_r *ctrl_r)
 	return (1);
 }
 
-int			init_struct(char **env)
+int			init_struct(const char **env)
 {
 	if (!(g_shell = ft_memalloc(sizeof(*g_shell))))
 		return (0);

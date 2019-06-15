@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/10 02:39:58 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/25 06:13:42 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/06/15 17:48:03 by ghamelek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,22 +39,24 @@ static int print_prefix(void)
 	char *string;
 	char *git;
 	char *name;
-
+	
+	git = NULL;
 	name = getenv("USER");
 	name || (name = "42sh");
-	git = get_git_status();
 	string = NULL;
-	string = getcwd(string, 20);
+	string = getcwd(NULL, 20);
 	git = get_git_status();
 	!ft_strcmp(string, "/") && (string = "/");
 	prompt_len = ft_strlen((string + ft_lastindexof(string, '/') + 1)) +
 														ft_strlen(name) + 6 + 1;
 	ft_printf(g_shell->lastsignal ? PROMPT1_ERR : PROMPT1);
 	ft_printf(PROMPT2, (string + ft_lastindexof(string, '/') + 1));
+	ft_strdel(&string);
 	if (git)
 	{
 		prompt_len += 7 + ft_strlen(git);
 		ft_printf(PROMPT3, git);
+		ft_strdel(&git);
 	}
 	ft_printf(PROMPT4, name);
 	return (prompt_len);
@@ -79,12 +81,9 @@ static void	print_default_prompt_prefix(void)
 
 void		print_prompt_prefix(void)
 {
-	char *prompt;
-
-	prompt = g_shell->tcap->prompt;
-	if (prompt)
+	if (g_shell->tcap->prompt)
 	{
-		ft_printf("%s ", make_prompt(prompt));
+		ft_printf("%s ", make_prompt(g_shell->tcap->prompt));
 		return ;
 	}
 	print_default_prompt_prefix();

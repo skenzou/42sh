@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 07:12:40 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/06/14 01:42:51 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/06/15 20:22:29 by ghamelek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -256,7 +256,6 @@ int 	end_ctrl_r(t_ctrl_r *ctrl_r);
 */
 
 int		ft_put_termcaps(int c);
-char	**dup_env(char **env);
 char	*correct(char *string, char **possible, int *difference);
 char	*get_git_status(void);
 
@@ -342,7 +341,7 @@ int expansion_history(char *string, t_cap *tcap, int index);
 **INIT_STRUCT.c
 */
 
-int		init_struct(char **env);
+int		init_struct(const char **env);
 int		init_termcap(t_cap *tcap);
 
 /*

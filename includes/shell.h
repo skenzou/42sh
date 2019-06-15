@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 16:42:03 by midrissi          #+#    #+#             */
-/*   Updated: 2019/06/12 16:45:18 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/06/15 15:40:59 by ghamelek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,6 @@ typedef struct	s_shell
 
 extern t_shell *g_shell;
 
-char		**dup_env(char **env);
-int			handler(char *input);
+char		**dup_env(const char **env);
+int			handler(const char *input);
 #endif

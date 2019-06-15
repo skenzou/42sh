@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/28 13:22:00 by midrissi          #+#    #+#             */
-/*   Updated: 2019/06/07 06:02:22 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/06/15 16:45:39 by ghamelek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void			intern_to_env(char *key)
 	ft_expand_one(&value);
 	ft_setenv(key, value, &g_shell->env);
 	g_shell->intern_tmp =
-						removekey(key, ft_strlen(key), g_shell->intern_tmp);
+						removekey(key, ft_strlen(key),(const char**) g_shell->intern_tmp);
 	if (same)
 		g_shell->intern = g_shell->intern_tmp;
 	else

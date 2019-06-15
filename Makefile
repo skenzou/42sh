@@ -6,7 +6,7 @@
 #    By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/03 09:24:41 by midrissi          #+#    #+#              #
-#    Updated: 2019/06/12 16:44:44 by midrissi         ###   ########.fr        #
+#    Updated: 2019/06/15 20:37:13 by ghamelek         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,7 +45,7 @@ NAME		= 42sh
 MSG			=	$(_BOLD)$(_BLUE)Compiling 42sh$(_END)
 
 CC			= gcc
-C_FLAGS		= -Wall -Wextra -Werror
+C_FLAGS		= -g -v -Wall -Wextra -Werror
 SRC_PATH	= srcs/
 OBJ_PATH	= .obj/
 LFT_PATH	= ./libft/

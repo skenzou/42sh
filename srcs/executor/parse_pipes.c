@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/07 06:12:37 by midrissi          #+#    #+#             */
-/*   Updated: 2019/06/07 06:47:00 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/06/15 16:52:37 by ghamelek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static int		ft_pipe_exec(char **cmd, int redir)
 	if (!g_shell->lastsignal && !builtin)
 		execve(cmd[0], cmd, g_shell->env_tmp);
 	if (!g_shell->lastsignal && builtin)
-		g_shell->lastsignal = builtin->function(ft_split_count(cmd), cmd);
+		g_shell->lastsignal = builtin->function(ft_split_count((const char**)cmd), cmd);
 	return (g_shell->lastsignal);
 }
 

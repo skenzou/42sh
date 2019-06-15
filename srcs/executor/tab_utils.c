@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 01:14:21 by midrissi          #+#    #+#             */
-/*   Updated: 2019/06/07 06:23:48 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/06/15 16:39:08 by ghamelek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ char		**dup_tab(char **old, size_t size)
 	char	**new;
 	size_t	i;
 
-	size = ft_split_count(old);
+	size = ft_split_count((const char**)old);
 	new = (char **)ft_memalloc(sizeof(char *) * (size + 1));
 	!new ? ft_exit("Failed to allocate a new char** in realloc_new_tab") : 0;
 	i = 0;
@@ -41,7 +41,7 @@ void		remove_n_first_entries(char **args, int n)
 		return ;
 	i = 0;
 	j = n;
-	count = ft_split_count(args);
+	count = ft_split_count((const char**)args);
 	while (j < count)
 	{
 		if (i < n)
@@ -81,7 +81,7 @@ char		**realloc_new_tab(char *needle, char **old, size_t size)
 	char	**new;
 	size_t	i;
 
-	size = ft_split_count(old);
+	size = ft_split_count((const char**)old);
 	new = (char **)ft_memalloc(sizeof(char *) * (size + 2));
 	!new ? ft_exit("Failed to allocate a new char** in realloc_new_tab") : 0;
 	i = 0;
