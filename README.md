@@ -5,12 +5,10 @@
 - Midrissi : core of the project (parser, lexer, executor, ...)
 - Aben-azz : termcaps/prompt
 - Ghamelek : test_builtin/has_table
-- tlechien : cd_builtin/jobs control/signal monitoring/alias
+- tlechien : alias
 
 ## TODO
-- builtin test
 - POSIX norme on builtins
-- Signal monitoring.
 - Error management.
 
 ## TODO ACHRAF
@@ -35,10 +33,7 @@
 
 ## DEBUG
 
-- FPE: Down arrow while typing a command;
-- unable to exit autocompletion when started;
 - autocompletion doesn't work with for example ../../
-- job research not working just yet (crashes)
 
 ## DONE
 

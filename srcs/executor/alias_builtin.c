@@ -6,7 +6,7 @@
 /*   By: tlechien <tlechien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/19 14:48:57 by tlechien          #+#    #+#             */
-/*   Updated: 2019/05/20 14:47:35 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/06/16 04:44:33 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,12 @@ int		expand_alias(void)
 	int		i;
 
 	if (!(new_aliases =(char**)ft_memalloc(sizeof(char*) *
-		(ft_arraylen(g_aliases) + 1))))
+		(ft_arraylen(g_aliases) + 2))))
 		exit(1); //TODO
 	i = -1;
 	while (g_aliases[++i])
 		new_aliases[i] = g_aliases[i];
+	new_aliases[i + 1] = NULL;
 	free(g_aliases);
 	g_aliases = new_aliases;
 	return (0);
@@ -77,19 +78,21 @@ int		add_alias(char *key, char *value)
 	return (0);
 }
 
-int		unalias_builtin(char **cmd)
+int		unalias_builtin(int ac, char **cmd)
 {
 	int	i;
 	int	index;
 
+	(void)ac;
+	cmd++;
 	if (!cmd || !cmd[0])
-		return (ft_printf("unalias: not enough arguments"));
+		return (err_display("unalias: not enough arguments\n", NULL, NULL));
 	i = -1;
 	while ((index = -1) && cmd[++i])
 	{
 		index = is_alias(cmd[i]);
 		if (index == -1)
-			ft_printf("unalias: no such hash table element: %s", cmd[i]); // fd 2
+			err_display("unalias: no such alias: ", cmd[i], "\n");
 		else
 		{
 			free(g_aliases[index]);
@@ -97,9 +100,6 @@ int		unalias_builtin(char **cmd)
 				exit(1); //TODO
 		}
 	}
-	if (is_reserved(cmd[0]))
-		return (ft_printf("alias: %s: reserved word", cmd[0]) || 1); // fd 2
-
 	return (0);
 }
 
@@ -107,16 +107,18 @@ int		unalias_builtin(char **cmd)
 **	Builtin that either displays the aliases or modifies them.
 */
 
-int		alias_builtin(char **cmd)
+int		alias_builtin(int ac, char **cmd)
 {
 	int 	i;
 
+	(void)ac;
+	cmd++;
 	if (!cmd || !cmd[0])
 		return (display_alias());
-	if (!cmd[1] || !cmd[2] || cmd[3])
-		return (ft_printf("usage: alias [key] [value]") || 1); //fd 2
-	if (is_reserved(cmd[0]))
-		return (ft_printf("alias: %s: reserved word", cmd[0]) || 1); // fd 2
+	if (!cmd[0] || !cmd[1] || cmd[2])
+		return (err_display("usage: alias [key] [value]\n", NULL, NULL));
+	if (!is_reserved(cmd[0]))
+		return (err_display("alias: ", cmd[0], ": reserved word\n"));
 	i = is_alias(cmd[0]);
 	if (i == -1)
 		add_alias(cmd[0], cmd[1]);

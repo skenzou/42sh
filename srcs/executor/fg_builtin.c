@@ -6,7 +6,7 @@
 /*   By: tlechien <tlechien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/16 05:04:02 by tlechien          #+#    #+#             */
-/*   Updated: 2019/06/14 05:46:04 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/06/15 22:49:26 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ int			fg_builtin(int ac, char **cmd)
 		err_display("fg: no current job\n", NULL, NULL);
 		return (1);
 	}
-	while (cmd[i] && *cmd[i] == '%')
+	while (cmd[i] && *cmd[i])
 	{
 		if ((*cmd[i] == '%' && !(!search_pid(&node, cmd[i] + 1, 0) ||
 		!search_process(&node, cmd[i] + 1) || !search_index(&node, cmd[i] + 1))))

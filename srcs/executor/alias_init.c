@@ -6,7 +6,7 @@
 /*   By: tlechien <tlechien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/19 16:01:10 by tlechien          #+#    #+#             */
-/*   Updated: 2019/05/24 18:35:20 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/06/16 04:44:38 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ int		init_alias(int file)
 		ALIAS_FILE, O_RDONLY, S_IRUSR | S_IWUSR)) == -1))
 		return (1);
 	g_aliases = (char **)ft_memalloc(sizeof(char *) * i);
+	g_aliases[i - 1] = NULL;
 	i = -1;
 	while (file && (ret = get_next_line(fd, &line, '\n')) == 1)
 		g_aliases[++i] = line;
@@ -123,8 +124,9 @@ int		save_alias(int save)
 	err = 0;
 	while (g_aliases[++i])
 	{
-		if (save && *g_aliases[i] && write(fd, g_aliases[i],
-			ft_strlen(g_aliases[i])) == -1)
+		if (save && *g_aliases[i] && (write(fd, g_aliases[i],
+			ft_strlen(g_aliases[i])) == -1 ||
+			write(fd, "\n", 1)))
 			err = 1;
 		free(g_aliases[i]);
 	}

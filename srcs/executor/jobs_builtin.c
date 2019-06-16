@@ -6,7 +6,7 @@
 /*   By: tlechien <tlechien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 04:51:21 by tlechien          #+#    #+#             */
-/*   Updated: 2019/06/14 03:51:04 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/06/16 01:21:08 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int display_pid_long(t_child *node, int fd)
 	ft_putnbr_fd(node->pid, fd);
 	ft_putchar_fd(' ', fd);
 	ft_putstr_fd(stat, fd);
-	write (fd,"                       ", 23 - ft_strlen2(stat));
+	write (fd,"                       ", 29 - ft_strlen2(stat));
 	ft_putstr_fd(node->exec, fd);
 	ft_putchar_fd('\n', fd);
 	return (0);
@@ -56,12 +56,12 @@ int			display_pid_status(t_child *node, char option)
 	current = (node->priority < 1) ? ' ' : '-';
 	(node->priority == 2) ? current = '+' : 0;
 	if (option & OPT_L)
-		ft_printf("[%d] %c %d %-22s %s\n", node->index, current, node->pid,
+		ft_printf("[%d] %c %d %-28s %s\n", node->index, current, node->pid,
 		stat, node->exec);
 	else if (option & OPT_P)
 		ft_printf("%d\n", node->pid);
 	else
-		ft_printf("[%d] %c %-22s %s\n", node->index, current,
+		ft_printf("[%d] %c %-28s %s\n", node->index, current,
 		stat, node->exec);
 	if (node->status == SIGHUP)
 		print_prompt_prefix();
@@ -101,38 +101,9 @@ int	update_pid_table(void)
 			break;
 		g_pid_table = ID_NEXT;
 	}
-	update_priority(0); // ?s
+	update_priority(0);
 	return (0);
 }
-
-/*
-static	int	check_pid_status(t_child **node, char option)
-{
-	int	status;
-
-	if (!node || !*node || !(*node)->pid)
-		return (0);
-	if (!waitpid((*node)->pid, &status, WNOHANG))
-		((*node)->status != S_SUSP) ? (*node)->status = 0 : 0;
-	else if (WIFEXITED(status))
-	{
-		(*node)->priority = -1;
-		(*node)->status = S_DONE;
-	}
-	else if (WIFSIGNALED(status))
-	{
-		(*node)->priority = -1;
-		(*node)->status = S_TERM;
-	}
-	else if (WSTOPSIG(status))
-		(*node)->status = S_CONT;
-	else
-		return (0);
-	update_priority(0); // ?s
-	//display_pid_status(*node, option);
-	//ft_putendl((*node)->exec);
-	return (0); // return display_pid_status
-}*/
 
 /*
 ** Recurses on the pid_table and displays the bg processus.

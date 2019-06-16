@@ -6,7 +6,7 @@
 /*   By: tlechien <tlechien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 10:57:28 by tlechien          #+#    #+#             */
-/*   Updated: 2019/06/14 01:43:21 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/06/15 22:50:15 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int			bg_builtin(int ac, char **cmd)
 	node = NULL;
 	if ((i = 1) && !cmd[i])
 		return (bg_all(g_pid_table));
-	while (cmd[i] && *cmd[i] == '%')
+	while (cmd[i] && *cmd[i])
 	{
 		if ((*cmd[i] == '%' && !(!search_pid(&node, cmd[i] + 1, 0) ||
 		!search_process(&node, cmd[i] + 1) || !search_index(&node, cmd[i] + 1))))

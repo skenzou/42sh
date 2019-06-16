@@ -6,7 +6,7 @@
 /*   By: tlechien <tlechien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 04:40:55 by tlechien          #+#    #+#             */
-/*   Updated: 2019/06/14 05:43:25 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/06/15 22:46:16 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,27 @@ int	remove_pid(t_child *node)
 	return (0);
 }
 
+static char	*full_cmd(char **cmd)
+{
+	int		i;
+	int		len;
+	char	*ret;
+
+	i = -1;
+	len = 0;
+	while (cmd[++i])
+		len += ft_strlen2(cmd[i]) + 1;
+	ret = (char*)ft_memalloc(len);
+	i = 0;
+	ret = ft_strcat(ret, cmd[i]);
+	while (cmd[++i])
+	{
+		ret = ft_strcat(ret, " ");
+		ret = ft_strcat(ret, cmd[i]);
+	}
+	return (ret);
+}
+
 /*
 ** Adds a new node to the pid_table.
 */
@@ -113,7 +134,7 @@ int	add_pid(int pid, char **command, int status)
 	new->pid = pid;
 	new->status = status;
 	new->priority = 0;
-	new->exec = ft_strdup(command[0]);  //TODO dup_env() + proteccc
+	new->exec = full_cmd(command);  //TODO dup_env() + proteccc
 	new->next = ID_NEXT;
 	new->prev = g_pid_table;
 	(new->next) ? new->next->prev = new : 0;
