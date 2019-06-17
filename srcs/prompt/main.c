@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/27 17:27:48 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/06/17 14:20:22 by ghamelek         ###   ########.fr       */
+/*   Updated: 2019/06/17 18:53:20 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,13 +86,13 @@ char	*clean_before_return(t_cap *tcap)
 
 char	*read_line(t_cap *tcap)
 {
-	char	buffer[3];
+	char	buffer[4];
 	int		ret;
 
 	ret = 0;
 	signal(SIGINT, sigint_handler);
 	signal(SIGWINCH, sigwinch_handler);
-	ft_bzero(buffer, 3);
+	ft_bzero(buffer, 4);
 	ft_bzero(tcap->command, BUFFSIZE);
 	waitabit(2000000);
 	print_prompt_prefix();
@@ -106,7 +106,7 @@ char	*read_line(t_cap *tcap)
 	{
 		ft_bzero(buffer, 3);
 		tcsetattr(0, TCSADRAIN, g_shell->term);
-		read(0, &buffer, 3);
+		read(0, &buffer, 4);
 		if ((ret = read_buffer(buffer, tcap)) == -2)
 			return (clean_before_return(tcap));
 		else if (!ret)

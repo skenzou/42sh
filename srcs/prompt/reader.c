@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/28 15:31:17 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/25 08:23:10 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/06/17 18:53:45 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ int		read_buffer(char *buffer, t_cap *tcap)
 							(buffer[0] == ENTER && !buffer[1] && !buffer[2]))
 	{
 		enter_event(tcap);
-		ft_bzero(buffer, 3);
+		ft_bzero(buffer, 4);
 	}
 	else if (~ft_indexof(buffer, '\n'))
 	 	return (handle_eol(buffer, tcap));
