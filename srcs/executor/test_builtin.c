@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   test_builtin.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ghamelek <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ghamelek <ghamelek@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/02 00:34:44 by ghamelek          #+#    #+#             */
-/*   Updated: 2019/06/16 17:37:26 by ghamelek         ###   ########.fr       */
+/*   Updated: 2019/06/17 20:43:24 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,8 @@ static int	binary_test(char **av)
 		return (arithmetic_test(av, "-le"));
 	else if (av[2][0] == '-')
 	{
-		ft_putstr_fd("42sh: unknown condition: ", 2);
+		ft_putstr_fd(av[0],2);
+		ft_putstr_fd(": unknown condition: ", 2);
 		ft_putendl_fd(av[1], 2);
 		return (2);
 	}
@@ -81,21 +82,22 @@ static int	binary_test(char **av)
 
 static int	suit_unary_test(char **av, struct stat *buf)
 {
-	if (!ft_strcmp(av[1], "-u"))	//teste >> chmod u+s file ou chmod 4644 file 
+	if (!ft_strcmp(av[1], "-u"))	//teste >> chmod u+s file ou chmod 4644 file
 		return ((buf->st_mode & S_ISUID) == 0);
-	else if (!ft_strcmp(av[1], "-s"))     //tested 
+	else if (!ft_strcmp(av[1], "-s"))     //tested
 		return (!(buf->st_size > 0));
-	else if (!ft_strcmp(av[1], "-r")) // tested , chmod 377 to disable read  
+	else if (!ft_strcmp(av[1], "-r")) // tested , chmod 377 to disable read
 		return (access(av[2], R_OK) != 0);
-	else if (!ft_strcmp(av[1], "-w"))     //tested 
-		return ((access(av[2], W_OK) != 0)); 
-	else if (!ft_strcmp(av[1], "-x"))     //tested 
-		return ((access(av[2], X_OK) != 0)); 
-	else if (!ft_strcmp(av[1], "-z"))     // tested 
-		return ((ft_strlen(av[2]) != 0));   	
+	else if (!ft_strcmp(av[1], "-w"))     //tested
+		return ((access(av[2], W_OK) != 0));
+	else if (!ft_strcmp(av[1], "-x"))     //tested
+		return ((access(av[2], X_OK) != 0));
+	else if (!ft_strcmp(av[1], "-z"))     // tested
+		return ((ft_strlen(av[2]) != 0));
 	else if(av[1][0] == '-')
-	{	
-		ft_putstr_fd("test: unknown condition: ",2);
+	{
+		ft_putstr_fd(av[0],2);
+		ft_putstr_fd(": unknown condition: ",2);
 		ft_putendl_fd(av[1], 2);
 		return (2);
 	}
@@ -111,23 +113,23 @@ static int	unary_test(char **av)
 
 	buf = malloc(sizeof(struct stat));
 	ret = lstat(av[2], buf);
-	if(!ft_strcmp(av[1],"-b")) 								//teste 
+	if(!ft_strcmp(av[1],"-b")) 								//teste
 		return (!((buf->st_mode & S_IFMT) == S_IFBLK));
-	else if (!ft_strcmp(av[1],"-c"))						 //teste 
+	else if (!ft_strcmp(av[1],"-c"))						 //teste
 		return (!((buf->st_mode & S_IFMT) == S_IFCHR));
-	else if (!ft_strcmp(av[1],"-d")) 						//teste 
+	else if (!ft_strcmp(av[1],"-d")) 						//teste
 		return (!((buf->st_mode & S_IFMT) == S_IFDIR));
-	else if (!ft_strcmp(av[1],"-e"))    					//teste 
+	else if (!ft_strcmp(av[1],"-e"))    					//teste
 		return (!(ret == 0));
-	else if (!ft_strcmp(av[1],"-f"))      					//teste 
+	else if (!ft_strcmp(av[1],"-f"))      					//teste
 		return (!(S_ISREG(buf->st_mode)));
-	else if (!ft_strcmp(av[1],"-g")) 	//teste >> chmod g+s file ou chmod 2750 file 
+	else if (!ft_strcmp(av[1],"-g")) 	//teste >> chmod g+s file ou chmod 2750 file
 		return (!(S_ISGID & buf->st_mode));
-	else if (!ft_strcmp(av[1],"-L"))   	//teste 
+	else if (!ft_strcmp(av[1],"-L"))   	//teste
 		return (!(S_ISLNK(buf->st_mode)));
-	else if (!ft_strcmp(av[1],"-p"))	// tested , create file with mkfifo to test 
+	else if (!ft_strcmp(av[1],"-p"))	// tested , create file with mkfifo to test
 		return (!((buf->st_mode & S_IFMT) == S_IFIFO));
-	else if (!ft_strcmp(av[1],"-S")) //  tested create socket with c program 
+	else if (!ft_strcmp(av[1],"-S")) //  tested create socket with c program
 		return (!(S_ISSOCK(buf->st_mode)));
 	return (suit_unary_test(av,buf));
 }
@@ -139,6 +141,19 @@ int		test_builtin(int ac, char **av)
 	int not ;
 
 	i = 0;
+	if (ft_strequ(av[0], "["))
+	{
+		if (ft_strequ(av[ac - 1], "]"))
+		{
+			ft_strdel(&av[ac - 1]);
+			ac--;
+		}
+		else
+		{
+			ft_putendl_fd("[: ']' expected", 2);
+			return (1);
+		}
+	}
 	while ((j = 1) && av[++i] && !ft_strcmp(av[i],"!"))
 		ft_strdel(&av[i]);
 	not =  ((i - 1) && !(i % 2));
@@ -157,6 +172,6 @@ int		test_builtin(int ac, char **av)
 		return (not ^ unary_test(av));
 	else if(ac == 3)
 		return (not ^ binary_test(av));
-	ft_putendl_fd("test: too many arguments",2);	
+	ft_putendl_fd("test: too many arguments",2);
 	return (1);
 }

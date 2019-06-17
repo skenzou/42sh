@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/27 17:27:48 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/06/17 18:53:20 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/06/17 19:59:47 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,9 +104,9 @@ char	*read_line(t_cap *tcap)
 	}
 	while ("42sh")
 	{
-		ft_bzero(buffer, 3);
+		ft_bzero(buffer, 4);
 		tcsetattr(0, TCSADRAIN, g_shell->term);
-		read(0, &buffer, 4);
+		read(0, &buffer, 3);
 		if ((ret = read_buffer(buffer, tcap)) == -2)
 			return (clean_before_return(tcap));
 		else if (!ret)
