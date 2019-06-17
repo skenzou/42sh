@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/28 15:31:17 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/06/14 01:41:35 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/06/17 16:36:52 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	sigint_handler(int sig)
 		print_prompt_prefix();
 		g_shell->lastsignal = 1;
 		ft_clear_replace(g_shell->tcap);
-		exit(0);
+		//exit(0);
 	}
 }
 

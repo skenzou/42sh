@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 06:02:13 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/06/12 05:54:11 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/06/15 13:55:14 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,12 +108,11 @@ void		add_to_completion(t_ab *autocomp, char *path, int onlydir)
 				create_file(d->d_name, path, autocomp, onlydir);
 		}
 	closedir(dir);
-
 }
 
 int		is_separator(char *s, int position)
 {
- 	return ((s[position] && s[position] == ';') ||
+	return ((s[position] && s[position] == ';') ||
 			(s[position] && s[position] == '|') ||
 			(s[position] && s[position] == '&'));
 }
@@ -157,11 +156,12 @@ int		is_first_argi(t_cap *tc, int position)
 	return (0);
 }
 
-void get_word(t_ab *autocomp, t_cap *tc, int position, char *path)
+void	get_word(t_cap *tc, int position, char *path)
 {
-	(void)autocomp;
+	int i;
+
+	i = position - 1;
 	ft_bzero(path, MAX_PATH);
-	int i = position - 1;
 	while (ft_isprint(tc->command[i]) &&
 			((!ft_isspace(tc->command[i]) && !is_separator(tc->command, i))
 				|| tc->command[i - 1] == '\\'))
@@ -169,13 +169,12 @@ void get_word(t_ab *autocomp, t_cap *tc, int position, char *path)
 	ft_strncpy(path, tc->command + i + 1, position - 1 - i);
 }
 
-int is_env_var(t_ab *autocomp, char *path)
+int		is_env_var(t_ab *autocomp, char *path)
 {
 	int i;
 	char copy[MAX_PATH];
 
 	ft_strcpy(copy, path);
-
 	i = 0;
 	if (path[0] == '$' && (path[1] && path[1] == '{'))
 	{
@@ -183,18 +182,18 @@ int is_env_var(t_ab *autocomp, char *path)
 		autocomp->after[0] = '}';
 		autocomp->after[1] = '\0';
 	}
-	else if (path[0] == '$' || path[0] == '\'' || path[0] == '"')
+	else if (path[0] == '$')
 	{
 		i = 1;
-		autocomp->after[0] = path[0] == '$' ? '\0' : path[0];
+		autocomp->after[0] = path[0] == '$';
 		autocomp->after[1] = '\0';
 	}
 	ft_bzero(path, MAX_PATH);
 	ft_strcpy(path, copy + i);
-	return i > 0;
+	return (i > 0);
 }
 
-int 	env_completion(t_ab *autocomp, char *key)
+int		env_completion(t_ab *autocomp, char *key)
 {
 	int i;
 	int len;
@@ -244,7 +243,7 @@ static char	*env_path(char **env)
 	return (NULL);
 }
 
-int 	command_completion(t_ab *autocomp, char *key)
+int		command_completion(t_ab *autocomp, char *key)
 {
 	int i;
 	int len;
@@ -264,62 +263,79 @@ int 	command_completion(t_ab *autocomp, char *key)
 	while (path_split && path_split[++i])
 	{
 		dprintf(debug(), "pathbin: |%s|\n", path_split[i]);
-		add_to_completion(autocomp,  path_split[i], 0);
+		add_to_completion(autocomp, path_split[i], 0);
 	}
 	return (1);
 }
 
-int		first_arg_completion(t_ab *autocomp, t_cap *tc, int position)
+int		first_arg_completion(t_ab *autocomp, t_cap *tc, char *str, int position)
 {
-	char path[MAX_PATH];
-
-	get_word(autocomp, tc, position, path);
-	if (is_env_var(autocomp, path))
+	if (is_env_var(autocomp, str))
 	{
-		return (env_completion(autocomp, path));
+		return (env_completion(autocomp, str));
 	}
-	else if (command_completion(autocomp, path))
+	else if (command_completion(autocomp, str))
 	{
 		return (1);
 	}
 	else if (tc->command[position - 1] && tc->command[position - 1] == '/')
 	{
-		add_to_completion(autocomp,  path, 0);
+		add_to_completion(autocomp,  str, 0);
 		return (1);
 	}
 	return (0);
 }
 
-int		arg_completion(t_ab *autocomp, t_cap *tc, int position)
+int		arg_completion(t_ab *autocomp, t_cap *tc, char *str, int position)
 {
-	char path[MAX_PATH];
-
-	get_word(autocomp, tc, position, path);
-	if (is_env_var(autocomp, path))
+	if (is_env_var(autocomp, str))
 	{
-		return (env_completion(autocomp, path));
+		return (env_completion(autocomp, str));
 	}
 	else if (tc->command[position - 1] && tc->command[position - 1] == '/')
 	{
-		add_to_completion(autocomp,  path, 0);
+		add_to_completion(autocomp, str, 0);
 		return (1);
 	}
 	return (0);
+}
+
+void	get_quote(t_ab *autocomp, char *str)
+{
+	int		i;
+	char	copy[MAX_PATH];
+
+	ft_strcpy(copy, str);
+	i = 0;
+	if (str[0] == '\'' || str[0] == '"' || str[0] == '{' || str[0] == '[' ||
+		str[0] == '(')
+	{
+		i = 1;
+		str[0] == '\'' && (autocomp->after[0] = '\'');
+		str[0] == '"' && (autocomp->after[0] = '"');
+		str[0] == '{' && (autocomp->after[0] = '{');
+		str[0] == '[' && (autocomp->after[0] = '[');
+		autocomp->after[1] = '\0';
+	}
+	ft_bzero(str, MAX_PATH);
+	ft_strcpy(str, copy + i);
 }
 
 int		smart_completion(t_ab *autocomp, t_cap *tc, int position)
 {
-	char path[MAX_PATH];
+	char str[MAX_PATH];
 
-	get_word(autocomp, tc, position, path);
+	get_word(tc, position, str);
+	if (!*str)
+		return (0);
+	get_quote(autocomp, str);
 	if (is_first_argi(tc, position))
 	{
-		return (first_arg_completion(autocomp, tc, position));
+		return (first_arg_completion(autocomp, tc, str, position));
 	}
-
 	else
 	{
-		return (arg_completion(autocomp, tc, position));
+		return (arg_completion(autocomp, tc, str, position));
 	}
 	dprintf(debug(), "%d pos: %d: %c\n", is_first_argi(tc, position), position, tc->command[position]);
 	return (0);
