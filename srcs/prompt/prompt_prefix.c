@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/10 02:39:58 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/06/16 21:17:21 by ghamelek         ###   ########.fr       */
+/*   Updated: 2019/06/17 16:39:09 by ghamelek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,8 @@ static void	print_default_prompt_prefix(void)
 	prompt_len = print_prefix();
 	if (prompt_len >= g_shell->tcap->cursx_max + 1)
 	{
-		g_shell->tcap->prompt_len = prompt_len % (g_shell->tcap->cursx_max + 1);
+		g_shell->tcap->prompt_len = prompt_len % ft_max(
+			(g_shell->tcap->cursx_max + 1), 1);
 		if (prompt_len == g_shell->tcap->cursx_max + 1)
 			ft_move(g_shell->tcap, "down", 1);
 	}

@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/09 00:03:36 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/25 06:01:25 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/06/17 16:42:03 by ghamelek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,9 @@ void	ft_replace_cursor(t_cap *tcap)
 	int		i;
 	int		remainder;
 
-	i = (tcap->char_len + tcap->prompt_len) / (tcap->cursx_max + 1);
-	remainder = (tcap->char_len + tcap->prompt_len) % (tcap->cursx_max + 1);
+	i = (tcap->char_len + tcap->prompt_len) / ft_max((tcap->cursx_max + 1), 1);
+	remainder = (tcap->char_len + tcap->prompt_len) %
+												ft_max((tcap->cursx_max + 1), 1);
 	if (remainder == 0)
 		i--;
 	ft_move(tcap, "up", i);
