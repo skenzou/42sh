@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/07 06:12:37 by midrissi          #+#    #+#             */
-/*   Updated: 2019/06/15 16:52:37 by ghamelek         ###   ########.fr       */
+/*   Updated: 2019/06/17 19:28:32 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,21 @@ static void		first_pipe(char **cmd, t_pipe **pipes, int redir)
 	pid_t pid;
 
 	pid = fork();
-	signal(SIGINT, sigfork);
 	if (pid == 0)
 	{
+		if (pipes[g_shell->curr_pipe]->job)
+		{
+			resetsign();
+			setpgid(0, 0);
+		}
 		close(pipes[g_shell->curr_pipe]->pipe[0]);
 		dup2(pipes[g_shell->curr_pipe]->pipe[1], STDOUT_FILENO);
 		exit(ft_pipe_exec(cmd, redir));
+	}
+	if (pipes[g_shell->curr_pipe]->job)
+	{
+		if (!waitpid(pid, &pid, WNOHANG))
+			add_pid(pid, cmd, ID_RUN);
 	}
 }
 
@@ -43,9 +52,13 @@ static void		pipe_cmd(char **cmd, t_pipe **pipes, size_t nbpipes, int redir)
 	pid_t pid;
 
 	pid = fork();
-	signal(SIGINT, sigfork);
 	if (pid == 0)
 	{
+		if (pipes[g_shell->curr_pipe]->job)
+		{
+			resetsign();
+			setpgid(0, 0);
+		}
 		dup2(pipes[g_shell->curr_pipe]->pipe[0], STDIN_FILENO);
 		close(pipes[g_shell->curr_pipe]->pipe[0]);
 		close(pipes[g_shell->curr_pipe]->pipe[1]);
@@ -55,7 +68,12 @@ static void		pipe_cmd(char **cmd, t_pipe **pipes, size_t nbpipes, int redir)
 	}
 	close(pipes[g_shell->curr_pipe]->pipe[0]);
 	close(pipes[g_shell->curr_pipe]->pipe[1]);
-	if (g_shell->curr_pipe == nbpipes - 1)
+	if (pipes[g_shell->curr_pipe]->job)
+	{
+		if (!waitpid(pid, &pid, WNOHANG))
+			add_pid(pid, cmd, ID_RUN);
+	}
+	else if (g_shell->curr_pipe == nbpipes - 1)
 		g_shell->lastsignal = ft_waitprocess(pid, cmd);
 }
 

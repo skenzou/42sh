@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/14 23:58:59 by midrissi          #+#    #+#             */
-/*   Updated: 2019/06/07 06:46:58 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/06/17 19:41:26 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static size_t	ft_count_pipes(t_ast *root)
 	return (nbpipes);
 }
 
-void			handle_pipe(t_ast *root)
+void			handle_pipe(t_ast *root, char job)
 {
 	t_pipe		**pipes;
 	size_t		nbpipes;
@@ -40,6 +40,7 @@ void			handle_pipe(t_ast *root)
 	{
 		if (!(pipes[i] = (t_pipe *)ft_memalloc(sizeof(t_pipe))))
 			ft_exit("Malloc failed");
+		pipes[i]->job = job;
 		pipe(pipes[i++]->pipe);
 	}
 	parse_pipes(root, pipes, nbpipes);

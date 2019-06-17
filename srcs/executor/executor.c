@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/03 16:15:41 by midrissi          #+#    #+#             */
-/*   Updated: 2019/06/15 16:34:21 by ghamelek         ###   ########.fr       */
+/*   Updated: 2019/06/17 19:30:46 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,14 +55,16 @@ void			ft_execute_ast(t_ast *root)
 		return ;
 	if (root->token->op_type == PIPE)
 	{
-		handle_pipe(root);
+		handle_pipe(root, root->job);
 		return ;
 	}
-	if (root->token->op_type == AND && root->left
-							&& root->left->token->op_type == TOKEN_WORD)
+	if (root->token->op_type == AND && root->left &&
+		(root->left->token->op_type == TOKEN_WORD ||
+										root->left->token->op_type == PIPE))
 		root->left->job = 1;
 	if (root->token->op_type == AND && root->left && root->left->right
-		&& root->left->right->token->op_type == TOKEN_WORD)
+		&& (root->left->right->token->op_type == TOKEN_WORD
+	|| root->left->right->token->op_type == PIPE))
 		root->left->right->job = 1;
 	if (root->left)
 		ft_execute_ast(root->left);

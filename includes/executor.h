@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 00:40:57 by midrissi          #+#    #+#             */
-/*   Updated: 2019/06/17 17:37:41 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/06/17 19:22:21 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ typedef struct s_hash_entry
 typedef struct s_pipe
 {
 	int			pipe[2];
+	char		job;
 }				t_pipe;
 
 typedef struct set_builtin
@@ -124,7 +125,7 @@ int			unset_builtin(int ac, char **av);
 int			export_builtin(int ac, char **av);
 char		**removekey(char *key, int keylen,const char **env);
 int			exec_builtin(char **builtin, int id, char ***env);
-void		handle_pipe(t_ast *root);
+void		handle_pipe(t_ast *root, char job);
 void		redir_delone(void *data, size_t size);
 int			ft_fork(char **cmd, char **env);
 void		remove_quote(char **str);
