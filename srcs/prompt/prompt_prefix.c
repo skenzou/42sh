@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/10 02:39:58 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/06/15 17:48:03 by ghamelek         ###   ########.fr       */
+/*   Updated: 2019/06/16 21:17:21 by ghamelek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ static int print_prefix(void)
 		ft_printf(PROMPT3, git);
 		ft_strdel(&git);
 	}
+	ft_strdel(&git);
 	ft_printf(PROMPT4, name);
 	return (prompt_len);
 }

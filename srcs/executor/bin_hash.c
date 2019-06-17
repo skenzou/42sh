@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/13 06:11:23 by midrissi          #+#    #+#             */
-/*   Updated: 2019/06/15 16:27:09 by ghamelek         ###   ########.fr       */
+/*   Updated: 2019/06/16 19:42:00 by ghamelek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,18 +96,24 @@ t_hash_entry *hash_insert(unsigned char *key, char **env)
 	if (!path)
 		return (NULL);
 	if (!(bin = ft_strsplit(path, ':')))
-		{
-			ft_exit("Malloc failed in hash_insert");
-			}
+	{
+		ft_exit("Malloc failed in hash_insert");
+	}
 	key = add_path(bin, key);
 	if(!key)
+	{
+		ft_splitdel(bin);
+		free(item->key);
+		free(item);
 		return (NULL) ;
+
+	}
 	add_index(hashIndex);
 	item->data = key;
 	while(g_shell->hash_table[hashIndex] != NULL
 								&& g_shell->hash_table[hashIndex]->key != NULL)
 	{
-		++hashIndex;
+		++hashIndex;   //a optimise
 		hashIndex %= TABLE_SIZE;
 	}
 	item->hit = 1;
@@ -135,7 +141,7 @@ int		hash_table(char **str, char **env)
 			return (check_file(*str));
 		}
 		else
-			return (NOT_FOUND);
+				return (NOT_FOUND);
 	}
 	else
 	{

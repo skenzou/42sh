@@ -6,7 +6,7 @@
 /*   By: tlechien <tlechien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 04:40:55 by tlechien          #+#    #+#             */
-/*   Updated: 2019/06/15 22:46:16 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/06/16 20:48:03 by ghamelek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int	init_pid(void)
 {
 	if (!(g_pid_table = (t_child*)ft_memalloc(sizeof(t_child))))
 		return (1);
+		//free leaks 
 	return (0);
 }
 

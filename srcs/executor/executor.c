@@ -23,6 +23,7 @@ void			ft_post_exec(t_ast *root)
 	if (!(str = ft_itoa(g_shell->lastsignal)))
 		ft_exit("Maloc failed in ft_post_exec");
 	ft_setenv("?", str, &g_shell->intern);
+	ft_strdel(&str);
 	g_shell->env_tmp = g_shell->env;
 	g_shell->intern_tmp = g_shell->intern;
 	if (root && root->token->redir)
