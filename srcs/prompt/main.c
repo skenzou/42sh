@@ -6,12 +6,11 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/27 17:27:48 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/06/17 19:59:47 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/06/17 21:52:14 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
-#include <stdio.h>
 
 t_event g_arrow_event[] = {
 	{UP, &arrow_up_event},
@@ -94,7 +93,7 @@ char	*read_line(t_cap *tcap)
 	signal(SIGWINCH, sigwinch_handler);
 	ft_bzero(buffer, 4);
 	ft_bzero(tcap->command, BUFFSIZE);
-	waitabit(2000000);
+	waitabit(0, 2000000);
 	print_prompt_prefix();
 	if (tcap->overflow)
 	{

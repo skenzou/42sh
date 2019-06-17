@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/07 06:12:37 by midrissi          #+#    #+#             */
-/*   Updated: 2019/06/17 19:28:32 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/06/17 20:11:12 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,13 @@ static void		first_pipe(char **cmd, t_pipe **pipes, int redir)
 	pid_t pid;
 
 	pid = fork();
+	(!pipes[g_shell->curr_pipe]->job) ? signal(SIGINT, sigfork): 0;
 	if (pid == 0)
 	{
 		if (pipes[g_shell->curr_pipe]->job)
 		{
 			resetsign();
-			setpgid(0, 0);
+			setpgid(0, getpgrp());
 		}
 		close(pipes[g_shell->curr_pipe]->pipe[0]);
 		dup2(pipes[g_shell->curr_pipe]->pipe[1], STDOUT_FILENO);
@@ -52,12 +53,13 @@ static void		pipe_cmd(char **cmd, t_pipe **pipes, size_t nbpipes, int redir)
 	pid_t pid;
 
 	pid = fork();
+	(!pipes[g_shell->curr_pipe]->job) ? signal(SIGINT, sigfork): 0;
 	if (pid == 0)
 	{
 		if (pipes[g_shell->curr_pipe]->job)
 		{
 			resetsign();
-			setpgid(0, 0);
+			setpgid(0, getpgrp());
 		}
 		dup2(pipes[g_shell->curr_pipe]->pipe[0], STDIN_FILENO);
 		close(pipes[g_shell->curr_pipe]->pipe[0]);

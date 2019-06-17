@@ -6,7 +6,7 @@
 /*   By: tlechien <tlechien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 04:40:55 by tlechien          #+#    #+#             */
-/*   Updated: 2019/06/16 20:48:03 by ghamelek         ###   ########.fr       */
+/*   Updated: 2019/06/17 21:56:18 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	init_pid(void)
 {
 	if (!(g_pid_table = (t_child*)ft_memalloc(sizeof(t_child))))
 		return (1);
-		//free leaks 
+		//free leaks
 	return (0);
 }
 
@@ -87,9 +87,9 @@ int	remove_pid(t_child *node)
 {
 	t_child *curr;
 
-	curr = (node->next)? node->next : node->prev;
-	(node->prev) ? (node->prev)->next = node->next : 0;
-	(node->next) ? (node->next)->prev = node->prev : 0;
+	curr = (node->left)? node->left : node->prev;
+	(node->prev) ? (node->prev)->left = node->left : 0;
+	(node->left) ? (node->left)->prev = node->prev : 0;
 	ft_strdel(&node->exec);
 	if (g_pid_table == node)
 		g_pid_table = curr;
@@ -127,8 +127,8 @@ int	add_pid(int pid, char **command, int status)
 	t_child *new;
 	while (ID_PREV)
 		g_pid_table = ID_PREV;
-	while (ID_NEXT && ID_NEXT->index == ID_INDEX + 1)
-		g_pid_table = ID_NEXT;
+	while (ID_LEFT && ID_LEFT->index == ID_INDEX + 1)
+		g_pid_table = ID_LEFT;
 	if (!(new = (t_child*)malloc(sizeof(t_child))))
 		exit(FAILFORK); //TODO malloc erroc
 	new->index = ID_INDEX + 1;
@@ -136,14 +136,37 @@ int	add_pid(int pid, char **command, int status)
 	new->status = status;
 	new->priority = 0;
 	new->exec = full_cmd(command);  //TODO dup_env() + proteccc
-	new->next = ID_NEXT;
+	new->left = ID_LEFT;
+	new->right = NULL;
 	new->prev = g_pid_table;
-	(new->next) ? new->next->prev = new : 0;
-	ID_NEXT = new;
-	while (ID_NEXT)
-		g_pid_table = ID_NEXT;
+	(new->left) ? new->left->prev = new : 0;
+	ID_LEFT = new;
+	while (ID_LEFT)
+		g_pid_table = ID_LEFT;
 	setpgid(pid, 0);
 	update_priority(new->index);
 	ft_printf("[%d] %d\n", new->index, new->pid);
 	return (0);
+}
+
+int add_amperpipe(int pid_origin, int pid, char **cmd, int status)
+{
+	t_child *new;
+	t_child	*origin;
+
+	search_pid(&origin, NULL, pid_origin);
+	if (!(new = (t_child*)malloc(sizeof(t_child))))
+		exit(FAILFORK); //TODO malloc erroc
+	new->index = origin->index;
+	new->pid = pid;
+	new->status = status;
+	new->priority = 0;
+	new->exec = full_cmd(cmd);  //TODO dup_env() + proteccc
+	new->right = NULL;
+	new->left = NULL;
+	new->prev = origin;
+	origin->right = new;
+	setpgid(pid, 0);
+	ft_printf("%*s %d\n", new->index, "    ", new->pid);
+	return(0);
 }

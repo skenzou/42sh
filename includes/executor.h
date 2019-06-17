@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 00:40:57 by midrissi          #+#    #+#             */
-/*   Updated: 2019/06/17 20:36:40 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/06/17 21:57:09 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@
 # define ID_INDEX     g_pid_table->index
 # define ID_STATUS    g_pid_table->status
 # define ID_EXEC      g_pid_table->exec
-# define ID_NEXT      g_pid_table->next
+# define ID_LEFT      g_pid_table->left
+# define ID_RIGHT     g_pid_table->right
 # define ID_PREV      g_pid_table->prev
 # define ALIAS_FILE	".21sh_alias"
 # define OPT_L 1
@@ -56,8 +57,9 @@ struct s_child{
 	pid_t			pid;
 	int				priority;
 	int				status;
-	char			*exec; //**
-	t_child			*next;
+	char			*exec;
+	t_child			*left;
+	t_child			*right;
 	t_child			*prev;
 };
 
@@ -165,6 +167,7 @@ int			err_display(char *start, char *mid, char *end);
 
 int		ft_fork(char **cmd, char **env);
 int		ft_fork_amper(char **cmd, char **env);
+int		ft_fork_builtin(t_builtin *builtin,int ac, char **cmd);
 int		ft_waitprocess(pid_t pid, char **cmd);
 
 /*
@@ -240,6 +243,6 @@ void 	init_signal(void);
 int 	s_get_values(int status, int *action, char **handler, char **stat);
 void	s_child_handler(int status, t_child *node);
 void	resetsign(void);
-int		waitabit(int);
+int		waitabit(int min, int nsec);
 
 #endif
