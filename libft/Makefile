@@ -6,7 +6,7 @@
 #    By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/10/09 12:43:35 by midrissi          #+#    #+#              #
-#    Updated: 2019/06/14 05:58:59 by tlechien         ###   ########.fr        #
+#    Updated: 2019/06/17 17:00:10 by aben-azz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,7 +63,7 @@ SRCPATH			=	srcs/
 SRCS			:= $(SRC:%=$(SRCPATH)%)
 OBJ				:= $(SRC:%.c=$(OBJPATH)%.o)
 
-COMP		= gcc
+COMP		= gcc -fsanitize=address
 CFLAGS		= -Wall -Wextra -Werror -I./includes -c
 AR			= ar rcs
 

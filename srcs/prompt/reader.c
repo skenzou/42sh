@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/28 15:31:17 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/25 08:23:10 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/06/17 17:02:28 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ int		read_buffer(char *buffer, t_cap *tcap)
 		ft_bzero(buffer, 3);
 	}
 	else if (~ft_indexof(buffer, '\n'))
-	 	return (handle_eol(buffer, tcap));
+		return (handle_eol(buffer, tcap));
 	else if (buffer[0] == SPACE && !buffer[1] && !buffer[2])
 		return (space_event(tcap));
 	else if (ft_isprint(buffer[0]))
