@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/05 00:53:00 by midrissi          #+#    #+#             */
-/*   Updated: 2019/06/02 16:01:15 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/06/17 17:37:30 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ typedef struct		s_redir
 	char			**dest;
 	e_op_type		op_type;
 	int				fd;
+	int				hdoc_fd;
 	char			end_of_leaf;
 }					t_redir;
 

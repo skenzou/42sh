@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 00:40:57 by midrissi          #+#    #+#             */
-/*   Updated: 2019/06/16 01:23:49 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/06/17 17:37:41 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ extern	t_signal	*s_signal[];
 ** ## FUNCTIONS ##
 */
 
-int		handle_hdoc(t_redir *redir);
+void		handle_hdoc(t_list *redir);
 int		is_special_char(char c);
 void		parse_pipes(t_ast *root, t_pipe **pipes, size_t nbpipes);
 int		change_dir(char *path, char flag);

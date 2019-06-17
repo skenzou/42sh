@@ -6,7 +6,7 @@
 #    By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/10/09 12:43:35 by midrissi          #+#    #+#              #
-#    Updated: 2019/06/14 05:58:59 by tlechien         ###   ########.fr        #
+#    Updated: 2019/06/17 17:40:00 by midrissi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -64,7 +64,7 @@ SRCS			:= $(SRC:%=$(SRCPATH)%)
 OBJ				:= $(SRC:%.c=$(OBJPATH)%.o)
 
 COMP		= gcc
-CFLAGS		= -Wall -Wextra -Werror -I./includes -c
+CFLAGS		= -Wall -Wextra -Werror -I./includes -c -fsanitize=address
 AR			= ar rcs
 
 LONGEST		?=	$(shell echo $(notdir $(SRCS)) | tr " " "\n" | awk ' { if (\

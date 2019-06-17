@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/28 15:31:17 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/06/14 01:41:35 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/06/17 17:38:48 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,12 @@ void	sigint_handler(int sig)
 		signal(SIGINT, sigint_handler);
 		ft_printf("\n");
 		g_shell->lastsignal = 1;
+		ft_bzero(g_shell->tcap->command, BUFFSIZE);
+		g_shell->ctrl_r->state = 0;
+		g_shell->tcap->overflow = 0;
+		ft_bzero(g_shell->tcap->carry, BUFFSIZE);
 		print_prompt_prefix();
+		ft_bzero(g_shell->tcap->carry, 2);
 		// exit(0);
 	}
 }

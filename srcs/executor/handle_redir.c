@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/14 23:28:47 by midrissi          #+#    #+#             */
-/*   Updated: 2019/06/07 06:31:52 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/06/17 17:35:57 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,25 +47,13 @@ static int		handle_redir_and(t_redir *redir)
 	return (fd);
 }
 
-static int		restore_stdout_and_exec_hdoc(t_redir *redir)
-{
-	int		tempfd;
-	int		fd;
-
-	tempfd = dup(STDOUT_FILENO);
-	dup2(g_shell->fd_table[1], STDOUT_FILENO);
-	fd = handle_hdoc(redir);
-	dup2(tempfd, STDOUT_FILENO);
-	return (fd);
-}
-
 static int		exec_redir(t_redir *redir)
 {
 	int		fd;
 
 	ft_expand(redir->dest);
 	if (redir->op_type == DBL_LESS)
-		fd = restore_stdout_and_exec_hdoc(redir);
+		fd = redir->hdoc_fd;
 	else if (redir->op_type == GREAT_AND || redir->op_type == LESS_AND)
 	{
 		if ((fd = handle_redir_and(redir)) == -42)

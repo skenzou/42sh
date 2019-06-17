@@ -6,7 +6,7 @@
 #    By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/03 09:24:41 by midrissi          #+#    #+#              #
-#    Updated: 2019/06/15 20:37:13 by ghamelek         ###   ########.fr        #
+#    Updated: 2019/06/17 17:40:26 by midrissi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,7 +45,7 @@ NAME		= 42sh
 MSG			=	$(_BOLD)$(_BLUE)Compiling 42sh$(_END)
 
 CC			= gcc
-C_FLAGS		= -g -v -Wall -Wextra -Werror
+C_FLAGS		= -Wall -Wextra -Werror -fsanitize=address
 SRC_PATH	= srcs/
 OBJ_PATH	= .obj/
 LFT_PATH	= ./libft/
@@ -133,7 +133,7 @@ $(LFT_PATH)$(LFT_NAME):
 	@$(MAKE) -C $(LFT_PATH);
 
 $(NAME): $(OBJ)
-	@$(CC) -o $(NAME) -L $(LFT_PATH) -lft -ltermcap $^ -o $@
+	@$(CC) $(C_FLAGS) -o $(NAME) -L $(LFT_PATH) -lft -ltermcap $^ -o $@
 	@printf "\r\033[K$(_BOLD)$(_RED)./$(NAME) is ready for use\n$(_END)"
 
 $(OBJ_PATH)%.o: $(SRC_PATH)lexer/%.c $(INC_FPATH)

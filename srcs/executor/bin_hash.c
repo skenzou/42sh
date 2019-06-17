@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/13 06:11:23 by midrissi          #+#    #+#             */
-/*   Updated: 2019/06/17 17:06:10 by ghamelek         ###   ########.fr       */
+/*   Updated: 2019/06/17 18:30:24 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,12 +93,11 @@ t_hash_entry *hash_insert(unsigned char *key, char **env)
 	char			*path;
 	char			**bin;
 	t_hash_entry	*item;
-	int				hashIndex; 
+	int				hashIndex;
 
 	if (!(item = (t_hash_entry*)ft_memalloc(sizeof(t_hash_entry)))
-		&& (!(item->key = (unsigned char *)ft_strdup((char *)key))))
-			ft_exit("Malloc failed in hash_insert");
-	item->key = key;
+		|| !(item->key = (unsigned char *)ft_strdup((char *)key)))
+		ft_exit("Malloc failed in hash_insert");
 	hashIndex = hashCode(key);
 	if(!(path = my_env(env)))
 		return (NULL);
