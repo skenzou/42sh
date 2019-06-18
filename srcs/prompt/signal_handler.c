@@ -14,13 +14,27 @@
 
 void	sigint_handler(int sig)
 {
+	t_cap *tcap;
+
+	tcap = g_shell->tcap;
 	if (sig == SIGINT)
 	{
 		signal(SIGINT, sigint_handler);
+
+		end_event(tcap);
+		if (g_shell->autocomp->state)
+		{
+			tputs(tcap->clr_all_line, 1, ft_put_termcaps);
+			g_shell->autocomp->state = 0;
+		}
 		ft_printf("\n");
 		print_prompt_prefix();
 		g_shell->lastsignal = 1;
-		ft_clear_replace(g_shell->tcap);
+		g_shell->autocomp->state = 0;
+		ft_bzero(tcap->command, BUFFSIZE);
+		tcap->char_len = 0;
+		tcap->cursx = tcap->prompt_len;
+		tcap->cursy = 0;
 		//exit(0);
 	}
 }

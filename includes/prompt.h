@@ -155,10 +155,10 @@ typedef struct	s_tab
 	int						row;
 	int						col;
 	int						max_offset;
-	char					*match;
-	int 					type;
+	char					match[BUFFSIZE];
+	int 					isdir;
 	char                    after[BUFFSIZE];
-	char                    comp[BUFFSIZE];
+	char                    comp[MAX_PATH];
 	char					*data[MAX_HISTORY_LENGHT];
 }				t_ab;
 typedef struct	s_history
@@ -346,6 +346,22 @@ int expansion_history(char *string, t_cap *tcap, int index);
 int		init_struct(char **env);
 int		init_termcap(t_cap *tcap);
 
+
+
+/*
+** completion.c
+*/
+int		init_autocomp(t_cap *tcap, t_ab *autocomp);
+int		print_name(t_ab *autocomp, char *str, int i);
+char file_name_ext(char *string, t_stat stats, char *name);
+ void		cat_fullpath(char *full_path, char *name, char *path);
+ char	*env_path(char **env);
+int		get_argi(t_cap *tc, int position);
+int		is_first_argi(t_cap *tc, int position);
+void	get_word(t_cap *tc, int position, char *path);
+int		is_env_var(t_ab *autocomp, char *path);
+void	get_quote(t_ab *autocomp, char *str);
+int		is_space_before(t_cap *tcap, int position);
 /*
 **	MAIN.C
 */

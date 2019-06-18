@@ -62,7 +62,7 @@ static int	init_history(t_history *history)
 	return (1);
 }
 
-static int	init_autocomp(t_ab *autocomp)
+static int	init_autocomp_struct(t_ab *autocomp)
 {
 	autocomp->state = 0;
 	autocomp->pos = 0;
@@ -99,8 +99,8 @@ int			init_struct(char **env)
 	if (!(g_shell->env = dup_env(env)) || !g_shell->tcap || !g_shell->history ||
 		!g_shell->autocomp || !g_shell->copy_cut)
 		return (0);
-	if (!init_termcap(g_shell->tcap) ||
-		!init_history(g_shell->history) || !init_autocomp(g_shell->autocomp) ||
+	if (!init_termcap(g_shell->tcap) || !init_history(g_shell->history) ||
+	 								!init_autocomp_struct(g_shell->autocomp) ||
 					!init_copy_cut_ctrl_r(g_shell->copy_cut, g_shell->ctrl_r))
 		return (0);
 	g_shell->term->c_lflag &= ~(ICANON | ECHO);

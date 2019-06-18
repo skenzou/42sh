@@ -21,21 +21,16 @@ int		enter_event(t_cap *tcap)
 	if (autocomp->state)
 	{
 		tputs(tcap->clr_all_line, 1, ft_put_termcaps);
-		// dprintf(debug(), "i: %d\n", g_shell->autocomp->type);
-		// if (!g_shell->autocomp->type)
-		// 	ft_insert(g_shell->autocomp->data[g_shell->autocomp->pos], tcap);
-		// else
-		// {
-		// 	int i = ft_strlen(g_shell->autocomp->comp);
-		// 	dprintf(debug(), "i: %d\n", i);
-		// 	while (i--)
-		// 		ft_delete_back(tcap);
-		// 	ft_insert(g_shell->autocomp->data[g_shell->autocomp->pos], tcap);
-		// }
-		//g_shell->autocomp->match = ft_strdup(tcap->command);
+		int i = ft_strlen(g_shell->autocomp->match);
+		while (i--)
+			ft_delete_back(tcap);
+		ft_insert(g_shell->autocomp->data[g_shell->autocomp->pos], tcap);
+		if(g_shell->autocomp->after[0] && !g_shell->autocomp->isdir)
+			ft_insert(g_shell->autocomp->after, tcap);
 		g_shell->autocomp->state = 0;
 		g_shell->autocomp->pos = 0;
-		//g_shell->autocomp->type = 0;
+		g_shell->autocomp->isdir = 0;
+		g_shell->autocomp->len = 0;
 		return (1);
 	}
 	return (-2);
@@ -56,7 +51,7 @@ int		backspace_event(t_cap *tcap)
 	else if (g_shell->autocomp->state)
 	{
 		tputs(tcap->clr_all_line, 1, ft_put_termcaps);
-		g_shell->autocomp->match = ft_strdup(tcap->command);
+		//g_shell->autocomp->match = ft_strdup(tcap->command);
 		g_shell->autocomp->state = 0;
 		g_shell->autocomp->pos = 0;
 		return (1);
@@ -74,21 +69,16 @@ int		space_event(t_cap *tcap)
 	if (g_shell->autocomp->state)
 	{
 		tputs(tcap->clr_all_line, 1, ft_put_termcaps);
-		dprintf(debug(), "i: %d\n", g_shell->autocomp->type);
-		if (!g_shell->autocomp->type)
-			ft_insert(g_shell->autocomp->data[g_shell->autocomp->pos], tcap);
-		else
-		{
-			int i = ft_strlen(g_shell->autocomp->comp);
-			dprintf(debug(), "i: %d\n", i);
-			while (i--)
-				ft_delete_back(tcap);
-			ft_insert(g_shell->autocomp->data[g_shell->autocomp->pos], tcap);
-		}
-		g_shell->autocomp->match = ft_strdup(tcap->command);
+		int i = ft_strlen(g_shell->autocomp->match);
+		while (i--)
+			ft_delete_back(tcap);
+		ft_insert(g_shell->autocomp->data[g_shell->autocomp->pos], tcap);
+		if(g_shell->autocomp->after[0] && !g_shell->autocomp->isdir)
+			ft_insert(g_shell->autocomp->after, tcap);
 		g_shell->autocomp->state = 0;
 		g_shell->autocomp->pos = 0;
-		g_shell->autocomp->type = 0;
+		g_shell->autocomp->isdir = 0;
+		g_shell->autocomp->len = 0;
 		return (1);
 	}
 	else if (~(index = ft_lastindexof(tcap->command, '!')))
@@ -133,7 +123,7 @@ int		tab_event(t_cap *tcap)
 	if (!autocomp->state)
 	{
 		//autocomp->state = 1;
-		autocomp->match = ft_strdup(tcap->command);
+		//autocomp->match = ft_strdup(tcap->command);
 	}
 	else
 	{

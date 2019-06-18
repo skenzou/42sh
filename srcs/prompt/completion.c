@@ -12,61 +12,6 @@
 
 #include "shell.h"
 
-int		init_autocomp(t_cap *tcap, t_ab *autocomp)
-{
-	int max_offset;
-
-	max_offset = autocomp->max_offset;
-	autocomp->state = 1;
-	//autocomp->len = 0;
-	//autocomp->type = 0;
-	ft_bzero(autocomp->after, MAX_PATH);
-	autocomp->row = tcap->cursx_max / (ft_max(max_offset + 2, 1));
-	autocomp->col = autocomp->len / ft_max(autocomp->row, 1);
-	autocomp->carry = autocomp->len % ft_max(autocomp->row, 1);
-	return (max_offset);
-}
-
-int		print_name(t_ab *autocomp, char *str, int i)
-{
-	//dprintf(debug(), "printname: |%s|\n", str);
-	if (i == autocomp->pos)
-		ft_putstr("\x1b[7m");
-	ft_putstr(str);
-	if (i == autocomp->pos)
-		ft_putstr("\x1b[0m");
-	ft_move(g_shell->tcap, "!right", autocomp->max_offset - ft_strlen(str) + 2);
-	return (1);
-}
-
-char file_name_ext(char *string, t_stat stats, char *name)
-{
-	char ext;
-
-	ext = 0;
-	if (S_ISDIR(stats.st_mode))
-		ext = 'd';
-	else if (S_ISREG(stats.st_mode))
-		ext = '-';
-	ft_bzero(name, MAX_PATH);
-	ft_strcpy(name, string);
-	if (ext == 'd')
-		name[ft_strlen(name)] = '/';
-	return ext;
-}
-
-static void		cat_fullpath(char *full_path, char *name, char *path)
-{
-	ft_bzero(full_path, MAX_PATH);
-	if (path)
-	{
-		ft_strcpy(full_path, path);
-		if (*path != '/' || *(path + 1))
-			ft_strcat(full_path, "/");
-	}
-	ft_strcat(full_path, name);
-}
-
 void create_file(char *name, char *path, t_ab *autocomp, int onlydir)
 {
 	t_stat		stats;
@@ -76,7 +21,7 @@ void create_file(char *name, char *path, t_ab *autocomp, int onlydir)
 	ft_bzero(file, MAX_PATH);
 	cat_fullpath(full_path, name, path);
 	lstat(full_path, &stats);
-	if (file_name_ext(name, stats, file) == 'd' || !onlydir)
+	if ((autocomp->isdir = (file_name_ext(name, stats, file) == 'd')) || !onlydir)
 	{
 		autocomp->data[autocomp->len++] = ft_strdup(file);
 		autocomp->max_offset =
@@ -84,114 +29,30 @@ void create_file(char *name, char *path, t_ab *autocomp, int onlydir)
 	}
 }
 
-int		is_space_before(t_cap *tcap, int position)
-{
-	int i;
 
-	i = -1;
-	while (++i <= position && i < tcap->char_len)
-		if (tcap->command[i] != ' ')
-			return (0);
-	return (1);
-}
-void		add_to_completion(t_ab *autocomp, char *path, int onlydir)
+int		add_to_completion(t_ab *autocomp, char *path, int onlydir)
 {
 	t_dirent	*d;
 	DIR			*dir;
 
-	autocomp->max_offset = 0;
-	autocomp->len = 0;
+	dprintf(debug(), "addcompletion match: |%s|\n", autocomp->match);
 	if ((dir = opendir(path)))
+	{
 		while ((d = readdir(dir)))
 		{
-			if (d->d_name[0] != '.')
+			if (d->d_name[0] != '.' && !ft_strncmp(d->d_name, autocomp->match, ft_strlen(autocomp->match)))
 				create_file(d->d_name, path, autocomp, onlydir);
 		}
-	closedir(dir);
-}
-
-int		is_separator(char *s, int position)
-{
-	return ((s[position] && s[position] == ';') ||
-			(s[position] && s[position] == '|') ||
-			(s[position] && s[position] == '&'));
-}
-
-int		get_argi(t_cap *tc, int position)
-{
-	int i;
-	int argi;
-
-	argi = 0;
-	i = 0;
-	while (tc->command[i] && i < position)
-		if (tc->command[i] && tc->command[i] == ' ')
-		{
-			while (tc->command[i] && tc->command[i] == ' ')
-				i++;
-			argi++;
-		}
-		else
-			while (tc->command[i] && tc->command[i] != ' ')
-				i++;
-	return (argi);
-}
-
-int		is_first_argi(t_cap *tc, int position)
-{
-	int i;
-
-	if (!get_argi(tc, position))
+		closedir(dir);
 		return (1);
-	i = position - 1;
-	while (i)
-	{
-		if (tc->command[i] == ' '
-				&& (tc->command[i - 1] &&  !is_separator(tc->command, i -1)))
-			return (0);
-		else if (is_separator(tc->command, i))
-			return (1);
-		i--;
 	}
-	return (0);
+	else
+		dprintf(debug(), "probleme opendir\n");
+	return 0;
 }
 
-void	get_word(t_cap *tc, int position, char *path)
-{
-	int i;
 
-	i = position - 1;
-	ft_bzero(path, MAX_PATH);
-	while (ft_isprint(tc->command[i]) &&
-			((!ft_isspace(tc->command[i]) && !is_separator(tc->command, i))
-				|| tc->command[i - 1] == '\\'))
-		i--;
-	ft_strncpy(path, tc->command + i + 1, position - 1 - i);
-}
 
-int		is_env_var(t_ab *autocomp, char *path)
-{
-	int i;
-	char copy[MAX_PATH];
-
-	ft_strcpy(copy, path);
-	i = 0;
-	if (path[0] == '$' && (path[1] && path[1] == '{'))
-	{
-		i = 2;
-		autocomp->after[0] = '}';
-		autocomp->after[1] = '\0';
-	}
-	else if (path[0] == '$')
-	{
-		i = 1;
-		autocomp->after[0] = path[0] == '$';
-		autocomp->after[1] = '\0';
-	}
-	ft_bzero(path, MAX_PATH);
-	ft_strcpy(path, copy + i);
-	return (i > 0);
-}
 
 int		env_completion(t_ab *autocomp, char *key)
 {
@@ -232,16 +93,7 @@ int		env_completion(t_ab *autocomp, char *key)
 	return (1);
 }
 
-static char	*env_path(char **env)
-{
-	int i;
 
-	i = -1;
-	while (env[++i])
-		if (!ft_strncmp(env[i], "PATH=", 5))
-			return ((char*)env[i] + 5);
-	return (NULL);
-}
 
 int		command_completion(t_ab *autocomp, char *key)
 {
@@ -257,9 +109,9 @@ int		command_completion(t_ab *autocomp, char *key)
 		return (0);
 	i = -1;
 	len = ft_strlen(key);
-	autocomp->max_offset = 0;
-	autocomp->len = 0;
-	autocomp->match = ft_strdup(key);
+	//autocomp->match = ft_strdup(key);
+	ft_strcpy(autocomp->match, key);
+	dprintf(debug(), "match: |%s|\n", autocomp->match);
 	while (path_split && path_split[++i])
 	{
 		dprintf(debug(), "pathbin: |%s|\n", path_split[i]);
@@ -268,26 +120,50 @@ int		command_completion(t_ab *autocomp, char *key)
 	return (1);
 }
 
+int		path_completion(t_ab *autocomp, char *key)
+{
+	char path[BUFFSIZE];
+
+	ft_bzero(path, BUFFSIZE);
+	dprintf(debug(), "pathcompletion, |%s|\n", key);
+	int i;
+	if (~ft_indexof(key, '/'))
+	{
+		i = ft_strlen(key) - 1;
+		dprintf(debug(), "i ici vaut: %d\n", i);
+		while (key[i] && key[i] != '/')
+			i--;
+		dprintf(debug(), "i ici vaut: %d\n", i);
+		ft_strcpy(autocomp->match, key + i+ 1);
+		ft_strncpy(path, key, i == 0 ? 1 : i);
+	}
+	else
+	{
+		ft_strcpy(autocomp->match, key);
+		ft_strcpy(path, ".");
+	}
+	dprintf(debug(), "|%s| path match: |%s|\n", path, autocomp->match);
+	return (add_to_completion(autocomp, path, 0));
+}
+
 int		first_arg_completion(t_ab *autocomp, t_cap *tc, char *str, int position)
 {
 	if (is_env_var(autocomp, str))
 	{
+		dprintf(debug(), "env arg: |%s|\n", str);
 		return (env_completion(autocomp, str));
 	}
-	else if (command_completion(autocomp, str))
-	{
-		return (1);
-	}
 	else if (tc->command[position - 1] && tc->command[position - 1] == '/')
-	{
-		add_to_completion(autocomp,  str, 0);
-		return (1);
-	}
-	return (0);
+		return (add_to_completion(autocomp, str, 0));
+	command_completion(autocomp, str);
+	path_completion(autocomp, str);
+
+	return (autocomp->len > 0);
 }
 
 int		arg_completion(t_ab *autocomp, t_cap *tc, char *str, int position)
 {
+
 	if (is_env_var(autocomp, str))
 	{
 		return (env_completion(autocomp, str));
@@ -297,28 +173,8 @@ int		arg_completion(t_ab *autocomp, t_cap *tc, char *str, int position)
 		add_to_completion(autocomp, str, 0);
 		return (1);
 	}
-	return (0);
-}
-
-void	get_quote(t_ab *autocomp, char *str)
-{
-	int		i;
-	char	copy[MAX_PATH];
-
-	ft_strcpy(copy, str);
-	i = 0;
-	if (str[0] == '\'' || str[0] == '"' || str[0] == '{' || str[0] == '[' ||
-		str[0] == '(')
-	{
-		i = 1;
-		str[0] == '\'' && (autocomp->after[0] = '\'');
-		str[0] == '"' && (autocomp->after[0] = '"');
-		str[0] == '{' && (autocomp->after[0] = '{');
-		str[0] == '[' && (autocomp->after[0] = '[');
-		autocomp->after[1] = '\0';
-	}
-	ft_bzero(str, MAX_PATH);
-	ft_strcpy(str, copy + i);
+	path_completion(autocomp, str);
+	return (autocomp->len > 0);
 }
 
 int		smart_completion(t_ab *autocomp, t_cap *tc, int position)
@@ -328,13 +184,16 @@ int		smart_completion(t_ab *autocomp, t_cap *tc, int position)
 	get_word(tc, position, str);
 	if (!*str)
 		return (0);
+	autocomp->len = 0;
 	get_quote(autocomp, str);
 	if (is_first_argi(tc, position))
 	{
+		dprintf(debug(), "firstarg: |%s|\n", str);
 		return (first_arg_completion(autocomp, tc, str, position));
 	}
 	else
 	{
+		dprintf(debug(), "arg: |%s|\n", str);
 		return (arg_completion(autocomp, tc, str, position));
 	}
 	dprintf(debug(), "%d pos: %d: %c\n", is_first_argi(tc, position), position, tc->command[position]);
@@ -373,17 +232,33 @@ int		ft_tab(t_cap *tcap, t_ab *autocomp)
 	int col;
 	int i;
 
+	autocomp->max_offset = 0;
+	autocomp->len = 0;
+	autocomp->isdir = 0;
+	ft_bzero(autocomp->after, MAX_PATH);
+	ft_bzero(autocomp->match, MAX_PATH);
 	if (!get_words_completion(autocomp, tcap))
 		return (0);
+	dprintf(debug(), "len |%d|\n", autocomp->len);
 	if (!autocomp->len)
+	{
+		tputs(tcap->sound, 1, ft_put_termcaps);
+		return (0);
+	}
+	if (autocomp->len > 50)
 	{
 		tputs(tcap->sound, 1, ft_put_termcaps);
 		return (0);
 	}
 	else if (autocomp->len == 1)
 	{
-		tputs(tcap->sound, 1, ft_put_termcaps);
-		return (0);
+		int i = ft_strlen(g_shell->autocomp->match);
+		while (i--)
+			ft_delete_back(tcap);
+		ft_insert(g_shell->autocomp->data[0], tcap);
+		if(g_shell->autocomp->after[0] && !g_shell->autocomp->isdir)
+			ft_insert(g_shell->autocomp->after, tcap);
+		return (1);
 	}
 	//dprintf(debug(), "segv");
 	init_autocomp(tcap, autocomp);

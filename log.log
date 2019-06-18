@@ -1,26 +1,220 @@
+firstarg: |ca|
+match: |ca|
 pathbin: |/usr/local/bin|
+addcompletion match: |ca|
 pathbin: |/usr/bin|
+addcompletion match: |ca|
 pathbin: |/bin|
+addcompletion match: |ca|
 pathbin: |/usr/sbin|
+addcompletion match: |ca|
 pathbin: |/sbin|
-pathbin: |/bin|
+addcompletion match: |ca|
+pathcompletion, |ca|
+|.| path match: |ca|
+addcompletion match: |ca|
+firstarg: |ca|
+match: |ca|
 pathbin: |/usr/local/bin|
+addcompletion match: |ca|
 pathbin: |/usr/bin|
+addcompletion match: |ca|
 pathbin: |/bin|
+addcompletion match: |ca|
 pathbin: |/usr/sbin|
+addcompletion match: |ca|
 pathbin: |/sbin|
-pathbin: |/usr/local/munki|
-pathbin: |/bin|
+addcompletion match: |ca|
+pathcompletion, |ca|
+|.| path match: |ca|
+addcompletion match: |ca|
+len |7|
+firstarg: |ca|
+match: |ca|
 pathbin: |/usr/local/bin|
+addcompletion match: |ca|
 pathbin: |/usr/bin|
+addcompletion match: |ca|
 pathbin: |/bin|
+addcompletion match: |ca|
 pathbin: |/usr/sbin|
+addcompletion match: |ca|
 pathbin: |/sbin|
-pathbin: |/usr/local/munki|
-pathbin: |/bin|
+addcompletion match: |ca|
+pathcompletion, |ca|
+|.| path match: |ca|
+addcompletion match: |ca|
+len |7|
+firstarg: |ca|
+match: |ca|
 pathbin: |/usr/local/bin|
+addcompletion match: |ca|
 pathbin: |/usr/bin|
+addcompletion match: |ca|
 pathbin: |/bin|
+addcompletion match: |ca|
 pathbin: |/usr/sbin|
+addcompletion match: |ca|
 pathbin: |/sbin|
-pathbin: |/usr/local/munki|
+addcompletion match: |ca|
+pathcompletion, |ca|
+|.| path match: |ca|
+addcompletion match: |ca|
+len |7|
+firstarg: |ca|
+match: |ca|
+pathbin: |/usr/local/bin|
+addcompletion match: |ca|
+pathbin: |/usr/bin|
+addcompletion match: |ca|
+pathbin: |/bin|
+addcompletion match: |ca|
+pathbin: |/usr/sbin|
+addcompletion match: |ca|
+pathbin: |/sbin|
+addcompletion match: |ca|
+pathcompletion, |ca|
+|.| path match: |ca|
+addcompletion match: |ca|
+len |7|
+firstarg: |/|
+addcompletion match: ||
+len |19|
+firstarg: |/|
+addcompletion match: ||
+len |19|
+firstarg: |/|
+addcompletion match: ||
+len |19|
+firstarg: |/|
+addcompletion match: ||
+len |19|
+firstarg: |/|
+addcompletion match: ||
+len |19|
+firstarg: |/|
+addcompletion match: ||
+len |19|
+firstarg: |/|
+addcompletion match: ||
+len |19|
+firstarg: |/|
+addcompletion match: ||
+len |19|
+firstarg: |/|
+addcompletion match: ||
+len |19|
+firstarg: |/|
+addcompletion match: ||
+len |19|
+firstarg: |/|
+addcompletion match: ||
+len |19|
+firstarg: |/|
+addcompletion match: ||
+len |19|
+firstarg: |/|
+addcompletion match: ||
+len |19|
+firstarg: |/|
+addcompletion match: ||
+len |19|
+firstarg: |/|
+addcompletion match: ||
+len |19|
+firstarg: |/|
+addcompletion match: ||
+len |19|
+firstarg: |/|
+addcompletion match: ||
+len |19|
+firstarg: |/|
+addcompletion match: ||
+len |19|
+firstarg: |/Volumes/|
+addcompletion match: ||
+len |3|
+firstarg: |/Volumes/|
+addcompletion match: ||
+len |3|
+firstarg: |/Volumes/|
+addcompletion match: ||
+len |3|
+firstarg: |/Volumes/|
+addcompletion match: ||
+len |3|
+firstarg: |/Volumes/|
+addcompletion match: ||
+len |3|
+firstarg: |/Volumes/|
+addcompletion match: ||
+len |3|
+firstarg: |/Volumes/|
+addcompletion match: ||
+len |3|
+firstarg: |/Volumes/Storage/|
+addcompletion match: ||
+len |1|
+firstarg: |/Volumes/Storage/goinfre/|
+addcompletion match: ||
+len |1|
+firstarg: |/Volumes/Storage/goinfre/macadelic/|
+addcompletion match: ||
+len |1|
+firstarg: |/Volumes/Storage/goinfre/macadelic/homebrew/|
+addcompletion match: ||
+len |1|
+firstarg: |./|
+addcompletion match: ||
+len |8|
+firstarg: |./|
+addcompletion match: ||
+len |8|
+firstarg: |./|
+addcompletion match: ||
+len |8|
+firstarg: |./|
+addcompletion match: ||
+len |8|
+firstarg: |./|
+addcompletion match: ||
+len |8|
+firstarg: |./|
+addcompletion match: ||
+len |8|
+firstarg: |./|
+addcompletion match: ||
+len |8|
+firstarg: |./|
+addcompletion match: ||
+len |8|
+firstarg: |./|
+addcompletion match: ||
+len |8|
+firstarg: |./|
+addcompletion match: ||
+len |8|
+firstarg: |./|
+addcompletion match: ||
+len |8|
+firstarg: |./|
+addcompletion match: ||
+len |8|
+firstarg: |./|
+addcompletion match: ||
+len |8|
+firstarg: |./|
+addcompletion match: ||
+len |8|
+firstarg: |./|
+addcompletion match: ||
+len |8|
+firstarg: |./includes/|
+addcompletion match: ||
+len |5|
+firstarg: |./includes/|
+addcompletion match: ||
+len |5|
+firstarg: |./includes/|
+addcompletion match: ||
+len |5|
