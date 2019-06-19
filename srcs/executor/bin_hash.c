@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/13 06:11:23 by midrissi          #+#    #+#             */
-/*   Updated: 2019/06/17 18:30:24 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/06/19 21:12:40 by ghamelek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ static void		add_index(int hashindex)
 char* free_duo(char **s1, t_hash_entry **s2)
 {
 		ft_splitdel(s1);
+		ft_strdel((char**)&(*s2)->key);
 		free(*s2);
 		*s2 = NULL;
 		return (NULL) ;
@@ -95,6 +96,7 @@ t_hash_entry *hash_insert(unsigned char *key, char **env)
 	t_hash_entry	*item;
 	int				hashIndex;
 
+	item = NULL;
 	if (!(item = (t_hash_entry*)ft_memalloc(sizeof(t_hash_entry)))
 		|| !(item->key = (unsigned char *)ft_strdup((char *)key)))
 		ft_exit("Malloc failed in hash_insert");
@@ -121,7 +123,6 @@ int		hash_table(char **str, char **env)
 	t_hash_entry *item;
 	char *copy;
 
-	item = NULL;
 	copy = *str;
 	if(!(item = hash_search((unsigned char *)copy)))
 	{
