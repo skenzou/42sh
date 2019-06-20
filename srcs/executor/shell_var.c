@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/27 19:17:30 by midrissi          #+#    #+#             */
-/*   Updated: 2019/06/07 06:22:11 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/06/20 17:03:23 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,5 +85,6 @@ void				handle_intern_var(char **args)
 		return ;
 	}
 	remove_n_first_entries(args, i);
+	print_split(args);
 	reorder_tabs(args[0], env, intern);
 }

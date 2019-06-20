@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 01:14:21 by midrissi          #+#    #+#             */
-/*   Updated: 2019/06/15 16:39:08 by ghamelek         ###   ########.fr       */
+/*   Updated: 2019/06/20 19:02:28 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void		remove_n_first_entries(char **args, int n)
 	i = 0;
 	j = n;
 	count = ft_split_count((const char**)args);
-	while (j < count)
+	while (j <= count)
 	{
 		if (i < n)
 			ft_strdel(&args[i]);
