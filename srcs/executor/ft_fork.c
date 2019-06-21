@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/14 23:53:49 by midrissi          #+#    #+#             */
-/*   Updated: 2019/06/17 20:58:41 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/06/21 06:52:56 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,16 +33,12 @@ int				ft_waitprocess(pid_t pid, char **cmd)
 	else if (WIFSIGNALED(status))
 	{
  		s_get_values(status, NULL, &handler, &stat);
- 		if (status != SIGINT)
- 		{
- 			err_display(ANSI_RED"42sh : ", cmd[0], ": ");
- 			err_display(handler, ": ", stat);
- 			ft_putendl_fd(ANSI_RESET, 2);
- 		}
+ 		(status != SIGINT) ? ft_printf(ANSI_RED"42sh : %s: %s: %s\n"ANSI_RESET,
+		cmd[0], handler, stat): 0;
  	}
 	else if (WSTOPSIG(status))
 	{
-		add_pid(pid, cmd, ID_SUSP);
+		add_pid(0, pid, cmd, ID_SUSP);
 		search_pid(&node, NULL, pid);
 		display_pid_status(node, 0);
 	}
@@ -65,12 +61,12 @@ int				ft_fork_amper(char **cmd, char **env)
 	if (!pid)
 	{
 		resetsign();
-		setpgid(0, getpgrp());
+		setpgid(getpid(), getpgrp());
 		execve(cmd[0], cmd, env);
 		exit(1);
 	}
 	if (!waitpid(pid, &pid, WNOHANG))
-		return (add_pid(pid, cmd, ID_RUN));
+		return (add_pid(0, pid, cmd, ID_RUN));
 	return (0);
 }
 
@@ -89,10 +85,11 @@ int				ft_fork_builtin(t_builtin *builtin,int ac, char **cmd)
 	if (!pid)
 	{
 		resetsign();
+		setpgid(getpid(), getpgrp());
 		exit(builtin->function(ac, cmd));
 	}
 	if (!waitpid(pid, &pid, WNOHANG))
-		return (add_pid(pid, cmd, ID_RUN));
+		return (add_pid(0, pid, cmd, ID_RUN));
 	return (0);
 }
 
@@ -106,10 +103,9 @@ int				ft_fork(char **cmd, char **env)
 
 	pid = fork();
 	signal(SIGINT, sigfork);
-	setpgid(getpid(), getpid());
 	if (pid == 0)
 	{
-		setpgid(0, 0);
+		setpgid(getpid(), getpgrp());
 		tcsetpgrp(0, getpgrp());
 		execve(cmd[0], cmd, env);
 		exit(1);

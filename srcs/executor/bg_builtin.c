@@ -6,7 +6,7 @@
 /*   By: tlechien <tlechien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 10:57:28 by tlechien          #+#    #+#             */
-/*   Updated: 2019/06/17 21:12:21 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/06/21 06:25:32 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,6 @@ int			bg_resume(t_child **node)
 		return (1);
 	(*node)->priority = 0;
 	(*node)->status = ID_RUN;
-	display_pid_long(*node, 1);
+	display_pid_status(*node, 1);
 	return (0);
 }

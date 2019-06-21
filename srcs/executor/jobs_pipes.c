@@ -1,0 +1,118 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   jobs_pipes.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tlechien <tlechien@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/06/21 01:46:22 by tlechien          #+#    #+#             */
+/*   Updated: 2019/06/21 06:42:25 by tlechien         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "shell.h"
+
+static int check_branch(t_child *branch, int *finished)
+{
+	int out;
+	int		action;
+
+	out = 0;
+	while (branch)
+	{
+		if (s_get_values(branch->status, &action, NULL, NULL) ||
+		action == S_STOP || action == S_CONT)
+			*finished = 0;
+		if (!branch->right)
+			break;
+		branch = branch->right;
+	}
+	(*finished && ID_PIPE) ? display_amperpipe(g_pid_table, 1): 0;
+	while (*finished && ID_PIPE && branch != g_pid_table && (out = 1))
+	{
+		ft_strdel(&branch->exec);
+		branch = branch->prev;
+		free (branch->right);
+	}
+	return (out);
+}
+
+int	check_remove_pids(void)
+{
+	int		finished;
+	int		action;
+	int		out;
+
+	out = 0;
+	while (ID_PID != 0 && (finished = 1))
+	{
+		out += check_branch(g_pid_table, &finished);
+		if (finished && !s_get_values(ID_STATUS, &action, NULL, NULL) &&
+			(action == S_TERM || action == S_ABN))
+			remove_pid(g_pid_table);
+		if (!ID_PREV)
+			break;
+		else
+			g_pid_table = ID_PREV;
+	}
+	while (ID_LEFT)
+		g_pid_table = ID_LEFT;
+	if (out)
+		print_prompt_prefix();
+	return (0);
+}
+
+int update_amperpipe(t_child *pipe)
+{
+	int		status;
+	int		action;
+
+	while (pipe)
+	{
+		(s_get_values(pipe->status, &action, NULL, NULL)) ? action = S_CONT : 0;
+		if (action == S_ABN || action == S_TERM ||
+			!waitpid(pipe->pid, &status, WNOHANG | WUNTRACED | WCONTINUED))
+			;
+		else if (WIFCONTINUED(status))
+			pipe->status = ID_RUN;
+		else if (WIFEXITED(status))
+		{
+			pipe->status = ID_DONE;
+		}
+		else if (WIFSIGNALED(status))
+			s_child_handler(WTERMSIG(status), pipe);
+		else if (WIFSTOPPED(status))
+			s_child_handler(WSTOPSIG(status), pipe);
+		if (!pipe->right)
+			break;
+		pipe = pipe->right;
+	}
+	return (0);
+}
+
+int	display_amperpipe(t_child *node, char option)
+{
+	char 	*stat;
+	char	current;
+
+	(void)option;
+	while (node)
+	{
+		(s_get_values(node->status, NULL, NULL, &stat)) ? stat = "running": 0;
+		(node->status == SIGHUP) ? stat = "done": 0;
+		current = (node->priority < 1) ? ' ' : '-';
+		(node->priority == 2) ? current = '+' : 0;
+		if (node->is_pipe > 2)
+		{
+			ft_printf("[%d] %c %d %-28s %s | \n", node->index, current, node->pid,
+			stat, node->exec);
+		}
+		else
+		{
+			ft_printf("%*c %d %-28s %s%s\n", get_nb_len(node->index) + 4, ' ',
+			node->pid, stat, node->exec, (node->right)? " | " : "");
+		}
+		node = node->right;
+	}
+	return (0);
+}

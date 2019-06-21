@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 00:40:57 by midrissi          #+#    #+#             */
-/*   Updated: 2019/06/17 21:57:09 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/06/21 03:14:45 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@
 # define ID_SUSP	SIGTSTP
 # define ID_CONT	SIGCONT
 # define ID_TERM	SIGTERM
+# define ID_PIPE	  g_pid_table->is_pipe
 # define ID_PRIORITY  g_pid_table->priority
 # define ID_PID       g_pid_table->pid
 # define ID_INDEX     g_pid_table->index
@@ -53,6 +54,7 @@
 typedef struct s_child t_child;
 
 struct s_child{
+	int				is_pipe;
 	int				index;
 	pid_t			pid;
 	int				priority;
@@ -74,6 +76,7 @@ typedef struct s_pipe
 {
 	int			pipe[2];
 	char		job;
+	int			pid;
 }				t_pipe;
 
 typedef struct set_builtin
@@ -174,7 +177,8 @@ int		ft_waitprocess(pid_t pid, char **cmd);
 **	jobs_builtin.c & dependencies
 */
 
-int		add_pid(int pid, char **cmd, int status);
+int		add_pid(int is_pipe, int pid, char **cmd, int status);
+int		add_amperpipe(int pid_origin, int pid, char *cmd, int status);
 int		update_pid_table(void);
 int		display_pid_status(t_child *node, char option);
 int		jobs_builtin(int ac, char **cmd);
@@ -183,6 +187,10 @@ int		update_priority(int first);
 int		kill_pids(void);
 int 	display_pid_long(t_child *node, int fd);
 int		remove_pid(t_child *node);
+char	*full_cmd(char **cmd);
+int 	update_amperpipe(t_child *head);
+int		display_amperpipe(t_child *node, char option);
+int		check_remove_pids(void);
 
 /*
 **	fg_builtin.c & dependencies
@@ -244,5 +252,6 @@ int 	s_get_values(int status, int *action, char **handler, char **stat);
 void	s_child_handler(int status, t_child *node);
 void	resetsign(void);
 int		waitabit(int min, int nsec);
+int		get_nb_len(long long nb);
 
 #endif

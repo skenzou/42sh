@@ -6,7 +6,7 @@
 /*   By: tlechien <tlechien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 04:40:55 by tlechien          #+#    #+#             */
-/*   Updated: 2019/06/17 21:56:18 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/06/21 07:00:16 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,21 +22,35 @@ int	init_pid(void)
 
 int	kill_pids(void)
 {
+	t_child *branch;
+	t_child *tmp;
+
 	while (ID_PID != 0)
 	{
+		branch = ID_RIGHT;
+		while(branch)
+		{
+			tmp = branch;
+			branch = branch->right;
+			kill(tmp->pid, SIGHUP);
+			tmp->status = SIGHUP;
+			display_pid_status(tmp, 2);
+			ft_strdel(&(tmp->exec));
+			free(tmp);
+		}
 		//ft_printf("bg PID :%d is being killed.\n", ID_PID);
 		if (!kill(ID_PID, SIGHUP))
 			ID_STATUS = SIGHUP;
 		else if (!kill(ID_PID, SIGTERM))
 			ID_STATUS = SIGTERM;
-		else
+		else if (ID_STATUS != SIGHUP || ID_STATUS != SIGTERM)
 		{
 			err_display(ANSI_RED"42sh: can't kill process: ", ID_EXEC,
 			": pid >");
 			ft_putnbr_fd(ID_PID, 2);
 			ft_putendl_fd(ANSI_RESET, 2);
 		}
-		display_pid_long(g_pid_table, 2);
+		display_pid_status(g_pid_table, 2);
 		remove_pid(g_pid_table);
 	}
 	return (0);
@@ -97,7 +111,7 @@ int	remove_pid(t_child *node)
 	return (0);
 }
 
-static char	*full_cmd(char **cmd)
+char	*full_cmd(char **cmd)
 {
 	int		i;
 	int		len;
@@ -122,7 +136,7 @@ static char	*full_cmd(char **cmd)
 ** Adds a new node to the pid_table.
 */
 
-int	add_pid(int pid, char **command, int status)
+int	add_pid(int is_pipe, int pid, char **command, int status)
 {
 	t_child *new;
 	while (ID_PREV)
@@ -131,6 +145,7 @@ int	add_pid(int pid, char **command, int status)
 		g_pid_table = ID_LEFT;
 	if (!(new = (t_child*)malloc(sizeof(t_child))))
 		exit(FAILFORK); //TODO malloc erroc
+	new->is_pipe = is_pipe;
 	new->index = ID_INDEX + 1;
 	new->pid = pid;
 	new->status = status;
@@ -149,24 +164,29 @@ int	add_pid(int pid, char **command, int status)
 	return (0);
 }
 
-int add_amperpipe(int pid_origin, int pid, char **cmd, int status)
+int add_amperpipe(int pid_origin, int pid, char *cmd, int status)
 {
 	t_child *new;
 	t_child	*origin;
 
 	search_pid(&origin, NULL, pid_origin);
+	if (!origin)
+		return (err_display("PANIQUE\n", NULL, NULL));
+	while (origin->right)
+		origin = origin->right;
 	if (!(new = (t_child*)malloc(sizeof(t_child))))
 		exit(FAILFORK); //TODO malloc erroc
+	new->is_pipe = 1;
 	new->index = origin->index;
 	new->pid = pid;
 	new->status = status;
 	new->priority = 0;
-	new->exec = full_cmd(cmd);  //TODO dup_env() + proteccc
+	new->exec = cmd;
 	new->right = NULL;
 	new->left = NULL;
 	new->prev = origin;
 	origin->right = new;
 	setpgid(pid, 0);
-	ft_printf("%*s %d\n", new->index, "    ", new->pid);
+	ft_printf("%*c %d\n",get_nb_len(new->index) + 2, ' ', new->pid);
 	return(0);
 }

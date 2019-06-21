@@ -6,7 +6,7 @@
 /*   By: tlechien <tlechien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/07 19:31:16 by tlechien          #+#    #+#             */
-/*   Updated: 2019/06/17 22:02:31 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/06/21 06:24:31 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,20 +50,20 @@ void s_child_handler(int status, t_child *node)
 
 	if (s_get_values(status, &action, &handler, &stat))
 		return ;
-	//ft_printf("debug: err child : %s: %s\n", handler, stat);
+	//ft_printf("debug: err child %d : %s: %s\n", node->pid, handler, stat);
 	node->status = status;
 	if (status == SIGINT)
 	{
+		node->status = SIGHUP;
 		kill(node->pid, SIGHUP);
-		(!node->right) ? remove_pid(node): 0;
 	}
+	else if (node->is_pipe)
+		;
 	else if (action != S_CONT && action != S_STOP)
-	{
-		display_pid_long(node, 2);
-		(!node->right) ? remove_pid(node): 0;
-	}
+		display_pid_status(node, 1);
 	else
-		display_pid_long(node, 1);
+		display_pid_status(node, 1);
+	node->is_pipe =(node->is_pipe == 1) ? 2: 4;
 }
 
 int s_get_values(int status, int *action, char **handler, char **stat)
@@ -103,6 +103,7 @@ void init_signal(void)
 {
 	signal(SIGTTOU, SIG_IGN);
 	signal(SIGTTIN, SIG_IGN);
+	signal(SIGALRM, SIG_IGN);
 	signal(SIGTSTP, sigtstp_dflhandler);
 	signal(SIGINT, sigint_handler);
 	signal(SIGWINCH, sigwinch_handler);

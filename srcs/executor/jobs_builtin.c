@@ -6,7 +6,7 @@
 /*   By: tlechien <tlechien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 04:51:21 by tlechien          #+#    #+#             */
-/*   Updated: 2019/06/17 22:03:22 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/06/21 06:42:01 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,28 +19,6 @@ const char	*g_status[] = {
 	"continued",
 	"terminated"
 };
-
-int display_pid_long(t_child *node, int fd)
-{
-	char current;
-	char *stat;
-
-	(s_get_values(node->status, NULL, NULL, &stat)) ? stat = "running": 0;
-	current = (node->priority < 1) ? ' ' : '-';
-	(node->priority == 2) ? current = '+' : 0;
-	ft_putchar_fd('[', fd);
-	ft_putnbr_fd(node->index, fd);
-	ft_putstr_fd("] ", fd);
-	ft_putchar_fd(current, fd);
-	ft_putchar_fd(' ', fd);
-	ft_putnbr_fd(node->pid, fd);
-	ft_putchar_fd(' ', fd);
-	ft_putstr_fd(stat, fd);
-	write (fd,"                       ", 29 - ft_strlen2(stat));
-	ft_putstr_fd(node->exec, fd);
-	ft_putchar_fd('\n', fd);
-	return (0);
-}
 
 /*
 ** Displays child status.
@@ -63,10 +41,24 @@ int			display_pid_status(t_child *node, char option)
 	else
 		ft_printf("[%d] %c %-28s %s\n", node->index, current,
 		stat, node->exec);
-	//if (node->status == SIGHUP)
-	//	print_prompt_prefix();
-	//display_array(g_pid_table->exec); -> print_env(g_pid_table->exec);
 	return (0);
+}
+
+static int change_status(int status)
+{
+	if (WIFCONTINUED(status))
+		ID_STATUS = 0;
+	else if (WIFEXITED(status))
+	{
+		ID_STATUS = ID_DONE;
+		display_pid_status(g_pid_table, 1);
+		return (1);
+	}
+	else if (WIFSIGNALED(status))
+		s_child_handler(WTERMSIG(status), g_pid_table);
+	else if (WIFSTOPPED(status))
+		s_child_handler(WSTOPSIG(status), g_pid_table);
+	return(0);
 }
 
 /*
@@ -76,7 +68,6 @@ int			display_pid_status(t_child *node, char option)
 int	update_pid_table(void)
 {
 	int	status;
-	int prio;
 	int out;
 
 	out = 0;
@@ -84,27 +75,15 @@ int	update_pid_table(void)
 		g_pid_table = ID_PREV;
 	while (g_pid_table && g_pid_table->index)
 	{
-		prio = ID_PRIORITY;
-		if (!waitpid(ID_PID, &status, WNOHANG | WUNTRACED | WCONTINUED))
-			;
-		else if (WIFCONTINUED(status))
-			ID_STATUS = 0;
-		else if (WIFEXITED(status))
-		{
-			out = 1;
-			ID_PRIORITY = -1;
-			ID_STATUS = ID_DONE;
-			display_pid_status(g_pid_table, 0);
-			remove_pid(g_pid_table);
-		}
-		else if (WIFSIGNALED(status))
-			s_child_handler(WTERMSIG(status), g_pid_table);
-		else if (WIFSTOPPED(status))
-			s_child_handler(WSTOPSIG(status), g_pid_table);
+		if (ID_PIPE)
+			update_amperpipe(g_pid_table);
+		else if (waitpid(ID_PID, &status, WNOHANG | WUNTRACED | WCONTINUED))
+			out += change_status(status);
 		if (!ID_LEFT)
 			break;
 		g_pid_table = ID_LEFT;
 	}
+	check_remove_pids();
 	if (out)
 		print_prompt_prefix();
 	update_priority(0);
@@ -117,19 +96,13 @@ int	update_pid_table(void)
 
 static int	all_pid(t_child *node, char option)
 {
-	t_child *right;
-
 	while (node->prev)
 		node = node->prev;
 	while (node)
 	{
-		right = node->right;
-		while (right)
-		{
-			display_pid_status(right, option);
-			right = right->right;
-		}
-		if (node->pid)
+		if (node->is_pipe)
+			display_amperpipe(node, option);
+		else if (node->pid)
 			display_pid_status(node, option);
 		node = node->left;
 	}

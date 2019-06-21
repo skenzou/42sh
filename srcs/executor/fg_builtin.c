@@ -6,7 +6,7 @@
 /*   By: tlechien <tlechien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/16 05:04:02 by tlechien          #+#    #+#             */
-/*   Updated: 2019/06/15 22:49:26 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/06/21 07:00:10 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,9 @@ static int	waitfg(t_child *node)
 	signal(SIGCHLD, SIG_DFL);
 	signal(SIGINT, sigchld_handler);
 	signal(SIGTSTP, sigtstp_handler);
-	if (node && node->status != 0)
-	{
-		node->status = SIGCONT;
+	if (node && node->status != 0 && ((node->status = SIGCONT) || 1))
 		kill(node->pid, SIGCONT);
-	}
-	display_pid_long(node, 1);
+	display_pid_status(node, 1);
 	tcsetpgrp(0, (node->pid));
 	waitpid(node->pid, &status, WUNTRACED);
 	if (WIFEXITED(status))
@@ -55,9 +52,8 @@ int			fg_builtin(int ac, char **cmd)
 	int		ret;
 
 	(void)ac;
-	ret = 0;
 	node = NULL;
-	if ((i = 1) && !cmd[i])
+	if ((i = 0) && !cmd[i])
 	{
 		search_priority(&node);
 		if (node && node->status != ID_TERM)
@@ -65,7 +61,7 @@ int			fg_builtin(int ac, char **cmd)
 		err_display("fg: no current job\n", NULL, NULL);
 		return (1);
 	}
-	while (cmd[i] && *cmd[i])
+	while (cmd[++i] && *cmd[i])
 	{
 		if ((*cmd[i] == '%' && !(!search_pid(&node, cmd[i] + 1, 0) ||
 		!search_process(&node, cmd[i] + 1) || !search_index(&node, cmd[i] + 1))))
@@ -74,7 +70,6 @@ int			fg_builtin(int ac, char **cmd)
 			return (err_display("fg : job not found: ", cmd[i], "\n"));;
 		if ((ret = waitfg(node)))
 			return (ret);
-		i++;
 	}
 	return (0);
 }
