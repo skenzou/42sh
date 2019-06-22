@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/10 02:39:58 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/25 06:13:42 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/06/22 20:31:22 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,22 +23,12 @@ static char	*make_prompt(char *format)
 	return (prompt);
 }
 
-int get_prompt_lenght(void)
+static int	print_prefix(void)
 {
-	int len;
-
-	len = 0;
-
-
-	return (len);
-}
-
-static int print_prefix(void)
-{
-	int prompt_len;
-	char *string;
-	char *git;
-	char *name;
+	int		prompt_len;
+	char	*string;
+	char	*git;
+	char	*name;
 
 	name = getenv("USER");
 	name || (name = "42sh");

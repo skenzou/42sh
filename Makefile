@@ -6,7 +6,7 @@
 #    By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/03 09:24:41 by midrissi          #+#    #+#              #
-#    Updated: 2019/06/17 16:59:53 by aben-azz         ###   ########.fr        #
+#    Updated: 2019/06/22 20:38:49 by aben-azz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -93,6 +93,7 @@ _PROMPT 	= arrow_events.c \
 			home_end_events.c \
 			init_struct.c \
 			key_events.c \
+			space_events.c \
 			main.c \
 			move.c \
 			others.c \

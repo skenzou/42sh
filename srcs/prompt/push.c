@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 23:56:22 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/25 07:42:36 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/06/22 20:31:36 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,6 @@ void	ft_clean_buff(t_cap *tcap)
 
 int		ft_insert(char *buff, t_cap *tcap)
 {
-
 	int		position;
 	int		len;
 
@@ -95,7 +94,6 @@ int		ft_delete_n_char(t_cap *tcap, int pos, int len)
 int		ft_delete_back(t_cap *tcap)
 {
 	int		pos;
-
 
 	if (tcap->cursy == 0 && tcap->cursx == tcap->prompt_len)
 	{

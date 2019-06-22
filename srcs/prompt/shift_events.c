@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/28 15:04:00 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/06/04 23:54:58 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/06/22 20:34:23 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,6 @@ int		shift_arrow_left_event(t_cap *tcap)
 	int p;
 
 	p = tcap->cursy * (tcap->cursx_max + 1) + (tcap->cursx) - tcap->prompt_len;
-
 	if (p)
 	{
 		ft_move(tcap, "left", 1);
@@ -113,10 +112,9 @@ int		shift_arrow_left_event(t_cap *tcap)
 
 int		shift_tab_event(t_cap *tcap)
 {
-	(void)tcap;
-
 	t_ab *autocomp;
 
+	(void)tcap;
 	autocomp = g_shell->autocomp;
 	if (autocomp->state)
 	{

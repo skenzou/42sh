@@ -6,13 +6,13 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/09 00:37:47 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/06/12 05:48:37 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/06/22 20:24:56 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-int	init_termcap(t_cap *tcap)
+int			init_termcap(t_cap *tcap)
 {
 	struct winsize	*w;
 
@@ -100,7 +100,7 @@ int			init_struct(char **env)
 		!g_shell->autocomp || !g_shell->copy_cut)
 		return (0);
 	if (!init_termcap(g_shell->tcap) || !init_history(g_shell->history) ||
-	 								!init_autocomp_struct(g_shell->autocomp) ||
+					!init_autocomp_struct(g_shell->autocomp) ||
 					!init_copy_cut_ctrl_r(g_shell->copy_cut, g_shell->ctrl_r))
 		return (0);
 	g_shell->term->c_lflag &= ~(ICANON | ECHO);

@@ -1,25 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   key_events.c                                       :+:      :+:    :+:   */
+/*   space_events.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/28 15:23:43 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/06/22 20:29:05 by aben-azz         ###   ########.fr       */
+/*   Created: 2019/06/22 20:28:50 by aben-azz          #+#    #+#             */
+/*   Updated: 2019/06/22 20:35:23 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-int		enter_event(t_cap *tcap)
+int		backspace_event(t_cap *tcap)
 {
-	t_ab	*autocomp;
-	int		i;
+	t_ctrl_r *ctrl_r;
 
-	autocomp = g_shell->autocomp;
-	g_shell->history->position = -1;
-	if (autocomp->state)
+	ctrl_r = g_shell->ctrl_r;
+	if (ctrl_r->state)
+	{
+		ctrl_r->index--;
+		ctrl_r->index = ft_max(ctrl_r->index, 0);
+		ctrl_r->data[ctrl_r->index] = '\0';
+		return (clear_before_ctrl_r(tcap, ctrl_r));
+	}
+	else if (g_shell->autocomp->state)
+	{
+		tputs(tcap->clr_all_line, 1, ft_put_termcaps);
+		g_shell->autocomp->state = 0;
+		g_shell->autocomp->pos = 0;
+		return (1);
+	}
+	else
+		return (ft_delete_back(tcap));
+	return (1);
+}
+
+int		space_event(t_cap *tcap)
+{
+	int	index;
+	int	i;
+
+	index = 0;
+	if (g_shell->autocomp->state)
 	{
 		tputs(tcap->clr_all_line, 1, ft_put_termcaps);
 		i = ft_strlen(g_shell->autocomp->match);
@@ -34,47 +57,8 @@ int		enter_event(t_cap *tcap)
 		g_shell->autocomp->len = 0;
 		return (1);
 	}
-	return (-2);
-}
-
-int		ctrl_r_event(t_cap *tcap)
-{
-	t_ctrl_r *ctrl_r;
-
-	(void)tcap;
-	ctrl_r = g_shell->ctrl_r;
-	if ((ctrl_r->state = !ctrl_r->state))
-	{
-		ctrl_r->index = 0;
-		return (back_i_search(ctrl_r, tcap));
-	}
-	else
-	{
-		ft_bzero(ctrl_r->data, BUFFSIZE);
-		ctrl_r->index = 0;
-	}
-	return (1);
-}
-
-int		ctrl_d_event(t_cap *tcap)
-{
-	(void)tcap;
-	ft_printf("exit\n");
-	exit(0);
-	return (1);
-}
-
-int		tab_event(t_cap *tcap)
-{
-	t_ab *autocomp;
-
-	autocomp = g_shell->autocomp;
-	if (autocomp->state)
-	{
-		autocomp->pos++;
-		if (autocomp->pos == autocomp->len)
-			autocomp->pos = 0;
-	}
-	ft_tab(tcap, autocomp);
+	else if (~(index = ft_lastindexof(tcap->command, '!')))
+		expansion_history(tcap->command, tcap, index);
+	ft_insert(" ", tcap);
 	return (1);
 }

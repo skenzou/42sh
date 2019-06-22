@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/28 15:31:17 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/06/17 16:36:52 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/06/22 20:35:21 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ void	sigint_handler(int sig)
 	if (sig == SIGINT)
 	{
 		signal(SIGINT, sigint_handler);
-
 		end_event(tcap);
 		if (g_shell->autocomp->state)
 		{
@@ -35,7 +34,7 @@ void	sigint_handler(int sig)
 		tcap->char_len = 0;
 		tcap->cursx = tcap->prompt_len;
 		tcap->cursy = 0;
-		//exit(0);
+		exit(0);
 	}
 }
 
@@ -51,9 +50,9 @@ void	sigfork(int sig)
 
 void	sigwinch_handler(int sig)
 {
-	t_cap *tcap;
-	int p;
-	int prompt_len;
+	t_cap	*tcap;
+	int		p;
+	int		prompt_len;
 
 	tcap = g_shell->tcap;
 	p = tcap->cursy * (tcap->cursx_max + 1) + (tcap->cursx) - tcap->prompt_len;
@@ -70,16 +69,16 @@ void	sigwinch_handler(int sig)
 	}
 }
 
-void 	sigtstp_dflhandler(int sig)
+void	sigtstp_dflhandler(int sig)
 {
 	if (sig == SIGTSTP)
- 	{
+	{
 		ft_putchar(7);
 		signal(SIGTSTP, sigtstp_dflhandler);
 	}
 }
 
-void 	sigtstp_handler(int sig)
+void	sigtstp_handler(int sig)
 {
 	if (sig == SIGTSTP)
 		signal(SIGTSTP, sigtstp_handler);

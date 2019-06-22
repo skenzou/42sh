@@ -6,74 +6,75 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 06:02:13 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/06/12 05:47:25 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/06/22 20:22:43 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-int		ft_copy(t_cap *tcap)
+int		ft_copy(t_cap *tc)
 {
-	int i;
+	int		i;
+	t_cc	*copy;
 
-	i = tcap->cursy * (tcap->cursx_max + 1) + (tcap->cursx) - tcap->prompt_len;
-	t_cc *copy_cut;
-	copy_cut = g_shell->copy_cut;
-	if (copy_cut->type != 0 && ~copy_cut->type)
+	i = tc->cursy * (tc->cursx_max + 1) + (tc->cursx) - tc->prompt_len;
+	copy = g_shell->copy_cut;
+	if (copy->type != 0 && ~copy->type)
 		return (1);
-	if (copy_cut->state)
+	if (copy->state)
 	{
-		copy_cut->to = i;
-		copy_cut->type = -1;
-		if (copy_cut->to > copy_cut->from)
+		copy->to = i;
+		copy->type = -1;
+		if (copy->to > copy->from)
 		{
-			ft_bzero(copy_cut->copied, BUFFSIZE);
-			ft_strncpy(copy_cut->copied, tcap->command + copy_cut->from, copy_cut->to - copy_cut->from);
+			ft_bzero(copy->copied, BUFFSIZE);
+			ft_strncpy(copy->copied, tc->command + copy->from, copy->to - copy->from);
 		}
-		copy_cut->state = 0;
+		copy->state = 0;
 	}
 	else
 	{
-		copy_cut->from = i;
-		copy_cut->state = 1;
-		copy_cut->type = 0;
+		copy->from = i;
+		copy->state = 1;
+		copy->type = 0;
 	}
 	return (1);
 }
 
-int		ft_cut(t_cap *tcap)
+int		ft_cut(t_cap *tc)
 {
-	int i;
+	int		i;
+	t_cc	*copy;
+	int		a;
 
-	i = tcap->cursy * (tcap->cursx_max + 1) + (tcap->cursx) - tcap->prompt_len;
-	t_cc *copy_cut;
-	int a = -1;
-	copy_cut = g_shell->copy_cut;
-	if (copy_cut->type != 1 && ~copy_cut->type)
+	i = tc->cursy * (tc->cursx_max + 1) + (tc->cursx) - tc->prompt_len;
+	a = -1;
+	copy = g_shell->copy_cut;
+	if (copy->type != 1 && ~copy->type)
 		return (1);
-	else if (copy_cut->state)
+	else if (copy->state)
 	{
-		copy_cut->to = i;
-		copy_cut->type = -1;
-		if (copy_cut->to > copy_cut->from)
+		copy->to = i;
+		copy->type = -1;
+		if (copy->to > copy->from)
 		{
-			ft_bzero(copy_cut->copied, BUFFSIZE);
-			ft_strncpy(copy_cut->copied, tcap->command + copy_cut->from, copy_cut->to - copy_cut->from);
-			while (++a < (int)ft_strlen(copy_cut->copied))
-				ft_delete_back(tcap);
+			ft_bzero(copy->copied, BUFFSIZE);
+			ft_strncpy(copy->copied, tc->command + copy->from, copy->to - copy->from);
+			while (++a < (int)ft_strlen(copy->copied))
+				ft_delete_back(tc);
 		}
-		copy_cut->state = 0;
+		copy->state = 0;
 	}
 	else
 	{
-		copy_cut->from = i;
-		copy_cut->state = 1;
-		copy_cut->type = 1;
+		copy->from = i;
+		copy->state = 1;
+		copy->type = 1;
 	}
 	return (1);
 }
 
-int		ft_paste(t_cap *tcap)
+int		ft_paste(t_cap *tc)
 {
-	return (ft_insert(g_shell->copy_cut->copied, tcap));
+	return (ft_insert(g_shell->copy_cut->copied, tc));
 }

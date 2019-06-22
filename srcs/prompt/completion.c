@@ -6,13 +6,13 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 06:02:13 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/06/15 13:55:14 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/06/22 20:11:20 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-void create_file(char *name, char *path, t_ab *autocomp, int onlydir)
+void	create_file(char *name, char *path, t_ab *comp, int onlydir)
 {
 	t_stat		stats;
 	char full_path[MAX_PATH];
@@ -21,14 +21,12 @@ void create_file(char *name, char *path, t_ab *autocomp, int onlydir)
 	ft_bzero(file, MAX_PATH);
 	cat_fullpath(full_path, name, path);
 	lstat(full_path, &stats);
-	if ((autocomp->isdir = (file_name_ext(name, stats, file) == 'd')) || !onlydir)
+	if ((comp->isdir = (file_name_ext(name, stats, file) == 'd')) || !onlydir)
 	{
-		autocomp->data[autocomp->len++] = ft_strdup(file);
-		autocomp->max_offset =
-						ft_max(autocomp->max_offset, ft_strlen(file));
+		comp->data[comp->len++] = ft_strdup(file);
+		comp->max_offset = ft_max(comp->max_offset, ft_strlen(file));
 	}
 }
-
 
 int		add_to_completion(t_ab *autocomp, char *path, int onlydir)
 {
@@ -40,7 +38,8 @@ int		add_to_completion(t_ab *autocomp, char *path, int onlydir)
 	{
 		while ((d = readdir(dir)))
 		{
-			if (d->d_name[0] != '.' && !ft_strncmp(d->d_name, autocomp->match, ft_strlen(autocomp->match)))
+			if (d->d_name[0] != '.' &&
+			!ft_strncmp(d->d_name, autocomp->match, ft_strlen(autocomp->match)))
 				create_file(d->d_name, path, autocomp, onlydir);
 		}
 		closedir(dir);
@@ -48,11 +47,8 @@ int		add_to_completion(t_ab *autocomp, char *path, int onlydir)
 	}
 	else
 		dprintf(debug(), "probleme opendir\n");
-	return 0;
+	return (0);
 }
-
-
-
 
 int		env_completion(t_ab *autocomp, char *key)
 {
@@ -75,7 +71,7 @@ int		env_completion(t_ab *autocomp, char *key)
 			index = ft_indexof(env[i], '=');
 			autocomp->data[autocomp->len] = ft_strdup(env[i] + index + 1);
 			autocomp->max_offset =
-							ft_max(autocomp->max_offset, ft_strlen(env[i] + index + 1));
+					ft_max(autocomp->max_offset, ft_strlen(env[i] + index + 1));
 			autocomp->len++;
 		}
 	}
@@ -93,8 +89,6 @@ int		env_completion(t_ab *autocomp, char *key)
 	return (1);
 }
 
-
-
 int		command_completion(t_ab *autocomp, char *key)
 {
 	int i;
@@ -109,7 +103,6 @@ int		command_completion(t_ab *autocomp, char *key)
 		return (0);
 	i = -1;
 	len = ft_strlen(key);
-	//autocomp->match = ft_strdup(key);
 	ft_strcpy(autocomp->match, key);
 	dprintf(debug(), "match: |%s|\n", autocomp->match);
 	while (path_split && path_split[++i])
@@ -122,11 +115,11 @@ int		command_completion(t_ab *autocomp, char *key)
 
 int		path_completion(t_ab *autocomp, char *key)
 {
-	char path[BUFFSIZE];
+	char	path[BUFFSIZE];
+	int		i;
 
 	ft_bzero(path, BUFFSIZE);
 	dprintf(debug(), "pathcompletion, |%s|\n", key);
-	int i;
 	if (~ft_indexof(key, '/'))
 	{
 		i = ft_strlen(key) - 1;
@@ -134,7 +127,7 @@ int		path_completion(t_ab *autocomp, char *key)
 		while (key[i] && key[i] != '/')
 			i--;
 		dprintf(debug(), "i ici vaut: %d\n", i);
-		ft_strcpy(autocomp->match, key + i+ 1);
+		ft_strcpy(autocomp->match, key + i + 1);
 		ft_strncpy(path, key, i == 0 ? 1 : i);
 	}
 	else
@@ -157,13 +150,11 @@ int		first_arg_completion(t_ab *autocomp, t_cap *tc, char *str, int position)
 		return (add_to_completion(autocomp, str, 0));
 	command_completion(autocomp, str);
 	path_completion(autocomp, str);
-
 	return (autocomp->len > 0);
 }
 
 int		arg_completion(t_ab *autocomp, t_cap *tc, char *str, int position)
 {
-
 	if (is_env_var(autocomp, str))
 	{
 		return (env_completion(autocomp, str));

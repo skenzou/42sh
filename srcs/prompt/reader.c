@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/28 15:31:17 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/06/17 17:02:28 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/06/22 20:33:56 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	ft_clear_all_lines(t_cap *tcap)
 	}
 }
 
-int	handle_eol(char *buffer, t_cap *tcap)
+int		handle_eol(char *buffer, t_cap *tcap)
 {
 	char str[2];
 
@@ -39,13 +39,11 @@ int	handle_eol(char *buffer, t_cap *tcap)
 	{
 		tcap->carry[0] = buffer[1];
 		tcap->carry[1] = buffer[2];
-		//dprintf(debug(), "4on rentre dans eol \n");
 		tcap->overflow = 1;
 		return (-2);
 	}
 	else if (buffer[1] == '\n')
 	{
-		//dprintf(debug(), "5on rentre dans eol \n");
 		str[0] = buffer[0];
 		ft_insert(str, tcap);
 		tcap->overflow = 1;
@@ -54,12 +52,10 @@ int	handle_eol(char *buffer, t_cap *tcap)
 	}
 	else
 	{
-		//dprintf(debug(), "6on rentre dans eol \n");
 		ft_strncpy(str, buffer, 2);
 		ft_insert(str, tcap);
 		return (-2);
 	}
-
 	return (1);
 }
 
@@ -67,7 +63,6 @@ int		read_buffer(char *buffer, t_cap *tcap)
 {
 	int key;
 
-	//dprintf(debug(), "avant {%d, %d, %d}|%s|\n",buffer[0], buffer[1], buffer[2], buffer);
 	key = 0;
 	if (g_shell->ctrl_r->state && ft_isprint(buffer[0]))
 		return (add_buffer_ctrl_r(buffer, g_shell->ctrl_r));

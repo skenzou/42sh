@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/01 17:45:36 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/25 02:33:33 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/06/22 20:20:13 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,12 @@
 
 int	add_cmd_to_history(char *str, t_history *history)
 {
-
 	if (history->len)
 		if (!ft_strcmp(str, history->data[history->len - 1]))
 			return (1);
 	if (!(history->data[history->len++] = ft_strdup(str)))
 		return (0);
-	history->data[history->len - 1][ft_strlen(str) - 1]	= '\0';
-	//dprintf(debug(), "history: |%s|\n", history->data[history->len - 1]);
+	history->data[history->len - 1][ft_strlen(str) - 1] = '\0';
 	history->data[history->len] = NULL;
 	if (!write_history(str, history))
 		return (-1);
@@ -52,9 +50,7 @@ int	write_history(char *string, t_history *history)
 	fd = open(history->file_name, O_RDWR | O_APPEND | O_CREAT, 0666);
 	if (fd > 0)
 	{
-		//ft_dprintf(fd, "%s#", string);
 		write(fd, string, ft_strlen(string) - 1);
-		//ft_putstr_fd(string, fd);
 		ft_putchar_fd(1, fd);
 		close(fd);
 		return (1);
