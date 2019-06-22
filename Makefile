@@ -6,7 +6,7 @@
 #    By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/03 09:24:41 by midrissi          #+#    #+#              #
-#    Updated: 2019/06/21 02:50:24 by tlechien         ###   ########.fr        #
+#    Updated: 2019/06/22 19:53:28 by midrissi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -77,7 +77,7 @@ _EXEC 		= alias_builtin.c alias_init.c alias_utils.c bg_builtin.c tools.c\
 			test_builtin.c tilde_expansion.c type_builtin.c unset_builtin.c \
 			unsetenv_builtin.c cd_builtin_utils.c hash_builtin.c \
 			cd_builtin_chdir.c parse_pipes.c utils2.c handle_hdoc.c signals.c \
-			signals_utils.c jobs_pipes.c
+			signals_utils.c jobs_pipes.c export_builtin2.c
 EXEC 		= $(addprefix $(SRC_PATH)executor/,$(_EXEC))
 _EXEC_O 	:= $(_EXEC:.c=.o)
 EXEC_O 		:= $(EXEC:.c=.o)
@@ -107,8 +107,8 @@ PROMPT 		= $(addprefix $(SRC_PATH)prompt/,$(_PROMPT))
 _PROMPT_O 	:= $(_PROMPT:.c=.o)
 PROMPT_O 	:= $(PROMPT:.c=.o)
 
-_PARSER		= ast.c build_ast.c inhibitors.c parser.c redir_list.c \
-			syntax_errors.c
+_PARSER		= ast.c build_ast.c inhibitors.c parser.c redir_list_tools.c \
+			syntax_errors.c create_redir_list.c
 PARSER		= $(addprefix $(SRC_PATH)parser/,$(_PARSER))
 _PARSER_O 	:= $(_PARSER:.c=.o)
 PARSER_O 	:= $(PARSER:.c=.o)

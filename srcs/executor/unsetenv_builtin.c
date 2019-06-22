@@ -6,13 +6,13 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 20:26:58 by midrissi          #+#    #+#             */
-/*   Updated: 2019/06/15 16:50:34 by ghamelek         ###   ########.fr       */
+/*   Updated: 2019/06/22 19:43:21 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-char			**removekey(char *key, int keylen,const char **env)
+char			**removekey(char *key, int keylen, const char **env)
 {
 	char	**fresh_env;
 	int		count;
@@ -49,7 +49,8 @@ int				unsetenv_builtin(int ac, char **av)
 	key = ft_strjoin(av[1], "=");
 	key == NULL ? exit(1) : 0;
 	if ((get_indexof_key(key, g_shell->env)) >= 0)
-		g_shell->env = removekey(key, ft_strlen(key), (const char**)g_shell->env);
+		g_shell->env = removekey(key, ft_strlen(key),
+													(const char**)g_shell->env);
 	ft_strdel(&key);
 	if (same)
 		g_shell->env_tmp = g_shell->env;

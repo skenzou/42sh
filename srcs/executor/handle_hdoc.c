@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/07 06:30:44 by midrissi          #+#    #+#             */
-/*   Updated: 2019/06/17 17:36:07 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/06/22 19:56:40 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,10 @@ static void		exec_hdoc(t_redir *redir, char *tmp_file)
 	redir->hdoc_fd = fd;
 }
 
-void	handle_hdoc(t_list *redir)
+void			handle_hdoc(t_list *redir)
 {
-	char *str;
-	int i;
+	char	*str;
+	int		i;
 
 	if (!(str = ft_strdup("/tmp/.hdoc1")))
 		ft_exit("malloc failed in handle_hdoc");

@@ -6,7 +6,7 @@
 /*   By: tlechien <tlechien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/19 14:48:57 by tlechien          #+#    #+#             */
-/*   Updated: 2019/06/16 04:44:33 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/06/22 20:58:15 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ const	char	*g_reserved[] = {
 ** Expands g_aliases by one.
 */
 
-int		expand_alias(void)
+static int		expand_alias(void)
 {
 	char	**new_aliases;
 	int		i;
@@ -57,7 +57,7 @@ int		expand_alias(void)
 ** Adds an alias line to the g_aliases array.
 */
 
-int		add_alias(char *key, char *value)
+static int		add_alias(char *key, char *value)
 {
 	int	i;
 	char *line;

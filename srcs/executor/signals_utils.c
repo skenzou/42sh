@@ -6,7 +6,7 @@
 /*   By: tlechien <tlechien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/12 13:41:37 by tlechien          #+#    #+#             */
-/*   Updated: 2019/06/21 02:49:43 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/06/22 19:46:11 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	get_nb_len(long long nb)
 	return (1);
 }
 
-int waitabit(int min, int nsec)
+int	waitabit(int min, int nsec)
 {
 	struct timespec	slp;
 

@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/03 16:15:41 by midrissi          #+#    #+#             */
-/*   Updated: 2019/06/17 22:21:36 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/06/22 19:57:07 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,8 @@ static void		ft_execute(char **args, int redir, int background)
 		g_shell->lastsignal = builtin->function(ft_split_count(
 		(const char**)args), args);
 	else if (!g_shell->lastsignal && builtin)
-		g_shell->lastsignal = ft_fork_builtin(builtin, ft_split_count((const char**)args), args);
+		g_shell->lastsignal = ft_fork_builtin(builtin,
+									ft_split_count((const char**)args), args);
 	if (redir)
 		close_fd();
 	ft_post_exec(NULL);

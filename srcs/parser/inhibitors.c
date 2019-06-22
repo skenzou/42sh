@@ -6,15 +6,33 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 01:26:49 by midrissi          #+#    #+#             */
-/*   Updated: 2019/05/29 16:54:06 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/06/22 16:55:28 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
 
+static void		read_inhib(char inhib, char **word)
+{
+	char *save;
+	char *input;
+
+	while (42)
+	{
+		input = read_line(g_shell->tcap);
+		if (ft_strchr(input, inhib) || inhib == '\\')
+			input[ft_strlen(input) - 1] = '\0';
+		save = *word;
+		if (!(*word = ft_strjoin(*word, input)))
+			ft_exit("Malloc failed in exec_inhib");
+		free(save);
+		if (ft_strchr(input, inhib) || inhib == '\\')
+			break ;
+	}
+}
+
 static void		exec_inhib(char inhib, t_list *lexer, int i)
 {
-	char *input;
 	char **content;
 	char *save;
 
@@ -29,19 +47,23 @@ static void		exec_inhib(char inhib, t_list *lexer, int i)
 	if (!(content[i] = ft_strjoin(content[i], "\n")))
 		ft_exit("Malloc failed in exec_inhib");
 	free(save);
-	while (42)
-	{
-		input = read_line(g_shell->tcap);
-		if (ft_strchr(input, inhib) || inhib == '\\')
-			input[ft_strlen(input) - 1] = '\0';
-		save = content[i];
-		if (!(content[i] = ft_strjoin(content[i], input)))
-			ft_exit("Malloc failed in exec_inhib");
-		free(save);
-		if (ft_strchr(input, inhib) || inhib == '\\')
-			break ;
-	}
+	read_inhib(inhib, &content[i]);
 	g_shell->tcap->prompt = NULL;
+}
+
+static void		check_bslash(char **str, t_list *lexer, int i)
+{
+	if (**str == BSLASH)
+	{
+		(*str)++;
+		if (**str)
+			(*str)++;
+		else
+		{
+			exec_inhib(BSLASH, lexer, i);
+			return ;
+		}
+	}
 }
 
 static void		check_inhib(char *str, t_list *lexer, int i)
@@ -50,17 +72,7 @@ static void		check_inhib(char *str, t_list *lexer, int i)
 
 	while (*str)
 	{
-		if (*str == BSLASH)
-		{
-			str++;
-			if (*str)
-				str++;
-			else
-			{
-				exec_inhib(BSLASH, lexer, i);
-				return ;
-			}
-		}
+		check_bslash(&str, lexer, i);
 		if (*str == DQUOTE || *str == QUOTE)
 		{
 			inhib = *str++;
@@ -83,8 +95,8 @@ static void		check_inhib(char *str, t_list *lexer, int i)
 
 void			handle_inhibitors(t_list *lexer)
 {
-	t_token *token;
-	size_t i;
+	t_token		*token;
+	size_t		i;
 
 	while (lexer)
 	{

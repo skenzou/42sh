@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 18:46:30 by midrissi          #+#    #+#             */
-/*   Updated: 2019/06/15 16:36:48 by ghamelek         ###   ########.fr       */
+/*   Updated: 2019/06/22 19:45:58 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int						get_indexof_key(char *key, char **env)
 	return (-1);
 }
 
-static char				**addkey(char *key, char *value,char **env)
+static char				**addkey(char *key, char *value, char **env)
 {
 	int		i;
 	char	**fresh_env;

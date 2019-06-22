@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/14 23:53:49 by midrissi          #+#    #+#             */
-/*   Updated: 2019/06/21 06:52:56 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/06/22 19:56:07 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 
 int				ft_waitprocess(pid_t pid, char **cmd)
 {
-	int       	status;
-	t_child   	*node;
+	int			status;
+	t_child		*node;
 	char		*handler;
 	char		*stat;
 
@@ -32,10 +32,10 @@ int				ft_waitprocess(pid_t pid, char **cmd)
 		return ((WEXITSTATUS(status)));
 	else if (WIFSIGNALED(status))
 	{
- 		s_get_values(status, NULL, &handler, &stat);
- 		(status != SIGINT) ? ft_printf(ANSI_RED"42sh : %s: %s: %s\n"ANSI_RESET,
-		cmd[0], handler, stat): 0;
- 	}
+		s_get_values(status, NULL, &handler, &stat);
+		(status != SIGINT) ? ft_printf(ANSI_RED"42sh : %s: %s: %s\n"ANSI_RESET,
+		cmd[0], handler, stat) : 0;
+	}
 	else if (WSTOPSIG(status))
 	{
 		add_pid(0, pid, cmd, ID_SUSP);
@@ -57,7 +57,7 @@ int				ft_fork_amper(char **cmd, char **env)
 
 	pid = fork();
 	if (pid < 0)
-		return (FAILFORK); // fork
+		return (FAILFORK);
 	if (!pid)
 	{
 		resetsign();
@@ -75,7 +75,7 @@ int				ft_fork_amper(char **cmd, char **env)
 ** adds it to the g_pid_table.
 */
 
-int				ft_fork_builtin(t_builtin *builtin,int ac, char **cmd)
+int				ft_fork_builtin(t_builtin *builtin, int ac, char **cmd)
 {
 	pid_t pid;
 

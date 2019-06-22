@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   redir_list.c                                       :+:      :+:    :+:   */
+/*   redir_list_tools.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 01:22:04 by midrissi          #+#    #+#             */
-/*   Updated: 2019/06/04 01:38:17 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/06/22 21:33:35 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-static int get_preceded_fd(char c, e_op_type redir_type)
+int			get_preceded_fd(char c, t_op_type redir_type)
 {
 	if (ft_isdigit(c))
 		return (c - 48);
@@ -21,11 +21,11 @@ static int get_preceded_fd(char c, e_op_type redir_type)
 				|| redir_type == DBL_GREAT);
 }
 
-static void		create_redir(char *red, char **dest, size_t size,
-														e_op_type redir_type)
+void		create_redir(char *red, char **dest, size_t size,
+														t_op_type redir_type)
 {
-	t_redir redir;
-	t_list *node;
+	t_redir	redir;
+	t_list	*node;
 
 	redir.dest = dup_tab(dest, size);
 	redir.op_type = redir_type;
@@ -38,13 +38,13 @@ static void		create_redir(char *red, char **dest, size_t size,
 	ft_lstadd(&(g_shell->redir), node);
 }
 
-static t_list		*get_next_redir(t_list *lexer)
+t_list		*get_next_redir(t_list *lexer)
 {
-	t_list *save;
-	t_token *curr;
+	t_list	*save;
+	t_token	*curr;
 
 	save = lexer;
-	while(lexer)
+	while (lexer)
 	{
 		curr = (t_token *)lexer->content;
 		if (curr->type == TOKEN_REDIR)
@@ -56,11 +56,11 @@ static t_list		*get_next_redir(t_list *lexer)
 	return (NULL);
 }
 
-static void		join_2(t_list *lexer)
+void		join_2(t_list *lexer)
 {
-	t_token *curr;
-	t_token *next;
-	t_list *tmp;
+	t_token	*curr;
+	t_token	*next;
+	t_list	*tmp;
 	char	**old;
 
 	curr = (t_token *)lexer->content;
@@ -94,57 +94,4 @@ void		join_all_redir(t_list *lexer)
 		}
 		lexer = lexer->next;
 	}
-}
-
-void		create_redir_list(t_list *lexer)
-{
-	t_token *curr;
-	t_token *next;
-	char	**cmd;
-	t_list	*prev;
-	size_t	cmd_size;
-	char	to_free;
-
-	prev = NULL;
-	cmd = NULL;
-	lexer = get_next_redir(lexer);
-	to_free = 0;
-	while (lexer)
-	{
-		curr = (t_token *)lexer->content;
-		if (curr->type == TOKEN_WORD && (!prev || (prev
-			&& ((t_token *)prev->content)->type != TOKEN_REDIR)))
-			{
-				if (!cmd)
-				{
-					cmd = curr->content;
-					cmd_size = curr->size;
-				}
-				else
-				{
-					cmd = join_2tab(cmd, curr->content, cmd_size, curr->size);
-					cmd_size += curr->size;
-					to_free = 1;
-				}
-			}
-		if (curr->type == TOKEN_REDIR)
-		{
-			next = (t_token *)lexer->next->content;
-			create_redir(curr->content[0], next->content, next->size, curr->op_type);
-		}
-		else if (curr->type == TOKEN_CTL_OPERATOR
-			|| (curr->type != TOKEN_CTL_OPERATOR && !lexer->next))
-		{
-			create_redir(NULL, cmd, cmd_size, OTHER_OP);
-			if (to_free && !(to_free = 0))
-				ft_splitdel(cmd);
-			cmd = NULL;
-			lexer = get_next_redir(lexer);
-			prev = NULL;
-			continue ;
-		}
-		prev = lexer;
-		lexer = lexer->next;
-	}
-	ft_lstrev(&g_shell->redir);
 }

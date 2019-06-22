@@ -6,12 +6,13 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 07:12:40 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/06/15 20:22:29 by ghamelek         ###   ########.fr       */
+/*   Updated: 2019/06/22 21:39:20 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PROMPT_H
 # define PROMPT_H
+
 # include <term.h>
 # include <termios.h>
 # include <signal.h>
@@ -26,9 +27,9 @@
 # include <dirent.h>
 # include <curses.h>
 # include <sys/ioctl.h>
-# define PROMPT1 				"\x1b[0m\x1b[32m\x1b[1m➜  \x1b[0m"
-# define PROMPT1_ERR 				"\x1b[0m\x1b[31m\x1b[1m➜  \x1b[0m"
-# define PROMPT2 				"\x1b[36m\x1b[1m%s \x1b[0m"
+# define PROMPT1 			"\x1b[0m\x1b[32m\x1b[1m➜  \x1b[0m"
+# define PROMPT1_ERR 		"\x1b[0m\x1b[31m\x1b[1m➜  \x1b[0m"
+# define PROMPT2 			"\x1b[36m\x1b[1m%s \x1b[0m"
 # define PROMPT3 			"\x1b[1m\x1b[34mgit:(\x1b[31m%s\x1b[34m) \x1b[0m"
 # define PROMPT4 			"\x1b[1m\x1b[31m%s\x1b[0m\x1b[33m\x1b[1m ✗ \x1b[0m"
 # define DEFAULT_HISTORY_NAME	".42sh_history"
@@ -68,18 +69,18 @@
 # define CUT					-120
 # define PASTE					-102
 # define MAX_HISTORY_LENGHT		4096
-# define MAX_PATH		PATH_MAX
-# define UNUSED			0
-# define DEBUG_LOG		0
+# define MAX_PATH				PATH_MAX
+# define UNUSED					0
+# define DEBUG_LOG				0
 
 typedef struct	s_data
 {
 	int				xd;
 	char			**argv;
 }				t_data;
-char					**g_env;
-typedef struct stat	t_stat;
-typedef struct termios	t_term;
+
+typedef struct stat			t_stat;
+typedef struct termios		t_term;
 typedef struct stat			t_stat;
 typedef struct dirent		t_dirent;
 typedef struct passwd		t_passwd;
