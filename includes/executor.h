@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 00:40:57 by midrissi          #+#    #+#             */
-/*   Updated: 2019/06/22 21:19:22 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/06/23 15:50:36 by Mohamed          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,12 @@ int					bg_resume(t_child **node);
 t_hash_entry		*hash_search(unsigned char *key);
 t_hash_entry		*hash_insert(unsigned char *key, char **env);
 int					hash_table(char **str, char **env);
+/*
+** BIN_HASH_TOOLS.C
+*/
+char				*free_duo(char **s1, t_hash_entry **s2);
+char				*my_env(char **env);
+unsigned char		*add_path(char **bin, unsigned char *argv);
 /*
 ** CD_BUILTIN_CHDIR.C
 */
@@ -298,6 +304,11 @@ char				**realloc_new_tab(char *needle, char **old, size_t size);
 ** TEST_BUILTIN.C
 */
 int					test_builtin(int ac, char **args);
+/*
+** TEST_BUILTIN_TOOLS.C
+*/
+int					is_integer(char *str, char *str2);
+int					arithmetic_test(char **av, char *op);
 /*
 ** TILDE_EXPANSION.C
 */

@@ -6,7 +6,7 @@
 #    By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/03 09:24:41 by midrissi          #+#    #+#              #
-#    Updated: 2019/06/22 19:53:28 by midrissi         ###   ########.fr        #
+#    Updated: 2019/06/23 15:48:06 by Mohamed          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -77,7 +77,8 @@ _EXEC 		= alias_builtin.c alias_init.c alias_utils.c bg_builtin.c tools.c\
 			test_builtin.c tilde_expansion.c type_builtin.c unset_builtin.c \
 			unsetenv_builtin.c cd_builtin_utils.c hash_builtin.c \
 			cd_builtin_chdir.c parse_pipes.c utils2.c handle_hdoc.c signals.c \
-			signals_utils.c jobs_pipes.c export_builtin2.c
+			signals_utils.c jobs_pipes.c export_builtin2.c test_builtin_tools.c\
+			bin_hash_tools.c
 EXEC 		= $(addprefix $(SRC_PATH)executor/,$(_EXEC))
 _EXEC_O 	:= $(_EXEC:.c=.o)
 EXEC_O 		:= $(EXEC:.c=.o)

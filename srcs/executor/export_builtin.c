@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/28 13:22:00 by midrissi          #+#    #+#             */
-/*   Updated: 2019/06/22 20:29:26 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/06/23 16:25:18 by Mohamed          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,7 @@ static int			exec_export(char *key, char *ptr)
 	char	*value;
 
 	value = NULL;
+	ft_printf("key: %s\n", key);
 	if (is_key_valid(key))
 	{
 		if (!ptr)
