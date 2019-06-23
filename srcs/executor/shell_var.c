@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/27 19:17:30 by midrissi          #+#    #+#             */
-/*   Updated: 2019/06/20 22:41:30 by Mohamed          ###   ########.fr       */
+/*   Updated: 2019/06/23 18:43:23 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static void			check_intern_var(char *needle, char ***env, char ***intern)
 {
 	int		i;
 	char	*key;
-	char	*entry;
+	int		entry;
 	char	*value;
 
 	i = 0;
@@ -26,9 +26,9 @@ static void			check_intern_var(char *needle, char ***env, char ***intern)
 		ft_exit("Malloc failed in check_intern_var failed");
 	if (!(value = ft_strdup(needle + i + 1)))
 		ft_exit("Malloc failed in check_intern_var failed");
-	entry = get_key_value(key, g_shell->env);
+	entry = get_indexof_key2(key, g_shell->env);
 	ft_expand_one(&value);
-	if (entry)
+	if (entry >= 0)
 		ft_setenv(key, value, env);
 	else
 		ft_setenv(key, value, intern);
@@ -49,8 +49,29 @@ static int			is_var(char *needle)
 	return (*needle);
 }
 
+void		compare_paths(char *path)
+{
+	char *newpath;
+
+	newpath = get_key_value("PATH", g_shell->env);
+	if (!newpath)
+		newpath = get_key_value("PATH", g_shell->intern);
+	if ((!path && newpath) || (path && !newpath))
+		empty_table();
+	else if (path && newpath)
+	{
+		if (ft_strcmp(path, newpath))
+			empty_table();
+	}
+}
+
 static void			reorder_tabs(char *str, char **env, char **intern)
 {
+	char *path;
+
+	path = get_key_value("PATH", g_shell->env);
+	if (!path)
+		path = get_key_value("PATH", g_shell->intern);
 	if (str)
 	{
 		g_shell->env_tmp = env;
@@ -64,6 +85,7 @@ static void			reorder_tabs(char *str, char **env, char **intern)
 		g_shell->intern = intern;
 		g_shell->env_tmp = g_shell->env;
 		g_shell->intern_tmp = g_shell->intern;
+		compare_paths(path);
 	}
 }
 

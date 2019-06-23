@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/04 23:39:19 by midrissi          #+#    #+#             */
-/*   Updated: 2019/06/07 06:04:47 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/06/23 17:58:56 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static void			print_htable(void)
 	}
 }
 
-static void			empty_table(void)
+void			empty_table(void)
 {
 	t_list	*list;
 	int		i;

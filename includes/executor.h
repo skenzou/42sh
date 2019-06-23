@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 00:40:57 by midrissi          #+#    #+#             */
-/*   Updated: 2019/06/23 15:50:36 by Mohamed          ###   ########.fr       */
+/*   Updated: 2019/06/23 18:25:51 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -215,6 +215,7 @@ char				**handle_redir();
 ** HASH_BUILTIN.C
 */
 int					hash_builtin(int ac, char **av);
+void				empty_table(void);
 /*
 ** JOB_UTILS.C
 */
@@ -278,6 +279,7 @@ void				ft_setenv(char *key, char *value, char ***env);
 ** SHELL_VAR.C
 */
 void				handle_intern_var(char **args);
+void				compare_paths(char *path);
 /*
 ** SIGNAL_UTILS.C
 */
@@ -333,6 +335,7 @@ int					unset_builtin(int ac, char **av);
 ** UNSETENV_BUILTIN.C
 */
 char				**removekey(char *key, int keylen, const char **env);
+char				**removekey2(char *key, int keylen, const char **env);
 int					unsetenv_builtin(int ac, char **av);
 /*
 ** UTILS2.C
@@ -340,5 +343,7 @@ int					unsetenv_builtin(int ac, char **av);
 int					is_special_char(char c);
 void				close_fd();
 int					is_key_valid(char *key);
+int					get_indexof_key2(char *key, char **env);
+void				update_env(char *key, char *value);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/03 16:15:41 by midrissi          #+#    #+#             */
-/*   Updated: 2019/06/22 19:57:07 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/06/23 18:26:14 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,18 @@ void			ft_post_exec(t_ast *root)
 		go_to_next_cmd(g_shell->redir);
 }
 
+static void		handle_builtin(t_builtin *builtin, char **args)
+{
+	char	*path;
+
+	path = get_key_value("PATH", g_shell->env);
+	if (!path)
+		path = get_key_value("PATH", g_shell->intern);
+	g_shell->lastsignal = builtin->function(ft_split_count((const char**)args),
+																		args);
+	compare_paths(path);
+}
+
 static void		ft_execute(char **args, int redir, int background)
 {
 	t_builtin	*builtin;
@@ -43,8 +55,7 @@ static void		ft_execute(char **args, int redir, int background)
 			g_shell->lastsignal = ft_fork_amper(args, g_shell->env_tmp);
 	}
 	if (!g_shell->lastsignal && builtin && !background)
-		g_shell->lastsignal = builtin->function(ft_split_count(
-		(const char**)args), args);
+		handle_builtin(builtin, args);
 	else if (!g_shell->lastsignal && builtin)
 		g_shell->lastsignal = ft_fork_builtin(builtin,
 									ft_split_count((const char**)args), args);
