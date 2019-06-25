@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/10 02:39:58 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/06/17 16:39:09 by ghamelek         ###   ########.fr       */
+/*   Updated: 2019/06/21 06:26:47 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static int print_prefix(void)
 	char *string;
 	char *git;
 	char *name;
-	
+
 	git = NULL;
 	name = getenv("USER");
 	name || (name = "42sh");

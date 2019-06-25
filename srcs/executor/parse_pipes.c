@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/07 06:12:37 by midrissi          #+#    #+#             */
-/*   Updated: 2019/06/22 21:11:01 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/06/25 04:09:19 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ static void		first_pipe(char **cmd, t_pipe **pipes, int redir)
 		if (pipes[g_shell->curr_pipe]->job)
 		{
 			setpgid(getpid(), getpgrp());
-			waitabit(0, 8000000);
 			resetsign();
 		}
 		close(pipes[g_shell->curr_pipe]->pipe[0]);
@@ -62,8 +61,8 @@ static void		post_fork(t_pipe **pipes, pid_t pid, char **cmd,
 		if (!waitpid(pid, &pid, WNOHANG))
 			add_amperpipe(pipes[0]->pid, pid, full_cmd(cmd), ID_RUN);
 	}
-	if (g_shell->curr_pipe == nbpipes - 1)
-		g_shell->lastsignal = ft_waitprocess(pid, cmd);
+	else if (g_shell->curr_pipe == nbpipes - 1)
+		g_shell->lastsignal = ft_waitprocess(pid, cmd, NULL, NULL);
 }
 
 static void		pipe_cmd(char **cmd, t_pipe **pipes, size_t nbpipes, int redir)
@@ -77,7 +76,6 @@ static void		pipe_cmd(char **cmd, t_pipe **pipes, size_t nbpipes, int redir)
 		if (pipes[g_shell->curr_pipe]->job)
 		{
 			setpgid(getpid(), getpgrp());
-			waitabit(0, 8000000);
 			resetsign();
 		}
 		dup2(pipes[g_shell->curr_pipe]->pipe[0], STDIN_FILENO);

@@ -6,7 +6,7 @@
 /*   By: tlechien <tlechien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/16 05:04:02 by tlechien          #+#    #+#             */
-/*   Updated: 2019/06/21 07:00:10 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/06/25 03:10:58 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int	waitfg(t_child *node)
 {
-	int       	status;
+	int	status;
 
 	signal(SIGCHLD, SIG_DFL);
 	signal(SIGINT, sigchld_handler);
@@ -51,25 +51,25 @@ int			fg_builtin(int ac, char **cmd)
 	int		i;
 	int		ret;
 
-	(void)ac;
+	cmd++;
 	node = NULL;
-	if ((i = 0) && !cmd[i])
+	if (!(i = 0) && !cmd[0])
 	{
 		search_priority(&node);
-		if (node && node->status != ID_TERM)
+		if (node)
 			return (waitfg(node));
-		err_display("fg: no current job\n", NULL, NULL);
-		return (1);
+		return (err_display("fg: no current job\n", NULL, NULL));
 	}
 	while (cmd[++i] && *cmd[i])
 	{
 		if ((*cmd[i] == '%' && !(!search_pid(&node, cmd[i] + 1, 0) ||
-		!search_process(&node, cmd[i] + 1) || !search_index(&node, cmd[i] + 1))))
+		!search_process(&node, cmd[i] + 1) ||
+		!search_index(&node, cmd[i] + 1))))
 			return (err_display("fg : job not found: ", cmd[i] + 1, "\n"));
 		else if (*cmd[i] != '%' && search_process(&node, cmd[i]))
-			return (err_display("fg : job not found: ", cmd[i], "\n"));;
+			return (err_display("fg : job not found: ", cmd[i], "\n"));
 		if ((ret = waitfg(node)))
 			return (ret);
 	}
-	return (0);
+	return (0 && ac);
 }

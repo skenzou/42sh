@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/28 15:31:17 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/06/21 06:14:38 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/06/25 07:03:47 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	sigint_handler(int sig)
 		g_shell->tcap->overflow = 0;
 		print_prompt_prefix();
 		ft_bzero(g_shell->tcap->carry, 2);
+		g_shell->dprompt = 1;
 		// exit(0);
 	}
 }
@@ -39,9 +40,9 @@ void	sigfork(int sig)
 
 void	sigwinch_handler(int sig)
 {
-	t_cap *tcap;
-	int p;
-	int prompt_len;
+	t_cap	*tcap;
+	int		p;
+	int		prompt_len;
 
 	tcap = g_shell->tcap;
 	p = tcap->cursy * (tcap->cursx_max + 1) + (tcap->cursx) - tcap->prompt_len;
@@ -58,16 +59,16 @@ void	sigwinch_handler(int sig)
 	}
 }
 
-void 	sigtstp_dflhandler(int sig)
+void	sigtstp_dflhandler(int sig)
 {
 	if (sig == SIGTSTP)
- 	{
+	{
 		ft_putchar(7);
 		signal(SIGTSTP, sigtstp_dflhandler);
 	}
 }
 
-void 	sigtstp_handler(int sig)
+void	sigtstp_handler(int sig)
 {
 	if (sig == SIGTSTP)
 		signal(SIGTSTP, sigtstp_handler);

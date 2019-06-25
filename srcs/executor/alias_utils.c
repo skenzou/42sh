@@ -6,7 +6,7 @@
 /*   By: tlechien <tlechien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/19 15:02:25 by tlechien          #+#    #+#             */
-/*   Updated: 2019/06/16 04:44:48 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/06/25 07:22:15 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 ** Calculates the size of an array of strings.
 */
 
-int		ft_arraylen(char **array)
+int			ft_arraylen(char **array)
 {
 	int	i;
 
@@ -30,7 +30,7 @@ int		ft_arraylen(char **array)
 **	Display the aliases.
 */
 
-int		display_alias(void)
+int			display_alias(void)
 {
 	int i;
 
@@ -44,7 +44,7 @@ int		display_alias(void)
 ** Checks if the key is in the reserved list.
 */
 
-int	is_reserved(char *key)
+int			is_reserved(char *key)
 {
 	int i;
 
@@ -61,10 +61,10 @@ int	is_reserved(char *key)
 ** Checks if the key is an alias.
 */
 
-int	is_alias(char *key)
+int			is_alias(char *key)
 {
-	int 	i;
-	int 	len;
+	int	i;
+	int	len;
 
 	len = (key) ? ft_strlen(key) : 0;
 	if (!is_reserved(key))
@@ -73,7 +73,7 @@ int	is_alias(char *key)
 	while (g_aliases[++i])
 	{
 		if (*g_aliases[i] && !ft_strncmp(key, g_aliases[i], len) &&
-			g_aliases[i][len]== '=')
+			g_aliases[i][len] == '=')
 			return (i);
 	}
 	return (-1);
@@ -83,7 +83,7 @@ int	is_alias(char *key)
 ** Look for an alias in g_aliases and returns its value.
 */
 
-char *get_alias(char *key)
+char		*get_alias(char *key)
 {
 	int		i;
 	int		len;
@@ -94,7 +94,7 @@ char *get_alias(char *key)
 		return (NULL);
 	if ((i = is_alias(key)) >= 0)
 	{
-		value = g_aliases[i]+ len + 1;
+		value = g_aliases[i] + len + 1;
 		len = 0;
 		while (value[len] != '\0' && value[len] != '\n')
 			len++;

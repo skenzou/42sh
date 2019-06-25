@@ -6,7 +6,7 @@
 /*   By: tlechien <tlechien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/07 19:31:16 by tlechien          #+#    #+#             */
-/*   Updated: 2019/06/21 06:24:31 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/06/25 07:18:54 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,15 +42,14 @@ t_signal	g_signals[S_SIZE] = {
 	{SIGXFSZ	, S_ABN	, "XFSZ"	, "file size limit exceeded"},
 };
 
-void s_child_handler(int status, t_child *node)
+void	s_child_handler(int status, t_child *node)
 {
-	int action;
-	char *handler;
-	char *stat;
+	int		action;
+	char	*handler;
+	char	*stat;
 
 	if (s_get_values(status, &action, &handler, &stat))
 		return ;
-	//ft_printf("debug: err child %d : %s: %s\n", node->pid, handler, stat);
 	node->status = status;
 	if (status == SIGINT)
 	{
@@ -63,10 +62,11 @@ void s_child_handler(int status, t_child *node)
 		display_pid_status(node, 1);
 	else
 		display_pid_status(node, 1);
-	node->is_pipe =(node->is_pipe == 1) ? 2: 4;
+	if (node->is_pipe)
+		node->is_pipe = (node->is_pipe == 1) ? 2 : 4;
 }
 
-int s_get_values(int status, int *action, char **handler, char **stat)
+int		s_get_values(int status, int *action, char **handler, char **stat)
 {
 	int i;
 
@@ -84,8 +84,9 @@ int s_get_values(int status, int *action, char **handler, char **stat)
 	return (1);
 }
 
-void sigchld_handler()
+void	sigchld_handler(void)
 {
+	g_shell->dprompt = 0;
 	update_pid_table();
 	signal(SIGCHLD, sigchld_handler);
 }
@@ -99,7 +100,7 @@ void	resetsign(void)
 		signal(x, SIG_DFL);
 }
 
-void init_signal(void)
+void	init_signal(void)
 {
 	signal(SIGTTOU, SIG_IGN);
 	signal(SIGTTIN, SIG_IGN);

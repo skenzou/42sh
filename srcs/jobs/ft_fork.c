@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/14 23:53:49 by midrissi          #+#    #+#             */
-/*   Updated: 2019/06/22 19:56:07 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/06/25 04:09:02 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,10 @@
 ** Returns -1 for anormal exits and update_pid_table.
 */
 
-int				ft_waitprocess(pid_t pid, char **cmd)
+int				ft_waitprocess(pid_t pid, char **cmd, char *handler, char *stat)
 {
 	int			status;
 	t_child		*node;
-	char		*handler;
-	char		*stat;
 
 	signal(SIGTSTP, sigtstp_handler);
 	waitpid(pid, &status, WUNTRACED);
@@ -32,15 +30,18 @@ int				ft_waitprocess(pid_t pid, char **cmd)
 		return ((WEXITSTATUS(status)));
 	else if (WIFSIGNALED(status))
 	{
-		s_get_values(status, NULL, &handler, &stat);
-		(status != SIGINT) ? ft_printf(ANSI_RED"42sh : %s: %s: %s\n"ANSI_RESET,
-		cmd[0], handler, stat) : 0;
+		s_get_values(WTERMSIG(status), NULL, &handler, &stat);
+		if (!handler)
+			ft_printf(ANSI_RED"42sh : %s: %d: unknown error code\n"ANSI_RESET,
+			cmd[0], WTERMSIG(status));
+		else if (status != SIGINT)
+			ft_printf(ANSI_RED"42sh : %s: %s: %s\n"ANSI_RESET,
+			cmd[0], handler, stat);
 	}
 	else if (WSTOPSIG(status))
 	{
 		add_pid(0, pid, cmd, ID_SUSP);
-		search_pid(&node, NULL, pid);
-		display_pid_status(node, 0);
+		!search_pid(&node, NULL, pid) && display_pid_status(node, 0);
 	}
 	signal(SIGTSTP, sigtstp_dflhandler);
 	return (-1);
@@ -112,5 +113,5 @@ int				ft_fork(char **cmd, char **env)
 	}
 	else if (pid < 0)
 		return (FAILFORK);
-	return (ft_waitprocess(pid, cmd));
+	return (ft_waitprocess(pid, cmd, NULL, NULL));
 }

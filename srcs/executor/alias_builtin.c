@@ -6,7 +6,7 @@
 /*   By: tlechien <tlechien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/19 14:48:57 by tlechien          #+#    #+#             */
-/*   Updated: 2019/06/22 20:58:15 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/06/25 07:20:53 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static int		expand_alias(void)
 	char	**new_aliases;
 	int		i;
 
-	if (!(new_aliases =(char**)ft_memalloc(sizeof(char*) *
+	if (!(new_aliases = (char**)ft_memalloc(sizeof(char*) *
 		(ft_arraylen(g_aliases) + 2))))
 		exit(1); //TODO
 	i = -1;
@@ -59,8 +59,8 @@ static int		expand_alias(void)
 
 static int		add_alias(char *key, char *value)
 {
-	int	i;
-	char *line;
+	int		i;
+	char	*line;
 
 	i = 0;
 	if (!(line = ft_strcjoin(key, value, '=')))
@@ -78,7 +78,7 @@ static int		add_alias(char *key, char *value)
 	return (0);
 }
 
-int		unalias_builtin(int ac, char **cmd)
+int				unalias_builtin(int ac, char **cmd)
 {
 	int	i;
 	int	index;
@@ -107,9 +107,9 @@ int		unalias_builtin(int ac, char **cmd)
 **	Builtin that either displays the aliases or modifies them.
 */
 
-int		alias_builtin(int ac, char **cmd)
+int				alias_builtin(int ac, char **cmd)
 {
-	int 	i;
+	int		i;
 
 	(void)ac;
 	cmd++;

@@ -6,13 +6,14 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 07:12:40 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/06/22 21:39:20 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/06/25 04:08:10 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PROMPT_H
 # define PROMPT_H
 
+# include "shell.h"
 # include <term.h>
 # include <termios.h>
 # include <signal.h>
@@ -75,21 +76,22 @@
 
 typedef struct	s_data
 {
-	int				xd;
-	char			**argv;
+	int			xd;
+	char		**argv;
 }				t_data;
 
 typedef struct stat			t_stat;
 typedef struct termios		t_term;
-typedef struct stat			t_stat;
 typedef struct dirent		t_dirent;
 typedef struct passwd		t_passwd;
 typedef struct group		t_group;
+
 typedef struct	s_built
 {
-	char			*builtin;
-	int				(*function)(char **argv);
+	char		*builtin;
+	int			(*function)(char **argv);
 }				t_built;
+
 typedef struct	s_cap
 {
 	char		*up;
@@ -114,243 +116,186 @@ typedef struct	s_cap
 	char		carry[2];
 	char		*prompt;
 }				t_cap;
-
-typedef struct				s_ctrl_r
+typedef struct	s_ctrl_r
 {
-	int						state;
-	int						index;
-	int						not_found;
-	char				 	data[BUFFSIZE];
-	char				 	found[BUFFSIZE];
-}							t_ctrl_r;
-
-
-typedef struct				s_cc
+	int			state;
+	int			index;
+	int			not_found;
+	char		data[BUFFSIZE];
+	char		found[BUFFSIZE];
+}				t_ctrl_r;
+typedef struct	s_cc
 {
-	int						state;
-	int						type;
-	int						from;
-	int						to;
-	char					copied[BUFFSIZE];
-}							t_cc;
-
-typedef struct				s_file
+	int			state;
+	int			type;
+	int			from;
+	int			to;
+	char		copied[BUFFSIZE];
+}				t_cc;
+typedef struct	s_file
 {
-	t_stat					stats;
-	char					name[MAX_PATH];
-	char					path[MAX_PATH];
-	char					full_path[MAX_PATH];
-}							t_file;
-
+	t_stat		stats;
+	char		name[MAX_PATH];
+	char		path[MAX_PATH];
+	char		full_path[MAX_PATH];
+}				t_file;
 typedef struct	s_event
 {
-	int						key;
-	int						(*function)(t_cap *tcap);
+	int			key;
+	int			(*function)(t_cap *tcap);
 }				t_event;
 typedef struct	s_tab
 {
-	int						state;
-	int						pos;
-	int						len;
-	int						carry;
-	int						row;
-	int						col;
-	int						max_offset;
-	char					*match;
-	int 					type;
-	char                    comp[BUFFSIZE];
-	char					*data[MAX_HISTORY_LENGHT];
+	int			state;
+	int			pos;
+	int			len;
+	int			carry;
+	int			row;
+	int			col;
+	int			max_offset;
+	char		*match;
+	int			type;
+	char		comp[BUFFSIZE];
+	char		*data[MAX_HISTORY_LENGHT];
 }				t_ab;
 typedef struct	s_history
 {
-	int						len;
-	int						read;
-	char					*file_name;
-	int						position;
-	int						match[BUFFSIZE];
-	char					*data[MAX_HISTORY_LENGHT];
+	int			len;
+	int			read;
+	char		*file_name;
+	int			position;
+	int			match[BUFFSIZE];
+	char		*data[MAX_HISTORY_LENGHT];
 }				t_history;
 
-extern t_event g_arrow_event[];
-extern t_event g_key_event[];
-extern t_event g_alt_event[];
+extern t_event	g_arrow_event[];
+extern t_event	g_key_event[];
+extern t_event	g_alt_event[];
 
 /*
 **	ARROW_EVENTS.C
 */
-
-int		arrow_up_event(t_cap *tcap);
-int		arrow_down_event(t_cap *tcap);
-int		arrow_right_event(t_cap *tcap);
-int		arrow_left_event(t_cap *tcap);
-void	ft_clear_replace(t_cap *tcap);
-
+int				arrow_up_event(t_cap *tcap);
+int				arrow_down_event(t_cap *tcap);
+int				arrow_right_event(t_cap *tcap);
+int				arrow_left_event(t_cap *tcap);
+void			ft_clear_replace(t_cap *tcap);
 /*
 **	SHIFT_EVENTS.C
 */
-
-int		shift_arrow_up_event(t_cap *tcap);
-int		shift_arrow_down_event(t_cap *tcap);
-int		shift_arrow_right_event(t_cap *tcap);
-int		shift_arrow_left_event(t_cap *tcap);
-int		shift_tab_event(t_cap *tcap);
-
+int				shift_arrow_up_event(t_cap *tcap);
+int				shift_arrow_down_event(t_cap *tcap);
+int				shift_arrow_right_event(t_cap *tcap);
+int				shift_arrow_left_event(t_cap *tcap);
+int				shift_tab_event(t_cap *tcap);
 /*
 **	KEY_EVENTS.C
 */
-
-int		enter_event(t_cap *tcap);
-int		backspace_event(t_cap *tcap);
-int		ctrl_r_event(t_cap *tcap);
-int		tab_event(t_cap *tcap);
-int		ctrl_d_event(t_cap *tcap);
-int		space_event(t_cap *tcap);
-
+int				enter_event(t_cap *tcap);
+int				backspace_event(t_cap *tcap);
+int				ctrl_r_event(t_cap *tcap);
+int				tab_event(t_cap *tcap);
+int				ctrl_d_event(t_cap *tcap);
+int				space_event(t_cap *tcap);
 /*
 **	HOME_END_EVENTS.C
 */
-
-int		home_event(t_cap *tcap);
-int		end_event(t_cap *tcap);
-
+int				home_event(t_cap *tcap);
+int				end_event(t_cap *tcap);
 /*
 **	COPY_CUT.C
 */
-
-
-int		ft_copy(t_cap *tcap);
-int		ft_cut(t_cap *tcap);
-int		ft_paste(t_cap *tcap);
-
+int				ft_copy(t_cap *tcap);
+int				ft_cut(t_cap *tcap);
+int				ft_paste(t_cap *tcap);
 /*
 **	VAR.C
 */
-
-int		read_var(char **var);
-char	*get_string_var(char *string, char **var);
-int		get_int_var(char *string, char **var);
-
+int				read_var(char **var);
+char			*get_string_var(char *string, char **var);
+int				get_int_var(char *string, char **var);
 /*
 **	READER.C
 */
-
-int		read_buffer(char *buffer, t_cap *tcap);
-void	ft_clear_all_lines(t_cap *tcap);
-
+int				read_buffer(char *buffer, t_cap *tcap);
+void			ft_clear_all_lines(t_cap *tcap);
 /*
 ** PROMPT_PREFIX.c
 */
-
-void		print_prompt_prefix(void);
-
+void			print_prompt_prefix(void);
 /*
 ** CTRL_R.c
 */
-
-int		add_buffer_ctrl_r(char *buffer, t_ctrl_r *ctrl_r);
-int 	back_i_search(t_ctrl_r *ctrl_r, t_cap *tcap);
-int		clear_before_ctrl_r(t_cap *tcap, t_ctrl_r *ctrl_r);
-int 	end_ctrl_r(t_ctrl_r *ctrl_r);
-
+int				add_buffer_ctrl_r(char *buffer, t_ctrl_r *ctrl_r);
+int				back_i_search(t_ctrl_r *ctrl_r, t_cap *tcap);
+int				clear_before_ctrl_r(t_cap *tcap, t_ctrl_r *ctrl_r);
+int				end_ctrl_r(t_ctrl_r *ctrl_r);
 /*
 **	OTHERS.C
 */
-
-int		ft_put_termcaps(int c);
-char	*correct(char *string, char **possible, int *difference);
-char	*get_git_status(void);
-
-/*
-**	SIGNAL_HANDLER.C
-*/
-
-void	sigfork(int sig);
-void	sigint_handler(int sig);
-void	sigwinch_handler(int sig);
-void 	sigtstp_handler(int sig);
-void 	sigtstp_dflhandler(int sig);
-
+int				ft_put_termcaps(int c);
+char			*correct(char *string, char **possible, int *difference);
+char			*get_git_status(void);
 /*
 **	READ_KEY.C
 */
-
-int		is_key(char key[3]);
-int		read_key(char buffer, t_cap *tcap);
-
+int				is_key(char key[3]);
+int				read_key(char buffer, t_cap *tcap);
 /*
-**	READ_ARROW.C
+** READ_ARROW.C
 */
-
-char	is_shift_arrow(char key[4]);
-int		is_arrow(char key[4]);
-int		read_arrow(char buffer, t_cap *tcap);
-
+char			is_shift_arrow(char key[4]);
+int				is_arrow(char key[4]);
+int				read_arrow(char buffer, t_cap *tcap);
 /*
 **	READ_ALT.C
 */
-
-int		is_alt(char *key);
-
+int				is_alt(char *key);
 /*
-** MOVE.C
+**	MOVE.C
 */
-
-void	ft_replace_cursor(t_cap *tcap);
-int		ft_left(t_cap *tcap);
-int		ft_right(t_cap *tcap);
-int		ft_move(t_cap *tcap, char *string, int n);
-
+void			ft_replace_cursor(t_cap *tcap);
+int				ft_left(t_cap *tcap);
+int				ft_right(t_cap *tcap);
+int				ft_move(t_cap *tcap, char *string, int n);
 /*
 **	HISTORY.C
 */
-
-int		write_history(char *string, t_history *history);
-int		add_cmd_to_history(char *string, t_history *history);
-int		debug_history(t_history *history);
-int		read_history(t_history *history);
-
+int				write_history(char *string, t_history *history);
+int				add_cmd_to_history(char *string, t_history *history);
+int				debug_history(t_history *history);
+int				read_history(t_history *history);
 /*
-**HISTO_UP_DOWN.c
+**	HISTO_UP_DOWN.c
 */
-
-int	histo_up(t_cap *tcap, t_history *h);
-int	histo_down(t_cap *tcap, t_history *h);
-
+int				histo_up(t_cap *tcap, t_history *h);
+int				histo_down(t_cap *tcap, t_history *h);
 /*
-**PUSH.c
+**	PUSH.c
 */
-
-int		ft_add_n_char(char *buff, int pos, int len, t_cap *tcap);
-int		ft_insert(char *buff, t_cap *tcap);
-int		ft_delete_n_char(t_cap *tcap, int pos, int len);
-int		ft_delete_back(t_cap *tcap);
-void	ft_clean_buff(t_cap *tcap);
-
+int				ft_add_n_char(char *buff, int pos, int len, t_cap *tcap);
+int				ft_insert(char *buff, t_cap *tcap);
+int				ft_delete_n_char(t_cap *tcap, int pos, int len);
+int				ft_delete_back(t_cap *tcap);
+void			ft_clean_buff(t_cap *tcap);
 /*
-**COMPLETION.c
+**	COMPLETION.c
 */
-
-int		ft_tab(t_cap *tcap, t_ab *autocomp);
-
+int				ft_tab(t_cap *tcap, t_ab *autocomp);
 /*
-** HISTORY_EXPANSION.c
+**	HISTORY_EXPANSION.c
 */
-
-int expansion_history(char *string, t_cap *tcap, int index);
-
+int				expansion_history(char *string, t_cap *tcap, int index);
 /*
-**INIT_STRUCT.c
+**	INIT_STRUCT.c
 */
-
-int		init_struct(const char **env);
-int		init_termcap(t_cap *tcap);
-
+int				init_struct(const char **env);
+int				init_termcap(t_cap *tcap);
 /*
 **	MAIN.C
 */
-
-int		wcharlen(char nb);
-char	*read_line(t_cap *tcap);
-int		debug(void);
+int				wcharlen(char nb);
+char			*read_line(t_cap *tcap);
+int				debug(void);
 
 #endif

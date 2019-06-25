@@ -6,7 +6,7 @@
 /*   By: tlechien <tlechien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/16 05:05:04 by tlechien          #+#    #+#             */
-/*   Updated: 2019/06/17 23:15:36 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/06/25 03:11:44 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	search_index(t_child **node, char *str_index)
 	index = ft_atoi(str_index);
 	while (tmp->prev)
 	{
-		if (tmp->index == index && tmp->status != ID_TERM)
+		if (tmp->index == index)
 		{
 			*node = tmp;
 			return (0);
@@ -48,7 +48,7 @@ int	search_pid(t_child **node, char *str_pid, pid_t pid)
 	tmp = g_pid_table;
 	while (tmp->prev)
 	{
-		if (tmp->pid == pid && tmp->status != ID_TERM)
+		if (tmp->pid == pid)
 		{
 			*node = tmp;
 			return (0);
@@ -69,7 +69,7 @@ int	search_priority(t_child **node)
 	tmp = g_pid_table;
 	while (tmp->prev)
 	{
-		if (tmp->priority == 2 && tmp->status != ID_TERM)
+		if (tmp->priority == 2)
 		{
 			*node = tmp;
 			return (0);
@@ -112,7 +112,7 @@ int	search_process(t_child **node, char *p_name)
 	tmp = g_pid_table;
 	while (tmp->prev)
 	{
-		if (!ft_strcmp(tmp->exec, p_name) && tmp->status != ID_TERM) //exec[0]
+		if (!ft_strcmp(tmp->exec, p_name))
 		{
 			*node = tmp;
 			return (0);

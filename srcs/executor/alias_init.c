@@ -6,7 +6,7 @@
 /*   By: tlechien <tlechien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/19 16:01:10 by tlechien          #+#    #+#             */
-/*   Updated: 2019/06/16 04:44:38 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/06/25 07:21:16 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,8 @@ char	*parse_aliases(char *line, char *origin, char *prev)
 	{
 		curr = check_ops(line);
 		if ((curr.op) && prev != line && is_first && !(is_first = 0))
-			line = substitute_alias(&origin, prev, line - prev);//TODO check if alias
+			line = substitute_alias(&origin, prev, line - prev);
+			//TODO check if alias
 		if (curr.op)
 		{
 			(curr.type == TOKEN_CTL_OPERATOR) ? is_first = 1 : 0;
@@ -103,7 +104,8 @@ char	*parse_aliases(char *line, char *origin, char *prev)
 			line++;
 	}
 	if (prev != line && is_first)
-		line = substitute_alias(&origin, prev, line - prev);//TODO check if alias
+		line = substitute_alias(&origin, prev, line - prev);
+		//TODO check if alias
 	return (origin);
 }
 
