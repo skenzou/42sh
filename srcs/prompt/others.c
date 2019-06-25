@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/28 15:35:56 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/06/22 20:30:59 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/06/25 23:50:49 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ char	*get_git_status(void)
 				return (NULL);
 			i++;
 		}
+		close(fd);
 	}
-	close(fd);
 	return (NULL);
 }
 

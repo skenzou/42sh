@@ -6,13 +6,13 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/28 15:31:17 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/06/22 20:33:56 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/06/26 00:23:01 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-void	ft_clear_all_lines(t_cap *tcap)
+void			ft_clear_all_lines(t_cap *tcap)
 {
 	ft_move(tcap, "up", tcap->cursy);
 	tputs(tcap->carriage, 1, ft_put_termcaps);
@@ -28,13 +28,11 @@ void	ft_clear_all_lines(t_cap *tcap)
 	}
 }
 
-int		handle_eol(char *buffer, t_cap *tcap)
+static int		handle_eol(char *buffer, t_cap *tcap)
 {
 	char str[2];
 
-	enter_event(tcap);
 	ft_bzero(str, 2);
-	ft_bzero(tcap->carry, 2);
 	if (buffer[0] == '\n')
 	{
 		tcap->carry[0] = buffer[1];
@@ -59,25 +57,17 @@ int		handle_eol(char *buffer, t_cap *tcap)
 	return (1);
 }
 
-int		read_buffer(char *buffer, t_cap *tcap)
+static int		handle_key(char *buffer, t_cap *tcap)
 {
 	int key;
 
 	key = 0;
-	if (ft_isprint(buffer[0]) && g_shell->autocomp->state)
-		tputs(tcap->clr_all_line, 1, ft_put_termcaps);
-	if (g_shell->ctrl_r->state && ft_isprint(buffer[0]))
-		return (add_buffer_ctrl_r(buffer, g_shell->ctrl_r));
-	else if (g_shell->ctrl_r->state && buffer[0] == ENTER)
-		return (end_ctrl_r(g_shell->ctrl_r));
-	else if (g_shell->autocomp->state &&
-							(buffer[0] == ENTER && !buffer[1] && !buffer[2]))
+	if (~ft_indexof(buffer, '\n'))
 	{
+		ft_bzero(tcap->carry, 2);
 		enter_event(tcap);
-		ft_bzero(buffer, 3);
-	}
-	else if (~ft_indexof(buffer, '\n'))
 		return (handle_eol(buffer, tcap));
+	}
 	else if (buffer[0] == SPACE && !buffer[1] && !buffer[2])
 		return (space_event(tcap));
 	else if (ft_isprint(buffer[0]))
@@ -92,5 +82,24 @@ int		read_buffer(char *buffer, t_cap *tcap)
 		return (read_key(key, tcap));
 	else if (DEBUG_LOG)
 		ft_printf("%c|%hhd", buffer[0], buffer[0]);
+	return (1);
+}
+
+int				read_buffer(char *buffer, t_cap *tcap)
+{
+	if (ft_isprint(buffer[0]) && g_shell->autocomp->state)
+		tputs(tcap->clr_all_line, 1, ft_put_termcaps);
+	if (g_shell->ctrl_r->state && ft_isprint(buffer[0]))
+		return (add_buffer_ctrl_r(buffer, g_shell->ctrl_r));
+	else if (g_shell->ctrl_r->state && buffer[0] == ENTER)
+		return (end_ctrl_r(g_shell->ctrl_r));
+	else if (g_shell->autocomp->state &&
+							(buffer[0] == ENTER && !buffer[1] && !buffer[2]))
+	{
+		enter_event(tcap);
+		ft_bzero(buffer, 3);
+	}
+	else
+		return (handle_key(buffer, tcap));
 	return (1);
 }

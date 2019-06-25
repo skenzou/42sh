@@ -6,13 +6,13 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 06:02:13 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/06/22 20:22:43 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/06/26 00:19:55 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-int		ft_copy(t_cap *tc)
+int					ft_copy(t_cap *tc)
 {
 	int		i;
 	t_cc	*copy;
@@ -24,11 +24,11 @@ int		ft_copy(t_cap *tc)
 	if (copy->state)
 	{
 		copy->to = i;
-		copy->type = -1;
-		if (copy->to > copy->from)
+		if ((copy->type = -1) && copy->to > copy->from)
 		{
 			ft_bzero(copy->copied, BUFFSIZE);
-			ft_strncpy(copy->copied, tc->command + copy->from, copy->to - copy->from);
+			ft_strncpy(copy->copied, tc->command + copy->from,
+														copy->to - copy->from);
 		}
 		copy->state = 0;
 	}
@@ -41,14 +41,24 @@ int		ft_copy(t_cap *tc)
 	return (1);
 }
 
-int		ft_cut(t_cap *tc)
+static inline void	ft_exec_cut(t_cap *tc, t_cc *copy)
+{
+	int a;
+
+	a = -1;
+	ft_bzero(copy->copied, BUFFSIZE);
+	ft_strncpy(copy->copied, tc->command + copy->from,
+												copy->to - copy->from);
+	while (++a < (int)ft_strlen(copy->copied))
+		ft_delete_back(tc);
+}
+
+int					ft_cut(t_cap *tc)
 {
 	int		i;
 	t_cc	*copy;
-	int		a;
 
 	i = tc->cursy * (tc->cursx_max + 1) + (tc->cursx) - tc->prompt_len;
-	a = -1;
 	copy = g_shell->copy_cut;
 	if (copy->type != 1 && ~copy->type)
 		return (1);
@@ -57,12 +67,7 @@ int		ft_cut(t_cap *tc)
 		copy->to = i;
 		copy->type = -1;
 		if (copy->to > copy->from)
-		{
-			ft_bzero(copy->copied, BUFFSIZE);
-			ft_strncpy(copy->copied, tc->command + copy->from, copy->to - copy->from);
-			while (++a < (int)ft_strlen(copy->copied))
-				ft_delete_back(tc);
-		}
+			ft_exec_cut(tc, copy);
 		copy->state = 0;
 	}
 	else
@@ -74,7 +79,7 @@ int		ft_cut(t_cap *tc)
 	return (1);
 }
 
-int		ft_paste(t_cap *tc)
+int					ft_paste(t_cap *tc)
 {
 	return (ft_insert(g_shell->copy_cut->copied, tc));
 }

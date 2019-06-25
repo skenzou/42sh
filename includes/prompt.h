@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 07:12:40 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/06/14 01:42:51 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/06/26 00:46:26 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,9 +78,8 @@ typedef struct	s_data
 	char			**argv;
 }				t_data;
 char					**g_env;
-typedef struct stat	t_stat;
-typedef struct termios	t_term;
 typedef struct stat			t_stat;
+typedef struct termios		t_term;
 typedef struct dirent		t_dirent;
 typedef struct passwd		t_passwd;
 typedef struct group		t_group;
@@ -158,7 +157,6 @@ typedef struct	s_tab
 	int						max_offset;
 	char					match[BUFFSIZE];
 	int 					isdir;
-	int 					is_big_list;
 	char                    after[BUFFSIZE];
 	char                    comp[MAX_PATH];
 	char					*data[MAX_HISTORY_LENGHT];
@@ -374,6 +372,9 @@ int		path_completion(t_ab *autocomp, char *key);
 int		arg_completion(t_ab *autocomp, t_cap *tc, char *str, int position);
 int		first_arg_completion(t_ab *autocomp, t_cap *tc, char *str, int position);
 int		is_separator(char *s, int position);
+int		add_to_completion(t_ab *autocomp, char *path, char ext);
+int		first_arg_completion(t_ab *autocomp, t_cap *tc, char *str, int pos);
+int		print_name(t_ab *autocomp, char *str, int i);
 /*
 **	MAIN.C
 */
@@ -381,5 +382,6 @@ int		is_separator(char *s, int position);
 int		wcharlen(char nb);
 char	*read_line(t_cap *tcap);
 int		debug(void);
+char	*clean_before_return(t_cap *tcap);
 
 #endif

@@ -6,7 +6,7 @@
 #    By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/03 09:24:41 by midrissi          #+#    #+#              #
-#    Updated: 2019/06/22 20:38:49 by aben-azz         ###   ########.fr        #
+#    Updated: 2019/06/26 00:46:48 by aben-azz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -87,6 +87,7 @@ _PROMPT 	= arrow_events.c \
 			completion_utils.c \
 			completion_words.c \
 			completion_geters.c \
+			completion_file.c \
 			copy_cut.c \
 			ctrl_r.c \
 			history.c \

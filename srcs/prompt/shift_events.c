@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/28 15:04:00 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/06/22 20:34:23 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/06/25 23:49:41 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,6 @@ int		shift_tab_event(t_cap *tcap)
 	autocomp = g_shell->autocomp;
 	if (autocomp->state)
 	{
-
 		autocomp->pos--;
 		if (autocomp->pos == -1)
 			autocomp->pos = autocomp->len - 1;

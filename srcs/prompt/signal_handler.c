@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/28 15:31:17 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/06/22 20:35:21 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/06/25 23:49:35 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ void	sigint_handler(int sig)
 		tcap->char_len = 0;
 		tcap->cursx = tcap->prompt_len;
 		tcap->cursy = 0;
-		//exit(0);
 	}
 }
 
@@ -58,7 +57,6 @@ void	sigwinch_handler(int sig)
 	tcap = g_shell->tcap;
 	p = tcap->cursy * (tcap->cursx_max + 1) + (tcap->cursx) - tcap->prompt_len;
 	prompt_len = tcap->init_len;
-
 	if (sig == SIGWINCH)
 	{
 		init_termcap(tcap);
@@ -72,7 +70,6 @@ void	sigwinch_handler(int sig)
 		{
 			tputs(tcap->clr_all_line, 1, ft_put_termcaps);
 			ft_tab(tcap, g_shell->autocomp);
-			//	g_shell->autocomp->state = 0;
 		}
 	}
 }

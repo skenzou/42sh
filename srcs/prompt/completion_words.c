@@ -1,11 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   completion_words.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/06/25 23:58:47 by aben-azz          #+#    #+#             */
+/*   Updated: 2019/06/25 23:58:50 by aben-azz         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "shell.h"
 
 int		intern_completion(t_ab *autocomp, char *key)
 {
-	int i;
-	int len;
-	char **intern;
-	int index;
+	int		i;
+	int		len;
+	char	**intern;
+	int		index;
 
 	intern = g_shell->intern;
 	len = ft_strlen(key);
@@ -29,10 +41,10 @@ int		intern_completion(t_ab *autocomp, char *key)
 
 int		env_completion(t_ab *autocomp, char *key)
 {
-	int i;
-	int len;
-	char **env;
-	int index;
+	int		i;
+	int		len;
+	char	**env;
+	int		index;
 
 	env = g_shell->env;
 	i = -1;
@@ -58,10 +70,10 @@ int		env_completion(t_ab *autocomp, char *key)
 
 int		command_completion(t_ab *autocomp, char *key)
 {
-	int i;
-	int len;
-	char **path_split;
-	char *path;
+	int		i;
+	int		len;
+	char	**path_split;
+	char	*path;
 
 	path = env_path(g_shell->env);
 	if (!path)
@@ -97,7 +109,6 @@ int		path_completion(t_ab *autocomp, char *key)
 	}
 	return (add_to_completion(autocomp, path, 'r'));
 }
-
 
 int		arg_completion(t_ab *autocomp, t_cap *tc, char *str, int position)
 {

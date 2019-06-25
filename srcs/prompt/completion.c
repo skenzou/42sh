@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 06:02:13 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/06/22 20:11:20 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/06/25 23:57:40 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 int		init_autocomp(t_cap *tcap, t_ab *autocomp)
 {
 	int max_offset;
+	int i;
 
 	max_offset = autocomp->max_offset;
 	autocomp->state = 1;
@@ -28,11 +29,11 @@ int		init_autocomp(t_cap *tcap, t_ab *autocomp)
 	}
 	else if (autocomp->len == 1)
 	{
-		int i = ft_strlen(g_shell->autocomp->match);
+		i = ft_strlen(g_shell->autocomp->match);
 		while (i--)
 			ft_delete_back(tcap);
 		ft_insert(g_shell->autocomp->data[0], tcap);
-		if(g_shell->autocomp->after[0] && !g_shell->autocomp->isdir)
+		if (g_shell->autocomp->after[0] && !g_shell->autocomp->isdir)
 			ft_insert(g_shell->autocomp->after, tcap);
 		return (0);
 	}
@@ -55,7 +56,7 @@ int		smart_completion(t_ab *autocomp, t_cap *tc, int position)
 	return (0);
 }
 
-int 	get_words_completion(t_ab *autocomp, t_cap *tc)
+int		get_words_completion(t_ab *autocomp, t_cap *tc)
 {
 	int pos;
 
@@ -121,7 +122,7 @@ int		ft_tab(t_cap *tcap, t_ab *autocomp)
 	ft_bzero(autocomp->after, MAX_PATH);
 	ft_bzero(autocomp->match, MAX_PATH);
 	if (!get_words_completion(autocomp, tcap) || !init_autocomp(tcap, autocomp))
-		return (0);
+		return (1);
 	i = 0;
 	col = -1;
 	o = tcap->cursy * (tcap->cursx_max + 1) + (tcap->cursx) - tcap->prompt_len;
