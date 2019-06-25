@@ -6,7 +6,7 @@
 /*   By: tlechien <tlechien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/25 00:52:53 by tlechien          #+#    #+#             */
-/*   Updated: 2019/06/25 07:11:41 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/06/25 07:37:29 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,7 @@ int					check_remove_pids(void);
 /*
 ** SIGNALS.C
 */
-void				sigchld_handler();
+void				sigchld_handler(int sig);
 void				init_signal(void);
 int					s_get_values(int status, int *action, char **handler,
 																char **stat);

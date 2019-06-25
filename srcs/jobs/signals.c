@@ -6,7 +6,7 @@
 /*   By: tlechien <tlechien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/07 19:31:16 by tlechien          #+#    #+#             */
-/*   Updated: 2019/06/25 07:18:54 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/06/25 07:37:46 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,8 +84,9 @@ int		s_get_values(int status, int *action, char **handler, char **stat)
 	return (1);
 }
 
-void	sigchld_handler(void)
+void	sigchld_handler(int sig)
 {
+	(void)sig;
 	g_shell->dprompt = 0;
 	update_pid_table();
 	signal(SIGCHLD, sigchld_handler);
