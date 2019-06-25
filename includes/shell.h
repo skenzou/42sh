@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 16:42:03 by midrissi          #+#    #+#             */
-/*   Updated: 2019/06/25 04:40:41 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/06/25 18:12:19 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@
 # define UNSETENV_BUILTIN	13
 # define ENV_BUILTIN		14
 # define EXIT_BUILTIN		15
-# define NOT_FOUND			16
+# define NOT_FOUND			127
 # define SETENV_INVALID_KEY	17
 # define SET_BUILTIN		18
 # define EXPORT_BUILTIN		19

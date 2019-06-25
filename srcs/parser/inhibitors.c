@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 01:26:49 by midrissi          #+#    #+#             */
-/*   Updated: 2019/06/22 16:55:28 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/06/25 18:05:48 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ static void		exec_inhib(char inhib, t_list *lexer, int i)
 	g_shell->tcap->prompt = NULL;
 }
 
-static void		check_bslash(char **str, t_list *lexer, int i)
+static int		check_bslash(char **str, t_list *lexer, int i)
 {
 	if (**str == BSLASH)
 	{
@@ -61,9 +61,10 @@ static void		check_bslash(char **str, t_list *lexer, int i)
 		else
 		{
 			exec_inhib(BSLASH, lexer, i);
-			return ;
 		}
+		return (1);
 	}
+	return (0);
 }
 
 static void		check_inhib(char *str, t_list *lexer, int i)
@@ -72,7 +73,8 @@ static void		check_inhib(char *str, t_list *lexer, int i)
 
 	while (*str)
 	{
-		check_bslash(&str, lexer, i);
+		if (check_bslash(&str, lexer, i))
+			continue ;
 		if (*str == DQUOTE || *str == QUOTE)
 		{
 			inhib = *str++;
