@@ -104,6 +104,7 @@ typedef struct	s_cap
 	char		*restore;
 	int			cursx;
 	int			cursx_max;
+	int			cursy_max;
 	int			cursy;
 	int			prompt_len;
 	int			init_len;
@@ -157,6 +158,7 @@ typedef struct	s_tab
 	int						max_offset;
 	char					match[BUFFSIZE];
 	int 					isdir;
+	int 					is_big_list;
 	char                    after[BUFFSIZE];
 	char                    comp[MAX_PATH];
 	char					*data[MAX_HISTORY_LENGHT];
@@ -362,6 +364,15 @@ void	get_word(t_cap *tc, int position, char *path);
 int		is_env_var(t_ab *autocomp, char *path);
 void	get_quote(t_ab *autocomp, char *str);
 int		is_space_before(t_cap *tcap, int position);
+void	create_file(char *name, char *path, t_ab *comp, int onlydir);
+void	get_tilde(char *path, char *final_path);
+int		add_to_completion(t_ab *autocomp, char *path, int onlydir);
+int		env_completion(t_ab *autocomp, char *key);
+int		command_completion(t_ab *autocomp, char *key);
+int		path_completion(t_ab *autocomp, char *key);
+int		arg_completion(t_ab *autocomp, t_cap *tc, char *str, int position);
+int		first_arg_completion(t_ab *autocomp, t_cap *tc, char *str, int position);
+int		is_separator(char *s, int position);
 /*
 **	MAIN.C
 */

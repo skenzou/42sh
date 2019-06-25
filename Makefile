@@ -85,6 +85,8 @@ EXEC_O 		:= $(EXEC:.c=.o)
 _PROMPT 	= arrow_events.c \
 			completion.c \
 			completion_utils.c \
+			completion_words.c \
+			completion_geters.c \
 			copy_cut.c \
 			ctrl_r.c \
 			history.c \

@@ -19,9 +19,15 @@ int			init_termcap(t_cap *tcap)
 	if (!(w = ft_memalloc(sizeof(*w))))
 		return (0);
 	if (ioctl(1, TIOCGWINSZ, w) != 0)
+	{
 		tcap->cursx_max = tgetnum("co") - 1;
+		tcap->cursy_max = tgetnum("li") - 1;
+	}
 	else
+	{
 		tcap->cursx_max = w->ws_col - 1;
+		tcap->cursy_max = w->ws_row - 1;
+	}
 	tcap->cursy = 0;
 	free(w);
 	tcap->prompt = NULL;
@@ -66,6 +72,7 @@ static int	init_autocomp_struct(t_ab *autocomp)
 {
 	autocomp->state = 0;
 	autocomp->pos = 0;
+	autocomp->is_big_list = 0;
 	return (1);
 }
 

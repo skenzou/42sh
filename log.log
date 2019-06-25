@@ -1,1203 +1,694 @@
-firstarg: |~/42sh/srcs/prompt/|
-addcompletion match: ||
-path avant: |~/42sh/srcs/prompt/| final_path avant ||
-path[0] |~|, env_home: |/|
-path apres: |~/42sh/srcs/prompt/| final_path apres |/Users/macadelic/42sh/srcs/prompt/|
-len |23|
-firstarg: |~/42sh/srcs/prompt/|
-addcompletion match: ||
-path avant: |~/42sh/srcs/prompt/| final_path avant ||
-path[0] |~|, env_home: |/|
-path apres: |~/42sh/srcs/prompt/| final_path apres |/Users/macadelic/42sh/srcs/prompt/|
-len |23|
-firstarg: |~/42sh/srcs/prompt/|
-addcompletion match: ||
-path avant: |~/42sh/srcs/prompt/| final_path avant ||
-path[0] |~|, env_home: |/|
-path apres: |~/42sh/srcs/prompt/| final_path apres |/Users/macadelic/42sh/srcs/prompt/|
-len |23|
-firstarg: |~/42sh/srcs/prompt/|
-addcompletion match: ||
-path avant: |~/42sh/srcs/prompt/| final_path avant ||
-path[0] |~|, env_home: |/|
-path apres: |~/42sh/srcs/prompt/| final_path apres |/Users/macadelic/42sh/srcs/prompt/|
-len |23|
-firstarg: |~/42sh/srcs/prompt/|
-addcompletion match: ||
-path avant: |~/42sh/srcs/prompt/| final_path avant ||
-path[0] |~|, env_home: |/|
-path apres: |~/42sh/srcs/prompt/| final_path apres |/Users/macadelic/42sh/srcs/prompt/|
-len |23|
-firstarg: |~/42sh/srcs/prompt/|
-addcompletion match: ||
-path avant: |~/42sh/srcs/prompt/| final_path avant ||
-path[0] |~|, env_home: |/|
-path apres: |~/42sh/srcs/prompt/| final_path apres |/Users/macadelic/42sh/srcs/prompt/|
-len |23|
-firstarg: |~/42sh/srcs/prompt/|
-addcompletion match: ||
-path avant: |~/42sh/srcs/prompt/| final_path avant ||
-path[0] |~|, env_home: |/|
-path apres: |~/42sh/srcs/prompt/| final_path apres |/Users/macadelic/42sh/srcs/prompt/|
-len |23|
-firstarg: |~/42sh/srcs/prompt/|
-addcompletion match: ||
-path avant: |~/42sh/srcs/prompt/| final_path avant ||
-path[0] |~|, env_home: |/|
-path apres: |~/42sh/srcs/prompt/| final_path apres |/Users/macadelic/42sh/srcs/prompt/|
-len |23|
-firstarg: |~/42sh/srcs/prompt/|
-addcompletion match: ||
-path avant: |~/42sh/srcs/prompt/| final_path avant ||
-path[0] |~|, env_home: |/|
-path apres: |~/42sh/srcs/prompt/| final_path apres |/Users/macadelic/42sh/srcs/prompt/|
-len |23|
-firstarg: |~/42sh/srcs/prompt/|
-addcompletion match: ||
-path avant: |~/42sh/srcs/prompt/| final_path avant ||
-path[0] |~|, env_home: |/|
-path apres: |~/42sh/srcs/prompt/| final_path apres |/Users/macadelic/42sh/srcs/prompt/|
-len |23|
-firstarg: |~/42sh/srcs/prompt/|
-addcompletion match: ||
-path avant: |~/42sh/srcs/prompt/| final_path avant ||
-path[0] |~|, env_home: |/|
-path apres: |~/42sh/srcs/prompt/| final_path apres |/Users/macadelic/42sh/srcs/prompt/|
-len |23|
-firstarg: |~/42sh/srcs/prompt/|
-addcompletion match: ||
-path avant: |~/42sh/srcs/prompt/| final_path avant ||
-path[0] |~|, env_home: |/|
-path apres: |~/42sh/srcs/prompt/| final_path apres |/Users/macadelic/42sh/srcs/prompt/|
-len |23|
-firstarg: |~/42sh/srcs/prompt/|
-addcompletion match: ||
-path avant: |~/42sh/srcs/prompt/| final_path avant ||
-path[0] |~|, env_home: |/|
-path apres: |~/42sh/srcs/prompt/| final_path apres |/Users/macadelic/42sh/srcs/prompt/|
-len |23|
-firstarg: |~/42sh/srcs/prompt/|
-addcompletion match: ||
-path avant: |~/42sh/srcs/prompt/| final_path avant ||
-path[0] |~|, env_home: |/|
-path apres: |~/42sh/srcs/prompt/| final_path apres |/Users/macadelic/42sh/srcs/prompt/|
-len |23|
-firstarg: |~/42sh/srcs/prompt/|
-addcompletion match: ||
-path avant: |~/42sh/srcs/prompt/| final_path avant ||
-path[0] |~|, env_home: |/|
-path apres: |~/42sh/srcs/prompt/| final_path apres |/Users/macadelic/42sh/srcs/prompt/|
-len |23|
-firstarg: |~/42sh/srcs/prompt/|
-addcompletion match: ||
-path avant: |~/42sh/srcs/prompt/| final_path avant ||
-path[0] |~|, env_home: |/|
-path apres: |~/42sh/srcs/prompt/| final_path apres |/Users/macadelic/42sh/srcs/prompt/|
-len |23|
-firstarg: |~/42sh/srcs/prompt/|
-addcompletion match: ||
-path avant: |~/42sh/srcs/prompt/| final_path avant ||
-path[0] |~|, env_home: |/|
-path apres: |~/42sh/srcs/prompt/| final_path apres |/Users/macadelic/42sh/srcs/prompt/|
-len |23|
-firstarg: |~/42sh/srcs/prompt/|
-addcompletion match: ||
-path avant: |~/42sh/srcs/prompt/| final_path avant ||
-path[0] |~|, env_home: |/|
-path apres: |~/42sh/srcs/prompt/| final_path apres |/Users/macadelic/42sh/srcs/prompt/|
-len |23|
-firstarg: |~/42sh/srcs/prompt/|
-addcompletion match: ||
-path avant: |~/42sh/srcs/prompt/| final_path avant ||
-path[0] |~|, env_home: |/|
-path apres: |~/42sh/srcs/prompt/| final_path apres |/Users/macadelic/42sh/srcs/prompt/|
-len |23|
-firstarg: |~/42sh/srcs/prompt/|
-addcompletion match: ||
-path avant: |~/42sh/srcs/prompt/| final_path avant ||
-path[0] |~|, env_home: |/|
-path apres: |~/42sh/srcs/prompt/| final_path apres |/Users/macadelic/42sh/srcs/prompt/|
-len |23|
-firstarg: |~/42sh/srcs/prompt/|
-addcompletion match: ||
-path avant: |~/42sh/srcs/prompt/| final_path avant ||
-path[0] |~|, env_home: |/|
-path apres: |~/42sh/srcs/prompt/| final_path apres |/Users/macadelic/42sh/srcs/prompt/|
-len |23|
-firstarg: |~/42sh/srcs/prompt/|
-addcompletion match: ||
-path avant: |~/42sh/srcs/prompt/| final_path avant ||
-path[0] |~|, env_home: |/|
-path apres: |~/42sh/srcs/prompt/| final_path apres |/Users/macadelic/42sh/srcs/prompt/|
-len |23|
-firstarg: |~/42sh/srcs/prompt/|
-addcompletion match: ||
-path avant: |~/42sh/srcs/prompt/| final_path avant ||
-path[0] |~|, env_home: |/|
-path apres: |~/42sh/srcs/prompt/| final_path apres |/Users/macadelic/42sh/srcs/prompt/|
-len |23|
-firstarg: |~/42sh/srcs/prompt/|
-addcompletion match: ||
-path avant: |~/42sh/srcs/prompt/| final_path avant ||
-path[0] |~|, env_home: |/|
-path apres: |~/42sh/srcs/prompt/| final_path apres |/Users/macadelic/42sh/srcs/prompt/|
-len |23|
-firstarg: |~/42sh/srcs/prompt/|
-addcompletion match: ||
-path avant: |~/42sh/srcs/prompt/| final_path avant ||
-path[0] |~|, env_home: |/|
-path apres: |~/42sh/srcs/prompt/| final_path apres |/Users/macadelic/42sh/srcs/prompt/|
-len |23|
-firstarg: |~/42sh/srcs/prompt/|
-addcompletion match: ||
-path avant: |~/42sh/srcs/prompt/| final_path avant ||
-path[0] |~|, env_home: |/|
-path apres: |~/42sh/srcs/prompt/| final_path apres |/Users/macadelic/42sh/srcs/prompt/|
-len |23|
-firstarg: |~/42sh/srcs/prompt/|
-addcompletion match: ||
-path avant: |~/42sh/srcs/prompt/| final_path avant ||
-path[0] |~|, env_home: |/|
-path apres: |~/42sh/srcs/prompt/| final_path apres |/Users/macadelic/42sh/srcs/prompt/|
-len |23|
-firstarg: |~/42sh/srcs/prompt/|
-addcompletion match: ||
-path avant: |~/42sh/srcs/prompt/| final_path avant ||
-path[0] |~|, env_home: |/|
-path apres: |~/42sh/srcs/prompt/| final_path apres |/Users/macadelic/42sh/srcs/prompt/|
-len |23|
-firstarg: |~/42sh/srcs/prompt/|
-addcompletion match: ||
-path avant: |~/42sh/srcs/prompt/| final_path avant ||
-path[0] |~|, env_home: |/|
-path apres: |~/42sh/srcs/prompt/| final_path apres |/Users/macadelic/42sh/srcs/prompt/|
-len |23|
-firstarg: |~/42sh/srcs/prompt/|
-addcompletion match: ||
-path avant: |~/42sh/srcs/prompt/| final_path avant ||
-path[0] |~|, env_home: |/|
-path apres: |~/42sh/srcs/prompt/| final_path apres |/Users/macadelic/42sh/srcs/prompt/|
-len |23|
-firstarg: |~/42sh/srcs/prompt/|
-addcompletion match: ||
-path avant: |~/42sh/srcs/prompt/| final_path avant ||
-path[0] |~|, env_home: |/|
-path apres: |~/42sh/srcs/prompt/| final_path apres |/Users/macadelic/42sh/srcs/prompt/|
-len |23|
-firstarg: |~/42sh/srcs/prompt/|
-addcompletion match: ||
-path avant: |~/42sh/srcs/prompt/| final_path avant ||
-path[0] |~|, env_home: |/|
-path apres: |~/42sh/srcs/prompt/| final_path apres |/Users/macadelic/42sh/srcs/prompt/|
-len |23|
-firstarg: |~/42sh/srcs/prompt/|
-addcompletion match: ||
-path avant: |~/42sh/srcs/prompt/| final_path avant ||
-path[0] |~|, env_home: |/|
-path apres: |~/42sh/srcs/prompt/| final_path apres |/Users/macadelic/42sh/srcs/prompt/|
-len |23|
-firstarg: |~/42sh/srcs/prompt/|
-addcompletion match: ||
-path avant: |~/42sh/srcs/prompt/| final_path avant ||
-path[0] |~|, env_home: |/|
-path apres: |~/42sh/srcs/prompt/| final_path apres |/Users/macadelic/42sh/srcs/prompt/|
-len |23|
-firstarg: |~/42sh/srcs/prompt/|
-addcompletion match: ||
-path avant: |~/42sh/srcs/prompt/| final_path avant ||
-path[0] |~|, env_home: |/|
-path apres: |~/42sh/srcs/prompt/| final_path apres |/Users/macadelic/42sh/srcs/prompt/|
-len |23|
-firstarg: |~/42sh/srcs/prompt/|
-addcompletion match: ||
-path avant: |~/42sh/srcs/prompt/| final_path avant ||
-path[0] |~|, env_home: |/|
-path apres: |~/42sh/srcs/prompt/| final_path apres |/Users/macadelic/42sh/srcs/prompt/|
-len |23|
-firstarg: |~/42sh/srcs/prompt/|
-addcompletion match: ||
-path avant: |~/42sh/srcs/prompt/| final_path avant ||
-path[0] |~|, env_home: |/|
-path apres: |~/42sh/srcs/prompt/| final_path apres |/Users/macadelic/42sh/srcs/prompt/|
-len |23|
-firstarg: |~/42sh/srcs/prompt/|
-addcompletion match: ||
-path avant: |~/42sh/srcs/prompt/| final_path avant ||
-path[0] |~|, env_home: |/|
-path apres: |~/42sh/srcs/prompt/| final_path apres |/Users/macadelic/42sh/srcs/prompt/|
-len |23|
-firstarg: |~/42sh/srcs/prompt/|
-addcompletion match: ||
-path avant: |~/42sh/srcs/prompt/| final_path avant ||
-path[0] |~|, env_home: |/|
-path apres: |~/42sh/srcs/prompt/| final_path apres |/Users/macadelic/42sh/srcs/prompt/|
-len |23|
-firstarg: |~/42sh/srcs/prompt/|
-addcompletion match: ||
-path avant: |~/42sh/srcs/prompt/| final_path avant ||
-path[0] |~|, env_home: |/|
-path apres: |~/42sh/srcs/prompt/| final_path apres |/Users/macadelic/42sh/srcs/prompt/|
-len |23|
-firstarg: |~/42sh/srcs/prompt/|
-addcompletion match: ||
-path avant: |~/42sh/srcs/prompt/| final_path avant ||
-path[0] |~|, env_home: |/|
-path apres: |~/42sh/srcs/prompt/| final_path apres |/Users/macadelic/42sh/srcs/prompt/|
-len |23|
-firstarg: |~/42sh/srcs/prompt/|
-addcompletion match: ||
-path avant: |~/42sh/srcs/prompt/| final_path avant ||
-path[0] |~|, env_home: |/|
-path apres: |~/42sh/srcs/prompt/| final_path apres |/Users/macadelic/42sh/srcs/prompt/|
-len |23|
-firstarg: |~/42sh/srcs/prompt/|
-addcompletion match: ||
-path avant: |~/42sh/srcs/prompt/| final_path avant ||
-path[0] |~|, env_home: |/|
-path apres: |~/42sh/srcs/prompt/| final_path apres |/Users/macadelic/42sh/srcs/prompt/|
-len |23|
-firstarg: |~/4|
-match: |~/4|
+pos: 88, row: 3, max: 30
+firstarg: |/dev/|
+len |315|
+pos: 89, row: 3, max: 30
+a la fin
+firstarg: |/dev/|
+len |315|
+pos: 90, row: 3, max: 30
+firstarg: |/dev/|
+len |315|
+firstarg: |/dev/|
+len |315|
+firstarg: |/dev/|
+len |315|
+firstarg: |/dev/|
+len |315|
+firstarg: |/dev/|
+len |315|
+firstarg: |/dev/|
+len |315|
+firstarg: |/dev/|
+len |315|
+firstarg: |/dev/|
+len |315|
+firstarg: |/dev/|
+len |315|
+firstarg: |/dev/|
+len |315|
+firstarg: |/dev/|
+len |315|
+firstarg: |/dev/|
+len |315|
+firstarg: |/dev/|
+len |315|
+firstarg: |/dev/|
+len |315|
+firstarg: |/dev/|
+len |315|
+firstarg: |/dev/|
+len |315|
+firstarg: |/dev/|
+len |315|
+firstarg: |/dev/|
+len |315|
+firstarg: |/dev/|
+len |315|
+firstarg: |/dev/|
+len |315|
+firstarg: |/dev/|
+len |315|
+firstarg: |/dev/|
+len |315|
+firstarg: |/dev/|
+len |315|
+firstarg: |/dev/|
+len |315|
+firstarg: |/dev/|
+len |315|
+firstarg: |/dev/|
+len |315|
+firstarg: |/dev/|
+len |315|
+firstarg: |/dev/|
+len |315|
+firstarg: |/dev/|
+len |315|
+firstarg: |/dev/|
+len |315|
+firstarg: |/dev/|
+len |315|
+pos: 88, row: 3, max: 30
+firstarg: |/dev/|
+len |315|
+pos: 89, row: 3, max: 30
+a la fin
+firstarg: |/dev/|
+len |315|
+pos: 90, row: 3, max: 30
+firstarg: |/dev/|
+len |315|
+firstarg: |/dev/|
+len |315|
+firstarg: |/dev/|
+len |315|
+firstarg: |/dev/|
+len |315|
+firstarg: |/dev/|
+len |315|
+firstarg: |/dev|
+match: |/dev|
 pathbin: |/Library/Frameworks/Python.framework/Versions/3.7/bin|
 pathbin: |/usr/local/bin|
 pathbin: |/usr/bin|
 pathbin: |/bin|
 pathbin: |/usr/sbin|
 pathbin: |/sbin|
-pathcompletion, |~/4|
-i ici vaut: 2
-i ici vaut: 1
-|~| path match: |4|
-len |3|
-firstarg: |~/42|
-match: |~/42|
-pathbin: |/Library/Frameworks/Python.framework/Versions/3.7/bin|
-pathbin: |/usr/local/bin|
-pathbin: |/usr/bin|
-pathbin: |/bin|
-pathbin: |/usr/sbin|
-pathbin: |/sbin|
-pathcompletion, |~/42|
+pathcompletion, |/dev|
 i ici vaut: 3
-i ici vaut: 1
-|~| path match: |42|
-len |3|
-firstarg: |~/42|
-match: |~/42|
-pathbin: |/Library/Frameworks/Python.framework/Versions/3.7/bin|
-pathbin: |/usr/local/bin|
-pathbin: |/usr/bin|
-pathbin: |/bin|
-pathbin: |/usr/sbin|
-pathbin: |/sbin|
-pathcompletion, |~/42|
-i ici vaut: 3
-i ici vaut: 1
-|~| path match: |42|
-len |3|
-firstarg: |~/42|
-match: |~/42|
-pathbin: |/Library/Frameworks/Python.framework/Versions/3.7/bin|
-pathbin: |/usr/local/bin|
-pathbin: |/usr/bin|
-pathbin: |/bin|
-pathbin: |/usr/sbin|
-pathbin: |/sbin|
-pathcompletion, |~/42|
-i ici vaut: 3
-i ici vaut: 1
-|~| path match: |42|
-len |3|
-firstarg: |~/42|
-match: |~/42|
-pathbin: |/Library/Frameworks/Python.framework/Versions/3.7/bin|
-pathbin: |/usr/local/bin|
-pathbin: |/usr/bin|
-pathbin: |/bin|
-pathbin: |/usr/sbin|
-pathbin: |/sbin|
-pathcompletion, |~/42|
-i ici vaut: 3
-i ici vaut: 1
-|~| path match: |42|
-len |3|
-firstarg: |~/42|
-match: |~/42|
-pathbin: |/Library/Frameworks/Python.framework/Versions/3.7/bin|
-pathbin: |/usr/local/bin|
-pathbin: |/usr/bin|
-pathbin: |/bin|
-pathbin: |/usr/sbin|
-pathbin: |/sbin|
-pathcompletion, |~/42|
-i ici vaut: 3
-i ici vaut: 1
-|~| path match: |42|
-len |3|
-firstarg: |~/42sh/|
-len |8|
-firstarg: |~/42sh/|
-len |8|
-firstarg: |~/42sh/|
-len |8|
-firstarg: |~/42sh/|
-len |8|
-firstarg: |~/42sh/|
-len |8|
-firstarg: |~/42sh/|
-len |8|
-firstarg: |~/42sh/|
-len |8|
-firstarg: |~/42sh/|
-len |8|
-firstarg: |~/42sh/srcs/|
-len |5|
-firstarg: |~/42sh/srcs/|
-len |5|
-firstarg: |~/42sh/srcs/|
-len |5|
-firstarg: |~/42sh/srcs/|
-len |5|
-firstarg: |~/42sh/srcs/prompt/|
-len |23|
-firstarg: |~/42sh/srcs/prompt/|
-len |23|
-firstarg: |~/42sh/srcs/prompt/|
-len |23|
-firstarg: |~/42sh/srcs/prompt/|
-len |23|
-firstarg: |~/42sh/srcs/prompt/|
-len |23|
-firstarg: |~/42|
-match: |~/42|
-pathbin: |/Library/Frameworks/Python.framework/Versions/3.7/bin|
-pathbin: |/usr/local/bin|
-pathbin: |/usr/bin|
-pathbin: |/bin|
-pathbin: |/usr/sbin|
-pathbin: |/sbin|
-pathcompletion, |~/42|
-i ici vaut: 3
-i ici vaut: 1
-|~| path match: |42|
-len |3|
-firstarg: |~/42|
-match: |~/42|
-pathbin: |/Library/Frameworks/Python.framework/Versions/3.7/bin|
-pathbin: |/usr/local/bin|
-pathbin: |/usr/bin|
-pathbin: |/bin|
-pathbin: |/usr/sbin|
-pathbin: |/sbin|
-pathcompletion, |~/42|
-i ici vaut: 3
-i ici vaut: 1
-|~| path match: |42|
-len |3|
-firstarg: |~/42|
-match: |~/42|
-pathbin: |/Library/Frameworks/Python.framework/Versions/3.7/bin|
-pathbin: |/usr/local/bin|
-pathbin: |/usr/bin|
-pathbin: |/bin|
-pathbin: |/usr/sbin|
-pathbin: |/sbin|
-pathcompletion, |~/42|
-i ici vaut: 3
-i ici vaut: 1
-|~| path match: |42|
-len |3|
-firstarg: |~/42sh/|
-len |8|
-firstarg: |~/42sh/|
-len |8|
-firstarg: |~/42sh/|
-len |8|
-firstarg: |~/42sh/|
-len |8|
-firstarg: |~/42sh/|
-len |8|
-firstarg: |~/42sh/|
-len |8|
-firstarg: |~/42sh/|
-len |8|
-firstarg: |~/42sh/|
-len |8|
-firstarg: |~/42sh/srcs/|
-len |5|
-firstarg: |~/42sh/srcs/|
-len |5|
-firstarg: |~/42sh/srcs/|
-len |5|
-firstarg: |~/42sh/srcs/|
-len |5|
-firstarg: |~/42sh/srcs/prompt/|
-len |23|
-firstarg: |~/42sh/srcs/prompt/|
-len |23|
-firstarg: |~/42sh/srcs/prompt/|
-len |23|
-firstarg: |~/42sh/srcs/prompt/|
-len |23|
-firstarg: |~/42sh/srcs/prompt/|
-len |23|
-firstarg: |~/42sh/srcs/prompt/|
-len |23|
-firstarg: |~/42sh/srcs/prompt/|
-len |23|
-firstarg: |~/42sh/srcs/prompt/|
-len |23|
-firstarg: |~/42sh/srcs/prompt/|
-len |23|
-firstarg: |~/42sh/srcs/prompt/|
-len |23|
-firstarg: |~/42sh/srcs/prompt/|
-len |23|
-firstarg: |~/42sh/srcs/prompt/|
-len |23|
-firstarg: |~/42sh/srcs/prompt/|
-len |23|
-firstarg: |~/42sh/srcs/prompt/|
-len |23|
-firstarg: |~/42sh/srcs/prompt/|
-len |23|
-firstarg: |~/42sh/srcs/prompt/|
-len |23|
-firstarg: |~/42sh/srcs/prompt/|
-len |23|
-firstarg: |~/42sh/srcs/prompt/|
-len |23|
-firstarg: |~/42sh/srcs/prompt/|
-len |23|
-firstarg: |~/42sh/srcs/prompt/|
-len |23|
-firstarg: |~/42sh/srcs/prompt/|
-len |23|
-firstarg: |~/42sh/srcs/prompt/|
-len |23|
-firstarg: |~/42sh/srcs/prompt/|
-len |23|
-firstarg: |~/42sh/srcs/prompt/|
-len |23|
-firstarg: |~/42sh/srcs/prompt/|
-len |23|
-firstarg: |~/42sh/srcs/prompt/|
-len |23|
-firstarg: |~/42sh/srcs/prompt/|
-len |23|
-firstarg: |~/42sh/srcs/prompt/|
-len |23|
-firstarg: |~/42sh/srcs/prompt/|
-len |23|
-firstarg: |~/42sh/srcs/prompt/|
-len |23|
-firstarg: |~/42sh/srcs/prompt/|
-len |23|
-firstarg: |~/42sh/srcs/prompt/|
-len |23|
-firstarg: |~/42sh/srcs/prompt/|
-len |23|
-firstarg: |~/42sh/srcs/prompt/|
-len |23|
-firstarg: |~/42sh/srcs/prompt/|
-len |23|
-firstarg: |~/42sh/srcs/prompt/|
-len |23|
-firstarg: |~/42sh/srcs/prompt/|
-len |23|
-firstarg: |~/42sh/srcs/prompt/|
-len |23|
-firstarg: |~/42sh/srcs/prompt/|
-len |23|
-firstarg: |~/42sh/srcs/prompt/|
-len |23|
-firstarg: |~/42sh/srcs/prompt/|
-len |23|
-firstarg: |~/42sh/srcs/prompt/|
-len |23|
-firstarg: |~/42sh/srcs/prompt/|
-len |23|
-firstarg: |~/42sh/srcs/prompt/|
-len |23|
-firstarg: |~/42sh/srcs/prompt/|
-len |23|
-firstarg: |~/42sh/srcs/prompt/|
-len |23|
-firstarg: |~/42sh/srcs/prompt/|
-len |23|
-firstarg: |~/42sh/srcs/prompt/|
-len |23|
-firstarg: |~/42sh/srcs/prompt/|
-len |23|
-firstarg: |~/42sh/srcs/prompt/|
-len |23|
-firstarg: |~/42sh/srcs/prompt/|
-len |23|
-firstarg: |~/42sh/srcs/prompt/|
-len |23|
-firstarg: |~/42sh/srcs/prompt/|
-len |23|
-firstarg: |~/42sh/srcs/prompt/|
-len |23|
-firstarg: |~/42sh/srcs/prompt/|
-len |23|
-firstarg: |~/42sh/srcs/prompt/|
-len |23|
-firstarg: |~/42sh/srcs/prompt/|
-len |23|
-firstarg: |~/42sh/srcs/prompt/|
-len |23|
-firstarg: |~/42sh/srcs/prompt/|
-len |23|
-firstarg: |~/42sh/srcs/prompt/|
-len |23|
-firstarg: |~/42sh/srcs/prompt/|
-len |23|
-firstarg: |~/42sh/srcs/prompt/|
-len |23|
-firstarg: |~/42sh/srcs/prompt/|
-len |23|
-firstarg: |~/42sh/srcs/prompt/|
-len |23|
-firstarg: |~/42sh/srcs/prompt/|
-len |23|
-firstarg: |~/42sh/srcs/prompt/|
-len |23|
-firstarg: |~/42sh/srcs/prompt/|
-len |23|
-firstarg: |~/42|
-match: |~/42|
-pathbin: |/Library/Frameworks/Python.framework/Versions/3.7/bin|
-pathbin: |/usr/local/bin|
-pathbin: |/usr/bin|
-pathbin: |/bin|
-pathbin: |/usr/sbin|
-pathbin: |/sbin|
-pathcompletion, |~/42|
-i ici vaut: 3
-i ici vaut: 1
-|~| path match: |42|
-len |3|
-firstarg: |~/42|
-match: |~/42|
-pathbin: |/Library/Frameworks/Python.framework/Versions/3.7/bin|
-pathbin: |/usr/local/bin|
-pathbin: |/usr/bin|
-pathbin: |/bin|
-pathbin: |/usr/sbin|
-pathbin: |/sbin|
-pathcompletion, |~/42|
-i ici vaut: 3
-i ici vaut: 1
-|~| path match: |42|
-len |3|
-firstarg: |~/42|
-match: |~/42|
-pathbin: |/Library/Frameworks/Python.framework/Versions/3.7/bin|
-pathbin: |/usr/local/bin|
-pathbin: |/usr/bin|
-pathbin: |/bin|
-pathbin: |/usr/sbin|
-pathbin: |/sbin|
-pathcompletion, |~/42|
-i ici vaut: 3
-i ici vaut: 1
-|~| path match: |42|
-len |3|
-firstarg: |./src|
-match: |./src|
-pathbin: |/Library/Frameworks/Python.framework/Versions/3.7/bin|
-pathbin: |/usr/local/bin|
-pathbin: |/usr/bin|
-pathbin: |/bin|
-pathbin: |/usr/sbin|
-pathbin: |/sbin|
-pathcompletion, |./src|
-i ici vaut: 4
-i ici vaut: 1
-|.| path match: |src|
+i ici vaut: 0
+|/| path match: |dev|
 len |1|
-firstarg: |./srcs/pro|
-match: |./srcs/pro|
+firstarg: |/dev/|
+len |315|
+firstarg: |/|
+len |19|
+firstarg: |/dev|
+match: |/dev|
 pathbin: |/Library/Frameworks/Python.framework/Versions/3.7/bin|
 pathbin: |/usr/local/bin|
 pathbin: |/usr/bin|
 pathbin: |/bin|
 pathbin: |/usr/sbin|
 pathbin: |/sbin|
-pathcompletion, |./srcs/pro|
-i ici vaut: 9
-i ici vaut: 6
-|./srcs| path match: |pro|
+pathcompletion, |/dev|
+i ici vaut: 3
+i ici vaut: 0
+|/| path match: |dev|
 len |1|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prom|
-match: |./srcs/prom|
+firstarg: |/dev/|
+len |315|
+firstarg: |/dev/|
+len |315|
+firstarg: |/dev/|
+len |315|
+firstarg: |/dev/|
+len |315|
+firstarg: |/dev|
+match: |/dev|
 pathbin: |/Library/Frameworks/Python.framework/Versions/3.7/bin|
 pathbin: |/usr/local/bin|
 pathbin: |/usr/bin|
 pathbin: |/bin|
 pathbin: |/usr/sbin|
 pathbin: |/sbin|
-pathcompletion, |./srcs/prom|
+pathcompletion, |/dev|
+i ici vaut: 3
+i ici vaut: 0
+|/| path match: |dev|
+len |1|
+firstarg: |/dev/|
+len |315|
+firstarg: |/dev/|
+len |315|
+firstarg: |/dev/|
+len |315|
+firstarg: |/dev/|
+len |315|
+firstarg: |/dev/|
+len |315|
+firstarg: |/dev/|
+len |315|
+firstarg: |/dev/|
+len |315|
+firstarg: |/|
+len |19|
+firstarg: |/|
+len |19|
+firstarg: |/|
+len |19|
+firstarg: |/|
+len |19|
+firstarg: |/|
+len |19|
+firstarg: |/|
+len |19|
+firstarg: |/|
+len |19|
+firstarg: |/|
+len |19|
+firstarg: |/|
+len |19|
+firstarg: |/|
+len |19|
+firstarg: |/|
+len |19|
+firstarg: |/|
+len |19|
+firstarg: |/|
+len |19|
+firstarg: |/|
+len |19|
+firstarg: |/|
+len |19|
+firstarg: |/|
+len |19|
+firstarg: |/|
+len |19|
+firstarg: |/|
+len |19|
+firstarg: |/|
+len |19|
+firstarg: |/|
+len |19|
+firstarg: |/|
+len |19|
+firstarg: |/|
+len |19|
+firstarg: |/|
+len |19|
+firstarg: |/|
+len |19|
+firstarg: |/|
+len |19|
+firstarg: |/|
+len |19|
+firstarg: |/|
+len |19|
+firstarg: |/|
+len |19|
+firstarg: |/|
+len |19|
+firstarg: |/|
+len |19|
+firstarg: |/|
+len |19|
+firstarg: |/|
+len |19|
+firstarg: |/libft/srcs|
+match: |/libft/srcs|
+pathbin: |/Library/Frameworks/Python.framework/Versions/3.7/bin|
+pathbin: |/usr/local/bin|
+pathbin: |/usr/bin|
+pathbin: |/bin|
+pathbin: |/usr/sbin|
+pathbin: |/sbin|
+pathcompletion, |/libft/srcs|
 i ici vaut: 10
 i ici vaut: 6
-|./srcs| path match: |prom|
+|/libft| path match: |srcs|
+probleme opendir
+firstarg: |/libft/srcs|
+match: |/libft/srcs|
+pathbin: |/Library/Frameworks/Python.framework/Versions/3.7/bin|
+pathbin: |/usr/local/bin|
+pathbin: |/usr/bin|
+pathbin: |/bin|
+pathbin: |/usr/sbin|
+pathbin: |/sbin|
+pathcompletion, |/libft/srcs|
+i ici vaut: 10
+i ici vaut: 6
+|/libft| path match: |srcs|
+probleme opendir
+firstarg: |/libft/srcs/|
+probleme opendir
+firstarg: |/libft/s|
+match: |/libft/s|
+pathbin: |/Library/Frameworks/Python.framework/Versions/3.7/bin|
+pathbin: |/usr/local/bin|
+pathbin: |/usr/bin|
+pathbin: |/bin|
+pathbin: |/usr/sbin|
+pathbin: |/sbin|
+pathcompletion, |/libft/s|
+i ici vaut: 7
+i ici vaut: 6
+|/libft| path match: |s|
+probleme opendir
+firstarg: |/libft/s|
+match: |/libft/s|
+pathbin: |/Library/Frameworks/Python.framework/Versions/3.7/bin|
+pathbin: |/usr/local/bin|
+pathbin: |/usr/bin|
+pathbin: |/bin|
+pathbin: |/usr/sbin|
+pathbin: |/sbin|
+pathcompletion, |/libft/s|
+i ici vaut: 7
+i ici vaut: 6
+|/libft| path match: |s|
+probleme opendir
+firstarg: |/libf|
+match: |/libf|
+pathbin: |/Library/Frameworks/Python.framework/Versions/3.7/bin|
+pathbin: |/usr/local/bin|
+pathbin: |/usr/bin|
+pathbin: |/bin|
+pathbin: |/usr/sbin|
+pathbin: |/sbin|
+pathcompletion, |/libf|
+i ici vaut: 4
+i ici vaut: 0
+|/| path match: |libf|
+firstarg: |/libf|
+match: |/libf|
+pathbin: |/Library/Frameworks/Python.framework/Versions/3.7/bin|
+pathbin: |/usr/local/bin|
+pathbin: |/usr/bin|
+pathbin: |/bin|
+pathbin: |/usr/sbin|
+pathbin: |/sbin|
+pathcompletion, |/libf|
+i ici vaut: 4
+i ici vaut: 0
+|/| path match: |libf|
+firstarg: |/libf|
+match: |/libf|
+pathbin: |/Library/Frameworks/Python.framework/Versions/3.7/bin|
+pathbin: |/usr/local/bin|
+pathbin: |/usr/bin|
+pathbin: |/bin|
+pathbin: |/usr/sbin|
+pathbin: |/sbin|
+pathcompletion, |/libf|
+i ici vaut: 4
+i ici vaut: 0
+|/| path match: |libf|
+firstarg: |/libf|
+match: |/libf|
+pathbin: |/Library/Frameworks/Python.framework/Versions/3.7/bin|
+pathbin: |/usr/local/bin|
+pathbin: |/usr/bin|
+pathbin: |/bin|
+pathbin: |/usr/sbin|
+pathbin: |/sbin|
+pathcompletion, |/libf|
+i ici vaut: 4
+i ici vaut: 0
+|/| path match: |libf|
+firstarg: |/libf|
+match: |/libf|
+pathbin: |/Library/Frameworks/Python.framework/Versions/3.7/bin|
+pathbin: |/usr/local/bin|
+pathbin: |/usr/bin|
+pathbin: |/bin|
+pathbin: |/usr/sbin|
+pathbin: |/sbin|
+pathcompletion, |/libf|
+i ici vaut: 4
+i ici vaut: 0
+|/| path match: |libf|
+firstarg: |/libf|
+match: |/libf|
+pathbin: |/Library/Frameworks/Python.framework/Versions/3.7/bin|
+pathbin: |/usr/local/bin|
+pathbin: |/usr/bin|
+pathbin: |/bin|
+pathbin: |/usr/sbin|
+pathbin: |/sbin|
+pathcompletion, |/libf|
+i ici vaut: 4
+i ici vaut: 0
+|/| path match: |libf|
+firstarg: |/libf|
+match: |/libf|
+pathbin: |/Library/Frameworks/Python.framework/Versions/3.7/bin|
+pathbin: |/usr/local/bin|
+pathbin: |/usr/bin|
+pathbin: |/bin|
+pathbin: |/usr/sbin|
+pathbin: |/sbin|
+pathcompletion, |/libf|
+i ici vaut: 4
+i ici vaut: 0
+|/| path match: |libf|
+firstarg: |/libf|
+match: |/libf|
+pathbin: |/Library/Frameworks/Python.framework/Versions/3.7/bin|
+pathbin: |/usr/local/bin|
+pathbin: |/usr/bin|
+pathbin: |/bin|
+pathbin: |/usr/sbin|
+pathbin: |/sbin|
+pathcompletion, |/libf|
+i ici vaut: 4
+i ici vaut: 0
+|/| path match: |libf|
+firstarg: |/dev|
+match: |/dev|
+pathbin: |/Library/Frameworks/Python.framework/Versions/3.7/bin|
+pathbin: |/usr/local/bin|
+pathbin: |/usr/bin|
+pathbin: |/bin|
+pathbin: |/usr/sbin|
+pathbin: |/sbin|
+pathcompletion, |/dev|
+i ici vaut: 3
+i ici vaut: 0
+|/| path match: |dev|
 len |1|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
-firstarg: |./srcs/prompt/|
-len |23|
+firstarg: |/dev/|
+len |315|
+firstarg: |lib|
+match: |lib|
+pathbin: |/Library/Frameworks/Python.framework/Versions/3.7/bin|
+pathbin: |/usr/local/bin|
+pathbin: |/usr/bin|
+pathbin: |/bin|
+pathbin: |/usr/sbin|
+pathbin: |/sbin|
+pathcompletion, |lib|
+|.| path match: |lib|
+len |4|
+firstarg: |lib|
+match: |lib|
+pathbin: |/Library/Frameworks/Python.framework/Versions/3.7/bin|
+pathbin: |/usr/local/bin|
+pathbin: |/usr/bin|
+pathbin: |/bin|
+pathbin: |/usr/sbin|
+pathbin: |/sbin|
+pathcompletion, |lib|
+|.| path match: |lib|
+len |4|
+firstarg: |lib|
+match: |lib|
+pathbin: |/Library/Frameworks/Python.framework/Versions/3.7/bin|
+pathbin: |/usr/local/bin|
+pathbin: |/usr/bin|
+pathbin: |/bin|
+pathbin: |/usr/sbin|
+pathbin: |/sbin|
+pathcompletion, |lib|
+|.| path match: |lib|
+len |4|
+firstarg: |lib|
+match: |lib|
+pathbin: |/Library/Frameworks/Python.framework/Versions/3.7/bin|
+pathbin: |/usr/local/bin|
+pathbin: |/usr/bin|
+pathbin: |/bin|
+pathbin: |/usr/sbin|
+pathbin: |/sbin|
+pathcompletion, |lib|
+|.| path match: |lib|
+len |4|
+firstarg: |libft/|
+len |4|
+firstarg: |libft/|
+len |4|
+firstarg: |libft/|
+len |4|
+firstarg: |libft/|
+len |4|
+firstarg: |libft/srcs/|
+len |94|
+firstarg: |libft/srcs/|
+len |94|
+firstarg: |libft/srcs/|
+len |94|
+firstarg: |libft/srcs/|
+len |94|
+firstarg: |libft/srcs/|
+len |94|
+firstarg: |libft/srcs/|
+len |94|
+firstarg: |libft/srcs/|
+len |94|
+firstarg: |lib|
+match: |lib|
+pathbin: |/Library/Frameworks/Python.framework/Versions/3.7/bin|
+pathbin: |/usr/local/bin|
+pathbin: |/usr/bin|
+pathbin: |/bin|
+pathbin: |/usr/sbin|
+pathbin: |/sbin|
+pathcompletion, |lib|
+|.| path match: |lib|
+len |4|
+firstarg: |libf|
+match: |libf|
+pathbin: |/Library/Frameworks/Python.framework/Versions/3.7/bin|
+pathbin: |/usr/local/bin|
+pathbin: |/usr/bin|
+pathbin: |/bin|
+pathbin: |/usr/sbin|
+pathbin: |/sbin|
+pathcompletion, |libf|
+|.| path match: |libf|
+len |1|
+firstarg: |libft/|
+len |4|
+firstarg: |libft/|
+len |4|
+firstarg: |libft/|
+len |4|
+firstarg: |libft/|
+len |4|
+firstarg: |libft/|
+len |4|
+firstarg: |libft/|
+len |4|
+firstarg: |libft/srcs/|
+len |94|
+firstarg: |libft|
+match: |libft|
+pathbin: |/Library/Frameworks/Python.framework/Versions/3.7/bin|
+pathbin: |/usr/local/bin|
+pathbin: |/usr/bin|
+pathbin: |/bin|
+pathbin: |/usr/sbin|
+pathbin: |/sbin|
+pathcompletion, |libft|
+|.| path match: |libft|
+len |1|
+firstarg: |libft/|
+len |4|
+firstarg: |libft/|
+len |4|
+firstarg: |libft/|
+len |4|
+firstarg: |libft/|
+len |4|
+firstarg: |libft/srcs/|
+len |94|
+firstarg: |libft/srcs/|
+len |94|
+firstarg: |libft/srcs/|
+len |94|
+firstarg: |libft/srcs/|
+len |94|
+firstarg: |libft/srcs/|
+len |94|
+firstarg: |libft/srcs/|
+len |94|
+firstarg: |libft/srcs/|
+len |94|
+firstarg: |libft/srcs/|
+len |94|
+firstarg: |libft/srcs/|
+len |94|
+firstarg: |libft/srcs/|
+len |94|
+firstarg: |libft/srcs/|
+len |94|
+firstarg: |libft/srcs/|
+len |94|
+firstarg: |libft/srcs/|
+len |94|
+firstarg: |libft/srcs/|
+len |94|
+firstarg: |libft/srcs/|
+len |94|
+firstarg: |libft/srcs/|
+len |94|
+firstarg: |libft/srcs/|
+len |94|
+firstarg: |libft/srcs/|
+len |94|
+firstarg: |libft/srcs/|
+len |94|
+firstarg: |libft/srcs/|
+len |94|
+firstarg: |libft/srcs/|
+len |94|
+firstarg: |libft/srcs/|
+len |94|
+firstarg: |libft/srcs/|
+len |94|
+firstarg: |libft/srcs/|
+len |94|
+firstarg: |libft/srcs/|
+len |94|
+firstarg: |libft/srcs/|
+len |94|
+firstarg: |libft/srcs/|
+len |94|
+firstarg: |libft/srcs/|
+len |94|
+firstarg: |libft/srcs/|
+len |94|
+firstarg: |libft/srcs/|
+len |94|
+firstarg: |libft/srcs/|
+len |94|
+firstarg: |libft/srcs/|
+len |94|
+firstarg: |libft/srcs/|
+len |94|
+firstarg: |libft/srcs/|
+len |94|
+firstarg: |libft/srcs/|
+len |94|
+firstarg: |libft/srcs/|
+len |94|
+firstarg: |libft/srcs/|
+len |94|
+firstarg: |libft/srcs/|
+len |94|
+firstarg: |libft/srcs/|
+len |94|
+firstarg: |libft/srcs/|
+len |94|
+firstarg: |libft/srcs/|
+len |94|
+firstarg: |libft/srcs/|
+len |94|
+firstarg: |libft/srcs/|
+len |94|
+firstarg: |libft/srcs/|
+len |94|
+firstarg: |libft/srcs/|
+len |94|
+firstarg: |libft/srcs/|
+len |94|
+firstarg: |libft/srcs/|
+len |94|
+firstarg: |libft/srcs/|
+len |94|
+firstarg: |libft/srcs/|
+len |94|
+firstarg: |libft/srcs/|
+len |94|
+firstarg: |libft/srcs/|
+len |94|
+firstarg: |libft/srcs/|
+len |94|
+firstarg: |libft/srcs/|
+len |94|
+firstarg: |libft/srcs/|
+len |94|
+firstarg: |libft/srcs/|
+len |94|
+firstarg: |libft/srcs/|
+len |94|
+firstarg: |libft/srcs/|
+len |94|
+firstarg: |libft/srcs/|
+len |94|
+firstarg: |libft/srcs/|
+len |94|
+firstarg: |libft/srcs/|
+len |94|
+firstarg: |libft/srcs/|
+len |94|
+firstarg: |libft/srcs/|
+len |94|
+firstarg: |libft/srcs/|
+len |94|
+firstarg: |libft/srcs/|
+len |94|
+firstarg: |libft/srcs/|
+len |94|
+firstarg: |libft/srcs/|
+len |94|
+firstarg: |libft/srcs/|
+len |94|
+firstarg: |libft/srcs/|
+len |94|
+firstarg: |libft/srcs/|
+len |94|
+firstarg: |libft/srcs/|
+len |94|
+firstarg: |libft/srcs/|
+len |94|
+firstarg: |libft/srcs/|
+len |94|
+firstarg: |libft/srcs/|
+len |94|
+firstarg: |libft/srcs/|
+len |94|
+firstarg: |libft/srcs/|
+len |94|
+firstarg: |libft/srcs/|
+len |94|
+firstarg: |libft/srcs/|
+len |94|
+firstarg: |libft/srcs/|
+len |94|
+firstarg: |libft/srcs/|
+len |94|
+firstarg: |libft/srcs/|
+len |94|
+firstarg: |libft/srcs/|
+len |94|
+firstarg: |libft/srcs/|
+len |94|
+firstarg: |libft/srcs/|
+len |94|
+firstarg: |libft/srcs/|
+len |94|
+firstarg: |libft/srcs/|
+len |94|
+firstarg: |libft/srcs/|
+len |94|
+firstarg: |libft/srcs/|
+len |94|
+firstarg: |libft/srcs/|
+len |94|
+firstarg: |/dev|
+match: |/dev|
+pathbin: |/Library/Frameworks/Python.framework/Versions/3.7/bin|
+pathbin: |/usr/local/bin|
+pathbin: |/usr/bin|
+pathbin: |/bin|
+pathbin: |/usr/sbin|
+pathbin: |/sbin|
+pathcompletion, |/dev|
+i ici vaut: 3
+i ici vaut: 0
+|/| path match: |dev|
+len |1|
+firstarg: |/dev/|
+len |315|

@@ -25,6 +25,7 @@ void	sigint_handler(int sig)
 		{
 			tputs(tcap->clr_all_line, 1, ft_put_termcaps);
 			g_shell->autocomp->state = 0;
+			g_shell->autocomp->pos = 0;
 		}
 		ft_printf("\n");
 		print_prompt_prefix();

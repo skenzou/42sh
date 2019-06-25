@@ -118,6 +118,7 @@ int		shift_tab_event(t_cap *tcap)
 	autocomp = g_shell->autocomp;
 	if (autocomp->state)
 	{
+
 		autocomp->pos--;
 		if (autocomp->pos == -1)
 			autocomp->pos = autocomp->len - 1;
