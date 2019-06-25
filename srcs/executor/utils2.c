@@ -6,18 +6,18 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/07 06:15:18 by midrissi          #+#    #+#             */
-/*   Updated: 2019/06/23 17:38:24 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/06/25 18:31:37 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-int			is_special_char(char c)
+int						is_special_char(char c)
 {
 	return (c == '$' || c == '\\' || c == '"' || c == '`' || c == '\n');
 }
 
-int			is_key_valid(char *key)
+int						is_key_valid(char *key)
 {
 	if (!key || ft_isdigit(*key))
 		return (0);
@@ -30,7 +30,7 @@ int			is_key_valid(char *key)
 	return (1);
 }
 
-void		close_fd(void)
+void					close_fd(void)
 {
 	int		i;
 	t_list	*redir;
@@ -69,7 +69,7 @@ int						get_indexof_key2(char *key, char **env)
 	return (-1);
 }
 
-void			update_env(char *key, char *value)
+void					update_env(char *key, char *value)
 {
 	char same_env;
 

@@ -6,7 +6,7 @@
 /*   By: tlechien <tlechien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/19 16:01:10 by tlechien          #+#    #+#             */
-/*   Updated: 2019/06/25 07:21:16 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/06/25 18:30:56 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int		init_alias(int file)
 	i = 1;
 	ret = 0;
 	if (fd == -1)
-		exit(1); //TODO
+		exit(1);
 	while (fd && (ret = get_next_line(fd, &line, '\n')) == 1)
 	{
 		free(line);
@@ -65,13 +65,13 @@ char	*substitute_alias(char **origin, char *line, int size)
 	len = ft_strlen2(p2);
 	off = line - *origin;
 	if (!(p1 = (off) ? ft_strsub(*origin, 0, line - *origin) : ft_strdup("")))
-		exit(1); //TODO
+		exit(1);
 	if (!(tmp = ft_strjoin(p1, p2)))
-		exit(1); //TODO
+		exit(1);
 	ft_strdel(&p1);
 	ft_strdel(&p2);
 	if (!(p1 = ft_strjoin(tmp, line + size)))
-		exit(1); //TODO
+		exit(1);
 	(tmp) ? ft_strdel(&tmp) : 0;
 	ft_strdel(origin);
 	*origin = p1;
@@ -93,7 +93,6 @@ char	*parse_aliases(char *line, char *origin, char *prev)
 		curr = check_ops(line);
 		if ((curr.op) && prev != line && is_first && !(is_first = 0))
 			line = substitute_alias(&origin, prev, line - prev);
-			//TODO check if alias
 		if (curr.op)
 		{
 			(curr.type == TOKEN_CTL_OPERATOR) ? is_first = 1 : 0;
@@ -105,7 +104,6 @@ char	*parse_aliases(char *line, char *origin, char *prev)
 	}
 	if (prev != line && is_first)
 		line = substitute_alias(&origin, prev, line - prev);
-		//TODO check if alias
 	return (origin);
 }
 

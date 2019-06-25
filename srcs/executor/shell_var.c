@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/27 19:17:30 by midrissi          #+#    #+#             */
-/*   Updated: 2019/06/23 18:43:23 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/06/25 18:29:26 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static int			is_var(char *needle)
 	return (*needle);
 }
 
-void		compare_paths(char *path)
+void				compare_paths(char *path)
 {
 	char *newpath;
 
