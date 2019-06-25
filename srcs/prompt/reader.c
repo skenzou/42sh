@@ -64,6 +64,8 @@ int		read_buffer(char *buffer, t_cap *tcap)
 	int key;
 
 	key = 0;
+	if (ft_isprint(buffer[0]) && g_shell->autocomp->state)
+		tputs(tcap->clr_all_line, 1, ft_put_termcaps);
 	if (g_shell->ctrl_r->state && ft_isprint(buffer[0]))
 		return (add_buffer_ctrl_r(buffer, g_shell->ctrl_r));
 	else if (g_shell->ctrl_r->state && buffer[0] == ENTER)

@@ -28,19 +28,40 @@ void	create_file(char *name, char *path, t_ab *comp, int onlydir)
 	}
 }
 
+void	get_tilde(char *path, char *final_path)
+{
+	char env_home[MAX_PATH];
+	int i;
+
+	i = -1;
+	env_home[0] = 0;
+	while (g_shell->env[++i])
+		if (!ft_strncmp(g_shell->env[i], "HOME=", 5))
+			ft_strcpy(env_home, g_shell->env[i] + 5);
+	if (path[0] == '~' && env_home[0])
+	{
+		ft_strcpy(final_path, env_home);
+		ft_strcpy(final_path + ft_strlen(env_home), path + 1);
+	}
+	else
+		ft_strcpy(final_path, path);
+}
+
 int		add_to_completion(t_ab *autocomp, char *path, int onlydir)
 {
 	t_dirent	*d;
 	DIR			*dir;
+	char		final_path[MAX_PATH];
 
-	dprintf(debug(), "addcompletion match: |%s|\n", autocomp->match);
-	if ((dir = opendir(path)))
+	final_path[0] = 0;
+	get_tilde(path, final_path);
+	if ((dir = opendir(final_path)))
 	{
 		while ((d = readdir(dir)))
 		{
 			if (d->d_name[0] != '.' &&
 			!ft_strncmp(d->d_name, autocomp->match, ft_strlen(autocomp->match)))
-				create_file(d->d_name, path, autocomp, onlydir);
+				create_file(d->d_name, final_path, autocomp, onlydir);
 		}
 		closedir(dir);
 		return (1);

@@ -34,7 +34,7 @@ void	sigint_handler(int sig)
 		tcap->char_len = 0;
 		tcap->cursx = tcap->prompt_len;
 		tcap->cursy = 0;
-		exit(0);
+		//exit(0);
 	}
 }
 
@@ -57,6 +57,7 @@ void	sigwinch_handler(int sig)
 	tcap = g_shell->tcap;
 	p = tcap->cursy * (tcap->cursx_max + 1) + (tcap->cursx) - tcap->prompt_len;
 	prompt_len = tcap->init_len;
+
 	if (sig == SIGWINCH)
 	{
 		init_termcap(tcap);
@@ -66,6 +67,12 @@ void	sigwinch_handler(int sig)
 			tcap->prompt_len = prompt_len;
 		tcap->cursy = (p + tcap->prompt_len) / (tcap->cursx_max + 1);
 		tcap->cursx = (p + tcap->prompt_len) % (tcap->cursx_max + 1);
+		if (g_shell->autocomp->state)
+		{
+			tputs(tcap->clr_all_line, 1, ft_put_termcaps);
+			ft_tab(tcap, g_shell->autocomp);
+			//	g_shell->autocomp->state = 0;
+		}
 	}
 }
 

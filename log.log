@@ -1,3809 +1,1203 @@
-firstarg: |ca|
-match: |ca|
+firstarg: |~/42sh/srcs/prompt/|
+addcompletion match: ||
+path avant: |~/42sh/srcs/prompt/| final_path avant ||
+path[0] |~|, env_home: |/|
+path apres: |~/42sh/srcs/prompt/| final_path apres |/Users/macadelic/42sh/srcs/prompt/|
+len |23|
+firstarg: |~/42sh/srcs/prompt/|
+addcompletion match: ||
+path avant: |~/42sh/srcs/prompt/| final_path avant ||
+path[0] |~|, env_home: |/|
+path apres: |~/42sh/srcs/prompt/| final_path apres |/Users/macadelic/42sh/srcs/prompt/|
+len |23|
+firstarg: |~/42sh/srcs/prompt/|
+addcompletion match: ||
+path avant: |~/42sh/srcs/prompt/| final_path avant ||
+path[0] |~|, env_home: |/|
+path apres: |~/42sh/srcs/prompt/| final_path apres |/Users/macadelic/42sh/srcs/prompt/|
+len |23|
+firstarg: |~/42sh/srcs/prompt/|
+addcompletion match: ||
+path avant: |~/42sh/srcs/prompt/| final_path avant ||
+path[0] |~|, env_home: |/|
+path apres: |~/42sh/srcs/prompt/| final_path apres |/Users/macadelic/42sh/srcs/prompt/|
+len |23|
+firstarg: |~/42sh/srcs/prompt/|
+addcompletion match: ||
+path avant: |~/42sh/srcs/prompt/| final_path avant ||
+path[0] |~|, env_home: |/|
+path apres: |~/42sh/srcs/prompt/| final_path apres |/Users/macadelic/42sh/srcs/prompt/|
+len |23|
+firstarg: |~/42sh/srcs/prompt/|
+addcompletion match: ||
+path avant: |~/42sh/srcs/prompt/| final_path avant ||
+path[0] |~|, env_home: |/|
+path apres: |~/42sh/srcs/prompt/| final_path apres |/Users/macadelic/42sh/srcs/prompt/|
+len |23|
+firstarg: |~/42sh/srcs/prompt/|
+addcompletion match: ||
+path avant: |~/42sh/srcs/prompt/| final_path avant ||
+path[0] |~|, env_home: |/|
+path apres: |~/42sh/srcs/prompt/| final_path apres |/Users/macadelic/42sh/srcs/prompt/|
+len |23|
+firstarg: |~/42sh/srcs/prompt/|
+addcompletion match: ||
+path avant: |~/42sh/srcs/prompt/| final_path avant ||
+path[0] |~|, env_home: |/|
+path apres: |~/42sh/srcs/prompt/| final_path apres |/Users/macadelic/42sh/srcs/prompt/|
+len |23|
+firstarg: |~/42sh/srcs/prompt/|
+addcompletion match: ||
+path avant: |~/42sh/srcs/prompt/| final_path avant ||
+path[0] |~|, env_home: |/|
+path apres: |~/42sh/srcs/prompt/| final_path apres |/Users/macadelic/42sh/srcs/prompt/|
+len |23|
+firstarg: |~/42sh/srcs/prompt/|
+addcompletion match: ||
+path avant: |~/42sh/srcs/prompt/| final_path avant ||
+path[0] |~|, env_home: |/|
+path apres: |~/42sh/srcs/prompt/| final_path apres |/Users/macadelic/42sh/srcs/prompt/|
+len |23|
+firstarg: |~/42sh/srcs/prompt/|
+addcompletion match: ||
+path avant: |~/42sh/srcs/prompt/| final_path avant ||
+path[0] |~|, env_home: |/|
+path apres: |~/42sh/srcs/prompt/| final_path apres |/Users/macadelic/42sh/srcs/prompt/|
+len |23|
+firstarg: |~/42sh/srcs/prompt/|
+addcompletion match: ||
+path avant: |~/42sh/srcs/prompt/| final_path avant ||
+path[0] |~|, env_home: |/|
+path apres: |~/42sh/srcs/prompt/| final_path apres |/Users/macadelic/42sh/srcs/prompt/|
+len |23|
+firstarg: |~/42sh/srcs/prompt/|
+addcompletion match: ||
+path avant: |~/42sh/srcs/prompt/| final_path avant ||
+path[0] |~|, env_home: |/|
+path apres: |~/42sh/srcs/prompt/| final_path apres |/Users/macadelic/42sh/srcs/prompt/|
+len |23|
+firstarg: |~/42sh/srcs/prompt/|
+addcompletion match: ||
+path avant: |~/42sh/srcs/prompt/| final_path avant ||
+path[0] |~|, env_home: |/|
+path apres: |~/42sh/srcs/prompt/| final_path apres |/Users/macadelic/42sh/srcs/prompt/|
+len |23|
+firstarg: |~/42sh/srcs/prompt/|
+addcompletion match: ||
+path avant: |~/42sh/srcs/prompt/| final_path avant ||
+path[0] |~|, env_home: |/|
+path apres: |~/42sh/srcs/prompt/| final_path apres |/Users/macadelic/42sh/srcs/prompt/|
+len |23|
+firstarg: |~/42sh/srcs/prompt/|
+addcompletion match: ||
+path avant: |~/42sh/srcs/prompt/| final_path avant ||
+path[0] |~|, env_home: |/|
+path apres: |~/42sh/srcs/prompt/| final_path apres |/Users/macadelic/42sh/srcs/prompt/|
+len |23|
+firstarg: |~/42sh/srcs/prompt/|
+addcompletion match: ||
+path avant: |~/42sh/srcs/prompt/| final_path avant ||
+path[0] |~|, env_home: |/|
+path apres: |~/42sh/srcs/prompt/| final_path apres |/Users/macadelic/42sh/srcs/prompt/|
+len |23|
+firstarg: |~/42sh/srcs/prompt/|
+addcompletion match: ||
+path avant: |~/42sh/srcs/prompt/| final_path avant ||
+path[0] |~|, env_home: |/|
+path apres: |~/42sh/srcs/prompt/| final_path apres |/Users/macadelic/42sh/srcs/prompt/|
+len |23|
+firstarg: |~/42sh/srcs/prompt/|
+addcompletion match: ||
+path avant: |~/42sh/srcs/prompt/| final_path avant ||
+path[0] |~|, env_home: |/|
+path apres: |~/42sh/srcs/prompt/| final_path apres |/Users/macadelic/42sh/srcs/prompt/|
+len |23|
+firstarg: |~/42sh/srcs/prompt/|
+addcompletion match: ||
+path avant: |~/42sh/srcs/prompt/| final_path avant ||
+path[0] |~|, env_home: |/|
+path apres: |~/42sh/srcs/prompt/| final_path apres |/Users/macadelic/42sh/srcs/prompt/|
+len |23|
+firstarg: |~/42sh/srcs/prompt/|
+addcompletion match: ||
+path avant: |~/42sh/srcs/prompt/| final_path avant ||
+path[0] |~|, env_home: |/|
+path apres: |~/42sh/srcs/prompt/| final_path apres |/Users/macadelic/42sh/srcs/prompt/|
+len |23|
+firstarg: |~/42sh/srcs/prompt/|
+addcompletion match: ||
+path avant: |~/42sh/srcs/prompt/| final_path avant ||
+path[0] |~|, env_home: |/|
+path apres: |~/42sh/srcs/prompt/| final_path apres |/Users/macadelic/42sh/srcs/prompt/|
+len |23|
+firstarg: |~/42sh/srcs/prompt/|
+addcompletion match: ||
+path avant: |~/42sh/srcs/prompt/| final_path avant ||
+path[0] |~|, env_home: |/|
+path apres: |~/42sh/srcs/prompt/| final_path apres |/Users/macadelic/42sh/srcs/prompt/|
+len |23|
+firstarg: |~/42sh/srcs/prompt/|
+addcompletion match: ||
+path avant: |~/42sh/srcs/prompt/| final_path avant ||
+path[0] |~|, env_home: |/|
+path apres: |~/42sh/srcs/prompt/| final_path apres |/Users/macadelic/42sh/srcs/prompt/|
+len |23|
+firstarg: |~/42sh/srcs/prompt/|
+addcompletion match: ||
+path avant: |~/42sh/srcs/prompt/| final_path avant ||
+path[0] |~|, env_home: |/|
+path apres: |~/42sh/srcs/prompt/| final_path apres |/Users/macadelic/42sh/srcs/prompt/|
+len |23|
+firstarg: |~/42sh/srcs/prompt/|
+addcompletion match: ||
+path avant: |~/42sh/srcs/prompt/| final_path avant ||
+path[0] |~|, env_home: |/|
+path apres: |~/42sh/srcs/prompt/| final_path apres |/Users/macadelic/42sh/srcs/prompt/|
+len |23|
+firstarg: |~/42sh/srcs/prompt/|
+addcompletion match: ||
+path avant: |~/42sh/srcs/prompt/| final_path avant ||
+path[0] |~|, env_home: |/|
+path apres: |~/42sh/srcs/prompt/| final_path apres |/Users/macadelic/42sh/srcs/prompt/|
+len |23|
+firstarg: |~/42sh/srcs/prompt/|
+addcompletion match: ||
+path avant: |~/42sh/srcs/prompt/| final_path avant ||
+path[0] |~|, env_home: |/|
+path apres: |~/42sh/srcs/prompt/| final_path apres |/Users/macadelic/42sh/srcs/prompt/|
+len |23|
+firstarg: |~/42sh/srcs/prompt/|
+addcompletion match: ||
+path avant: |~/42sh/srcs/prompt/| final_path avant ||
+path[0] |~|, env_home: |/|
+path apres: |~/42sh/srcs/prompt/| final_path apres |/Users/macadelic/42sh/srcs/prompt/|
+len |23|
+firstarg: |~/42sh/srcs/prompt/|
+addcompletion match: ||
+path avant: |~/42sh/srcs/prompt/| final_path avant ||
+path[0] |~|, env_home: |/|
+path apres: |~/42sh/srcs/prompt/| final_path apres |/Users/macadelic/42sh/srcs/prompt/|
+len |23|
+firstarg: |~/42sh/srcs/prompt/|
+addcompletion match: ||
+path avant: |~/42sh/srcs/prompt/| final_path avant ||
+path[0] |~|, env_home: |/|
+path apres: |~/42sh/srcs/prompt/| final_path apres |/Users/macadelic/42sh/srcs/prompt/|
+len |23|
+firstarg: |~/42sh/srcs/prompt/|
+addcompletion match: ||
+path avant: |~/42sh/srcs/prompt/| final_path avant ||
+path[0] |~|, env_home: |/|
+path apres: |~/42sh/srcs/prompt/| final_path apres |/Users/macadelic/42sh/srcs/prompt/|
+len |23|
+firstarg: |~/42sh/srcs/prompt/|
+addcompletion match: ||
+path avant: |~/42sh/srcs/prompt/| final_path avant ||
+path[0] |~|, env_home: |/|
+path apres: |~/42sh/srcs/prompt/| final_path apres |/Users/macadelic/42sh/srcs/prompt/|
+len |23|
+firstarg: |~/42sh/srcs/prompt/|
+addcompletion match: ||
+path avant: |~/42sh/srcs/prompt/| final_path avant ||
+path[0] |~|, env_home: |/|
+path apres: |~/42sh/srcs/prompt/| final_path apres |/Users/macadelic/42sh/srcs/prompt/|
+len |23|
+firstarg: |~/42sh/srcs/prompt/|
+addcompletion match: ||
+path avant: |~/42sh/srcs/prompt/| final_path avant ||
+path[0] |~|, env_home: |/|
+path apres: |~/42sh/srcs/prompt/| final_path apres |/Users/macadelic/42sh/srcs/prompt/|
+len |23|
+firstarg: |~/42sh/srcs/prompt/|
+addcompletion match: ||
+path avant: |~/42sh/srcs/prompt/| final_path avant ||
+path[0] |~|, env_home: |/|
+path apres: |~/42sh/srcs/prompt/| final_path apres |/Users/macadelic/42sh/srcs/prompt/|
+len |23|
+firstarg: |~/42sh/srcs/prompt/|
+addcompletion match: ||
+path avant: |~/42sh/srcs/prompt/| final_path avant ||
+path[0] |~|, env_home: |/|
+path apres: |~/42sh/srcs/prompt/| final_path apres |/Users/macadelic/42sh/srcs/prompt/|
+len |23|
+firstarg: |~/42sh/srcs/prompt/|
+addcompletion match: ||
+path avant: |~/42sh/srcs/prompt/| final_path avant ||
+path[0] |~|, env_home: |/|
+path apres: |~/42sh/srcs/prompt/| final_path apres |/Users/macadelic/42sh/srcs/prompt/|
+len |23|
+firstarg: |~/42sh/srcs/prompt/|
+addcompletion match: ||
+path avant: |~/42sh/srcs/prompt/| final_path avant ||
+path[0] |~|, env_home: |/|
+path apres: |~/42sh/srcs/prompt/| final_path apres |/Users/macadelic/42sh/srcs/prompt/|
+len |23|
+firstarg: |~/42sh/srcs/prompt/|
+addcompletion match: ||
+path avant: |~/42sh/srcs/prompt/| final_path avant ||
+path[0] |~|, env_home: |/|
+path apres: |~/42sh/srcs/prompt/| final_path apres |/Users/macadelic/42sh/srcs/prompt/|
+len |23|
+firstarg: |~/42sh/srcs/prompt/|
+addcompletion match: ||
+path avant: |~/42sh/srcs/prompt/| final_path avant ||
+path[0] |~|, env_home: |/|
+path apres: |~/42sh/srcs/prompt/| final_path apres |/Users/macadelic/42sh/srcs/prompt/|
+len |23|
+firstarg: |~/42sh/srcs/prompt/|
+addcompletion match: ||
+path avant: |~/42sh/srcs/prompt/| final_path avant ||
+path[0] |~|, env_home: |/|
+path apres: |~/42sh/srcs/prompt/| final_path apres |/Users/macadelic/42sh/srcs/prompt/|
+len |23|
+firstarg: |~/42sh/srcs/prompt/|
+addcompletion match: ||
+path avant: |~/42sh/srcs/prompt/| final_path avant ||
+path[0] |~|, env_home: |/|
+path apres: |~/42sh/srcs/prompt/| final_path apres |/Users/macadelic/42sh/srcs/prompt/|
+len |23|
+firstarg: |~/4|
+match: |~/4|
+pathbin: |/Library/Frameworks/Python.framework/Versions/3.7/bin|
 pathbin: |/usr/local/bin|
-addcompletion match: |ca|
 pathbin: |/usr/bin|
-addcompletion match: |ca|
 pathbin: |/bin|
-addcompletion match: |ca|
 pathbin: |/usr/sbin|
-addcompletion match: |ca|
 pathbin: |/sbin|
-addcompletion match: |ca|
-pathcompletion, |ca|
-|.| path match: |ca|
-addcompletion match: |ca|
-firstarg: |ca|
-match: |ca|
-pathbin: |/usr/local/bin|
-addcompletion match: |ca|
-pathbin: |/usr/bin|
-addcompletion match: |ca|
-pathbin: |/bin|
-addcompletion match: |ca|
-pathbin: |/usr/sbin|
-addcompletion match: |ca|
-pathbin: |/sbin|
-addcompletion match: |ca|
-pathcompletion, |ca|
-|.| path match: |ca|
-addcompletion match: |ca|
-len |7|
-firstarg: |ca|
-match: |ca|
-pathbin: |/usr/local/bin|
-addcompletion match: |ca|
-pathbin: |/usr/bin|
-addcompletion match: |ca|
-pathbin: |/bin|
-addcompletion match: |ca|
-pathbin: |/usr/sbin|
-addcompletion match: |ca|
-pathbin: |/sbin|
-addcompletion match: |ca|
-pathcompletion, |ca|
-|.| path match: |ca|
-addcompletion match: |ca|
-len |7|
-firstarg: |ca|
-match: |ca|
-pathbin: |/usr/local/bin|
-addcompletion match: |ca|
-pathbin: |/usr/bin|
-addcompletion match: |ca|
-pathbin: |/bin|
-addcompletion match: |ca|
-pathbin: |/usr/sbin|
-addcompletion match: |ca|
-pathbin: |/sbin|
-addcompletion match: |ca|
-pathcompletion, |ca|
-|.| path match: |ca|
-addcompletion match: |ca|
-len |7|
-firstarg: |ca|
-match: |ca|
-pathbin: |/usr/local/bin|
-addcompletion match: |ca|
-pathbin: |/usr/bin|
-addcompletion match: |ca|
-pathbin: |/bin|
-addcompletion match: |ca|
-pathbin: |/usr/sbin|
-addcompletion match: |ca|
-pathbin: |/sbin|
-addcompletion match: |ca|
-pathcompletion, |ca|
-|.| path match: |ca|
-addcompletion match: |ca|
-len |7|
-firstarg: |/|
-addcompletion match: ||
-len |19|
-firstarg: |/|
-addcompletion match: ||
-len |19|
-firstarg: |/|
-addcompletion match: ||
-len |19|
-firstarg: |/|
-addcompletion match: ||
-len |19|
-firstarg: |/|
-addcompletion match: ||
-len |19|
-firstarg: |/|
-addcompletion match: ||
-len |19|
-firstarg: |/|
-addcompletion match: ||
-len |19|
-firstarg: |/|
-addcompletion match: ||
-len |19|
-firstarg: |/|
-addcompletion match: ||
-len |19|
-firstarg: |/|
-addcompletion match: ||
-len |19|
-firstarg: |/|
-addcompletion match: ||
-len |19|
-firstarg: |/|
-addcompletion match: ||
-len |19|
-firstarg: |/|
-addcompletion match: ||
-len |19|
-firstarg: |/|
-addcompletion match: ||
-len |19|
-firstarg: |/|
-addcompletion match: ||
-len |19|
-firstarg: |/|
-addcompletion match: ||
-len |19|
-firstarg: |/|
-addcompletion match: ||
-len |19|
-firstarg: |/|
-addcompletion match: ||
-len |19|
-firstarg: |/Volumes/|
-addcompletion match: ||
+pathcompletion, |~/4|
+i ici vaut: 2
+i ici vaut: 1
+|~| path match: |4|
 len |3|
-firstarg: |/Volumes/|
-addcompletion match: ||
-len |3|
-firstarg: |/Volumes/|
-addcompletion match: ||
-len |3|
-firstarg: |/Volumes/|
-addcompletion match: ||
-len |3|
-firstarg: |/Volumes/|
-addcompletion match: ||
-len |3|
-firstarg: |/Volumes/|
-addcompletion match: ||
-len |3|
-firstarg: |/Volumes/|
-addcompletion match: ||
-len |3|
-firstarg: |/Volumes/Storage/|
-addcompletion match: ||
-len |1|
-firstarg: |/Volumes/Storage/goinfre/|
-addcompletion match: ||
-len |1|
-firstarg: |/Volumes/Storage/goinfre/macadelic/|
-addcompletion match: ||
-len |1|
-firstarg: |/Volumes/Storage/goinfre/macadelic/homebrew/|
-addcompletion match: ||
-len |1|
-firstarg: |./|
-addcompletion match: ||
-len |8|
-firstarg: |./|
-addcompletion match: ||
-len |8|
-firstarg: |./|
-addcompletion match: ||
-len |8|
-firstarg: |./|
-addcompletion match: ||
-len |8|
-firstarg: |./|
-addcompletion match: ||
-len |8|
-firstarg: |./|
-addcompletion match: ||
-len |8|
-firstarg: |./|
-addcompletion match: ||
-len |8|
-firstarg: |./|
-addcompletion match: ||
-len |8|
-firstarg: |./|
-addcompletion match: ||
-len |8|
-firstarg: |./|
-addcompletion match: ||
-len |8|
-firstarg: |./|
-addcompletion match: ||
-len |8|
-firstarg: |./|
-addcompletion match: ||
-len |8|
-firstarg: |./|
-addcompletion match: ||
-len |8|
-firstarg: |./|
-addcompletion match: ||
-len |8|
-firstarg: |./|
-addcompletion match: ||
-len |8|
-firstarg: |./includes/|
-addcompletion match: ||
-len |5|
-firstarg: |./includes/|
-addcompletion match: ||
-len |5|
-firstarg: |./includes/|
-addcompletion match: ||
-len |5|
-firstarg: |/|
-addcompletion match: ||
-len |20|
-firstarg: |/|
-addcompletion match: ||
-len |20|
-firstarg: |/|
-addcompletion match: ||
-len |20|
-firstarg: |/|
-addcompletion match: ||
-len |20|
-firstarg: |/|
-addcompletion match: ||
-len |20|
-firstarg: |/|
-addcompletion match: ||
-len |20|
-firstarg: |/|
-addcompletion match: ||
-len |20|
-firstarg: |/|
-addcompletion match: ||
-len |20|
-firstarg: |/|
-addcompletion match: ||
-len |20|
-firstarg: |/|
-addcompletion match: ||
-len |20|
-firstarg: |/|
-addcompletion match: ||
-len |20|
-firstarg: |/|
-addcompletion match: ||
-len |20|
-firstarg: |/|
-addcompletion match: ||
-len |20|
-firstarg: |/|
-addcompletion match: ||
-len |20|
-firstarg: |/|
-addcompletion match: ||
-len |20|
-firstarg: |/|
-addcompletion match: ||
-len |20|
-firstarg: |/|
-addcompletion match: ||
-len |20|
-firstarg: |/|
-addcompletion match: ||
-len |20|
-firstarg: |/|
-addcompletion match: ||
-len |20|
-firstarg: |/|
-addcompletion match: ||
-len |20|
-firstarg: |/|
-addcompletion match: ||
-len |20|
-firstarg: |/|
-addcompletion match: ||
-len |20|
-firstarg: |/|
-addcompletion match: ||
-len |20|
-firstarg: |/|
-addcompletion match: ||
-len |20|
-firstarg: |/|
-addcompletion match: ||
-len |20|
-firstarg: |/|
-addcompletion match: ||
-len |20|
-firstarg: |/|
-addcompletion match: ||
-len |20|
-firstarg: |/|
-addcompletion match: ||
-len |20|
-firstarg: |/|
-addcompletion match: ||
-len |20|
-firstarg: |/|
-addcompletion match: ||
-len |20|
-firstarg: |/|
-addcompletion match: ||
-len |20|
-firstarg: |/|
-addcompletion match: ||
-len |20|
-firstarg: |/|
-addcompletion match: ||
-len |20|
-firstarg: |/|
-addcompletion match: ||
-len |20|
-firstarg: |/|
-addcompletion match: ||
-len |20|
-firstarg: |/|
-addcompletion match: ||
-len |20|
-firstarg: |/|
-addcompletion match: ||
-len |20|
-firstarg: |/|
-addcompletion match: ||
-len |20|
-firstarg: |/|
-addcompletion match: ||
-len |20|
-firstarg: |/|
-addcompletion match: ||
-len |20|
-firstarg: |/|
-addcompletion match: ||
-len |20|
-firstarg: |/|
-addcompletion match: ||
-len |20|
-firstarg: |/Applications/|
-addcompletion match: ||
-len |53|
-firstarg: |/Applications/|
-addcompletion match: ||
-len |53|
-firstarg: |/Applications/|
-addcompletion match: ||
-len |53|
-firstarg: |/Applications/|
-addcompletion match: ||
-len |53|
-firstarg: |/User|
-match: |/User|
-pathbin: |/bin|
-addcompletion match: |/User|
-pathbin: |/usr/local/bin|
-addcompletion match: |/User|
-pathbin: |/usr/bin|
-addcompletion match: |/User|
-pathbin: |/bin|
-addcompletion match: |/User|
-pathbin: |/usr/sbin|
-addcompletion match: |/User|
-pathbin: |/sbin|
-addcompletion match: |/User|
-pathbin: |/usr/local/munki|
-addcompletion match: |/User|
-pathcompletion, |/User|
-i ici vaut: 4
-i ici vaut: 0
-|/| path match: |User|
-addcompletion match: |User|
-len |1|
-firstarg: |/Users/|
-addcompletion match: ||
-len |40|
-firstarg: |/Users/|
-addcompletion match: ||
-len |40|
-firstarg: |/Users/|
-addcompletion match: ||
-len |40|
-firstarg: |/Users/aben-azz|
-match: |/Users/aben-azz|
-pathbin: |/bin|
-addcompletion match: |/Users/aben-azz|
-pathbin: |/usr/local/bin|
-addcompletion match: |/Users/aben-azz|
-pathbin: |/usr/bin|
-addcompletion match: |/Users/aben-azz|
-pathbin: |/bin|
-addcompletion match: |/Users/aben-azz|
-pathbin: |/usr/sbin|
-addcompletion match: |/Users/aben-azz|
-pathbin: |/sbin|
-addcompletion match: |/Users/aben-azz|
-pathbin: |/usr/local/munki|
-addcompletion match: |/Users/aben-azz|
-pathcompletion, |/Users/aben-azz|
-i ici vaut: 14
-i ici vaut: 6
-|/Users| path match: |aben-azz|
-addcompletion match: |aben-azz|
-len |1|
-firstarg: |/Users/aben-azz/|
-addcompletion match: ||
-len |30|
-firstarg: |/Users/aben-azz/|
-addcompletion match: ||
-len |30|
-firstarg: |/Users/aben-azz/|
-addcompletion match: ||
-len |30|
-firstarg: |/Users/aben-azz/42shsh/|
-addcompletion match: ||
-len |10|
-firstarg: |/Users/aben-azz/42shsh/|
-addcompletion match: ||
-len |10|
-firstarg: |/Users/aben-azz/42shsh/|
-addcompletion match: ||
-len |10|
-firstarg: |/Users/aben-azz/42shsh/|
-addcompletion match: ||
-len |10|
-firstarg: |/Users/aben-azz/42shsh/|
-addcompletion match: ||
-len |10|
-firstarg: |/Users/aben-azz/42shsh/|
-addcompletion match: ||
-len |10|
-firstarg: |/Users/aben-azz/42shsh/libft/|
-addcompletion match: ||
-len |5|
-firstarg: |/Users/aben-azz/42shsh/libft/|
-addcompletion match: ||
-len |5|
-firstarg: |/Users/aben-azz/42shsh/libft/|
-addcompletion match: ||
-len |5|
-firstarg: |/Users/aben-azz/42shsh/libft/|
-addcompletion match: ||
-len |5|
-firstarg: |/Users/aben-azz/42shsh/libft/|
-addcompletion match: ||
-len |5|
-firstarg: |/Users/aben-azz/42shsh/libft/srcs/|
-addcompletion match: ||
-len |92|
-firstarg: |/Users/aben-azz/42shsh/libft/srcs/|
-addcompletion match: ||
-len |92|
-firstarg: |/Users/aben-azz/42shsh/libft/srcs/|
-addcompletion match: ||
-len |92|
-firstarg: ||
-match: ||
-pathbin: |/bin|
-addcompletion match: ||
-pathbin: |/usr/local/bin|
-addcompletion match: ||
-pathbin: |/usr/bin|
-addcompletion match: ||
-pathbin: |/bin|
-addcompletion match: ||
-pathbin: |/usr/sbin|
-addcompletion match: ||
-pathbin: |/sbin|
-addcompletion match: ||
-pathbin: |/usr/local/munki|
-addcompletion match: ||
-pathcompletion, ||
-|.| path match: ||
-addcompletion match: ||
-len |1537|
-firstarg: |/|
-addcompletion match: ||
-len |20|
-firstarg: |/|
-addcompletion match: ||
-len |20|
-firstarg: |/|
-addcompletion match: ||
-len |20|
-firstarg: |/|
-addcompletion match: ||
-len |20|
-firstarg: |/bin/|
-addcompletion match: ||
-len |37|
-firstarg: |/bin/|
-addcompletion match: ||
-len |37|
-firstarg: |/bin/|
-addcompletion match: ||
-len |37|
-arg: |/|
-addcompletion match: ||
-len |20|
-arg: |/|
-addcompletion match: ||
-len |20|
-arg: |/|
-addcompletion match: ||
-len |20|
-arg: |/|
-addcompletion match: ||
-len |20|
-arg: |/|
-addcompletion match: ||
-len |20|
-arg: |/|
-addcompletion match: ||
-len |20|
-arg: |/|
-addcompletion match: ||
-len |20|
-arg: |/|
-addcompletion match: ||
-len |20|
-arg: |/|
-addcompletion match: ||
-len |20|
-arg: |/|
-addcompletion match: ||
-len |20|
-arg: |/Library/|
-addcompletion match: ||
-len |57|
-arg: |/Library/|
-addcompletion match: ||
-len |57|
-arg: |/Library/|
-addcompletion match: ||
-len |57|
-arg: |/Library/|
-addcompletion match: ||
-len |57|
-arg: |./|
-addcompletion match: ||
-len |8|
-arg: |./|
-addcompletion match: ||
-len |8|
-arg: |./|
-addcompletion match: ||
-len |8|
-arg: |./|
-addcompletion match: ||
-len |8|
-arg: |./|
-addcompletion match: ||
-len |8|
-firstarg: |ca|
-match: |ca|
-pathbin: |/bin|
-addcompletion match: |ca|
-pathbin: |/usr/local/bin|
-addcompletion match: |ca|
-pathbin: |/usr/bin|
-addcompletion match: |ca|
-pathbin: |/bin|
-addcompletion match: |ca|
-pathbin: |/usr/sbin|
-addcompletion match: |ca|
-pathbin: |/sbin|
-addcompletion match: |ca|
-pathbin: |/usr/local/munki|
-addcompletion match: |ca|
-pathcompletion, |ca|
-|.| path match: |ca|
-addcompletion match: |ca|
-len |8|
-firstarg: |ca|
-match: |ca|
-pathbin: |/bin|
-addcompletion match: |ca|
-pathbin: |/usr/local/bin|
-addcompletion match: |ca|
-pathbin: |/usr/bin|
-addcompletion match: |ca|
-pathbin: |/bin|
-addcompletion match: |ca|
-pathbin: |/usr/sbin|
-addcompletion match: |ca|
-pathbin: |/sbin|
-addcompletion match: |ca|
-pathbin: |/usr/local/munki|
-addcompletion match: |ca|
-pathcompletion, |ca|
-|.| path match: |ca|
-addcompletion match: |ca|
-len |8|
-firstarg: |ca|
-match: |ca|
-pathbin: |/bin|
-addcompletion match: |ca|
-pathbin: |/usr/local/bin|
-addcompletion match: |ca|
-pathbin: |/usr/bin|
-addcompletion match: |ca|
-pathbin: |/bin|
-addcompletion match: |ca|
-pathbin: |/usr/sbin|
-addcompletion match: |ca|
-pathbin: |/sbin|
-addcompletion match: |ca|
-pathbin: |/usr/local/munki|
-addcompletion match: |ca|
-pathcompletion, |ca|
-|.| path match: |ca|
-addcompletion match: |ca|
-len |8|
-firstarg: |ca|
-match: |ca|
-pathbin: |/bin|
-addcompletion match: |ca|
-pathbin: |/usr/local/bin|
-addcompletion match: |ca|
-pathbin: |/usr/bin|
-addcompletion match: |ca|
-pathbin: |/bin|
-addcompletion match: |ca|
-pathbin: |/usr/sbin|
-addcompletion match: |ca|
-pathbin: |/sbin|
-addcompletion match: |ca|
-pathbin: |/usr/local/munki|
-addcompletion match: |ca|
-pathcompletion, |ca|
-|.| path match: |ca|
-addcompletion match: |ca|
-len |8|
-firstarg: |ca|
-match: |ca|
-pathbin: |/bin|
-addcompletion match: |ca|
-pathbin: |/usr/local/bin|
-addcompletion match: |ca|
-pathbin: |/usr/bin|
-addcompletion match: |ca|
-pathbin: |/bin|
-addcompletion match: |ca|
-pathbin: |/usr/sbin|
-addcompletion match: |ca|
-pathbin: |/sbin|
-addcompletion match: |ca|
-pathbin: |/usr/local/munki|
-addcompletion match: |ca|
-pathcompletion, |ca|
-|.| path match: |ca|
-addcompletion match: |ca|
-len |8|
-firstarg: |ca|
-match: |ca|
-pathbin: |/bin|
-addcompletion match: |ca|
-pathbin: |/usr/local/bin|
-addcompletion match: |ca|
-pathbin: |/usr/bin|
-addcompletion match: |ca|
-pathbin: |/bin|
-addcompletion match: |ca|
-pathbin: |/usr/sbin|
-addcompletion match: |ca|
-pathbin: |/sbin|
-addcompletion match: |ca|
-pathbin: |/usr/local/munki|
-addcompletion match: |ca|
-pathcompletion, |ca|
-|.| path match: |ca|
-addcompletion match: |ca|
-len |8|
-firstarg: |ca|
-match: |ca|
-pathbin: |/bin|
-addcompletion match: |ca|
-pathbin: |/usr/local/bin|
-addcompletion match: |ca|
-pathbin: |/usr/bin|
-addcompletion match: |ca|
-pathbin: |/bin|
-addcompletion match: |ca|
-pathbin: |/usr/sbin|
-addcompletion match: |ca|
-pathbin: |/sbin|
-addcompletion match: |ca|
-pathbin: |/usr/local/munki|
-addcompletion match: |ca|
-pathcompletion, |ca|
-|.| path match: |ca|
-addcompletion match: |ca|
-len |8|
-firstarg: |ca|
-match: |ca|
-pathbin: |/bin|
-addcompletion match: |ca|
-pathbin: |/usr/local/bin|
-addcompletion match: |ca|
-pathbin: |/usr/bin|
-addcompletion match: |ca|
-pathbin: |/bin|
-addcompletion match: |ca|
-pathbin: |/usr/sbin|
-addcompletion match: |ca|
-pathbin: |/sbin|
-addcompletion match: |ca|
-pathbin: |/usr/local/munki|
-addcompletion match: |ca|
-pathcompletion, |ca|
-|.| path match: |ca|
-addcompletion match: |ca|
-len |8|
-firstarg: |ca|
-match: |ca|
-pathbin: |/bin|
-addcompletion match: |ca|
-pathbin: |/usr/local/bin|
-addcompletion match: |ca|
-pathbin: |/usr/bin|
-addcompletion match: |ca|
-pathbin: |/bin|
-addcompletion match: |ca|
-pathbin: |/usr/sbin|
-addcompletion match: |ca|
-pathbin: |/sbin|
-addcompletion match: |ca|
-pathbin: |/usr/local/munki|
-addcompletion match: |ca|
-pathcompletion, |ca|
-|.| path match: |ca|
-addcompletion match: |ca|
-len |8|
-firstarg: |ca|
-match: |ca|
-pathbin: |/bin|
-addcompletion match: |ca|
-pathbin: |/usr/local/bin|
-addcompletion match: |ca|
-pathbin: |/usr/bin|
-addcompletion match: |ca|
-pathbin: |/bin|
-addcompletion match: |ca|
-pathbin: |/usr/sbin|
-addcompletion match: |ca|
-pathbin: |/sbin|
-addcompletion match: |ca|
-pathbin: |/usr/local/munki|
-addcompletion match: |ca|
-pathcompletion, |ca|
-|.| path match: |ca|
-addcompletion match: |ca|
-len |8|
-firstarg: |ca|
-match: |ca|
-pathbin: |/bin|
-addcompletion match: |ca|
-pathbin: |/usr/local/bin|
-addcompletion match: |ca|
-pathbin: |/usr/bin|
-addcompletion match: |ca|
-pathbin: |/bin|
-addcompletion match: |ca|
-pathbin: |/usr/sbin|
-addcompletion match: |ca|
-pathbin: |/sbin|
-addcompletion match: |ca|
-pathbin: |/usr/local/munki|
-addcompletion match: |ca|
-pathcompletion, |ca|
-|.| path match: |ca|
-addcompletion match: |ca|
-len |8|
-firstarg: |ca|
-match: |ca|
-pathbin: |/bin|
-addcompletion match: |ca|
-pathbin: |/usr/local/bin|
-addcompletion match: |ca|
-pathbin: |/usr/bin|
-addcompletion match: |ca|
-pathbin: |/bin|
-addcompletion match: |ca|
-pathbin: |/usr/sbin|
-addcompletion match: |ca|
-pathbin: |/sbin|
-addcompletion match: |ca|
-pathbin: |/usr/local/munki|
-addcompletion match: |ca|
-pathcompletion, |ca|
-|.| path match: |ca|
-addcompletion match: |ca|
-len |8|
-arg: |ca|
-pathcompletion, |ca|
-|.| path match: |ca|
-addcompletion match: |ca|
-firstarg: |cat|
-match: |cat|
-pathbin: |/bin|
-addcompletion match: |cat|
-pathbin: |/usr/local/bin|
-addcompletion match: |cat|
-pathbin: |/usr/bin|
-addcompletion match: |cat|
-pathbin: |/bin|
-addcompletion match: |cat|
-pathbin: |/usr/sbin|
-addcompletion match: |cat|
-pathbin: |/sbin|
-addcompletion match: |cat|
-pathbin: |/usr/local/munki|
-addcompletion match: |cat|
-pathcompletion, |cat|
-|.| path match: |cat|
-addcompletion match: |cat|
-len |2|
-firstarg: |cat|
-match: |cat|
-pathbin: |/bin|
-addcompletion match: |cat|
-pathbin: |/usr/local/bin|
-addcompletion match: |cat|
-pathbin: |/usr/bin|
-addcompletion match: |cat|
-pathbin: |/bin|
-addcompletion match: |cat|
-pathbin: |/usr/sbin|
-addcompletion match: |cat|
-pathbin: |/sbin|
-addcompletion match: |cat|
-pathbin: |/usr/local/munki|
-addcompletion match: |cat|
-pathcompletion, |cat|
-|.| path match: |cat|
-addcompletion match: |cat|
-len |2|
-firstarg: |cat|
-match: |cat|
-pathbin: |/bin|
-addcompletion match: |cat|
-pathbin: |/usr/local/bin|
-addcompletion match: |cat|
-pathbin: |/usr/bin|
-addcompletion match: |cat|
-pathbin: |/bin|
-addcompletion match: |cat|
-pathbin: |/usr/sbin|
-addcompletion match: |cat|
-pathbin: |/sbin|
-addcompletion match: |cat|
-pathbin: |/usr/local/munki|
-addcompletion match: |cat|
-pathcompletion, |cat|
-|.| path match: |cat|
-addcompletion match: |cat|
-len |2|
-firstarg: |cat|
-match: |cat|
-pathbin: |/bin|
-addcompletion match: |cat|
-pathbin: |/usr/local/bin|
-addcompletion match: |cat|
-pathbin: |/usr/bin|
-addcompletion match: |cat|
-pathbin: |/bin|
-addcompletion match: |cat|
-pathbin: |/usr/sbin|
-addcompletion match: |cat|
-pathbin: |/sbin|
-addcompletion match: |cat|
-pathbin: |/usr/local/munki|
-addcompletion match: |cat|
-pathcompletion, |cat|
-|.| path match: |cat|
-addcompletion match: |cat|
-len |2|
-firstarg: |cat|
-match: |cat|
-pathbin: |/bin|
-addcompletion match: |cat|
-pathbin: |/usr/local/bin|
-addcompletion match: |cat|
-pathbin: |/usr/bin|
-addcompletion match: |cat|
-pathbin: |/bin|
-addcompletion match: |cat|
-pathbin: |/usr/sbin|
-addcompletion match: |cat|
-pathbin: |/sbin|
-addcompletion match: |cat|
-pathbin: |/usr/local/munki|
-addcompletion match: |cat|
-pathcompletion, |cat|
-|.| path match: |cat|
-addcompletion match: |cat|
-len |2|
-firstarg: |cat|
-match: |cat|
-pathbin: |/bin|
-addcompletion match: |cat|
-pathbin: |/usr/local/bin|
-addcompletion match: |cat|
-pathbin: |/usr/bin|
-addcompletion match: |cat|
-pathbin: |/bin|
-addcompletion match: |cat|
-pathbin: |/usr/sbin|
-addcompletion match: |cat|
-pathbin: |/sbin|
-addcompletion match: |cat|
-pathbin: |/usr/local/munki|
-addcompletion match: |cat|
-pathcompletion, |cat|
-|.| path match: |cat|
-addcompletion match: |cat|
-len |2|
-firstarg: |cat|
-match: |cat|
-pathbin: |/bin|
-addcompletion match: |cat|
-pathbin: |/usr/local/bin|
-addcompletion match: |cat|
-pathbin: |/usr/bin|
-addcompletion match: |cat|
-pathbin: |/bin|
-addcompletion match: |cat|
-pathbin: |/usr/sbin|
-addcompletion match: |cat|
-pathbin: |/sbin|
-addcompletion match: |cat|
-pathbin: |/usr/local/munki|
-addcompletion match: |cat|
-pathcompletion, |cat|
-|.| path match: |cat|
-addcompletion match: |cat|
-len |2|
-firstarg: |cat|
-match: |cat|
-pathbin: |/bin|
-addcompletion match: |cat|
-pathbin: |/usr/local/bin|
-addcompletion match: |cat|
-pathbin: |/usr/bin|
-addcompletion match: |cat|
-pathbin: |/bin|
-addcompletion match: |cat|
-pathbin: |/usr/sbin|
-addcompletion match: |cat|
-pathbin: |/sbin|
-addcompletion match: |cat|
-pathbin: |/usr/local/munki|
-addcompletion match: |cat|
-pathcompletion, |cat|
-|.| path match: |cat|
-addcompletion match: |cat|
-len |2|
-firstarg: |cat|
-match: |cat|
-pathbin: |/bin|
-addcompletion match: |cat|
-pathbin: |/usr/local/bin|
-addcompletion match: |cat|
-pathbin: |/usr/bin|
-addcompletion match: |cat|
-pathbin: |/bin|
-addcompletion match: |cat|
-pathbin: |/usr/sbin|
-addcompletion match: |cat|
-pathbin: |/sbin|
-addcompletion match: |cat|
-pathbin: |/usr/local/munki|
-addcompletion match: |cat|
-pathcompletion, |cat|
-|.| path match: |cat|
-addcompletion match: |cat|
-len |2|
-firstarg: |cat|
-match: |cat|
-pathbin: |/bin|
-addcompletion match: |cat|
-pathbin: |/usr/local/bin|
-addcompletion match: |cat|
-pathbin: |/usr/bin|
-addcompletion match: |cat|
-pathbin: |/bin|
-addcompletion match: |cat|
-pathbin: |/usr/sbin|
-addcompletion match: |cat|
-pathbin: |/sbin|
-addcompletion match: |cat|
-pathbin: |/usr/local/munki|
-addcompletion match: |cat|
-pathcompletion, |cat|
-|.| path match: |cat|
-addcompletion match: |cat|
-len |2|
-firstarg: |cat|
-match: |cat|
-pathbin: |/bin|
-addcompletion match: |cat|
-pathbin: |/usr/local/bin|
-addcompletion match: |cat|
-pathbin: |/usr/bin|
-addcompletion match: |cat|
-pathbin: |/bin|
-addcompletion match: |cat|
-pathbin: |/usr/sbin|
-addcompletion match: |cat|
-pathbin: |/sbin|
-addcompletion match: |cat|
-pathbin: |/usr/local/munki|
-addcompletion match: |cat|
-pathcompletion, |cat|
-|.| path match: |cat|
-addcompletion match: |cat|
-len |2|
-firstarg: |cat|
-match: |cat|
-pathbin: |/bin|
-addcompletion match: |cat|
-pathbin: |/usr/local/bin|
-addcompletion match: |cat|
-pathbin: |/usr/bin|
-addcompletion match: |cat|
-pathbin: |/bin|
-addcompletion match: |cat|
-pathbin: |/usr/sbin|
-addcompletion match: |cat|
-pathbin: |/sbin|
-addcompletion match: |cat|
-pathbin: |/usr/local/munki|
-addcompletion match: |cat|
-pathcompletion, |cat|
-|.| path match: |cat|
-addcompletion match: |cat|
-len |2|
-firstarg: |cat|
-match: |cat|
-pathbin: |/bin|
-addcompletion match: |cat|
-pathbin: |/usr/local/bin|
-addcompletion match: |cat|
-pathbin: |/usr/bin|
-addcompletion match: |cat|
-pathbin: |/bin|
-addcompletion match: |cat|
-pathbin: |/usr/sbin|
-addcompletion match: |cat|
-pathbin: |/sbin|
-addcompletion match: |cat|
-pathbin: |/usr/local/munki|
-addcompletion match: |cat|
-pathcompletion, |cat|
-|.| path match: |cat|
-addcompletion match: |cat|
-len |2|
-firstarg: |cat|
-match: |cat|
-pathbin: |/bin|
-addcompletion match: |cat|
-pathbin: |/usr/local/bin|
-addcompletion match: |cat|
-pathbin: |/usr/bin|
-addcompletion match: |cat|
-pathbin: |/bin|
-addcompletion match: |cat|
-pathbin: |/usr/sbin|
-addcompletion match: |cat|
-pathbin: |/sbin|
-addcompletion match: |cat|
-pathbin: |/usr/local/munki|
-addcompletion match: |cat|
-pathcompletion, |cat|
-|.| path match: |cat|
-addcompletion match: |cat|
-len |2|
-firstarg: |cat|
-match: |cat|
-pathbin: |/bin|
-addcompletion match: |cat|
-pathbin: |/usr/local/bin|
-addcompletion match: |cat|
-pathbin: |/usr/bin|
-addcompletion match: |cat|
-pathbin: |/bin|
-addcompletion match: |cat|
-pathbin: |/usr/sbin|
-addcompletion match: |cat|
-pathbin: |/sbin|
-addcompletion match: |cat|
-pathbin: |/usr/local/munki|
-addcompletion match: |cat|
-pathcompletion, |cat|
-|.| path match: |cat|
-addcompletion match: |cat|
-len |2|
-firstarg: |cat|
-match: |cat|
-pathbin: |/bin|
-addcompletion match: |cat|
-pathbin: |/usr/local/bin|
-addcompletion match: |cat|
-pathbin: |/usr/bin|
-addcompletion match: |cat|
-pathbin: |/bin|
-addcompletion match: |cat|
-pathbin: |/usr/sbin|
-addcompletion match: |cat|
-pathbin: |/sbin|
-addcompletion match: |cat|
-pathbin: |/usr/local/munki|
-addcompletion match: |cat|
-pathcompletion, |cat|
-|.| path match: |cat|
-addcompletion match: |cat|
-len |2|
-firstarg: |cat|
-match: |cat|
-pathbin: |/bin|
-addcompletion match: |cat|
-pathbin: |/usr/local/bin|
-addcompletion match: |cat|
-pathbin: |/usr/bin|
-addcompletion match: |cat|
-pathbin: |/bin|
-addcompletion match: |cat|
-pathbin: |/usr/sbin|
-addcompletion match: |cat|
-pathbin: |/sbin|
-addcompletion match: |cat|
-pathbin: |/usr/local/munki|
-addcompletion match: |cat|
-pathcompletion, |cat|
-|.| path match: |cat|
-addcompletion match: |cat|
-len |2|
-firstarg: |cat|
-match: |cat|
-pathbin: |/bin|
-addcompletion match: |cat|
-pathbin: |/usr/local/bin|
-addcompletion match: |cat|
-pathbin: |/usr/bin|
-addcompletion match: |cat|
-pathbin: |/bin|
-addcompletion match: |cat|
-pathbin: |/usr/sbin|
-addcompletion match: |cat|
-pathbin: |/sbin|
-addcompletion match: |cat|
-pathbin: |/usr/local/munki|
-addcompletion match: |cat|
-pathcompletion, |cat|
-|.| path match: |cat|
-addcompletion match: |cat|
-len |2|
-firstarg: |cat|
-match: |cat|
-pathbin: |/bin|
-addcompletion match: |cat|
-pathbin: |/usr/local/bin|
-addcompletion match: |cat|
-pathbin: |/usr/bin|
-addcompletion match: |cat|
-pathbin: |/bin|
-addcompletion match: |cat|
-pathbin: |/usr/sbin|
-addcompletion match: |cat|
-pathbin: |/sbin|
-addcompletion match: |cat|
-pathbin: |/usr/local/munki|
-addcompletion match: |cat|
-pathcompletion, |cat|
-|.| path match: |cat|
-addcompletion match: |cat|
-len |2|
-firstarg: |cat|
-match: |cat|
-pathbin: |/bin|
-addcompletion match: |cat|
-pathbin: |/usr/local/bin|
-addcompletion match: |cat|
-pathbin: |/usr/bin|
-addcompletion match: |cat|
-pathbin: |/bin|
-addcompletion match: |cat|
-pathbin: |/usr/sbin|
-addcompletion match: |cat|
-pathbin: |/sbin|
-addcompletion match: |cat|
-pathbin: |/usr/local/munki|
-addcompletion match: |cat|
-pathcompletion, |cat|
-|.| path match: |cat|
-addcompletion match: |cat|
-len |2|
-firstarg: |cat|
-match: |cat|
-pathbin: |/bin|
-addcompletion match: |cat|
-pathbin: |/usr/local/bin|
-addcompletion match: |cat|
-pathbin: |/usr/bin|
-addcompletion match: |cat|
-pathbin: |/bin|
-addcompletion match: |cat|
-pathbin: |/usr/sbin|
-addcompletion match: |cat|
-pathbin: |/sbin|
-addcompletion match: |cat|
-pathbin: |/usr/local/munki|
-addcompletion match: |cat|
-pathcompletion, |cat|
-|.| path match: |cat|
-addcompletion match: |cat|
-len |2|
-firstarg: |cat|
-match: |cat|
-pathbin: |/bin|
-addcompletion match: |cat|
-pathbin: |/usr/local/bin|
-addcompletion match: |cat|
-pathbin: |/usr/bin|
-addcompletion match: |cat|
-pathbin: |/bin|
-addcompletion match: |cat|
-pathbin: |/usr/sbin|
-addcompletion match: |cat|
-pathbin: |/sbin|
-addcompletion match: |cat|
-pathbin: |/usr/local/munki|
-addcompletion match: |cat|
-pathcompletion, |cat|
-|.| path match: |cat|
-addcompletion match: |cat|
-len |2|
-firstarg: |cat|
-match: |cat|
-pathbin: |/bin|
-addcompletion match: |cat|
-pathbin: |/usr/local/bin|
-addcompletion match: |cat|
-pathbin: |/usr/bin|
-addcompletion match: |cat|
-pathbin: |/bin|
-addcompletion match: |cat|
-pathbin: |/usr/sbin|
-addcompletion match: |cat|
-pathbin: |/sbin|
-addcompletion match: |cat|
-pathbin: |/usr/local/munki|
-addcompletion match: |cat|
-pathcompletion, |cat|
-|.| path match: |cat|
-addcompletion match: |cat|
-len |2|
-firstarg: |cat|
-match: |cat|
-pathbin: |/bin|
-addcompletion match: |cat|
-pathbin: |/usr/local/bin|
-addcompletion match: |cat|
-pathbin: |/usr/bin|
-addcompletion match: |cat|
-pathbin: |/bin|
-addcompletion match: |cat|
-pathbin: |/usr/sbin|
-addcompletion match: |cat|
-pathbin: |/sbin|
-addcompletion match: |cat|
-pathbin: |/usr/local/munki|
-addcompletion match: |cat|
-pathcompletion, |cat|
-|.| path match: |cat|
-addcompletion match: |cat|
-len |2|
-firstarg: |cat|
-match: |cat|
-pathbin: |/bin|
-addcompletion match: |cat|
-pathbin: |/usr/local/bin|
-addcompletion match: |cat|
-pathbin: |/usr/bin|
-addcompletion match: |cat|
-pathbin: |/bin|
-addcompletion match: |cat|
-pathbin: |/usr/sbin|
-addcompletion match: |cat|
-pathbin: |/sbin|
-addcompletion match: |cat|
-pathbin: |/usr/local/munki|
-addcompletion match: |cat|
-pathcompletion, |cat|
-|.| path match: |cat|
-addcompletion match: |cat|
-len |2|
-firstarg: |cat|
-match: |cat|
-pathbin: |/bin|
-addcompletion match: |cat|
-pathbin: |/usr/local/bin|
-addcompletion match: |cat|
-pathbin: |/usr/bin|
-addcompletion match: |cat|
-pathbin: |/bin|
-addcompletion match: |cat|
-pathbin: |/usr/sbin|
-addcompletion match: |cat|
-pathbin: |/sbin|
-addcompletion match: |cat|
-pathbin: |/usr/local/munki|
-addcompletion match: |cat|
-pathcompletion, |cat|
-|.| path match: |cat|
-addcompletion match: |cat|
-len |2|
-firstarg: |cat|
-match: |cat|
-pathbin: |/bin|
-addcompletion match: |cat|
-pathbin: |/usr/local/bin|
-addcompletion match: |cat|
-pathbin: |/usr/bin|
-addcompletion match: |cat|
-pathbin: |/bin|
-addcompletion match: |cat|
-pathbin: |/usr/sbin|
-addcompletion match: |cat|
-pathbin: |/sbin|
-addcompletion match: |cat|
-pathbin: |/usr/local/munki|
-addcompletion match: |cat|
-pathcompletion, |cat|
-|.| path match: |cat|
-addcompletion match: |cat|
-len |2|
-firstarg: |Inc|
-match: |Inc|
-pathbin: |/bin|
-addcompletion match: |Inc|
-pathbin: |/usr/local/bin|
-addcompletion match: |Inc|
-pathbin: |/usr/bin|
-addcompletion match: |Inc|
-pathbin: |/bin|
-addcompletion match: |Inc|
-pathbin: |/usr/sbin|
-addcompletion match: |Inc|
-pathbin: |/sbin|
-addcompletion match: |Inc|
-pathbin: |/usr/local/munki|
-addcompletion match: |Inc|
-pathcompletion, |Inc|
-|.| path match: |Inc|
-addcompletion match: |Inc|
-firstarg: |inc|
-match: |inc|
-pathbin: |/bin|
-addcompletion match: |inc|
-pathbin: |/usr/local/bin|
-addcompletion match: |inc|
-pathbin: |/usr/bin|
-addcompletion match: |inc|
-pathbin: |/bin|
-addcompletion match: |inc|
-pathbin: |/usr/sbin|
-addcompletion match: |inc|
-pathbin: |/sbin|
-addcompletion match: |inc|
-pathbin: |/usr/local/munki|
-addcompletion match: |inc|
-pathcompletion, |inc|
-|.| path match: |inc|
-addcompletion match: |inc|
-len |1|
-firstarg: |includes/|
-addcompletion match: ||
-len |5|
-firstarg: |includes/|
-addcompletion match: ||
-len |5|
-firstarg: |includes/|
-addcompletion match: ||
-len |5|
-firstarg: |includes/|
-addcompletion match: ||
-len |5|
-firstarg: |includes/|
-addcompletion match: ||
-len |5|
-firstarg: |includes/|
-addcompletion match: ||
-len |5|
-firstarg: |includes/|
-addcompletion match: ||
-len |5|
-firstarg: |includes/|
-addcompletion match: ||
-len |5|
-firstarg: |inc|
-match: |inc|
-pathbin: |/bin|
-addcompletion match: |inc|
-pathbin: |/usr/local/bin|
-addcompletion match: |inc|
-pathbin: |/usr/bin|
-addcompletion match: |inc|
-pathbin: |/bin|
-addcompletion match: |inc|
-pathbin: |/usr/sbin|
-addcompletion match: |inc|
-pathbin: |/sbin|
-addcompletion match: |inc|
-pathbin: |/usr/local/munki|
-addcompletion match: |inc|
-pathcompletion, |inc|
-|.| path match: |inc|
-addcompletion match: |inc|
-len |1|
-firstarg: |l|
-match: |l|
-pathbin: |/bin|
-addcompletion match: |l|
-pathbin: |/usr/local/bin|
-addcompletion match: |l|
-pathbin: |/usr/bin|
-addcompletion match: |l|
-pathbin: |/bin|
-addcompletion match: |l|
-pathbin: |/usr/sbin|
-addcompletion match: |l|
-pathbin: |/sbin|
-addcompletion match: |l|
-pathbin: |/usr/local/munki|
-addcompletion match: |l|
-pathcompletion, |l|
-|.| path match: |l|
-addcompletion match: |l|
-len |100|
-firstarg: |l|
-match: |l|
-pathbin: |/bin|
-addcompletion match: |l|
-pathbin: |/usr/local/bin|
-addcompletion match: |l|
-pathbin: |/usr/bin|
-addcompletion match: |l|
-pathbin: |/bin|
-addcompletion match: |l|
-pathbin: |/usr/sbin|
-addcompletion match: |l|
-pathbin: |/sbin|
-addcompletion match: |l|
-pathbin: |/usr/local/munki|
-addcompletion match: |l|
-pathcompletion, |l|
-|.| path match: |l|
-addcompletion match: |l|
-len |100|
-firstarg: |l|
-match: |l|
-pathbin: |/bin|
-addcompletion match: |l|
-pathbin: |/usr/local/bin|
-addcompletion match: |l|
-pathbin: |/usr/bin|
-addcompletion match: |l|
-pathbin: |/bin|
-addcompletion match: |l|
-pathbin: |/usr/sbin|
-addcompletion match: |l|
-pathbin: |/sbin|
-addcompletion match: |l|
-pathbin: |/usr/local/munki|
-addcompletion match: |l|
-pathcompletion, |l|
-|.| path match: |l|
-addcompletion match: |l|
-len |100|
-firstarg: |l|
-match: |l|
-pathbin: |/bin|
-addcompletion match: |l|
-pathbin: |/usr/local/bin|
-addcompletion match: |l|
-pathbin: |/usr/bin|
-addcompletion match: |l|
-pathbin: |/bin|
-addcompletion match: |l|
-pathbin: |/usr/sbin|
-addcompletion match: |l|
-pathbin: |/sbin|
-addcompletion match: |l|
-pathbin: |/usr/local/munki|
-addcompletion match: |l|
-pathcompletion, |l|
-|.| path match: |l|
-addcompletion match: |l|
-len |100|
-firstarg: |lo|
-match: |lo|
-pathbin: |/bin|
-addcompletion match: |lo|
-pathbin: |/usr/local/bin|
-addcompletion match: |lo|
-pathbin: |/usr/bin|
-addcompletion match: |lo|
-pathbin: |/bin|
-addcompletion match: |lo|
-pathbin: |/usr/sbin|
-addcompletion match: |lo|
-pathbin: |/sbin|
-addcompletion match: |lo|
-pathbin: |/usr/local/munki|
-addcompletion match: |lo|
-pathcompletion, |lo|
-|.| path match: |lo|
-addcompletion match: |lo|
-len |16|
-firstarg: |lo|
-match: |lo|
-pathbin: |/bin|
-addcompletion match: |lo|
-pathbin: |/usr/local/bin|
-addcompletion match: |lo|
-pathbin: |/usr/bin|
-addcompletion match: |lo|
-pathbin: |/bin|
-addcompletion match: |lo|
-pathbin: |/usr/sbin|
-addcompletion match: |lo|
-pathbin: |/sbin|
-addcompletion match: |lo|
-pathbin: |/usr/local/munki|
-addcompletion match: |lo|
-pathcompletion, |lo|
-|.| path match: |lo|
-addcompletion match: |lo|
-len |16|
-firstarg: |lo|
-match: |lo|
-pathbin: |/bin|
-addcompletion match: |lo|
-pathbin: |/usr/local/bin|
-addcompletion match: |lo|
-pathbin: |/usr/bin|
-addcompletion match: |lo|
-pathbin: |/bin|
-addcompletion match: |lo|
-pathbin: |/usr/sbin|
-addcompletion match: |lo|
-pathbin: |/sbin|
-addcompletion match: |lo|
-pathbin: |/usr/local/munki|
-addcompletion match: |lo|
-pathcompletion, |lo|
-|.| path match: |lo|
-addcompletion match: |lo|
-len |16|
-firstarg: |lo|
-match: |lo|
-pathbin: |/bin|
-addcompletion match: |lo|
-pathbin: |/usr/local/bin|
-addcompletion match: |lo|
-pathbin: |/usr/bin|
-addcompletion match: |lo|
-pathbin: |/bin|
-addcompletion match: |lo|
-pathbin: |/usr/sbin|
-addcompletion match: |lo|
-pathbin: |/sbin|
-addcompletion match: |lo|
-pathbin: |/usr/local/munki|
-addcompletion match: |lo|
-pathcompletion, |lo|
-|.| path match: |lo|
-addcompletion match: |lo|
-len |16|
-firstarg: |lo|
-match: |lo|
-pathbin: |/bin|
-addcompletion match: |lo|
-pathbin: |/usr/local/bin|
-addcompletion match: |lo|
-pathbin: |/usr/bin|
-addcompletion match: |lo|
-pathbin: |/bin|
-addcompletion match: |lo|
-pathbin: |/usr/sbin|
-addcompletion match: |lo|
-pathbin: |/sbin|
-addcompletion match: |lo|
-pathbin: |/usr/local/munki|
-addcompletion match: |lo|
-pathcompletion, |lo|
-|.| path match: |lo|
-addcompletion match: |lo|
-len |16|
-firstarg: |lo|
-match: |lo|
-pathbin: |/bin|
-addcompletion match: |lo|
-pathbin: |/usr/local/bin|
-addcompletion match: |lo|
-pathbin: |/usr/bin|
-addcompletion match: |lo|
-pathbin: |/bin|
-addcompletion match: |lo|
-pathbin: |/usr/sbin|
-addcompletion match: |lo|
-pathbin: |/sbin|
-addcompletion match: |lo|
-pathbin: |/usr/local/munki|
-addcompletion match: |lo|
-pathcompletion, |lo|
-|.| path match: |lo|
-addcompletion match: |lo|
-len |16|
-firstarg: |lo|
-match: |lo|
-pathbin: |/bin|
-addcompletion match: |lo|
-pathbin: |/usr/local/bin|
-addcompletion match: |lo|
-pathbin: |/usr/bin|
-addcompletion match: |lo|
-pathbin: |/bin|
-addcompletion match: |lo|
-pathbin: |/usr/sbin|
-addcompletion match: |lo|
-pathbin: |/sbin|
-addcompletion match: |lo|
-pathbin: |/usr/local/munki|
-addcompletion match: |lo|
-pathcompletion, |lo|
-|.| path match: |lo|
-addcompletion match: |lo|
-len |16|
-firstarg: |lo|
-match: |lo|
-pathbin: |/bin|
-addcompletion match: |lo|
-pathbin: |/usr/local/bin|
-addcompletion match: |lo|
-pathbin: |/usr/bin|
-addcompletion match: |lo|
-pathbin: |/bin|
-addcompletion match: |lo|
-pathbin: |/usr/sbin|
-addcompletion match: |lo|
-pathbin: |/sbin|
-addcompletion match: |lo|
-pathbin: |/usr/local/munki|
-addcompletion match: |lo|
-pathcompletion, |lo|
-|.| path match: |lo|
-addcompletion match: |lo|
-len |16|
-firstarg: |lo|
-match: |lo|
-pathbin: |/bin|
-addcompletion match: |lo|
-pathbin: |/usr/local/bin|
-addcompletion match: |lo|
-pathbin: |/usr/bin|
-addcompletion match: |lo|
-pathbin: |/bin|
-addcompletion match: |lo|
-pathbin: |/usr/sbin|
-addcompletion match: |lo|
-pathbin: |/sbin|
-addcompletion match: |lo|
-pathbin: |/usr/local/munki|
-addcompletion match: |lo|
-pathcompletion, |lo|
-|.| path match: |lo|
-addcompletion match: |lo|
-len |16|
-firstarg: |lo|
-match: |lo|
-pathbin: |/bin|
-addcompletion match: |lo|
-pathbin: |/usr/local/bin|
-addcompletion match: |lo|
-pathbin: |/usr/bin|
-addcompletion match: |lo|
-pathbin: |/bin|
-addcompletion match: |lo|
-pathbin: |/usr/sbin|
-addcompletion match: |lo|
-pathbin: |/sbin|
-addcompletion match: |lo|
-pathbin: |/usr/local/munki|
-addcompletion match: |lo|
-pathcompletion, |lo|
-|.| path match: |lo|
-addcompletion match: |lo|
-len |16|
-firstarg: |lo|
-match: |lo|
-pathbin: |/bin|
-addcompletion match: |lo|
-pathbin: |/usr/local/bin|
-addcompletion match: |lo|
-pathbin: |/usr/bin|
-addcompletion match: |lo|
-pathbin: |/bin|
-addcompletion match: |lo|
-pathbin: |/usr/sbin|
-addcompletion match: |lo|
-pathbin: |/sbin|
-addcompletion match: |lo|
-pathbin: |/usr/local/munki|
-addcompletion match: |lo|
-pathcompletion, |lo|
-|.| path match: |lo|
-addcompletion match: |lo|
-len |16|
-firstarg: |lo|
-match: |lo|
-pathbin: |/bin|
-addcompletion match: |lo|
-pathbin: |/usr/local/bin|
-addcompletion match: |lo|
-pathbin: |/usr/bin|
-addcompletion match: |lo|
-pathbin: |/bin|
-addcompletion match: |lo|
-pathbin: |/usr/sbin|
-addcompletion match: |lo|
-pathbin: |/sbin|
-addcompletion match: |lo|
-pathbin: |/usr/local/munki|
-addcompletion match: |lo|
-pathcompletion, |lo|
-|.| path match: |lo|
-addcompletion match: |lo|
-len |16|
-firstarg: |lo|
-match: |lo|
-pathbin: |/bin|
-addcompletion match: |lo|
-pathbin: |/usr/local/bin|
-addcompletion match: |lo|
-pathbin: |/usr/bin|
-addcompletion match: |lo|
-pathbin: |/bin|
-addcompletion match: |lo|
-pathbin: |/usr/sbin|
-addcompletion match: |lo|
-pathbin: |/sbin|
-addcompletion match: |lo|
-pathbin: |/usr/local/munki|
-addcompletion match: |lo|
-pathcompletion, |lo|
-|.| path match: |lo|
-addcompletion match: |lo|
-len |16|
-firstarg: |lo|
-match: |lo|
-pathbin: |/bin|
-addcompletion match: |lo|
-pathbin: |/usr/local/bin|
-addcompletion match: |lo|
-pathbin: |/usr/bin|
-addcompletion match: |lo|
-pathbin: |/bin|
-addcompletion match: |lo|
-pathbin: |/usr/sbin|
-addcompletion match: |lo|
-pathbin: |/sbin|
-addcompletion match: |lo|
-pathbin: |/usr/local/munki|
-addcompletion match: |lo|
-pathcompletion, |lo|
-|.| path match: |lo|
-addcompletion match: |lo|
-len |16|
-firstarg: |lo|
-match: |lo|
-pathbin: |/bin|
-addcompletion match: |lo|
-pathbin: |/usr/local/bin|
-addcompletion match: |lo|
-pathbin: |/usr/bin|
-addcompletion match: |lo|
-pathbin: |/bin|
-addcompletion match: |lo|
-pathbin: |/usr/sbin|
-addcompletion match: |lo|
-pathbin: |/sbin|
-addcompletion match: |lo|
-pathbin: |/usr/local/munki|
-addcompletion match: |lo|
-pathcompletion, |lo|
-|.| path match: |lo|
-addcompletion match: |lo|
-len |16|
-firstarg: |lo|
-match: |lo|
-pathbin: |/bin|
-addcompletion match: |lo|
-pathbin: |/usr/local/bin|
-addcompletion match: |lo|
-pathbin: |/usr/bin|
-addcompletion match: |lo|
-pathbin: |/bin|
-addcompletion match: |lo|
-pathbin: |/usr/sbin|
-addcompletion match: |lo|
-pathbin: |/sbin|
-addcompletion match: |lo|
-pathbin: |/usr/local/munki|
-addcompletion match: |lo|
-pathcompletion, |lo|
-|.| path match: |lo|
-addcompletion match: |lo|
-len |16|
-firstarg: |lo|
-match: |lo|
-pathbin: |/bin|
-addcompletion match: |lo|
-pathbin: |/usr/local/bin|
-addcompletion match: |lo|
-pathbin: |/usr/bin|
-addcompletion match: |lo|
-pathbin: |/bin|
-addcompletion match: |lo|
-pathbin: |/usr/sbin|
-addcompletion match: |lo|
-pathbin: |/sbin|
-addcompletion match: |lo|
-pathbin: |/usr/local/munki|
-addcompletion match: |lo|
-pathcompletion, |lo|
-|.| path match: |lo|
-addcompletion match: |lo|
-len |16|
-firstarg: |lo|
-match: |lo|
-pathbin: |/bin|
-addcompletion match: |lo|
-pathbin: |/usr/local/bin|
-addcompletion match: |lo|
-pathbin: |/usr/bin|
-addcompletion match: |lo|
-pathbin: |/bin|
-addcompletion match: |lo|
-pathbin: |/usr/sbin|
-addcompletion match: |lo|
-pathbin: |/sbin|
-addcompletion match: |lo|
-pathbin: |/usr/local/munki|
-addcompletion match: |lo|
-pathcompletion, |lo|
-|.| path match: |lo|
-addcompletion match: |lo|
-len |16|
-firstarg: |lo|
-match: |lo|
-pathbin: |/bin|
-addcompletion match: |lo|
-pathbin: |/usr/local/bin|
-addcompletion match: |lo|
-pathbin: |/usr/bin|
-addcompletion match: |lo|
-pathbin: |/bin|
-addcompletion match: |lo|
-pathbin: |/usr/sbin|
-addcompletion match: |lo|
-pathbin: |/sbin|
-addcompletion match: |lo|
-pathbin: |/usr/local/munki|
-addcompletion match: |lo|
-pathcompletion, |lo|
-|.| path match: |lo|
-addcompletion match: |lo|
-len |16|
-firstarg: |lo|
-match: |lo|
-pathbin: |/bin|
-addcompletion match: |lo|
-pathbin: |/usr/local/bin|
-addcompletion match: |lo|
-pathbin: |/usr/bin|
-addcompletion match: |lo|
-pathbin: |/bin|
-addcompletion match: |lo|
-pathbin: |/usr/sbin|
-addcompletion match: |lo|
-pathbin: |/sbin|
-addcompletion match: |lo|
-pathbin: |/usr/local/munki|
-addcompletion match: |lo|
-pathcompletion, |lo|
-|.| path match: |lo|
-addcompletion match: |lo|
-len |16|
-firstarg: |lo|
-match: |lo|
-pathbin: |/bin|
-addcompletion match: |lo|
-pathbin: |/usr/local/bin|
-addcompletion match: |lo|
-pathbin: |/usr/bin|
-addcompletion match: |lo|
-pathbin: |/bin|
-addcompletion match: |lo|
-pathbin: |/usr/sbin|
-addcompletion match: |lo|
-pathbin: |/sbin|
-addcompletion match: |lo|
-pathbin: |/usr/local/munki|
-addcompletion match: |lo|
-pathcompletion, |lo|
-|.| path match: |lo|
-addcompletion match: |lo|
-len |16|
-firstarg: |lo|
-match: |lo|
-pathbin: |/bin|
-addcompletion match: |lo|
-pathbin: |/usr/local/bin|
-addcompletion match: |lo|
-pathbin: |/usr/bin|
-addcompletion match: |lo|
-pathbin: |/bin|
-addcompletion match: |lo|
-pathbin: |/usr/sbin|
-addcompletion match: |lo|
-pathbin: |/sbin|
-addcompletion match: |lo|
-pathbin: |/usr/local/munki|
-addcompletion match: |lo|
-pathcompletion, |lo|
-|.| path match: |lo|
-addcompletion match: |lo|
-len |16|
-firstarg: |lo|
-match: |lo|
-pathbin: |/bin|
-addcompletion match: |lo|
-pathbin: |/usr/local/bin|
-addcompletion match: |lo|
-pathbin: |/usr/bin|
-addcompletion match: |lo|
-pathbin: |/bin|
-addcompletion match: |lo|
-pathbin: |/usr/sbin|
-addcompletion match: |lo|
-pathbin: |/sbin|
-addcompletion match: |lo|
-pathbin: |/usr/local/munki|
-addcompletion match: |lo|
-pathcompletion, |lo|
-|.| path match: |lo|
-addcompletion match: |lo|
-len |16|
-firstarg: |lo|
-match: |lo|
-pathbin: |/bin|
-addcompletion match: |lo|
-pathbin: |/usr/local/bin|
-addcompletion match: |lo|
-pathbin: |/usr/bin|
-addcompletion match: |lo|
-pathbin: |/bin|
-addcompletion match: |lo|
-pathbin: |/usr/sbin|
-addcompletion match: |lo|
-pathbin: |/sbin|
-addcompletion match: |lo|
-pathbin: |/usr/local/munki|
-addcompletion match: |lo|
-pathcompletion, |lo|
-|.| path match: |lo|
-addcompletion match: |lo|
-len |16|
-firstarg: |lo|
-match: |lo|
-pathbin: |/bin|
-addcompletion match: |lo|
-pathbin: |/usr/local/bin|
-addcompletion match: |lo|
-pathbin: |/usr/bin|
-addcompletion match: |lo|
-pathbin: |/bin|
-addcompletion match: |lo|
-pathbin: |/usr/sbin|
-addcompletion match: |lo|
-pathbin: |/sbin|
-addcompletion match: |lo|
-pathbin: |/usr/local/munki|
-addcompletion match: |lo|
-pathcompletion, |lo|
-|.| path match: |lo|
-addcompletion match: |lo|
-len |16|
-firstarg: |lo|
-match: |lo|
-pathbin: |/bin|
-addcompletion match: |lo|
-pathbin: |/usr/local/bin|
-addcompletion match: |lo|
-pathbin: |/usr/bin|
-addcompletion match: |lo|
-pathbin: |/bin|
-addcompletion match: |lo|
-pathbin: |/usr/sbin|
-addcompletion match: |lo|
-pathbin: |/sbin|
-addcompletion match: |lo|
-pathbin: |/usr/local/munki|
-addcompletion match: |lo|
-pathcompletion, |lo|
-|.| path match: |lo|
-addcompletion match: |lo|
-len |16|
-firstarg: |lo|
-match: |lo|
-pathbin: |/bin|
-addcompletion match: |lo|
-pathbin: |/usr/local/bin|
-addcompletion match: |lo|
-pathbin: |/usr/bin|
-addcompletion match: |lo|
-pathbin: |/bin|
-addcompletion match: |lo|
-pathbin: |/usr/sbin|
-addcompletion match: |lo|
-pathbin: |/sbin|
-addcompletion match: |lo|
-pathbin: |/usr/local/munki|
-addcompletion match: |lo|
-pathcompletion, |lo|
-|.| path match: |lo|
-addcompletion match: |lo|
-len |16|
-firstarg: |lo|
-match: |lo|
-pathbin: |/bin|
-addcompletion match: |lo|
-pathbin: |/usr/local/bin|
-addcompletion match: |lo|
-pathbin: |/usr/bin|
-addcompletion match: |lo|
-pathbin: |/bin|
-addcompletion match: |lo|
-pathbin: |/usr/sbin|
-addcompletion match: |lo|
-pathbin: |/sbin|
-addcompletion match: |lo|
-pathbin: |/usr/local/munki|
-addcompletion match: |lo|
-pathcompletion, |lo|
-|.| path match: |lo|
-addcompletion match: |lo|
-len |16|
-firstarg: |lo|
-match: |lo|
-pathbin: |/bin|
-addcompletion match: |lo|
-pathbin: |/usr/local/bin|
-addcompletion match: |lo|
-pathbin: |/usr/bin|
-addcompletion match: |lo|
-pathbin: |/bin|
-addcompletion match: |lo|
-pathbin: |/usr/sbin|
-addcompletion match: |lo|
-pathbin: |/sbin|
-addcompletion match: |lo|
-pathbin: |/usr/local/munki|
-addcompletion match: |lo|
-pathcompletion, |lo|
-|.| path match: |lo|
-addcompletion match: |lo|
-len |16|
-firstarg: |lo|
-match: |lo|
-pathbin: |/bin|
-addcompletion match: |lo|
-pathbin: |/usr/local/bin|
-addcompletion match: |lo|
-pathbin: |/usr/bin|
-addcompletion match: |lo|
-pathbin: |/bin|
-addcompletion match: |lo|
-pathbin: |/usr/sbin|
-addcompletion match: |lo|
-pathbin: |/sbin|
-addcompletion match: |lo|
-pathbin: |/usr/local/munki|
-addcompletion match: |lo|
-pathcompletion, |lo|
-|.| path match: |lo|
-addcompletion match: |lo|
-len |16|
-firstarg: |lo|
-match: |lo|
-pathbin: |/bin|
-addcompletion match: |lo|
-pathbin: |/usr/local/bin|
-addcompletion match: |lo|
-pathbin: |/usr/bin|
-addcompletion match: |lo|
-pathbin: |/bin|
-addcompletion match: |lo|
-pathbin: |/usr/sbin|
-addcompletion match: |lo|
-pathbin: |/sbin|
-addcompletion match: |lo|
-pathbin: |/usr/local/munki|
-addcompletion match: |lo|
-pathcompletion, |lo|
-|.| path match: |lo|
-addcompletion match: |lo|
-len |16|
-firstarg: |lo|
-match: |lo|
-pathbin: |/bin|
-addcompletion match: |lo|
-pathbin: |/usr/local/bin|
-addcompletion match: |lo|
-pathbin: |/usr/bin|
-addcompletion match: |lo|
-pathbin: |/bin|
-addcompletion match: |lo|
-pathbin: |/usr/sbin|
-addcompletion match: |lo|
-pathbin: |/sbin|
-addcompletion match: |lo|
-pathbin: |/usr/local/munki|
-addcompletion match: |lo|
-pathcompletion, |lo|
-|.| path match: |lo|
-addcompletion match: |lo|
-len |16|
-firstarg: |lo|
-match: |lo|
-pathbin: |/bin|
-addcompletion match: |lo|
-pathbin: |/usr/local/bin|
-addcompletion match: |lo|
-pathbin: |/usr/bin|
-addcompletion match: |lo|
-pathbin: |/bin|
-addcompletion match: |lo|
-pathbin: |/usr/sbin|
-addcompletion match: |lo|
-pathbin: |/sbin|
-addcompletion match: |lo|
-pathbin: |/usr/local/munki|
-addcompletion match: |lo|
-pathcompletion, |lo|
-|.| path match: |lo|
-addcompletion match: |lo|
-len |16|
-firstarg: |lo|
-match: |lo|
-pathbin: |/bin|
-addcompletion match: |lo|
-pathbin: |/usr/local/bin|
-addcompletion match: |lo|
-pathbin: |/usr/bin|
-addcompletion match: |lo|
-pathbin: |/bin|
-addcompletion match: |lo|
-pathbin: |/usr/sbin|
-addcompletion match: |lo|
-pathbin: |/sbin|
-addcompletion match: |lo|
-pathbin: |/usr/local/munki|
-addcompletion match: |lo|
-pathcompletion, |lo|
-|.| path match: |lo|
-addcompletion match: |lo|
-len |16|
-firstarg: |lo|
-match: |lo|
-pathbin: |/bin|
-addcompletion match: |lo|
-pathbin: |/usr/local/bin|
-addcompletion match: |lo|
-pathbin: |/usr/bin|
-addcompletion match: |lo|
-pathbin: |/bin|
-addcompletion match: |lo|
-pathbin: |/usr/sbin|
-addcompletion match: |lo|
-pathbin: |/sbin|
-addcompletion match: |lo|
-pathbin: |/usr/local/munki|
-addcompletion match: |lo|
-pathcompletion, |lo|
-|.| path match: |lo|
-addcompletion match: |lo|
-len |16|
-firstarg: |lo|
-match: |lo|
-pathbin: |/bin|
-addcompletion match: |lo|
-pathbin: |/usr/local/bin|
-addcompletion match: |lo|
-pathbin: |/usr/bin|
-addcompletion match: |lo|
-pathbin: |/bin|
-addcompletion match: |lo|
-pathbin: |/usr/sbin|
-addcompletion match: |lo|
-pathbin: |/sbin|
-addcompletion match: |lo|
-pathbin: |/usr/local/munki|
-addcompletion match: |lo|
-pathcompletion, |lo|
-|.| path match: |lo|
-addcompletion match: |lo|
-len |16|
-firstarg: |./|
-addcompletion match: ||
-len |8|
-firstarg: |./|
-addcompletion match: ||
-len |8|
-firstarg: |./|
-addcompletion match: ||
-len |8|
-firstarg: |./|
-addcompletion match: ||
-len |8|
-firstarg: |./|
-addcompletion match: ||
-len |8|
-firstarg: |./|
-addcompletion match: ||
-len |8|
-firstarg: |./|
-addcompletion match: ||
-len |8|
-firstarg: |./|
-addcompletion match: ||
-len |8|
-firstarg: |./|
-addcompletion match: ||
-len |8|
-firstarg: |./|
-addcompletion match: ||
-len |8|
-firstarg: |./|
-addcompletion match: ||
-len |8|
-firstarg: |./|
-addcompletion match: ||
-len |8|
-firstarg: |./|
-addcompletion match: ||
-len |8|
-firstarg: |./|
-addcompletion match: ||
-len |8|
-firstarg: |./|
-addcompletion match: ||
-len |8|
-firstarg: |./|
-addcompletion match: ||
-len |8|
-firstarg: |./|
-addcompletion match: ||
-len |8|
-firstarg: |./|
-addcompletion match: ||
-len |8|
-firstarg: |./|
-addcompletion match: ||
-len |8|
-firstarg: |./|
-addcompletion match: ||
-len |8|
-firstarg: |./|
-addcompletion match: ||
-len |8|
-firstarg: |./|
-addcompletion match: ||
-len |8|
-firstarg: |./|
-addcompletion match: ||
-len |8|
-firstarg: |./|
-addcompletion match: ||
-len |8|
-firstarg: |./|
-addcompletion match: ||
-len |8|
-firstarg: |./|
-addcompletion match: ||
-len |8|
-firstarg: |./|
-addcompletion match: ||
-len |8|
-firstarg: |./|
-addcompletion match: ||
-len |8|
-firstarg: |./|
-addcompletion match: ||
-len |8|
-firstarg: |./|
-addcompletion match: ||
-len |8|
-firstarg: |./|
-addcompletion match: ||
-len |8|
-firstarg: |./|
-addcompletion match: ||
-len |8|
-firstarg: |./|
-addcompletion match: ||
-len |8|
-firstarg: |./|
-addcompletion match: ||
-len |8|
-firstarg: |./|
-addcompletion match: ||
-len |8|
-firstarg: |./|
-addcompletion match: ||
-len |8|
-firstarg: |./|
-addcompletion match: ||
-len |8|
-firstarg: |./|
-addcompletion match: ||
-len |8|
-firstarg: |./|
-addcompletion match: ||
-len |8|
-firstarg: |./|
-addcompletion match: ||
-len |8|
-firstarg: |./|
-addcompletion match: ||
-len |8|
-firstarg: |./|
-addcompletion match: ||
-len |8|
-firstarg: |./|
-addcompletion match: ||
-len |8|
-firstarg: |./|
-addcompletion match: ||
-len |8|
-firstarg: |./|
-addcompletion match: ||
-len |8|
-firstarg: |./|
-addcompletion match: ||
-len |8|
-firstarg: |./|
-addcompletion match: ||
-len |8|
-firstarg: |./|
-addcompletion match: ||
-len |8|
-firstarg: |./|
-addcompletion match: ||
-len |8|
-firstarg: |./|
-addcompletion match: ||
-len |8|
-firstarg: |./|
-addcompletion match: ||
-len |8|
-firstarg: |./|
-addcompletion match: ||
-len |8|
-firstarg: |./|
-addcompletion match: ||
-len |8|
-firstarg: |./|
-addcompletion match: ||
-len |8|
-firstarg: |./|
-addcompletion match: ||
-len |8|
-firstarg: |./|
-addcompletion match: ||
-len |8|
-firstarg: |./|
-addcompletion match: ||
-len |8|
-firstarg: |./|
-addcompletion match: ||
-len |8|
-firstarg: |./|
-addcompletion match: ||
-len |8|
-firstarg: |./|
-addcompletion match: ||
-len |8|
-firstarg: |./|
-addcompletion match: ||
-len |8|
-firstarg: |./|
-addcompletion match: ||
-len |8|
-firstarg: |./|
-addcompletion match: ||
-len |8|
-firstarg: |./|
-addcompletion match: ||
-len |8|
-firstarg: |./|
-addcompletion match: ||
-len |8|
-firstarg: |./|
-addcompletion match: ||
-len |8|
-firstarg: |./|
-addcompletion match: ||
-len |8|
-firstarg: |./includes/|
-addcompletion match: ||
-len |5|
-firstarg: |./includes/|
-addcompletion match: ||
-len |5|
-firstarg: |./includes/|
-addcompletion match: ||
-len |5|
-firstarg: |./includes/|
-addcompletion match: ||
-len |5|
-firstarg: |./includes/prompt.h|
-match: |./includes/prompt.h|
-pathbin: |/bin|
-addcompletion match: |./includes/prompt.h|
-pathbin: |/usr/local/bin|
-addcompletion match: |./includes/prompt.h|
-pathbin: |/usr/bin|
-addcompletion match: |./includes/prompt.h|
-pathbin: |/bin|
-addcompletion match: |./includes/prompt.h|
-pathbin: |/usr/sbin|
-addcompletion match: |./includes/prompt.h|
-pathbin: |/sbin|
-addcompletion match: |./includes/prompt.h|
-pathbin: |/usr/local/munki|
-addcompletion match: |./includes/prompt.h|
-pathcompletion, |./includes/prompt.h|
-i ici vaut: 18
-i ici vaut: 10
-|./includes| path match: |prompt.h|
-addcompletion match: |prompt.h|
-len |1|
-firstarg: |./includes/prompt.h|
-match: |./includes/prompt.h|
-pathbin: |/bin|
-addcompletion match: |./includes/prompt.h|
-pathbin: |/usr/local/bin|
-addcompletion match: |./includes/prompt.h|
-pathbin: |/usr/bin|
-addcompletion match: |./includes/prompt.h|
-pathbin: |/bin|
-addcompletion match: |./includes/prompt.h|
-pathbin: |/usr/sbin|
-addcompletion match: |./includes/prompt.h|
-pathbin: |/sbin|
-addcompletion match: |./includes/prompt.h|
-pathbin: |/usr/local/munki|
-addcompletion match: |./includes/prompt.h|
-pathcompletion, |./includes/prompt.h|
-i ici vaut: 18
-i ici vaut: 10
-|./includes| path match: |prompt.h|
-addcompletion match: |prompt.h|
-len |1|
-firstarg: |./includes/prompt.h|
-match: |./includes/prompt.h|
-pathbin: |/bin|
-addcompletion match: |./includes/prompt.h|
-pathbin: |/usr/local/bin|
-addcompletion match: |./includes/prompt.h|
-pathbin: |/usr/bin|
-addcompletion match: |./includes/prompt.h|
-pathbin: |/bin|
-addcompletion match: |./includes/prompt.h|
-pathbin: |/usr/sbin|
-addcompletion match: |./includes/prompt.h|
-pathbin: |/sbin|
-addcompletion match: |./includes/prompt.h|
-pathbin: |/usr/local/munki|
-addcompletion match: |./includes/prompt.h|
-pathcompletion, |./includes/prompt.h|
-i ici vaut: 18
-i ici vaut: 10
-|./includes| path match: |prompt.h|
-addcompletion match: |prompt.h|
-len |1|
-firstarg: |./includes/prompt.h|
-match: |./includes/prompt.h|
-pathbin: |/bin|
-addcompletion match: |./includes/prompt.h|
-pathbin: |/usr/local/bin|
-addcompletion match: |./includes/prompt.h|
-pathbin: |/usr/bin|
-addcompletion match: |./includes/prompt.h|
-pathbin: |/bin|
-addcompletion match: |./includes/prompt.h|
-pathbin: |/usr/sbin|
-addcompletion match: |./includes/prompt.h|
-pathbin: |/sbin|
-addcompletion match: |./includes/prompt.h|
-pathbin: |/usr/local/munki|
-addcompletion match: |./includes/prompt.h|
-pathcompletion, |./includes/prompt.h|
-i ici vaut: 18
-i ici vaut: 10
-|./includes| path match: |prompt.h|
-addcompletion match: |prompt.h|
-len |1|
-space 
-addcompletion match: ||
-len |8|
-space 
-addcompletion match: ||
-len |8|
-space 
-addcompletion match: ||
-len |8|
-space 
-addcompletion match: ||
-len |8|
-space 
-addcompletion match: ||
-len |8|
-space 
-addcompletion match: ||
-len |8|
-space 
-addcompletion match: ||
-len |8|
-space 
-addcompletion match: ||
-len |8|
-space 
-addcompletion match: ||
-len |8|
-space 
-addcompletion match: ||
-len |8|
-space 
-addcompletion match: ||
-len |8|
-space 
-addcompletion match: ||
-len |8|
-space 
-addcompletion match: ||
-len |8|
-space 
-addcompletion match: ||
-len |8|
-space 
-addcompletion match: ||
-len |8|
-space 
-addcompletion match: ||
-len |8|
-space 
-addcompletion match: ||
-len |8|
-space 
-addcompletion match: ||
-len |8|
-space 
-addcompletion match: ||
-len |8|
-arg: |42sh|
-pathcompletion, |42sh|
-|.| path match: |42sh|
-addcompletion match: |42sh|
-len |1|
-firstarg: |$U|
-env arg: |U|
-len |1|
-firstarg: |${|
-env arg: ||
-len |31|
-firstarg: |${|
-env arg: ||
-len |31|
-firstarg: |${|
-env arg: ||
-len |31|
-firstarg: |${|
-env arg: ||
-len |31|
-firstarg: |${|
-env arg: ||
-len |31|
-firstarg: |${|
-env arg: ||
-len |31|
-firstarg: |${|
-env arg: ||
-len |31|
-firstarg: |${|
-env arg: ||
-len |31|
-firstarg: |${|
-env arg: ||
-len |31|
-firstarg: |${|
-env arg: ||
-len |31|
-firstarg: |${|
-env arg: ||
-len |31|
-firstarg: |${|
-env arg: ||
-len |31|
-firstarg: |${|
-env arg: ||
-len |31|
-firstarg: |${|
-env arg: ||
-len |31|
-arg: |/|
-addcompletion match: ||
-len |20|
-arg: |/|
-addcompletion match: ||
-len |20|
-arg: |/bin/|
-addcompletion match: ||
-len |37|
-arg: |/bin/|
-addcompletion match: ||
-len |37|
-arg: |/bin/|
-addcompletion match: ||
-len |37|
-firstarg: |ca|
-match: |ca|
-pathbin: |/bin|
-addcompletion match: |ca|
-pathbin: |/usr/local/bin|
-addcompletion match: |ca|
-pathbin: |/usr/bin|
-addcompletion match: |ca|
-pathbin: |/bin|
-addcompletion match: |ca|
-pathbin: |/usr/sbin|
-addcompletion match: |ca|
-pathbin: |/sbin|
-addcompletion match: |ca|
-pathbin: |/usr/local/munki|
-addcompletion match: |ca|
-pathcompletion, |ca|
-|.| path match: |ca|
-addcompletion match: |ca|
-len |8|
-firstarg: |ca|
-match: |ca|
-pathbin: |/bin|
-addcompletion match: |ca|
-pathbin: |/usr/local/bin|
-addcompletion match: |ca|
-pathbin: |/usr/bin|
-addcompletion match: |ca|
-pathbin: |/bin|
-addcompletion match: |ca|
-pathbin: |/usr/sbin|
-addcompletion match: |ca|
-pathbin: |/sbin|
-addcompletion match: |ca|
-pathbin: |/usr/local/munki|
-addcompletion match: |ca|
-pathcompletion, |ca|
-|.| path match: |ca|
-addcompletion match: |ca|
-len |8|
-firstarg: |ca|
-match: |ca|
-pathbin: |/bin|
-addcompletion match: |ca|
-pathbin: |/usr/local/bin|
-addcompletion match: |ca|
-pathbin: |/usr/bin|
-addcompletion match: |ca|
-pathbin: |/bin|
-addcompletion match: |ca|
-pathbin: |/usr/sbin|
-addcompletion match: |ca|
-pathbin: |/sbin|
-addcompletion match: |ca|
-pathbin: |/usr/local/munki|
-addcompletion match: |ca|
-pathcompletion, |ca|
-|.| path match: |ca|
-addcompletion match: |ca|
-len |8|
-firstarg: |ca|
-match: |ca|
-pathbin: |/bin|
-addcompletion match: |ca|
-pathbin: |/usr/local/bin|
-addcompletion match: |ca|
-pathbin: |/usr/bin|
-addcompletion match: |ca|
-pathbin: |/bin|
-addcompletion match: |ca|
-pathbin: |/usr/sbin|
-addcompletion match: |ca|
-pathbin: |/sbin|
-addcompletion match: |ca|
-pathbin: |/usr/local/munki|
-addcompletion match: |ca|
-pathcompletion, |ca|
-|.| path match: |ca|
-addcompletion match: |ca|
-len |8|
-firstarg: |ca|
-match: |ca|
-pathbin: |/bin|
-addcompletion match: |ca|
-pathbin: |/usr/local/bin|
-addcompletion match: |ca|
-pathbin: |/usr/bin|
-addcompletion match: |ca|
-pathbin: |/bin|
-addcompletion match: |ca|
-pathbin: |/usr/sbin|
-addcompletion match: |ca|
-pathbin: |/sbin|
-addcompletion match: |ca|
-pathbin: |/usr/local/munki|
-addcompletion match: |ca|
-pathcompletion, |ca|
-|.| path match: |ca|
-addcompletion match: |ca|
-len |8|
-firstarg: |ca|
-match: |ca|
-pathbin: |/bin|
-addcompletion match: |ca|
-pathbin: |/usr/local/bin|
-addcompletion match: |ca|
-pathbin: |/usr/bin|
-addcompletion match: |ca|
-pathbin: |/bin|
-addcompletion match: |ca|
-pathbin: |/usr/sbin|
-addcompletion match: |ca|
-pathbin: |/sbin|
-addcompletion match: |ca|
-pathbin: |/usr/local/munki|
-addcompletion match: |ca|
-pathcompletion, |ca|
-|.| path match: |ca|
-addcompletion match: |ca|
-len |8|
-firstarg: |ca|
-match: |ca|
-pathbin: |/bin|
-addcompletion match: |ca|
-pathbin: |/usr/local/bin|
-addcompletion match: |ca|
-pathbin: |/usr/bin|
-addcompletion match: |ca|
-pathbin: |/bin|
-addcompletion match: |ca|
-pathbin: |/usr/sbin|
-addcompletion match: |ca|
-pathbin: |/sbin|
-addcompletion match: |ca|
-pathbin: |/usr/local/munki|
-addcompletion match: |ca|
-pathcompletion, |ca|
-|.| path match: |ca|
-addcompletion match: |ca|
-len |8|
-firstarg: |ca|
-match: |ca|
-pathbin: |/bin|
-addcompletion match: |ca|
-pathbin: |/usr/local/bin|
-addcompletion match: |ca|
-pathbin: |/usr/bin|
-addcompletion match: |ca|
-pathbin: |/bin|
-addcompletion match: |ca|
-pathbin: |/usr/sbin|
-addcompletion match: |ca|
-pathbin: |/sbin|
-addcompletion match: |ca|
-pathbin: |/usr/local/munki|
-addcompletion match: |ca|
-pathcompletion, |ca|
-|.| path match: |ca|
-addcompletion match: |ca|
-len |8|
-space 
-addcompletion match: ||
-len |8|
-space 
-addcompletion match: ||
-len |8|
-space 
-addcompletion match: ||
-len |8|
-arg: |includes/|
-addcompletion match: ||
-len |5|
-arg: |includes/|
-addcompletion match: ||
-len |5|
-arg: |includes/|
-addcompletion match: ||
-len |5|
-arg: |includes/|
-addcompletion match: ||
-len |5|
-firstarg: |ca|
-match: |ca|
-pathbin: |/bin|
-addcompletion match: |ca|
-pathbin: |/usr/local/bin|
-addcompletion match: |ca|
-pathbin: |/usr/bin|
-addcompletion match: |ca|
-pathbin: |/bin|
-addcompletion match: |ca|
-pathbin: |/usr/sbin|
-addcompletion match: |ca|
-pathbin: |/sbin|
-addcompletion match: |ca|
-pathbin: |/usr/local/munki|
-addcompletion match: |ca|
-pathcompletion, |ca|
-|.| path match: |ca|
-addcompletion match: |ca|
-len |8|
-firstarg: |ca|
-match: |ca|
-pathbin: |/bin|
-addcompletion match: |ca|
-pathbin: |/usr/local/bin|
-addcompletion match: |ca|
-pathbin: |/usr/bin|
-addcompletion match: |ca|
-pathbin: |/bin|
-addcompletion match: |ca|
-pathbin: |/usr/sbin|
-addcompletion match: |ca|
-pathbin: |/sbin|
-addcompletion match: |ca|
-pathbin: |/usr/local/munki|
-addcompletion match: |ca|
-pathcompletion, |ca|
-|.| path match: |ca|
-addcompletion match: |ca|
-len |8|
-firstarg: |ca|
-match: |ca|
-pathbin: |/bin|
-addcompletion match: |ca|
-pathbin: |/usr/local/bin|
-addcompletion match: |ca|
-pathbin: |/usr/bin|
-addcompletion match: |ca|
-pathbin: |/bin|
-addcompletion match: |ca|
-pathbin: |/usr/sbin|
-addcompletion match: |ca|
-pathbin: |/sbin|
-addcompletion match: |ca|
-pathbin: |/usr/local/munki|
-addcompletion match: |ca|
-pathcompletion, |ca|
-|.| path match: |ca|
-addcompletion match: |ca|
-len |8|
-firstarg: |ca|
-match: |ca|
-pathbin: |/bin|
-addcompletion match: |ca|
-pathbin: |/usr/local/bin|
-addcompletion match: |ca|
-pathbin: |/usr/bin|
-addcompletion match: |ca|
-pathbin: |/bin|
-addcompletion match: |ca|
-pathbin: |/usr/sbin|
-addcompletion match: |ca|
-pathbin: |/sbin|
-addcompletion match: |ca|
-pathbin: |/usr/local/munki|
-addcompletion match: |ca|
-pathcompletion, |ca|
-|.| path match: |ca|
-addcompletion match: |ca|
-len |8|
-firstarg: |ca|
-match: |ca|
-pathbin: |/bin|
-addcompletion match: |ca|
-pathbin: |/usr/local/bin|
-addcompletion match: |ca|
-pathbin: |/usr/bin|
-addcompletion match: |ca|
-pathbin: |/bin|
-addcompletion match: |ca|
-pathbin: |/usr/sbin|
-addcompletion match: |ca|
-pathbin: |/sbin|
-addcompletion match: |ca|
-pathbin: |/usr/local/munki|
-addcompletion match: |ca|
-pathcompletion, |ca|
-|.| path match: |ca|
-addcompletion match: |ca|
-len |8|
-firstarg: |ca|
-match: |ca|
-pathbin: |/bin|
-addcompletion match: |ca|
-pathbin: |/usr/local/bin|
-addcompletion match: |ca|
-pathbin: |/usr/bin|
-addcompletion match: |ca|
-pathbin: |/bin|
-addcompletion match: |ca|
-pathbin: |/usr/sbin|
-addcompletion match: |ca|
-pathbin: |/sbin|
-addcompletion match: |ca|
-pathbin: |/usr/local/munki|
-addcompletion match: |ca|
-pathcompletion, |ca|
-|.| path match: |ca|
-addcompletion match: |ca|
-len |8|
-firstarg: |ca|
-match: |ca|
-pathbin: |/bin|
-addcompletion match: |ca|
-pathbin: |/usr/local/bin|
-addcompletion match: |ca|
-pathbin: |/usr/bin|
-addcompletion match: |ca|
-pathbin: |/bin|
-addcompletion match: |ca|
-pathbin: |/usr/sbin|
-addcompletion match: |ca|
-pathbin: |/sbin|
-addcompletion match: |ca|
-pathbin: |/usr/local/munki|
-addcompletion match: |ca|
-pathcompletion, |ca|
-|.| path match: |ca|
-addcompletion match: |ca|
-len |8|
-firstarg: |ca|
-match: |ca|
-pathbin: |/bin|
-addcompletion match: |ca|
-pathbin: |/usr/local/bin|
-addcompletion match: |ca|
-pathbin: |/usr/bin|
-addcompletion match: |ca|
-pathbin: |/bin|
-addcompletion match: |ca|
-pathbin: |/usr/sbin|
-addcompletion match: |ca|
-pathbin: |/sbin|
-addcompletion match: |ca|
-pathbin: |/usr/local/munki|
-addcompletion match: |ca|
-pathcompletion, |ca|
-|.| path match: |ca|
-addcompletion match: |ca|
-len |8|
-space 
-addcompletion match: ||
-len |8|
-space 
-addcompletion match: ||
-len |8|
-space 
-addcompletion match: ||
-len |8|
-space 
-addcompletion match: ||
-len |8|
-space 
-addcompletion match: ||
-len |8|
-arg: |includes/|
-addcompletion match: ||
-len |5|
-arg: |includes/p|
-pathcompletion, |includes/p|
-i ici vaut: 9
-i ici vaut: 8
-|includes| path match: |p|
-addcompletion match: |p|
-len |2|
-arg: |includes/p|
-pathcompletion, |includes/p|
-i ici vaut: 9
-i ici vaut: 8
-|includes| path match: |p|
-addcompletion match: |p|
-len |2|
-arg: |includes/p|
-pathcompletion, |includes/p|
-i ici vaut: 9
-i ici vaut: 8
-|includes| path match: |p|
-addcompletion match: |p|
-len |2|
-arg: |includes/p|
-pathcompletion, |includes/p|
-i ici vaut: 9
-i ici vaut: 8
-|includes| path match: |p|
-addcompletion match: |p|
-len |2|
-arg: |includes/p|
-pathcompletion, |includes/p|
-i ici vaut: 9
-i ici vaut: 8
-|includes| path match: |p|
-addcompletion match: |p|
-len |2|
-arg: |includes/p|
-pathcompletion, |includes/p|
-i ici vaut: 9
-i ici vaut: 8
-|includes| path match: |p|
-addcompletion match: |p|
-len |2|
-arg: |includes/p|
-pathcompletion, |includes/p|
-i ici vaut: 9
-i ici vaut: 8
-|includes| path match: |p|
-addcompletion match: |p|
-len |2|
-arg: |includes/p|
-pathcompletion, |includes/p|
-i ici vaut: 9
-i ici vaut: 8
-|includes| path match: |p|
-addcompletion match: |p|
-len |2|
-arg: |includes/p|
-pathcompletion, |includes/p|
-i ici vaut: 9
-i ici vaut: 8
-|includes| path match: |p|
-addcompletion match: |p|
-len |2|
-arg: |includes/p|
-pathcompletion, |includes/p|
-i ici vaut: 9
-i ici vaut: 8
-|includes| path match: |p|
-addcompletion match: |p|
-len |2|
-arg: |includes/pe|
-pathcompletion, |includes/pe|
-i ici vaut: 10
-i ici vaut: 8
-|includes| path match: |pe|
-addcompletion match: |pe|
-arg: |includes/pe|
-pathcompletion, |includes/pe|
-i ici vaut: 10
-i ici vaut: 8
-|includes| path match: |pe|
-addcompletion match: |pe|
-arg: |includes/pe|
-pathcompletion, |includes/pe|
-i ici vaut: 10
-i ici vaut: 8
-|includes| path match: |pe|
-addcompletion match: |pe|
-arg: |includes/p|
-pathcompletion, |includes/p|
-i ici vaut: 9
-i ici vaut: 8
-|includes| path match: |p|
-addcompletion match: |p|
-len |2|
-arg: |includes/|
-addcompletion match: ||
-len |5|
-arg: |includes/p|
-pathcompletion, |includes/p|
-i ici vaut: 9
-i ici vaut: 8
-|includes| path match: |p|
-addcompletion match: |p|
-len |2|
-arg: |includes/p|
-pathcompletion, |includes/p|
-i ici vaut: 9
-i ici vaut: 8
-|includes| path match: |p|
-addcompletion match: |p|
-len |2|
-arg: |includes/p|
-pathcompletion, |includes/p|
-i ici vaut: 9
-i ici vaut: 8
-|includes| path match: |p|
-addcompletion match: |p|
-len |2|
-arg: |includes/p|
-pathcompletion, |includes/p|
-i ici vaut: 9
-i ici vaut: 8
-|includes| path match: |p|
-addcompletion match: |p|
-len |2|
-arg: |includes/p|
-pathcompletion, |includes/p|
-i ici vaut: 9
-i ici vaut: 8
-|includes| path match: |p|
-addcompletion match: |p|
-len |2|
-arg: |includes/p|
-pathcompletion, |includes/p|
-i ici vaut: 9
-i ici vaut: 8
-|includes| path match: |p|
-addcompletion match: |p|
-len |2|
-arg: |includes/p|
-pathcompletion, |includes/p|
-i ici vaut: 9
-i ici vaut: 8
-|includes| path match: |p|
-addcompletion match: |p|
-len |2|
-arg: |includes/p|
-pathcompletion, |includes/p|
-i ici vaut: 9
-i ici vaut: 8
-|includes| path match: |p|
-addcompletion match: |p|
-len |2|
-arg: |includes/p|
-pathcompletion, |includes/p|
-i ici vaut: 9
-i ici vaut: 8
-|includes| path match: |p|
-addcompletion match: |p|
-len |2|
-arg: |includes/p|
-pathcompletion, |includes/p|
-i ici vaut: 9
-i ici vaut: 8
-|includes| path match: |p|
-addcompletion match: |p|
-len |2|
-arg: |includes/p|
-pathcompletion, |includes/p|
-i ici vaut: 9
-i ici vaut: 8
-|includes| path match: |p|
-addcompletion match: |p|
-len |2|
-arg: |includes/p|
-pathcompletion, |includes/p|
-i ici vaut: 9
-i ici vaut: 8
-|includes| path match: |p|
-addcompletion match: |p|
-len |2|
-arg: |includes/p|
-pathcompletion, |includes/p|
-i ici vaut: 9
-i ici vaut: 8
-|includes| path match: |p|
-addcompletion match: |p|
-len |2|
-arg: |includes/p|
-pathcompletion, |includes/p|
-i ici vaut: 9
-i ici vaut: 8
-|includes| path match: |p|
-addcompletion match: |p|
-len |2|
-arg: |includes/p|
-pathcompletion, |includes/p|
-i ici vaut: 9
-i ici vaut: 8
-|includes| path match: |p|
-addcompletion match: |p|
-len |2|
-arg: |inc|
-pathcompletion, |inc|
-|.| path match: |inc|
-addcompletion match: |inc|
-len |1|
-arg: |includes/|
-addcompletion match: ||
-len |5|
-arg: |includes/|
-addcompletion match: ||
-len |5|
-arg: |includes/|
-addcompletion match: ||
-len |5|
-arg: |includes/|
-addcompletion match: ||
-len |5|
-arg: |includes/|
-addcompletion match: ||
-len |5|
-arg: |$U|
-len |1|
-firstarg: |ca|
-match: |ca|
-pathbin: |/bin|
-addcompletion match: |ca|
-pathbin: |/usr/local/bin|
-addcompletion match: |ca|
-pathbin: |/usr/bin|
-addcompletion match: |ca|
-pathbin: |/bin|
-addcompletion match: |ca|
-pathbin: |/usr/sbin|
-addcompletion match: |ca|
-pathbin: |/sbin|
-addcompletion match: |ca|
-pathbin: |/usr/local/munki|
-addcompletion match: |ca|
-pathcompletion, |ca|
-|.| path match: |ca|
-addcompletion match: |ca|
-len |8|
-space 
-addcompletion match: ||
-len |8|
-space 
-addcompletion match: ||
-len |8|
-space 
-addcompletion match: ||
-len |8|
-space 
-addcompletion match: ||
-len |8|
-space 
-addcompletion match: ||
-len |8|
-space 
-addcompletion match: ||
-len |8|
-space 
-addcompletion match: ||
-len |8|
-space 
-addcompletion match: ||
-len |8|
-space 
-addcompletion match: ||
-len |8|
-space 
-addcompletion match: ||
-len |8|
-space 
-addcompletion match: ||
-len |8|
-space 
-addcompletion match: ||
-len |8|
-space 
-addcompletion match: ||
-len |8|
-space 
-addcompletion match: ||
-len |8|
-space 
-addcompletion match: ||
-len |8|
-space 
-addcompletion match: ||
-len |8|
-space 
-addcompletion match: ||
-len |8|
-space 
-addcompletion match: ||
-len |8|
-space 
-addcompletion match: ||
-len |8|
-space 
-addcompletion match: ||
-len |8|
-space 
-addcompletion match: ||
-len |8|
-space 
-addcompletion match: ||
-len |8|
-space 
-addcompletion match: ||
-len |8|
-space 
-addcompletion match: ||
-len |8|
-space 
-addcompletion match: ||
-len |8|
-space 
-addcompletion match: ||
-len |8|
-space 
-addcompletion match: ||
-len |8|
-space 
-addcompletion match: ||
-len |8|
-space 
-addcompletion match: ||
-len |8|
-space 
-addcompletion match: ||
-len |8|
-space 
-addcompletion match: ||
-len |8|
-space 
-addcompletion match: ||
-len |8|
-space 
-addcompletion match: ||
-len |8|
-space 
-addcompletion match: ||
-len |8|
-space 
-addcompletion match: ||
-len |8|
-space 
-addcompletion match: ||
-len |8|
-firstarg: |./|
-addcompletion match: ||
-len |8|
-firstarg: |./li|
-match: |./li|
-pathbin: |/bin|
-addcompletion match: |./li|
+firstarg: |~/42|
+match: |~/42|
+pathbin: |/Library/Frameworks/Python.framework/Versions/3.7/bin|
 pathbin: |/usr/local/bin|
-addcompletion match: |./li|
 pathbin: |/usr/bin|
-addcompletion match: |./li|
 pathbin: |/bin|
-addcompletion match: |./li|
 pathbin: |/usr/sbin|
-addcompletion match: |./li|
 pathbin: |/sbin|
-addcompletion match: |./li|
-pathbin: |/usr/local/munki|
-addcompletion match: |./li|
-pathcompletion, |./li|
+pathcompletion, |~/42|
 i ici vaut: 3
 i ici vaut: 1
-|.| path match: |li|
-addcompletion match: |li|
-len |1|
-firstarg: |./libft/|
-addcompletion match: ||
-len |4|
-firstarg: |./libft/|
-addcompletion match: ||
-len |4|
-firstarg: |./|
-addcompletion match: ||
-len |8|
-firstarg: |./|
-addcompletion match: ||
-len |8|
-firstarg: |./|
-addcompletion match: ||
-len |8|
-firstarg: |./|
-addcompletion match: ||
-len |8|
-firstarg: |./libft/|
-addcompletion match: ||
-len |4|
-firstarg: |./libft/|
-addcompletion match: ||
-len |4|
-firstarg: |./libft/|
-addcompletion match: ||
-len |4|
-firstarg: |./libft|
-match: |./libft|
-pathbin: |/bin|
-addcompletion match: |./libft|
+|~| path match: |42|
+len |3|
+firstarg: |~/42|
+match: |~/42|
+pathbin: |/Library/Frameworks/Python.framework/Versions/3.7/bin|
 pathbin: |/usr/local/bin|
-addcompletion match: |./libft|
 pathbin: |/usr/bin|
-addcompletion match: |./libft|
 pathbin: |/bin|
-addcompletion match: |./libft|
 pathbin: |/usr/sbin|
-addcompletion match: |./libft|
 pathbin: |/sbin|
-addcompletion match: |./libft|
-pathbin: |/usr/local/munki|
-addcompletion match: |./libft|
-pathcompletion, |./libft|
-i ici vaut: 6
+pathcompletion, |~/42|
+i ici vaut: 3
 i ici vaut: 1
-|.| path match: |libft|
-addcompletion match: |libft|
+|~| path match: |42|
+len |3|
+firstarg: |~/42|
+match: |~/42|
+pathbin: |/Library/Frameworks/Python.framework/Versions/3.7/bin|
+pathbin: |/usr/local/bin|
+pathbin: |/usr/bin|
+pathbin: |/bin|
+pathbin: |/usr/sbin|
+pathbin: |/sbin|
+pathcompletion, |~/42|
+i ici vaut: 3
+i ici vaut: 1
+|~| path match: |42|
+len |3|
+firstarg: |~/42|
+match: |~/42|
+pathbin: |/Library/Frameworks/Python.framework/Versions/3.7/bin|
+pathbin: |/usr/local/bin|
+pathbin: |/usr/bin|
+pathbin: |/bin|
+pathbin: |/usr/sbin|
+pathbin: |/sbin|
+pathcompletion, |~/42|
+i ici vaut: 3
+i ici vaut: 1
+|~| path match: |42|
+len |3|
+firstarg: |~/42|
+match: |~/42|
+pathbin: |/Library/Frameworks/Python.framework/Versions/3.7/bin|
+pathbin: |/usr/local/bin|
+pathbin: |/usr/bin|
+pathbin: |/bin|
+pathbin: |/usr/sbin|
+pathbin: |/sbin|
+pathcompletion, |~/42|
+i ici vaut: 3
+i ici vaut: 1
+|~| path match: |42|
+len |3|
+firstarg: |~/42sh/|
+len |8|
+firstarg: |~/42sh/|
+len |8|
+firstarg: |~/42sh/|
+len |8|
+firstarg: |~/42sh/|
+len |8|
+firstarg: |~/42sh/|
+len |8|
+firstarg: |~/42sh/|
+len |8|
+firstarg: |~/42sh/|
+len |8|
+firstarg: |~/42sh/|
+len |8|
+firstarg: |~/42sh/srcs/|
+len |5|
+firstarg: |~/42sh/srcs/|
+len |5|
+firstarg: |~/42sh/srcs/|
+len |5|
+firstarg: |~/42sh/srcs/|
+len |5|
+firstarg: |~/42sh/srcs/prompt/|
+len |23|
+firstarg: |~/42sh/srcs/prompt/|
+len |23|
+firstarg: |~/42sh/srcs/prompt/|
+len |23|
+firstarg: |~/42sh/srcs/prompt/|
+len |23|
+firstarg: |~/42sh/srcs/prompt/|
+len |23|
+firstarg: |~/42|
+match: |~/42|
+pathbin: |/Library/Frameworks/Python.framework/Versions/3.7/bin|
+pathbin: |/usr/local/bin|
+pathbin: |/usr/bin|
+pathbin: |/bin|
+pathbin: |/usr/sbin|
+pathbin: |/sbin|
+pathcompletion, |~/42|
+i ici vaut: 3
+i ici vaut: 1
+|~| path match: |42|
+len |3|
+firstarg: |~/42|
+match: |~/42|
+pathbin: |/Library/Frameworks/Python.framework/Versions/3.7/bin|
+pathbin: |/usr/local/bin|
+pathbin: |/usr/bin|
+pathbin: |/bin|
+pathbin: |/usr/sbin|
+pathbin: |/sbin|
+pathcompletion, |~/42|
+i ici vaut: 3
+i ici vaut: 1
+|~| path match: |42|
+len |3|
+firstarg: |~/42|
+match: |~/42|
+pathbin: |/Library/Frameworks/Python.framework/Versions/3.7/bin|
+pathbin: |/usr/local/bin|
+pathbin: |/usr/bin|
+pathbin: |/bin|
+pathbin: |/usr/sbin|
+pathbin: |/sbin|
+pathcompletion, |~/42|
+i ici vaut: 3
+i ici vaut: 1
+|~| path match: |42|
+len |3|
+firstarg: |~/42sh/|
+len |8|
+firstarg: |~/42sh/|
+len |8|
+firstarg: |~/42sh/|
+len |8|
+firstarg: |~/42sh/|
+len |8|
+firstarg: |~/42sh/|
+len |8|
+firstarg: |~/42sh/|
+len |8|
+firstarg: |~/42sh/|
+len |8|
+firstarg: |~/42sh/|
+len |8|
+firstarg: |~/42sh/srcs/|
+len |5|
+firstarg: |~/42sh/srcs/|
+len |5|
+firstarg: |~/42sh/srcs/|
+len |5|
+firstarg: |~/42sh/srcs/|
+len |5|
+firstarg: |~/42sh/srcs/prompt/|
+len |23|
+firstarg: |~/42sh/srcs/prompt/|
+len |23|
+firstarg: |~/42sh/srcs/prompt/|
+len |23|
+firstarg: |~/42sh/srcs/prompt/|
+len |23|
+firstarg: |~/42sh/srcs/prompt/|
+len |23|
+firstarg: |~/42sh/srcs/prompt/|
+len |23|
+firstarg: |~/42sh/srcs/prompt/|
+len |23|
+firstarg: |~/42sh/srcs/prompt/|
+len |23|
+firstarg: |~/42sh/srcs/prompt/|
+len |23|
+firstarg: |~/42sh/srcs/prompt/|
+len |23|
+firstarg: |~/42sh/srcs/prompt/|
+len |23|
+firstarg: |~/42sh/srcs/prompt/|
+len |23|
+firstarg: |~/42sh/srcs/prompt/|
+len |23|
+firstarg: |~/42sh/srcs/prompt/|
+len |23|
+firstarg: |~/42sh/srcs/prompt/|
+len |23|
+firstarg: |~/42sh/srcs/prompt/|
+len |23|
+firstarg: |~/42sh/srcs/prompt/|
+len |23|
+firstarg: |~/42sh/srcs/prompt/|
+len |23|
+firstarg: |~/42sh/srcs/prompt/|
+len |23|
+firstarg: |~/42sh/srcs/prompt/|
+len |23|
+firstarg: |~/42sh/srcs/prompt/|
+len |23|
+firstarg: |~/42sh/srcs/prompt/|
+len |23|
+firstarg: |~/42sh/srcs/prompt/|
+len |23|
+firstarg: |~/42sh/srcs/prompt/|
+len |23|
+firstarg: |~/42sh/srcs/prompt/|
+len |23|
+firstarg: |~/42sh/srcs/prompt/|
+len |23|
+firstarg: |~/42sh/srcs/prompt/|
+len |23|
+firstarg: |~/42sh/srcs/prompt/|
+len |23|
+firstarg: |~/42sh/srcs/prompt/|
+len |23|
+firstarg: |~/42sh/srcs/prompt/|
+len |23|
+firstarg: |~/42sh/srcs/prompt/|
+len |23|
+firstarg: |~/42sh/srcs/prompt/|
+len |23|
+firstarg: |~/42sh/srcs/prompt/|
+len |23|
+firstarg: |~/42sh/srcs/prompt/|
+len |23|
+firstarg: |~/42sh/srcs/prompt/|
+len |23|
+firstarg: |~/42sh/srcs/prompt/|
+len |23|
+firstarg: |~/42sh/srcs/prompt/|
+len |23|
+firstarg: |~/42sh/srcs/prompt/|
+len |23|
+firstarg: |~/42sh/srcs/prompt/|
+len |23|
+firstarg: |~/42sh/srcs/prompt/|
+len |23|
+firstarg: |~/42sh/srcs/prompt/|
+len |23|
+firstarg: |~/42sh/srcs/prompt/|
+len |23|
+firstarg: |~/42sh/srcs/prompt/|
+len |23|
+firstarg: |~/42sh/srcs/prompt/|
+len |23|
+firstarg: |~/42sh/srcs/prompt/|
+len |23|
+firstarg: |~/42sh/srcs/prompt/|
+len |23|
+firstarg: |~/42sh/srcs/prompt/|
+len |23|
+firstarg: |~/42sh/srcs/prompt/|
+len |23|
+firstarg: |~/42sh/srcs/prompt/|
+len |23|
+firstarg: |~/42sh/srcs/prompt/|
+len |23|
+firstarg: |~/42sh/srcs/prompt/|
+len |23|
+firstarg: |~/42sh/srcs/prompt/|
+len |23|
+firstarg: |~/42sh/srcs/prompt/|
+len |23|
+firstarg: |~/42sh/srcs/prompt/|
+len |23|
+firstarg: |~/42sh/srcs/prompt/|
+len |23|
+firstarg: |~/42sh/srcs/prompt/|
+len |23|
+firstarg: |~/42sh/srcs/prompt/|
+len |23|
+firstarg: |~/42sh/srcs/prompt/|
+len |23|
+firstarg: |~/42sh/srcs/prompt/|
+len |23|
+firstarg: |~/42sh/srcs/prompt/|
+len |23|
+firstarg: |~/42sh/srcs/prompt/|
+len |23|
+firstarg: |~/42sh/srcs/prompt/|
+len |23|
+firstarg: |~/42sh/srcs/prompt/|
+len |23|
+firstarg: |~/42sh/srcs/prompt/|
+len |23|
+firstarg: |~/42sh/srcs/prompt/|
+len |23|
+firstarg: |~/42sh/srcs/prompt/|
+len |23|
+firstarg: |~/42sh/srcs/prompt/|
+len |23|
+firstarg: |~/42|
+match: |~/42|
+pathbin: |/Library/Frameworks/Python.framework/Versions/3.7/bin|
+pathbin: |/usr/local/bin|
+pathbin: |/usr/bin|
+pathbin: |/bin|
+pathbin: |/usr/sbin|
+pathbin: |/sbin|
+pathcompletion, |~/42|
+i ici vaut: 3
+i ici vaut: 1
+|~| path match: |42|
+len |3|
+firstarg: |~/42|
+match: |~/42|
+pathbin: |/Library/Frameworks/Python.framework/Versions/3.7/bin|
+pathbin: |/usr/local/bin|
+pathbin: |/usr/bin|
+pathbin: |/bin|
+pathbin: |/usr/sbin|
+pathbin: |/sbin|
+pathcompletion, |~/42|
+i ici vaut: 3
+i ici vaut: 1
+|~| path match: |42|
+len |3|
+firstarg: |~/42|
+match: |~/42|
+pathbin: |/Library/Frameworks/Python.framework/Versions/3.7/bin|
+pathbin: |/usr/local/bin|
+pathbin: |/usr/bin|
+pathbin: |/bin|
+pathbin: |/usr/sbin|
+pathbin: |/sbin|
+pathcompletion, |~/42|
+i ici vaut: 3
+i ici vaut: 1
+|~| path match: |42|
+len |3|
+firstarg: |./src|
+match: |./src|
+pathbin: |/Library/Frameworks/Python.framework/Versions/3.7/bin|
+pathbin: |/usr/local/bin|
+pathbin: |/usr/bin|
+pathbin: |/bin|
+pathbin: |/usr/sbin|
+pathbin: |/sbin|
+pathcompletion, |./src|
+i ici vaut: 4
+i ici vaut: 1
+|.| path match: |src|
 len |1|
-firstarg: |./libft/|
-addcompletion match: ||
-len |4|
-firstarg: |./libft/|
-addcompletion match: ||
-len |4|
-firstarg: |./libft/|
-addcompletion match: ||
-len |4|
-firstarg: |./libft/|
-addcompletion match: ||
-len |4|
-firstarg: |./libft/srcs/|
-addcompletion match: ||
-len |94|
-firstarg: |./libft/srcs/|
-addcompletion match: ||
-len |94|
-firstarg: |./libft/srcs/|
-addcompletion match: ||
-len |94|
-firstarg: |./libft/srcs/|
-addcompletion match: ||
-len |94|
-firstarg: |./libft/srcs/|
-addcompletion match: ||
-len |94|
-firstarg: |./libft/srcs/|
-addcompletion match: ||
-len |94|
-arg: |i|
-pathcompletion, |i|
-|.| path match: |i|
-addcompletion match: |i|
+firstarg: |./srcs/pro|
+match: |./srcs/pro|
+pathbin: |/Library/Frameworks/Python.framework/Versions/3.7/bin|
+pathbin: |/usr/local/bin|
+pathbin: |/usr/bin|
+pathbin: |/bin|
+pathbin: |/usr/sbin|
+pathbin: |/sbin|
+pathcompletion, |./srcs/pro|
+i ici vaut: 9
+i ici vaut: 6
+|./srcs| path match: |pro|
 len |1|
-arg: |/|
-addcompletion match: ||
-len |20|
-arg: |/|
-addcompletion match: ||
-len |20|
-arg: |/|
-addcompletion match: ||
-len |20|
-arg: |/cores/|
-addcompletion match: ||
-len |0|
-arg: |/cores/|
-addcompletion match: ||
-len |0|
-arg: |/cores/|
-addcompletion match: ||
-len |0|
-firstarg: |c|
-match: |c|
-pathbin: |/bin|
-addcompletion match: |c|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prom|
+match: |./srcs/prom|
+pathbin: |/Library/Frameworks/Python.framework/Versions/3.7/bin|
 pathbin: |/usr/local/bin|
-addcompletion match: |c|
 pathbin: |/usr/bin|
-addcompletion match: |c|
 pathbin: |/bin|
-addcompletion match: |c|
 pathbin: |/usr/sbin|
-addcompletion match: |c|
 pathbin: |/sbin|
-addcompletion match: |c|
-pathbin: |/usr/local/munki|
-addcompletion match: |c|
-pathcompletion, |c|
-|.| path match: |c|
-addcompletion match: |c|
-len |122|
-firstarg: |c|
-match: |c|
-pathbin: |/bin|
-addcompletion match: |c|
-pathbin: |/usr/local/bin|
-addcompletion match: |c|
-pathbin: |/usr/bin|
-addcompletion match: |c|
-pathbin: |/bin|
-addcompletion match: |c|
-pathbin: |/usr/sbin|
-addcompletion match: |c|
-pathbin: |/sbin|
-addcompletion match: |c|
-pathbin: |/usr/local/munki|
-addcompletion match: |c|
-pathcompletion, |c|
-|.| path match: |c|
-addcompletion match: |c|
-len |122|
-firstarg: |ca|
-match: |ca|
-pathbin: |/bin|
-addcompletion match: |ca|
-pathbin: |/usr/local/bin|
-addcompletion match: |ca|
-pathbin: |/usr/bin|
-addcompletion match: |ca|
-pathbin: |/bin|
-addcompletion match: |ca|
-pathbin: |/usr/sbin|
-addcompletion match: |ca|
-pathbin: |/sbin|
-addcompletion match: |ca|
-pathbin: |/usr/local/munki|
-addcompletion match: |ca|
-pathcompletion, |ca|
-|.| path match: |ca|
-addcompletion match: |ca|
-len |8|
-firstarg: |ca|
-match: |ca|
-pathbin: |/bin|
-addcompletion match: |ca|
-pathbin: |/usr/local/bin|
-addcompletion match: |ca|
-pathbin: |/usr/bin|
-addcompletion match: |ca|
-pathbin: |/bin|
-addcompletion match: |ca|
-pathbin: |/usr/sbin|
-addcompletion match: |ca|
-pathbin: |/sbin|
-addcompletion match: |ca|
-pathbin: |/usr/local/munki|
-addcompletion match: |ca|
-pathcompletion, |ca|
-|.| path match: |ca|
-addcompletion match: |ca|
-len |8|
-firstarg: |ca|
-match: |ca|
-pathbin: |/bin|
-addcompletion match: |ca|
-pathbin: |/usr/local/bin|
-addcompletion match: |ca|
-pathbin: |/usr/bin|
-addcompletion match: |ca|
-pathbin: |/bin|
-addcompletion match: |ca|
-pathbin: |/usr/sbin|
-addcompletion match: |ca|
-pathbin: |/sbin|
-addcompletion match: |ca|
-pathbin: |/usr/local/munki|
-addcompletion match: |ca|
-pathcompletion, |ca|
-|.| path match: |ca|
-addcompletion match: |ca|
-len |8|
-firstarg: |ca|
-match: |ca|
-pathbin: |/bin|
-addcompletion match: |ca|
-pathbin: |/usr/local/bin|
-addcompletion match: |ca|
-pathbin: |/usr/bin|
-addcompletion match: |ca|
-pathbin: |/bin|
-addcompletion match: |ca|
-pathbin: |/usr/sbin|
-addcompletion match: |ca|
-pathbin: |/sbin|
-addcompletion match: |ca|
-pathbin: |/usr/local/munki|
-addcompletion match: |ca|
-pathcompletion, |ca|
-|.| path match: |ca|
-addcompletion match: |ca|
-len |8|
-firstarg: |ca|
-match: |ca|
-pathbin: |/bin|
-addcompletion match: |ca|
-pathbin: |/usr/local/bin|
-addcompletion match: |ca|
-pathbin: |/usr/bin|
-addcompletion match: |ca|
-pathbin: |/bin|
-addcompletion match: |ca|
-pathbin: |/usr/sbin|
-addcompletion match: |ca|
-pathbin: |/sbin|
-addcompletion match: |ca|
-pathbin: |/usr/local/munki|
-addcompletion match: |ca|
-pathcompletion, |ca|
-|.| path match: |ca|
-addcompletion match: |ca|
-len |8|
-firstarg: |ca|
-match: |ca|
-pathbin: |/bin|
-addcompletion match: |ca|
-pathbin: |/usr/local/bin|
-addcompletion match: |ca|
-pathbin: |/usr/bin|
-addcompletion match: |ca|
-pathbin: |/bin|
-addcompletion match: |ca|
-pathbin: |/usr/sbin|
-addcompletion match: |ca|
-pathbin: |/sbin|
-addcompletion match: |ca|
-pathbin: |/usr/local/munki|
-addcompletion match: |ca|
-pathcompletion, |ca|
-|.| path match: |ca|
-addcompletion match: |ca|
-len |8|
-firstarg: |ca|
-match: |ca|
-pathbin: |/bin|
-addcompletion match: |ca|
-pathbin: |/usr/local/bin|
-addcompletion match: |ca|
-pathbin: |/usr/bin|
-addcompletion match: |ca|
-pathbin: |/bin|
-addcompletion match: |ca|
-pathbin: |/usr/sbin|
-addcompletion match: |ca|
-pathbin: |/sbin|
-addcompletion match: |ca|
-pathbin: |/usr/local/munki|
-addcompletion match: |ca|
-pathcompletion, |ca|
-|.| path match: |ca|
-addcompletion match: |ca|
-len |8|
-firstarg: |ca|
-match: |ca|
-pathbin: |/bin|
-addcompletion match: |ca|
-pathbin: |/usr/local/bin|
-addcompletion match: |ca|
-pathbin: |/usr/bin|
-addcompletion match: |ca|
-pathbin: |/bin|
-addcompletion match: |ca|
-pathbin: |/usr/sbin|
-addcompletion match: |ca|
-pathbin: |/sbin|
-addcompletion match: |ca|
-pathbin: |/usr/local/munki|
-addcompletion match: |ca|
-pathcompletion, |ca|
-|.| path match: |ca|
-addcompletion match: |ca|
-len |8|
-firstarg: |c|
-match: |c|
-pathbin: |/bin|
-addcompletion match: |c|
-pathbin: |/usr/local/bin|
-addcompletion match: |c|
-pathbin: |/usr/bin|
-addcompletion match: |c|
-pathbin: |/bin|
-addcompletion match: |c|
-pathbin: |/usr/sbin|
-addcompletion match: |c|
-pathbin: |/sbin|
-addcompletion match: |c|
-pathbin: |/usr/local/munki|
-addcompletion match: |c|
-pathcompletion, |c|
-|.| path match: |c|
-addcompletion match: |c|
-len |122|
-firstarg: |ca|
-match: |ca|
-pathbin: |/bin|
-addcompletion match: |ca|
-pathbin: |/usr/local/bin|
-addcompletion match: |ca|
-pathbin: |/usr/bin|
-addcompletion match: |ca|
-pathbin: |/bin|
-addcompletion match: |ca|
-pathbin: |/usr/sbin|
-addcompletion match: |ca|
-pathbin: |/sbin|
-addcompletion match: |ca|
-pathbin: |/usr/local/munki|
-addcompletion match: |ca|
-pathcompletion, |ca|
-|.| path match: |ca|
-addcompletion match: |ca|
-len |8|
-firstarg: |ca|
-match: |ca|
-pathbin: |/bin|
-addcompletion match: |ca|
-pathbin: |/usr/local/bin|
-addcompletion match: |ca|
-pathbin: |/usr/bin|
-addcompletion match: |ca|
-pathbin: |/bin|
-addcompletion match: |ca|
-pathbin: |/usr/sbin|
-addcompletion match: |ca|
-pathbin: |/sbin|
-addcompletion match: |ca|
-pathbin: |/usr/local/munki|
-addcompletion match: |ca|
-pathcompletion, |ca|
-|.| path match: |ca|
-addcompletion match: |ca|
-len |8|
-firstarg: |ca|
-match: |ca|
-pathbin: |/bin|
-addcompletion match: |ca|
-pathbin: |/usr/local/bin|
-addcompletion match: |ca|
-pathbin: |/usr/bin|
-addcompletion match: |ca|
-pathbin: |/bin|
-addcompletion match: |ca|
-pathbin: |/usr/sbin|
-addcompletion match: |ca|
-pathbin: |/sbin|
-addcompletion match: |ca|
-pathbin: |/usr/local/munki|
-addcompletion match: |ca|
-pathcompletion, |ca|
-|.| path match: |ca|
-addcompletion match: |ca|
-len |8|
-firstarg: |ca|
-match: |ca|
-pathbin: |/bin|
-addcompletion match: |ca|
-pathbin: |/usr/local/bin|
-addcompletion match: |ca|
-pathbin: |/usr/bin|
-addcompletion match: |ca|
-pathbin: |/bin|
-addcompletion match: |ca|
-pathbin: |/usr/sbin|
-addcompletion match: |ca|
-pathbin: |/sbin|
-addcompletion match: |ca|
-pathbin: |/usr/local/munki|
-addcompletion match: |ca|
-pathcompletion, |ca|
-|.| path match: |ca|
-addcompletion match: |ca|
-len |8|
-firstarg: |ca|
-match: |ca|
-pathbin: |/bin|
-addcompletion match: |ca|
-pathbin: |/usr/local/bin|
-addcompletion match: |ca|
-pathbin: |/usr/bin|
-addcompletion match: |ca|
-pathbin: |/bin|
-addcompletion match: |ca|
-pathbin: |/usr/sbin|
-addcompletion match: |ca|
-pathbin: |/sbin|
-addcompletion match: |ca|
-pathbin: |/usr/local/munki|
-addcompletion match: |ca|
-pathcompletion, |ca|
-|.| path match: |ca|
-addcompletion match: |ca|
-len |8|
+pathcompletion, |./srcs/prom|
+i ici vaut: 10
+i ici vaut: 6
+|./srcs| path match: |prom|
+len |1|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
+firstarg: |./srcs/prompt/|
+len |23|
