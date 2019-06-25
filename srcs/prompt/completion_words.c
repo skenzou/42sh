@@ -17,6 +17,7 @@ int		intern_completion(t_ab *autocomp, char *key)
 		{
 			index = ft_indexof(intern[i], '=');
 			autocomp->data[autocomp->len] = ft_strnew(index);
+			autocomp->ext[autocomp->len] = 'i';
 			ft_strncpy(autocomp->data[autocomp->len], intern[i], index);
 			autocomp->max_offset =
 							ft_max(autocomp->max_offset, ft_strlen(intern[i]));
@@ -44,6 +45,7 @@ int		env_completion(t_ab *autocomp, char *key)
 		{
 			index = ft_indexof(env[i], '=');
 			autocomp->data[autocomp->len] = ft_strnew(index);
+			autocomp->ext[autocomp->len] = 'e';
 			ft_strncpy(autocomp->data[autocomp->len], env[i], index);
 			autocomp->max_offset =
 					ft_max(autocomp->max_offset, ft_strlen(env[i] + index + 1));
@@ -70,7 +72,7 @@ int		command_completion(t_ab *autocomp, char *key)
 	len = ft_strlen(key);
 	ft_strcpy(autocomp->match, key);
 	while (path_split && path_split[++i])
-		add_to_completion(autocomp, path_split[i], 0);
+		add_to_completion(autocomp, path_split[i], 'c');
 	return (1);
 }
 
@@ -93,7 +95,7 @@ int		path_completion(t_ab *autocomp, char *key)
 		ft_strcpy(autocomp->match, key);
 		ft_strcpy(path, ".");
 	}
-	return (add_to_completion(autocomp, path, 0));
+	return (add_to_completion(autocomp, path, 'r'));
 }
 
 
@@ -102,7 +104,7 @@ int		arg_completion(t_ab *autocomp, t_cap *tc, char *str, int position)
 	if (is_env_var(autocomp, str))
 		return (env_completion(autocomp, str));
 	else if (tc->command[position - 1] && tc->command[position - 1] == '/')
-		return (add_to_completion(autocomp, str, 0));
+		return (add_to_completion(autocomp, str, 'r'));
 	path_completion(autocomp, str);
 	return (autocomp->len > 0);
 }

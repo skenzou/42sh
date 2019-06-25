@@ -162,6 +162,7 @@ typedef struct	s_tab
 	char                    after[BUFFSIZE];
 	char                    comp[MAX_PATH];
 	char					*data[MAX_HISTORY_LENGHT];
+	char					ext[MAX_HISTORY_LENGHT];
 }				t_ab;
 typedef struct	s_history
 {
@@ -364,9 +365,9 @@ void	get_word(t_cap *tc, int position, char *path);
 int		is_env_var(t_ab *autocomp, char *path);
 void	get_quote(t_ab *autocomp, char *str);
 int		is_space_before(t_cap *tcap, int position);
-void	create_file(char *name, char *path, t_ab *comp, int onlydir);
+void	create_file(char *name, char *path, t_ab *comp, char ext);
 void	get_tilde(char *path, char *final_path);
-int		add_to_completion(t_ab *autocomp, char *path, int onlydir);
+int		add_to_completion(t_ab *autocomp, char *path, char ext);
 int		env_completion(t_ab *autocomp, char *key);
 int		command_completion(t_ab *autocomp, char *key);
 int		path_completion(t_ab *autocomp, char *key);

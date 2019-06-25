@@ -12,23 +12,28 @@
 
 #include "shell.h"
 
-void	create_file(char *name, char *path, t_ab *comp, int onlydir)
+void	create_file(char *name, char *path, t_ab *comp, char ext)
 {
 	t_stat		stats;
 	char full_path[MAX_PATH];
 	char file[MAX_PATH];
+	char extension;
 
+	extension = 0;
 	ft_bzero(file, MAX_PATH);
 	cat_fullpath(full_path, name, path);
 	lstat(full_path, &stats);
-	if ((comp->isdir = (file_name_ext(name, stats, file) == 'd')) || !onlydir)
+	if ((comp->isdir = file_name_ext(name, stats, file)))
 	{
-		comp->data[comp->len++] = ft_strdup(file);
+		comp->data[comp->len] = ft_strdup(file);
 		comp->max_offset = ft_max(comp->max_offset, ft_strlen(file));
+		comp->isdir = comp->isdir == 'd';
+		comp->ext[comp->len] = comp->isdir ? 'd' : ext;
+		comp->len++;
 	}
 }
 
-int		add_to_completion(t_ab *autocomp, char *path, int onlydir)
+int		add_to_completion(t_ab *autocomp, char *path, char ext)
 {
 	t_dirent	*d;
 	DIR			*dir;
@@ -42,7 +47,7 @@ int		add_to_completion(t_ab *autocomp, char *path, int onlydir)
 		{
 			if (d->d_name[0] != '.' &&
 			!ft_strncmp(d->d_name, autocomp->match, ft_strlen(autocomp->match)))
-				create_file(d->d_name, final_path, autocomp, onlydir);
+				create_file(d->d_name, final_path, autocomp, ext);
 		}
 		closedir(dir);
 		return (1);
@@ -52,6 +57,16 @@ int		add_to_completion(t_ab *autocomp, char *path, int onlydir)
 	return (0);
 }
 
+int		first_arg_completion(t_ab *autocomp, t_cap *tc, char *str, int position)
+{
+	if (is_env_var(autocomp, str))
+		return (env_completion(autocomp, str));
+	else if (tc->command[position - 1] && tc->command[position - 1] == '/')
+		return (add_to_completion(autocomp, str, 0));
+	command_completion(autocomp, str);
+	path_completion(autocomp, str);
+	return (autocomp->len > 0);
+}
 
 
 int		is_separator(char *s, int position)
@@ -71,25 +86,20 @@ int		is_space_before(t_cap *tcap, int position)
 			return (0);
 	return (1);
 }
-int		first_arg_completion(t_ab *autocomp, t_cap *tc, char *str, int position)
-{
-	if (is_env_var(autocomp, str))
-		return (env_completion(autocomp, str));
-	else if (tc->command[position - 1] && tc->command[position - 1] == '/')
-		return (add_to_completion(autocomp, str, 0));
-	command_completion(autocomp, str);
-	path_completion(autocomp, str);
-	return (autocomp->len > 0);
-}
 
 
 int		print_name(t_ab *autocomp, char *str, int i)
 {
 	if (i == autocomp->pos)
-		ft_putstr("\x1b[7m");
-	ft_putstr(str);
-	if (i == autocomp->pos)
-		ft_putstr("\x1b[0m");
+		ft_printf("\x1b[7m%s\x1b[0m", str);
+	else if (autocomp->ext[i] == 'd')
+		ft_printf("\x1b[31m%s\x1b[0m", str);
+	else if (autocomp->ext[i] == 'c')
+		ft_printf("\x1b[33m%s\x1b[0m", str);
+	else if (autocomp->ext[i] == 'i' || autocomp->ext[i] == 'e')
+		ft_printf("\x1b[36m%s\x1b[0m", str);
+	else
+		ft_printf(str);
 	ft_move(g_shell->tcap, "!right", autocomp->max_offset - ft_strlen(str) + 2);
 	return (1);
 }
