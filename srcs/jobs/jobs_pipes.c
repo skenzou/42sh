@@ -6,7 +6,7 @@
 /*   By: tlechien <tlechien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/21 01:46:22 by tlechien          #+#    #+#             */
-/*   Updated: 2019/06/26 02:01:46 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/06/26 08:08:50 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ static int	check_branch(t_child *branch, int *finished)
 		(branch->exec) ? ft_strdel(&branch->exec): 0;
 		branch = branch->prev;
 		free(branch->right);
+		branch->right = NULL;
 	}
 	return (0);
 }

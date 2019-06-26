@@ -6,7 +6,7 @@
 /*   By: tlechien <tlechien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/25 06:56:09 by tlechien          #+#    #+#             */
-/*   Updated: 2019/06/25 07:16:55 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/06/26 08:03:30 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,9 +68,7 @@ static int	change_status(int status)
 int			update_pid_table(void)
 {
 	int	status;
-	int out;
 
-	out = 0;
 	g_shell->dprompt = 0;
 	while (ID_PREV && ID_PREV->index)
 		g_pid_table = ID_PREV;
@@ -78,8 +76,8 @@ int			update_pid_table(void)
 	{
 		if (ID_PIPE)
 			update_amperpipe(g_pid_table);
-		else if (waitpid(ID_PID, &status, WNOHANG | WUNTRACED | WCONTINUED))
-			out += change_status(status);
+		else if (waitpid(ID_PID, &status, WNOHANG | WUNTRACED | WCONTINUED)&& ft_printf("here"))
+			change_status(status);
 		if (!ID_LEFT)
 			break ;
 		g_pid_table = ID_LEFT;

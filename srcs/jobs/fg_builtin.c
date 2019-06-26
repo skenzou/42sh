@@ -6,7 +6,7 @@
 /*   By: tlechien <tlechien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/16 05:04:02 by tlechien          #+#    #+#             */
-/*   Updated: 2019/06/25 03:10:58 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/06/26 08:25:36 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,9 @@ static int	waitfg(t_child *node)
 	waitpid(node->pid, &status, WUNTRACED);
 	if (WIFEXITED(status))
 	{
-		ID_PRIORITY = -1;
 		ID_STATUS = ID_DONE;
-		display_pid_status(g_pid_table, 0);
-		remove_pid(node);
+		//display_pid_status(g_pid_table, 0);
+		return (0);
 	}
 	else if (WIFSIGNALED(status))
 		s_child_handler(WTERMSIG(status), node);
@@ -37,6 +36,24 @@ static int	waitfg(t_child *node)
 		s_child_handler(WSTOPSIG(status), node);
 	tcsetpgrp(0, getpgrp());
 	init_signal();
+	return (1);
+}
+
+static	int	setup_wait(t_child *node)
+{
+	int	action;
+	t_child *tmp;
+
+	if (!node->is_pipe)
+		return (waitfg(node));
+	while (node)
+	{
+		tmp = node->right;
+		if (s_get_values(node->status, &action, NULL, NULL) ||
+			action == S_CONT || action == S_STOP)
+			waitfg(node);
+		node = tmp;
+	}
 	return (0);
 }
 
@@ -57,7 +74,7 @@ int			fg_builtin(int ac, char **cmd)
 	{
 		search_priority(&node);
 		if (node)
-			return (waitfg(node));
+			return (setup_wait(node));
 		return (err_display("fg: no current job\n", NULL, NULL));
 	}
 	while (cmd[++i] && *cmd[i])
@@ -68,7 +85,7 @@ int			fg_builtin(int ac, char **cmd)
 			return (err_display("fg : job not found: ", cmd[i] + 1, "\n"));
 		else if (*cmd[i] != '%' && search_process(&node, cmd[i]))
 			return (err_display("fg : job not found: ", cmd[i], "\n"));
-		if ((ret = waitfg(node)))
+		if ((ret = setup_wait(node)))
 			return (ret);
 	}
 	return (0 && ac);
