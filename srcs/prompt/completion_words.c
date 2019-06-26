@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/25 23:58:47 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/06/25 23:58:50 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/06/26 06:38:51 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,7 +120,10 @@ int		arg_completion(t_ab *autocomp, t_cap *tc, char *str, int position)
 	if (is_env_var(autocomp, str))
 		return (env_completion(autocomp, str));
 	else if (tc->command[position - 1] && tc->command[position - 1] == '/')
+	{
+		dprintf(debug(), "str: |%s|\n", str);
 		return (add_to_completion(autocomp, str, 'r'));
+	}
 	path_completion(autocomp, str);
 	return (autocomp->len > 0);
 }

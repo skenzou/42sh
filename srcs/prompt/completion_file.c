@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   completion_test.c                                  :+:      :+:    :+:   */
+/*   completion_file.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/26 00:44:20 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/06/26 00:44:43 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/06/26 06:38:58 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ int		add_to_completion(t_ab *autocomp, char *path, char ext)
 	t_dirent	*d;
 	DIR			*dir;
 	char		final_path[MAX_PATH];
+	//char		complet_final_path[MAX_PATH];
 
 	final_path[0] = 0;
 	get_tilde(path, final_path);
@@ -45,7 +46,7 @@ int		add_to_completion(t_ab *autocomp, char *path, char ext)
 	{
 		while ((d = readdir(dir)))
 		{
-			if ((d->d_name[0] != '.' || path[0] == '.') &&
+			if ((d->d_name[0] != '.' || autocomp->match[0] == '.') &&
 			!ft_strncmp(d->d_name, autocomp->match, ft_strlen(autocomp->match)))
 				create_file(d->d_name, final_path, autocomp, ext);
 		}
@@ -94,7 +95,15 @@ char	file_name_ext(char *string, t_stat stats, char *name)
 	else if (S_ISREG(stats.st_mode))
 		ext = '-';
 	ft_bzero(name, MAX_PATH);
-	ft_strcpy(name, string);
+	int i = 0;
+	int j = 0;
+	while (string[i])
+	{
+		if (string[i] == ' ')
+			name[j++] = '\\';
+		name[j++] = string[i++];
+	}
+	//dprintf(debug(), "filenameext, str: |%s|, name: |%s|\n", string, name);
 	if (ext == 'd')
 		name[ft_strlen(name)] = '/';
 	return (ext);
