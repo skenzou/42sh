@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/25 23:58:47 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/06/26 06:38:51 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/06/26 22:40:27 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,7 @@ int		path_completion(t_ab *autocomp, char *key)
 	int		i;
 
 	ft_bzero(path, BUFFSIZE);
+	dprintf(debug(), "path completion, key: |%s|\n", key);
 	if (~ft_indexof(key, '/'))
 	{
 		i = ft_strlen(key) - 1;

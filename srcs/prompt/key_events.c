@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/28 15:23:43 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/06/25 23:54:37 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/06/26 22:55:00 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,12 @@ int		enter_event(t_cap *tcap)
 		while (i--)
 			ft_delete_back(tcap);
 		ft_insert(g_shell->autocomp->data[g_shell->autocomp->pos], tcap);
-		if (g_shell->autocomp->after[0] && !g_shell->autocomp->isdir)
-			ft_insert(g_shell->autocomp->after, tcap);
+		if (!g_shell->autocomp->isdir)
+		{
+			if (g_shell->autocomp->after[0])
+				ft_insert(g_shell->autocomp->after, tcap);
+			ft_insert(" ", tcap);
+		}
 		g_shell->autocomp->state = 0;
 		int i = -1;
 		while (++i < g_shell->autocomp->len)

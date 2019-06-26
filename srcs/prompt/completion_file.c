@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/26 00:44:20 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/06/26 06:38:58 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/06/26 22:44:16 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,23 +38,37 @@ int		add_to_completion(t_ab *autocomp, char *path, char ext)
 	t_dirent	*d;
 	DIR			*dir;
 	char		final_path[MAX_PATH];
-	//char		complet_final_path[MAX_PATH];
+	char		complet_final_path[MAX_PATH];
+
 
 	final_path[0] = 0;
 	get_tilde(path, final_path);
-	if ((dir = opendir(final_path)))
+	int i = 0;
+	int j = 0;
+	ft_bzero(complet_final_path, MAX_PATH);
+	while (final_path[i])
+	{
+		if (final_path[i] && final_path[i] != '\\')
+		{
+			complet_final_path[j] = final_path[i];
+			j++;
+		}
+		i++;
+	}
+	dprintf(debug(), "add_to_comp: |%s| mais: |%s|\n", final_path, complet_final_path);
+	if ((dir = opendir(complet_final_path)))
 	{
 		while ((d = readdir(dir)))
 		{
 			if ((d->d_name[0] != '.' || autocomp->match[0] == '.') &&
 			!ft_strncmp(d->d_name, autocomp->match, ft_strlen(autocomp->match)))
-				create_file(d->d_name, final_path, autocomp, ext);
+				create_file(d->d_name, complet_final_path, autocomp, ext);
 		}
 		closedir(dir);
 		return (1);
 	}
 	else
-		dprintf(debug(), "probleme opendir\n");
+		dprintf(debug(), "probleme opendir: %s\n", complet_final_path);
 	return (0);
 }
 

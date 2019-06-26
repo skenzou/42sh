@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/28 15:31:17 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/06/26 06:07:45 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/06/26 22:50:28 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,8 +87,11 @@ static int		handle_key(char *buffer, t_cap *tcap)
 
 int				read_buffer(char *buffer, t_cap *tcap)
 {
-	if (ft_isprint(buffer[0]) && g_shell->autocomp->state)
+	if (ft_isprint(buffer[0]) && g_shell->autocomp->state && (buffer[0] != ENTER) && buffer[0] != SPACE)
+	{
 		tputs(tcap->clr_all_line, 1, ft_put_termcaps);
+		g_shell->autocomp->state = 0;
+	}
 	if (g_shell->ctrl_r->state && ft_isprint(buffer[0]))
 		return (add_buffer_ctrl_r(buffer, g_shell->ctrl_r));
 	else if (g_shell->ctrl_r->state && buffer[0] == ENTER)

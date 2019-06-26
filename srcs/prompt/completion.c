@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 06:02:13 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/06/25 23:57:40 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/06/26 22:56:13 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int		init_autocomp(t_cap *tcap, t_ab *autocomp)
 	autocomp->row = tcap->cursx_max / (ft_max(max_offset + 2, 1));
 	autocomp->col = autocomp->len / ft_max(autocomp->row, 1);
 	autocomp->carry = autocomp->len % ft_max(autocomp->row, 1);
+
 	if (!autocomp->len)
 	{
 		tputs(tcap->sound, 1, ft_put_termcaps);
@@ -33,8 +34,13 @@ int		init_autocomp(t_cap *tcap, t_ab *autocomp)
 		while (i--)
 			ft_delete_back(tcap);
 		ft_insert(g_shell->autocomp->data[0], tcap);
-		if (g_shell->autocomp->after[0] && !g_shell->autocomp->isdir)
-			ft_insert(g_shell->autocomp->after, tcap);
+		if (!g_shell->autocomp->isdir)
+		{
+			if (g_shell->autocomp->after[0])
+				ft_insert(g_shell->autocomp->after, tcap);
+			ft_insert(" ", tcap);
+		}
+		autocomp->state = 0;
 		return (0);
 	}
 	return (max_offset);
