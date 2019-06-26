@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 00:40:57 by midrissi          #+#    #+#             */
-/*   Updated: 2019/06/25 00:57:47 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/06/26 04:16:18 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,7 @@ void				ft_post_exec(t_ast *root);
 /*
 ** EXIT_BUILTIN.C
 */
+int					shell_exit(int err_code);
 int					exit_builtin(int ac, char **av);
 /*
 ** EXPANSIONS.C

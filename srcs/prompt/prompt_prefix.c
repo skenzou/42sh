@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/10 02:39:58 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/06/21 06:26:47 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/06/26 06:02:59 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,9 @@ static int print_prefix(void)
 	name || (name = "42sh");
 	string = NULL;
 	string = getcwd(NULL, 20);
+	if (!string)
+		return 1;
 	git = get_git_status();
-	!ft_strcmp(string, "/") && (string = "/");
 	prompt_len = ft_strlen((string + ft_lastindexof(string, '/') + 1)) +
 														ft_strlen(name) + 6 + 1;
 	ft_printf(g_shell->lastsignal ? PROMPT1_ERR : PROMPT1);

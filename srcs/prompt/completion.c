@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 06:02:13 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/06/12 05:54:11 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/06/26 07:17:36 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -208,7 +208,7 @@ int get_command_comp(t_cap *tcap, int index)
 		i--;
 	ft_bzero(autocomp->comp, BUFFSIZE);
 	ft_strncpy(autocomp->comp, tcap->command + i + 1, index - 1 - i);
-	dprintf(debug(), "comamnd comp |%s|\n", autocomp->comp);
+	//dprintf(debug(), "command comp |%s|\n", autocomp->comp);
 	len = ft_strlen(autocomp->comp);
 	char *path = getenv("PATH");
 	autocomp->len = 0;
@@ -267,7 +267,7 @@ int get_dir_content(t_cap *tcap, int index)
 		len = ft_strlen(autocomp->comp);
 		ft_bzero(directory, BUFFSIZE);
 		ft_strncpy(directory, tmp, ft_strlen(tmp) - ft_strlen(autocomp->comp));
-		dprintf(debug(), "directory |%s|, content: |%s|\n", autocomp->comp, directory);
+		//dprintf(debug(), "directory |%s|, content: |%s|\n", autocomp->comp, directory);
 		if ((dir = opendir(directory)))
 			while ((d = readdir(dir)))
 			{
@@ -300,16 +300,16 @@ int		get_words_completion(t_ab *autocomp, t_cap *tcap)
 	if (i && ft_isspace(tcap->command[i - 1]) && (i + 1 < tcap->char_len &&
 											ft_isspace(tcap->command[i + 1])))
 	{
-		dprintf(debug(), "|%c| Space aucun mot\n", tcap->command[i]);
+		//dprintf(debug(), "|%c| Space aucun mot\n", tcap->command[i]);
 		return (0);
 	}
 	else if ((ft_isspace(tcap->command[i]) && (i + 1 < tcap->char_len &&
 											ft_isprint(tcap->command[i - 1]))))
 	{
-		dprintf(debug(), "|%c| Printable fin de mot\n", tcap->command[i]);
+		//dprintf(debug(), "|%c| Printable fin de mot\n", tcap->command[i]);
 		if (~(ret = get_end_words(tcap, i)))
 		{
-			dprintf(debug(), "ret: %d\n", ret);
+			//dprintf(debug(), "ret: %d\n", ret);
 			autocomp->type = 0;
 			return (ret);
 		}
@@ -330,15 +330,15 @@ int		get_words_completion(t_ab *autocomp, t_cap *tcap)
 	}
 	else if ((i && ft_isspace(tcap->command[i - 1])) || !i)
 	{
-		dprintf(debug(), "|%c| Printable debut de mot\n", tcap->command[i]);
+		//dprintf(debug(), "|%c| Printable debut de mot\n", tcap->command[i]);
 		return (0);
 	}
 	else if (i == tcap->char_len)
 	{
-		dprintf(debug(), "|%c| Printable fin de ligne\n", tcap->command[i]);
+		//dprintf(debug(), "|%c| Printable fin de ligne\n", tcap->command[i]);
 		if (~(ret = get_end_words(tcap, i)))
 		{
-			dprintf(debug(), "ret: %d\n", ret);
+			//dprintf(debug(), "ret: %d\n", ret);
 			autocomp->type = 0;
 			return (ret);
 		}
@@ -359,7 +359,7 @@ int		get_words_completion(t_ab *autocomp, t_cap *tcap)
 	}
 	else
 	{
-		dprintf(debug(), "|%c| Printable dans le mot\n", tcap->command[i]);
+		//dprintf(debug(), "|%c| Printable dans le mot\n", tcap->command[i]);
 		return (0);
 	}
 	tputs(tcap->sound, 1, ft_put_termcaps);

@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 01:26:49 by midrissi          #+#    #+#             */
-/*   Updated: 2019/06/25 18:05:48 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/06/26 06:15:09 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,12 @@ static void		read_inhib(char inhib, char **word)
 	char *save;
 	char *input;
 
-	while (42)
+	while (42 && g_shell->inhib_mod != 2)
 	{
 		input = read_line(g_shell->tcap);
+		if (g_shell->inhib_mod == 2)
+			return ;
+		 // free *word;
 		if (ft_strchr(input, inhib) || inhib == '\\')
 			input[ft_strlen(input) - 1] = '\0';
 		save = *word;
@@ -59,9 +62,7 @@ static int		check_bslash(char **str, t_list *lexer, int i)
 		if (**str)
 			(*str)++;
 		else
-		{
 			exec_inhib(BSLASH, lexer, i);
-		}
 		return (1);
 	}
 	return (0);
@@ -75,6 +76,8 @@ static void		check_inhib(char *str, t_list *lexer, int i)
 	{
 		if (check_bslash(&str, lexer, i))
 			continue ;
+		if (g_shell->inhib_mod == 2)
+			return ;
 		if (*str == DQUOTE || *str == QUOTE)
 		{
 			inhib = *str++;
@@ -100,6 +103,7 @@ void			handle_inhibitors(t_list *lexer)
 	t_token		*token;
 	size_t		i;
 
+	g_shell->inhib_mod = 1;
 	while (lexer)
 	{
 		token = (t_token *)lexer->content;
@@ -109,6 +113,8 @@ void			handle_inhibitors(t_list *lexer)
 			while (i < token->size)
 			{
 				check_inhib(token->content[i], lexer, i);
+				if (g_shell->inhib_mod == 2)
+					return ;
 				i++;
 			}
 		}

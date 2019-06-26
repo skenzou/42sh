@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/29 17:39:49 by midrissi          #+#    #+#             */
-/*   Updated: 2019/06/22 16:37:21 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/06/26 06:12:15 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ int	handler(const char *input)
 {
 	t_list *redir;
 	char 	*in;
+
 	if (!ft_strcmp(input, "history\n"))
 	{
 		debug_history(g_shell->history);
@@ -47,7 +48,11 @@ int	handler(const char *input)
 		print_lexer(g_shell->lexer);
 	ft_parse(g_shell->lexer);
 	redir = g_shell->redir;
+	if (g_shell->inhib_mod == 2)
+		return (1);
 	handle_hdoc(redir);
+	if (g_shell->inhib_mod == 2)
+		return (1);
 	ft_execute_ast(g_shell->ast);
 	ft_lstdel(&redir, redir_delone);      // leak possible
 	del_ast(&g_shell->ast);

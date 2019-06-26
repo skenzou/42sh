@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/27 17:27:48 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/06/25 07:24:43 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/06/26 07:18:08 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,18 +87,19 @@ char	*read_line(t_cap *tcap)
 {
 	char	buffer[4];
 	int		ret;
+	int		flags;
 
+	flags = fcntl(0, F_GETFL);
+	flags &= ~O_NONBLOCK;
+	fcntl(0, F_SETFL, flags);
 	ret = 0;
 	signal(SIGINT, sigint_handler);
 	signal(SIGWINCH, sigwinch_handler);
 	ft_bzero(buffer, 4);
 	ft_bzero(tcap->command, BUFFSIZE);
 	fflush(stdout);
-	while (g_shell->dprompt == 0)
-	{
-		g_shell->dprompt = 1;
+	while (g_shell->dprompt == 0 && (g_shell->dprompt = 1))
 		waitabit(0, 8000000);
-	}
 	print_prompt_prefix();
 	if (tcap->overflow)
 	{
@@ -111,7 +112,9 @@ char	*read_line(t_cap *tcap)
 		ft_bzero(buffer, 4);
 		tcsetattr(0, TCSADRAIN, g_shell->term);
 		read(0, &buffer, 3);
-		if ((ret = read_buffer(buffer, tcap)) == -2)
+		if (g_shell->inhib_mod == 2)
+			return(NULL);
+		if ((ret = read_buffer(buffer, tcap)) == -2) //exit if inhib_mod == 2
 			return (clean_before_return(tcap));
 		else if (!ret)
 		{
@@ -119,6 +122,7 @@ char	*read_line(t_cap *tcap)
 			return (NULL);
 		}
 	}
+	return (NULL);
 }
 
 static void	check_flags(char **av, int ac)
