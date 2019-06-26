@@ -29,6 +29,11 @@ int		enter_event(t_cap *tcap)
 		if (g_shell->autocomp->after[0] && !g_shell->autocomp->isdir)
 			ft_insert(g_shell->autocomp->after, tcap);
 		g_shell->autocomp->state = 0;
+		int i = -1;
+		while (++i < g_shell->autocomp->len)
+		{
+			ft_strdel(&(g_shell->autocomp->data[i]));
+		}
 		g_shell->autocomp->pos = 0;
 		g_shell->autocomp->isdir = 0;
 		g_shell->autocomp->len = 0;
@@ -74,7 +79,9 @@ int		tab_event(t_cap *tcap)
 		autocomp->pos++;
 		if (autocomp->pos == autocomp->len)
 			autocomp->pos = 0;
+		process_completion(autocomp);
 	}
-	ft_tab(tcap, autocomp);
+	else
+		ft_tab(tcap, autocomp);
 	return (1);
 }

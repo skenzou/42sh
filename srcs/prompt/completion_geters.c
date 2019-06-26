@@ -19,9 +19,7 @@ void	get_tilde(char *path, char *final_path)
 
 	i = -1;
 	env_home[0] = 0;
-	while (g_shell->env[++i])
-		if (!ft_strncmp(g_shell->env[i], "HOME=", 5))
-			ft_strcpy(env_home, g_shell->env[i] + 5);
+	ft_strcpy(env_home, get_key_value("HOME", g_shell->env));
 	if (path[0] == '~' && env_home[0])
 	{
 		ft_strcpy(final_path, env_home);

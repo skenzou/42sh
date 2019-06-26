@@ -6,7 +6,7 @@
 #    By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/03 09:24:41 by midrissi          #+#    #+#              #
-#    Updated: 2019/06/26 00:46:48 by aben-azz         ###   ########.fr        #
+#    Updated: 2019/06/26 00:52:18 by ghamelek         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,7 +44,7 @@ NAME		= 42sh
 
 MSG			=	$(_BOLD)$(_BLUE)Compiling 42sh$(_END)
 
-CC			= gcc -fsanitize=address
+CC			= gcc -g -v #-fsanitize=address
 C_FLAGS		= -Wall -Wextra -Werror
 SRC_PATH	= srcs/
 OBJ_PATH	= .obj/

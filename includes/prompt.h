@@ -157,8 +157,8 @@ typedef struct	s_tab
 	int						max_offset;
 	char					match[BUFFSIZE];
 	int 					isdir;
-	char                    after[BUFFSIZE];
-	char                    comp[MAX_PATH];
+	char          after[BUFFSIZE];
+	char          comp[MAX_PATH];
 	char					*data[MAX_HISTORY_LENGHT];
 	char					ext[MAX_HISTORY_LENGHT];
 }				t_ab;
@@ -353,7 +353,6 @@ int		init_termcap(t_cap *tcap);
 ** completion.c
 */
 int		init_autocomp(t_cap *tcap, t_ab *autocomp);
-int		print_name(t_ab *autocomp, char *str, int i);
 char file_name_ext(char *string, t_stat stats, char *name);
  void		cat_fullpath(char *full_path, char *name, char *path);
  char	*env_path(char **env);
@@ -375,6 +374,7 @@ int		is_separator(char *s, int position);
 int		add_to_completion(t_ab *autocomp, char *path, char ext);
 int		first_arg_completion(t_ab *autocomp, t_cap *tc, char *str, int pos);
 int		print_name(t_ab *autocomp, char *str, int i);
+int		process_completion(t_ab *autocomp);
 /*
 **	MAIN.C
 */

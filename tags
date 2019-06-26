@@ -1,0 +1,859 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+ALIAS_FILE	includes/executor.h	/^# define ALIAS_FILE	/;"	d
+ALT_CODE1	includes/prompt.h	/^# define ALT_CODE1	/;"	d
+ALT_CODE2	includes/prompt.h	/^# define ALT_CODE2	/;"	d
+ALT_CODE3	includes/prompt.h	/^# define ALT_CODE3	/;"	d
+AMBIGOUS_REDIRECT	includes/shell.h	/^# define AMBIGOUS_REDIRECT	/;"	d
+AND	includes/lexer.h	/^	AND,			\/\/  &$/;"	e	enum:__anon1
+ANSI_BBLUE	includes/shell.h	/^# define ANSI_BBLUE	/;"	d
+ANSI_BCYAN	includes/shell.h	/^# define ANSI_BCYAN	/;"	d
+ANSI_BGREEN	includes/shell.h	/^# define ANSI_BGREEN	/;"	d
+ANSI_BLUE	includes/shell.h	/^# define ANSI_BLUE	/;"	d
+ANSI_BMAGENTA	includes/shell.h	/^# define ANSI_BMAGENTA	/;"	d
+ANSI_BRED	includes/shell.h	/^# define ANSI_BRED	/;"	d
+ANSI_BYELLOW	includes/shell.h	/^# define ANSI_BYELLOW	/;"	d
+ANSI_CYAN	includes/shell.h	/^# define ANSI_CYAN	/;"	d
+ANSI_GREEN	includes/shell.h	/^# define ANSI_GREEN	/;"	d
+ANSI_MAGENTA	includes/shell.h	/^# define ANSI_MAGENTA	/;"	d
+ANSI_RED	includes/shell.h	/^# define ANSI_RED	/;"	d
+ANSI_RESET	includes/shell.h	/^# define ANSI_RESET	/;"	d
+ANSI_YELLOW	includes/shell.h	/^# define ANSI_YELLOW	/;"	d
+AR	libft/Makefile	/^AR			= ar rcs$/;"	m
+ARROW_CODE1	includes/prompt.h	/^# define ARROW_CODE1	/;"	d
+ARROW_CODE2	includes/prompt.h	/^# define ARROW_CODE2	/;"	d
+ARROW_CODE3	includes/prompt.h	/^# define ARROW_CODE3	/;"	d
+ARROW_CODE4	includes/prompt.h	/^# define ARROW_CODE4	/;"	d
+BACKSPACE	includes/prompt.h	/^# define BACKSPACE	/;"	d
+BAD_FD	includes/shell.h	/^# define BAD_FD	/;"	d
+BSLASH	includes/shell.h	/^# define BSLASH	/;"	d
+BUFFSIZE	includes/prompt.h	/^# define BUFFSIZE	/;"	d
+BUFF_SIZE	libft/includes/libft.h	/^# define BUFF_SIZE /;"	d
+CC	Makefile	/^CC			= gcc$/;"	m
+CD_BUILTIN	includes/shell.h	/^# define CD_BUILTIN	/;"	d
+CFLAGS	libft/Makefile	/^CFLAGS		= -Wall -Wextra -Werror -I.\/includes -c$/;"	m
+CLOBBER	includes/lexer.h	/^	CLOBBER,		\/\/$/;"	e	enum:__anon1
+COMP	libft/Makefile	/^COMP		= gcc$/;"	m
+CONV	libft/includes/libft.h	/^# define CONV /;"	d
+COPY	includes/prompt.h	/^# define COPY	/;"	d
+CTRL_D	includes/prompt.h	/^# define CTRL_D	/;"	d
+CTRL_R	includes/prompt.h	/^# define CTRL_R	/;"	d
+CUT	includes/prompt.h	/^# define CUT	/;"	d
+C_FLAGS	Makefile	/^C_FLAGS		= -g -v -Wall -Wextra -Werror$/;"	m
+DBL_AND	includes/lexer.h	/^	DBL_AND,		\/\/  &&$/;"	e	enum:__anon1
+DBL_GREAT	includes/lexer.h	/^	DBL_GREAT,		\/\/$/;"	e	enum:__anon1
+DBL_GREAT_DASH	includes/lexer.h	/^	DBL_GREAT_DASH,	\/\/$/;"	e	enum:__anon1
+DBL_LESS	includes/lexer.h	/^	DBL_LESS,		\/\/  --$/;"	e	enum:__anon1
+DBL_LESS_DASH	includes/lexer.h	/^	DBL_LESS_DASH,	\/\/$/;"	e	enum:__anon1
+DBL_PIPE	includes/lexer.h	/^	DBL_PIPE,		\/\/  ||$/;"	e	enum:__anon1
+DBL_SEMI	includes/lexer.h	/^	DBL_SEMI,		\/\/  ;;$/;"	e	enum:__anon1
+DEBUG_LOG	includes/prompt.h	/^# define DEBUG_LOG	/;"	d
+DEFAULT_ENV_FILE_NAME	includes/prompt.h	/^# define DEFAULT_ENV_FILE_NAME	/;"	d
+DEFAULT_HISTORY_NAME	includes/prompt.h	/^# define DEFAULT_HISTORY_NAME	/;"	d
+DEFAULT_PROMPT_COLOR	includes/prompt.h	/^# define DEFAULT_PROMPT_COLOR	/;"	d
+DOWN	includes/prompt.h	/^# define DOWN	/;"	d
+DQUOTE	includes/shell.h	/^# define DQUOTE	/;"	d
+ECHO_BUILTIN	includes/shell.h	/^# define ECHO_BUILTIN	/;"	d
+END	includes/prompt.h	/^# define END	/;"	d
+ENTER	includes/prompt.h	/^# define ENTER	/;"	d
+ENV_BUILTIN	includes/shell.h	/^# define ENV_BUILTIN	/;"	d
+EXEC	Makefile	/^EXEC 		= $(addprefix $(SRC_PATH)executor\/,$(_EXEC))$/;"	m
+EXECUTOR_H	includes/executor.h	/^# define EXECUTOR_H$/;"	d
+EXEC_O	Makefile	/^EXEC_O 		:= $(EXEC:.c=.o)$/;"	m
+EXIT_BUILTIN	includes/shell.h	/^# define EXIT_BUILTIN	/;"	d
+EXPORT_BUILTIN	includes/shell.h	/^# define EXPORT_BUILTIN	/;"	d
+FAILFORK	includes/shell.h	/^# define FAILFORK	/;"	d
+FD_MAX	libft/includes/libft.h	/^# define FD_MAX /;"	d
+GREAT	includes/lexer.h	/^	GREAT,			\/\/$/;"	e	enum:__anon1
+GREAT_AND	includes/lexer.h	/^	GREAT_AND,		\/\/$/;"	e	enum:__anon1
+H	libft/includes/libft.h	/^# define H /;"	d
+HERE_DOC_TMP	includes/shell.h	/^# define HERE_DOC_TMP /;"	d
+HH	libft/includes/libft.h	/^# define HH	/;"	d
+HOME	includes/prompt.h	/^# define HOME	/;"	d
+HOME_END1	includes/prompt.h	/^# define HOME_END1	/;"	d
+HOME_END2	includes/prompt.h	/^# define HOME_END2	/;"	d
+ID_CONT	includes/executor.h	/^# define ID_CONT	/;"	d
+ID_DONE	includes/executor.h	/^# define ID_DONE	/;"	d
+ID_EXEC	includes/executor.h	/^# define ID_EXEC /;"	d
+ID_INDEX	includes/executor.h	/^# define ID_INDEX /;"	d
+ID_NEXT	includes/executor.h	/^# define ID_NEXT /;"	d
+ID_PID	includes/executor.h	/^# define ID_PID /;"	d
+ID_PREV	includes/executor.h	/^# define ID_PREV /;"	d
+ID_PRIORITY	includes/executor.h	/^# define ID_PRIORITY /;"	d
+ID_RUN	includes/executor.h	/^# define ID_RUN	/;"	d
+ID_STATUS	includes/executor.h	/^# define ID_STATUS /;"	d
+ID_SUSP	includes/executor.h	/^# define ID_SUSP	/;"	d
+ID_TERM	includes/executor.h	/^# define ID_TERM	/;"	d
+INC	Makefile	/^INC			= -Iincludes -I$(LFT_PATH)includes$/;"	m
+INC_FPATH	Makefile	/^INC_FPATH	= includes\/shell.h includes\/lexer.h includes\/prompt.h \\$/;"	m
+INC_PATH	Makefile	/^INC_PATH	= includes\/$/;"	m
+INV_ARG	includes/shell.h	/^# define INV_ARG	/;"	d
+IS_ALIAS	srcs/executor/type_builtin.c	/^#define IS_ALIAS /;"	d	file:
+IS_BIN	srcs/executor/type_builtin.c	/^#define IS_BIN /;"	d	file:
+IS_BUILTIN	srcs/executor/type_builtin.c	/^#define IS_BUILTIN /;"	d	file:
+IS_DIRECTORY	includes/shell.h	/^# define IS_DIRECTORY	/;"	d
+J	libft/includes/libft.h	/^# define J /;"	d
+JOBS_BUILTIN	includes/shell.h	/^# define JOBS_BUILTIN	/;"	d
+L	libft/includes/libft.h	/^# define L	/;"	d
+LEFT	includes/prompt.h	/^# define LEFT	/;"	d
+LESS	includes/lexer.h	/^	LESS,			\/\/  -$/;"	e	enum:__anon1
+LESS_AND	includes/lexer.h	/^	LESS_AND,		\/\/$/;"	e	enum:__anon1
+LESS_GREAT	includes/lexer.h	/^	LESS_GREAT,		\/\/$/;"	e	enum:__anon1
+LEXER	Makefile	/^LEXER 		= $(addprefix $(SRC_PATH)lexer\/,$(_LEXER))$/;"	m
+LEXER_H	includes/lexer.h	/^# define LEXER_H$/;"	d
+LEXER_O	Makefile	/^LEXER_O 	:= $(LEXER:.c=.o)$/;"	m
+LFT_NAME	Makefile	/^LFT_NAME	= libft.a$/;"	m
+LFT_PATH	Makefile	/^LFT_PATH	= .\/libft\/$/;"	m
+LIBFT_H	libft/includes/libft.h	/^# define LIBFT_H$/;"	d
+LL	libft/includes/libft.h	/^# define LL	/;"	d
+LONGEST	Makefile	/^LONGEST		:=	$(shell echo $(notdir $(SRC)) | tr " " "\\n" | awk ' { if (\\$/;"	m
+LONGEST	libft/Makefile	/^LONGEST		?=	$(shell echo $(notdir $(SRCS)) | tr " " "\\n" | awk ' { if (\\$/;"	m
+LU	libft/includes/libft.h	/^# define LU	/;"	d
+MAX_HISTORY_LENGHT	includes/prompt.h	/^# define MAX_HISTORY_LENGHT	/;"	d
+MAX_PATH	includes/prompt.h	/^# define MAX_PATH	/;"	d
+MAX_PATH_LEN	includes/shell.h	/^# define MAX_PATH_LEN	/;"	d
+MSG	Makefile	/^MSG			=	$(_BOLD)$(_BLUE)Compiling 42sh$(_END)$/;"	m
+MSG	libft/Makefile	/^MSG				= $(_BOLD)$(_BLUE)Compiling the libft:$(_END)$/;"	m
+NAME	Makefile	/^NAME		= 42sh$/;"	m
+NAME	libft/Makefile	/^NAME = libft.a$/;"	m
+NB_BUILTINS	srcs/executor/pre_exec.c	/^#define NB_BUILTINS /;"	d	file:
+NON_EXISTENT	includes/shell.h	/^# define NON_EXISTENT	/;"	d
+NOT_DIR	includes/shell.h	/^# define NOT_DIR	/;"	d
+NOT_FOUND	includes/shell.h	/^# define NOT_FOUND	/;"	d
+NO_RIGHT	includes/shell.h	/^# define NO_RIGHT	/;"	d
+OBJ	Makefile	/^OBJ			:= $(addprefix $(OBJ_PATH), $(_OBJ))$/;"	m
+OBJ	libft/Makefile	/^OBJ				:= $(SRC:%.c=$(OBJPATH)%.o)$/;"	m
+OBJPATH	libft/Makefile	/^OBJPATH			= .obj\/$/;"	m
+OBJ_	Makefile	/^OBJ_		:= $(LEXER_O) $(EXEC_O) $(PROMPT_O) $(PARSER_O) $(ROOT_O)$/;"	m
+OBJ_PATH	Makefile	/^OBJ_PATH	= .obj\/$/;"	m
+OPEN_ERR	includes/shell.h	/^# define OPEN_ERR	/;"	d
+OPT_L	includes/executor.h	/^# define OPT_L /;"	d
+OPT_P	includes/executor.h	/^# define OPT_P /;"	d
+OTHER_OP	includes/lexer.h	/^	OTHER_OP,		\/\/$/;"	e	enum:__anon1
+PARSER	Makefile	/^PARSER		= $(addprefix $(SRC_PATH)parser\/,$(_PARSER))$/;"	m
+PARSER_H	includes/parser.h	/^# define PARSER_H$/;"	d
+PARSER_O	Makefile	/^PARSER_O 	:= $(PARSER:.c=.o)$/;"	m
+PASTE	includes/prompt.h	/^# define PASTE	/;"	d
+PIPE	includes/lexer.h	/^	PIPE,			\/\/  |$/;"	e	enum:__anon1
+PRINT_AST	includes/shell.h	/^# define PRINT_AST /;"	d
+PRINT_LEXER	includes/shell.h	/^# define PRINT_LEXER /;"	d
+PRINT_REDIR	includes/shell.h	/^# define PRINT_REDIR /;"	d
+PROMPT	Makefile	/^PROMPT 		= $(addprefix $(SRC_PATH)prompt\/,$(_PROMPT))$/;"	m
+PROMPT1	includes/prompt.h	/^# define PROMPT1 /;"	d
+PROMPT1_ERR	includes/prompt.h	/^# define PROMPT1_ERR /;"	d
+PROMPT2	includes/prompt.h	/^# define PROMPT2 /;"	d
+PROMPT3	includes/prompt.h	/^# define PROMPT3 /;"	d
+PROMPT4	includes/prompt.h	/^# define PROMPT4 /;"	d
+PROMPT_H	includes/prompt.h	/^# define PROMPT_H$/;"	d
+PROMPT_O	Makefile	/^PROMPT_O 	:= $(PROMPT:.c=.o)$/;"	m
+QUOTE	includes/shell.h	/^# define QUOTE	/;"	d
+RIGHT	includes/prompt.h	/^# define RIGHT	/;"	d
+ROOT	Makefile	/^ROOT 		= $(SRC_PATH)handler.c$/;"	m
+ROOT_O	Makefile	/^ROOT_O 		:= $(ROOT:.c=.o)$/;"	m
+SEMI	includes/lexer.h	/^	SEMI,			\/\/  ;$/;"	e	enum:__anon1
+SETENV_BUILTIN	includes/shell.h	/^# define SETENV_BUILTIN	/;"	d
+SETENV_INVALID_KEY	includes/shell.h	/^# define SETENV_INVALID_KEY	/;"	d
+SETENV_USG	includes/shell.h	/^# define SETENV_USG	/;"	d
+SET_BUILTIN	includes/shell.h	/^# define SET_BUILTIN	/;"	d
+SHELL_H	includes/shell.h	/^# define SHELL_H$/;"	d
+SHIFT_CODE1	includes/prompt.h	/^# define SHIFT_CODE1	/;"	d
+SHIFT_CODE2	includes/prompt.h	/^# define SHIFT_CODE2	/;"	d
+SHIFT_CODE3	includes/prompt.h	/^# define SHIFT_CODE3	/;"	d
+SHIFT_DOWN	includes/prompt.h	/^# define SHIFT_DOWN	/;"	d
+SHIFT_LEFT	includes/prompt.h	/^# define SHIFT_LEFT	/;"	d
+SHIFT_RIGHT	includes/prompt.h	/^# define SHIFT_RIGHT	/;"	d
+SHIFT_TAB	includes/prompt.h	/^# define SHIFT_TAB	/;"	d
+SHIFT_UP	includes/prompt.h	/^# define SHIFT_UP	/;"	d
+SPACE	includes/prompt.h	/^# define SPACE	/;"	d
+SRC	Makefile	/^SRC			:= $(LEXER) $(EXEC) $(PROMPT) $(PARSER) $(ROOT)$/;"	m
+SRC	libft/Makefile	/^SRC = ft_atoi.c ft_isalnum.c ft_bzero.c ft_isalpha.c \\$/;"	m
+SRCPATH	libft/Makefile	/^SRCPATH			=	srcs\/$/;"	m
+SRCS	libft/Makefile	/^SRCS			:= $(SRC:%=$(SRCPATH)%)$/;"	m
+SRC_PATH	Makefile	/^SRC_PATH	= srcs\/$/;"	m
+S_ABN	includes/executor.h	/^# define S_ABN	/;"	d
+S_CONT	includes/executor.h	/^# define S_CONT	/;"	d
+S_IGN	includes/executor.h	/^# define S_IGN	/;"	d
+S_SIZE	includes/executor.h	/^# define S_SIZE	/;"	d
+S_STOP	includes/executor.h	/^# define S_STOP	/;"	d
+S_TERM	includes/executor.h	/^# define S_TERM	/;"	d
+TAB	includes/prompt.h	/^# define TAB	/;"	d
+TABLE_SIZE	includes/shell.h	/^# define TABLE_SIZE /;"	d
+TEST_BUILTIN	includes/shell.h	/^# define TEST_BUILTIN	/;"	d
+TOKEN_ASS_WORD	includes/lexer.h	/^	TOKEN_ASS_WORD,$/;"	e	enum:__anon2
+TOKEN_BSLASH	includes/lexer.h	/^	TOKEN_BSLASH,$/;"	e	enum:__anon2
+TOKEN_CL_BRA	includes/lexer.h	/^	TOKEN_CL_BRA,$/;"	e	enum:__anon2
+TOKEN_CL_CURLY	includes/lexer.h	/^	TOKEN_CL_CURLY,$/;"	e	enum:__anon2
+TOKEN_CL_PAR	includes/lexer.h	/^	TOKEN_CL_PAR,$/;"	e	enum:__anon2
+TOKEN_CTL_OPERATOR	includes/lexer.h	/^	TOKEN_CTL_OPERATOR,$/;"	e	enum:__anon2
+TOKEN_DQ	includes/lexer.h	/^	TOKEN_DQ,$/;"	e	enum:__anon2
+TOKEN_EAT	includes/lexer.h	/^	TOKEN_EAT,$/;"	e	enum:__anon2
+TOKEN_EQUAL	includes/lexer.h	/^	TOKEN_EQUAL,$/;"	e	enum:__anon2
+TOKEN_FOR	includes/lexer.h	/^	TOKEN_FOR,$/;"	e	enum:__anon2
+TOKEN_NEG	includes/lexer.h	/^	TOKEN_NEG,$/;"	e	enum:__anon2
+TOKEN_NULL	includes/lexer.h	/^	TOKEN_NULL$/;"	e	enum:__anon2
+TOKEN_OP_ARITHM	includes/lexer.h	/^	TOKEN_OP_ARITHM,$/;"	e	enum:__anon2
+TOKEN_OP_BRA	includes/lexer.h	/^	TOKEN_OP_BRA,$/;"	e	enum:__anon2
+TOKEN_OP_CMD	includes/lexer.h	/^	TOKEN_OP_CMD,$/;"	e	enum:__anon2
+TOKEN_OP_CURLY	includes/lexer.h	/^	TOKEN_OP_CURLY,$/;"	e	enum:__anon2
+TOKEN_OP_PAR	includes/lexer.h	/^	TOKEN_OP_PAR,$/;"	e	enum:__anon2
+TOKEN_REDIR	includes/lexer.h	/^	TOKEN_REDIR,$/;"	e	enum:__anon2
+TOKEN_SQ	includes/lexer.h	/^	TOKEN_SQ,$/;"	e	enum:__anon2
+TOKEN_WHILE	includes/lexer.h	/^	TOKEN_WHILE,$/;"	e	enum:__anon2
+TOKEN_WORD	includes/lexer.h	/^	TOKEN_WORD,$/;"	e	enum:__anon2
+TYPE_BUILTIN	includes/shell.h	/^# define TYPE_BUILTIN	/;"	d
+UNSETENV_BUILTIN	includes/shell.h	/^# define UNSETENV_BUILTIN	/;"	d
+UNSETENV_USG	includes/shell.h	/^# define UNSETENV_USG	/;"	d
+UNSET_BUILTIN	includes/shell.h	/^# define UNSET_BUILTIN	/;"	d
+UNUSED	includes/prompt.h	/^# define UNUSED	/;"	d
+UP	includes/prompt.h	/^# define UP	/;"	d
+Z	libft/includes/libft.h	/^# define Z	/;"	d
+_BLUE	Makefile	/^_BLUE		=	\\x1b[34m$/;"	m
+_BLUE	libft/Makefile	/^_BLUE			=	\\x1b[34m$/;"	m
+_BOLD	Makefile	/^_BOLD		=	\\x1b[1m$/;"	m
+_BOLD	libft/Makefile	/^_BOLD			=	\\x1b[1m$/;"	m
+_CYAN	Makefile	/^_CYAN		=	\\x1b[36m$/;"	m
+_CYAN	libft/Makefile	/^_CYAN			=	\\x1b[36m$/;"	m
+_END	Makefile	/^_END		=	\\x1b[0m$/;"	m
+_END	libft/Makefile	/^_END			=	\\x1b[0m$/;"	m
+_EXEC	Makefile	/^_EXEC 		= alias_builtin.c alias_init.c alias_utils.c bg_builtin.c tools.c\\$/;"	m
+_EXEC_O	Makefile	/^_EXEC_O 	:= $(_EXEC:.c=.o)$/;"	m
+_GREEN	Makefile	/^_GREEN		=	\\x1b[32m$/;"	m
+_GREEN	libft/Makefile	/^_GREEN			=	\\x1b[32m$/;"	m
+_GREY	Makefile	/^_GREY		=	\\x1b[30m$/;"	m
+_GREY	libft/Makefile	/^_GREY			=	\\x1b[30m$/;"	m
+_IBLUE	Makefile	/^_IBLUE		=	\\x1b[44m$/;"	m
+_IBLUE	libft/Makefile	/^_IBLUE			=	\\x1b[44m$/;"	m
+_ICYAN	Makefile	/^_ICYAN		=	\\x1b[46m$/;"	m
+_ICYAN	libft/Makefile	/^_ICYAN			=	\\x1b[46m$/;"	m
+_IGREEN	Makefile	/^_IGREEN		=	\\x1b[42m$/;"	m
+_IGREEN	libft/Makefile	/^_IGREEN			=	\\x1b[42m$/;"	m
+_IGREY	Makefile	/^_IGREY		=	\\x1b[40m$/;"	m
+_IGREY	libft/Makefile	/^_IGREY			=	\\x1b[40m$/;"	m
+_IPURPLE	Makefile	/^_IPURPLE	=	\\x1b[45m$/;"	m
+_IPURPLE	libft/Makefile	/^_IPURPLE		=	\\x1b[45m$/;"	m
+_IRED	Makefile	/^_IRED		=	\\x1b[41m$/;"	m
+_IRED	libft/Makefile	/^_IRED			=	\\x1b[41m$/;"	m
+_IWHITE	Makefile	/^_IWHITE		=	\\x1b[47m$/;"	m
+_IWHITE	libft/Makefile	/^_IWHITE			=	\\x1b[47m$/;"	m
+_IYELLOW	Makefile	/^_IYELLOW	=	\\x1b[43m$/;"	m
+_IYELLOW	libft/Makefile	/^_IYELLOW		=	\\x1b[43m$/;"	m
+_LEXER	Makefile	/^_LEXER 		= lexer.c print_lexer.c utils.c$/;"	m
+_LEXER_O	Makefile	/^_LEXER_O 	:= $(_LEXER:.c=.o)$/;"	m
+_MAGENTA	Makefile	/^_MAGENTA	=	\\x1b[35m$/;"	m
+_OBJ	Makefile	/^_OBJ		:= $(_LEXER_O) $(_EXEC_O) $(_PROMPT_O) $(_PARSER_O) $(_ROOT_O)$/;"	m
+_PARSER	Makefile	/^_PARSER		= ast.c build_ast.c inhibitors.c parser.c redir_list.c \\$/;"	m
+_PARSER_O	Makefile	/^_PARSER_O 	:= $(_PARSER:.c=.o)$/;"	m
+_PROMPT	Makefile	/^_PROMPT 	= arrow_events.c \\$/;"	m
+_PROMPT_O	Makefile	/^_PROMPT_O 	:= $(_PROMPT:.c=.o)$/;"	m
+_PURPLE	Makefile	/^_PURPLE		=	\\x1b[35m$/;"	m
+_PURPLE	libft/Makefile	/^_PURPLE			=	\\x1b[35m$/;"	m
+_RED	Makefile	/^_RED		=	\\x1b[31m$/;"	m
+_RED	libft/Makefile	/^_RED			=	\\x1b[31m$/;"	m
+_REV	Makefile	/^_REV		=	\\x1b[7m$/;"	m
+_REV	libft/Makefile	/^_REV			=	\\x1b[7m$/;"	m
+_ROOT	Makefile	/^_ROOT 		= handler.c$/;"	m
+_ROOT_O	Makefile	/^_ROOT_O 	:= $(_ROOT:.c=.o)$/;"	m
+_UNDER	Makefile	/^_UNDER		=	\\x1b[4m$/;"	m
+_UNDER	libft/Makefile	/^_UNDER			=	\\x1b[4m$/;"	m
+_WHITE	Makefile	/^_WHITE		=	\\x1b[37m$/;"	m
+_WHITE	libft/Makefile	/^_WHITE			=	\\x1b[37m$/;"	m
+_YELLOW	Makefile	/^_YELLOW		=	\\x1b[33m$/;"	m
+_YELLOW	libft/Makefile	/^_YELLOW			=	\\x1b[33m$/;"	m
+action	includes/executor.h	/^	int			action;$/;"	m	struct:s_signal
+add_alias	srcs/executor/alias_builtin.c	/^int		add_alias(char *key, char *value)$/;"	f
+add_buffer_ctrl_r	srcs/prompt/ctrl_r.c	/^int	add_buffer_ctrl_r(char *buffer, t_ctrl_r *ctrl_r)$/;"	f
+add_cmd_to_history	srcs/prompt/history.c	/^int	add_cmd_to_history(char *str, t_history *history)$/;"	f
+add_index	srcs/executor/bin_hash.c	/^static void		add_index(int hashindex)$/;"	f	file:
+add_path	srcs/executor/bin_hash.c	/^static unsigned char *add_path(char **bin,unsigned char *argv)$/;"	f	file:
+add_pid	srcs/executor/job_utils.c	/^int	add_pid(int pid, char **command, int status)$/;"	f
+addkey	srcs/executor/setenv_builtin.c	/^static char				**addkey(char *key, char *value,char **env)$/;"	f	file:
+alias_builtin	srcs/executor/alias_builtin.c	/^int		alias_builtin(int ac, char **cmd)$/;"	f
+all_pid	srcs/executor/jobs_builtin.c	/^static int	all_pid(t_child *node, char option)$/;"	f	file:
+argv	includes/prompt.h	/^	char			**argv;$/;"	m	struct:s_data
+arithmetic_test	srcs/executor/test_builtin.c	/^static int	arithmetic_test(char **av, char *op)$/;"	f	file:
+arrow_down_event	srcs/prompt/arrow_events.c	/^int		arrow_down_event(t_cap *tcap)$/;"	f
+arrow_left_event	srcs/prompt/arrow_events.c	/^int		arrow_left_event(t_cap *tcap)$/;"	f
+arrow_right_event	srcs/prompt/arrow_events.c	/^int		arrow_right_event(t_cap *tcap)$/;"	f
+arrow_up_event	srcs/prompt/arrow_events.c	/^int		arrow_up_event(t_cap *tcap)$/;"	f
+ast	includes/shell.h	/^	t_ast		*ast;$/;"	m	struct:s_shell
+autocomp	includes/shell.h	/^	t_ab		*autocomp;$/;"	m	struct:s_shell
+back_i_search	srcs/prompt/ctrl_r.c	/^int back_i_search(t_ctrl_r *ctrl_r, t_cap *tcap)$/;"	f
+backspace_event	srcs/prompt/key_events.c	/^int		backspace_event(t_cap *tcap)$/;"	f
+base	libft/includes/libft.h	/^	int				base;$/;"	m	struct:s_format
+bg_all	srcs/executor/bg_builtin.c	/^static	int	bg_all(t_child *node)$/;"	f	file:
+bg_builtin	srcs/executor/bg_builtin.c	/^int			bg_builtin(int ac, char **cmd)$/;"	f
+bg_resume	srcs/executor/bg_builtin.c	/^int			bg_resume(t_child **node)$/;"	f
+binary_test	srcs/executor/test_builtin.c	/^static int	binary_test(char **av)$/;"	f	file:
+build_ast	srcs/parser/build_ast.c	/^void	build_ast(t_list *lexer, t_ast **root, e_op_type optype1, e_op_type optype2)$/;"	f
+build_lexer	srcs/lexer/lexer.c	/^int					build_lexer(char *input, t_list **lexer)$/;"	f
+build_lexer_helper	srcs/lexer/lexer.c	/^static void			build_lexer_helper(t_list **lexer,$/;"	f	file:
+builtin	includes/prompt.h	/^	char			*builtin;$/;"	m	struct:s_built
+carriage	includes/prompt.h	/^	char		*carriage;$/;"	m	struct:s_cap
+carry	includes/prompt.h	/^	char		carry[2];$/;"	m	struct:s_cap
+carry	includes/prompt.h	/^	int						carry;$/;"	m	struct:s_tab
+cat_fullpath	srcs/prompt/completion.c	/^static void		cat_fullpath(char *full_path, char *name, char *path)$/;"	f	file:
+cd_builtin	srcs/executor/cd_builtin.c	/^int					cd_builtin(int ac, char **av)$/;"	f
+cd_err	srcs/executor/cd_builtin_utils.c	/^int				cd_err(int err_id, char *dest)$/;"	f
+cd_home	srcs/executor/cd_builtin.c	/^static	int			cd_home(char flag)$/;"	f	file:
+cd_oldpwd	srcs/executor/cd_builtin.c	/^static int			cd_oldpwd(char flag)$/;"	f	file:
+change_dir	srcs/executor/cd_builtin_chdir.c	/^int					change_dir(char *path, char flag)$/;"	f
+char_len	includes/prompt.h	/^	int			char_len;$/;"	m	struct:s_cap
+check_conversion	libft/srcs/ft_printf.c	/^int			check_conversion(char **str)$/;"	f
+check_dir	srcs/executor/tools.c	/^int		check_dir(char *path)$/;"	f
+check_file	srcs/executor/tools.c	/^int		check_file(char *path)$/;"	f
+check_flags	srcs/prompt/main.c	/^static void check_flags(char **av, int ac)$/;"	f	file:
+check_inhib	srcs/parser/inhibitors.c	/^static void		check_inhib(char *str, t_list *lexer, int i)$/;"	f	file:
+check_intern_var	srcs/executor/shell_var.c	/^static void			check_intern_var(char *needle, char ***env, char ***intern)$/;"	f	file:
+check_ops	srcs/lexer/lexer.c	/^t_oplist			check_ops(char *str)$/;"	f
+check_options	srcs/executor/cd_builtin.c	/^static int			check_options(int ac, char **av, char *flag)$/;"	f	file:
+check_options	srcs/executor/export_builtin.c	/^static int		check_options(int ac, char **av)$/;"	f	file:
+check_options	srcs/executor/hash_builtin.c	/^static int			check_options(int ac, char **av)$/;"	f	file:
+check_syntax_errors	srcs/parser/syntax_errors.c	/^char		*check_syntax_errors(t_list *tokens)$/;"	f
+check_user	srcs/executor/tilde_expansion.c	/^static char			*check_user(char *str, char *home)$/;"	f	file:
+clean_before_return	srcs/prompt/main.c	/^char	*clean_before_return(t_cap *tcap)$/;"	f
+clean_dot	srcs/executor/cd_builtin_chdir.c	/^static void			clean_dot(char *path, int *j, char *new_path, int *i)$/;"	f	file:
+clean_dot_dot	srcs/executor/cd_builtin_chdir.c	/^static void			clean_dot_dot(char *path, int *j, char *new_path, int *i)$/;"	f	file:
+clean_path	srcs/executor/cd_builtin_chdir.c	/^char				*clean_path(char *path, char *new_path)$/;"	f
+clear_before_ctrl_r	srcs/prompt/ctrl_r.c	/^int	clear_before_ctrl_r(t_cap *tcap, t_ctrl_r *ctrl_r)$/;"	f
+close_fd	srcs/executor/utils2.c	/^void		close_fd(void)$/;"	f
+clr_all_line	includes/prompt.h	/^	char		*clr_all_line;$/;"	m	struct:s_cap
+clr_curr_line	includes/prompt.h	/^	char		*clr_curr_line;$/;"	m	struct:s_cap
+cmd	includes/executor.h	/^	char		*cmd;$/;"	m	struct:set_builtin
+col	includes/prompt.h	/^	int						col;$/;"	m	struct:s_tab
+command	includes/prompt.h	/^	char		command[BUFFSIZE];$/;"	m	struct:s_cap
+comp	includes/prompt.h	/^	char                    comp[BUFFSIZE];$/;"	m	struct:s_tab
+comp_path	srcs/prompt/completion.c	/^void comp_path(t_cap *tcap, char *path)$/;"	f
+content	includes/lexer.h	/^	char			**content;$/;"	m	struct:s_token
+content	libft/includes/libft.h	/^	void			*content;$/;"	m	struct:s_list
+content_size	libft/includes/libft.h	/^	size_t			content_size;$/;"	m	struct:s_list
+conversion	libft/includes/libft.h	/^	char			conversion;$/;"	m	struct:s_format
+copied	includes/prompt.h	/^	char					copied[BUFFSIZE];$/;"	m	struct:s_cc
+copy_cut	includes/shell.h	/^	t_cc		*copy_cut;$/;"	m	struct:s_shell
+correct	srcs/prompt/others.c	/^char	*correct(char *string, char **possible, int *difference)$/;"	f
+create_file	srcs/prompt/completion.c	/^void create_file(char *name, char *path, t_ab *autocomp)$/;"	f
+create_format	libft/srcs/ft_printf.c	/^t_format	*create_format(char *str, va_list ap)$/;"	f
+create_redir	srcs/parser/redir_list.c	/^static void		create_redir(char *red, char **dest, size_t size,$/;"	f	file:
+create_redir_list	srcs/parser/redir_list.c	/^void		create_redir_list(t_list *lexer)$/;"	f
+create_token	srcs/lexer/lexer.c	/^static void			create_token(t_list **lexer, char *str,$/;"	f	file:
+ctrl_d_event	srcs/prompt/key_events.c	/^int		ctrl_d_event(t_cap *tcap)$/;"	f
+ctrl_r	includes/shell.h	/^	t_ctrl_r	*ctrl_r;$/;"	m	struct:s_shell
+ctrl_r_event	srcs/prompt/key_events.c	/^int		ctrl_r_event(t_cap *tcap)$/;"	f
+curr_pipe	includes/shell.h	/^	size_t		curr_pipe;$/;"	m	struct:s_shell
+cursx	includes/prompt.h	/^	int			cursx;$/;"	m	struct:s_cap
+cursx_max	includes/prompt.h	/^	int			cursx_max;$/;"	m	struct:s_cap
+cursy	includes/prompt.h	/^	int			cursy;$/;"	m	struct:s_cap
+data	includes/executor.h	/^	unsigned char	*data;$/;"	m	struct:s_hash_entry
+data	includes/prompt.h	/^	char					*data[MAX_HISTORY_LENGHT];$/;"	m	struct:s_history
+data	includes/prompt.h	/^	char					*data[MAX_HISTORY_LENGHT];$/;"	m	struct:s_tab
+data	includes/prompt.h	/^	char				 	data[BUFFSIZE];$/;"	m	struct:s_ctrl_r
+debug	srcs/prompt/main.c	/^int		debug(void)$/;"	f
+debug_history	srcs/prompt/history.c	/^int	debug_history(t_history *history)$/;"	f
+del_ast	srcs/parser/ast.c	/^void			del_ast(t_ast **root)$/;"	f
+del_one_ast	srcs/parser/ast.c	/^static void		del_one_ast(t_ast *root)$/;"	f	file:
+dest	includes/parser.h	/^	char			**dest;$/;"	m	struct:s_redir
+display_alias	srcs/executor/alias_utils.c	/^int		display_alias(void)$/;"	f
+display_pid_long	srcs/executor/jobs_builtin.c	/^int display_pid_long(t_child *node, int fd)$/;"	f
+display_pid_status	srcs/executor/jobs_builtin.c	/^int			display_pid_status(t_child *node, char option)$/;"	f
+dollar_curly	srcs/executor/param_expansion.c	/^char		*dollar_curly(char *old, char *ptr, int *i)$/;"	f
+down	includes/prompt.h	/^	char		*down;$/;"	m	struct:s_cap
+dup_env	srcs/handler.c	/^char		**dup_env(const char **env)$/;"	f
+dup_tab	srcs/executor/tab_utils.c	/^char		**dup_tab(char **old, size_t size)$/;"	f
+e_op_type	includes/lexer.h	/^} e_op_type;$/;"	t	typeref:enum:__anon1
+e_token_type	includes/lexer.h	/^} e_token_type;$/;"	t	typeref:enum:__anon2
+echo_builtin	srcs/executor/echo_builtin.c	/^int			echo_builtin(int argc, char **argv)$/;"	f
+empty_table	srcs/executor/hash_builtin.c	/^static void			empty_table(void)$/;"	f	file:
+end_ctrl_r	srcs/prompt/ctrl_r.c	/^int end_ctrl_r(t_ctrl_r *ctrl_r)$/;"	f
+end_event	srcs/prompt/home_end_events.c	/^int		end_event(t_cap *tcap)$/;"	f
+end_of_leaf	includes/parser.h	/^	char			end_of_leaf;$/;"	m	struct:s_redir
+enter_event	srcs/prompt/key_events.c	/^int		enter_event(t_cap *tcap)$/;"	f
+env	includes/shell.h	/^	char		**env;$/;"	m	struct:s_shell
+env_builtin	srcs/executor/env_builtin.c	/^int		env_builtin(int ac, char **av)$/;"	f
+env_tmp	includes/shell.h	/^	char		**env_tmp;$/;"	m	struct:s_shell
+env_to_env	srcs/executor/export_builtin.c	/^void			env_to_env(char *key)$/;"	f
+err_display	srcs/executor/err_handler.c	/^int				err_display(char *start, char *mid, char *end)$/;"	f
+err_handler	srcs/executor/err_handler.c	/^void			err_handler(int err_id, char *str)$/;"	f
+err_helper	srcs/executor/err_handler.c	/^static void		err_helper(char *error, char *cause)$/;"	f	file:
+exec	includes/executor.h	/^	char			*exec; \/\/**$/;"	m	struct:s_child
+exec_export	srcs/executor/export_builtin.c	/^static int		exec_export(char *key, char *ptr)$/;"	f	file:
+exec_inhib	srcs/parser/inhibitors.c	/^static void		exec_inhib(char inhib, t_list *lexer, int i)$/;"	f	file:
+exec_redir	srcs/executor/handle_redir.c	/^static int		exec_redir(t_redir *redir)$/;"	f	file:
+exit_builtin	srcs/executor/exit_builtin.c	/^int		exit_builtin(int ac, char **av)$/;"	f
+expand_alias	srcs/executor/alias_builtin.c	/^int		expand_alias(void)$/;"	f
+expansion_history	srcs/prompt/history_expansion.c	/^int expansion_history(char *string, t_cap *tcap, int index)$/;"	f
+export_builtin	srcs/executor/export_builtin.c	/^int				export_builtin(int ac, char **av)$/;"	f
+fd	includes/parser.h	/^	int				fd;$/;"	m	struct:s_redir
+fd_table	includes/shell.h	/^	int			fd_table[10];$/;"	m	struct:s_shell
+fg_builtin	srcs/executor/fg_builtin.c	/^int			fg_builtin(int ac, char **cmd)$/;"	f
+file_name	includes/prompt.h	/^	char					*file_name;$/;"	m	struct:s_history
+file_name_ext	srcs/prompt/completion.c	/^void file_name_ext(char *string, t_stat stats, char *name)$/;"	f
+find_name	srcs/executor/type_builtin.c	/^static int		find_name(char *str)$/;"	f	file:
+first_pipe	srcs/executor/parse_pipes.c	/^static void		first_pipe(char **cmd, t_pipe **pipes, int redir)$/;"	f	file:
+found	includes/prompt.h	/^	char				 	found[BUFFSIZE];$/;"	m	struct:s_ctrl_r
+free_mem	libft/srcs/ft_splitdup.c	/^static void		free_mem(char **strings, int len)$/;"	f	file:
+free_mem	libft/srcs/ft_strsplit.c	/^static void		free_mem(char **strings, int len)$/;"	f	file:
+free_mem	libft/srcs/ft_strsplitstr.c	/^static void		free_mem(char **strings, int len)$/;"	f	file:
+from	includes/prompt.h	/^	int						from;$/;"	m	struct:s_cc
+ft_abs	libft/srcs/ft_abs.c	/^intmax_t		ft_abs(intmax_t nb)$/;"	f
+ft_add_n_char	srcs/prompt/push.c	/^int		ft_add_n_char(char *buff, int pos, int len, t_cap *tcap)$/;"	f
+ft_arraylen	srcs/executor/alias_utils.c	/^int		ft_arraylen(char **array)$/;"	f
+ft_atoi	libft/srcs/ft_atoi.c	/^int		ft_atoi(const char *str)$/;"	f
+ft_bzero	libft/srcs/ft_bzero.c	/^void	ft_bzero(void *s, size_t n)$/;"	f
+ft_clean_buff	srcs/prompt/push.c	/^void	ft_clean_buff(t_cap *tcap)$/;"	f
+ft_clear_all_lines	srcs/prompt/reader.c	/^void	ft_clear_all_lines(t_cap *tcap)$/;"	f
+ft_clear_replace	srcs/prompt/arrow_events.c	/^void	ft_clear_replace(t_cap *tcap)$/;"	f
+ft_copy	srcs/prompt/copy_cut.c	/^int		ft_copy(t_cap *tcap)$/;"	f
+ft_count_char	libft/srcs/ft_count_char.c	/^int		ft_count_char(char c, char *str)$/;"	f
+ft_count_modifiers	libft/srcs/format_geters.c	/^static int		ft_count_modifiers(char c, char *str)$/;"	f	file:
+ft_count_pipes	srcs/executor/handle_pipe.c	/^static size_t	ft_count_pipes(t_ast *root)$/;"	f	file:
+ft_count_words	libft/srcs/ft_count_words.c	/^int		ft_count_words(char const *s, char c)$/;"	f
+ft_count_words_str	libft/srcs/ft_count_words_str.c	/^int		ft_count_words_str(char const *s, char *needle)$/;"	f
+ft_cut	srcs/prompt/copy_cut.c	/^int		ft_cut(t_cap *tcap)$/;"	f
+ft_delete_back	srcs/prompt/push.c	/^int		ft_delete_back(t_cap *tcap)$/;"	f
+ft_delete_n_char	srcs/prompt/push.c	/^int		ft_delete_n_char(t_cap *tcap, int pos, int len)$/;"	f
+ft_execute	srcs/executor/executor.c	/^static void		ft_execute(char **args, int redir, int background)$/;"	f	file:
+ft_execute_ast	srcs/executor/executor.c	/^void			ft_execute_ast(t_ast *root)$/;"	f
+ft_exit	libft/srcs/ft_exit.c	/^void		ft_exit(char *msg)$/;"	f
+ft_expand	srcs/executor/expansions.c	/^void		ft_expand(char **args)$/;"	f
+ft_expand_one	srcs/executor/expansions.c	/^void		ft_expand_one(char **ptr)$/;"	f
+ft_flags	srcs/executor/get_options.c	/^int		ft_flags(char c, char *flags, char *opt)$/;"	f
+ft_fork	srcs/executor/ft_fork.c	/^int				ft_fork(char **cmd, char **env)$/;"	f
+ft_fork_amper	srcs/executor/ft_fork.c	/^int				ft_fork_amper(char **cmd, char **env)$/;"	f
+ft_ftoa	libft/srcs/ft_ftoa.c	/^char					*ft_ftoa(long double d, int precision)$/;"	f
+ft_get_color	libft/srcs/ft_get_color.c	/^int				ft_get_color(int color1, int color2, double percentage)$/;"	f
+ft_go_to_eol	srcs/prompt/move.c	/^void	ft_go_to_eol(t_cap *tcap)$/;"	f
+ft_indexof	libft/srcs/ft_indexof.c	/^int	ft_indexof(char *string, char c)$/;"	f
+ft_insert	srcs/prompt/push.c	/^int		ft_insert(char *buff, t_cap *tcap)$/;"	f
+ft_insert_path	srcs/prompt/completion.c	/^void ft_insert_path(char *path, t_cap *tcap)$/;"	f
+ft_isalnum	libft/srcs/ft_isalnum.c	/^int		ft_isalnum(int c)$/;"	f
+ft_isalpha	libft/srcs/ft_isalpha.c	/^int		ft_isalpha(int c)$/;"	f
+ft_isascii	libft/srcs/ft_isascii.c	/^int		ft_isascii(int c)$/;"	f
+ft_isdigit	libft/srcs/ft_isdigit.c	/^int		ft_isdigit(int c)$/;"	f
+ft_isonly_digit	libft/srcs/ft_isonly_digit.c	/^int		ft_isonly_digit(char *str)$/;"	f
+ft_isprint	libft/srcs/ft_isprint.c	/^int		ft_isprint(int c)$/;"	f
+ft_isspace	libft/srcs/ft_isspace.c	/^int		ft_isspace(int c)$/;"	f
+ft_itoa	libft/srcs/ft_itoa.c	/^char	*ft_itoa(intmax_t n)$/;"	f
+ft_itoa_base	libft/srcs/ft_itoa_base.c	/^char	*ft_itoa_base(intmax_t n, int base, int uppercase)$/;"	f
+ft_lastindexof	libft/srcs/ft_lastindexof.c	/^int	ft_lastindexof(char *string, char c)$/;"	f
+ft_left	srcs/prompt/move.c	/^int		ft_left(t_cap *tcap)$/;"	f
+ft_levenshtein	libft/srcs/ft_levenshtein.c	/^size_t			ft_levenshtein(char *a, char *b)$/;"	f
+ft_levenshtein_n	libft/srcs/ft_levenshtein.c	/^size_t			ft_levenshtein_n(char *a, size_t length, char *b, size_t blen)$/;"	f
+ft_lstadd	libft/srcs/ft_lstadd.c	/^void	ft_lstadd(t_list **alst, t_list *new)$/;"	f
+ft_lstdel	libft/srcs/ft_lstdel.c	/^void	ft_lstdel(t_list **alst, void (*del) (void *, size_t))$/;"	f
+ft_lstdelone	libft/srcs/ft_lstdelone.c	/^void	ft_lstdelone(t_list **alst, void (*del) (void *, size_t))$/;"	f
+ft_lstdestroy	libft/srcs/ft_lstdestroy.c	/^int		ft_lstdestroy(t_list **lst)$/;"	f
+ft_lstiter	libft/srcs/ft_lstiter.c	/^void	ft_lstiter(t_list *lst, void (*f) (t_list *elem))$/;"	f
+ft_lstmap	libft/srcs/ft_lstmap.c	/^t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))$/;"	f
+ft_lstnew	libft/srcs/ft_lstnew.c	/^t_list		*ft_lstnew(void const *content, size_t content_size)$/;"	f
+ft_lstpushback	libft/srcs/ft_lstpushback.c	/^int		ft_lstpushback(t_list **begin, t_list *new)$/;"	f
+ft_lstrev	libft/srcs/ft_lstrev.c	/^void		ft_lstrev(t_list **alst)$/;"	f
+ft_max	libft/srcs/ft_max.c	/^int		ft_max(int a, int b)$/;"	f
+ft_memalloc	libft/srcs/ft_memalloc.c	/^void	*ft_memalloc(size_t size)$/;"	f
+ft_memccpy	libft/srcs/ft_memccpy.c	/^void	*ft_memccpy(void *dst, const void *src, int c, size_t n)$/;"	f
+ft_memchr	libft/srcs/ft_memchr.c	/^void	*ft_memchr(const void *s, int c, size_t n)$/;"	f
+ft_memcmp	libft/srcs/ft_memcmp.c	/^int		ft_memcmp(const void *s1, const void *s2, size_t n)$/;"	f
+ft_memcpy	libft/srcs/ft_memcpy.c	/^void	*ft_memcpy(void *dst, const void *src, size_t n)$/;"	f
+ft_memdel	libft/srcs/ft_memdel.c	/^void	ft_memdel(void **ap)$/;"	f
+ft_memmove	libft/srcs/ft_memmove.c	/^void	*ft_memmove(void *dst, const void *src, size_t len)$/;"	f
+ft_memset	libft/srcs/ft_memset.c	/^void	*ft_memset(void *b, int c, size_t len)$/;"	f
+ft_min	libft/srcs/ft_min.c	/^int		ft_min(int a, int b)$/;"	f
+ft_move	srcs/prompt/move.c	/^int		ft_move(t_cap *tcap, char *string, int n)$/;"	f
+ft_nlastindexof	libft/srcs/ft_nlastindexof.c	/^int	ft_nlastindexof(char *string, char c, int n)$/;"	f
+ft_nputchar	libft/srcs/ft_nputchar.c	/^void	ft_nputchar(char c, int n)$/;"	f
+ft_parse	srcs/parser/parser.c	/^t_ast  *ft_parse(t_list *lexer)$/;"	f
+ft_paste	srcs/prompt/copy_cut.c	/^int		ft_paste(t_cap *tcap)$/;"	f
+ft_percent	libft/srcs/ft_percent.c	/^double		ft_percent(int start, int end, int curr)$/;"	f
+ft_pipe_exec	srcs/executor/parse_pipes.c	/^static int		ft_pipe_exec(char **cmd, int redir)$/;"	f	file:
+ft_post_exec	srcs/executor/executor.c	/^void			ft_post_exec(t_ast *root)$/;"	f
+ft_pre_execution	srcs/executor/pre_exec.c	/^int				ft_pre_execution(char ***args, int redir, t_builtin **builtin)$/;"	f
+ft_printf	libft/srcs/ft_printf.c	/^int			ft_printf(const char *restrict format, ...)$/;"	f
+ft_put_termcaps	srcs/prompt/others.c	/^int		ft_put_termcaps(int c)$/;"	f
+ft_putchar	libft/srcs/ft_putchar.c	/^void	ft_putchar(char c)$/;"	f
+ft_putchar_fd	libft/srcs/ft_putchar_fd.c	/^void	ft_putchar_fd(char c, int fd)$/;"	f
+ft_putendl	libft/srcs/ft_putendl.c	/^void	ft_putendl(char const *s)$/;"	f
+ft_putendl_fd	libft/srcs/ft_putendl_fd.c	/^void	ft_putendl_fd(char const *s, int fd)$/;"	f
+ft_putnbr	libft/srcs/ft_putnbr.c	/^void	ft_putnbr(int n)$/;"	f
+ft_putnbr_fd	libft/srcs/ft_putnbr_fd.c	/^void	ft_putnbr_fd(int n, int fd)$/;"	f
+ft_putstr	libft/srcs/ft_putstr.c	/^void	ft_putstr(char const *s)$/;"	f
+ft_putstr_fd	libft/srcs/ft_putstr_fd.c	/^void	ft_putstr_fd(char const *s, int fd)$/;"	f
+ft_replace_cursor	srcs/prompt/move.c	/^void	ft_replace_cursor(t_cap *tcap)$/;"	f
+ft_right	srcs/prompt/move.c	/^int		ft_right(t_cap *tcap)$/;"	f
+ft_setenv	srcs/executor/setenv_builtin.c	/^void					ft_setenv(char *key, char *value, char ***env)$/;"	f
+ft_split_count	libft/srcs/ft_split_count.c	/^int		ft_split_count(const char **split)$/;"	f
+ft_splitdel	libft/srcs/ft_splitdel.c	/^void		ft_splitdel(char **split)$/;"	f
+ft_splitdup	libft/srcs/ft_splitdup.c	/^char	**ft_splitdup(char **src)$/;"	f
+ft_strcat	libft/srcs/ft_strcat.c	/^char	*ft_strcat(char *s1, const char *s2)$/;"	f
+ft_strchr	libft/srcs/ft_strchr.c	/^char	*ft_strchr(const char *s, int c)$/;"	f
+ft_strcjoin	libft/srcs/ft_strcjoin.c	/^char	*ft_strcjoin(char const *s1, char const *s2, char c)$/;"	f
+ft_strclr	libft/srcs/ft_strclr.c	/^void	ft_strclr(char *s)$/;"	f
+ft_strcmp	libft/srcs/ft_strcmp.c	/^int		ft_strcmp(const char *s1, const char *s2)$/;"	f
+ft_strcpy	libft/srcs/ft_strcpy.c	/^char	*ft_strcpy(char *dst, const char *src)$/;"	f
+ft_strdel	libft/srcs/ft_strdel.c	/^void	ft_strdel(char **as)$/;"	f
+ft_strdup	libft/srcs/ft_strdup.c	/^char	*ft_strdup(const char *s1)$/;"	f
+ft_strequ	libft/srcs/ft_strequ.c	/^int		ft_strequ(char const *s1, char const *s2)$/;"	f
+ft_striter	libft/srcs/ft_striter.c	/^void	ft_striter(char *s, void (*f)(char *))$/;"	f
+ft_striteri	libft/srcs/ft_striteri.c	/^void	ft_striteri(char *s, void (*f)(unsigned int, char *))$/;"	f
+ft_strjoin	libft/srcs/ft_strjoin.c	/^char	*ft_strjoin(char const *s1, char const *s2)$/;"	f
+ft_strlcat	libft/srcs/ft_strlcat.c	/^size_t	ft_strlcat(char *dst, const char *src, size_t size)$/;"	f
+ft_strlen	libft/srcs/ft_strlen.c	/^size_t	ft_strlen(const char *s)$/;"	f
+ft_strlen2	libft/srcs/ft_strlen2.c	/^size_t	ft_strlen2(const char *s)$/;"	f
+ft_strmap	libft/srcs/ft_strmap.c	/^char	*ft_strmap(char const *s, char (*f)(char))$/;"	f
+ft_strmapi	libft/srcs/ft_strmapi.c	/^char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))$/;"	f
+ft_strncat	libft/srcs/ft_strncat.c	/^char	*ft_strncat(char *s1, const char *s2, size_t len)$/;"	f
+ft_strncmp	libft/srcs/ft_strncmp.c	/^int		ft_strncmp(const char *s1, const char *s2, size_t n)$/;"	f
+ft_strncpy	libft/srcs/ft_strncpy.c	/^char	*ft_strncpy(char *dst, const char *src, size_t len)$/;"	f
+ft_strnequ	libft/srcs/ft_strnequ.c	/^int		ft_strnequ(char const *s1, char const *s2, size_t n)$/;"	f
+ft_strnew	libft/srcs/ft_strnew.c	/^char	*ft_strnew(size_t size)$/;"	f
+ft_strnstr	libft/srcs/ft_strnstr.c	/^char	*ft_strnstr(const char *haystack, const char *needle, size_t len)$/;"	f
+ft_strrchr	libft/srcs/ft_strrchr.c	/^char	*ft_strrchr(const char *s, int c)$/;"	f
+ft_strreplace	libft/srcs/ft_strreplace.c	/^char	*ft_strreplace(char *orig, char *rep, char *with)$/;"	f
+ft_strsplit	libft/srcs/ft_strsplit.c	/^char			**ft_strsplit(char const *s, char c)$/;"	f
+ft_strsplitstr	libft/srcs/ft_strsplitstr.c	/^char			**ft_strsplitstr(char const *s, char *needle)$/;"	f
+ft_strstr	libft/srcs/ft_strstr.c	/^char	*ft_strstr(const char *haystack, const char *needle)$/;"	f
+ft_strsub	libft/srcs/ft_strsub.c	/^char	*ft_strsub(char const *s, unsigned int start, size_t len)$/;"	f
+ft_strtrim	libft/srcs/ft_strtrim.c	/^char		*ft_strtrim(char const *s)$/;"	f
+ft_substr	libft/srcs/ft_substr.c	/^char	*ft_substr(char *src, int m, int n)$/;"	f
+ft_tab	srcs/prompt/completion.c	/^int		ft_tab(t_cap *tcap, t_ab *autocomp)$/;"	f
+ft_tolower	libft/srcs/ft_tolower.c	/^int		ft_tolower(int c)$/;"	f
+ft_toupper	libft/srcs/ft_toupper.c	/^int		ft_toupper(int c)$/;"	f
+ft_utoa_base	libft/srcs/ft_utoa_base.c	/^char	*ft_utoa_base(uintmax_t nb, unsigned base, int uppercase)$/;"	f
+ft_waitprocess	srcs/executor/ft_fork.c	/^int				ft_waitprocess(pid_t pid, char **cmd)$/;"	f
+full_cmd	srcs/executor/job_utils.c	/^static char	*full_cmd(char **cmd)$/;"	f	file:
+full_num	libft/srcs/ft_ftoa.c	/^static	char			*full_num(long double save,$/;"	f	file:
+full_path	includes/prompt.h	/^	char					full_path[MAX_PATH];$/;"	m	struct:s_file
+function	includes/executor.h	/^	int			(*function)(int ac, char **av);$/;"	m	struct:set_builtin
+function	includes/prompt.h	/^	int						(*function)(t_cap *tcap);$/;"	m	struct:s_event
+function	includes/prompt.h	/^	int				(*function)(char **argv);$/;"	m	struct:s_built
+g_aliases	srcs/prompt/main.c	/^char	**g_aliases;$/;"	v
+g_alt_event	srcs/prompt/main.c	/^t_event g_alt_event[] = {$/;"	v
+g_arrow_event	srcs/prompt/main.c	/^t_event g_arrow_event[] = {$/;"	v
+g_builtins	srcs/executor/pre_exec.c	/^static const t_builtin g_builtins[NB_BUILTINS] = {$/;"	v	file:
+g_env	includes/prompt.h	/^char					**g_env;$/;"	v
+g_existing_token	srcs/lexer/lexer.c	/^static const t_oplist g_existing_token[] =$/;"	v	file:
+g_key_event	srcs/prompt/main.c	/^t_event g_key_event[] = {$/;"	v
+g_pid_table	srcs/prompt/main.c	/^t_child *g_pid_table;$/;"	v
+g_reserved	srcs/executor/alias_builtin.c	/^const	char	*g_reserved[] = {$/;"	v
+g_shell	srcs/prompt/main.c	/^t_shell *g_shell;$/;"	v
+g_signals	srcs/executor/signals.c	/^t_signal	g_signals[S_SIZE] = {$/;"	v
+g_status	srcs/executor/jobs_builtin.c	/^const char	*g_status[] = {$/;"	v
+get_alias	srcs/executor/alias_utils.c	/^char *get_alias(char *key)$/;"	f
+get_builtin	srcs/executor/pre_exec.c	/^t_builtin		*get_builtin(char *cmd)$/;"	f
+get_command_comp	srcs/prompt/completion.c	/^int get_command_comp(t_cap *tcap, int index)$/;"	f
+get_curr_cmd	srcs/executor/redir_utils.c	/^char		**get_curr_cmd(t_list *redir)$/;"	f
+get_dir_content	srcs/prompt/completion.c	/^int get_dir_content(t_cap *tcap, int index)$/;"	f
+get_end_words	srcs/prompt/completion.c	/^int get_end_words(t_cap *tcap, int index)$/;"	f
+get_git_status	srcs/prompt/others.c	/^char	*get_git_status(void)$/;"	f
+get_home	srcs/executor/tilde_expansion.c	/^static char			*get_home(void)$/;"	f	file:
+get_home_from_pwuid	srcs/executor/tilde_expansion.c	/^static char			*get_home_from_pwuid(void)$/;"	f	file:
+get_indexof_key	srcs/executor/setenv_builtin.c	/^int						get_indexof_key(char *key, char **env)$/;"	f
+get_key_value	srcs/executor/tools.c	/^char	*get_key_value(char *key, char **taba)$/;"	f
+get_light	libft/srcs/ft_get_color.c	/^static int		get_light(int start, int end, double percentage)$/;"	f	file:
+get_line_length	libft/srcs/get_next_line.c	/^static	int		get_line_length(char *s, char separator)$/;"	f	file:
+get_modifier	libft/srcs/format_geters.c	/^int				get_modifier(char *str, t_format *fmt)$/;"	f
+get_next_line	libft/srcs/get_next_line.c	/^int				get_next_line(const int fd, char **line, char separator)$/;"	f
+get_next_redir	srcs/parser/redir_list.c	/^static t_list		*get_next_redir(t_list *lexer)$/;"	f	file:
+get_oldpwd	srcs/executor/cd_builtin_utils.c	/^char			*get_oldpwd(char **env)$/;"	f
+get_options	srcs/executor/get_options.c	/^int		get_options(char *flags, char *opt, char *str, int (*usage)())$/;"	f
+get_path	srcs/executor/cd_builtin_utils.c	/^char			*get_path(char *dir)$/;"	f
+get_preceded_fd	srcs/parser/redir_list.c	/^static int get_preceded_fd(char c, e_op_type redir_type)$/;"	f	file:
+get_precision	libft/srcs/format_geters.c	/^int				get_precision(char *str, t_format *fmt, va_list ap)$/;"	f
+get_prompt_lenght	srcs/prompt/prompt_prefix.c	/^int get_prompt_lenght(void)$/;"	f
+get_signed	libft/srcs/numbers.c	/^intmax_t		get_signed(t_format *fmt, va_list ap)$/;"	f
+get_string	libft/srcs/numbers.c	/^char			*get_string(t_format *fmt, va_list ap)$/;"	f
+get_substr_len	libft/srcs/ft_strsplit.c	/^static size_t	get_substr_len(char const *s, int start, char c)$/;"	f	file:
+get_substr_len	libft/srcs/ft_strsplitstr.c	/^static size_t	get_substr_len(char const *s, int start, char *needle)$/;"	f	file:
+get_unsigned	libft/srcs/numbers.c	/^uintmax_t		get_unsigned(t_format *fmt, va_list ap)$/;"	f
+get_width	libft/srcs/format_geters.c	/^int				get_width(char *str, va_list ap, t_format *fmt)$/;"	f
+get_words_completion	srcs/prompt/completion.c	/^int		get_words_completion(t_ab *autocomp, t_cap *tcap)$/;"	f
+go_to_next_cmd	srcs/executor/redir_utils.c	/^void		go_to_next_cmd(t_list *redir)$/;"	f
+goto_closing_brace	srcs/executor/param_expansion.c	/^char		*goto_closing_brace(char *str)$/;"	f
+handle_char	libft/srcs/handlers.c	/^int		handle_char(t_format *fmt, va_list ap)$/;"	f
+handle_eol	srcs/prompt/reader.c	/^int	handle_eol(char *buffer, t_cap *tcap)$/;"	f
+handle_hdoc	srcs/executor/handle_hdoc.c	/^int		handle_hdoc(t_redir *redir)$/;"	f
+handle_inhibitors	srcs/parser/inhibitors.c	/^void			handle_inhibitors(t_list *lexer)$/;"	f
+handle_intern_var	srcs/executor/shell_var.c	/^void				handle_intern_var(char **args)$/;"	f
+handle_numbers	libft/srcs/handlers.c	/^int		handle_numbers(t_format *fmt, va_list ap)$/;"	f
+handle_pipe	srcs/executor/handle_pipe.c	/^void			handle_pipe(t_ast *root)$/;"	f
+handle_redir	srcs/executor/handle_redir.c	/^char			**handle_redir(void)$/;"	f
+handle_redir_and	srcs/executor/handle_redir.c	/^static int		handle_redir_and(t_redir *redir)$/;"	f	file:
+handle_str	libft/srcs/handlers.c	/^int		handle_str(t_format *fmt, va_list ap)$/;"	f
+handler	includes/executor.h	/^	char		*handler;$/;"	m	struct:s_signal
+handler	libft/includes/libft.h	/^	int				(*handler)(struct s_format *fmt, va_list ap);$/;"	m	struct:s_format
+handler	srcs/handler.c	/^int	handler(const char *input)$/;"	f
+hashCode	srcs/executor/bin_hash.c	/^static unsigned long hashCode(const unsigned char *str)$/;"	f	file:
+hash_builtin	srcs/executor/hash_builtin.c	/^int					hash_builtin(int ac, char **av)$/;"	f
+hash_err	srcs/executor/hash_builtin.c	/^static void			hash_err(char *str)$/;"	f	file:
+hash_indexes	includes/shell.h	/^	t_list		*hash_indexes;$/;"	m	struct:s_shell
+hash_insert	srcs/executor/bin_hash.c	/^t_hash_entry *hash_insert(unsigned char *key, char **env)$/;"	f
+hash_search	srcs/executor/bin_hash.c	/^t_hash_entry *hash_search(unsigned char* key) {$/;"	f
+hash_table	includes/shell.h	/^	t_hash_entry	*hash_table[TABLE_SIZE];$/;"	m	struct:s_shell
+hash_table	srcs/executor/bin_hash.c	/^int		hash_table(char **str, char **env)$/;"	f
+histo_down	srcs/prompt/history_up_down.c	/^int	histo_down(t_cap *tcap, t_history *h)$/;"	f
+histo_up	srcs/prompt/history_up_down.c	/^int	histo_up(t_cap *tcap, t_history *h)$/;"	f
+history	includes/shell.h	/^	t_history	*history;$/;"	m	struct:s_shell
+hit	includes/executor.h	/^	size_t			hit;$/;"	m	struct:s_hash_entry
+home_event	srcs/prompt/home_end_events.c	/^int		home_event(t_cap *tcap)$/;"	f
+index	includes/executor.h	/^	int				index;$/;"	m	struct:s_child
+index	includes/prompt.h	/^	int						index;$/;"	m	struct:s_ctrl_r
+init_alias	srcs/executor/alias_init.c	/^int		init_alias(int file)$/;"	f
+init_autocomp	srcs/prompt/completion.c	/^int		init_autocomp(t_cap *tcap, t_ab *autocomp)$/;"	f
+init_autocomp	srcs/prompt/init_struct.c	/^static int	init_autocomp(t_ab *autocomp)$/;"	f	file:
+init_copy_cut_ctrl_r	srcs/prompt/init_struct.c	/^static int	init_copy_cut_ctrl_r(t_cc *copy_cut, t_ctrl_r *ctrl_r)$/;"	f	file:
+init_fd_table	srcs/prompt/main.c	/^static int init_fd_table()$/;"	f	file:
+init_history	srcs/prompt/init_struct.c	/^static int	init_history(t_history *history)$/;"	f	file:
+init_len	includes/prompt.h	/^	int			init_len;$/;"	m	struct:s_cap
+init_pid	srcs/executor/job_utils.c	/^int	init_pid(void)$/;"	f
+init_signal	srcs/executor/signals.c	/^void init_signal(void)$/;"	f
+init_struct	srcs/prompt/init_struct.c	/^int			init_struct(const char **env)$/;"	f
+init_termcap	srcs/prompt/init_struct.c	/^int	init_termcap(t_cap *tcap)$/;"	f
+intern	includes/shell.h	/^	char		**intern;$/;"	m	struct:s_shell
+intern_tmp	includes/shell.h	/^	char		**intern_tmp;$/;"	m	struct:s_shell
+intern_to_env	srcs/executor/export_builtin.c	/^void			intern_to_env(char *key)$/;"	f
+interpolate	libft/srcs/ft_interpolate.c	/^double	interpolate(double start, double end, double interpolat)$/;"	f
+is_alias	srcs/executor/alias_utils.c	/^int	is_alias(char *key)$/;"	f
+is_alt	srcs/prompt/read_alt.c	/^int		is_alt(char *key)$/;"	f
+is_arrow	srcs/prompt/read_arrow.c	/^int		is_arrow(char key[4])$/;"	f
+is_first_arg	srcs/prompt/completion.c	/^int is_first_arg(t_cap *tcap, int pos)$/;"	f
+is_in_lexer	srcs/lexer/utils.c	/^int			is_in_lexer(t_list *lexer, e_op_type optype)$/;"	f
+is_integer	srcs/executor/test_builtin.c	/^static int	is_integer(char *str, char *str2)$/;"	f	file:
+is_key	srcs/prompt/read_key.c	/^int		is_key(char key[3])$/;"	f
+is_key_valid	srcs/executor/utils2.c	/^int			is_key_valid(char *key)$/;"	f
+is_op	includes/lexer.h	/^	char			is_op;$/;"	m	struct:s_token
+is_path	srcs/executor/tools.c	/^int		is_path(char *str)$/;"	f
+is_reserved	srcs/executor/alias_utils.c	/^int	is_reserved(char *key)$/;"	f
+is_shift_arrow	srcs/prompt/read_arrow.c	/^char	is_shift_arrow(char key[4])$/;"	f
+is_space	libft/srcs/ft_strtrim.c	/^static int	is_space(char c)$/;"	f	file:
+is_special_char	srcs/executor/utils2.c	/^int			is_special_char(char c)$/;"	f
+is_var	srcs/executor/shell_var.c	/^static int			is_var(char *needle)$/;"	f	file:
+job	includes/lexer.h	/^	char			job;$/;"	m	struct:s_ast
+jobs_builtin	srcs/executor/jobs_builtin.c	/^int			jobs_builtin(int ac, char **cmd)$/;"	f
+join_2	srcs/parser/redir_list.c	/^static void		join_2(t_list *lexer)$/;"	f	file:
+join_2tab	srcs/executor/tab_utils.c	/^char		**join_2tab(char **curr, char **next, size_t curr_size,$/;"	f
+join_all_redir	srcs/parser/redir_list.c	/^void		join_all_redir(t_list *lexer)$/;"	f
+join_if_2words	srcs/lexer/lexer.c	/^static int			join_if_2words(t_list **lexer, char *str, e_token_type type)$/;"	f	file:
+join_path	srcs/executor/cd_builtin_utils.c	/^char			*join_path(char *path, char *dir)$/;"	f
+key	includes/executor.h	/^	unsigned char	*key;$/;"	m	struct:s_hash_entry
+key	includes/prompt.h	/^	int						key;$/;"	m	struct:s_event
+kill_pids	srcs/executor/job_utils.c	/^int	kill_pids(void)$/;"	f
+lastsignal	includes/shell.h	/^	char		lastsignal;$/;"	m	struct:s_shell
+left	includes/lexer.h	/^	struct s_ast	*left;$/;"	m	struct:s_ast	typeref:struct:s_ast::s_ast
+left	includes/prompt.h	/^	char		*left;$/;"	m	struct:s_cap
+len	includes/lexer.h	/^	size_t			len;$/;"	m	struct:s_oplist
+len	includes/prompt.h	/^	int						len;$/;"	m	struct:s_history
+len	includes/prompt.h	/^	int						len;$/;"	m	struct:s_tab
+len_to_next_dollar	srcs/executor/param_expansion.c	/^int			len_to_next_dollar(char *str)$/;"	f
+lex_del_list	srcs/lexer/utils.c	/^void		lex_del_list(t_list **lexer)$/;"	f
+lex_delone	srcs/lexer/utils.c	/^void		lex_delone(void *data, size_t size)$/;"	f
+lexer	includes/shell.h	/^	t_list		*lexer;$/;"	m	struct:s_shell
+list_pointer	includes/lexer.h	/^	t_list			*list_pointer;$/;"	m	struct:s_ast
+loop_levenshtein	libft/srcs/ft_levenshtein.c	/^static size_t	*loop_levenshtein(size_t index[2], size_t length)$/;"	f	file:
+main	srcs/prompt/main.c	/^int				main(int ac, char **av, const char **env)$/;"	f
+make_prompt	srcs/prompt/prompt_prefix.c	/^static char	*make_prompt(char *format)$/;"	f	file:
+match	includes/prompt.h	/^	char					*match;$/;"	m	struct:s_tab
+match	includes/prompt.h	/^	int						match[BUFFSIZE];$/;"	m	struct:s_history
+max_offset	includes/prompt.h	/^	int						max_offset;$/;"	m	struct:s_tab
+minus	libft/includes/libft.h	/^	char			minus;$/;"	m	struct:s_format
+modifier	libft/includes/libft.h	/^	short			modifier;$/;"	m	struct:s_format
+my_env	srcs/executor/bin_hash.c	/^static char	*my_env(char **env)$/;"	f	file:
+name	includes/prompt.h	/^	char					name[MAX_PATH];$/;"	m	struct:s_file
+newnode	srcs/parser/ast.c	/^t_ast			*newnode(t_token *token, t_list *pointer)$/;"	f
+next	includes/executor.h	/^	t_child			*next;$/;"	m	struct:s_child
+next	libft/includes/libft.h	/^	struct s_list	*next;$/;"	m	struct:s_list	typeref:struct:s_list::s_list
+next_cmd	srcs/executor/handle_redir.c	/^static t_list	*next_cmd(t_list *redir)$/;"	f	file:
+not_found	includes/prompt.h	/^	int						not_found;$/;"	m	struct:s_ctrl_r
+number_expansion	srcs/prompt/history_expansion.c	/^static int number_expansion(char *string, t_cap *tcap, int index, int rev)$/;"	f	file:
+op	includes/lexer.h	/^	char			*op;$/;"	m	struct:s_oplist
+op_type	includes/lexer.h	/^	e_op_type		op_type;$/;"	m	struct:s_oplist
+op_type	includes/lexer.h	/^	e_op_type		op_type;$/;"	m	struct:s_token
+op_type	includes/parser.h	/^	e_op_type		op_type;$/;"	m	struct:s_redir
+open_file	srcs/executor/redir_utils.c	/^int			open_file(t_redir *redir)$/;"	f
+overflow	includes/prompt.h	/^	int			overflow;$/;"	m	struct:s_cap
+param_expansion	srcs/executor/param_expansion.c	/^void		param_expansion(char **ptr)$/;"	f
+params	srcs/executor/get_options.c	/^int		params(char **flags, int ac, char **av, int (*usage)())$/;"	f
+parse_aliases	srcs/executor/alias_init.c	/^char	*parse_aliases(char *line, char *origin, char *prev)$/;"	f
+parse_format	libft/srcs/ft_printf.c	/^int			parse_format(char *str, va_list ap)$/;"	f
+parse_pipes	srcs/executor/parse_pipes.c	/^void			parse_pipes(t_ast *root, t_pipe **pipes, size_t nbpipes)$/;"	f
+path	includes/prompt.h	/^	char					path[MAX_PATH];$/;"	m	struct:s_file
+pid	includes/executor.h	/^	pid_t			pid;$/;"	m	struct:s_child
+pipe	includes/executor.h	/^	int			pipe[2];$/;"	m	struct:s_pipe
+pipe_cmd	srcs/executor/parse_pipes.c	/^static void		pipe_cmd(char **cmd, t_pipe **pipes, size_t nbpipes, int redir)$/;"	f	file:
+place_cursor	includes/prompt.h	/^	char		*place_cursor;$/;"	m	struct:s_cap
+pos	includes/prompt.h	/^	int						pos;$/;"	m	struct:s_tab
+position	includes/prompt.h	/^	int						position;$/;"	m	struct:s_history
+precision	libft/includes/libft.h	/^	int				precision;$/;"	m	struct:s_format
+prefixe	libft/includes/libft.h	/^	char			prefixe;$/;"	m	struct:s_format
+prev	includes/executor.h	/^	t_child			*prev;$/;"	m	struct:s_child
+previous_expansion	srcs/prompt/history_expansion.c	/^static int previous_expansion(t_cap *tcap)$/;"	f	file:
+print_ast	srcs/parser/ast.c	/^void			print_ast(t_ast *root, char *str)$/;"	f
+print_default_prompt_prefix	srcs/prompt/prompt_prefix.c	/^static void	print_default_prompt_prefix(void)$/;"	f	file:
+print_flags	includes/shell.h	/^	char		print_flags;$/;"	m	struct:s_shell
+print_htable	srcs/executor/hash_builtin.c	/^static void			print_htable(void)$/;"	f	file:
+print_lexer	srcs/lexer/print_lexer.c	/^void				print_lexer(t_list *lexer)$/;"	f
+print_name	srcs/prompt/completion.c	/^int		print_name(t_ab *autocomp, char *str, int i)$/;"	f
+print_numbers	libft/srcs/numbers.c	/^int				print_numbers(t_format *fmt, char *str, int len)$/;"	f
+print_optype	srcs/lexer/print_lexer.c	/^void				print_optype(e_op_type op_type)$/;"	f
+print_prefix	srcs/prompt/prompt_prefix.c	/^static int print_prefix(void)$/;"	f	file:
+print_prefixe	libft/srcs/numbers.c	/^static int		print_prefixe(char c)$/;"	f	file:
+print_prompt_prefix	srcs/prompt/prompt_prefix.c	/^void		print_prompt_prefix(void)$/;"	f
+print_redir	srcs/executor/redir_utils.c	/^void		print_redir(t_list *redir)$/;"	f
+print_split	srcs/executor/tools.c	/^void	print_split(char **split)$/;"	f
+print_tokentype	srcs/lexer/print_lexer.c	/^static void			print_tokentype(e_token_type token_type)$/;"	f	file:
+priority	includes/executor.h	/^	int				priority;$/;"	m	struct:s_child
+prompt	includes/prompt.h	/^	char		*prompt;$/;"	m	struct:s_cap
+prompt_len	includes/prompt.h	/^	int			prompt_len;$/;"	m	struct:s_cap
+read	includes/prompt.h	/^	int						read;$/;"	m	struct:s_history
+read_arrow	srcs/prompt/read_arrow.c	/^int		read_arrow(char buffer, t_cap *tcap)$/;"	f
+read_buffer	srcs/prompt/reader.c	/^int		read_buffer(char *buffer, t_cap *tcap)$/;"	f
+read_history	srcs/prompt/history.c	/^int	read_history(t_history *history)$/;"	f
+read_key	srcs/prompt/read_key.c	/^int		read_key(char buffer, t_cap *tcap)$/;"	f
+read_line	libft/srcs/get_next_line.c	/^static	char	*read_line(char *s, int fd, int *ret, char separator)$/;"	f	file:
+read_line	srcs/prompt/main.c	/^char	*read_line(t_cap *tcap)$/;"	f
+realloc_new_tab	srcs/executor/tab_utils.c	/^char		**realloc_new_tab(char *needle, char **old, size_t size)$/;"	f
+realloc_without_quotes	srcs/executor/quote_expansion.c	/^static void		realloc_without_quotes(char **str, int start, int end)$/;"	f	file:
+redir	includes/lexer.h	/^	char			redir;$/;"	m	struct:s_token
+redir	includes/shell.h	/^	t_list		*redir;$/;"	m	struct:s_shell
+redir_delone	srcs/executor/redir_utils.c	/^void		redir_delone(void *data, size_t size)$/;"	f
+redir_errors	srcs/executor/err_handler.c	/^void			redir_errors(int err_id, char *dest, int fd)$/;"	f
+regular_cd	srcs/executor/cd_builtin.c	/^static int			regular_cd(char *dir, char flag)$/;"	f	file:
+remove_double	srcs/executor/quote_expansion.c	/^static void		remove_double(char **str, int *i)$/;"	f	file:
+remove_escape	srcs/executor/quote_expansion.c	/^static void		remove_escape(char **str, int *start)$/;"	f	file:
+remove_n_first_entries	srcs/executor/tab_utils.c	/^void		remove_n_first_entries(char **args, int n)$/;"	f
+remove_pid	srcs/executor/job_utils.c	/^int	remove_pid(t_child *node)$/;"	f
+remove_quote	srcs/executor/quote_expansion.c	/^void			remove_quote(char **str)$/;"	f
+remove_single	srcs/executor/quote_expansion.c	/^static void		remove_single(char **str, int *i)$/;"	f	file:
+removekey	srcs/executor/unsetenv_builtin.c	/^char			**removekey(char *key, int keylen,const char **env)$/;"	f
+reorder_pwd	srcs/executor/cd_builtin_chdir.c	/^static char			*reorder_pwd(char *path, char *buff)$/;"	f	file:
+reorder_tabs	srcs/executor/shell_var.c	/^static void			reorder_tabs(char *str, char **env, char **intern)$/;"	f	file:
+resetsign	srcs/executor/signals.c	/^void	resetsign(void)$/;"	f
+restore	includes/prompt.h	/^	char		*restore;$/;"	m	struct:s_cap
+restore_stdout_and_exec_hdoc	srcs/executor/handle_redir.c	/^static int		restore_stdout_and_exec_hdoc(t_redir *redir)$/;"	f	file:
+right	includes/lexer.h	/^	struct s_ast	*right;$/;"	m	struct:s_ast	typeref:struct:s_ast::s_ast
+right	includes/prompt.h	/^	char		*right;$/;"	m	struct:s_cap
+round_num	libft/srcs/ft_ftoa.c	/^static long double		round_num(long double d, int precision)$/;"	f	file:
+row	includes/prompt.h	/^	int						row;$/;"	m	struct:s_tab
+s_ast	includes/lexer.h	/^typedef struct		s_ast$/;"	s
+s_built	includes/prompt.h	/^typedef struct	s_built$/;"	s
+s_cap	includes/prompt.h	/^typedef struct	s_cap$/;"	s
+s_cc	includes/prompt.h	/^typedef struct				s_cc$/;"	s
+s_child	includes/executor.h	/^struct s_child{$/;"	s
+s_child_handler	srcs/executor/signals.c	/^void s_child_handler(int status, t_child *node)$/;"	f
+s_ctrl_r	includes/prompt.h	/^typedef struct				s_ctrl_r$/;"	s
+s_data	includes/prompt.h	/^typedef struct	s_data$/;"	s
+s_event	includes/prompt.h	/^typedef struct	s_event$/;"	s
+s_file	includes/prompt.h	/^typedef struct				s_file$/;"	s
+s_format	libft/includes/libft.h	/^typedef struct	s_format$/;"	s
+s_get_values	srcs/executor/signals.c	/^int s_get_values(int status, int *action, char **handler, char **stat)$/;"	f
+s_hash_entry	includes/executor.h	/^typedef struct s_hash_entry$/;"	s
+s_history	includes/prompt.h	/^typedef struct	s_history$/;"	s
+s_list	libft/includes/libft.h	/^typedef struct	s_list$/;"	s
+s_oplist	includes/lexer.h	/^typedef struct		s_oplist$/;"	s
+s_pipe	includes/executor.h	/^typedef struct s_pipe$/;"	s
+s_redir	includes/parser.h	/^typedef struct		s_redir$/;"	s
+s_shell	includes/shell.h	/^typedef struct	s_shell$/;"	s
+s_signal	includes/executor.h	/^typedef struct	s_signal$/;"	s
+s_tab	includes/prompt.h	/^typedef struct	s_tab$/;"	s
+s_token	includes/lexer.h	/^typedef struct		s_token$/;"	s
+save	includes/prompt.h	/^	char		*save;$/;"	m	struct:s_cap
+save_alias	srcs/executor/alias_init.c	/^int		save_alias(int save)$/;"	f
+search_ctrl_r	srcs/prompt/ctrl_r.c	/^int search_ctrl_r(t_ctrl_r *ctrl_r, t_history *history)$/;"	f
+search_history	srcs/prompt/history_expansion.c	/^static int search_history(char *data, char *found, t_history *history)$/;"	f	file:
+search_index	srcs/executor/fg_utils.c	/^int	search_index(t_child **node, char *str_index)$/;"	f
+search_pid	srcs/executor/fg_utils.c	/^int	search_pid(t_child **node, char *str_pid, pid_t pid)$/;"	f
+search_priority	srcs/executor/fg_utils.c	/^int	search_priority(t_child **node)$/;"	f
+search_process	srcs/executor/fg_utils.c	/^int	search_process(t_child **node, char *p_name)$/;"	f
+search_status	srcs/executor/fg_utils.c	/^int	search_status(t_child **node, int status)$/;"	f
+set_builtin	includes/executor.h	/^typedef struct set_builtin$/;"	s
+set_builtin	srcs/executor/set_builtin.c	/^int		set_builtin(void)$/;"	f
+set_conversion	libft/srcs/ft_printf.c	/^void		set_conversion(char *str, t_format *fmt)$/;"	f
+set_flags	libft/srcs/format_geters.c	/^void			set_flags(char *str, t_format *fmt)$/;"	f
+setenv_builtin	srcs/executor/setenv_builtin.c	/^int						setenv_builtin(int ac, char **av)$/;"	f
+setenv_err	srcs/executor/setenv_builtin.c	/^static int				setenv_err(int err_id)$/;"	f	file:
+shift_arrow_down_event	srcs/prompt/shift_events.c	/^int		shift_arrow_down_event(t_cap *tcap)$/;"	f
+shift_arrow_left_event	srcs/prompt/shift_events.c	/^int		shift_arrow_left_event(t_cap *tcap)$/;"	f
+shift_arrow_right_event	srcs/prompt/shift_events.c	/^int		shift_arrow_right_event(t_cap *tcap)$/;"	f
+shift_arrow_up_event	srcs/prompt/shift_events.c	/^int		shift_arrow_up_event(t_cap *tcap)$/;"	f
+shift_tab_event	srcs/prompt/shift_events.c	/^int		shift_tab_event(t_cap *tcap)$/;"	f
+sig	includes/executor.h	/^	int			sig;$/;"	m	struct:s_signal
+sigchld_handler	srcs/executor/signals.c	/^void sigchld_handler()$/;"	f
+sigfork	srcs/prompt/signal_handler.c	/^void	sigfork(int sig)$/;"	f
+sigint_handler	srcs/prompt/signal_handler.c	/^void	sigint_handler(int sig)$/;"	f
+signe	libft/includes/libft.h	/^	char			signe;$/;"	m	struct:s_format
+sigtstp_dflhandler	srcs/prompt/signal_handler.c	/^void 	sigtstp_dflhandler(int sig)$/;"	f
+sigtstp_handler	srcs/prompt/signal_handler.c	/^void 	sigtstp_handler(int sig)$/;"	f
+sigwinch_handler	srcs/prompt/signal_handler.c	/^void	sigwinch_handler(int sig)$/;"	f
+simple_dollar	srcs/executor/param_expansion.c	/^char		*simple_dollar(char *old, char *ptr, int *i)$/;"	f
+size	includes/lexer.h	/^	size_t			size;$/;"	m	struct:s_token
+sound	includes/prompt.h	/^	char		*sound;$/;"	m	struct:s_cap
+space_event	srcs/prompt/key_events.c	/^int		space_event(t_cap *tcap)$/;"	f
+state	includes/prompt.h	/^	int						state;$/;"	m	struct:s_cc
+state	includes/prompt.h	/^	int						state;$/;"	m	struct:s_ctrl_r
+state	includes/prompt.h	/^	int						state;$/;"	m	struct:s_tab
+stats	includes/prompt.h	/^	t_stat					stats;$/;"	m	struct:s_file
+status	includes/executor.h	/^	char		*status;$/;"	m	struct:s_signal
+status	includes/executor.h	/^	int				status;$/;"	m	struct:s_child
+substitute_alias	srcs/executor/alias_init.c	/^char	*substitute_alias(char **origin, char *line, int size)$/;"	f
+suit_unary_test	srcs/executor/test_builtin.c	/^static int	suit_unary_test(char **av, struct stat *buf)$/;"	f	file:
+t_ab	includes/prompt.h	/^}				t_ab;$/;"	t	typeref:struct:s_tab
+t_ast	includes/lexer.h	/^}					t_ast;$/;"	t	typeref:struct:s_ast
+t_built	includes/prompt.h	/^}				t_built;$/;"	t	typeref:struct:s_built
+t_builtin	includes/executor.h	/^}				t_builtin;$/;"	t	typeref:struct:set_builtin
+t_cap	includes/prompt.h	/^}				t_cap;$/;"	t	typeref:struct:s_cap
+t_cc	includes/prompt.h	/^}							t_cc;$/;"	t	typeref:struct:s_cc
+t_child	includes/executor.h	/^typedef struct s_child t_child;$/;"	t	typeref:struct:s_child
+t_ctrl_r	includes/prompt.h	/^}							t_ctrl_r;$/;"	t	typeref:struct:s_ctrl_r
+t_data	includes/prompt.h	/^}				t_data;$/;"	t	typeref:struct:s_data
+t_dirent	includes/prompt.h	/^typedef struct dirent		t_dirent;$/;"	t	typeref:struct:dirent
+t_event	includes/prompt.h	/^}				t_event;$/;"	t	typeref:struct:s_event
+t_file	includes/prompt.h	/^}							t_file;$/;"	t	typeref:struct:s_file
+t_format	libft/includes/libft.h	/^}				t_format;$/;"	t	typeref:struct:s_format
+t_group	includes/prompt.h	/^typedef struct group		t_group;$/;"	t	typeref:struct:group
+t_hash_entry	includes/executor.h	/^}				t_hash_entry;$/;"	t	typeref:struct:s_hash_entry
+t_history	includes/prompt.h	/^}				t_history;$/;"	t	typeref:struct:s_history
+t_list	libft/includes/libft.h	/^}				t_list;$/;"	t	typeref:struct:s_list
+t_oplist	includes/lexer.h	/^}					t_oplist;$/;"	t	typeref:struct:s_oplist
+t_passwd	includes/prompt.h	/^typedef struct passwd		t_passwd;$/;"	t	typeref:struct:passwd
+t_pipe	includes/executor.h	/^}				t_pipe;$/;"	t	typeref:struct:s_pipe
+t_redir	includes/parser.h	/^}					t_redir;$/;"	t	typeref:struct:s_redir
+t_shell	includes/shell.h	/^}				t_shell;$/;"	t	typeref:struct:s_shell
+t_signal	includes/executor.h	/^}				t_signal;$/;"	t	typeref:struct:s_signal
+t_stat	includes/prompt.h	/^typedef struct stat			t_stat;$/;"	t	typeref:struct:stat
+t_stat	includes/prompt.h	/^typedef struct stat	t_stat;$/;"	t	typeref:struct:stat
+t_term	includes/prompt.h	/^typedef struct termios	t_term;$/;"	t	typeref:struct:termios
+t_token	includes/lexer.h	/^}					t_token;$/;"	t	typeref:struct:s_token
+tab_event	srcs/prompt/key_events.c	/^int		tab_event(t_cap *tcap)$/;"	f
+tcap	includes/shell.h	/^	t_cap		*tcap;$/;"	m	struct:s_shell
+temp_redir	includes/shell.h	/^	t_list		*temp_redir;$/;"	m	struct:s_shell
+term	includes/shell.h	/^	t_term		*term;$/;"	m	struct:s_shell
+term_backup	includes/shell.h	/^	t_term		*term_backup;$/;"	m	struct:s_shell
+test_builtin	srcs/executor/test_builtin.c	/^int		test_builtin(int ac, char **av)$/;"	f
+test_full_paths	srcs/executor/cd_builtin_utils.c	/^char			*test_full_paths(char *entry, char *dir)$/;"	f
+tilde_expansion	srcs/executor/tilde_expansion.c	/^void				tilde_expansion(char **ptr)$/;"	f
+to	includes/prompt.h	/^	int						to;$/;"	m	struct:s_cc
+token	includes/lexer.h	/^	t_token			*token;$/;"	m	struct:s_ast
+type	includes/lexer.h	/^	e_token_type	type;$/;"	m	struct:s_oplist
+type	includes/lexer.h	/^	e_token_type	type;$/;"	m	struct:s_token
+type	includes/prompt.h	/^	int						type;$/;"	m	struct:s_cc
+type	includes/prompt.h	/^	int 					type;$/;"	m	struct:s_tab
+type_builtin	srcs/executor/type_builtin.c	/^int				type_builtin(int ac, char **args)$/;"	f
+type_output	srcs/executor/type_builtin.c	/^static void		type_output(char *input, char *value, char type)$/;"	f	file:
+unalias_builtin	srcs/executor/alias_builtin.c	/^int		unalias_builtin(int ac, char **cmd)$/;"	f
+unary_test	srcs/executor/test_builtin.c	/^static int	unary_test(char **av)$/;"	f	file:
+unset_builtin	srcs/executor/unset_builtin.c	/^int				unset_builtin(int ac, char **av)$/;"	f
+unset_key	srcs/executor/unset_builtin.c	/^static void		unset_key(char *str)$/;"	f	file:
+unsetenv_builtin	srcs/executor/unsetenv_builtin.c	/^int				unsetenv_builtin(int ac, char **av)$/;"	f
+up	includes/prompt.h	/^	char		*up;$/;"	m	struct:s_cap
+update_pid_table	srcs/executor/jobs_builtin.c	/^int	update_pid_table(void)$/;"	f
+update_priority	srcs/executor/job_utils.c	/^int	update_priority(int first)$/;"	f
+usage_jobs	srcs/executor/jobs_builtin.c	/^static int usage_jobs(void)$/;"	f	file:
+var	includes/shell.h	/^	char		*var[256];$/;"	m	struct:s_shell
+waitabit	srcs/executor/signals_utils.c	/^int waitabit(int time)$/;"	f
+waitfg	srcs/executor/fg_builtin.c	/^static int	waitfg(t_child *node)$/;"	f	file:
+wcharlen	srcs/prompt/main.c	/^int				wcharlen(char nb)$/;"	f
+width	libft/includes/libft.h	/^	int				width;$/;"	m	struct:s_format
+word_expansion	srcs/prompt/history_expansion.c	/^static int word_expansion(char *string, t_cap *tcap, int index)$/;"	f	file:
+write_history	srcs/prompt/history.c	/^int	write_history(char *string, t_history *history)$/;"	f
+xd	includes/prompt.h	/^	int				xd;$/;"	m	struct:s_data
+zero	libft/includes/libft.h	/^	char			zero;$/;"	m	struct:s_format

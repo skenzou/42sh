@@ -1,0 +1,471 @@
+==81040== Memcheck, a memory error detector
+==81040== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==81040== Using Valgrind-3.14.0 and LibVEX; rerun with -h for copyright info
+==81040== Command: ./42sh
+==81040== 
+42sh: command not found: klawklaw
+42sh: command not found: awkawl
+42sh: command not found: l
+42sh: command not found: awkawkl
+42sh: command not found: awl
+42sh: command not found: aw
+==81040== 
+==81040== HEAP SUMMARY:
+==81040==     in use at exit: 166,411 bytes in 2,327 blocks
+==81040==   total heap usage: 8,267 allocs, 5,940 frees, 19,298,989 bytes allocated
+==81040== 
+==81040== 2 bytes in 1 blocks are definitely lost in loss record 1 of 82
+==81040==    at 0x1000CC626: malloc (in /Volumes/Storage/goinfre/ghamelek/brew/Cellar/valgrind/3.14.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==81040==    by 0x100002774: ft_strsub (in ./42sh)
+==81040==    by 0x100002C75: get_next_line (in ./42sh)
+==81040==    by 0x100013CA8: get_git_status (in ./42sh)
+==81040==    by 0x100014066: print_prefix (in ./42sh)
+==81040==    by 0x100013F0C: print_default_prompt_prefix (in ./42sh)
+==81040==    by 0x100013E6B: print_prompt_prefix (in ./42sh)
+==81040==    by 0x100019632: sigint_handler (in ./42sh)
+==81040==    by 0x258057634: ???
+==81040==    by 0x100001940: ft_bzero (in ./42sh)
+==81040==    by 0x100014250: ft_add_n_char (in ./42sh)
+==81040==    by 0x100014448: ft_insert (in ./42sh)
+==81040== 
+==81040== 4 bytes in 1 blocks are indirectly lost in loss record 2 of 82
+==81040==    at 0x1000CC626: malloc (in /Volumes/Storage/goinfre/ghamelek/brew/Cellar/valgrind/3.14.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==81040==    by 0x100002407: ft_strjoin (in ./42sh)
+==81040==    by 0x10000AE40: ft_setenv (in ./42sh)
+==81040==    by 0x100008A19: ft_post_exec (in ./42sh)
+==81040==    by 0x100008E19: ft_execute (in ./42sh)
+==81040==    by 0x100008C7B: ft_execute_ast (in ./42sh)
+==81040==    by 0x100016D03: handler (in ./42sh)
+==81040==    by 0x1000135B7: main (in ./42sh)
+==81040== 
+==81040== 5 bytes in 1 blocks are still reachable in loss record 3 of 82
+==81040==    at 0x1000CC626: malloc (in /Volumes/Storage/goinfre/ghamelek/brew/Cellar/valgrind/3.14.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==81040==    by 0x100002774: ft_strsub (in ./42sh)
+==81040==    by 0x100005FCE: build_lexer (in ./42sh)
+==81040==    by 0x100016C86: handler (in ./42sh)
+==81040==    by 0x1000135B7: main (in ./42sh)
+==81040== 
+==81040== 7 bytes in 2 blocks are indirectly lost in loss record 4 of 82
+==81040==    at 0x1000CC626: malloc (in /Volumes/Storage/goinfre/ghamelek/brew/Cellar/valgrind/3.14.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==81040==    by 0x1000022FC: ft_strdup (in ./42sh)
+==81040==    by 0x100007EBD: hash_insert (in ./42sh)
+==81040==    by 0x1000080CE: hash_table (in ./42sh)
+==81040==    by 0x10000A4AD: ft_pre_execution (in ./42sh)
+==81040==    by 0x100008CB7: ft_execute (in ./42sh)
+==81040==    by 0x100008C7B: ft_execute_ast (in ./42sh)
+==81040==    by 0x100016D03: handler (in ./42sh)
+==81040==    by 0x1000135B7: main (in ./42sh)
+==81040== 
+==81040== 8 bytes in 1 blocks are still reachable in loss record 5 of 82
+==81040==    at 0x1000CC626: malloc (in /Volumes/Storage/goinfre/ghamelek/brew/Cellar/valgrind/3.14.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==81040==    by 0x100331938: strdup (in /usr/lib/system/libsystem_c.dylib)
+==81040==    by 0x1000F8C17: _nc_trim_sgr0 (in /usr/lib/libncurses.5.4.dylib)
+==81040==    by 0x1000F07D3: tgetent (in /usr/lib/libncurses.5.4.dylib)
+==81040==    by 0x1000134D4: main (in ./42sh)
+==81040== 
+==81040== 8 bytes in 2 blocks are indirectly lost in loss record 6 of 82
+==81040==    at 0x1000CC626: malloc (in /Volumes/Storage/goinfre/ghamelek/brew/Cellar/valgrind/3.14.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==81040==    by 0x100001BED: ft_lstnew (in ./42sh)
+==81040==    by 0x10000804D: add_index (in ./42sh)
+==81040==    by 0x100007F6E: hash_insert (in ./42sh)
+==81040==    by 0x1000080CE: hash_table (in ./42sh)
+==81040==    by 0x10000A4AD: ft_pre_execution (in ./42sh)
+==81040==    by 0x100008CB7: ft_execute (in ./42sh)
+==81040==    by 0x100008C7B: ft_execute_ast (in ./42sh)
+==81040==    by 0x100016D03: handler (in ./42sh)
+==81040==    by 0x1000135B7: main (in ./42sh)
+==81040== 
+==81040== 14 bytes in 1 blocks are still reachable in loss record 8 of 82
+==81040==    at 0x1000CCFD4: realloc (in /Volumes/Storage/goinfre/ghamelek/brew/Cellar/valgrind/3.14.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==81040==    by 0x1000E1016: _nc_doalloc (in /usr/lib/libncurses.5.4.dylib)
+==81040==    by 0x1000F2D34: tparm (in /usr/lib/libncurses.5.4.dylib)
+==81040==    by 0x1000F8FE4: _nc_trim_sgr0 (in /usr/lib/libncurses.5.4.dylib)
+==81040==    by 0x1000F8C0A: _nc_trim_sgr0 (in /usr/lib/libncurses.5.4.dylib)
+==81040==    by 0x1000F07D3: tgetent (in /usr/lib/libncurses.5.4.dylib)
+==81040==    by 0x1000134D4: main (in ./42sh)
+==81040== 
+==81040== 15 bytes in 1 blocks are still reachable in loss record 9 of 82
+==81040==    at 0x1000CC626: malloc (in /Volumes/Storage/goinfre/ghamelek/brew/Cellar/valgrind/3.14.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==81040==    by 0x100331938: strdup (in /usr/lib/system/libsystem_c.dylib)
+==81040==    by 0x1000EF3BF: _nc_setupterm (in /usr/lib/libncurses.5.4.dylib)
+==81040==    by 0x1000F05A8: tgetent (in /usr/lib/libncurses.5.4.dylib)
+==81040==    by 0x1000134D4: main (in ./42sh)
+==81040== 
+==81040== 16 bytes in 1 blocks are still reachable in loss record 11 of 82
+==81040==    at 0x1000CC626: malloc (in /Volumes/Storage/goinfre/ghamelek/brew/Cellar/valgrind/3.14.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==81040==    by 0x100001C94: ft_memalloc (in ./42sh)
+==81040==    by 0x10000609E: create_token (in ./42sh)
+==81040==    by 0x100005FE8: build_lexer (in ./42sh)
+==81040==    by 0x100016C86: handler (in ./42sh)
+==81040==    by 0x1000135B7: main (in ./42sh)
+==81040== 
+==81040== 16 bytes in 1 blocks are indirectly lost in loss record 12 of 82
+==81040==    at 0x1000CC626: malloc (in /Volumes/Storage/goinfre/ghamelek/brew/Cellar/valgrind/3.14.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==81040==    by 0x100001C94: ft_memalloc (in ./42sh)
+==81040==    by 0x10000AF34: addkey (in ./42sh)
+==81040==    by 0x10000AEC6: ft_setenv (in ./42sh)
+==81040==    by 0x100008A19: ft_post_exec (in ./42sh)
+==81040==    by 0x100008E19: ft_execute (in ./42sh)
+==81040==    by 0x100008C7B: ft_execute_ast (in ./42sh)
+==81040==    by 0x100016D03: handler (in ./42sh)
+==81040==    by 0x1000135B7: main (in ./42sh)
+==81040== 
+==81040== 17 bytes in 2 blocks are indirectly lost in loss record 13 of 82
+==81040==    at 0x1000CC626: malloc (in /Volumes/Storage/goinfre/ghamelek/brew/Cellar/valgrind/3.14.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==81040==    by 0x100002407: ft_strjoin (in ./42sh)
+==81040==    by 0x10000F08D: add_path (in ./42sh)
+==81040==    by 0x100007F42: hash_insert (in ./42sh)
+==81040==    by 0x1000080CE: hash_table (in ./42sh)
+==81040==    by 0x10000A4AD: ft_pre_execution (in ./42sh)
+==81040==    by 0x100008CB7: ft_execute (in ./42sh)
+==81040==    by 0x100008C7B: ft_execute_ast (in ./42sh)
+==81040==    by 0x100016D03: handler (in ./42sh)
+==81040==    by 0x1000135B7: main (in ./42sh)
+==81040== 
+==81040== 24 bytes in 1 blocks are still reachable in loss record 14 of 82
+==81040==    at 0x1000CC89E: malloc_zone_malloc (in /Volumes/Storage/goinfre/ghamelek/brew/Cellar/valgrind/3.14.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==81040==    by 0x10062A8A6: NXCreateMapTableFromZone (in /usr/lib/libobjc.A.dylib)
+==81040==    by 0x10062A878: NXCreateMapTableFromZone (in /usr/lib/libobjc.A.dylib)
+==81040==    by 0x100629350: __sel_registerName(char const*, int, int) (in /usr/lib/libobjc.A.dylib)
+==81040==    by 0x100629062: sel_init (in /usr/lib/libobjc.A.dylib)
+==81040==    by 0x1006289CA: map_images_nolock (in /usr/lib/libobjc.A.dylib)
+==81040==    by 0x10063BFE8: objc_object::sidetable_retainCount() (in /usr/lib/libobjc.A.dylib)
+==81040==    by 0x10003B03B: dyld::notifyBatchPartial(dyld_image_states, bool, char const* (*)(dyld_image_states, unsigned int, dyld_image_info const*), bool, bool) (in /usr/lib/dyld)
+==81040==    by 0x10003B255: dyld::registerObjCNotifiers(void (*)(unsigned int, char const* const*, mach_header const* const*), void (*)(char const*, mach_header const*), void (*)(char const*, mach_header const*)) (in /usr/lib/dyld)
+==81040==    by 0x10027600A: _dyld_objc_notify_register (in /usr/lib/system/libdyld.dylib)
+==81040==    by 0x100628074: _objc_init (in /usr/lib/libobjc.A.dylib)
+==81040==    by 0x10020968D: _os_object_init (in /usr/lib/system/libdispatch.dylib)
+==81040== 
+==81040== 24 bytes in 1 blocks are still reachable in loss record 18 of 82
+==81040==    at 0x1000CC626: malloc (in /Volumes/Storage/goinfre/ghamelek/brew/Cellar/valgrind/3.14.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==81040==    by 0x100001BBE: ft_lstnew (in ./42sh)
+==81040==    by 0x100006124: create_token (in ./42sh)
+==81040==    by 0x100005FE8: build_lexer (in ./42sh)
+==81040==    by 0x100016C86: handler (in ./42sh)
+==81040==    by 0x1000135B7: main (in ./42sh)
+==81040== 
+==81040== 26 bytes in 13 blocks are definitely lost in loss record 19 of 82
+==81040==    at 0x1000CC626: malloc (in /Volumes/Storage/goinfre/ghamelek/brew/Cellar/valgrind/3.14.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==81040==    by 0x100002774: ft_strsub (in ./42sh)
+==81040==    by 0x100002C75: get_next_line (in ./42sh)
+==81040==    by 0x100013CA8: get_git_status (in ./42sh)
+==81040==    by 0x100014066: print_prefix (in ./42sh)
+==81040==    by 0x100013F0C: print_default_prompt_prefix (in ./42sh)
+==81040==    by 0x100013E6B: print_prompt_prefix (in ./42sh)
+==81040==    by 0x10001338B: read_line (in ./42sh)
+==81040==    by 0x100013594: main (in ./42sh)
+==81040== 
+==81040== 28 bytes in 1 blocks are still reachable in loss record 20 of 82
+==81040==    at 0x1000CC626: malloc (in /Volumes/Storage/goinfre/ghamelek/brew/Cellar/valgrind/3.14.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==81040==    by 0x1000E1F8B: _nc_home_terminfo (in /usr/lib/libncurses.5.4.dylib)
+==81040==    by 0x1000E0CF7: _nc_next_db (in /usr/lib/libncurses.5.4.dylib)
+==81040==    by 0x1000F7CE2: _nc_read_entry (in /usr/lib/libncurses.5.4.dylib)
+==81040==    by 0x1000EF27C: _nc_setupterm (in /usr/lib/libncurses.5.4.dylib)
+==81040==    by 0x1000F05A8: tgetent (in /usr/lib/libncurses.5.4.dylib)
+==81040==    by 0x1000134D4: main (in ./42sh)
+==81040== 
+==81040== 30 bytes in 1 blocks are indirectly lost in loss record 21 of 82
+==81040==    at 0x1000CC626: malloc (in /Volumes/Storage/goinfre/ghamelek/brew/Cellar/valgrind/3.14.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==81040==    by 0x1000055DC: ft_strcjoin (in ./42sh)
+==81040==    by 0x1000128DD: init_history (in ./42sh)
+==81040==    by 0x1000127A8: init_struct (in ./42sh)
+==81040==    by 0x1000134E6: main (in ./42sh)
+==81040== 
+==81040== 32 bytes in 1 blocks are still reachable in loss record 22 of 82
+==81040==    at 0x1000CC89E: malloc_zone_malloc (in /Volumes/Storage/goinfre/ghamelek/brew/Cellar/valgrind/3.14.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==81040==    by 0x10062A9FE: NXCreateHashTableFromZone (in /usr/lib/libobjc.A.dylib)
+==81040==    by 0x10062A9CE: NXCreateHashTable (in /usr/lib/libobjc.A.dylib)
+==81040==    by 0x10062A8CE: NXCreateMapTableFromZone (in /usr/lib/libobjc.A.dylib)
+==81040==    by 0x10062A878: NXCreateMapTableFromZone (in /usr/lib/libobjc.A.dylib)
+==81040==    by 0x100629350: __sel_registerName(char const*, int, int) (in /usr/lib/libobjc.A.dylib)
+==81040==    by 0x100629062: sel_init (in /usr/lib/libobjc.A.dylib)
+==81040==    by 0x1006289CA: map_images_nolock (in /usr/lib/libobjc.A.dylib)
+==81040==    by 0x10063BFE8: objc_object::sidetable_retainCount() (in /usr/lib/libobjc.A.dylib)
+==81040==    by 0x10003B03B: dyld::notifyBatchPartial(dyld_image_states, bool, char const* (*)(dyld_image_states, unsigned int, dyld_image_info const*), bool, bool) (in /usr/lib/dyld)
+==81040==    by 0x10003B255: dyld::registerObjCNotifiers(void (*)(unsigned int, char const* const*, mach_header const* const*), void (*)(char const*, mach_header const*), void (*)(char const*, mach_header const*)) (in /usr/lib/dyld)
+==81040==    by 0x10027600A: _dyld_objc_notify_register (in /usr/lib/system/libdyld.dylib)
+==81040== 
+==81040== 32 bytes in 1 blocks are still reachable in loss record 23 of 82
+==81040==    at 0x1000CC89E: malloc_zone_malloc (in /Volumes/Storage/goinfre/ghamelek/brew/Cellar/valgrind/3.14.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==81040==    by 0x10062AA1F: NXCreateHashTableFromZone (in /usr/lib/libobjc.A.dylib)
+==81040==    by 0x10062A9CE: NXCreateHashTable (in /usr/lib/libobjc.A.dylib)
+==81040==    by 0x10062A8CE: NXCreateMapTableFromZone (in /usr/lib/libobjc.A.dylib)
+==81040==    by 0x10062A878: NXCreateMapTableFromZone (in /usr/lib/libobjc.A.dylib)
+==81040==    by 0x100629350: __sel_registerName(char const*, int, int) (in /usr/lib/libobjc.A.dylib)
+==81040==    by 0x100629062: sel_init (in /usr/lib/libobjc.A.dylib)
+==81040==    by 0x1006289CA: map_images_nolock (in /usr/lib/libobjc.A.dylib)
+==81040==    by 0x10063BFE8: objc_object::sidetable_retainCount() (in /usr/lib/libobjc.A.dylib)
+==81040==    by 0x10003B03B: dyld::notifyBatchPartial(dyld_image_states, bool, char const* (*)(dyld_image_states, unsigned int, dyld_image_info const*), bool, bool) (in /usr/lib/dyld)
+==81040==    by 0x10003B255: dyld::registerObjCNotifiers(void (*)(unsigned int, char const* const*, mach_header const* const*), void (*)(char const*, mach_header const*), void (*)(char const*, mach_header const*)) (in /usr/lib/dyld)
+==81040==    by 0x10027600A: _dyld_objc_notify_register (in /usr/lib/system/libdyld.dylib)
+==81040== 
+==81040== 32 bytes in 1 blocks are still reachable in loss record 24 of 82
+==81040==    at 0x1000CC626: malloc (in /Volumes/Storage/goinfre/ghamelek/brew/Cellar/valgrind/3.14.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==81040==    by 0x10062AAE3: NXCreateHashTableFromZone (in /usr/lib/libobjc.A.dylib)
+==81040==    by 0x10062A9CE: NXCreateHashTable (in /usr/lib/libobjc.A.dylib)
+==81040==    by 0x10062A8CE: NXCreateMapTableFromZone (in /usr/lib/libobjc.A.dylib)
+==81040==    by 0x10062A878: NXCreateMapTableFromZone (in /usr/lib/libobjc.A.dylib)
+==81040==    by 0x100629350: __sel_registerName(char const*, int, int) (in /usr/lib/libobjc.A.dylib)
+==81040==    by 0x100629062: sel_init (in /usr/lib/libobjc.A.dylib)
+==81040==    by 0x1006289CA: map_images_nolock (in /usr/lib/libobjc.A.dylib)
+==81040==    by 0x10063BFE8: objc_object::sidetable_retainCount() (in /usr/lib/libobjc.A.dylib)
+==81040==    by 0x10003B03B: dyld::notifyBatchPartial(dyld_image_states, bool, char const* (*)(dyld_image_states, unsigned int, dyld_image_info const*), bool, bool) (in /usr/lib/dyld)
+==81040==    by 0x10003B255: dyld::registerObjCNotifiers(void (*)(unsigned int, char const* const*, mach_header const* const*), void (*)(char const*, mach_header const*), void (*)(char const*, mach_header const*)) (in /usr/lib/dyld)
+==81040==    by 0x10027600A: _dyld_objc_notify_register (in /usr/lib/system/libdyld.dylib)
+==81040== 
+==81040== 32 bytes in 1 blocks are still reachable in loss record 25 of 82
+==81040==    at 0x1000CC626: malloc (in /Volumes/Storage/goinfre/ghamelek/brew/Cellar/valgrind/3.14.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==81040==    by 0x10062A934: NXCreateMapTableFromZone (in /usr/lib/libobjc.A.dylib)
+==81040==    by 0x10062A878: NXCreateMapTableFromZone (in /usr/lib/libobjc.A.dylib)
+==81040==    by 0x100629350: __sel_registerName(char const*, int, int) (in /usr/lib/libobjc.A.dylib)
+==81040==    by 0x100629062: sel_init (in /usr/lib/libobjc.A.dylib)
+==81040==    by 0x1006289CA: map_images_nolock (in /usr/lib/libobjc.A.dylib)
+==81040==    by 0x10063BFE8: objc_object::sidetable_retainCount() (in /usr/lib/libobjc.A.dylib)
+==81040==    by 0x10003B03B: dyld::notifyBatchPartial(dyld_image_states, bool, char const* (*)(dyld_image_states, unsigned int, dyld_image_info const*), bool, bool) (in /usr/lib/dyld)
+==81040==    by 0x10003B255: dyld::registerObjCNotifiers(void (*)(unsigned int, char const* const*, mach_header const* const*), void (*)(char const*, mach_header const*), void (*)(char const*, mach_header const*)) (in /usr/lib/dyld)
+==81040==    by 0x10027600A: _dyld_objc_notify_register (in /usr/lib/system/libdyld.dylib)
+==81040==    by 0x100628074: _objc_init (in /usr/lib/libobjc.A.dylib)
+==81040==    by 0x10020968D: _os_object_init (in /usr/lib/system/libdispatch.dylib)
+==81040== 
+==81040== 32 bytes in 1 blocks are still reachable in loss record 28 of 82
+==81040==    at 0x1000CC626: malloc (in /Volumes/Storage/goinfre/ghamelek/brew/Cellar/valgrind/3.14.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==81040==    by 0x100001BED: ft_lstnew (in ./42sh)
+==81040==    by 0x100006124: create_token (in ./42sh)
+==81040==    by 0x100005FE8: build_lexer (in ./42sh)
+==81040==    by 0x100016C86: handler (in ./42sh)
+==81040==    by 0x1000135B7: main (in ./42sh)
+==81040== 
+==81040== 40 bytes in 1 blocks are still reachable in loss record 30 of 82
+==81040==    at 0x1000CC626: malloc (in /Volumes/Storage/goinfre/ghamelek/brew/Cellar/valgrind/3.14.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==81040==    by 0x100001C94: ft_memalloc (in ./42sh)
+==81040==    by 0x10001571E: newnode (in ./42sh)
+==81040==    by 0x100015BAD: op_not_found (in ./42sh)
+==81040==    by 0x100015A59: build_ast (in ./42sh)
+==81040==    by 0x1000163C0: init_ast (in ./42sh)
+==81040==    by 0x1000162B1: ft_parse (in ./42sh)
+==81040==    by 0x100016CD5: handler (in ./42sh)
+==81040==    by 0x1000135B7: main (in ./42sh)
+==81040== 
+==81040== 46 bytes in 1 blocks are still reachable in loss record 31 of 82
+==81040==    at 0x1000CCFD4: realloc (in /Volumes/Storage/goinfre/ghamelek/brew/Cellar/valgrind/3.14.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==81040==    by 0x1000E1016: _nc_doalloc (in /usr/lib/libncurses.5.4.dylib)
+==81040==    by 0x1000F7637: _nc_read_termtype (in /usr/lib/libncurses.5.4.dylib)
+==81040==    by 0x1000F7C14: _nc_read_file_entry (in /usr/lib/libncurses.5.4.dylib)
+==81040==    by 0x1000F7D5A: _nc_read_entry (in /usr/lib/libncurses.5.4.dylib)
+==81040==    by 0x1000EF27C: _nc_setupterm (in /usr/lib/libncurses.5.4.dylib)
+==81040==    by 0x1000F05A8: tgetent (in /usr/lib/libncurses.5.4.dylib)
+==81040==    by 0x1000134D4: main (in ./42sh)
+==81040== 
+==81040== 48 bytes in 1 blocks are still reachable in loss record 32 of 82
+==81040==    at 0x1000CCE4D: malloc_zone_calloc (in /Volumes/Storage/goinfre/ghamelek/brew/Cellar/valgrind/3.14.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==81040==    by 0x10062AEC6: _NXHashRehashToCapacity (in /usr/lib/libobjc.A.dylib)
+==81040==    by 0x10062AE50: NXHashInsert (in /usr/lib/libobjc.A.dylib)
+==81040==    by 0x10062AB0D: NXCreateHashTableFromZone (in /usr/lib/libobjc.A.dylib)
+==81040==    by 0x10062A9CE: NXCreateHashTable (in /usr/lib/libobjc.A.dylib)
+==81040==    by 0x10062A8CE: NXCreateMapTableFromZone (in /usr/lib/libobjc.A.dylib)
+==81040==    by 0x10062A878: NXCreateMapTableFromZone (in /usr/lib/libobjc.A.dylib)
+==81040==    by 0x100629350: __sel_registerName(char const*, int, int) (in /usr/lib/libobjc.A.dylib)
+==81040==    by 0x100629062: sel_init (in /usr/lib/libobjc.A.dylib)
+==81040==    by 0x1006289CA: map_images_nolock (in /usr/lib/libobjc.A.dylib)
+==81040==    by 0x10063BFE8: objc_object::sidetable_retainCount() (in /usr/lib/libobjc.A.dylib)
+==81040==    by 0x10003B03B: dyld::notifyBatchPartial(dyld_image_states, bool, char const* (*)(dyld_image_states, unsigned int, dyld_image_info const*), bool, bool) (in /usr/lib/dyld)
+==81040== 
+==81040== 48 bytes in 2 blocks are indirectly lost in loss record 35 of 82
+==81040==    at 0x1000CC626: malloc (in /Volumes/Storage/goinfre/ghamelek/brew/Cellar/valgrind/3.14.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==81040==    by 0x100001C94: ft_memalloc (in ./42sh)
+==81040==    by 0x100007EA6: hash_insert (in ./42sh)
+==81040==    by 0x1000080CE: hash_table (in ./42sh)
+==81040==    by 0x10000A4AD: ft_pre_execution (in ./42sh)
+==81040==    by 0x100008CB7: ft_execute (in ./42sh)
+==81040==    by 0x100008C7B: ft_execute_ast (in ./42sh)
+==81040==    by 0x100016D03: handler (in ./42sh)
+==81040==    by 0x1000135B7: main (in ./42sh)
+==81040== 
+==81040== 48 bytes in 2 blocks are indirectly lost in loss record 36 of 82
+==81040==    at 0x1000CC626: malloc (in /Volumes/Storage/goinfre/ghamelek/brew/Cellar/valgrind/3.14.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==81040==    by 0x100001BBE: ft_lstnew (in ./42sh)
+==81040==    by 0x10000804D: add_index (in ./42sh)
+==81040==    by 0x100007F6E: hash_insert (in ./42sh)
+==81040==    by 0x1000080CE: hash_table (in ./42sh)
+==81040==    by 0x10000A4AD: ft_pre_execution (in ./42sh)
+==81040==    by 0x100008CB7: ft_execute (in ./42sh)
+==81040==    by 0x100008C7B: ft_execute_ast (in ./42sh)
+==81040==    by 0x100016D03: handler (in ./42sh)
+==81040==    by 0x1000135B7: main (in ./42sh)
+==81040== 
+==81040== 56 bytes in 1 blocks are definitely lost in loss record 38 of 82
+==81040==    at 0x1000CC626: malloc (in /Volumes/Storage/goinfre/ghamelek/brew/Cellar/valgrind/3.14.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==81040==    by 0x100001C94: ft_memalloc (in ./42sh)
+==81040==    by 0x100018DF3: init_pid (in ./42sh)
+==81040==    by 0x1000134F4: main (in ./42sh)
+==81040== 
+==81040== 72 bytes in 3 blocks are possibly lost in loss record 46 of 82
+==81040==    at 0x1000CCC8A: calloc (in /Volumes/Storage/goinfre/ghamelek/brew/Cellar/valgrind/3.14.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==81040==    by 0x100628846: map_images_nolock (in /usr/lib/libobjc.A.dylib)
+==81040==    by 0x10063BFE8: objc_object::sidetable_retainCount() (in /usr/lib/libobjc.A.dylib)
+==81040==    by 0x10003B03B: dyld::notifyBatchPartial(dyld_image_states, bool, char const* (*)(dyld_image_states, unsigned int, dyld_image_info const*), bool, bool) (in /usr/lib/dyld)
+==81040==    by 0x10003B255: dyld::registerObjCNotifiers(void (*)(unsigned int, char const* const*, mach_header const* const*), void (*)(char const*, mach_header const*), void (*)(char const*, mach_header const*)) (in /usr/lib/dyld)
+==81040==    by 0x10027600A: _dyld_objc_notify_register (in /usr/lib/system/libdyld.dylib)
+==81040==    by 0x100628074: _objc_init (in /usr/lib/libobjc.A.dylib)
+==81040==    by 0x10020968D: _os_object_init (in /usr/lib/system/libdispatch.dylib)
+==81040==    by 0x10020963A: libdispatch_init (in /usr/lib/system/libdispatch.dylib)
+==81040==    by 0x10011D9D5: libSystem_initializer (in /usr/lib/libSystem.B.dylib)
+==81040==    by 0x10004BA1A: ImageLoaderMachO::doModInitFunctions(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+==81040==    by 0x10004BC1D: ImageLoaderMachO::doInitialization(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+==81040== 
+==81040== 72 bytes in 1 blocks are indirectly lost in loss record 47 of 82
+==81040==    at 0x1000CC626: malloc (in /Volumes/Storage/goinfre/ghamelek/brew/Cellar/valgrind/3.14.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==81040==    by 0x100001C94: ft_memalloc (in ./42sh)
+==81040==    by 0x100012674: init_struct (in ./42sh)
+==81040==    by 0x1000134E6: main (in ./42sh)
+==81040== 
+==81040== 72 bytes in 1 blocks are indirectly lost in loss record 48 of 82
+==81040==    at 0x1000CC626: malloc (in /Volumes/Storage/goinfre/ghamelek/brew/Cellar/valgrind/3.14.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==81040==    by 0x100001C94: ft_memalloc (in ./42sh)
+==81040==    by 0x100012691: init_struct (in ./42sh)
+==81040==    by 0x1000134E6: main (in ./42sh)
+==81040== 
+==81040== 78 bytes in 1 blocks are still reachable in loss record 49 of 82
+==81040==    at 0x1000CCFD4: realloc (in /Volumes/Storage/goinfre/ghamelek/brew/Cellar/valgrind/3.14.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==81040==    by 0x1000E1016: _nc_doalloc (in /usr/lib/libncurses.5.4.dylib)
+==81040==    by 0x1000F764C: _nc_read_termtype (in /usr/lib/libncurses.5.4.dylib)
+==81040==    by 0x1000F7C14: _nc_read_file_entry (in /usr/lib/libncurses.5.4.dylib)
+==81040==    by 0x1000F7D5A: _nc_read_entry (in /usr/lib/libncurses.5.4.dylib)
+==81040==    by 0x1000EF27C: _nc_setupterm (in /usr/lib/libncurses.5.4.dylib)
+==81040==    by 0x1000F05A8: tgetent (in /usr/lib/libncurses.5.4.dylib)
+==81040==    by 0x1000134D4: main (in ./42sh)
+==81040== 
+==81040== 83 bytes in 1 blocks are still reachable in loss record 50 of 82
+==81040==    at 0x1000CC626: malloc (in /Volumes/Storage/goinfre/ghamelek/brew/Cellar/valgrind/3.14.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==81040==    by 0x1000F1491: _nc_tparm_analyze (in /usr/lib/libncurses.5.4.dylib)
+==81040==    by 0x1000F18F1: tparm (in /usr/lib/libncurses.5.4.dylib)
+==81040==    by 0x1000F8FE4: _nc_trim_sgr0 (in /usr/lib/libncurses.5.4.dylib)
+==81040==    by 0x1000F8C0A: _nc_trim_sgr0 (in /usr/lib/libncurses.5.4.dylib)
+==81040==    by 0x1000F07D3: tgetent (in /usr/lib/libncurses.5.4.dylib)
+==81040==    by 0x1000134D4: main (in ./42sh)
+==81040== 
+==81040== 86 bytes in 13 blocks are indirectly lost in loss record 51 of 82
+==81040==    at 0x1000CC626: malloc (in /Volumes/Storage/goinfre/ghamelek/brew/Cellar/valgrind/3.14.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==81040==    by 0x1000022FC: ft_strdup (in ./42sh)
+==81040==    by 0x1000114E0: add_cmd_to_history (in ./42sh)
+==81040==    by 0x100013279: clean_before_return (in ./42sh)
+==81040==    by 0x10001344A: read_line (in ./42sh)
+==81040==    by 0x100013594: main (in ./42sh)
+==81040== 
+==81040== 240 bytes in 1 blocks are still reachable in loss record 57 of 82
+==81040==    at 0x1000CCC8A: calloc (in /Volumes/Storage/goinfre/ghamelek/brew/Cellar/valgrind/3.14.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==81040==    by 0x1000EF257: _nc_setupterm (in /usr/lib/libncurses.5.4.dylib)
+==81040==    by 0x1000F05A8: tgetent (in /usr/lib/libncurses.5.4.dylib)
+==81040==    by 0x1000134D4: main (in ./42sh)
+==81040== 
+==81040== 264 bytes in 1 blocks are indirectly lost in loss record 60 of 82
+==81040==    at 0x1000CC626: malloc (in /Volumes/Storage/goinfre/ghamelek/brew/Cellar/valgrind/3.14.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==81040==    by 0x100001C94: ft_memalloc (in ./42sh)
+==81040==    by 0x100016B49: dup_env (in ./42sh)
+==81040==    by 0x1000126F5: init_struct (in ./42sh)
+==81040==    by 0x1000134E6: main (in ./42sh)
+==81040== 
+==81040== 418 bytes in 1 blocks are possibly lost in loss record 63 of 82
+==81040==    at 0x1000CC626: malloc (in /Volumes/Storage/goinfre/ghamelek/brew/Cellar/valgrind/3.14.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==81040==    by 0x1000022FC: ft_strdup (in ./42sh)
+==81040==    by 0x100016B91: dup_env (in ./42sh)
+==81040==    by 0x1000126F5: init_struct (in ./42sh)
+==81040==    by 0x1000134E6: main (in ./42sh)
+==81040== 
+==81040== 480 bytes in 1 blocks are still reachable in loss record 64 of 82
+==81040==    at 0x1000CCC8A: calloc (in /Volumes/Storage/goinfre/ghamelek/brew/Cellar/valgrind/3.14.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==81040==    by 0x1000F799F: _nc_read_termtype (in /usr/lib/libncurses.5.4.dylib)
+==81040==    by 0x1000F7C14: _nc_read_file_entry (in /usr/lib/libncurses.5.4.dylib)
+==81040==    by 0x1000F7D5A: _nc_read_entry (in /usr/lib/libncurses.5.4.dylib)
+==81040==    by 0x1000EF27C: _nc_setupterm (in /usr/lib/libncurses.5.4.dylib)
+==81040==    by 0x1000F05A8: tgetent (in /usr/lib/libncurses.5.4.dylib)
+==81040==    by 0x1000134D4: main (in ./42sh)
+==81040== 
+==81040== 680 bytes in 1 blocks are still reachable in loss record 67 of 82
+==81040==    at 0x1000CC626: malloc (in /Volumes/Storage/goinfre/ghamelek/brew/Cellar/valgrind/3.14.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==81040==    by 0x1000F782E: _nc_read_termtype (in /usr/lib/libncurses.5.4.dylib)
+==81040==    by 0x1000F7C14: _nc_read_file_entry (in /usr/lib/libncurses.5.4.dylib)
+==81040==    by 0x1000F7D5A: _nc_read_entry (in /usr/lib/libncurses.5.4.dylib)
+==81040==    by 0x1000EF27C: _nc_setupterm (in /usr/lib/libncurses.5.4.dylib)
+==81040==    by 0x1000F05A8: tgetent (in /usr/lib/libncurses.5.4.dylib)
+==81040==    by 0x1000134D4: main (in ./42sh)
+==81040== 
+==81040== 989 bytes in 31 blocks are indirectly lost in loss record 68 of 82
+==81040==    at 0x1000CC626: malloc (in /Volumes/Storage/goinfre/ghamelek/brew/Cellar/valgrind/3.14.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==81040==    by 0x1000022FC: ft_strdup (in ./42sh)
+==81040==    by 0x100016B91: dup_env (in ./42sh)
+==81040==    by 0x1000126F5: init_struct (in ./42sh)
+==81040==    by 0x1000134E6: main (in ./42sh)
+==81040== 
+==81040== 1,487 bytes in 1 blocks are still reachable in loss record 69 of 82
+==81040==    at 0x1000CC626: malloc (in /Volumes/Storage/goinfre/ghamelek/brew/Cellar/valgrind/3.14.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==81040==    by 0x1000F7189: _nc_read_termtype (in /usr/lib/libncurses.5.4.dylib)
+==81040==    by 0x1000F7C14: _nc_read_file_entry (in /usr/lib/libncurses.5.4.dylib)
+==81040==    by 0x1000F7D5A: _nc_read_entry (in /usr/lib/libncurses.5.4.dylib)
+==81040==    by 0x1000EF27C: _nc_setupterm (in /usr/lib/libncurses.5.4.dylib)
+==81040==    by 0x1000F05A8: tgetent (in /usr/lib/libncurses.5.4.dylib)
+==81040==    by 0x1000134D4: main (in ./42sh)
+==81040== 
+==81040== 3,776 bytes in 1 blocks are still reachable in loss record 74 of 82
+==81040==    at 0x1000CCFD4: realloc (in /Volumes/Storage/goinfre/ghamelek/brew/Cellar/valgrind/3.14.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==81040==    by 0x1000E1016: _nc_doalloc (in /usr/lib/libncurses.5.4.dylib)
+==81040==    by 0x1000F7662: _nc_read_termtype (in /usr/lib/libncurses.5.4.dylib)
+==81040==    by 0x1000F7C14: _nc_read_file_entry (in /usr/lib/libncurses.5.4.dylib)
+==81040==    by 0x1000F7D5A: _nc_read_entry (in /usr/lib/libncurses.5.4.dylib)
+==81040==    by 0x1000EF27C: _nc_setupterm (in /usr/lib/libncurses.5.4.dylib)
+==81040==    by 0x1000F05A8: tgetent (in /usr/lib/libncurses.5.4.dylib)
+==81040==    by 0x1000134D4: main (in ./42sh)
+==81040== 
+==81040== 4,112 bytes in 1 blocks are indirectly lost in loss record 76 of 82
+==81040==    at 0x1000CC626: malloc (in /Volumes/Storage/goinfre/ghamelek/brew/Cellar/valgrind/3.14.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==81040==    by 0x100001C94: ft_memalloc (in ./42sh)
+==81040==    by 0x10001263A: init_struct (in ./42sh)
+==81040==    by 0x1000134E6: main (in ./42sh)
+==81040== 
+==81040== 4,224 bytes in 1 blocks are possibly lost in loss record 77 of 82
+==81040==    at 0x1000CC626: malloc (in /Volumes/Storage/goinfre/ghamelek/brew/Cellar/valgrind/3.14.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==81040==    by 0x100001C94: ft_memalloc (in ./42sh)
+==81040==    by 0x100012603: init_struct (in ./42sh)
+==81040==    by 0x1000134E6: main (in ./42sh)
+==81040== 
+==81040== 8,204 bytes in 1 blocks are indirectly lost in loss record 78 of 82
+==81040==    at 0x1000CC626: malloc (in /Volumes/Storage/goinfre/ghamelek/brew/Cellar/valgrind/3.14.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==81040==    by 0x100001C94: ft_memalloc (in ./42sh)
+==81040==    by 0x100012657: init_struct (in ./42sh)
+==81040==    by 0x1000134E6: main (in ./42sh)
+==81040== 
+==81040== 17,969 bytes in 2,070 blocks are indirectly lost in loss record 79 of 82
+==81040==    at 0x1000CC626: malloc (in /Volumes/Storage/goinfre/ghamelek/brew/Cellar/valgrind/3.14.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==81040==    by 0x1000022FC: ft_strdup (in ./42sh)
+==81040==    by 0x100011780: read_history (in ./42sh)
+==81040==    by 0x10001297E: init_history (in ./42sh)
+==81040==    by 0x1000127A8: init_struct (in ./42sh)
+==81040==    by 0x1000134E6: main (in ./42sh)
+==81040== 
+==81040== 36,912 bytes in 1 blocks are indirectly lost in loss record 80 of 82
+==81040==    at 0x1000CC626: malloc (in /Volumes/Storage/goinfre/ghamelek/brew/Cellar/valgrind/3.14.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==81040==    by 0x100001C94: ft_memalloc (in ./42sh)
+==81040==    by 0x10001261D: init_struct (in ./42sh)
+==81040==    by 0x1000134E6: main (in ./42sh)
+==81040== 
+==81040== 49,176 bytes in 1 blocks are indirectly lost in loss record 81 of 82
+==81040==    at 0x1000CC626: malloc (in /Volumes/Storage/goinfre/ghamelek/brew/Cellar/valgrind/3.14.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==81040==    by 0x100001C94: ft_memalloc (in ./42sh)
+==81040==    by 0x1000125E6: init_struct (in ./42sh)
+==81040==    by 0x1000134E6: main (in ./42sh)
+==81040== 
+==81040== 136,266 (18,232 direct, 118,034 indirect) bytes in 1 blocks are definitely lost in loss record 82 of 82
+==81040==    at 0x1000CC626: malloc (in /Volumes/Storage/goinfre/ghamelek/brew/Cellar/valgrind/3.14.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==81040==    by 0x100001C94: ft_memalloc (in ./42sh)
+==81040==    by 0x1000125BA: init_struct (in ./42sh)
+==81040==    by 0x1000134E6: main (in ./42sh)
+==81040== 
+==81040== LEAK SUMMARY:
+==81040==    definitely lost: 18,316 bytes in 16 blocks
+==81040==    indirectly lost: 118,034 bytes in 2,134 blocks
+==81040==      possibly lost: 4,714 bytes in 5 blocks
+==81040==    still reachable: 7,252 bytes in 23 blocks
+==81040==         suppressed: 18,095 bytes in 149 blocks
+==81040== 
+==81040== For counts of detected and suppressed errors, rerun with: -v
+==81040== ERROR SUMMARY: 7 errors from 7 contexts (suppressed: 11 from 11)

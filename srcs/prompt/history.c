@@ -64,16 +64,21 @@ int	read_history(t_history *history)
 	int			ret;
 	int			fd;
 
+	str = NULL;
 	if ((fd = open(history->file_name, O_RDWR | O_APPEND | O_CREAT, 0666)) > 0)
 	{
 		while ((ret = get_next_line(fd, &str, 1)) > 0)
 		{
 			history->read++;
-			if (!(history->data[history->len++] =
-					ft_strdup(str)))
+			if (!(history->data[history->len++] =	ft_strdup(str)))
+			{
+				ft_strdel(&str);
 				return (-1);
+			}
+			ft_strdel(&str);
 		}
+		close(fd);
 	}
-	close(fd);
+
 	return (1);
 }

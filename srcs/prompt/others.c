@@ -30,10 +30,16 @@ char	*get_git_status(void)
 	{
 		while (get_next_line(fd, &str, '\n') > 0)
 		{
-			if ((status = str + ft_lastindexof(str, '/') + 1))
+			if ((status = ft_strdup(str + ft_lastindexof(str, '/') + 1)))
+			{
+				ft_strdel(&str);
 				return (status);
+			}
 			else
+			{
+				ft_strdel(&str);
 				return (NULL);
+			}
 			i++;
 		}
 		close(fd);

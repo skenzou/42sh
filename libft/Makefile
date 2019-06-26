@@ -1,5 +1,4 @@
-# **************************************************************************** #
-#                                                                              #
+##                                                                              #
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
@@ -63,7 +62,7 @@ SRCPATH			=	srcs/
 SRCS			:= $(SRC:%=$(SRCPATH)%)
 OBJ				:= $(SRC:%.c=$(OBJPATH)%.o)
 
-COMP		= gcc -fsanitize=address
+COMP		= gcc -g -v #-fsanitize=address
 CFLAGS		= -Wall -Wextra -Werror -I./includes -c
 AR			= ar rcs
 

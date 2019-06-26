@@ -45,7 +45,7 @@ int		add_to_completion(t_ab *autocomp, char *path, char ext)
 	{
 		while ((d = readdir(dir)))
 		{
-			if (d->d_name[0] != '.' &&
+			if ((d->d_name[0] != '.' || path[0] == '.') &&
 			!ft_strncmp(d->d_name, autocomp->match, ft_strlen(autocomp->match)))
 				create_file(d->d_name, final_path, autocomp, ext);
 		}

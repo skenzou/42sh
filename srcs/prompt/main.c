@@ -87,7 +87,7 @@ int					main(int ac, char **av, char **env)
 {
 	char	*string;
 
-	if (!(tgetent(NULL, getenv("TERM"))) || !init_struct(env) ||
+	if (!(tgetent(NULL, get_key_value("TERM", env))) || !init_struct(env) ||
 			init_pid() || init_alias(1) || init_fd_table())
 		return (-1);
 	ft_bzero((void *)g_shell->hash_table, TABLE_SIZE);

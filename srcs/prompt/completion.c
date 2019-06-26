@@ -81,20 +81,40 @@ int		get_words_completion(t_ab *autocomp, t_cap *tc)
 	return (0);
 }
 
-void	process_completion(t_ab *autocomp, int row, int col, int i)
+int	process_completion(t_ab *autocomp)
 {
+	int row;
+	int col;
+	int i;
+	int o;
+	t_cap *tcap;
+
+	tcap = g_shell->tcap;
+	row = 0;
+	i = 0;
+	col = -1;
+	end_event(tcap);
+	o = tcap->cursy * (tcap->cursx_max + 1) + (tcap->cursx) - tcap->prompt_len;
+	ft_move(tcap, "left", tcap->char_len - o);
+	ft_move(tcap, "down", 1);
 	while (++col < autocomp->col)
 	{
 		row = -1;
 		while (++row < autocomp->row)
-			print_name(autocomp, autocomp->data[i], i) && i++;
+		{
+			print_name(autocomp, autocomp->data[i], i);
+			i++;
+		}
 		ft_move(g_shell->tcap, "down", 1);
 	}
 	if (autocomp->carry > 0)
 	{
 		row = autocomp->carry;
 		while (row--)
-			print_name(autocomp, autocomp->data[i], i) && i++;
+		{
+			print_name(autocomp, autocomp->data[i], i);
+			i++;
+		}
 	}
 	ft_replace_cursor(g_shell->tcap);
 	i = 0;
@@ -106,16 +126,11 @@ void	process_completion(t_ab *autocomp, int row, int col, int i)
 			ft_move(g_shell->tcap, "up", 1);
 			i++;
 		}
+		return (1);
 }
 
 int		ft_tab(t_cap *tcap, t_ab *autocomp)
 {
-	int row;
-	int col;
-	int i;
-	int o;
-
-	row = 0;
 	autocomp->max_offset = 0;
 	autocomp->len = 0;
 	autocomp->isdir = 0;
@@ -123,12 +138,6 @@ int		ft_tab(t_cap *tcap, t_ab *autocomp)
 	ft_bzero(autocomp->match, MAX_PATH);
 	if (!get_words_completion(autocomp, tcap) || !init_autocomp(tcap, autocomp))
 		return (1);
-	i = 0;
-	col = -1;
-	o = tcap->cursy * (tcap->cursx_max + 1) + (tcap->cursx) - tcap->prompt_len;
-	end_event(tcap);
-	ft_move(tcap, "left", tcap->char_len - o);
-	ft_move(tcap, "down", 1);
-	process_completion(autocomp, row, col, i);
+	process_completion(autocomp);
 	return (1);
 }

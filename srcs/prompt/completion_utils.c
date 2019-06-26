@@ -30,17 +30,6 @@ int		is_space_before(t_cap *tcap, int position)
 	return (1);
 }
 
-char	*env_path(char **env)
-{
-	int i;
-
-	i = -1;
-	while (env[++i])
-		if (!ft_strncmp(env[i], "PATH=", 5))
-			return ((char*)env[i] + 5);
-	return (NULL);
-}
-
 int		is_first_argi(t_cap *tc, int position)
 {
 	int i;

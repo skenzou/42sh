@@ -71,20 +71,25 @@ int		env_completion(t_ab *autocomp, char *key)
 int		command_completion(t_ab *autocomp, char *key)
 {
 	int		i;
-	int		len;
 	char	**path_split;
 	char	*path;
 
-	path = env_path(g_shell->env);
-	if (!path)
+	path_split = NULL;
+	path = NULL;
+	if (!(path = ft_strdup(get_key_value("PATH", g_shell->env))))
 		return (0);
 	if (!(path_split = ft_strsplit(path, ':')))
+	{
+		ft_strdel(&path);
 		return (0);
+	}
+	if (path)
+		ft_strdel(&path);
 	i = -1;
-	len = ft_strlen(key);
 	ft_strcpy(autocomp->match, key);
 	while (path_split && path_split[++i])
 		add_to_completion(autocomp, path_split[i], 'c');
+	ft_splitdel(path_split);
 	return (1);
 }
 

@@ -40,10 +40,14 @@ static int	init_history(t_history *history)
 {
 	char *home;
 
-	if ((home = getenv("HOME")))
+	if ((home = ft_strdup(get_key_value("HOME", g_shell->env))))
 	{
 		if (!(history->file_name = ft_strcjoin(home, ".42sh_history", '/')))
+		{
+			ft_strdel(&home);
 			return (0);
+		}
+			ft_strdel(&home);
 	}
 	else if (!(history->file_name = ft_strdup(".42sh_history")))
 		return (0);

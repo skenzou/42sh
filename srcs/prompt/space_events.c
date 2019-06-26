@@ -28,6 +28,11 @@ int		backspace_event(t_cap *tcap)
 	{
 		tputs(tcap->clr_all_line, 1, ft_put_termcaps);
 		g_shell->autocomp->state = 0;
+		int i = -1;
+		while (++i < g_shell->autocomp->len)
+		{
+			ft_strdel(&(g_shell->autocomp->data[i]));
+		}
 		g_shell->autocomp->pos = 0;
 		return (1);
 	}
@@ -52,6 +57,11 @@ int		space_event(t_cap *tcap)
 		if (g_shell->autocomp->after[0] && !g_shell->autocomp->isdir)
 			ft_insert(g_shell->autocomp->after, tcap);
 		g_shell->autocomp->state = 0;
+		int i = -1;
+		while (++i < g_shell->autocomp->len)
+		{
+			ft_strdel(&(g_shell->autocomp->data[i]));
+		}
 		g_shell->autocomp->pos = 0;
 		g_shell->autocomp->isdir = 0;
 		g_shell->autocomp->len = 0;
