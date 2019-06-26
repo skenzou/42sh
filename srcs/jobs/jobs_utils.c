@@ -6,7 +6,7 @@
 /*   By: tlechien <tlechien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 04:40:55 by tlechien          #+#    #+#             */
-/*   Updated: 2019/06/25 07:11:57 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/06/26 02:00:58 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,9 @@ int		kill_pids(void)
 			kill(tmp->pid, SIGHUP);
 			tmp->status = SIGHUP;
 		}
-		if (!kill(ID_PID, SIGKILL))
-			ID_STATUS = SIGKILL;
-		else if (ID_STATUS != SIGKILL && !ID_PIPE)
+		if (!kill(ID_PID, SIGTERM))
+			ID_STATUS = SIGTERM;
+		else if (ID_STATUS != SIGTERM && !ID_PIPE)
 		{
 			err_display(ANSI_RED"42sh: can't kill process: ", ID_EXEC,
 			": pid >");
@@ -91,7 +91,8 @@ int		remove_pid(t_child *node)
 	curr = (node->left) ? node->left : node->prev;
 	(node->prev) ? (node->prev)->left = node->left : 0;
 	(node->left) ? (node->left)->prev = node->prev : 0;
-	ft_strdel(&node->exec);
+	if (node->exec)
+		ft_strdel(&node->exec);
 	if (g_pid_table == node)
 		g_pid_table = curr;
 	free(node);

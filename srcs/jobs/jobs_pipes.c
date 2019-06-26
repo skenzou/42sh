@@ -6,7 +6,7 @@
 /*   By: tlechien <tlechien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/21 01:46:22 by tlechien          #+#    #+#             */
-/*   Updated: 2019/06/25 07:06:43 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/06/26 02:01:46 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static int	check_branch(t_child *branch, int *finished)
 	(*finished && ID_PIPE) ? display_amperpipe(g_pid_table, 1) : 0;
 	while (*finished && ID_PIPE && branch != g_pid_table && (out = 1))
 	{
-		ft_strdel(&branch->exec);
+		(branch->exec) ? ft_strdel(&branch->exec): 0;
 		branch = branch->prev;
 		free(branch->right);
 	}

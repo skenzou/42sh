@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/29 17:34:20 by midrissi          #+#    #+#             */
-/*   Updated: 2019/06/22 20:40:28 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/06/26 01:43:38 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ static int			len_to_next_dollar(char *str)
 	int len;
 
 	len = 0;
-	while (str[len] && str[len] != '$')
+	while (str[len] && (ft_isalnum(str[len]) || str[len] == '_'))
 		len++;
 	return (len);
 }

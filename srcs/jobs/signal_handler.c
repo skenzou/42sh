@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/28 15:31:17 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/06/25 07:03:47 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/06/26 02:26:09 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void	sigint_handler(int sig)
 {
 	if (sig == SIGINT)
 	{
+		ft_printf("tcaps int handler\n");
 		signal(SIGINT, sigint_handler);
 		ft_printf("\n");
 		g_shell->lastsignal = 1;
@@ -25,7 +26,6 @@ void	sigint_handler(int sig)
 		print_prompt_prefix();
 		ft_bzero(g_shell->tcap->carry, 2);
 		g_shell->dprompt = 1;
-		// exit(0);
 	}
 }
 

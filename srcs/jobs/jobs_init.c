@@ -6,7 +6,7 @@
 /*   By: tlechien <tlechien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/25 03:30:06 by tlechien          #+#    #+#             */
-/*   Updated: 2019/06/25 07:12:30 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/06/26 02:01:10 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,7 @@
 int	init_pid(void)
 {
 	if (!(g_pid_table = (t_child*)ft_memalloc(sizeof(t_child))))
-		return (1);
-		//free leaks
+		shell_exit(MALLOC_ERR);
 	return (0);
 }
 
@@ -37,18 +36,19 @@ int	add_pid(int is_pipe, int pid, char **command, int status)
 	while (ID_LEFT && ID_LEFT->index == ID_INDEX + 1)
 		g_pid_table = ID_LEFT;
 	if (!(new = (t_child*)malloc(sizeof(t_child))))
-		exit(FAILFORK); //TODO malloc erroc
+		shell_exit(MALLOC_ERR);
 	new->is_pipe = is_pipe;
 	new->index = ID_INDEX + 1;
 	new->pid = pid;
 	new->status = status;
 	new->priority = 0;
-	new->exec = full_cmd(command);  //TODO dup_env() + proteccc
 	new->left = ID_LEFT;
 	new->right = NULL;
 	new->prev = g_pid_table;
 	(new->left) ? new->left->prev = new : 0;
 	ID_LEFT = new;
+	if (!(new->exec = full_cmd(command)))
+		shell_exit(MALLOC_ERR);
 	while (ID_LEFT)
 		g_pid_table = ID_LEFT;
 	setpgid(pid, 0);
@@ -72,17 +72,18 @@ int	add_amperpipe(int pid_origin, int pid, char *cmd, int status)
 	while (origin->right)
 		origin = origin->right;
 	if (!(new = (t_child*)malloc(sizeof(t_child))))
-		exit(FAILFORK); //TODO malloc erroc
+		shell_exit(MALLOC_ERR);
 	new->is_pipe = 1;
 	new->index = origin->index;
 	new->pid = pid;
 	new->status = status;
 	new->priority = 0;
-	new->exec = cmd;
 	new->right = NULL;
 	new->left = NULL;
 	new->prev = origin;
 	origin->right = new;
+	if (!(new->exec = cmd))
+		shell_exit(MALLOC_ERR);
 	setpgid(pid, 0);
 	ft_printf("%*c %d\n", get_nb_len(new->index) + 2, ' ', new->pid);
 	return (0);

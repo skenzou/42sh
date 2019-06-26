@@ -6,7 +6,7 @@
 /*   By: tlechien <tlechien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/25 00:52:53 by tlechien          #+#    #+#             */
-/*   Updated: 2019/06/25 07:37:29 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/06/26 02:04:46 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,6 @@ int					ft_fork_amper(char **cmd, char **env);
 int					ft_fork_builtin(t_builtin *builtin, int ac, char **cmd);
 int					ft_waitprocess(pid_t pid, char **cmd, char *handler,
 					char *stat);
-
 /*
 ** JOB_UTILS.C
 */
@@ -128,6 +127,8 @@ void				sigtstp_dflhandler(int sig);
 /*
 ** SIGNAL_UTILS.C
 */
+
+void				sigint_inhib_handler(int sig);
 int					waitabit(int min, int nsec);
 int					get_nb_len(long long nb);
 

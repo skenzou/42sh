@@ -6,7 +6,7 @@
 /*   By: tlechien <tlechien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/19 14:48:57 by tlechien          #+#    #+#             */
-/*   Updated: 2019/06/25 18:30:10 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/06/26 01:42:45 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static int		expand_alias(void)
 
 	if (!(new_aliases = (char**)ft_memalloc(sizeof(char*) *
 		(ft_arraylen(g_aliases) + 2))))
-		exit(1);
+		shell_exit(MALLOC_ERR);
 	i = -1;
 	while (g_aliases[++i])
 		new_aliases[i] = g_aliases[i];
@@ -64,7 +64,7 @@ static int		add_alias(char *key, char *value)
 
 	i = 0;
 	if (!(line = ft_strcjoin(key, value, '=')))
-		exit(1);
+		shell_exit(MALLOC_ERR);
 	while (g_aliases[i] && *g_aliases[i])
 		i++;
 	if (!g_aliases[i])
@@ -126,7 +126,7 @@ int				alias_builtin(int ac, char **cmd)
 	{
 		ft_strdel(&g_aliases[i]);
 		if (!(g_aliases[i] = ft_strcjoin(cmd[0], cmd[1], '=')))
-			exit(1);
+			shell_exit(MALLOC_ERR);
 	}
 	return (0);
 }

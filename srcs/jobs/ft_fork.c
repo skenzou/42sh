@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/14 23:53:49 by midrissi          #+#    #+#             */
-/*   Updated: 2019/06/25 04:09:02 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/06/26 01:55:03 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int				ft_fork_amper(char **cmd, char **env)
 
 	pid = fork();
 	if (pid < 0)
-		return (FAILFORK);
+		shell_exit(FORK_ERR);
 	if (!pid)
 	{
 		resetsign();
@@ -82,7 +82,7 @@ int				ft_fork_builtin(t_builtin *builtin, int ac, char **cmd)
 
 	pid = fork();
 	if (pid < 0)
-		return (FAILFORK);
+		shell_exit(FORK_ERR);
 	if (!pid)
 	{
 		resetsign();
@@ -112,6 +112,6 @@ int				ft_fork(char **cmd, char **env)
 		exit(1);
 	}
 	else if (pid < 0)
-		return (FAILFORK);
+		shell_exit(FORK_ERR);
 	return (ft_waitprocess(pid, cmd, NULL, NULL));
 }

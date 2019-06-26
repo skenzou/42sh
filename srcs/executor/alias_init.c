@@ -6,7 +6,7 @@
 /*   By: tlechien <tlechien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/19 16:01:10 by tlechien          #+#    #+#             */
-/*   Updated: 2019/06/25 18:30:56 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/06/26 01:53:21 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int		init_alias(int file)
 	i = 1;
 	ret = 0;
 	if (fd == -1)
-		exit(1);
+		return (1);
 	while (fd && (ret = get_next_line(fd, &line, '\n')) == 1)
 	{
 		free(line);
@@ -65,13 +65,13 @@ char	*substitute_alias(char **origin, char *line, int size)
 	len = ft_strlen2(p2);
 	off = line - *origin;
 	if (!(p1 = (off) ? ft_strsub(*origin, 0, line - *origin) : ft_strdup("")))
-		exit(1);
+		shell_exit(MALLOC_ERR);
 	if (!(tmp = ft_strjoin(p1, p2)))
-		exit(1);
+		shell_exit(MALLOC_ERR);
 	ft_strdel(&p1);
 	ft_strdel(&p2);
 	if (!(p1 = ft_strjoin(tmp, line + size)))
-		exit(1);
+		shell_exit(MALLOC_ERR);
 	(tmp) ? ft_strdel(&tmp) : 0;
 	ft_strdel(origin);
 	*origin = p1;
@@ -125,7 +125,7 @@ int		save_alias(int save)
 	while (g_aliases[++i])
 	{
 		if (save && *g_aliases[i] && (write(fd, g_aliases[i],
-			ft_strlen(g_aliases[i])) == -1 ||
+			ft_strlen2(g_aliases[i])) == -1 ||
 			write(fd, "\n", 1)))
 			err = 1;
 		free(g_aliases[i]);

@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 16:42:03 by midrissi          #+#    #+#             */
-/*   Updated: 2019/06/25 18:12:19 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/06/26 01:48:28 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@
 # define INV_ARG			5
 # define SETENV_USG			6
 # define UNSETENV_USG		7
-# define FAILFORK			8
 # define NOT_DIR			9
 # define ECHO_BUILTIN		10
 # define CD_BUILTIN			11
@@ -72,9 +71,18 @@
 # define JOBS_BUILTIN		21
 # define TYPE_BUILTIN		22
 # define TEST_BUILTIN		23
-# define OPEN_ERR			24
+//# define OPEN_ERR			24
 # define AMBIGOUS_REDIRECT	25
 # define BAD_FD				26
+
+/*
+**	ERRORS
+*/
+# define INIT_ERR			1
+# define MALLOC_ERR			2
+# define FORK_ERR			3
+# define OPEN_ERR			4
+# define CLOSE_ERR			5
 
 typedef struct		s_shell
 {

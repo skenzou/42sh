@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 00:14:11 by midrissi          #+#    #+#             */
-/*   Updated: 2019/06/07 05:59:42 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/06/26 02:18:22 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void			err_handler(int err_id, char *str)
 		err_helper("42sh: Is a directory: ", str);
 	if (err_id == NO_RIGHT)
 		err_helper("42sh: Permission denied: ", str);
-	if (err_id == FAILFORK)
+	if (err_id == FORK_ERR)
 		err_helper("42sh: Fork failed", NULL);
 	if (err_id == NOT_FOUND)
 		err_helper("42sh: command not found: ", str);
