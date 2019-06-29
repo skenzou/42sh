@@ -6,7 +6,7 @@
 /*   By: tlechien <tlechien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/25 06:56:09 by tlechien          #+#    #+#             */
-/*   Updated: 2019/06/26 08:03:30 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/06/29 15:16:16 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ int			update_pid_table(void)
 	{
 		if (ID_PIPE)
 			update_amperpipe(g_pid_table);
-		else if (waitpid(ID_PID, &status, WNOHANG | WUNTRACED | WCONTINUED)&& ft_printf("here"))
+		else if (waitpid(ID_PID, &status, WNOHANG | WUNTRACED | WCONTINUED))
 			change_status(status);
 		if (!ID_LEFT)
 			break ;

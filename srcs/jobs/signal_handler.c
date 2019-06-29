@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/28 15:31:17 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/06/26 07:13:23 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/06/29 14:51:35 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ void	sigint_handler(int sig)
 			print_prompt_prefix();
 		ft_bzero(g_shell->tcap->carry, 2);
 		g_shell->dprompt = 1;
+		tcsetattr(0, TCSADRAIN, g_shell->term);
 	}
 }
 

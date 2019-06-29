@@ -6,7 +6,7 @@
 /*   By: tlechien <tlechien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 04:40:55 by tlechien          #+#    #+#             */
-/*   Updated: 2019/06/26 08:07:29 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/06/29 15:02:12 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ int		kill_pids(void)
 		{
 			tmp = branch;
 			branch = branch->right;
-			kill(tmp->pid, SIGHUP);
-			tmp->status = SIGHUP;
+			kill(tmp->pid, SIGTERM);
+			tmp->status = SIGTERM;
 		}
 		if (!kill(ID_PID, SIGTERM))
 			ID_STATUS = SIGTERM;

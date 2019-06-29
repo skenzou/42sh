@@ -6,11 +6,21 @@
 /*   By: tlechien <tlechien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/21 01:46:22 by tlechien          #+#    #+#             */
-/*   Updated: 2019/06/26 08:08:50 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/06/29 15:31:15 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
+
+t_child *get_head(t_child *node)
+{
+	t_child *head;
+
+	head = node;
+	while (head->is_pipe < 3)
+		head = head->prev;
+	return (head);
+}
 
 static int	check_branch(t_child *branch, int *finished)
 {
@@ -72,7 +82,10 @@ int			update_amperpipe(t_child *pipe)
 		else if (WIFCONTINUED(status))
 			pipe->status = ID_RUN;
 		else if (WIFEXITED(status))
-			pipe->status = ID_DONE;
+		{
+			if (action != S_ABN && action != S_TERM)
+				pipe->status = ID_DONE;
+		}
 		else if (WIFSIGNALED(status))
 			s_child_handler(WTERMSIG(status), pipe);
 		else if (WIFSTOPPED(status))

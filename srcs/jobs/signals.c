@@ -6,7 +6,7 @@
 /*   By: tlechien <tlechien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/07 19:31:16 by tlechien          #+#    #+#             */
-/*   Updated: 2019/06/26 08:26:25 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/06/29 15:31:45 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,8 @@ void	s_child_handler(int status, t_child *node)
 		kill(node->pid, SIGHUP);
 	}
 	else if (node->is_pipe)
-		;
+		(!is_branch_stp(get_head(node))) ?
+		display_amperpipe(get_head(node), 1): 0;
 	else if (action != S_CONT && action != S_STOP)
 		display_pid_status(node, 1);
 	else

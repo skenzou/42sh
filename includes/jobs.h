@@ -6,7 +6,7 @@
 /*   By: tlechien <tlechien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/25 00:52:53 by tlechien          #+#    #+#             */
-/*   Updated: 2019/06/26 02:04:46 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/06/29 15:22:36 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,8 @@ extern	t_signal	*g_signal[];
 ** BG_BUILTIN.C
 */
 int					bg_builtin(int ac, char **cmd);
-int					bg_resume(t_child **node);
+int					bg_resume(t_child *node);
+int					is_branch_stp(t_child *head);
 /*
 ** FG_BUILTIN.C
 */
@@ -104,6 +105,7 @@ int					jobs_builtin(int ac, char **cmd);
 /*
 ** JOBS_PIPES.C
 */
+t_child				*get_head(t_child *node);
 int					update_amperpipe(t_child *head);
 int					display_amperpipe(t_child *node, char option);
 int					check_remove_pids(void);
@@ -127,7 +129,6 @@ void				sigtstp_dflhandler(int sig);
 /*
 ** SIGNAL_UTILS.C
 */
-
 void				sigint_inhib_handler(int sig);
 int					waitabit(int min, int nsec);
 int					get_nb_len(long long nb);
