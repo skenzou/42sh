@@ -6,24 +6,37 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/28 13:22:00 by midrissi          #+#    #+#             */
-/*   Updated: 2019/06/23 17:45:44 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/07/01 05:39:42 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
 
+static void			intern_to_env(char *key)
+{
+	char	*value;
+
+	value = get_key_value(key, g_shell->intern);
+	update_env(key, value); // faire encore plus de test pour ce cas ci
+	g_shell->intern = removekey2(key, 0, (const char**)g_shell->intern);
+}
+
 static void			env_to_env(char *key)
 {
-	char *value;
+	char	*value;
 
 	value = get_key_value(key, g_shell->env_tmp);
 	if (value)
 	{
 		if (!(value = ft_strdup(value)))
 			ft_exit("Malloc failed in intern_to_env");
+		if ((get_indexof_key2(key, g_shell->intern)) >= 0)
+			g_shell->intern = removekey2(key, 0, (const char**)g_shell->intern);
 		update_env(key, value);
 		ft_strdel(&value);
 	}
+	else if ((get_indexof_key2(key, g_shell->intern)) >= 0)
+		intern_to_env(key);
 	else
 	{
 		if (get_indexof_key2(key, g_shell->env) < 0)
@@ -31,50 +44,14 @@ static void			env_to_env(char *key)
 	}
 }
 
-static void			intern_to_env(char *key)
-{
-	char	*value;
-	char	same_intern;
-
-	same_intern = g_shell->intern_tmp == g_shell->intern;
-	value = get_key_value(key, g_shell->intern_tmp);
-	if (value)
-	{
-		if (!(value = ft_strdup(value)))
-			ft_exit("Malloc failed in intern_to_env");
-		update_env(key, value);
-		g_shell->intern_tmp =
-						removekey2(key, 0, (const char**)g_shell->intern_tmp);
-		if (same_intern)
-			g_shell->intern = g_shell->intern_tmp;
-		else
-			g_shell->intern = removekey2(key, 0, (const char**)g_shell->intern);
-	}
-	else
-		env_to_env(key);
-	ft_strdel(&value);
-}
-
 static void			simple_export(char *key, char *value, char *ptr)
 {
-	char	same_intern;
-	int		entry;
-
-	same_intern = g_shell->intern_tmp == g_shell->intern;
 	if (!(value = ft_strdup(ptr + 1)))
 		ft_exit("Malloc failed in exec_export");
 	update_env(key, value);
 	ft_strdel(&value);
-	entry = get_indexof_key2(key, g_shell->intern_tmp);
-	if (entry >= 0)
-	{
-		g_shell->intern_tmp =
-						removekey2(key, 0, (const char**)g_shell->intern_tmp);
-		if (same_intern)
-			g_shell->intern = g_shell->intern_tmp;
-		else
-			g_shell->intern = removekey2(key, 0, (const char**)g_shell->intern);
-	}
+	if ((get_indexof_key2(key, g_shell->intern)) >= 0)
+		g_shell->intern = removekey2(key, 0, (const char**)g_shell->intern);
 }
 
 static int			exec_export(char *key, char *ptr)
@@ -85,7 +62,7 @@ static int			exec_export(char *key, char *ptr)
 	if (is_key_valid(key))
 	{
 		if (!ptr)
-			intern_to_env(key);
+			env_to_env(key);
 		else
 			simple_export(key, value, ptr);
 		return (0);

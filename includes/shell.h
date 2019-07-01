@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 16:42:03 by midrissi          #+#    #+#             */
-/*   Updated: 2019/06/26 04:16:41 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/07/01 05:42:29 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,6 @@ typedef struct		s_shell
 	char			**env;
 	char			**intern;
 	char			**env_tmp;
-	char			**intern_tmp;
 	t_list			*redir;
 	t_list			*lexer;
 	t_ast			*ast;

@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/09 00:37:47 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/06/26 08:16:35 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/07/01 05:42:19 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,6 @@ int			init_struct(const char **env)
 	g_shell->term->c_cc[VMIN] = 1;
 	g_shell->term->c_cc[VTIME] = 0;
 	g_shell->env_tmp = g_shell->env;
-	g_shell->intern_tmp = g_shell->intern;
 	if (tcsetattr(0, TCSADRAIN, g_shell->term) == -1)
 		return (0);
 	return (1);

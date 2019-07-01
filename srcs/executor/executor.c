@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/03 16:15:41 by midrissi          #+#    #+#             */
-/*   Updated: 2019/06/25 05:39:06 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/07/01 05:39:29 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,11 @@ void			ft_post_exec(t_ast *root)
 
 	if (g_shell->env != g_shell->env_tmp)
 		ft_splitdel(g_shell->env_tmp);
-	if (g_shell->intern != g_shell->intern_tmp)
-		ft_splitdel(g_shell->intern_tmp);
 	if (!(str = ft_itoa(g_shell->lastsignal)))
 		ft_exit("Maloc failed in ft_post_exec");
 	ft_setenv("?", str, &g_shell->intern);
 	ft_strdel(&str);
 	g_shell->env_tmp = g_shell->env;
-	g_shell->intern_tmp = g_shell->intern;
 	if (root && root->token->redir)
 		go_to_next_cmd(g_shell->redir);
 }
@@ -34,9 +31,8 @@ static void		handle_builtin(t_builtin *builtin, char **args)
 {
 	char	*path;
 
-	path = get_key_value("PATH", g_shell->env);
-	if (!path)
-		path = get_key_value("PATH", g_shell->intern);
+	(path = get_key_value("PATH", g_shell->env)) ||
+	(path = get_key_value("PATH", g_shell->intern));
 	g_shell->lastsignal = builtin->function(ft_split_count((const char**)args),
 																		args);
 	compare_paths(path);

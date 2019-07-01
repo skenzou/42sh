@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 01:28:47 by midrissi          #+#    #+#             */
-/*   Updated: 2019/06/22 21:33:11 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/07/01 05:41:51 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,8 @@
 
 static void			op_not_found(t_list *origin, t_ast **root)
 {
-	if (is_in_lexer(origin, DBL_AND))
-		build_ast(origin, root, DBL_AND, OTHER_OP);
-	else if (is_in_lexer(origin, DBL_PIPE))
-		build_ast(origin, root, DBL_PIPE, OTHER_OP);
+	if (is_in_lexer(origin, DBL_AND) || is_in_lexer(origin, DBL_PIPE))
+		build_ast(origin, root, DBL_AND, DBL_PIPE);
 	else if (is_in_lexer(origin, PIPE))
 		build_ast(origin, root, PIPE, OTHER_OP);
 	else
@@ -31,10 +29,8 @@ static int			op_found(t_list *save1, t_list *save2, t_ast **root)
 		*root = newnode((t_token *)(save1->content), save1);
 		if (save2)
 		{
-			if (is_in_lexer(save2, DBL_AND))
-				build_ast(save2, &((*root)->right), DBL_AND, OTHER_OP);
-			else if (is_in_lexer(save2, DBL_PIPE))
-				build_ast(save2, &((*root)->right), DBL_PIPE, OTHER_OP);
+			if (is_in_lexer(save2, DBL_AND) || is_in_lexer(save2, DBL_PIPE))
+				build_ast(save2, &((*root)->right), DBL_AND, DBL_PIPE);
 			else if (is_in_lexer(save2, PIPE))
 				build_ast(save2, &((*root)->right), PIPE, OTHER_OP);
 			else

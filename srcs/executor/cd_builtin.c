@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/24 11:44:34 by midrissi          #+#    #+#             */
-/*   Updated: 2019/06/07 05:44:29 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/07/01 05:38:53 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static	int			cd_home(char flag)
 
 	value = get_key_value("HOME", g_shell->env_tmp);
 	if (!value)
-		value = get_key_value("HOME", g_shell->intern_tmp);
+		value = get_key_value("HOME", g_shell->intern);
 	if (value)
 		return (change_dir(value, flag));
 	else
@@ -65,7 +65,7 @@ static int			cd_oldpwd(char flag)
 	ret = 0;
 	path = get_oldpwd(g_shell->env_tmp);
 	if (!path)
-		path = get_oldpwd(g_shell->intern_tmp);
+		path = get_oldpwd(g_shell->intern);
 	if (!path)
 	{
 		ft_putendl_fd("42sh: cd: OLDPWD not set", 2);

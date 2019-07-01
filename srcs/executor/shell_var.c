@@ -6,13 +6,13 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/27 19:17:30 by midrissi          #+#    #+#             */
-/*   Updated: 2019/06/25 18:29:26 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/07/01 05:40:50 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-static void			check_intern_var(char *needle, char ***env, char ***intern)
+static void			add_to_right_tab(char *needle, char ***env, char ***intern)
 {
 	int		i;
 	char	*key;
@@ -65,47 +65,51 @@ void				compare_paths(char *path)
 	}
 }
 
-static void			reorder_tabs(char *str, char **env, char **intern)
+static void			add_to_env_tmp(char *needle)
 {
-	char *path;
+	char	*key;
+	char	*value;
+	int		i;
 
-	path = get_key_value("PATH", g_shell->env);
-	if (!path)
-		path = get_key_value("PATH", g_shell->intern);
-	if (str)
-	{
-		g_shell->env_tmp = env;
-		g_shell->intern_tmp = intern;
-	}
-	else
-	{
-		ft_splitdel(g_shell->env);
-		ft_splitdel(g_shell->intern);
-		g_shell->env = env;
-		g_shell->intern = intern;
-		g_shell->env_tmp = g_shell->env;
-		g_shell->intern_tmp = g_shell->intern;
-		compare_paths(path);
-	}
+	i = 0;
+	while (needle[i] && needle[i] != '=')
+		i++;
+	if (!(key = ft_strsub(needle, 0, i)))
+		ft_exit("Malloc failed in check_intern_var failed");
+	if (!(value = ft_strdup(needle + i + 1)))
+		ft_exit("Malloc failed in check_intern_var failed");
+	ft_expand_one(&value);
+	ft_setenv(key, value, &g_shell->env_tmp);
+	ft_strdel(&key);
+	ft_strdel(&value);
 }
 
 void				handle_intern_var(char **args)
 {
 	int		i;
-	char	**env;
-	char	**intern;
+	int		j;
+	char	*path;
 
-	i = 0;
-	env = ft_splitdup(g_shell->env);
-	intern = ft_splitdup(g_shell->intern);
-	while (args[i] && is_var(args[i]))
-		check_intern_var(args[i++], &env, &intern);
-	if (!i)
-	{
-		ft_splitdel(env);
-		ft_splitdel(intern);
+	if (!is_var(args[0]))
 		return ;
+	i = 0;
+	while (args[i] && is_var(args[i]))
+		i++;
+	j = -1;
+	if (args[i])
+	{
+		if (!(g_shell->env_tmp = ft_splitdup(g_shell->env)))
+			ft_exit("Malloc failed in handle_intern_var");
+		while (++j < i)
+			add_to_env_tmp(args[j]);
+	}
+	else
+	{
+		(path = get_key_value("PATH", g_shell->env)) ||
+		(path = get_key_value("PATH", g_shell->intern));
+		while (++j < i)
+			add_to_right_tab(args[j], &g_shell->env, &g_shell->intern);
+		compare_paths(path);
 	}
 	remove_n_first_entries(args, i);
-	reorder_tabs(args[0], env, intern);
 }

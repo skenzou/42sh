@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/04 23:37:49 by midrissi          #+#    #+#             */
-/*   Updated: 2019/06/26 04:23:01 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/07/01 05:42:02 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,8 @@ static void		init_ast(t_list *lexer)
 {
 	if (is_in_lexer(lexer, SEMI) || is_in_lexer(lexer, AND))
 		build_ast(lexer, &g_shell->ast, SEMI, AND);
-	else if (is_in_lexer(lexer, DBL_AND))
-		build_ast(lexer, &g_shell->ast, DBL_AND, OTHER_OP);
-	else if (is_in_lexer(lexer, DBL_PIPE))
-		build_ast(lexer, &g_shell->ast, DBL_PIPE, OTHER_OP);
+	else if (is_in_lexer(lexer, DBL_AND) || is_in_lexer(lexer, DBL_PIPE))
+		build_ast(lexer, &g_shell->ast, DBL_AND, DBL_PIPE);
 	else
 		build_ast(lexer, &g_shell->ast, PIPE, OTHER_OP);
 	if (g_shell->print_flags & PRINT_AST)

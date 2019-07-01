@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/07 06:15:18 by midrissi          #+#    #+#             */
-/*   Updated: 2019/06/25 18:31:37 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/07/01 05:41:16 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,5 @@ void					update_env(char *key, char *value)
 	if (same_env)
 		g_shell->env_tmp = g_shell->env;
 	else
-		g_shell->env_tmp = removekey2(key, 0,
-											(const char**)g_shell->env_tmp);
+		g_shell->env_tmp = removekey2(key, 0, (const char**)g_shell->env_tmp);
 }
