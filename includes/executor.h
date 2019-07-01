@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 00:40:57 by midrissi          #+#    #+#             */
-/*   Updated: 2019/06/26 04:16:18 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/07/01 07:38:55 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,6 +126,10 @@ int					export_builtin(int ac, char **av);
 ** EXPORT_BUILTIN2.C
 */
 int					export_options(int ac, char **av);
+/*
+** FT_EXEC_PIPE.C
+*/
+void				ft_exec_pipe(t_ast *root);
 /*
 ** GET_OPTIONS.C
 */

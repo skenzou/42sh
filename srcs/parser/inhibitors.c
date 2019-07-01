@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 01:26:49 by midrissi          #+#    #+#             */
-/*   Updated: 2019/06/26 06:15:09 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/07/01 08:08:26 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,27 +34,28 @@ static void		read_inhib(char inhib, char **word)
 	}
 }
 
-static void		exec_inhib(char inhib, t_list *lexer, int i)
+static void		exec_inhib(char inhib, char **str)
 {
-	char **content;
 	char *save;
 
-	if (inhib == '"')
+	if (inhib == DQUOTE)
 		g_shell->tcap->prompt = "dquote>";
-	else if (inhib == '\'')
+	else if (inhib == QUOTE)
 		g_shell->tcap->prompt = "quote>";
-	else if (inhib == '\\')
+	else if (inhib == BSLASH)
 		g_shell->tcap->prompt = ">";
-	content = ((t_token *)(lexer->content))->content;
-	save = content[i];
-	if (!(content[i] = ft_strjoin(content[i], "\n")))
+	save = *str;
+	if (inhib != BSLASH && !(*str = ft_strjoin(*str, "\n")))
 		ft_exit("Malloc failed in exec_inhib");
-	free(save);
-	read_inhib(inhib, &content[i]);
+	else
+		(*str)[ft_strlen(*str) - 1] = '\n';
+	if (inhib != BSLASH)
+		free(save);
+	read_inhib(inhib, str);
 	g_shell->tcap->prompt = NULL;
 }
 
-static int		check_bslash(char **str, t_list *lexer, int i)
+static int		check_bslash(char **str, char **cmd)
 {
 	if (**str == BSLASH)
 	{
@@ -62,62 +63,56 @@ static int		check_bslash(char **str, t_list *lexer, int i)
 		if (**str)
 			(*str)++;
 		else
-			exec_inhib(BSLASH, lexer, i);
-		return (1);
+		{
+			exec_inhib(BSLASH, cmd);
+			return (1);
+		}
+		return (-1);
 	}
 	return (0);
 }
 
-static void		check_inhib(char *str, t_list *lexer, int i)
+static int		check_quotes(char **str, char **cmd)
 {
 	char inhib;
 
-	while (*str)
+	if (**str == DQUOTE || **str == QUOTE)
 	{
-		if (check_bslash(&str, lexer, i))
-			continue ;
-		if (g_shell->inhib_mod == 2)
-			return ;
-		if (*str == DQUOTE || *str == QUOTE)
+		inhib = *(*str)++;
+		while (**str && **str != inhib)
 		{
-			inhib = *str++;
-			while (*str && *str != inhib)
-			{
-				if (*str == BSLASH && *(str + 1))
-					str += 2;
-				else
-					str++;
-			}
-			if (!*str)
-			{
-				exec_inhib(inhib, lexer, i);
-				return ;
-			}
+			if (**str == BSLASH && *(*(str + 1)))
+				(*str) += 2;
+			else
+				(*str)++;
 		}
-		str++;
+		if (!**str)
+		{
+			exec_inhib(inhib, cmd);
+			return (1);
+		}
 	}
+	return (0);
 }
 
-void			handle_inhibitors(t_list *lexer)
+void		check_inhib(char **cmd)
 {
-	t_token		*token;
-	size_t		i;
+	char	*str;
+	int		ret;
 
 	g_shell->inhib_mod = 1;
-	while (lexer)
+	str = *cmd;
+	while (*str)
 	{
-		token = (t_token *)lexer->content;
-		if (token->type == TOKEN_WORD)
-		{
-			i = 0;
-			while (i < token->size)
-			{
-				check_inhib(token->content[i], lexer, i);
-				if (g_shell->inhib_mod == 2)
-					return ;
-				i++;
-			}
-		}
-		lexer = lexer->next;
+		ret = check_bslash(&str, cmd);
+		if (ret == -1)
+			continue ;
+		else if (ret == 1)
+			return ;
+		if (g_shell->inhib_mod == 2)
+			return ;
+		if (check_quotes(&str, cmd))
+			return ;
+		str++;
 	}
 }

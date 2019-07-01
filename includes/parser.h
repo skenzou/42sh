@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/05 00:53:00 by midrissi          #+#    #+#             */
-/*   Updated: 2019/06/22 21:32:14 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/07/01 07:10:16 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void				create_redir_list(t_list *lexer);
 /*
 ** INHIBTORS.C
 */
-void				handle_inhibitors(t_list *lexer);
+void				check_inhib(char **cmd);
 /*
 ** PARSE.C
 */

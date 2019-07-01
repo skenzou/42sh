@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/04 23:37:49 by midrissi          #+#    #+#             */
-/*   Updated: 2019/07/01 05:42:02 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/07/01 07:48:54 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,6 @@ void			ft_parse(t_list *lexer)
 		ft_lstdel(&lexer, lex_delone);
 		return ;
 	}
-	handle_inhibitors(lexer);
-	if (g_shell->inhib_mod == 2)
-		return ;
 	create_redir_list(lexer);
 	ft_lstrev(&g_shell->redir);
 	if (g_shell->print_flags & PRINT_REDIR)
