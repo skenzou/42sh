@@ -6,18 +6,18 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/29 17:39:49 by midrissi          #+#    #+#             */
-/*   Updated: 2019/07/01 07:49:28 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/07/11 23:00:06 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-char		**dup_env(const char **env)
+char		**dup_env(char **env)
 {
 	char	**p;
 	int		i;
 
-	i = ft_split_count(env);
+	i = ft_split_count((const char **)env);
 	if (!(p = (char **)ft_memalloc(sizeof(char *) * (i + 1))))
 		exit(0);
 	i = -1;
@@ -28,10 +28,66 @@ char		**dup_env(const char **env)
 	return (p);
 }
 
+int			debug(void)
+{
+	int fd;
+
+	return (fd = open("log.log", O_RDWR | O_APPEND | O_CREAT, 0666));
+}
+
+static inline void	before_read_line(char *buffer, t_cap *tcap)
+{
+	int		flags;
+
+	flags = fcntl(0, F_GETFL);
+	flags &= ~O_NONBLOCK;
+	fcntl(0, F_SETFL, flags);
+	signal(SIGINT, sigint_handler);
+	signal(SIGWINCH, sigwinch_handler);
+	ft_bzero(buffer, 4);
+	ft_bzero(tcap->command, BUFFSIZE);
+	fflush(stdout);
+	while (g_shell->dprompt == 0 && (g_shell->dprompt = 1))
+		waitabit(0, 8000000);
+	signal(SIGINT, sigint_handler);
+	signal(SIGWINCH, sigwinch_handler);
+	ft_bzero(buffer, 4);
+	ft_bzero(tcap->command, BUFFSIZE);
+	print_prompt_prefix();
+}
+
+char	*read_line(t_cap *tcap)
+{
+	char	buffer[4];
+	int		ret;
+
+	ret = 0;
+	before_read_line(buffer, tcap);
+	if (tcap->overflow)
+	{
+		ft_insert(tcap->carry, tcap);
+		ft_bzero(tcap->carry, 2);
+		tcap->overflow = 0;
+	}
+	while ("42sh")
+	{
+		ft_bzero(buffer, 4);
+		tcsetattr(0, TCSADRAIN, g_shell->term);
+		read(0, &buffer, 3);
+		if ((ret = read_buffer(buffer, tcap)) == -2)
+			return (clean_before_return(tcap));
+		else if (!ret)
+		{
+			tcsetattr(0, TCSADRAIN, g_shell->term_backup);
+			return (NULL);
+		}
+	}
+}
+
 int	handler(const char *input)
 {
-	t_list *redir;
-	char 	*in;
+	t_list	*redir;
+	char	*in;
 
 	if (!ft_strcmp(input, "history\n"))
 	{

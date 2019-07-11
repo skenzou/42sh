@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/28 15:04:00 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/06/04 23:43:02 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/06/26 00:03:15 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,30 +24,29 @@ void	ft_clear_replace(t_cap *tcap)
 
 int		arrow_up_event(t_cap *tcap)
 {
-	t_ab	*autocomp;
+	t_ab	*comp;
 	int		x;
 
-	if ((autocomp = g_shell->autocomp) && g_shell->autocomp->state)
+	if ((comp = g_shell->autocomp) && g_shell->autocomp->state)
 	{
-		x = autocomp->pos % ft_max(autocomp->row, 1);
-		if (autocomp->pos - autocomp->row > -1)
-			autocomp->pos -= autocomp->row;
+		if (comp->pos - comp->row > -1)
+			comp->pos -= comp->row;
 		else
 		{
-			if (x < autocomp->carry)
+			if ((x = comp->pos % ft_max(comp->row, 1)) < comp->carry)
 			{
-				autocomp->pos = autocomp->len - 1;
-				if (autocomp->pos)
-					autocomp->pos -= autocomp->carry - x - 1;
+				comp->pos = comp->len - 1;
+				if (comp->pos)
+					comp->pos -= comp->carry - x - 1;
 			}
 			else
 			{
-				autocomp->pos = autocomp->len - 1;
-				autocomp->pos -= autocomp->carry;
-				autocomp->pos -= autocomp->row - x - 1;
+				comp->pos = comp->len - 1;
+				comp->pos -= comp->carry;
+				comp->pos -= comp->row - x - 1;
 			}
 		}
-		return (ft_tab(tcap, autocomp));
+		return (process_completion(comp));
 	}
 	return (histo_up(tcap, g_shell->history));
 }
@@ -70,7 +69,7 @@ int		arrow_down_event(t_cap *tcap)
 			else
 				autocomp->pos = new_x;
 		}
-		return (ft_tab(tcap, autocomp));
+		return (process_completion(autocomp));
 	}
 	return (histo_down(tcap, g_shell->history));
 }
@@ -85,7 +84,7 @@ int		arrow_right_event(t_cap *tcap)
 		autocomp->pos++;
 		if (autocomp->pos == autocomp->len)
 			autocomp->pos = 0;
-		return (ft_tab(tcap, autocomp));
+		return (process_completion(autocomp));
 	}
 	return (ft_move(tcap, "right", 1));
 }
@@ -100,7 +99,7 @@ int		arrow_left_event(t_cap *tcap)
 		autocomp->pos--;
 		if (autocomp->pos == -1)
 			autocomp->pos = autocomp->len - 1;
-		return (ft_tab(tcap, autocomp));
+		return (process_completion(autocomp));
 	}
-	return (ft_move(tcap, "left", 1));;
+	return (ft_move(tcap, "left", 1));
 }

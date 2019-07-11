@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/28 15:35:56 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/06/15 17:50:09 by ghamelek         ###   ########.fr       */
+/*   Updated: 2019/06/25 23:50:49 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,29 +26,24 @@ char	*get_git_status(void)
 	char		*status;
 
 	i = 0;
-	status = NULL;
 	if ((fd = open(".git/HEAD", O_RDONLY)) > 0)
 	{
 		while (get_next_line(fd, &str, '\n') > 0)
 		{
-			if ((status = str + ft_lastindexof(str, '/') + 1))
+			if ((status = ft_strdup(str + ft_lastindexof(str, '/') + 1)))
 			{
-				if (!(status = ft_strdup(status)))
-					ft_exit("Malloc failed in get_git_status");
 				ft_strdel(&str);
 				return (status);
-
 			}
 			else
 			{
 				ft_strdel(&str);
 				return (NULL);
 			}
-			ft_strdel(&str);
 			i++;
 		}
+		close(fd);
 	}
-	close(fd);
 	return (NULL);
 }
 

@@ -1,10 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   history_expansion.c                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/06/22 20:18:00 by aben-azz          #+#    #+#             */
+/*   Updated: 2019/06/25 23:55:06 by aben-azz         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "shell.h"
 
-static int search_history(char *data, char *found, t_history *history)
+static int		search_history(char *data, char *found, t_history *history)
 {
-	int i;
-	char string[BUFFSIZE];
-	int len;
+	int		i;
+	char	string[BUFFSIZE];
+	int		len;
 
 	len = 0;
 	i = -1;
@@ -26,12 +38,12 @@ static int search_history(char *data, char *found, t_history *history)
 	return (0);
 }
 
-static int word_expansion(char *string, t_cap *tcap, int index)
+static int		word_expansion(char *string, t_cap *tcap, int index)
 {
-	char exp[BUFFSIZE];
-	char result[BUFFSIZE];
-	t_history *history;
-	int i;
+	char		exp[BUFFSIZE];
+	char		result[BUFFSIZE];
+	t_history	*history;
+	int			i;
 
 	history = g_shell->history;
 	ft_bzero(exp, BUFFSIZE);
@@ -47,13 +59,12 @@ static int word_expansion(char *string, t_cap *tcap, int index)
 	return (0);
 }
 
-
-static int number_expansion(char *string, t_cap *tcap, int index, int rev)
+static int		number_expansion(char *string, t_cap *tcap, int index, int rev)
 {
-	int a;
-	char exp[BUFFSIZE];
-	t_history *history;
-	int i;
+	int			a;
+	char		exp[BUFFSIZE];
+	t_history	*history;
+	int			i;
 
 	history = g_shell->history;
 	a = 0;
@@ -73,7 +84,7 @@ static int number_expansion(char *string, t_cap *tcap, int index, int rev)
 	return (0);
 }
 
-static int previous_expansion(t_cap *tcap)
+static int		previous_expansion(t_cap *tcap)
 {
 	t_history *history;
 
@@ -88,7 +99,7 @@ static int previous_expansion(t_cap *tcap)
 	return (0);
 }
 
-int expansion_history(char *string, t_cap *tcap, int index)
+int				expansion_history(char *string, t_cap *tcap, int index)
 {
 	t_history *history;
 
@@ -100,7 +111,7 @@ int expansion_history(char *string, t_cap *tcap, int index)
 	else if (ft_isdigit(string[index + 1]))
 		number_expansion(string, tcap, index, 0);
 	else if (string[index + 1] == '-')
-		if (ft_isdigit(string[index+2]))
+		if (ft_isdigit(string[index + 2]))
 			number_expansion(string, tcap, index, 1);
 	return (1);
 }

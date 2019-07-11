@@ -6,7 +6,7 @@
 #    By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/03 09:24:41 by midrissi          #+#    #+#              #
-#    Updated: 2019/07/01 07:19:56 by midrissi         ###   ########.fr        #
+#    Updated: 2019/07/11 22:55:06 by aben-azz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -92,6 +92,10 @@ JOBS_O		= $(JOBS:.c=.o)
 
 _PROMPT 	= arrow_events.c \
 			completion.c \
+			completion_file.c \
+			completion_geters.c \
+			completion_utils.c \
+			completion_words.c \
 			copy_cut.c \
 			ctrl_r.c \
 			history.c \
@@ -109,7 +113,9 @@ _PROMPT 	= arrow_events.c \
 			read_arrow.c \
 			read_key.c \
 			reader.c \
-			shift_events.c
+			shift_events.c \
+			signal_handler.c \
+			space_events.c
 PROMPT 		= $(addprefix $(SRC_PATH)prompt/,$(_PROMPT))
 _PROMPT_O 	:= $(_PROMPT:.c=.o)
 PROMPT_O 	:= $(PROMPT:.c=.o)
