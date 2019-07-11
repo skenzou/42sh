@@ -6,12 +6,11 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/27 17:27:48 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/06/12 16:56:44 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/06/26 08:27:45 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
-#include <stdio.h>
 
 t_event g_arrow_event[] = {
 	{UP, &arrow_up_event},
@@ -86,15 +85,21 @@ char	*clean_before_return(t_cap *tcap)
 
 char	*read_line(t_cap *tcap)
 {
-	char	buffer[3];
+	char	buffer[4];
 	int		ret;
+	int		flags;
 
+	flags = fcntl(0, F_GETFL);
+	flags &= ~O_NONBLOCK;
+	fcntl(0, F_SETFL, flags);
 	ret = 0;
 	signal(SIGINT, sigint_handler);
 	signal(SIGWINCH, sigwinch_handler);
-	ft_bzero(buffer, 3);
+	ft_bzero(buffer, 4);
 	ft_bzero(tcap->command, BUFFSIZE);
-	waitabit(2000000);
+	fflush(stdout);
+	while (g_shell->dprompt == 0 && (g_shell->dprompt = 1))
+		waitabit(0, 8000000);
 	print_prompt_prefix();
 	if (tcap->overflow)
 	{
@@ -104,10 +109,12 @@ char	*read_line(t_cap *tcap)
 	}
 	while ("42sh")
 	{
-		ft_bzero(buffer, 3);
+		ft_bzero(buffer, 4);
 		tcsetattr(0, TCSADRAIN, g_shell->term);
 		read(0, &buffer, 3);
-		if ((ret = read_buffer(buffer, tcap)) == -2)
+		if (g_shell->inhib_mod == 2)
+			return(NULL);
+		if ((ret = read_buffer(buffer, tcap)) == -2) //exit if inhib_mod == 2
 			return (clean_before_return(tcap));
 		else if (!ret)
 		{
@@ -115,9 +122,10 @@ char	*read_line(t_cap *tcap)
 			return (NULL);
 		}
 	}
+	return (NULL);
 }
 
-static void check_flags(char **av, int ac)
+static void	check_flags(char **av, int ac)
 {
 	int i;
 
@@ -131,7 +139,7 @@ static void check_flags(char **av, int ac)
 			g_shell->print_flags |= PRINT_REDIR;
 }
 
-static int init_fd_table()
+static int	init_fd_table(void)
 {
 	int i;
 
@@ -142,7 +150,7 @@ static int init_fd_table()
 	return (0);
 }
 
-int				main(int ac, char **av, char **env)
+int				main(int ac, char **av, const char **env)
 {
 	char	*string;
 
@@ -152,14 +160,15 @@ int				main(int ac, char **av, char **env)
 	ft_bzero((void *)g_shell->hash_table, TABLE_SIZE);
 	if (ac > 1)
 		check_flags(av, ac);
+	g_shell->dprompt = 1;
 	while ("42sh")
 	{
 		init_signal();
+		update_pid_table();
 		if (!(string = read_line(g_shell->tcap)))
 			return (-1);
 		if (!handler(string))
 			return (-1);
-		update_pid_table();
 	}
 	save_alias(1);
 	kill_pids();

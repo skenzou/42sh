@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/28 15:31:17 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/06/14 01:31:06 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/06/29 14:51:35 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,25 @@ void	sigint_handler(int sig)
 		signal(SIGINT, sigint_handler);
 		ft_printf("\n");
 		g_shell->lastsignal = 1;
-		print_prompt_prefix();
-		// exit(0);
+		ft_bzero(g_shell->tcap->command, BUFFSIZE);
+		g_shell->ctrl_r->state = 0;
+		g_shell->tcap->overflow = 0;
+		if (g_shell->inhib_mod == 1)
+		{
+			fcntl(0, F_SETFL, O_NONBLOCK);
+			ft_lstdel(&g_shell->redir, redir_delone);
+			if (g_shell->ast)
+				del_ast(&g_shell->ast);
+			else
+				lex_del_list(&g_shell->lexer);
+			g_shell->tcap->prompt = NULL;
+			g_shell->inhib_mod = 2;
+		}
+		else
+			print_prompt_prefix();
+		ft_bzero(g_shell->tcap->carry, 2);
+		g_shell->dprompt = 1;
+		tcsetattr(0, TCSADRAIN, g_shell->term);
 	}
 }
 
@@ -29,16 +46,15 @@ void	sigfork(int sig)
 	if (sig == SIGINT)
 	{
 		close_fd();
-		ft_putchar('\n');
 		signal(SIGINT, sigfork);
 	}
 }
 
 void	sigwinch_handler(int sig)
 {
-	t_cap *tcap;
-	int p;
-	int prompt_len;
+	t_cap	*tcap;
+	int		p;
+	int		prompt_len;
 
 	tcap = g_shell->tcap;
 	p = tcap->cursy * (tcap->cursx_max + 1) + (tcap->cursx) - tcap->prompt_len;
@@ -55,16 +71,16 @@ void	sigwinch_handler(int sig)
 	}
 }
 
-void 	sigtstp_dflhandler(int sig)
+void	sigtstp_dflhandler(int sig)
 {
 	if (sig == SIGTSTP)
- 	{
+	{
 		ft_putchar(7);
 		signal(SIGTSTP, sigtstp_dflhandler);
 	}
 }
 
-void 	sigtstp_handler(int sig)
+void	sigtstp_handler(int sig)
 {
 	if (sig == SIGTSTP)
 		signal(SIGTSTP, sigtstp_handler);

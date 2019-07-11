@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/30 18:51:02 by midrissi          #+#    #+#             */
-/*   Updated: 2019/06/04 04:44:27 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/06/22 21:34:13 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ static const t_oplist g_existing_token[] =
 	{NULL, 1, 0, OTHER_OP}
 };
 
-static int			join_if_2words(t_list **lexer, char *str, e_token_type type)
+static int			join_if_2words(t_list **lexer, char *str, t_token_type type)
 {
 	t_token		*token;
 	size_t		i;
@@ -99,7 +99,7 @@ static int			join_if_2words(t_list **lexer, char *str, e_token_type type)
 }
 
 static void			create_token(t_list **lexer, char *str,
-										e_token_type type, e_op_type op_type)
+										t_token_type type, t_op_type op_type)
 {
 	t_token		token;
 	t_list		*list;

@@ -6,7 +6,7 @@
 /*   By: tlechien <tlechien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/07 19:31:16 by tlechien          #+#    #+#             */
-/*   Updated: 2019/06/14 01:28:18 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/06/29 15:31:45 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,31 +42,32 @@ t_signal	g_signals[S_SIZE] = {
 	{SIGXFSZ	, S_ABN	, "XFSZ"	, "file size limit exceeded"},
 };
 
-void s_child_handler(int status, t_child *node)
+void	s_child_handler(int status, t_child *node)
 {
-	int action;
-	char *handler;
-	char *stat;
+	int		action;
+	char	*handler;
+	char	*stat;
 
 	if (s_get_values(status, &action, &handler, &stat))
 		return ;
-	//ft_printf("debug: err child : %s: %s\n", handler, stat);
 	node->status = status;
 	if (status == SIGINT)
 	{
+		node->status = SIGHUP;
 		kill(node->pid, SIGHUP);
-		remove_pid();
 	}
+	else if (node->is_pipe)
+		(!is_branch_stp(get_head(node))) ?
+		display_amperpipe(get_head(node), 1): 0;
 	else if (action != S_CONT && action != S_STOP)
-	{
-		display_pid_long(node, 2);
-		remove_pid();
-	}
+		display_pid_status(node, 1);
 	else
-		display_pid_long(node, 1);
+		display_pid_status(node, 1);
+	if (node->is_pipe)
+		node->is_pipe = (node->is_pipe == 1) ? 2 : 4;
 }
 
-int s_get_values(int status, int *action, char **handler, char **stat)
+int		s_get_values(int status, int *action, char **handler, char **stat)
 {
 	int i;
 
@@ -84,8 +85,10 @@ int s_get_values(int status, int *action, char **handler, char **stat)
 	return (1);
 }
 
-void sigchld_handler()
+void	sigchld_handler(int sig)
 {
+	(void)sig;
+	g_shell->dprompt = 0;
 	update_pid_table();
 	signal(SIGCHLD, sigchld_handler);
 }
@@ -99,10 +102,12 @@ void	resetsign(void)
 		signal(x, SIG_DFL);
 }
 
-void init_signal(void)
+void	init_signal(void)
 {
+	g_shell->inhib_mod = 0;
 	signal(SIGTTOU, SIG_IGN);
 	signal(SIGTTIN, SIG_IGN);
+	signal(SIGALRM, SIG_IGN);
 	signal(SIGTSTP, sigtstp_dflhandler);
 	signal(SIGINT, sigint_handler);
 	signal(SIGWINCH, sigwinch_handler);

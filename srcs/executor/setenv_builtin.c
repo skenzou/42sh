@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 18:46:30 by midrissi          #+#    #+#             */
-/*   Updated: 2019/06/07 06:20:07 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/06/22 19:45:58 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static char				**addkey(char *key, char *value, char **env)
 	char	**fresh_env;
 	int		count;
 
-	count = ft_split_count(env);
+	count = ft_split_count((const char**)env);
 	fresh_env = (char **)ft_memalloc(sizeof(char *) * (count + 2));
 	fresh_env == NULL ? exit(1) : 0;
 	i = -1;

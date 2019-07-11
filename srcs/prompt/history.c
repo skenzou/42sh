@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/01 17:45:36 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/05/25 02:33:33 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/06/15 14:44:48 by ghamelek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,16 +71,21 @@ int	read_history(t_history *history)
 	char		*str;
 	int			ret;
 	int			fd;
-
+	
+	str = NULL;
 	if ((fd = open(history->file_name, O_RDWR | O_APPEND | O_CREAT, 0666)) > 0)
 	{
 		while ((ret = get_next_line(fd, &str, 1)) > 0)
 		{
 			history->read++;
-			if (!(history->data[history->len++] =
-					ft_strdup(str)))
+			if (!(history->data[history->len++] = ft_strdup(str)))
+			{
+				ft_strdel(&str);
 				return (-1);
+			}
+			ft_strdel(&str);
 		}
+		ft_strdel(&str);
 	}
 	close(fd);
 	return (1);

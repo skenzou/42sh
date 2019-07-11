@@ -6,13 +6,13 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/05 00:34:12 by midrissi          #+#    #+#             */
-/*   Updated: 2019/06/04 04:51:32 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/06/22 21:35:30 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-void				print_optype(e_op_type op_type)
+void				print_optype(t_op_type op_type)
 {
 	ft_printf(ANSI_BCYAN"==>");
 	op_type == 0 ? ft_printf("SEMI" ANSI_RESET) : 0;
@@ -34,7 +34,7 @@ void				print_optype(e_op_type op_type)
 	op_type == 16 ? ft_printf("OTHER_OP"ANSI_RESET) : 0;
 }
 
-static void			print_tokentype(e_token_type token_type)
+static void			print_tokentype(t_token_type token_type)
 {
 	ft_printf(ANSI_BBLUE"==>");
 	token_type == 0 ? ft_printf("TOKEN_EAT "ANSI_RESET) : 0;

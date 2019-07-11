@@ -6,13 +6,13 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/24 14:43:56 by midrissi          #+#    #+#             */
-/*   Updated: 2019/03/29 18:16:19 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/06/15 15:53:56 by ghamelek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_split_count(char **split)
+int		ft_split_count(const char **split)
 {
 	int i;
 

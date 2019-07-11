@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/28 15:23:43 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/06/05 00:34:12 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/06/26 07:23:14 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,7 +121,7 @@ int		ctrl_d_event(t_cap *tcap)
 	(void)tcap;
 	// ft_insert("ctrl_d", tcap);
 	ft_printf("exit\n");
-	exit(0);
+	exit_builtin(1, NULL);
 	return (1);
 }
 

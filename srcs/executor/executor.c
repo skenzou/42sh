@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/03 16:15:41 by midrissi          #+#    #+#             */
-/*   Updated: 2019/06/07 05:59:58 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/07/11 06:56:44 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,24 @@ void			ft_post_exec(t_ast *root)
 
 	if (g_shell->env != g_shell->env_tmp)
 		ft_splitdel(g_shell->env_tmp);
-	if (g_shell->intern != g_shell->intern_tmp)
-		ft_splitdel(g_shell->intern_tmp);
 	if (!(str = ft_itoa(g_shell->lastsignal)))
 		ft_exit("Maloc failed in ft_post_exec");
 	ft_setenv("?", str, &g_shell->intern);
+	ft_strdel(&str);
 	g_shell->env_tmp = g_shell->env;
-	g_shell->intern_tmp = g_shell->intern;
 	if (root && root->token->redir)
 		go_to_next_cmd(g_shell->redir);
+}
+
+static void		handle_builtin(t_builtin *builtin, char **args)
+{
+	char	*path;
+
+	(path = get_key_value("PATH", g_shell->env)) ||
+	(path = get_key_value("PATH", g_shell->intern));
+	g_shell->lastsignal = builtin->function(ft_split_count((const char**)args),
+																		args);
+	compare_paths(path);
 }
 
 static void		ft_execute(char **args, int redir, int background)
@@ -41,8 +50,11 @@ static void		ft_execute(char **args, int redir, int background)
 		else
 			g_shell->lastsignal = ft_fork_amper(args, g_shell->env_tmp);
 	}
-	if (!g_shell->lastsignal && builtin)
-		g_shell->lastsignal = builtin->function(ft_split_count(args), args);
+	if (!g_shell->lastsignal && builtin && !background)
+		handle_builtin(builtin, args);
+	else if (!g_shell->lastsignal && builtin)
+		g_shell->lastsignal = ft_fork_builtin(builtin,
+									ft_split_count((const char**)args), args);
 	if (redir)
 		close_fd();
 	ft_post_exec(NULL);
@@ -50,18 +62,24 @@ static void		ft_execute(char **args, int redir, int background)
 
 void			ft_execute_ast(t_ast *root)
 {
+	t_pipe	*pipe;
+
 	if (!root)
 		return ;
 	if (root->token->op_type == PIPE)
 	{
-		handle_pipe(root);
+		pipe = NULL;
+		parse_pipe(root, root->right, &pipe);
+		launch_pipe(&pipe, pipe);
 		return ;
 	}
-	if (root->token->op_type == AND && root->left
-							&& root->left->token->op_type == TOKEN_WORD)
+	if (root->token->op_type == AND && root->left &&
+		(root->left->token->op_type == TOKEN_WORD ||
+										root->left->token->op_type == PIPE))
 		root->left->job = 1;
 	if (root->token->op_type == AND && root->left && root->left->right
-		&& root->left->right->token->op_type == TOKEN_WORD)
+		&& (root->left->right->token->op_type == TOKEN_WORD
+	|| root->left->right->token->op_type == PIPE))
 		root->left->right->job = 1;
 	if (root->left)
 		ft_execute_ast(root->left);

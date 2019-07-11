@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/05 00:33:06 by midrissi          #+#    #+#             */
-/*   Updated: 2019/06/04 04:51:52 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/06/22 21:30:30 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void		lex_del_list(t_list **lexer)
 	*lexer = NULL;
 }
 
-int			is_in_lexer(t_list *lexer, e_op_type optype)
+int			is_in_lexer(t_list *lexer, t_op_type optype)
 {
 	t_token		*token;
 

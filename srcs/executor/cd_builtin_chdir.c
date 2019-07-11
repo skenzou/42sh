@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/07 05:34:19 by midrissi          #+#    #+#             */
-/*   Updated: 2019/06/07 05:47:29 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/06/22 20:22:12 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static void			clean_dot(char *path, int *j, char *new_path, int *i)
 		new_path[(*i)++] = path[(*j)++];
 }
 
-char				*clean_path(char *path, char *new_path)
+static char			*clean_path(char *path, char *new_path)
 {
 	int			i;
 	int			j;
