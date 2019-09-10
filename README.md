@@ -2,10 +2,10 @@
 
 ## Current tasks
 
-- Midrissi : core of the project (parser, lexer, executor, ...)
-- Aben-azz : termcaps/prompt
-- Ghamelek : test_builtin/has_table
-- tlechien : alias
+- Midrissi : fix pipes
+- Aben-azz : fix tcaps
+- Ghamelek : fc builtin
+- tlechien : fix pipes
 
 ## TODO
 - POSIX norme on builtins
@@ -33,7 +33,8 @@
 
 ## DEBUG
 
-- autocompletion doesn't work with for example ../../
+- autocompletion cashes with an unexistant command
+- embedded loop pipes aren't working properly
 
 ## DONE
 
