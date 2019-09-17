@@ -6,24 +6,11 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/01 07:12:26 by midrissi          #+#    #+#             */
-/*   Updated: 2019/07/11 07:18:37 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/09/18 01:11:19 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
-
-/*static int		ft_pipe_exec(char **cmd, int redir)
-{
-	t_builtin *builtin;
-
-	g_shell->lastsignal = ft_pre_execution(&cmd, redir, &builtin);
-	if (!g_shell->lastsignal && !builtin)
-		execve(cmd[0], cmd, g_shell->env_tmp);
-	if (!g_shell->lastsignal && builtin)
-		g_shell->lastsignal = builtin->function(
-										ft_split_count((const char**)cmd), cmd);
-	return (g_shell->lastsignal);
-}*/
 
 void push_pipe(t_ast *root, t_pipe **begin)
 {
@@ -64,6 +51,11 @@ void	launch_process(t_pipe *pipe, int ext[2])
 	//setpgid(pid, pid);
 	tcsetpgrp(0, pid);
 	resetsign();
+	if (!pipe->next)
+	{
+		close (pipe->fd[0]);
+		dup2(pipe->fd[1], 1);
+	}
     dup2 (ext[0], STDIN_FILENO);
     close (ext[0]);
     dup2 (ext[1], STDOUT_FILENO);
@@ -71,12 +63,27 @@ void	launch_process(t_pipe *pipe, int ext[2])
 	execvp(pipe->cmd[0], pipe->cmd);
 	exit(1);
 }
+int	wait_ret(t_pipe *elem)
+{
+	int		status;
+	char	buffer[256]; //any idea of the value here?
+
+	if (elem->next)
+	{
+		wait_ret(elem->next);
+		waitpid(elem->pid, &status, WUNTRACED);
+		if (!WIFEXITED(status) && status == 9)
+			read(0, &buffer, 255);
+	}
+	return (0);
+}
 
 int launch_pipe (t_pipe **begin, t_pipe *elem)
 {
 	int		pid;
 	int		ext[2];
-	dprintf(debug(), "shell_fds: %d %d \n", g_shell->fd_table[0], g_shell->fd_table[1]);
+	int		status;
+
 	ext[0] = g_shell->fd_table[0]; //shell in.
 	while (elem)
 	{
@@ -98,18 +105,22 @@ int launch_pipe (t_pipe **begin, t_pipe *elem)
 			(ext[0] != g_shell->fd_table[0]) ? close(ext[0]): 0; // shell in
 			(ext[1] != g_shell->fd_table[1]) ? close(ext[1]): 0; // shell out
 			ext[0] = elem->fd[0];
+			//close(elem->fd[1]); //|necessary ?
+			//close(elem->fd[0]); //|
 		}
-		elem = elem->next;
+		if (elem->next)
+			elem = elem->next;
+		else
+			break;
 	}
+	waitpid(elem->pid, &status, WUNTRACED);
 	elem = *begin;
-	while (elem)
+	while (elem && elem->next)
 	{
-		wait(NULL);
+		kill (elem->pid, SIGKILL);
 		elem = elem->next;
-		close(STDIN_FILENO);
 	}
-	dprintf(debug(), "here\n");
-	//tcsetpgrp(0, 0);
+	wait_ret(*begin);
 	dup2(g_shell->fd_table[0], STDIN_FILENO);
 	dup2(g_shell->fd_table[1], STDOUT_FILENO);
 	return (0);
