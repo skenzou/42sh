@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/03 16:15:41 by midrissi          #+#    #+#             */
-/*   Updated: 2019/07/11 06:56:44 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/09/18 05:15:36 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void			ft_execute_ast(t_ast *root)
 	{
 		pipe = NULL;
 		parse_pipe(root, root->right, &pipe);
-		launch_pipe(&pipe, pipe);
+		launch_pipe(&pipe, pipe, root->job);
 		return ;
 	}
 	if (root->token->op_type == AND && root->left &&

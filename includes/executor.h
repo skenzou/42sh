@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 00:40:57 by midrissi          #+#    #+#             */
-/*   Updated: 2019/07/11 06:51:28 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/09/18 05:16:07 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,7 +131,7 @@ int					export_options(int ac, char **av);
 ** FT_EXEC_PIPE.C
 */
 void 				parse_pipe (t_ast *root, t_ast *origin, t_pipe **pipe);
-int 				launch_pipe (t_pipe **begin, t_pipe *pipe);
+int 				launch_pipe (t_pipe **begin, t_pipe *pipe, int is_bg);
 void 				push_pipe(t_ast *root, t_pipe **begin);
 
 /*

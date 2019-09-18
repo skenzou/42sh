@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/01 07:12:26 by midrissi          #+#    #+#             */
-/*   Updated: 2019/09/18 03:07:32 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/09/18 05:20:54 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ int	free_pipe(t_pipe *elem)
 	return (0);
 }
 
-int launch_pipe (t_pipe **begin, t_pipe *elem)
+int launch_pipe (t_pipe **begin, t_pipe *elem, int is_bg)
 {
 	int		pid;
 	int		ext[2];
@@ -120,6 +120,10 @@ int launch_pipe (t_pipe **begin, t_pipe *elem)
 			ext[0] = elem->fd[0];
 			//close(elem->fd[1]); //|necessary ?
 			//close(elem->fd[0]); //|
+			if (is_bg && elem == *begin && !waitpid(pid, &pid, WNOHANG))
+				add_pid(3, pid, elem->cmd, ID_RUN);
+			else if (is_bg && elem != *begin && !waitpid(pid, &pid, WNOHANG))
+				add_amperpipe((*begin)->pid, pid, full_cmd(elem->cmd), ID_RUN);
 		}
 		if (elem->next)
 			elem = elem->next;
@@ -128,13 +132,15 @@ int launch_pipe (t_pipe **begin, t_pipe *elem)
 	}
 	waitpid(elem->pid, &status, WUNTRACED);
 	elem = *begin;
-	while (elem && elem->next)
+	while (elem && elem->next && !is_bg)
 	{
 		kill (elem->pid, SIGKILL);
 		elem = elem->next;
 	}
-	(begin) ? wait_ret(*begin) : 0;
-	(begin) ? free_pipe(*begin) : 0;
+	(begin && !is_bg) ? wait_ret(*begin) : 0;
+	(begin && !is_bg) ? free_pipe(*begin) : 0;
+	tcsetpgrp(0, getpgrp());
+	resetsign();
 	dup2(g_shell->fd_table[0], STDIN_FILENO);
 	dup2(g_shell->fd_table[1], STDOUT_FILENO);
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: tlechien <tlechien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/21 01:46:22 by tlechien          #+#    #+#             */
-/*   Updated: 2019/09/18 04:23:05 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/09/18 05:24:25 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,13 +116,13 @@ int			display_amperpipe(t_child *node, char option)
 			ft_printf("%*c %d %-28s %s%s\n", get_nb_len(node->index) + 4, ' ',
 			node->pid, stat, node->exec, (node->right) ? " | " : "");
 		else if (node->is_pipe > 2 && option & OPT_P)
-			ft_printf("%d\n",node->pid);
-		else if (node->is_pipe > 2)
+			ft_printf("%d\n", node->pid);
+		else if (node->is_pipe > 2 && !option)
 			ft_printf("[%d] %c %-28s %s | \n", node->index, current,
-			node->pid, stat, node->exec);
-		else
+			stat, node->exec);
+		else if (node->is_pipe < 2 && !option)
 			ft_printf("%*c %-28s %s%s\n", get_nb_len(node->index) + 4, ' ',
-			node->pid, stat, node->exec, (node->right) ? " | " : "");
+			stat, node->exec, (node->right) ? " | " : "");
 		node = node->right;
 	}
 	return (0);
