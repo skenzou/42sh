@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/01 07:12:26 by midrissi          #+#    #+#             */
-/*   Updated: 2019/09/18 01:11:19 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/09/18 03:07:32 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,19 @@ int	wait_ret(t_pipe *elem)
 	return (0);
 }
 
+int	free_pipe(t_pipe *elem)
+{
+	t_pipe 	*tmp;
+
+	while (elem)
+	{
+		tmp = elem;
+		elem = elem->next;
+		free(tmp);
+	}
+	return (0);
+}
+
 int launch_pipe (t_pipe **begin, t_pipe *elem)
 {
 	int		pid;
@@ -120,7 +133,8 @@ int launch_pipe (t_pipe **begin, t_pipe *elem)
 		kill (elem->pid, SIGKILL);
 		elem = elem->next;
 	}
-	wait_ret(*begin);
+	(begin) ? wait_ret(*begin) : 0;
+	(begin) ? free_pipe(*begin) : 0;
 	dup2(g_shell->fd_table[0], STDIN_FILENO);
 	dup2(g_shell->fd_table[1], STDOUT_FILENO);
 	return (0);

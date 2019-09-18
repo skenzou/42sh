@@ -6,7 +6,7 @@
 /*   By: tlechien <tlechien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/21 01:46:22 by tlechien          #+#    #+#             */
-/*   Updated: 2019/06/29 15:31:15 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/09/18 04:23:05 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,16 +109,20 @@ int			display_amperpipe(t_child *node, char option)
 		(node->status == SIGHUP) ? stat = "done" : 0;
 		current = (node->priority < 1) ? ' ' : '-';
 		(node->priority == 2) ? current = '+' : 0;
-		if (node->is_pipe > 2)
-		{
+		if (node->is_pipe > 2 && option & OPT_L)
 			ft_printf("[%d] %c %d %-28s %s | \n", node->index, current,
 			node->pid, stat, node->exec);
-		}
-		else
-		{
+		else if (node->is_pipe < 2 && option & OPT_L)
 			ft_printf("%*c %d %-28s %s%s\n", get_nb_len(node->index) + 4, ' ',
 			node->pid, stat, node->exec, (node->right) ? " | " : "");
-		}
+		else if (node->is_pipe > 2 && option & OPT_P)
+			ft_printf("%d\n",node->pid);
+		else if (node->is_pipe > 2)
+			ft_printf("[%d] %c %-28s %s | \n", node->index, current,
+			node->pid, stat, node->exec);
+		else
+			ft_printf("%*c %-28s %s%s\n", get_nb_len(node->index) + 4, ' ',
+			node->pid, stat, node->exec, (node->right) ? " | " : "");
 		node = node->right;
 	}
 	return (0);
