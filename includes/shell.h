@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 16:42:03 by midrissi          #+#    #+#             */
-/*   Updated: 2019/06/12 16:45:18 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/09/20 05:57:58 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,7 @@ typedef struct	s_shell
 	t_term		*term;
 	t_term		*term_backup;
 	t_list		*temp_redir;
+	int			dprompt;
 }				t_shell;
 
 extern t_shell *g_shell;

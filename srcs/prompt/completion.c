@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 06:02:13 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/06/26 22:56:13 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/06/26 23:03:35 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ int		init_autocomp(t_cap *tcap, t_ab *autocomp)
 	autocomp->row = tcap->cursx_max / (ft_max(max_offset + 2, 1));
 	autocomp->col = autocomp->len / ft_max(autocomp->row, 1);
 	autocomp->carry = autocomp->len % ft_max(autocomp->row, 1);
-
 	if (!autocomp->len)
 	{
 		tputs(tcap->sound, 1, ft_put_termcaps);
@@ -87,7 +86,7 @@ int		get_words_completion(t_ab *autocomp, t_cap *tc)
 	return (0);
 }
 
-int	process_completion(t_ab *autocomp)
+int		process_completion(t_ab *autocomp)
 {
 	int row;
 	int col;
@@ -132,7 +131,7 @@ int	process_completion(t_ab *autocomp)
 			ft_move(g_shell->tcap, "up", 1);
 			i++;
 		}
-		return (1);
+	return (1);
 }
 
 int		ft_tab(t_cap *tcap, t_ab *autocomp)

@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/29 17:39:49 by midrissi          #+#    #+#             */
-/*   Updated: 2019/06/26 00:22:42 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/09/20 05:58:50 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,23 @@ int			debug(void)
 
 static inline void	before_read_line(char *buffer, t_cap *tcap)
 {
+	int		flags;
+
+	flags = fcntl(0, F_GETFL);
+	flags &= ~O_NONBLOCK;
+	fcntl(0, F_SETFL, flags);
+	//ret = 0;
 	signal(SIGINT, sigint_handler);
 	signal(SIGWINCH, sigwinch_handler);
 	ft_bzero(buffer, 4);
 	ft_bzero(tcap->command, BUFFSIZE);
-	waitabit(2000000);
+	fflush(stdout);
+	//while (g_shell->dprompt == 0 && (g_shell->dprompt = 1))
+	//	waitabit(0, 8000000);
+	signal(SIGINT, sigint_handler);
+	signal(SIGWINCH, sigwinch_handler);
+	ft_bzero(buffer, 4);
+	ft_bzero(tcap->command, BUFFSIZE);
 	print_prompt_prefix();
 }
 

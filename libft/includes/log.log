@@ -1,0 +1,703 @@
+arg: |~/|
+addcompletion match: ||
+probleme opendir
+len |0|
+arg: |~/|
+addcompletion match: ||
+probleme opendir
+len |0|
+arg: |~/|
+addcompletion match: ||
+probleme opendir
+len |0|
+arg: |~/|
+addcompletion match: ||
+probleme opendir
+len |0|
+arg: |~/|
+addcompletion match: ||
+probleme opendir
+len |0|
+arg: |~/|
+addcompletion match: ||
+probleme opendir
+len |0|
+arg: |~/|
+addcompletion match: ||
+probleme opendir
+len |0|
+arg: |~/|
+addcompletion match: ||
+probleme opendir
+len |0|
+arg: |~/|
+addcompletion match: ||
+probleme opendir
+len |0|
+arg: |~/|
+addcompletion match: ||
+probleme opendir
+len |0|
+arg: |~/|
+addcompletion match: ||
+probleme opendir
+len |0|
+arg: |~/|
+addcompletion match: ||
+probleme opendir
+len |0|
+arg: |~/|
+addcompletion match: ||
+probleme opendir
+len |0|
+arg: |~/|
+addcompletion match: ||
+probleme opendir
+len |0|
+arg: |~/|
+addcompletion match: ||
+probleme opendir
+len |0|
+arg: |../../|
+addcompletion match: ||
+len |8|
+arg: |../../|
+addcompletion match: ||
+len |8|
+arg: |../../..|
+pathcompletion, |../../..|
+i ici vaut: 7
+i ici vaut: 5
+|../..| path match: |..|
+addcompletion match: |..|
+arg: |../../../|
+addcompletion match: ||
+len |8|
+arg: |../../../|
+addcompletion match: ||
+len |8|
+arg: |../../../|
+addcompletion match: ||
+len |8|
+arg: |../../../|
+addcompletion match: ||
+len |8|
+arg: |../../../|
+addcompletion match: ||
+len |8|
+arg: |../../../|
+addcompletion match: ||
+len |8|
+arg: |../../../|
+addcompletion match: ||
+len |8|
+arg: |../../../|
+addcompletion match: ||
+len |8|
+arg: |../../../|
+addcompletion match: ||
+len |8|
+arg: |../../../|
+addcompletion match: ||
+len |8|
+arg: |../../../|
+addcompletion match: ||
+len |8|
+arg: |../../../|
+addcompletion match: ||
+len |8|
+arg: |../../../|
+addcompletion match: ||
+len |8|
+arg: |../../../|
+addcompletion match: ||
+len |8|
+arg: |../../../|
+addcompletion match: ||
+len |8|
+arg: |../../../|
+addcompletion match: ||
+len |8|
+arg: |../../../|
+addcompletion match: ||
+len |8|
+arg: |../../../|
+addcompletion match: ||
+len |8|
+arg: |../../../|
+addcompletion match: ||
+len |8|
+arg: |../../../|
+addcompletion match: ||
+len |8|
+arg: |../../../|
+addcompletion match: ||
+len |8|
+arg: |../../../|
+addcompletion match: ||
+len |8|
+arg: |../../../|
+addcompletion match: ||
+len |8|
+arg: |../../../|
+addcompletion match: ||
+len |8|
+arg: |../../../|
+addcompletion match: ||
+len |8|
+arg: |../../../|
+addcompletion match: ||
+len |8|
+arg: |../../../|
+addcompletion match: ||
+len |8|
+arg: |../../../|
+addcompletion match: ||
+len |8|
+arg: |../../../|
+addcompletion match: ||
+len |8|
+arg: |../../../|
+addcompletion match: ||
+len |8|
+arg: |../../../|
+addcompletion match: ||
+len |8|
+arg: |../../../|
+addcompletion match: ||
+len |8|
+arg: |../../../|
+addcompletion match: ||
+len |8|
+arg: |../../../|
+addcompletion match: ||
+len |8|
+arg: |../../../|
+addcompletion match: ||
+len |8|
+arg: |../../../|
+addcompletion match: ||
+len |8|
+arg: |../../../|
+addcompletion match: ||
+len |8|
+arg: |../../../|
+addcompletion match: ||
+len |8|
+arg: |../../../|
+addcompletion match: ||
+len |8|
+arg: |../../../|
+addcompletion match: ||
+len |8|
+arg: |../../../|
+addcompletion match: ||
+len |8|
+arg: |../../../|
+addcompletion match: ||
+len |8|
+arg: |../../../|
+addcompletion match: ||
+len |8|
+arg: |../../../|
+addcompletion match: ||
+len |8|
+arg: |../../../|
+addcompletion match: ||
+len |8|
+arg: |../../../|
+addcompletion match: ||
+len |8|
+arg: |../../../|
+addcompletion match: ||
+len |8|
+arg: |../../../|
+addcompletion match: ||
+len |8|
+arg: |../../../|
+addcompletion match: ||
+len |8|
+arg: |../../../|
+addcompletion match: ||
+len |8|
+arg: |../../../|
+addcompletion match: ||
+len |8|
+arg: |../../../|
+addcompletion match: ||
+len |8|
+arg: |../../../|
+addcompletion match: ||
+len |8|
+arg: |../../../|
+addcompletion match: ||
+len |8|
+arg: |../../../|
+addcompletion match: ||
+len |8|
+arg: |../../../|
+addcompletion match: ||
+len |8|
+arg: |../../../|
+addcompletion match: ||
+len |8|
+arg: |../../../|
+addcompletion match: ||
+len |8|
+arg: |../../../|
+addcompletion match: ||
+len |8|
+arg: |../../../|
+addcompletion match: ||
+len |8|
+arg: |../../../|
+addcompletion match: ||
+len |8|
+arg: |../../../|
+addcompletion match: ||
+len |8|
+arg: |../../../|
+addcompletion match: ||
+len |8|
+arg: |../../../|
+addcompletion match: ||
+len |8|
+arg: |../../../|
+addcompletion match: ||
+len |8|
+arg: |../../../F|
+pathcompletion, |../../../F|
+i ici vaut: 9
+i ici vaut: 8
+|../../..| path match: |F|
+addcompletion match: |F|
+arg: |../../../F|
+pathcompletion, |../../../F|
+i ici vaut: 9
+i ici vaut: 8
+|../../..| path match: |F|
+addcompletion match: |F|
+arg: |../../../F|
+pathcompletion, |../../../F|
+i ici vaut: 9
+i ici vaut: 8
+|../../..| path match: |F|
+addcompletion match: |F|
+arg: |../../../F|
+pathcompletion, |../../../F|
+i ici vaut: 9
+i ici vaut: 8
+|../../..| path match: |F|
+addcompletion match: |F|
+arg: |../../../F|
+pathcompletion, |../../../F|
+i ici vaut: 9
+i ici vaut: 8
+|../../..| path match: |F|
+addcompletion match: |F|
+arg: |../../../F|
+pathcompletion, |../../../F|
+i ici vaut: 9
+i ici vaut: 8
+|../../..| path match: |F|
+addcompletion match: |F|
+arg: |../../../F|
+pathcompletion, |../../../F|
+i ici vaut: 9
+i ici vaut: 8
+|../../..| path match: |F|
+addcompletion match: |F|
+arg: |../../../F|
+pathcompletion, |../../../F|
+i ici vaut: 9
+i ici vaut: 8
+|../../..| path match: |F|
+addcompletion match: |F|
+arg: |../../../F|
+pathcompletion, |../../../F|
+i ici vaut: 9
+i ici vaut: 8
+|../../..| path match: |F|
+addcompletion match: |F|
+arg: |../../../F|
+pathcompletion, |../../../F|
+i ici vaut: 9
+i ici vaut: 8
+|../../..| path match: |F|
+addcompletion match: |F|
+arg: |../../../F|
+pathcompletion, |../../../F|
+i ici vaut: 9
+i ici vaut: 8
+|../../..| path match: |F|
+addcompletion match: |F|
+arg: |../../../F|
+pathcompletion, |../../../F|
+i ici vaut: 9
+i ici vaut: 8
+|../../..| path match: |F|
+addcompletion match: |F|
+arg: |../../../f|
+pathcompletion, |../../../f|
+i ici vaut: 9
+i ici vaut: 8
+|../../..| path match: |f|
+addcompletion match: |f|
+len |5|
+arg: |../../../f|
+pathcompletion, |../../../f|
+i ici vaut: 9
+i ici vaut: 8
+|../../..| path match: |f|
+addcompletion match: |f|
+len |5|
+arg: |../../../f|
+pathcompletion, |../../../f|
+i ici vaut: 9
+i ici vaut: 8
+|../../..| path match: |f|
+addcompletion match: |f|
+len |5|
+arg: |../../../f|
+pathcompletion, |../../../f|
+i ici vaut: 9
+i ici vaut: 8
+|../../..| path match: |f|
+addcompletion match: |f|
+len |5|
+arg: |../../../f|
+pathcompletion, |../../../f|
+i ici vaut: 9
+i ici vaut: 8
+|../../..| path match: |f|
+addcompletion match: |f|
+len |5|
+arg: |../../../f|
+pathcompletion, |../../../f|
+i ici vaut: 9
+i ici vaut: 8
+|../../..| path match: |f|
+addcompletion match: |f|
+len |5|
+arg: |../../../f|
+pathcompletion, |../../../f|
+i ici vaut: 9
+i ici vaut: 8
+|../../..| path match: |f|
+addcompletion match: |f|
+len |5|
+arg: |../../../ft|
+pathcompletion, |../../../ft|
+i ici vaut: 10
+i ici vaut: 8
+|../../..| path match: |ft|
+addcompletion match: |ft|
+len |3|
+arg: |../../../ft|
+pathcompletion, |../../../ft|
+i ici vaut: 10
+i ici vaut: 8
+|../../..| path match: |ft|
+addcompletion match: |ft|
+len |3|
+arg: |../../../ft|
+pathcompletion, |../../../ft|
+i ici vaut: 10
+i ici vaut: 8
+|../../..| path match: |ft|
+addcompletion match: |ft|
+len |3|
+arg: |../../../ft|
+pathcompletion, |../../../ft|
+i ici vaut: 10
+i ici vaut: 8
+|../../..| path match: |ft|
+addcompletion match: |ft|
+len |3|
+arg: |../../../ft|
+pathcompletion, |../../../ft|
+i ici vaut: 10
+i ici vaut: 8
+|../../..| path match: |ft|
+addcompletion match: |ft|
+len |3|
+arg: |../../../ft|
+pathcompletion, |../../../ft|
+i ici vaut: 10
+i ici vaut: 8
+|../../..| path match: |ft|
+addcompletion match: |ft|
+len |3|
+arg: |../../../ft|
+pathcompletion, |../../../ft|
+i ici vaut: 10
+i ici vaut: 8
+|../../..| path match: |ft|
+addcompletion match: |ft|
+len |3|
+arg: |../../../ft|
+pathcompletion, |../../../ft|
+i ici vaut: 10
+i ici vaut: 8
+|../../..| path match: |ft|
+addcompletion match: |ft|
+len |3|
+arg: |../../../ft|
+pathcompletion, |../../../ft|
+i ici vaut: 10
+i ici vaut: 8
+|../../..| path match: |ft|
+addcompletion match: |ft|
+len |3|
+arg: |../../../ft|
+pathcompletion, |../../../ft|
+i ici vaut: 10
+i ici vaut: 8
+|../../..| path match: |ft|
+addcompletion match: |ft|
+len |3|
+arg: |../../../ft|
+pathcompletion, |../../../ft|
+i ici vaut: 10
+i ici vaut: 8
+|../../..| path match: |ft|
+addcompletion match: |ft|
+len |3|
+arg: |../../../ft|
+pathcompletion, |../../../ft|
+i ici vaut: 10
+i ici vaut: 8
+|../../..| path match: |ft|
+addcompletion match: |ft|
+len |3|
+arg: |../../../ft|
+pathcompletion, |../../../ft|
+i ici vaut: 10
+i ici vaut: 8
+|../../..| path match: |ft|
+addcompletion match: |ft|
+len |3|
+arg: |../../../ft|
+pathcompletion, |../../../ft|
+i ici vaut: 10
+i ici vaut: 8
+|../../..| path match: |ft|
+addcompletion match: |ft|
+len |3|
+arg: |../../../ft|
+pathcompletion, |../../../ft|
+i ici vaut: 10
+i ici vaut: 8
+|../../..| path match: |ft|
+addcompletion match: |ft|
+len |3|
+arg: |../../../ft|
+pathcompletion, |../../../ft|
+i ici vaut: 10
+i ici vaut: 8
+|../../..| path match: |ft|
+addcompletion match: |ft|
+len |3|
+arg: |../../../ft|
+pathcompletion, |../../../ft|
+i ici vaut: 10
+i ici vaut: 8
+|../../..| path match: |ft|
+addcompletion match: |ft|
+len |3|
+arg: |../../../ft|
+pathcompletion, |../../../ft|
+i ici vaut: 10
+i ici vaut: 8
+|../../..| path match: |ft|
+addcompletion match: |ft|
+len |3|
+arg: |../../../ft|
+pathcompletion, |../../../ft|
+i ici vaut: 10
+i ici vaut: 8
+|../../..| path match: |ft|
+addcompletion match: |ft|
+len |3|
+arg: |../../../ft|
+pathcompletion, |../../../ft|
+i ici vaut: 10
+i ici vaut: 8
+|../../..| path match: |ft|
+addcompletion match: |ft|
+len |3|
+arg: |../../../ft|
+pathcompletion, |../../../ft|
+i ici vaut: 10
+i ici vaut: 8
+|../../..| path match: |ft|
+addcompletion match: |ft|
+len |3|
+arg: |../../../ft|
+pathcompletion, |../../../ft|
+i ici vaut: 10
+i ici vaut: 8
+|../../..| path match: |ft|
+addcompletion match: |ft|
+len |3|
+arg: |../../../ft|
+pathcompletion, |../../../ft|
+i ici vaut: 10
+i ici vaut: 8
+|../../..| path match: |ft|
+addcompletion match: |ft|
+len |3|
+arg: |../../../ft|
+pathcompletion, |../../../ft|
+i ici vaut: 10
+i ici vaut: 8
+|../../..| path match: |ft|
+addcompletion match: |ft|
+len |3|
+arg: |../../../ft|
+pathcompletion, |../../../ft|
+i ici vaut: 10
+i ici vaut: 8
+|../../..| path match: |ft|
+addcompletion match: |ft|
+len |3|
+arg: |../../../ft|
+pathcompletion, |../../../ft|
+i ici vaut: 10
+i ici vaut: 8
+|../../..| path match: |ft|
+addcompletion match: |ft|
+len |3|
+arg: |../../../ft|
+pathcompletion, |../../../ft|
+i ici vaut: 10
+i ici vaut: 8
+|../../..| path match: |ft|
+addcompletion match: |ft|
+len |3|
+arg: |../../../ft|
+pathcompletion, |../../../ft|
+i ici vaut: 10
+i ici vaut: 8
+|../../..| path match: |ft|
+addcompletion match: |ft|
+len |3|
+arg: |../../../ft|
+pathcompletion, |../../../ft|
+i ici vaut: 10
+i ici vaut: 8
+|../../..| path match: |ft|
+addcompletion match: |ft|
+len |3|
+arg: |../../../ft|
+pathcompletion, |../../../ft|
+i ici vaut: 10
+i ici vaut: 8
+|../../..| path match: |ft|
+addcompletion match: |ft|
+len |3|
+arg: |../../../ft|
+pathcompletion, |../../../ft|
+i ici vaut: 10
+i ici vaut: 8
+|../../..| path match: |ft|
+addcompletion match: |ft|
+len |3|
+arg: |../../../ft|
+pathcompletion, |../../../ft|
+i ici vaut: 10
+i ici vaut: 8
+|../../..| path match: |ft|
+addcompletion match: |ft|
+len |3|
+arg: |../../../ft|
+pathcompletion, |../../../ft|
+i ici vaut: 10
+i ici vaut: 8
+|../../..| path match: |ft|
+addcompletion match: |ft|
+len |3|
+arg: |../../../ft|
+pathcompletion, |../../../ft|
+i ici vaut: 10
+i ici vaut: 8
+|../../..| path match: |ft|
+addcompletion match: |ft|
+len |3|
+arg: |../../../ft|
+pathcompletion, |../../../ft|
+i ici vaut: 10
+i ici vaut: 8
+|../../..| path match: |ft|
+addcompletion match: |ft|
+len |3|
+arg: |../../../ft|
+pathcompletion, |../../../ft|
+i ici vaut: 10
+i ici vaut: 8
+|../../..| path match: |ft|
+addcompletion match: |ft|
+len |3|
+arg: |../../../ft|
+pathcompletion, |../../../ft|
+i ici vaut: 10
+i ici vaut: 8
+|../../..| path match: |ft|
+addcompletion match: |ft|
+len |3|
+arg: |../../../ft|
+pathcompletion, |../../../ft|
+i ici vaut: 10
+i ici vaut: 8
+|../../..| path match: |ft|
+addcompletion match: |ft|
+len |3|
+arg: |../../../ft|
+pathcompletion, |../../../ft|
+i ici vaut: 10
+i ici vaut: 8
+|../../..| path match: |ft|
+addcompletion match: |ft|
+len |3|
+arg: |../../../ft|
+pathcompletion, |../../../ft|
+i ici vaut: 10
+i ici vaut: 8
+|../../..| path match: |ft|
+addcompletion match: |ft|
+len |3|
+arg: |../../../ft|
+pathcompletion, |../../../ft|
+i ici vaut: 10
+i ici vaut: 8
+|../../..| path match: |ft|
+addcompletion match: |ft|
+len |3|
+arg: |../../../ft|
+pathcompletion, |../../../ft|
+i ici vaut: 10
+i ici vaut: 8
+|../../..| path match: |ft|
+addcompletion match: |ft|
+len |3|
+arg: |../../../ft|
+pathcompletion, |../../../ft|
+i ici vaut: 10
+i ici vaut: 8
+|../../..| path match: |ft|
+addcompletion match: |ft|
+len |3|
+arg: |../../../ft|
+pathcompletion, |../../../ft|
+i ici vaut: 10
+i ici vaut: 8
+|../../..| path match: |ft|
+addcompletion match: |ft|
+len |3|
+arg: |../../../ft|
+pathcompletion, |../../../ft|
+i ici vaut: 10
+i ici vaut: 8
+|../../..| path match: |ft|
+addcompletion match: |ft|
+len |3|

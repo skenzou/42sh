@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/27 17:27:48 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/06/26 00:23:10 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/07/11 22:45:42 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,9 +93,11 @@ int					main(int ac, char **av, char **env)
 	ft_bzero((void *)g_shell->hash_table, TABLE_SIZE);
 	if (ac > 1)
 		check_flags(av, ac);
+	g_shell->dprompt = 1;
 	while ("42sh")
 	{
 		init_signal();
+		update_pid_table();
 		if (!(string = read_line(g_shell->tcap)))
 			return (-1);
 		if (!handler(string))
