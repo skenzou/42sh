@@ -6,7 +6,7 @@
 /*   By: tlechien <tlechien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/07 19:31:16 by tlechien          #+#    #+#             */
-/*   Updated: 2019/06/29 15:31:45 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/09/20 23:11:57 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,8 @@ void	sigchld_handler(int sig)
 {
 	(void)sig;
 	g_shell->dprompt = 0;
-	update_pid_table();
+	g_shell->chld_check = 1;
+	//update_pid_table(); //causes illegal instruction
 	signal(SIGCHLD, sigchld_handler);
 }
 

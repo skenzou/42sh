@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/27 17:27:48 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/07/11 23:00:37 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/09/20 22:59:20 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,7 @@ int					main(int ac, char **av, char **env)
 	if (ac > 1)
 		check_flags(av, ac);
 	g_shell->dprompt = 1;
+	g_shell->chld_check = 1;
 	while ("42sh")
 	{
 		init_signal();

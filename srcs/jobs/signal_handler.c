@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/28 15:31:17 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/06/29 14:51:35 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/09/20 23:14:58 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,8 @@ void	sigint_handler(int sig)
 		{
 			fcntl(0, F_SETFL, O_NONBLOCK);
 			ft_lstdel(&g_shell->redir, redir_delone);
-			if (g_shell->ast)
-				del_ast(&g_shell->ast);
-			else
-				lex_del_list(&g_shell->lexer);
+			(g_shell->ast) ? del_ast(&g_shell->ast) :
+							lex_del_list(&g_shell->lexer);
 			g_shell->tcap->prompt = NULL;
 			g_shell->inhib_mod = 2;
 		}

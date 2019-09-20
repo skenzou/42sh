@@ -6,7 +6,7 @@
 /*   By: tlechien <tlechien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/21 01:46:22 by tlechien          #+#    #+#             */
-/*   Updated: 2019/09/18 05:24:25 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/09/20 23:11:02 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,27 +47,6 @@ static int	check_branch(t_child *branch, int *finished)
 	return (0);
 }
 
-int			check_remove_pids(void)
-{
-	int		finished;
-	int		action;
-
-	while (ID_PID != 0 && (finished = 1))
-	{
-		check_branch(g_pid_table, &finished);
-		if (finished && !s_get_values(ID_STATUS, &action, NULL, NULL) &&
-			(action == S_TERM || action == S_ABN))
-			remove_pid(g_pid_table);
-		if (!ID_PREV)
-			break ;
-		else
-			g_pid_table = ID_PREV;
-	}
-	while (ID_LEFT)
-		g_pid_table = ID_LEFT;
-	return (0);
-}
-
 int			update_amperpipe(t_child *pipe)
 {
 	int		status;
@@ -94,6 +73,28 @@ int			update_amperpipe(t_child *pipe)
 			break ;
 		pipe = pipe->right;
 	}
+	return (0);
+}
+
+int			check_remove_pids(void)
+{
+	int		finished;
+	int		action;
+
+	waitabit(0, 1000000);
+	while (ID_PID != 0 && (finished = 1))
+	{
+		check_branch(g_pid_table, &finished);
+		if (finished && !s_get_values(ID_STATUS, &action, NULL, NULL) &&
+			(action == S_TERM || action == S_ABN))
+			remove_pid(g_pid_table);
+		if (!ID_PREV)
+			break ;
+		else
+			g_pid_table = ID_PREV;
+	}
+	while (ID_LEFT)
+		g_pid_table = ID_LEFT;
 	return (0);
 }
 

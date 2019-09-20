@@ -6,7 +6,7 @@
 /*   By: tlechien <tlechien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/25 06:56:09 by tlechien          #+#    #+#             */
-/*   Updated: 2019/06/29 15:16:16 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/09/20 23:11:04 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,12 @@ int			display_pid_status(t_child *node, char option)
 	current = (node->priority < 1) ? ' ' : '-';
 	(node->priority == 2) ? current = '+' : 0;
 	if (option & OPT_L)
-		ft_printf("\r[%d] %c %d %-28s %s\n", node->index, current, node->pid,
+		printf("\r[%d] %c %d %-28s %s\n", node->index, current, node->pid,
 		stat, node->exec);
 	else if (option & OPT_P)
-		ft_printf("%d\n", node->pid);
+		printf("%d\n", node->pid);
 	else
-		ft_printf("[%d] %c %-28s %s\n", node->index, current,
+		printf("[%d] %c %-28s %s\n", node->index, current,
 		stat, node->exec);
 	return (0);
 }
@@ -67,9 +67,10 @@ static int	change_status(int status)
 
 int			update_pid_table(void)
 {
-	int	status;
+	int		status;
 
 	g_shell->dprompt = 0;
+	g_shell->chld_check = 1;
 	while (ID_PREV && ID_PREV->index)
 		g_pid_table = ID_PREV;
 	while (g_pid_table && g_pid_table->index)
@@ -81,6 +82,11 @@ int			update_pid_table(void)
 		if (!ID_LEFT)
 			break ;
 		g_pid_table = ID_LEFT;
+	}
+	while (g_shell->chld_check == 1 && !(g_shell->chld_check = 0))
+	{
+		waitabit(0, 1000000);
+		check_remove_pids();
 	}
 	check_remove_pids();
 	update_priority(0, NULL, NULL);
