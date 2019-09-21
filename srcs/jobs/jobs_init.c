@@ -6,7 +6,7 @@
 /*   By: tlechien <tlechien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/25 03:30:06 by tlechien          #+#    #+#             */
-/*   Updated: 2019/06/26 02:01:10 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/09/22 00:28:01 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ int	init_pid(void)
 {
 	if (!(g_pid_table = (t_child*)ft_memalloc(sizeof(t_child))))
 		shell_exit(MALLOC_ERR);
+	g_shell->dprompt = 1;
+	g_shell->chld_check = 1;
 	return (0);
 }
 

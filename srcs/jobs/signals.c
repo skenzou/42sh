@@ -6,11 +6,16 @@
 /*   By: tlechien <tlechien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/07 19:31:16 by tlechien          #+#    #+#             */
-/*   Updated: 2019/09/20 23:11:57 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/09/22 01:24:22 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/shell.h"
+
+/*
+** Dictionnary of all the signals that are supported
+** and corresponding behaviours.
+*/
 
 t_signal	g_signals[S_SIZE] = {
 	{SIGABRT	, S_ABN	, "ABRT"	, "abort"},

@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/28 15:31:17 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/06/26 22:50:28 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/09/21 23:38:16 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,17 @@ static int		handle_eol(char *buffer, t_cap *tcap)
 	return (1);
 }
 
+int checkbuffer(char *string)
+{
+	int i;
+
+	i = -1;
+	while (string[++i] != '\0')
+		if (!ft_isprint(string[i]))
+			return (0);
+	return (1);
+}
+
 static int		handle_key(char *buffer, t_cap *tcap)
 {
 	int key;
@@ -70,7 +81,7 @@ static int		handle_key(char *buffer, t_cap *tcap)
 	}
 	else if (buffer[0] == SPACE && !buffer[1] && !buffer[2])
 		return (space_event(tcap));
-	else if (ft_isprint(buffer[0]))
+	else if (checkbuffer(buffer))
 		return (ft_insert(buffer, tcap));
 	else if (is_arrow(buffer))
 		return (read_arrow(buffer[2], tcap));

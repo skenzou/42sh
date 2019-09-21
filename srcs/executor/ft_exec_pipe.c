@@ -6,11 +6,15 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/01 07:12:26 by midrissi          #+#    #+#             */
-/*   Updated: 2019/09/18 05:20:54 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/09/22 00:54:10 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
+
+/*
+** Adds a new node at the end of the t_pipe list.
+*/
 
 void push_pipe(t_ast *root, t_pipe **begin)
 {
@@ -31,6 +35,10 @@ void push_pipe(t_ast *root, t_pipe **begin)
 		*begin = new;
 }
 
+/*
+** Parses the ast and creates a list of the pipe to be executed.
+*/
+
 void parse_pipe (t_ast *root, t_ast *origin, t_pipe **pipe)
 {
 	if (root->left)
@@ -43,12 +51,16 @@ void parse_pipe (t_ast *root, t_ast *origin, t_pipe **pipe)
 		push_pipe(root, pipe);
 }
 
+/*
+** Execve an unitary elem of the pipe and set its fds.
+*/
+
 void	launch_process(t_pipe *pipe, int ext[2])
 {
 	pid_t pid;
 
 	pid = getpid();
-	//setpgid(pid, pid);
+	setpgid(getpid(), getpgrp());
 	tcsetpgrp(0, pid);
 	resetsign();
 	if (!pipe->next)
@@ -63,6 +75,11 @@ void	launch_process(t_pipe *pipe, int ext[2])
 	execvp(pipe->cmd[0], pipe->cmd);
 	exit(1);
 }
+
+/*
+** Waits for all pipe elem processes.
+*/
+
 int	wait_ret(t_pipe *elem)
 {
 	int		status;
@@ -78,6 +95,10 @@ int	wait_ret(t_pipe *elem)
 	return (0);
 }
 
+/*
+** Frees pipe list.
+*/
+
 int	free_pipe(t_pipe *elem)
 {
 	t_pipe 	*tmp;
@@ -90,6 +111,10 @@ int	free_pipe(t_pipe *elem)
 	}
 	return (0);
 }
+
+/*
+** Launches each elem of a pipe and links them together.
+*/
 
 int launch_pipe (t_pipe **begin, t_pipe *elem, int is_bg)
 {
@@ -120,9 +145,9 @@ int launch_pipe (t_pipe **begin, t_pipe *elem, int is_bg)
 			ext[0] = elem->fd[0];
 			//close(elem->fd[1]); //|necessary ?
 			//close(elem->fd[0]); //|
-			if (is_bg && elem == *begin && !waitpid(pid, &pid, WNOHANG))
-				add_pid(3, pid, elem->cmd, ID_RUN);
-			else if (is_bg && elem != *begin && !waitpid(pid, &pid, WNOHANG))
+			dprintf(debug(),"origin_pid: %d, pid: %d, cmd: %s, is_bg: %d\n",(*begin)->pid, elem->pid, elem->cmd[0], is_bg);
+			if (is_bg)
+				(elem == *begin) ? add_pid(3, pid, elem->cmd, ID_RUN) :
 				add_amperpipe((*begin)->pid, pid, full_cmd(elem->cmd), ID_RUN);
 		}
 		if (elem->next)

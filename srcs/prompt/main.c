@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/27 17:27:48 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/09/21 22:54:30 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/09/22 00:19:01 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,12 +91,9 @@ int					main(int ac, char **av, char **env)
 	if (!(tgetent(NULL, get_key_value("TERM", env))) || !init_struct(env) ||
 			init_pid() || init_alias(1) || init_fd_table())
 		return (-1);
-		dprintf(debug(), "%s", tgetstr("nd", NULL));
 	ft_bzero((void *)g_shell->hash_table, TABLE_SIZE);
 	if (ac > 1)
 		check_flags(av, ac);
-	g_shell->dprompt = 1;
-	g_shell->chld_check = 1;
 	while ("42sh")
 	{
 		init_signal();

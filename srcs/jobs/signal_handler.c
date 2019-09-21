@@ -6,12 +6,15 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/28 15:31:17 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/09/20 23:14:58 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/09/22 01:09:18 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
 
+/*
+** Handler for CTRL+C signal in idle status.
+*/
 void	sigint_handler(int sig)
 {
 	if (sig == SIGINT)
@@ -39,6 +42,9 @@ void	sigint_handler(int sig)
 	}
 }
 
+/*
+** Handler for CTRL+C signal in active fork.
+*/
 void	sigfork(int sig)
 {
 	if (sig == SIGINT)
@@ -48,6 +54,9 @@ void	sigfork(int sig)
 	}
 }
 
+/*
+** Handler for window resizing signal. (tcaps)
+*/
 void	sigwinch_handler(int sig)
 {
 	t_cap	*tcap;
@@ -69,6 +78,9 @@ void	sigwinch_handler(int sig)
 	}
 }
 
+/*
+** Handler for CTRL+Z in idle status.
+*/
 void	sigtstp_dflhandler(int sig)
 {
 	if (sig == SIGTSTP)
@@ -78,6 +90,9 @@ void	sigtstp_dflhandler(int sig)
 	}
 }
 
+/*
+** Handler for TSTP signal.
+*/
 void	sigtstp_handler(int sig)
 {
 	if (sig == SIGTSTP)

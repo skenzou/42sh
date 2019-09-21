@@ -6,14 +6,14 @@
 /*   By: tlechien <tlechien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/19 16:01:10 by tlechien          #+#    #+#             */
-/*   Updated: 2019/06/26 01:53:21 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/09/22 00:44:30 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/shell.h"
 
 /*
-**	Initializes the global g_aliases from void or file.
+**	Initializes the global g_aliases from void or from a file.
 */
 
 int		init_alias(int file)
@@ -46,7 +46,7 @@ int		init_alias(int file)
 }
 
 /*
-**	Substitute aliases in the command line.
+**	Substitutes aliases in the command line.
 */
 
 char	*substitute_alias(char **origin, char *line, int size)
@@ -108,7 +108,8 @@ char	*parse_aliases(char *line, char *origin, char *prev)
 }
 
 /*
-**	Frees the global g_aliases and saves in file if save=1 .
+** Saves the aliases in a file if save=1
+** Then frees the global g_aliases.
 */
 
 int		save_alias(int save)

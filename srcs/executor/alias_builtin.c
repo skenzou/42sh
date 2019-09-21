@@ -6,11 +6,15 @@
 /*   By: tlechien <tlechien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/19 14:48:57 by tlechien          #+#    #+#             */
-/*   Updated: 2019/06/26 01:42:45 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/09/22 00:42:19 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/shell.h"
+
+/*
+** List of all the reserved keywords that can't be aliased.
+*/
 
 const	char	*g_reserved[] = {
 	"!",
@@ -77,6 +81,10 @@ static int		add_alias(char *key, char *value)
 	g_aliases[i] = line;
 	return (0);
 }
+
+/*
+** Removes an alias from the g_aliases array.
+*/
 
 int				unalias_builtin(int ac, char **cmd)
 {

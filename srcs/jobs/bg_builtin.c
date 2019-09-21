@@ -6,11 +6,15 @@
 /*   By: tlechien <tlechien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 10:57:28 by tlechien          #+#    #+#             */
-/*   Updated: 2019/06/29 15:31:12 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/09/22 00:56:32 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/shell.h"
+
+/*
+** Checks if the pipe is stopped.
+*/
 
 int		is_branch_stp(t_child *head)
 {
@@ -81,8 +85,7 @@ static	int	bg_all(t_child *node)
 }
 
 /*
-** Builtin that resumes interruped processus.
-** Needs protection on already finished process ??
+** Builtin that resumes interruped processes.
 */
 
 int			bg_builtin(int ac, char **cmd)
