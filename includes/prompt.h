@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 07:12:40 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/07/11 22:52:16 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/09/21 23:23:45 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -307,7 +307,7 @@ int		ft_move(t_cap *tcap, char *string, int n);
 
 int		write_history(char *string, t_history *history);
 int		add_cmd_to_history(char *string, t_history *history);
-int		debug_history(t_history *history);
+int		history_builtin(int argc, char **argv);
 int		read_history(t_history *history);
 
 /*

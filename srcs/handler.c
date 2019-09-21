@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/29 17:39:49 by midrissi          #+#    #+#             */
-/*   Updated: 2019/09/20 22:59:25 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/09/21 23:23:52 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,11 +85,11 @@ int	handler(const char *input)
 	t_list	*redir;
 	char	*in;
 
-	if (!ft_strcmp(input, "history\n"))
-	{
-		debug_history(g_shell->history);
-		return (1);
-	}
+	// if (!ft_strcmp(input, "history\n"))
+	// {
+	// 	debug_history(g_shell->history);
+	// 	return (1);
+	// }
 	if (!(in = ft_strdup(input)))
 		exit(1); //TODO + free input ??
 	in[ft_strlen(in) - 1] = '\0';

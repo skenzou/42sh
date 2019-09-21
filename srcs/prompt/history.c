@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/01 17:45:36 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/06/25 23:55:00 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/09/21 23:25:56 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,17 +26,18 @@ int	add_cmd_to_history(char *str, t_history *history)
 	return (1);
 }
 
-int	debug_history(t_history *history)
+int	history_builtin(int argc, char **argv)
 {
+	t_history *history;
 	int i;
 
-	i = 0;
-	ft_printf("Len of history: %d;\n", history->len);
-	while (history->data[i])
-	{
-		ft_printf("[%d]:  '%s';\n", i, history->data[i]);
-		i++;
-	}
+	(void)argc;
+	(void)argv;
+	i = -1;
+	history = g_shell->history;
+	ft_printf("Len of history: %d\n", history->len);
+	while (history->data[++i])
+		ft_printf("[%d]:\t'%s'\n", i, history->data[i]);
 	return (1);
 }
 
