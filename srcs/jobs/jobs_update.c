@@ -6,11 +6,15 @@
 /*   By: tlechien <tlechien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/25 06:56:09 by tlechien          #+#    #+#             */
-/*   Updated: 2019/09/20 23:11:04 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/09/22 02:07:40 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
+
+/*
+** List of all the statuses a process can experience.
+*/
 
 const char	*g_status[] = {
 	"running",
@@ -44,6 +48,10 @@ int			display_pid_status(t_child *node, char option)
 	return (0);
 }
 
+/*
+** Updates a child depending on the result of the wait..().
+*/
+
 static int	change_status(int status)
 {
 	if (WIFCONTINUED(status))
@@ -62,14 +70,13 @@ static int	change_status(int status)
 }
 
 /*
-** Checks child status and update it.
+** Checks child's status and updates it.
 */
 
 int			update_pid_table(void)
 {
 	int		status;
 
-	g_shell->dprompt = 0;
 	g_shell->chld_check = 1;
 	while (ID_PREV && ID_PREV->index)
 		g_pid_table = ID_PREV;

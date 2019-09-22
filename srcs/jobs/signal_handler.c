@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/28 15:31:17 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/09/22 01:09:18 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/09/22 03:58:16 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,9 @@ void	sigint_handler(int sig)
 {
 	if (sig == SIGINT)
 	{
+
 		signal(SIGINT, sigint_handler);
-		ft_printf("\n");
+		ft_putchar('\n');
 		g_shell->lastsignal = 1;
 		ft_bzero(g_shell->tcap->command, BUFFSIZE);
 		g_shell->ctrl_r->state = 0;
@@ -31,6 +32,8 @@ void	sigint_handler(int sig)
 			ft_lstdel(&g_shell->redir, redir_delone);
 			(g_shell->ast) ? del_ast(&g_shell->ast) :
 							lex_del_list(&g_shell->lexer);
+			g_shell->ast = NULL;
+			g_shell->lexer = NULL;
 			g_shell->tcap->prompt = NULL;
 			g_shell->inhib_mod = 2;
 		}

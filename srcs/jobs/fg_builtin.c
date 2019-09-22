@@ -6,11 +6,15 @@
 /*   By: tlechien <tlechien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/16 05:04:02 by tlechien          #+#    #+#             */
-/*   Updated: 2019/06/26 08:25:36 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/09/22 01:40:10 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/shell.h"
+
+/*
+** Puts a background process in foreground and listens to it.
+*/
 
 static int	waitfg(t_child *node)
 {
@@ -27,7 +31,6 @@ static int	waitfg(t_child *node)
 	if (WIFEXITED(status))
 	{
 		ID_STATUS = ID_DONE;
-		//display_pid_status(g_pid_table, 0);
 		return (0);
 	}
 	else if (WIFSIGNALED(status))
@@ -38,6 +41,10 @@ static int	waitfg(t_child *node)
 	init_signal();
 	return (1);
 }
+
+/*
+** Queues all the processes in a pipe for wait_fg.
+*/
 
 static	int	setup_wait(t_child *node)
 {
