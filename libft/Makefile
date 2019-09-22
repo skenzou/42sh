@@ -1,11 +1,12 @@
-##                                                                              #
+# **************************************************************************** #
+#                                                                              #
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/10/09 12:43:35 by midrissi          #+#    #+#              #
-#    Updated: 2019/06/17 17:00:10 by aben-azz         ###   ########.fr        #
+#    Updated: 2019/06/21 07:03:01 by tlechien         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -62,8 +63,8 @@ SRCPATH			=	srcs/
 SRCS			:= $(SRC:%=$(SRCPATH)%)
 OBJ				:= $(SRC:%.c=$(OBJPATH)%.o)
 
-COMP		= gcc -g -v #-fsanitize=address
-CFLAGS		= -Wall -Wextra -Werror -I./includes -c
+COMP		= gcc
+CFLAGS		= -Wall -Wextra -Werror -I./includes -c #-g -v#-fsanitize=address
 AR			= ar rcs
 
 LONGEST		?=	$(shell echo $(notdir $(SRCS)) | tr " " "\n" | awk ' { if (\

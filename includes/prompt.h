@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 07:12:40 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/06/26 00:46:26 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/09/21 23:23:45 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -258,7 +258,6 @@ int 	end_ctrl_r(t_ctrl_r *ctrl_r);
 */
 
 int		ft_put_termcaps(int c);
-char	**dup_env(char **env);
 char	*correct(char *string, char **possible, int *difference);
 char	*get_git_status(void);
 
@@ -308,7 +307,7 @@ int		ft_move(t_cap *tcap, char *string, int n);
 
 int		write_history(char *string, t_history *history);
 int		add_cmd_to_history(char *string, t_history *history);
-int		debug_history(t_history *history);
+int		history_builtin(int argc, char **argv);
 int		read_history(t_history *history);
 
 /*

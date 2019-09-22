@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/30 18:51:02 by midrissi          #+#    #+#             */
-/*   Updated: 2019/06/04 04:44:27 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/09/22 01:50:00 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ static const t_oplist g_existing_token[] =
 	{NULL, 1, 0, OTHER_OP}
 };
 
-static int			join_if_2words(t_list **lexer, char *str, e_token_type type)
+static int			join_if_2words(t_list **lexer, char *str, t_token_type type)
 {
 	t_token		*token;
 	size_t		i;
@@ -99,7 +99,7 @@ static int			join_if_2words(t_list **lexer, char *str, e_token_type type)
 }
 
 static void			create_token(t_list **lexer, char *str,
-										e_token_type type, e_op_type op_type)
+										t_token_type type, t_op_type op_type)
 {
 	t_token		token;
 	t_list		*list;
@@ -144,6 +144,8 @@ t_oplist			check_ops(char *str)
 static void			build_lexer_helper(t_list **lexer,
 									t_oplist *curr, char **input, char **prev)
 {
+	char	quote;
+
 	if (curr->op)
 	{
 		if (curr->type != TOKEN_EAT)
@@ -153,8 +155,8 @@ static void			build_lexer_helper(t_list **lexer,
 	}
 	else if (**input == '\'' || **input == '"')
 	{
-		(*input)++;
-		while (**input && **input != '\'' && **input != '"')
+		quote = *(*input)++;
+		while (**input && **input != quote)
 			(*input)++;
 		(*input)++;
 	}

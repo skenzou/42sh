@@ -6,7 +6,7 @@
 #    By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/03 09:24:41 by midrissi          #+#    #+#              #
-#    Updated: 2019/06/26 00:52:18 by ghamelek         ###   ########.fr        #
+#    Updated: 2019/07/11 22:55:06 by aben-azz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,15 +44,15 @@ NAME		= 42sh
 
 MSG			=	$(_BOLD)$(_BLUE)Compiling 42sh$(_END)
 
-CC			= gcc -g -v #-fsanitize=address
-C_FLAGS		= -Wall -Wextra -Werror
+CC			= gcc
+C_FLAGS		= -Wall -Wextra -Werror -fsanitize=address #-g -v
 SRC_PATH	= srcs/
 OBJ_PATH	= .obj/
 LFT_PATH	= ./libft/
 LFT_NAME	= libft.a
 INC_PATH	= includes/
 INC_FPATH	= includes/shell.h includes/lexer.h includes/prompt.h \
-			includes/parser.h includes/executor.h
+			includes/parser.h includes/executor.h includes/jobs.h
 INC			= -Iincludes -I$(LFT_PATH)includes
 
 LONGEST		:=	$(shell echo $(notdir $(SRC)) | tr " " "\n" | awk ' { if (\
@@ -67,27 +67,35 @@ LEXER 		= $(addprefix $(SRC_PATH)lexer/,$(_LEXER))
 _LEXER_O 	:= $(_LEXER:.c=.o)
 LEXER_O 	:= $(LEXER:.c=.o)
 
-_EXEC 		= alias_builtin.c alias_init.c alias_utils.c bg_builtin.c tools.c\
+_EXEC 		= alias_builtin.c alias_init.c alias_utils.c tools.c\
 			bin_hash.c cd_builtin.c echo_builtin.c env_builtin.c \
 			err_handler.c executor.c exit_builtin.c expansions.c \
-			export_builtin.c fg_builtin.c fg_utils.c ft_fork.c get_options.c \
-			handle_redir.c job_utils.c jobs_builtin.c param_expansion.c \
+			export_builtin.c  get_options.c \
+			handle_redir.c param_expansion.c \
 			handle_pipe.c pre_exec.c quote_expansion.c redir_utils.c \
 			set_builtin.c setenv_builtin.c shell_var.c tab_utils.c \
 			test_builtin.c tilde_expansion.c type_builtin.c unset_builtin.c \
 			unsetenv_builtin.c cd_builtin_utils.c hash_builtin.c \
-			cd_builtin_chdir.c parse_pipes.c utils2.c handle_hdoc.c signals.c \
-			signals_utils.c
+			cd_builtin_chdir.c parse_pipes.c utils2.c handle_hdoc.c  \
+			export_builtin2.c test_builtin_tools.c bin_hash_tools.c \
+			ft_exec_pipe.c
 EXEC 		= $(addprefix $(SRC_PATH)executor/,$(_EXEC))
 _EXEC_O 	:= $(_EXEC:.c=.o)
 EXEC_O 		:= $(EXEC:.c=.o)
 
+_JOBS		= bg_builtin.c fg_builtin.c fg_utils.c ft_fork.c jobs_utils.c \
+			jobs_builtin.c signals.c signals_utils.c jobs_pipes.c jobs_init.c \
+			jobs_update.c signal_handler.c
+JOBS		= $(addprefix $(SRC_PATH)jobs/,$(_LEXER))
+_JOBS_O		= $(_JOBS:.c=.o)
+JOBS_O		= $(JOBS:.c=.o)
+
 _PROMPT 	= arrow_events.c \
 			completion.c \
+			completion_file.c \
+			completion_geters.c \
 			completion_utils.c \
 			completion_words.c \
-			completion_geters.c \
-			completion_file.c \
 			copy_cut.c \
 			ctrl_r.c \
 			history.c \
@@ -96,7 +104,6 @@ _PROMPT 	= arrow_events.c \
 			home_end_events.c \
 			init_struct.c \
 			key_events.c \
-			space_events.c \
 			main.c \
 			move.c \
 			others.c \
@@ -107,13 +114,14 @@ _PROMPT 	= arrow_events.c \
 			read_key.c \
 			reader.c \
 			shift_events.c \
-			signal_handler.c
+			signal_handler.c \
+			space_events.c
 PROMPT 		= $(addprefix $(SRC_PATH)prompt/,$(_PROMPT))
 _PROMPT_O 	:= $(_PROMPT:.c=.o)
 PROMPT_O 	:= $(PROMPT:.c=.o)
 
-_PARSER		= ast.c build_ast.c inhibitors.c parser.c redir_list.c \
-			syntax_errors.c
+_PARSER		= ast.c build_ast.c inhibitors.c parser.c redir_list_tools.c \
+			syntax_errors.c create_redir_list.c
 PARSER		= $(addprefix $(SRC_PATH)parser/,$(_PARSER))
 _PARSER_O 	:= $(_PARSER:.c=.o)
 PARSER_O 	:= $(PARSER:.c=.o)
@@ -123,9 +131,10 @@ ROOT 		= $(SRC_PATH)handler.c
 _ROOT_O 	:= $(_ROOT:.c=.o)
 ROOT_O 		:= $(ROOT:.c=.o)
 
-SRC			:= $(LEXER) $(EXEC) $(PROMPT) $(PARSER) $(ROOT)
-_OBJ		:= $(_LEXER_O) $(_EXEC_O) $(_PROMPT_O) $(_PARSER_O) $(_ROOT_O)
-OBJ_		:= $(LEXER_O) $(EXEC_O) $(PROMPT_O) $(PARSER_O) $(ROOT_O)
+SRC			:= $(LEXER) $(EXEC) $(PROMPT) $(PARSER) $(ROOT) $(JOBS)
+_OBJ		:= $(_LEXER_O) $(_EXEC_O) $(_PROMPT_O) $(_PARSER_O) $(_ROOT_O) \
+			$(_JOBS_O)
+OBJ_		:= $(LEXER_O) $(EXEC_O) $(PROMPT_O) $(PARSER_O) $(ROOT_O) $(JOBS_O)
 OBJ			:= $(addprefix $(OBJ_PATH), $(_OBJ))
 
 #
@@ -138,7 +147,7 @@ $(LFT_PATH)$(LFT_NAME):
 	@$(MAKE) -C $(LFT_PATH);
 
 $(NAME): $(OBJ)
-	@$(CC) -o $(NAME) -L $(LFT_PATH) -lft -ltermcap $^ -o $@
+	@$(CC) $(C_FLAGS) -o $(NAME) -L $(LFT_PATH) -lft -ltermcap $^ -o $@
 	@printf "\r\033[K$(_BOLD)$(_RED)./$(NAME) is ready for use\n$(_END)"
 
 $(OBJ_PATH)%.o: $(SRC_PATH)lexer/%.c $(INC_FPATH)
@@ -147,6 +156,11 @@ $(OBJ_PATH)%.o: $(SRC_PATH)lexer/%.c $(INC_FPATH)
 	@$(CC) $(C_FLAGS) $(INC) -o $@ -c $<
 
 $(OBJ_PATH)%.o: $(SRC_PATH)executor/%.c $(INC_FPATH)
+	@printf "\r\033[K$(MSG) $(_BOLD)$(_CYAN)%-$(LONGEST)s\$(_END)" $(notdir $<)
+	@mkdir -p $(OBJ_PATH)
+	@$(CC) $(C_FLAGS) $(INC) -o $@ -c $<
+
+$(OBJ_PATH)%.o: $(SRC_PATH)jobs/%.c $(INC_FPATH)
 	@printf "\r\033[K$(MSG) $(_BOLD)$(_CYAN)%-$(LONGEST)s\$(_END)" $(notdir $<)
 	@mkdir -p $(OBJ_PATH)
 	@$(CC) $(C_FLAGS) $(INC) -o $@ -c $<

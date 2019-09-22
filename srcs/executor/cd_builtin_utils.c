@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/06 02:31:10 by midrissi          #+#    #+#             */
-/*   Updated: 2019/06/07 05:47:06 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/07/01 05:38:37 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ char			*get_path(char *dir)
 	}
 	entry = get_key_value("CDPATH", g_shell->env_tmp);
 	if (!entry)
-		entry = get_key_value("CDPATH", g_shell->intern_tmp);
+		entry = get_key_value("CDPATH", g_shell->intern);
 	path = NULL;
 	if (entry)
 		path = test_full_paths(entry, dir);

@@ -6,18 +6,18 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/07 06:15:18 by midrissi          #+#    #+#             */
-/*   Updated: 2019/06/07 06:32:58 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/07/01 05:41:16 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-int			is_special_char(char c)
+int						is_special_char(char c)
 {
 	return (c == '$' || c == '\\' || c == '"' || c == '`' || c == '\n');
 }
 
-int			is_key_valid(char *key)
+int						is_key_valid(char *key)
 {
 	if (!key || ft_isdigit(*key))
 		return (0);
@@ -30,7 +30,7 @@ int			is_key_valid(char *key)
 	return (1);
 }
 
-void		close_fd(void)
+void					close_fd(void)
 {
 	int		i;
 	t_list	*redir;
@@ -46,4 +46,38 @@ void		close_fd(void)
 	i = -1;
 	while (++i < 10)
 		dup2(g_shell->fd_table[i], i);
+}
+
+int						get_indexof_key2(char *key, char **env)
+{
+	int i;
+	int len;
+
+	i = -1;
+	if (!(key = ft_strjoin(key, "=")))
+		ft_exit("Malloc failed in get_indexof_key2");
+	len = ft_strlen(key);
+	while (env && env[++i])
+	{
+		if (!ft_strncmp(key, env[i], len))
+		{
+			free(key);
+			return (i);
+		}
+	}
+	free(key);
+	return (-1);
+}
+
+void					update_env(char *key, char *value)
+{
+	char same_env;
+
+	same_env = g_shell->env_tmp == g_shell->env;
+	ft_expand_one(&value);
+	ft_setenv(key, value, &g_shell->env);
+	if (same_env)
+		g_shell->env_tmp = g_shell->env;
+	else
+		g_shell->env_tmp = removekey2(key, 0, (const char**)g_shell->env_tmp);
 }

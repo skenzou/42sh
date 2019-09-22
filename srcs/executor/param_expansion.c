@@ -6,13 +6,13 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/29 17:34:20 by midrissi          #+#    #+#             */
-/*   Updated: 2019/06/07 06:09:40 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/07/01 05:40:16 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-char		*goto_closing_brace(char *str)
+static char			*goto_closing_brace(char *str)
 {
 	while (*str && *str != '}')
 		str++;
@@ -22,7 +22,7 @@ char		*goto_closing_brace(char *str)
 		return (NULL);
 }
 
-char		*dollar_curly(char *old, char *ptr, int *i)
+static char			*dollar_curly(char *old, char *ptr, int *i)
 {
 	char	*str;
 	char	*key;
@@ -49,17 +49,17 @@ char		*dollar_curly(char *old, char *ptr, int *i)
 	return (ptr);
 }
 
-int			len_to_next_dollar(char *str)
+static int			len_to_next_dollar(char *str)
 {
 	int len;
 
 	len = 0;
-	while (str[len] && str[len] != '$')
+	while (str[len] && (ft_isalnum(str[len]) || str[len] == '_'))
 		len++;
 	return (len);
 }
 
-char		*simple_dollar(char *old, char *ptr, int *i)
+static char			*simple_dollar(char *old, char *ptr, int *i)
 {
 	char	*key;
 	char	*value;
@@ -88,11 +88,13 @@ char		*simple_dollar(char *old, char *ptr, int *i)
 	return (ptr);
 }
 
-void		param_expansion(char **ptr)
+void				param_expansion(char **ptr)
 {
 	char	*str;
 	int		i;
 
+	if (!*ptr || ft_strlen(*ptr) == 0)
+		return ;
 	str = *ptr;
 	i = 0;
 	while (str[i])

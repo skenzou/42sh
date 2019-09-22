@@ -6,7 +6,7 @@
 /*   By: tlechien <tlechien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/30 16:33:33 by tlechien          #+#    #+#             */
-/*   Updated: 2019/06/04 19:19:33 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/06/25 18:31:10 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 int		ft_flags(char c, char *flags, char *opt)
 {
 	int				i;
+
 	i = 0;
 	while (opt[i])
 	{

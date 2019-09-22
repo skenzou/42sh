@@ -50,36 +50,36 @@
 - builtin_alias, unalias
 
 fc -e vim
-//ouvre la derniere commande dans un fichier temporaire avec vim. Quand on quitte en sauvegardant sur vim, la commande est executée.
+- ouvre la derniere commande dans un fichier temporaire avec vim. Quand on quitte en sauvegardant sur vim, la commande est executée.
 
 fc -e vim X
-//X est un nombre, ouvre la commande avec lindex X dans l'historique et fait pareil que fc -e vim
+- X est un nombre, ouvre la commande avec lindex X dans l'historique et fait pareil que fc -e vim
 
 fc -e vim X Y
-//ouvre les commandes dans lhistorique des index x a y pareil que fc -e vim X
+- ouvre les commandes dans lhistorique des index x a y pareil que fc -e vim X
 
 fc -re vim X Y
-//pareil quen haut sauf que cest inversé
+- pareil quen haut sauf que cest inversé
 
 fc -l
-//liste les 16 derniere commandes dans lhistorique
+- liste les 16 derniere commandes dans lhistorique
 
 fc -l X Y
 
-//liste les commandes dans lhistorique aux index X a Y
+- liste les commandes dans lhistorique aux index X a Y
 
 fc -nl
-//retire les index dans la liste
+- retire les index dans la liste
 fc -lr X Y
-//pareil en reverse
+- pareil en reverse
 
 fc X=NaN
-//cherche la derniere commande commencant par X;
+- cherche la derniere commande commencant par X;
 fc -l X=NaN
-//affiche depuis la derniere commande commencant par X
+- affiche depuis la derniere commande commencant par X
 
 fc -l chien chat
-//affiche une liste des commandes a partir dune commande commencant par chien jusqua lindex dune commande commencant par chat
+- affiche une liste des commandes a partir dune commande commencant par chien jusqua lindex dune commande commencant par chat
 
 
 DEUX COMMANDES FC PAREILLES

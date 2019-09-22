@@ -6,20 +6,31 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/04 23:37:49 by midrissi          #+#    #+#             */
-/*   Updated: 2019/06/14 05:55:11 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/07/01 07:48:54 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-t_ast  *ft_parse(t_list *lexer)
+static void		init_ast(t_list *lexer)
+{
+	if (is_in_lexer(lexer, SEMI) || is_in_lexer(lexer, AND))
+		build_ast(lexer, &g_shell->ast, SEMI, AND);
+	else if (is_in_lexer(lexer, DBL_AND) || is_in_lexer(lexer, DBL_PIPE))
+		build_ast(lexer, &g_shell->ast, DBL_AND, DBL_PIPE);
+	else
+		build_ast(lexer, &g_shell->ast, PIPE, OTHER_OP);
+	if (g_shell->print_flags & PRINT_AST)
+		print_ast(g_shell->ast, ft_strdup("root"));
+}
+
+void			ft_parse(t_list *lexer)
 {
 	char *error;
-	t_ast *root;
 
+	g_shell->ast = NULL;
 	if (!lexer)
-		return (NULL);
-	root = NULL;
+		return ;
 	error = check_syntax_errors(lexer);
 	if (error)
 	{
@@ -27,22 +38,12 @@ t_ast  *ft_parse(t_list *lexer)
 		ft_putstr_fd(error, 2);
 		ft_putendl_fd("'", 2);
 		ft_lstdel(&lexer, lex_delone);
-		return (NULL);
+		return ;
 	}
-	handle_inhibitors(lexer);
 	create_redir_list(lexer);
+	ft_lstrev(&g_shell->redir);
 	if (g_shell->print_flags & PRINT_REDIR)
 		print_redir(g_shell->redir);
 	join_all_redir(lexer);
-	if (is_in_lexer(lexer, SEMI) || is_in_lexer(lexer, AND))
-		build_ast(lexer, &root, SEMI, AND);
-	else if (is_in_lexer(lexer, DBL_AND))
-		build_ast(lexer, &root, DBL_AND, OTHER_OP);
-	else if (is_in_lexer(lexer, DBL_PIPE))
-		build_ast(lexer, &root, DBL_PIPE, OTHER_OP);
-	else
-		build_ast(lexer, &root, PIPE, OTHER_OP);
-	if (g_shell->print_flags & PRINT_AST)
-		print_ast(root, ft_strdup("root"));
-	return root;
+	init_ast(lexer);
 }
