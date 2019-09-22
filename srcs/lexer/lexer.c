@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/30 18:51:02 by midrissi          #+#    #+#             */
-/*   Updated: 2019/06/22 21:34:13 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/09/22 01:50:00 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,6 +144,8 @@ t_oplist			check_ops(char *str)
 static void			build_lexer_helper(t_list **lexer,
 									t_oplist *curr, char **input, char **prev)
 {
+	char	quote;
+
 	if (curr->op)
 	{
 		if (curr->type != TOKEN_EAT)
@@ -153,8 +155,8 @@ static void			build_lexer_helper(t_list **lexer,
 	}
 	else if (**input == '\'' || **input == '"')
 	{
-		(*input)++;
-		while (**input && **input != '\'' && **input != '"')
+		quote = *(*input)++;
+		while (**input && **input != quote)
 			(*input)++;
 		(*input)++;
 	}
