@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/27 17:27:48 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/09/22 03:12:52 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/09/24 00:51:13 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,7 @@ int					main(int ac, char **av, char **env)
 		update_pid_table();
 		if (!(string = read_line(g_shell->tcap)))
 			return (-1);
+		signal(SIGCHLD, sigchld_handler);
 		if (!handler(string))
 			return (-1);
 		update_pid_table();

@@ -6,7 +6,7 @@
 /*   By: tlechien <tlechien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/16 05:04:02 by tlechien          #+#    #+#             */
-/*   Updated: 2019/09/22 01:40:10 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/09/24 00:09:14 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ static int	waitfg(t_child *node)
 		s_child_handler(WSTOPSIG(status), node);
 	tcsetpgrp(0, getpgrp());
 	init_signal();
+	dprintf(debug(), "end\n");
 	return (1);
 }
 

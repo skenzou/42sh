@@ -6,7 +6,7 @@
 /*   By: tlechien <tlechien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 04:40:55 by tlechien          #+#    #+#             */
-/*   Updated: 2019/06/29 15:02:12 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/09/24 00:06:41 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int		kill_pids(void)
 
 	while (ID_PID != 0)
 	{
+		dprintf(debug(), "pid %d", ID_PID);
 		branch = ID_RIGHT;
 		while (branch)
 		{
@@ -32,7 +33,7 @@ int		kill_pids(void)
 			tmp->status = SIGTERM;
 		}
 		if (!kill(ID_PID, SIGTERM))
-			ID_STATUS = SIGTERM;
+			remove_pid(g_pid_table);
 		else if (ID_STATUS != SIGTERM && !ID_PIPE)
 		{
 			err_display(ANSI_RED"42sh: can't kill process: ", ID_EXEC,

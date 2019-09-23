@@ -6,7 +6,7 @@
 /*   By: tlechien <tlechien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/07 19:31:16 by tlechien          #+#    #+#             */
-/*   Updated: 2019/09/22 03:12:41 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/09/24 00:52:47 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,14 @@ int		s_get_values(int status, int *action, char **handler, char **stat)
 		}
 	}
 	return (1);
+}
+
+void	sigchld_updater(int sig)
+{
+	(void)sig;
+	update_pid_table();
+	print_prompt_prefix();
+	signal(SIGCHLD, sigchld_handler);
 }
 
 void	sigchld_handler(int sig)

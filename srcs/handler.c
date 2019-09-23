@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/29 17:39:49 by midrissi          #+#    #+#             */
-/*   Updated: 2019/09/21 23:23:52 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/09/24 01:41:08 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,13 @@ static inline void	before_read_line(char *buffer, t_cap *tcap)
 	fcntl(0, F_SETFL, flags);
 	signal(SIGINT, sigint_handler);
 	signal(SIGWINCH, sigwinch_handler);
+	signal(SIGCHLD, sigchld_updater);
 	ft_bzero(buffer, 4);
 	ft_bzero(tcap->command, BUFFSIZE);
 	fflush(stdout);
 	while (g_shell->dprompt == 0 && (g_shell->dprompt = 1))
 		waitabit(0, 80000000);
+	update_pid_table();
 	print_prompt_prefix();
 }
 
@@ -70,6 +72,8 @@ char	*read_line(t_cap *tcap)
 		ft_bzero(buffer, 4);
 		tcsetattr(0, TCSADRAIN, g_shell->term);
 		read(0, &buffer, 3);
+		if (g_shell->inhib_mod == 2)
+			return(NULL);
 		if ((ret = read_buffer(buffer, tcap)) == -2)
 			return (clean_before_return(tcap));
 		else if (!ret)
@@ -79,6 +83,7 @@ char	*read_line(t_cap *tcap)
 		}
 	}
 }
+
 
 int	handler(const char *input)
 {

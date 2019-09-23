@@ -6,11 +6,32 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/28 15:31:17 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/09/22 03:58:16 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/09/24 01:38:34 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
+
+static void	sigint_tcap(void)
+{
+	t_cap *tcap;
+
+	tcap = g_shell->tcap;
+	end_event(tcap);
+	if (g_shell->autocomp->state)
+	{
+		tputs(tcap->clr_all_line, 1, ft_put_termcaps);
+		g_shell->autocomp->state = 0;
+		g_shell->autocomp->pos = 0;
+	}
+	ft_putchar('\n');
+	g_shell->lastsignal = 1;
+	g_shell->autocomp->state = 0;
+	ft_bzero(tcap->command, BUFFSIZE);
+	tcap->char_len = 0;
+	tcap->cursx = tcap->prompt_len;
+	tcap->cursy = 0;
+}
 
 /*
 ** Handler for CTRL+C signal in idle status.
@@ -19,13 +40,8 @@ void	sigint_handler(int sig)
 {
 	if (sig == SIGINT)
 	{
-
 		signal(SIGINT, sigint_handler);
-		ft_putchar('\n');
-		g_shell->lastsignal = 1;
-		ft_bzero(g_shell->tcap->command, BUFFSIZE);
-		g_shell->ctrl_r->state = 0;
-		g_shell->tcap->overflow = 0;
+		sigint_tcap();
 		if (g_shell->inhib_mod == 1)
 		{
 			fcntl(0, F_SETFL, O_NONBLOCK);
