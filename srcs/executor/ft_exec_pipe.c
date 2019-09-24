@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/01 07:12:26 by midrissi          #+#    #+#             */
-/*   Updated: 2019/09/22 04:16:05 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/09/24 02:59:09 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 /*
 ** Adds a new node at the end of the t_pipe list.
 */
-
 void push_pipe(t_ast *root, t_pipe **begin)
 {
 	t_pipe *new;
@@ -38,7 +37,6 @@ void push_pipe(t_ast *root, t_pipe **begin)
 /*
 ** Parses the ast and creates a list of the pipe to be executed.
 */
-
 void parse_pipe (t_ast *root, t_ast *origin, t_pipe **pipe)
 {
 	if (root->left)
@@ -54,7 +52,6 @@ void parse_pipe (t_ast *root, t_ast *origin, t_pipe **pipe)
 /*
 ** Execve an unitary elem of the pipe and set its fds.
 */
-
 void	launch_process(t_pipe *pipe, int ext[2])
 {
 	pid_t pid;
@@ -115,7 +112,6 @@ int	free_pipe(t_pipe *elem)
 /*
 ** Launches each elem of a pipe and links them together.
 */
-
 int launch_pipe (t_pipe **begin, t_pipe *elem, int is_bg)
 {
 	int		pid;

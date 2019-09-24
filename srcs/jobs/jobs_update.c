@@ -6,7 +6,7 @@
 /*   By: tlechien <tlechien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/25 06:56:09 by tlechien          #+#    #+#             */
-/*   Updated: 2019/09/23 21:47:26 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/09/24 03:43:59 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,40 @@ int			display_pid_status(t_child *node, char option)
 	else
 		printf("[%d] %c %-28s %s\n", node->index, current,
 		stat, node->exec);
+	return (0);
+}
+
+/*
+** Updates statuses in pid_table.
+** tmp_f && tmp_s are initalised at NULL.
+*/
+
+int			update_priority(int first, t_child *tmp_f, t_child *tmp_s)
+{
+	t_child *save;
+
+	save = g_pid_table;
+	while (ID_PREV && ID_INDEX)
+	{
+		if (first)
+		{
+			(ID_PRIORITY == 1) ? ID_PRIORITY = 0 : 0;
+			(ID_PRIORITY == 2) ? ID_PRIORITY = 1 : 0;
+			(ID_INDEX == first) ? ID_PRIORITY = 2 : 0;
+		}
+		if (!first && (!tmp_s || tmp_f == tmp_s) && (ID_PRIORITY == 1 ||
+			!ID_PRIORITY))
+			tmp_s = g_pid_table;
+		if (!first && (!tmp_f || tmp_f->priority < ID_PRIORITY))
+		{
+			(tmp_f && tmp_f->priority != -1) ? tmp_s = tmp_f : 0;
+			tmp_f = g_pid_table;
+		}
+		g_pid_table = ID_PREV;
+	}
+	g_pid_table = save;
+	(tmp_s && tmp_s->priority != -1) ? tmp_s->priority = 1 : 0;
+	(tmp_f && tmp_f->priority != -1) ? tmp_f->priority = 2 : 0;
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: tlechien <tlechien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/16 05:04:02 by tlechien          #+#    #+#             */
-/*   Updated: 2019/09/24 02:52:52 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/09/24 03:39:47 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@ static int	waitfg(t_child *node)
 
 static	int	setup_wait(t_child *node)
 {
-	int	action;
-	t_child *tmp;
+	int		action;
+	t_child	*tmp;
 
 	if (!node->is_pipe)
 		return (waitfg(node));

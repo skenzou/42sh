@@ -6,7 +6,7 @@
 /*   By: tlechien <tlechien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/07 19:31:16 by tlechien          #+#    #+#             */
-/*   Updated: 2019/09/24 00:52:47 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/09/24 03:43:46 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,10 @@ t_signal	g_signals[S_SIZE] = {
 	{SIGXFSZ	, S_ABN	, "XFSZ"	, "file size limit exceeded"},
 };
 
+/*
+** Updates and displays the status of a child whenever its status changes.
+*/
+
 void	s_child_handler(int status, t_child *node)
 {
 	int		action;
@@ -63,7 +67,7 @@ void	s_child_handler(int status, t_child *node)
 	}
 	else if (node->is_pipe)
 		(!is_branch_stp(get_head(node))) ?
-		display_amperpipe(get_head(node), 1): 0;
+		display_amperpipe(get_head(node), 1, NULL, 0) : 0;
 	else if (action != S_CONT && action != S_STOP)
 		display_pid_status(node, 1);
 	else
@@ -71,6 +75,10 @@ void	s_child_handler(int status, t_child *node)
 	if (node->is_pipe)
 		node->is_pipe = (node->is_pipe == 1) ? 2 : 4;
 }
+
+/*
+** Parses the signal dictionnary and returns the corresponding values.
+*/
 
 int		s_get_values(int status, int *action, char **handler, char **stat)
 {
@@ -90,6 +98,10 @@ int		s_get_values(int status, int *action, char **handler, char **stat)
 	return (1);
 }
 
+/*
+** Updates child during active reading if a SIGCHLD is caught.
+*/
+
 void	sigchld_updater(int sig)
 {
 	(void)sig;
@@ -98,14 +110,21 @@ void	sigchld_updater(int sig)
 	signal(SIGCHLD, sigchld_handler);
 }
 
+/*
+** Updates childs and report prompt display.
+*/
+
 void	sigchld_handler(int sig)
 {
 	(void)sig;
 	g_shell->dprompt = 0;
 	g_shell->chld_check = 1;
-	//update_pid_table(); //causes illegal instruction
 	signal(SIGCHLD, sigchld_handler);
 }
+
+/*
+** Resets all of the signals to DEFAULT state.
+*/
 
 void	resetsign(void)
 {
@@ -114,16 +133,4 @@ void	resetsign(void)
 	x = -1;
 	while (++x < 33)
 		signal(x, SIG_DFL);
-}
-
-void	init_signal(void)
-{
-	g_shell->inhib_mod = 0;
-	signal(SIGTTOU, SIG_IGN);
-	signal(SIGTTIN, SIG_IGN);
-	signal(SIGALRM, SIG_IGN);
-	signal(SIGTSTP, sigtstp_dflhandler);
-	signal(SIGINT, sigint_handler);
-	signal(SIGWINCH, sigwinch_handler);
-	signal(SIGCHLD, sigchld_handler);
 }

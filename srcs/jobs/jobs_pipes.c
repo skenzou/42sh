@@ -6,13 +6,17 @@
 /*   By: tlechien <tlechien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/21 01:46:22 by tlechien          #+#    #+#             */
-/*   Updated: 2019/09/22 00:37:34 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/09/24 03:28:53 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-t_child *get_head(t_child *node)
+/*
+**	Get the head of a pipe job.
+*/
+
+t_child		*get_head(t_child *node)
 {
 	t_child *head;
 
@@ -21,6 +25,10 @@ t_child *get_head(t_child *node)
 		head = head->prev;
 	return (head);
 }
+
+/*
+** Checks if the entire pipe job is finished.
+*/
 
 static int	check_branch(t_child *branch, int *finished)
 {
@@ -36,16 +44,20 @@ static int	check_branch(t_child *branch, int *finished)
 			break ;
 		branch = branch->right;
 	}
-	(*finished && ID_PIPE) ? display_amperpipe(g_pid_table, 1) : 0;
+	(*finished && ID_PIPE) ? display_amperpipe(g_pid_table, 1, NULL, 0) : 0;
 	while (*finished && ID_PIPE && branch != g_pid_table && (out = 1))
 	{
-		(branch->exec) ? ft_strdel(&branch->exec): 0;
+		(branch->exec) ? ft_strdel(&branch->exec) : 0;
 		branch = branch->prev;
 		free(branch->right);
 		branch->right = NULL;
 	}
 	return (0);
 }
+
+/*
+** Complement to update_pid_table that handles pipe update.
+*/
 
 int			update_amperpipe(t_child *pipe)
 {
@@ -76,6 +88,10 @@ int			update_amperpipe(t_child *pipe)
 	return (0);
 }
 
+/*
+** Pops finished jobs from the g_pid_table.
+*/
+
 int			check_remove_pids(void)
 {
 	int		finished;
@@ -98,12 +114,13 @@ int			check_remove_pids(void)
 	return (0);
 }
 
-int			display_amperpipe(t_child *node, char option)
-{
-	char	*stat;
-	char	current;
+/*
+** Complement to display_pid_status that handles pipe display.
+*/
 
-	(void)option;
+int			display_amperpipe(t_child *node, char option, char *stat,
+							char current)
+{
 	while (node)
 	{
 		(s_get_values(node->status, NULL, NULL, &stat)) ? stat = "running" : 0;

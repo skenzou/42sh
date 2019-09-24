@@ -6,7 +6,7 @@
 /*   By: tlechien <tlechien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 10:57:28 by tlechien          #+#    #+#             */
-/*   Updated: 2019/09/22 00:56:32 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/09/24 03:29:11 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 ** Checks if the pipe is stopped.
 */
 
-int		is_branch_stp(t_child *head)
+int			is_branch_stp(t_child *head)
 {
 	t_child *tmp;
 
@@ -29,7 +29,6 @@ int		is_branch_stp(t_child *head)
 			return (1);
 		tmp = tmp->right;
 	}
-
 	return (0);
 }
 
@@ -40,6 +39,7 @@ int		is_branch_stp(t_child *head)
 int			bg_resume(t_child *node)
 {
 	t_child *branch;
+
 	if (!node || (node->status != ID_SUSP &&
 	node->status != SIGSTOP && node->status != SIGTTIN &&
 	node->status != SIGTTOU))
@@ -53,11 +53,11 @@ int			bg_resume(t_child *node)
 		branch->priority = 0;
 		branch->status = SIGCONT;
 		if (!branch->right)
-			break;
+			break ;
 		branch = branch->right;
 	}
 	if (node->is_pipe)
-		display_amperpipe(node, 1);
+		display_amperpipe(node, 1, NULL, 0);
 	else
 		display_pid_status(node, 1);
 	return (0);
@@ -78,7 +78,7 @@ static	int	bg_all(t_child *node)
 	{
 		if (node->pid && (node->status == ID_SUSP || node->status == SIGSTOP
 		|| node->status == SIGTTIN || node->status == SIGTTOU))
-			(!bg_resume(node)) ? job_done++: 0;
+			(!bg_resume(node)) ? job_done++ : 0;
 		node = node->left;
 	}
 	return ((job_done) ? 0 : err_display("bg: no current job\n", NULL, NULL));

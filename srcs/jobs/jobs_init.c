@@ -6,7 +6,7 @@
 /*   By: tlechien <tlechien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/25 03:30:06 by tlechien          #+#    #+#             */
-/*   Updated: 2019/09/22 02:05:53 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/09/24 03:04:16 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,7 @@ int	add_pid(int is_pipe, int pid, char **command, int status)
 	new->prev = g_pid_table;
 	(new->left) ? new->left->prev = new : 0;
 	ID_LEFT = new;
-	if (!(new->exec = full_cmd(command)))
-		shell_exit(MALLOC_ERR);
+	(!(new->exec = full_cmd(command))) ? shell_exit(MALLOC_ERR) : 0;
 	while (ID_LEFT)
 		g_pid_table = ID_LEFT;
 	setpgid(pid, 0);

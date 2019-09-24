@@ -6,7 +6,7 @@
 /*   By: tlechien <tlechien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 04:51:21 by tlechien          #+#    #+#             */
-/*   Updated: 2019/06/25 06:59:52 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/09/24 03:14:20 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static int	all_pid(t_child *node, char option)
 	while (node)
 	{
 		if (node->is_pipe)
-			display_amperpipe(node, option);
+			display_amperpipe(node, option, NULL, 0);
 		else if (node->pid)
 			display_pid_status(node, option);
 		node = node->left;

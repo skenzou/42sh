@@ -6,7 +6,7 @@
 #    By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/03 09:24:41 by midrissi          #+#    #+#              #
-#    Updated: 2019/09/24 01:42:47 by tlechien         ###   ########.fr        #
+#    Updated: 2019/09/24 03:06:09 by tlechien         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,7 +45,7 @@ NAME		= 42sh
 MSG			=	$(_BOLD)$(_BLUE)Compiling 42sh$(_END)
 
 CC			= gcc
-C_FLAGS		= -fsanitize=address -Wall -Wextra -Werror 
+C_FLAGS		= -fsanitize=address -Wall -Wextra -Werror
 SRC_PATH	= srcs/
 OBJ_PATH	= .obj/
 LFT_PATH	= ./libft/
@@ -85,7 +85,7 @@ EXEC_O 		:= $(EXEC:.c=.o)
 
 _JOBS		= bg_builtin.c fg_builtin.c fg_utils.c ft_fork.c jobs_utils.c \
 			jobs_builtin.c signals.c signals_utils.c jobs_pipes.c jobs_init.c \
-			jobs_update.c signal_handler.c
+			jobs_update.c signal_handler.c fg_utils2.c
 JOBS		= $(addprefix $(SRC_PATH)jobs/,$(_LEXER))
 _JOBS_O		= $(_JOBS:.c=.o)
 JOBS_O		= $(JOBS:.c=.o)
