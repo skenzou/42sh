@@ -6,7 +6,7 @@
 /*   By: tlechien <tlechien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/16 05:04:02 by tlechien          #+#    #+#             */
-/*   Updated: 2019/09/24 00:09:14 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/09/24 02:52:52 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,18 +28,14 @@ static int	waitfg(t_child *node)
 	display_pid_status(node, 1);
 	tcsetpgrp(0, (node->pid));
 	waitpid(node->pid, &status, WUNTRACED);
+	tcsetpgrp(0, getpgrp());
 	if (WIFEXITED(status))
-	{
-		ID_STATUS = ID_DONE;
-		return (0);
-	}
+		return ((ID_STATUS = ID_DONE) && 0);
 	else if (WIFSIGNALED(status))
 		s_child_handler(WTERMSIG(status), node);
 	else if (WIFSTOPPED(status))
 		s_child_handler(WSTOPSIG(status), node);
-	tcsetpgrp(0, getpgrp());
 	init_signal();
-	dprintf(debug(), "end\n");
 	return (1);
 }
 
@@ -76,9 +72,8 @@ int			fg_builtin(int ac, char **cmd)
 	int		i;
 	int		ret;
 
-	cmd++;
 	node = NULL;
-	if (!(i = 0) && !cmd[0])
+	if (!(i = 0) && !cmd[1])
 	{
 		search_priority(&node);
 		if (node)
@@ -87,9 +82,9 @@ int			fg_builtin(int ac, char **cmd)
 	}
 	while (cmd[++i] && *cmd[i])
 	{
-		if ((*cmd[i] == '%' && !(!search_pid(&node, cmd[i] + 1, 0) ||
-		!search_process(&node, cmd[i] + 1) ||
-		!search_index(&node, cmd[i] + 1))))
+		if ((*cmd[i] == '%' && !(!search_prio(&node, cmd[i] + 1) ||
+		!search_pid(&node, cmd[i] + 1, 0) || !search_process(&node, cmd[i] + 1)
+		|| !search_index(&node, cmd[i] + 1))))
 			return (err_display("fg : job not found: ", cmd[i] + 1, "\n"));
 		else if (*cmd[i] != '%' && search_process(&node, cmd[i]))
 			return (err_display("fg : job not found: ", cmd[i], "\n"));

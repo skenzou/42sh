@@ -6,7 +6,7 @@
 /*   By: tlechien <tlechien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/25 00:52:53 by tlechien          #+#    #+#             */
-/*   Updated: 2019/09/24 00:52:37 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/09/24 02:37:34 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ int					fg_builtin(int ac, char **cmd);
 /*
 ** FG_UTILS.C
 */
+int					search_prio(t_child **node, char *str_index);
 int					search_index(t_child **node, char *str_index);
 int					search_pid(t_child **node, char *str_pid, pid_t pid);
 int					search_priority(t_child **node);
