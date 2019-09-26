@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/22 02:02:47 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/09/22 03:07:37 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/09/26 07:34:40 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,8 @@ S:
 #define FC_NO_EDITOR (1 << 4)
 
 
+
+
 int		get_param(int argc, char **argv)
 {
 	int param;
@@ -94,10 +96,8 @@ int		get_param(int argc, char **argv)
 			j = 0;
 			while (argv[i][++j])
 			{
-				dprintf(debug(), "On est au : %c\n", argv[i][j]);
 				if (~(index = ft_indexof(FC_OPTIONS, argv[i][j])))
 				{
-					dprintf(debug(), "Trouvé: %c|%d\n", argv[i][j], index);
 					param |= (1 << index);
 				}
 				else
@@ -114,7 +114,6 @@ int		get_param(int argc, char **argv)
 
 int		check_compatibility(int p)
 {
-	//ret == ok ? 1 : -1
 	if (p & FC_EDITOR)
 		return (!(p & FC_LIST || p & FC_NO_EDITOR || p & FC_NO_NUMBER) - 1);
 	else if (p & FC_LIST)
@@ -125,37 +124,106 @@ int		check_compatibility(int p)
 	return (1);
 }
 
-int		check_args(int argc, char **argv, int param)
-{
-	if (argc <= 1)
-		return (1);
-	if (p & FC_EDITOR)
-		return (!(p & FC_LIST || p & FC_NO_EDITOR || p & FC_NO_NUMBER) - 1);
-	else if (p & FC_LIST)
-		return (!(p & FC_EDITOR || p & FC_NO_EDITOR) - 1);
-	else if (p & FC_NO_EDITOR)
-		return (!(p & FC_LIST || p & FC_EDITOR || p & FC_NO_NUMBER ||
-														p & FC_REVERSE) - 1);
-	return (1);
-}
 
 int	debug_param(int param)
 {
-	if (!param)
-		return ft_printf("Aucune option\n");
-	ft_printf("-");
-	if (param & FC_EDITOR)
-		ft_printf("E");
-	if (param & FC_REVERSE)
-		ft_printf("R");
-	if (param & FC_LIST)
-		ft_printf("L");
-	if (param & FC_NO_NUMBER)
-		ft_printf("N");
-	if (param & FC_NO_EDITOR)
-		ft_printf("S");
-	ft_printf("\n");
+    if (!param)
+        return ft_printf("Aucune option\n");
+    ft_printf("-");
+    if (param & FC_EDITOR) {
+        ft_printf("E");
+    }
+    if (param & FC_REVERSE) {
+        ft_printf("R");
+    }
+    if (param & FC_LIST) {
+        ft_printf("L");
+    }
+    if (param & FC_NO_NUMBER) {
+        ft_printf("N");
+    }
+    if (param & FC_NO_EDITOR)
+        ft_printf("S");
+    ft_printf("\n");
+    return (1);
+}
+
+int	get_history_index(int x, int y)
+{
+	int		index;
+	int		max;
+
+	max = ~y ? ft_max(0, ft_max(x,y)) : g_shell->history->len - 1;
+	index = ~y ? ft_max(0, ft_min(x,y)) : x;
+	if (max >= g_shell->history->len || index >= g_shell->history->len)
+		return (-2);
+	else if (!x || !y)
+	    return (-3);
+    while (index <= max)
+    {
+        ft_printf("%d    %s\n", index, g_shell->history->data[index]);
+        index++;
+    }
 	return (1);
+}
+
+int find_first_occurrence(char *string)
+{
+    int i;
+    t_history *history;
+
+    history = g_shell->history;
+    i = history->len -1;
+    while (i--)
+    {
+        if (!ft_strncmp(string, history->data[i], ft_strlen(string)))
+            return (i);
+    }
+    return (-1);
+}
+
+void	arg_to_number(char *str, char *str2, int *index, int *max)
+{
+    int a;
+    int b;
+
+    a = ft_atoi(str);
+    if (!str2)
+        b = -1;
+    else
+        b = ft_atoi(str2);
+    *index = a ? a : find_first_occurrence(str);
+    *max = b ? b : find_first_occurrence(str2);
+}
+
+int		fc_list(int argc, char **argv, int param)
+{
+    (void)argv;
+    (void)param;
+    int index;
+    int max;
+
+    index = 0;
+    max = 0;
+    if (argc == 2)
+        return get_history_index(g_shell->history->len - 17, g_shell->history->len - 1);
+    int i;
+
+    i = 1;
+    while (i < argc && argv[i][0] == '-')
+        i++;
+    if (i == argc - 1 || i == argc - 2)
+    {
+        arg_to_number(argv[i], i == argc - 2 ? argv[i + 1] : NULL, &index, &max);
+        if (~index && ~max)
+            get_history_index(index, max);
+        else
+            ft_printf("occurrence non trouvée\n");
+    }
+    else
+        return ft_printf("So many argument frr\n");
+    ft_printf("plusieurs: ca commence a %d/%d: {%s}\nindex: %d, max: %d", i,argc, argv[i], index, max);
+    return (1);
 }
 
 int		fc_builtin(int argc, char **argv)
@@ -171,6 +239,12 @@ int		fc_builtin(int argc, char **argv)
 		return (1);
 	}
 	debug_param(param);
-	ft_printf("Fc builtin\n");
+	if (param & FC_LIST)
+	{
+        fc_list(argc, argv, param);
+		//int a = get_history_index(argc > 2);
+		//ft_printf("result: %d\n", a);
+	}
+	ft_printf("Fc builtin %d\n", argc);
 	return (1);
 }
