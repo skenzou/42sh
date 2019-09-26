@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/22 02:02:47 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/09/26 12:00:18 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/09/26 14:00:24 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -246,3 +246,8 @@ int		fc_builtin(int argc, char **argv)
 	}
 	return (1);
 }
+
+/*
+	ls -R / | grep b + suspend
+	ls -Rl/ + suspend
+*/
