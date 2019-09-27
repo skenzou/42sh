@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/01 07:12:26 by midrissi          #+#    #+#             */
-/*   Updated: 2019/09/24 02:59:09 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/09/27 04:13:08 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,7 @@ void	launch_process(t_pipe *pipe, int ext[2])
 	pid_t pid;
 
 	pid = getpid();
-	setpgid(getpid(), getpgrp());
-	tcsetpgrp(0, pid);
+	setpgid(0, getpgrp());
 	resetsign();
 	if (!pipe->next)
 	{
@@ -121,13 +120,8 @@ int launch_pipe (t_pipe **begin, t_pipe *elem, int is_bg)
 	ext[0] = g_shell->fd_table[0]; //shell in.
 	while (elem)
 	{
-		if (elem->next)
-		{
-			pipe(elem->fd);
-			ext[1] = elem->fd[1];
-		}
-		else
-			ext[1] = g_shell->fd_table[1];
+		pipe(elem->fd);
+		ext[1] = (elem->next) ? elem->fd[1] : g_shell->fd_table[1];
 		if ((pid = fork()) == 0)
 			launch_process(elem, ext);
 		else if (pid < 0)
@@ -135,12 +129,9 @@ int launch_pipe (t_pipe **begin, t_pipe *elem, int is_bg)
 		else
 		{
 			elem->pid = pid;
-			setpgid(pid, getpgrp());
 			(ext[0] != g_shell->fd_table[0]) ? close(ext[0]): 0; // shell in
 			(ext[1] != g_shell->fd_table[1]) ? close(ext[1]): 0; // shell out
 			ext[0] = elem->fd[0];
-			//close(elem->fd[1]); //|necessary ?
-			//close(elem->fd[0]); //|
 			dprintf(debug(),"origin_pid: %d, pid: %d, cmd: %s, is_bg: %d\n",(*begin)->pid, elem->pid, elem->cmd[0], is_bg);
 			if (is_bg)
 				(elem == *begin) ? add_pid(3, pid, elem->cmd, ID_RUN) :
@@ -151,18 +142,21 @@ int launch_pipe (t_pipe **begin, t_pipe *elem, int is_bg)
 		else
 			break;
 	}
-	waitpid(elem->pid, &status, WUNTRACED);
+	(!is_bg) ? waitpid(elem->pid, &status, WUNTRACED) : 0;
 	elem = *begin;
 	while (elem && elem->next && !is_bg)
 	{
+		dprintf(debug(),"pid: %d\n", elem->pid);
 		kill (elem->pid, SIGKILL);
 		elem = elem->next;
 	}
 	(begin && !is_bg) ? wait_ret(*begin) : 0;
 	(begin && !is_bg) ? free_pipe(*begin) : 0;
 	tcsetpgrp(0, getpgrp());
+	setpgid(getpid(), getpgrp());
 	resetsign();
 	dup2(g_shell->fd_table[0], STDIN_FILENO);
 	dup2(g_shell->fd_table[1], STDOUT_FILENO);
+	dprintf(debug(), "end exec_pipe()\n");
 	return (0);
 }

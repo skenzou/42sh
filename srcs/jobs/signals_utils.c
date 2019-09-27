@@ -6,7 +6,7 @@
 /*   By: tlechien <tlechien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/12 13:41:37 by tlechien          #+#    #+#             */
-/*   Updated: 2019/09/24 03:16:58 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/09/27 00:55:08 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,16 @@ void	sigtstp_handler(int sig)
 		signal(SIGTSTP, sigtstp_handler);
 }
 
+
+void		sigquit_dflhandler(int sig)
+{
+	if (sig == SIGQUIT)
+	{
+		ft_putchar(7);
+		signal(SIGQUIT, sigquit_dflhandler);
+	}
+}
+
 /*
 ** Sets the needed signal_handlers.
 */
@@ -33,6 +43,7 @@ void	init_signal(void)
 	signal(SIGTTIN, SIG_IGN);
 	signal(SIGALRM, SIG_IGN);
 	signal(SIGTSTP, sigtstp_dflhandler);
+	signal(SIGQUIT, sigquit_dflhandler);
 	signal(SIGINT, sigint_handler);
 	signal(SIGWINCH, sigwinch_handler);
 	signal(SIGCHLD, sigchld_handler);

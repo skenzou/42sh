@@ -6,7 +6,7 @@
 /*   By: tlechien <tlechien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/25 00:52:53 by tlechien          #+#    #+#             */
-/*   Updated: 2019/09/24 03:43:45 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/09/27 00:51:50 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,6 +132,7 @@ void				sigtstp_dflhandler(int sig);
 ** SIGNAL_UTILS.C
 */
 void				sigtstp_handler(int sig);
+void				sigquit_dflhandler(int sig);
 void				init_signal(void);
 int					get_nb_len(long long nb);
 int					waitabit(int min, int nsec);

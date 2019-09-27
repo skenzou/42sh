@@ -6,7 +6,7 @@
 /*   By: tlechien <tlechien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/21 01:46:22 by tlechien          #+#    #+#             */
-/*   Updated: 2019/09/24 03:28:53 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/09/27 04:14:01 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,7 +130,7 @@ int			display_amperpipe(t_child *node, char option, char *stat,
 		if (node->is_pipe > 2 && option & OPT_L)
 			ft_printf("[%d] %c %d %-28s %s | \n", node->index, current,
 			node->pid, stat, node->exec);
-		else if (node->is_pipe < 2 && option & OPT_L)
+		else if (node->is_pipe <= 2 && option & OPT_L)
 			ft_printf("%*c %d %-28s %s%s\n", get_nb_len(node->index) + 4, ' ',
 			node->pid, stat, node->exec, (node->right) ? " | " : "");
 		else if (node->is_pipe > 2 && option & OPT_P)
@@ -138,7 +138,7 @@ int			display_amperpipe(t_child *node, char option, char *stat,
 		else if (node->is_pipe > 2 && !option)
 			ft_printf("[%d] %c %-28s %s | \n", node->index, current,
 			stat, node->exec);
-		else
+		else if (!option)
 			ft_printf("%*c %-28s %s%s\n", get_nb_len(node->index) + 4, ' ',
 			stat, node->exec, (node->right) ? " | " : "");
 		node = node->right;

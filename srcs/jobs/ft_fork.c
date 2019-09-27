@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/14 23:53:49 by midrissi          #+#    #+#             */
-/*   Updated: 2019/09/24 00:55:40 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/09/27 00:54:30 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int				ft_waitprocess(pid_t pid, char **cmd, char *handler, char *stat)
 		if (!handler)
 			ft_printf(ANSI_RED"42sh : %s: %d: unknown error code\n"ANSI_RESET,
 			cmd[0], WTERMSIG(status));
-		else if (status != SIGINT)
+		else if (status != SIGINT && status != SIGQUIT)
 			ft_printf(ANSI_RED"42sh : %s: %s: %s\n"ANSI_RESET,
 			cmd[0], handler, stat);
 	}

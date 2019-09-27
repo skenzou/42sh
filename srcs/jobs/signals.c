@@ -6,7 +6,7 @@
 /*   By: tlechien <tlechien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/07 19:31:16 by tlechien          #+#    #+#             */
-/*   Updated: 2019/09/24 03:43:46 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/09/27 04:14:50 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ void	s_child_handler(int status, t_child *node)
 	else
 		display_pid_status(node, 1);
 	if (node->is_pipe)
-		node->is_pipe = (node->is_pipe == 1) ? 2 : 4;
+		node->is_pipe = (node->is_pipe < 3) ? 2 : 4;
 }
 
 /*
