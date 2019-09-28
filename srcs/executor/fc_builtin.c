@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/22 02:02:47 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/09/26 14:00:24 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/09/28 04:33:24 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,20 +157,18 @@ int	get_history_index(int x, int y, int p)
 	{
 		while (max >= index)
 		{
-			if (p & FC_NO_NUMBER)
-				ft_printf("%s\n", history->data[max]);
-			else
-				ft_printf("%d	%s\n", max, history->data[max]);
+			if (!(p & FC_NO_NUMBER))
+				ft_printf("%d	", max);
+			ft_printf("%s\n", history->data[max]);
 			max--;
 		}
 		return (1);
 	}
 	while (max <= index)
 	{
-		if (p & FC_NO_NUMBER)
-			ft_printf("%s\n", history->data[max]);
-		else
-			ft_printf("%d	%s\n", max, history->data[max]);
+		if (!(p & FC_NO_NUMBER))
+			ft_printf("%d	", max);
+		ft_printf("%s\n", history->data[max]);
 		max++;
 	}
 	return (1);
@@ -212,7 +210,7 @@ int		fc_list(int ac, char **av, int param)
 		return get_history_index(g_shell->history->len - 17,
 	g_shell->history->len - 1, param);
 	i = 1;
-	while (i < ac && av[i][0] == '-')
+	while (i < ac && (av[i][0] == '-' && (av[i][1] && !ft_isdigit(av[i][1]))))
 		i++;
 	if (i == ac - 1 || i == ac - 2)
 	{
@@ -227,6 +225,71 @@ int		fc_list(int ac, char **av, int param)
 	return (1);
 }
 
+void	fc_execute_command(int index)
+{
+	t_history	*history;
+	char	*command;
+	history = g_shell->history;
+	ft_printf("on lance avec %d/%d\n", index, history->len);
+	if (!~index || index > history->len - 1 || !history->len)
+		return ;
+	if (!(command = ft_strnew(ft_strlen(history->data[index]) + 1)))
+		return ;
+	ft_strcpy(command, history->data[index]);
+	command[ft_strlen(history->data[index])] = '\n';
+	lex_del_list(&g_shell->lexer);
+	if (add_cmd_to_history(command, history) == -1)
+		return ;
+	handler(command);
+	ft_strdel(&command);
+}
+
+int		fc_replace_command(int ac, int i, char **av)
+{
+	(void)ac;
+	(void)i;
+	(void)av;
+	ft_printf("on a un replace\n");
+	return (1);
+}
+
+int		fc_no_editor(int ac, char **av)
+{
+	int index;
+	int max;
+
+	index = 0;
+	max = 0;
+	ft_printf("ac: %d\n", ac);
+	(void)av;
+	if (ac == 2)
+		fc_execute_command(g_shell->history->len - 2);// run last command
+	else
+	{
+		int i = 1;
+		while (i < ac && !~ft_indexof(av[i], '='))
+			i++;
+		if (i == ac)
+		{
+			arg_to_number(av[2], NULL, &index, &max);
+			fc_execute_command(index);//1 argument: cmd
+		}
+		else
+			fc_replace_command(ac, i, av);//2argument
+		//else
+		//;
+		//ft_printf("i: %d/%d\n", i, ac);
+	}
+	return (0);
+}
+
+int		handle_error(int code)
+{
+	(void)code;
+
+	return (code);
+}
+
 int		fc_builtin(int argc, char **argv)
 {
 	int param;
@@ -234,20 +297,22 @@ int		fc_builtin(int argc, char **argv)
 	if (!~(param = get_param(argc, argv)) || !~check_compatibility(param))
 	{
 		ft_printf("%s\n%s\n%s\n%s\n", "Error: invalid options.",
-		"Usage: fc [-r][-e editor] [first[last]]",
-		"fc -l[-nr] [first[last]]",
-		"fc -s[old=new][first]");
+		"Usage: fc [-r] [-e editor] [first [last]]",
+		"fc -l [-nr] [first [last]]",
+		"fc -s [old=new] [first]");
 		return (1);
 	}
 	debug_param(param);
 	if (param & FC_LIST)
-	{
 		fc_list(argc, argv, param);
-	}
+	else if (param & FC_NO_EDITOR)
+		fc_no_editor(argc, argv);
 	return (1);
 }
 
 /*
-	ls -R / | grep b + suspend
-	ls -Rl/ + suspend
+	echo test oui
+		// test oui
+	fc -s oui=non echo
+		// test non
 */
