@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/26 00:44:20 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/09/28 08:08:01 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/09/28 09:17:48 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	create_file(char *name, char *path, t_ab *comp, char ext)
 	ft_bzero(file, MAX_PATH);
 	cat_fullpath(full_path, name, path);
 	lstat(full_path, &stats);
-	dprintf(debug(), "createfile: |%s|\n", file);
+	//dprintf(debug(), "createfile: |%s|\n", file);
 	if ((comp->isdir = file_name_ext(name, stats, file)))
 	{
 		if (!file[0])
