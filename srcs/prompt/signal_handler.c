@@ -6,37 +6,11 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/28 15:31:17 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/06/25 23:49:35 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/09/28 08:22:11 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
-
-void	sigint_handler(int sig)
-{
-	t_cap *tcap;
-
-	tcap = g_shell->tcap;
-	if (sig == SIGINT)
-	{
-		signal(SIGINT, sigint_handler);
-		end_event(tcap);
-		if (g_shell->autocomp->state)
-		{
-			tputs(tcap->clr_all_line, 1, ft_put_termcaps);
-			g_shell->autocomp->state = 0;
-			g_shell->autocomp->pos = 0;
-		}
-		ft_printf("\n");
-		print_prompt_prefix();
-		g_shell->lastsignal = 1;
-		g_shell->autocomp->state = 0;
-		ft_bzero(tcap->command, BUFFSIZE);
-		tcap->char_len = 0;
-		tcap->cursx = tcap->prompt_len;
-		tcap->cursy = 0;
-	}
-}
 
 void	sigfork(int sig)
 {

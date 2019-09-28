@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 23:56:22 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/09/28 08:08:50 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/09/28 08:39:29 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int		ft_insert(char *buff, t_cap *tcap)
 	int		len;
 
 	if (!buff)
-	 	return (1);
+		return (1);
 	if (tcap->char_len + ft_strlen(buff) >= BUFFSIZE - 2)
 		tputs(tcap->sound, 1, ft_put_termcaps);
 	else
