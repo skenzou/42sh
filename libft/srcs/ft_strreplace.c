@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   format_geters.c                                    :+:      :+:    :+:   */
+/*   ft_strreplace.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/08 05:23:27 by midrissi          #+#    #+#             */
-/*   Updated: 2019/02/27 00:55:54 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/09/28 06:24:41 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ char	*ft_strreplace(char *orig, char *rep, char *with)
 	char	*tmp;
 	int		len[4];
 
-	if (!orig || !rep || !(len[0] = ft_strlen(rep)))
-		return (NULL);
+	if (!orig || !rep || !(len[0] = ft_strlen(rep)) || !ft_strstr(orig, rep))
+		return (!ft_strstr(orig, rep) ? ft_strdup(orig) : NULL);
 	len[0] = ft_strlen(rep);
 	!with ? (with = " ") : NULL;
 	len[1] = ft_strlen(with);

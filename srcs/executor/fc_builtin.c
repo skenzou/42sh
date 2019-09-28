@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/22 02:02:47 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/09/28 04:33:24 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/09/28 06:24:41 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ fc -e vim X Y
 - ouvre les commandes dans lhistorique des index x a y pareil que fc -e vim X
 
 fc -re vim X Y
-- pareil quen haut sauf que cest inversé
+- pareil quen haut sauf que cest inverse
 
 fc -l
 - liste les 16 derniere commandes dans lhistorique
@@ -162,7 +162,7 @@ int	get_history_index(int x, int y, int p)
 			ft_printf("%s\n", history->data[max]);
 			max--;
 		}
-		return (1);
+		return (0);
 	}
 	while (max <= index)
 	{
@@ -171,7 +171,7 @@ int	get_history_index(int x, int y, int p)
 		ft_printf("%s\n", history->data[max]);
 		max++;
 	}
-	return (1);
+	return (0);
 }
 
 int find_first_occurrence(char *string)
@@ -194,8 +194,10 @@ void	arg_to_number(char *str, char *str2, int *index, int *max)
 
 	a = ft_atoi(str);
 	b = str2 ? ft_atoi(str2) : -1;
-	*index = a ? a : find_first_occurrence(str);
-	*max = b ? b : find_first_occurrence(str2);
+	if (index)
+		*index = a ? a : find_first_occurrence(str);
+	if (max)
+		*max = b ? b : find_first_occurrence(str2);
 }
 
 int		fc_list(int ac, char **av, int param)
@@ -216,69 +218,109 @@ int		fc_list(int ac, char **av, int param)
 	{
 		arg_to_number(av[i], i == ac - 2 ? av[i + 1] : NULL, &index, &max);
 		if (~index && ~max)
-			get_history_index(index, max, param);
+			return get_history_index(index, max, param);
 		else
-			ft_printf("occurrence non trouvée\n");
+			ft_printf("occurrence non trouvee\n");
 	}
 	else
 		return ft_printf("So many argument frr\n");
-	return (1);
+	return (0);
 }
 
-void	fc_execute_command(int index)
+void	fc_execute_command(int index, char *string)
 {
 	t_history	*history;
-	char	*command;
+	char		*command;
+
 	history = g_shell->history;
-	ft_printf("on lance avec %d/%d\n", index, history->len);
-	if (!~index || index > history->len - 1 || !history->len)
-		return ;
-	if (!(command = ft_strnew(ft_strlen(history->data[index]) + 1)))
-		return ;
-	ft_strcpy(command, history->data[index]);
-	command[ft_strlen(history->data[index])] = '\n';
-	lex_del_list(&g_shell->lexer);
-	if (add_cmd_to_history(command, history) == -1)
-		return ;
-	handler(command);
-	ft_strdel(&command);
+	if (~index)
+	{
+		if (!~index || index > history->len - 1 || !history->len)
+			return ;
+		if (!(command = ft_strnew(ft_strlen(history->data[index]) + 1)))
+			return ;
+		ft_strcpy(command, history->data[index]);
+		command[ft_strlen(history->data[index])] = '\n';
+		lex_del_list(&g_shell->lexer);
+		if (add_cmd_to_history(command, history) == -1)
+			return ;
+		handler(command);
+		ft_strdel(&command);
+	}
+	else
+	{
+		//ft_printf("On va execute direct: '%s'\n", string);
+		lex_del_list(&g_shell->lexer);
+		if (add_cmd_to_history(string, history) == -1)
+			return ;
+		handler(string);
+	}
 }
 
-int		fc_replace_command(int ac, int i, char **av)
+int		fc_replace_command(int ac, int b, char **av)
 {
-	(void)ac;
-	(void)i;
-	(void)av;
-	ft_printf("on a un replace\n");
-	return (1);
+	int		i;
+	int		index;
+	char	*replace;
+	char	*command;
+	int		to;
+
+	index = -1;
+	i = b;
+	while (i < ac && ~(index = ft_indexof(av[i], '=')))
+		i++;
+
+	i == ac ? to = ft_max(g_shell->history->len - 2, 0) :
+									arg_to_number(av[i], NULL, &to, NULL);
+	//ft_printf("ac: %d, i: %d, b: %d, to: %d\n", ac, i, b, to);
+	if (!~to || to > g_shell->history->len - 1 || !g_shell->history->len)
+		return (1);
+	if (!(command = ft_strnew(ft_strlen(g_shell->history->data[to]) + 1)))
+		return (1);
+	ft_strcpy(command, g_shell->history->data[to]);
+	command[ft_strlen(g_shell->history->data[to])] = '\n';
+	//ft_printf("to vaut '%s' %d\n", command, to);
+	i = b - 1;
+	//ft_printf("on a un replace, notre mot est {%s}, %d/%d\n", av[i], i, ac);
+	while (++i < ac && ~(index = ft_indexof(av[i], '=')))
+	{
+		char *with = ft_strdup(av[i] + index + 1);
+		char *orig = ft_strnew(index);
+		ft_strncpy(orig, av[i], index);
+		replace = ft_strreplace2(command, orig, with);
+		//ft_printf("{%s} replace '%s' par '%s' == {%s}\n", command, orig, with, replace);
+		ft_strdel(&command);
+		command = ft_strdup(replace);
+		ft_strdel(&replace);
+	}
+	fc_execute_command(-1, command);
+	ft_strdel(&command);
+	return (0);
 }
 
 int		fc_no_editor(int ac, char **av)
 {
 	int index;
 	int max;
+	int i;
 
 	index = 0;
 	max = 0;
-	ft_printf("ac: %d\n", ac);
-	(void)av;
+	//ft_printf("ac: %d\n", ac);
 	if (ac == 2)
-		fc_execute_command(g_shell->history->len - 2);// run last command
+		fc_execute_command(g_shell->history->len - 2, NULL);// run last command
 	else
 	{
-		int i = 1;
+		i = 1;
 		while (i < ac && !~ft_indexof(av[i], '='))
 			i++;
-		if (i == ac)
+		if (i == ac || i > 2)
 		{
 			arg_to_number(av[2], NULL, &index, &max);
-			fc_execute_command(index);//1 argument: cmd
+			fc_execute_command(index, NULL);//1 argument: cmd
 		}
 		else
 			fc_replace_command(ac, i, av);//2argument
-		//else
-		//;
-		//ft_printf("i: %d/%d\n", i, ac);
 	}
 	return (0);
 }
@@ -296,18 +338,19 @@ int		fc_builtin(int argc, char **argv)
 
 	if (!~(param = get_param(argc, argv)) || !~check_compatibility(param))
 	{
-		ft_printf("%s\n%s\n%s\n%s\n", "Error: invalid options.",
-		"Usage: fc [-r] [-e editor] [first [last]]",
-		"fc -l [-nr] [first [last]]",
-		"fc -s [old=new] [first]");
+		ft_printf("%s\n%s\n%s\n%s\n",
+			"Error: invalid options.",
+			"Usage: fc [-r] [-e editor] [first [last]]",
+			"fc -l [-nr] [first [last]]",
+			"fc -s [old=new] [first]");
 		return (1);
 	}
 	debug_param(param);
 	if (param & FC_LIST)
-		fc_list(argc, argv, param);
+		return (handle_error(fc_list(argc, argv, param)));
 	else if (param & FC_NO_EDITOR)
-		fc_no_editor(argc, argv);
-	return (1);
+		return (handle_error(fc_no_editor(argc, argv)));
+	return (0);
 }
 
 /*
