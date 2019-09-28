@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/22 20:28:50 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/06/26 22:58:49 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/09/28 08:15:05 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 int		backspace_event(t_cap *tcap)
 {
 	t_ctrl_r *ctrl_r;
+	int i;
 
 	ctrl_r = g_shell->ctrl_r;
 	if (ctrl_r->state)
@@ -28,7 +29,7 @@ int		backspace_event(t_cap *tcap)
 	{
 		tputs(tcap->clr_all_line, 1, ft_put_termcaps);
 		g_shell->autocomp->state = 0;
-		int i = -1;
+		i = -1;
 		while (++i < g_shell->autocomp->len)
 		{
 			ft_strdel(&(g_shell->autocomp->data[i]));
@@ -45,30 +46,33 @@ int		space_event(t_cap *tcap)
 {
 	int	index;
 	int	i;
+	t_ab *autocomp;
 
+	autocomp = g_shell->autocomp;
 	index = 0;
-	if (g_shell->autocomp->state)
+	if (autocomp->state)
 	{
 		tputs(tcap->clr_all_line, 1, ft_put_termcaps);
-		i = ft_strlen(g_shell->autocomp->match);
+		i = ft_strlen(autocomp->match);
 		while (i--)
 			ft_delete_back(tcap);
-		ft_insert(g_shell->autocomp->data[g_shell->autocomp->pos], tcap);
-		if (g_shell->autocomp->data[g_shell->autocomp->pos][ft_strlen(g_shell->autocomp->data[g_shell->autocomp->pos])-1] != '/')
+		ft_insert(autocomp->data[autocomp->pos], tcap);
+		if (autocomp->data[autocomp->pos] && autocomp->data[autocomp->pos]
+						[ft_strlen(autocomp->data[autocomp->pos]) - 1] != '/')
 		{
-			if (g_shell->autocomp->after[0])
-				ft_insert(g_shell->autocomp->after, tcap);
+			if (autocomp->after[0])
+				ft_insert(autocomp->after, tcap);
 			ft_insert(" ", tcap);
 		}
-		g_shell->autocomp->state = 0;
-		int i = -1;
-		while (++i < g_shell->autocomp->len)
+		autocomp->state = 0;
+		i = -1;
+		while (++i < autocomp->len)
 		{
-			ft_strdel(&(g_shell->autocomp->data[i]));
+			ft_strdel(&(autocomp->data[i]));
 		}
-		g_shell->autocomp->pos = 0;
-		g_shell->autocomp->isdir = 0;
-		g_shell->autocomp->len = 0;
+		autocomp->pos = 0;
+		autocomp->isdir = 0;
+		autocomp->len = 0;
 		return (1);
 	}
 	else if (~(index = ft_lastindexof(tcap->command, '!')))

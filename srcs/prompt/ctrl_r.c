@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 06:02:13 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/06/25 23:55:08 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/09/28 08:03:59 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ int		search_ctrl_r(t_ctrl_r *ctrl_r, t_history *history)
 			if (!ft_strncmp(string, ctrl_r->data, ctrl_r->index))
 			{
 				ft_bzero(ctrl_r->found, BUFFSIZE);
-				ft_strncpy(ctrl_r->found, string, len - 1);
+				ft_strncpy(ctrl_r->found, string, len);
 				return (1);
 			}
 		}

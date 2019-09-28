@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/28 15:31:17 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/09/22 01:09:18 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/09/28 08:21:36 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,12 @@ void	sigint_handler(int sig)
 		ft_bzero(g_shell->tcap->command, BUFFSIZE);
 		g_shell->ctrl_r->state = 0;
 		g_shell->tcap->overflow = 0;
+		if (g_shell->autocomp->state)
+		{
+			tputs(g_shell->tcap->clr_all_line, 1, ft_put_termcaps);
+			g_shell->autocomp->state = 0;
+			g_shell->autocomp->pos = 0;
+		}
 		if (g_shell->inhib_mod == 1)
 		{
 			fcntl(0, F_SETFL, O_NONBLOCK);
@@ -39,6 +45,11 @@ void	sigint_handler(int sig)
 		ft_bzero(g_shell->tcap->carry, 2);
 		g_shell->dprompt = 1;
 		tcsetattr(0, TCSADRAIN, g_shell->term);
+		g_shell->autocomp->state = 0;
+		ft_bzero(g_shell->tcap->command, BUFFSIZE);
+		g_shell->tcap->char_len = 0;
+		g_shell->tcap->cursx = g_shell->tcap->prompt_len;
+		g_shell->tcap->cursy = 0;
 	}
 }
 
