@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 00:40:57 by midrissi          #+#    #+#             */
-/*   Updated: 2019/09/22 02:06:49 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/09/28 07:48:14 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,12 @@
 # include "shell.h"
 
 # define ALIAS_FILE		".21sh_alias"
+# define FC_OPTIONS "erlns"
+# define FC_EDITOR (1 << 0)
+# define FC_REVERSE (1 << 1)
+# define FC_LIST (1 << 2)
+# define FC_NO_NUMBER (1 << 3)
+# define FC_NO_EDITOR (1 << 4)
 
 typedef struct		s_hash_entry
 {
@@ -130,13 +136,27 @@ int					export_options(int ac, char **av);
 /*
 ** FT_EXEC_PIPE.C
 */
-void 				parse_pipe (t_ast *root, t_ast *origin, t_pipe **pipe);
-int 				launch_pipe (t_pipe **begin, t_pipe *pipe, int is_bg);
-void 				push_pipe(t_ast *root, t_pipe **begin);
+void				parse_pipe (t_ast *root, t_ast *origin, t_pipe **pipe);
+int					launch_pipe (t_pipe **begin, t_pipe *pipe, int is_bg);
+void				push_pipe(t_ast *root, t_pipe **begin);
 /*
 ** FC_BUILTIN.C
 */
 int					fc_builtin(int ac, char **cmd);
+/*
+** FC_BUILTIN_LIST.C
+*/
+int					fc_list(int ac, char **av, int param);
+/*
+** FC_BUILTIN_LIST.C
+*/
+int					fc_no_editor(int ac, char **av);
+/*
+** FC_BUILTIN_UTILS.c
+*/
+void			arg_to_number(char *str, char *str2, int *index, int *max);
+int				get_param(int argc, char **argv);
+int				check_compatibility(int p);
 /*
 ** GET_OPTIONS.C
 */
