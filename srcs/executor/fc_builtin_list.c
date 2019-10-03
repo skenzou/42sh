@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fc_builtin_list.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aben-azz <aben-azz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/28 07:28:50 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/09/28 07:49:35 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/10/03 19:56:28 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ int					fc_list(int ac, char **av, int param)
 		return (get_history_index(len - 17, len - 1, param));
 	while (i < ac && (av[i][0] == '-' && (av[i][1] && !ft_isdigit(av[i][1]))))
 		i++;
+	ft_printf("i vaut : %d/%d\n", i, ac);
 	if (i == ac - 1 || i == ac - 2)
 	{
 		arg_to_number(av[i], i == ac - 2 ? av[i + 1] : NULL, &index, &max);

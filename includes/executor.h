@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 00:40:57 by midrissi          #+#    #+#             */
-/*   Updated: 2019/09/28 08:42:28 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/10/03 19:43:11 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,6 +143,12 @@ void				push_pipe(t_ast *root, t_pipe **begin);
 ** FC_BUILTIN.C
 */
 int					fc_builtin(int ac, char **cmd);
+
+/*
+** FC_BUILTIN_EDITOR.c
+*/
+
+int		fc_editor(int argc, char **argv, int param);
 /*
 ** FC_BUILTIN_LIST.C
 */

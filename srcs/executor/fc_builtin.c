@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fc_builtin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aben-azz <aben-azz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/22 02:02:47 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/10/02 17:38:59 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/10/03 19:51:15 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ int		debug_param(int param)
 		ft_printf("Aucune option\n");
 		return (0);
 	}
-
 	ft_printf("-");
 	if (param & FC_EDITOR)
 		ft_printf("E");
@@ -59,5 +58,7 @@ int		fc_builtin(int argc, char **argv)
 		return (handle_error(fc_list(argc, argv, param)));
 	else if (param & FC_NO_EDITOR)
 		return (handle_error(fc_no_editor(argc, argv)));
+	else if (param & FC_EDITOR)
+		return (handle_error(fc_editor(argc, argv, param)));
 	return (0);
 }

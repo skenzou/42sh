@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fc_builtin_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aben-azz <aben-azz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/28 07:33:58 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/10/02 14:47:16 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/10/03 19:51:58 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,6 @@ static int	find_first_occurrence(char *string)
 			return (i);
 	return (-1);
 }
-
-//é´®∆
-
-
-
 
 void		arg_to_number(char *str, char *str2, int *index, int *max)
 {
@@ -65,7 +60,8 @@ int			get_param(int argc, char **argv)
 					return (-1);
 			}
 		}
-		return (argv[i][0] == '-' && !argv[i][1] ? -1 : param);
+		else
+			return (argv[i][0] == '-' && !argv[i][1] ? -1 : param);
 	}
 	return (param);
 }
