@@ -6,7 +6,7 @@
 /*   By: tlechien <tlechien@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/03 18:39:48 by tlechien          #+#    #+#             */
-/*   Updated: 2019/10/03 20:04:14 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/10/03 21:47:55 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,9 @@ int launch_pipe (t_pipe **begin, t_pipe *elem, int is_bg)
 	{
 		close(elem->fd[0]);
 		close(elem->fd[1]);
+		if (is_bg)
+				(elem == *begin) ? add_pid(3, elem->pid, elem->cmd, ID_RUN) :
+				add_amperpipe((*begin)->pid, elem->pid, full_cmd(elem->cmd), ID_RUN);
 		elem = elem->next;
 	}
 	elem = *begin;
