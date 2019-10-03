@@ -6,7 +6,7 @@
 /*   By: tlechien <tlechien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/03 18:39:48 by tlechien          #+#    #+#             */
-/*   Updated: 2019/10/03 18:45:59 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/10/03 19:42:31 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,11 +49,6 @@ void parse_pipe (t_ast *root, t_ast *origin, t_pipe **pipe)
 		push_pipe(root, pipe);
 }
 
-void test_h(int sig) {
-	dprintf(debug(), "(%d) A Child died.\n", getpid());
-    signal(sig, test_h);
-}
-
 /*
 ** Execve an unitary elem of the pipe and set its fds.
 */
@@ -74,16 +69,50 @@ void	launch_process(t_pipe *prev, t_pipe *pipe)
 		exit(1);
 }
 
+int		waitpipe(t_pipe **begin, t_pipe *elem)
+{
+	int			status;
+	char*		handler;
+	char*		stat;
+	t_child		*node;
+
+	signal(SIGTSTP, sigtstp_handler);
+	waitpid(elem->pid, &status, WUNTRACED);
+	if (WIFEXITED(status))
+		return ((WEXITSTATUS(status)));
+	else if (WIFSIGNALED(status))
+	{
+		s_get_values(WTERMSIG(status), NULL, &handler, &stat);
+		if (!handler)
+			ft_printf(ANSI_RED"42sh : %s: %d: unknown error code\n"ANSI_RESET,
+			elem->cmd[0], WTERMSIG(status));
+		else if (status != SIGINT && status != SIGQUIT)
+			ft_printf(ANSI_RED"42sh : %s: %s: %s\n"ANSI_RESET,
+			elem->cmd[0], handler, stat);
+	}
+	else if (WSTOPSIG(status) && search_pid(&node, NULL, (*begin)->pid))
+	{
+		elem = *begin;
+		while (elem)
+		{
+			if (elem == *begin)
+				add_pid(3, elem->pid, elem->cmd, ID_RUN);
+			else
+				add_amperpipe((*begin)->pid, elem->pid, full_cmd(elem->cmd), ID_SUSP);
+			elem = elem->next;
+		}
+	}
+	signal(SIGTSTP, sigtstp_dflhandler);
+	return (-1);
+}
 /*
 ** Launches each elem of a pipe and links them together.
 */
 int launch_pipe (t_pipe **begin, t_pipe *elem, int is_bg)
 {
 	t_pipe  *prev;
-	int		status;
 
 	prev = NULL;
-	(void)is_bg;
 	elem = *begin;
 	while (elem)
 	{
@@ -103,10 +132,20 @@ int launch_pipe (t_pipe **begin, t_pipe *elem, int is_bg)
 		elem = elem->next;
 	}
 	elem = *begin;
-	while (elem)
+	while (!is_bg && elem)
 	{
-		waitpid(elem->pid, &status, WUNTRACED);
+		waitpipe(begin, elem);
+		prev = elem;
 		elem = elem->next;
 	}
+	elem = *begin;
+	while (!is_bg && elem)
+	{
+		prev = elem;
+		elem = elem->next;
+		free(prev);
+	}
+	setpgid(0, 0);
+	tcsetpgrp(0, getpgrp());
 	return (0);
 }
