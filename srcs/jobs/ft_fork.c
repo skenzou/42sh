@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_fork.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: midrissi <midrissi@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/14 23:53:49 by midrissi          #+#    #+#             */
-/*   Updated: 2019/10/03 19:24:47 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/10/03 20:04:07 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,50 @@ int				ft_waitprocess(pid_t pid, char **cmd, char *handler, char *stat)
 	{
 		add_pid(0, pid, cmd, ID_SUSP);
 		!search_pid(&node, NULL, pid) && display_pid_status(node, 0);
+	}
+	signal(SIGTSTP, sigtstp_dflhandler);
+	return (-1);
+}
+
+/*
+** Checks the status of a processus.
+** Returns exit value for regular exits,
+** Returns -1 for anormal exits and
+** if pipe process is stopped, adds it to pid_table.
+*/
+
+int		waitpipe(t_pipe **begin, t_pipe *elem)
+{
+	int			status;
+	char*		handler;
+	char*		stat;
+	t_child		*node;
+
+	signal(SIGTSTP, sigtstp_handler);
+	waitpid(elem->pid, &status, WUNTRACED);
+	if (WIFEXITED(status))
+		return ((WEXITSTATUS(status)));
+	else if (WIFSIGNALED(status))
+	{
+		s_get_values(WTERMSIG(status), NULL, &handler, &stat);
+		if (!handler)
+			ft_printf(ANSI_RED"42sh : %s: %d: unknown error code\n"ANSI_RESET,
+			elem->cmd[0], WTERMSIG(status));
+		else if (status != SIGINT && status != SIGQUIT)
+			ft_printf(ANSI_RED"42sh : %s: %s: %s\n"ANSI_RESET,
+			elem->cmd[0], handler, stat);
+	}
+	else if (WSTOPSIG(status) && search_pid(&node, NULL, (*begin)->pid))
+	{
+		elem = *begin;
+		while (elem)
+		{
+			if (elem == *begin)
+				add_pid(3, elem->pid, elem->cmd, ID_RUN);
+			else
+				add_amperpipe((*begin)->pid, elem->pid, full_cmd(elem->cmd), ID_SUSP);
+			elem = elem->next;
+		}
 	}
 	signal(SIGTSTP, sigtstp_dflhandler);
 	return (-1);
