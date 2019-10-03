@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/09 00:37:47 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/07/11 22:52:08 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/10/03 15:18:52 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static int	init_history(t_history *history)
 			ft_strdel(&home);
 			return (0);
 		}
-			ft_strdel(&home);
+		ft_strdel(&home);
 	}
 	else if (!(history->file_name = ft_strdup(".42sh_history")))
 		return (0);
@@ -72,10 +72,7 @@ static int	init_struct_variable(t_ab *autocomp, t_cap *tcap)
 	tcap->carriage = tgetstr("cr", NULL);
 	tcap->clr_curr_line = tgetstr("ce", NULL);
 	tcap->clr_all_line = tgetstr("cd", NULL);
-	tcap->place_cursor = tgetstr("ch", NULL);
 	tcap->sound = tgetstr("bl", NULL);
-	tcap->save = tgetstr("sc", NULL);
-	tcap->restore = tgetstr("rc", NULL);
 	g_shell->copy_cut->state = 0;
 	g_shell->copy_cut->from = -1;
 	g_shell->copy_cut->to = -1;

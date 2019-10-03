@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 07:12:40 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/10/02 13:14:52 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/10/03 15:19:18 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,10 +97,10 @@ typedef struct	s_cap
 	char		*carriage;
 	char		*clr_curr_line;
 	char		*clr_all_line;
-	char		*place_cursor;
+	//char		*place_cursor;
 	char		*sound;
-	char		*save;
-	char		*restore;
+	//char		*save;
+	//char		*restore;
 	int			cursx;
 	int			cursx_max;
 	int			cursy_max;
@@ -260,6 +260,7 @@ int 	end_ctrl_r(t_ctrl_r *ctrl_r);
 int		ft_put_termcaps(int c);
 char	*correct(char *string, char **possible, int *difference);
 char	*get_git_status(void);
+int		ft_clean_eol(t_cap *tcap);
 
 /*
 **	SIGNAL_HANDLER.C
