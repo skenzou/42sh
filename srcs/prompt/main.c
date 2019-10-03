@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/27 17:27:48 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/09/22 00:19:01 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/10/02 16:15:45 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,6 @@ static int			init_fd_table(void)
 int					main(int ac, char **av, char **env)
 {
 	char	*string;
-
 
 	if (!(tgetent(NULL, get_key_value("TERM", env))) || !init_struct(env) ||
 			init_pid() || init_alias(1) || init_fd_table())

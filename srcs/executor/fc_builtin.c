@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/22 02:02:47 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/09/28 07:48:05 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/10/02 17:38:59 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,11 @@
 int		debug_param(int param)
 {
 	if (!param)
-		return (ft_printf("Aucune option\n"));
+	{
+		ft_printf("Aucune option\n");
+		return (0);
+	}
+
 	ft_printf("-");
 	if (param & FC_EDITOR)
 		ft_printf("E");

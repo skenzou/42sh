@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/28 07:33:58 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/09/28 07:47:59 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/10/02 14:47:16 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,11 @@ static int	find_first_occurrence(char *string)
 			return (i);
 	return (-1);
 }
+
+//é´®∆
+
+
+
 
 void		arg_to_number(char *str, char *str2, int *index, int *max)
 {
