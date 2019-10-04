@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   jobs.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tlechien <tlechien@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tlechien <tlechien@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/25 00:52:53 by tlechien          #+#    #+#             */
-/*   Updated: 2019/09/27 00:51:50 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/10/03 20:03:00 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,7 @@ int					search_prio(t_child **node, char *str_index);
 */
 int					ft_waitprocess(pid_t pid, char **cmd, char *handler,
 					char *stat);
+int					waitpipe(t_pipe **begin, t_pipe *elem);
 int					ft_fork_amper(char **cmd, char **env);
 int					ft_fork_builtin(t_builtin *builtin, int ac, char **cmd);
 int					ft_fork(char **cmd, char **env);

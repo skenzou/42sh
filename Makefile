@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+         #
+#    By: midrissi <midrissi@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/03 09:24:41 by midrissi          #+#    #+#              #
-#    Updated: 2019/09/24 03:06:09 by tlechien         ###   ########.fr        #
+#    Updated: 2019/10/04 19:31:39 by tlechien         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -72,13 +72,13 @@ _EXEC 		= alias_builtin.c alias_init.c alias_utils.c tools.c\
 			err_handler.c executor.c exit_builtin.c expansions.c \
 			export_builtin.c  get_options.c \
 			handle_redir.c param_expansion.c \
-			handle_pipe.c pre_exec.c quote_expansion.c redir_utils.c \
+			pre_exec.c quote_expansion.c redir_utils.c \
 			set_builtin.c setenv_builtin.c shell_var.c tab_utils.c \
 			test_builtin.c tilde_expansion.c type_builtin.c unset_builtin.c \
 			unsetenv_builtin.c cd_builtin_utils.c hash_builtin.c \
-			cd_builtin_chdir.c parse_pipes.c utils2.c handle_hdoc.c  \
+			cd_builtin_chdir.c utils2.c handle_hdoc.c  \
 			export_builtin2.c test_builtin_tools.c bin_hash_tools.c \
-			ft_exec_pipe.c
+			pipe_exec.c pipe_setup.c
 EXEC 		= $(addprefix $(SRC_PATH)executor/,$(_EXEC))
 _EXEC_O 	:= $(_EXEC:.c=.o)
 EXEC_O 		:= $(EXEC:.c=.o)

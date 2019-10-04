@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/14 23:53:49 by midrissi          #+#    #+#             */
-/*   Updated: 2019/10/03 20:04:07 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/10/04 17:21:20 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int		waitpipe(t_pipe **begin, t_pipe *elem)
 		if (!handler)
 			ft_printf(ANSI_RED"42sh : %s: %d: unknown error code\n"ANSI_RESET,
 			elem->cmd[0], WTERMSIG(status));
-		else if (status != SIGINT && status != SIGQUIT)
+		else if (status != SIGINT && status != SIGQUIT && status != SIGPIPE)
 			ft_printf(ANSI_RED"42sh : %s: %s: %s\n"ANSI_RESET,
 			elem->cmd[0], handler, stat);
 	}
@@ -81,7 +81,7 @@ int		waitpipe(t_pipe **begin, t_pipe *elem)
 		while (elem)
 		{
 			if (elem == *begin)
-				add_pid(3, elem->pid, elem->cmd, ID_RUN);
+				add_pid(3, elem->pid, elem->cmd, ID_SUSP);
 			else
 				add_amperpipe((*begin)->pid, elem->pid, full_cmd(elem->cmd), ID_SUSP);
 			elem = elem->next;
@@ -106,7 +106,7 @@ int				ft_fork_amper(char **cmd, char **env)
 	if (!pid)
 	{
 		resetsign();
-		setpgid(getpid(), getpgrp());
+		setpgid(getpid(), getpid());
 		execve(cmd[0], cmd, env);
 		exit(1);
 	}
