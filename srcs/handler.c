@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handler.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: midrissi <midrissi@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/29 17:39:49 by midrissi          #+#    #+#             */
-/*   Updated: 2019/09/28 04:33:50 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/10/05 17:54:41 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,15 +85,10 @@ int	handler(const char *input)
 	t_list	*redir;
 	char	*in;
 
-	// if (!ft_strcmp(input, "history\n"))
-	// {
-	// 	debug_history(g_shell->history);
-	// 	return (1);
-	// }
 	if (!(in = ft_strdup(input)))
-		exit(1); //TODO + free input ??
+		exit(1);
 	in[ft_strlen(in) - 1] = '\0';
- 	in = parse_aliases(in, in, in);
+	in = parse_aliases(in, in, in);
 	check_inhib(&in);
 	if (g_shell->inhib_mod == 2)
 	{

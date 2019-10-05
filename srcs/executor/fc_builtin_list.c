@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/28 07:28:50 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/10/03 19:56:28 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/10/05 18:05:46 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,9 +76,9 @@ int					fc_list(int ac, char **av, int param)
 		return (get_history_index(len - 17, len - 1, param));
 	while (i < ac && (av[i][0] == '-' && (av[i][1] && !ft_isdigit(av[i][1]))))
 		i++;
-	ft_printf("i vaut : %d/%d\n", i, ac);
-	if (i == ac - 1 || i == ac - 2)
+	if (i == ac - 1 || i == ac - 2 || ((param & FC_REVERSE) && i == ac))
 	{
+		(param & FC_REVERSE && i == ac) && i--;
 		arg_to_number(av[i], i == ac - 2 ? av[i + 1] : NULL, &index, &max);
 		if (~index && ~max)
 			return (get_history_index(index, max, param));
