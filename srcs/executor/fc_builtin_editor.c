@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/03 19:37:17 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/10/07 22:42:47 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/10/07 22:50:01 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,8 @@ int		read_file(char *file)
 		handler(string);
 		//ft_strdel(&line);
 	}
+	close(fd);
+	remove(file);
 	return (1);
 }
 
@@ -103,7 +105,7 @@ int		fc_editor(int argc, char **argv, int param)
 		i++;
 	while (i < argc && argv[i + 1] && argv[i + 1][0] == '-' && argv[i + 1][1] == 'e')
 		i++;
-	ft_printf("%d/%d\n", i, argc);
+	//ft_printf("%d/%d\n", i, argc);
 	if (argc - 1 > i && argv[i + 1][0] == '-')
 	{
 		ft_printf("erreur param apres -e\n");
@@ -111,9 +113,9 @@ int		fc_editor(int argc, char **argv, int param)
 	}
 	if (i == argc - 1)
 	{
-		ft_printf("Aucun argument\n");
+		ft_printf("Aucun argument pour -e\n");
+		return (1);
 	}
-
 	else
 	{
 		i++;
