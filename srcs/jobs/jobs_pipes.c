@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   jobs_pipes.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tlechien <tlechien@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tlechien <tlechien@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/21 01:46:22 by tlechien          #+#    #+#             */
-/*   Updated: 2019/09/27 11:38:18 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/10/04 19:46:43 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,18 +128,18 @@ int			display_amperpipe(t_child *node, char option, char *stat,
 		current = (node->priority < 1) ? ' ' : '-';
 		(node->priority == 2) ? current = '+' : 0;
 		if (node->is_pipe > 2 && option & OPT_L)
-			ft_printf("[%d] %c %d %-28s %s | \n", node->index, current,
+			ft_printf("\r[%d] %c %d %-28s %s | \n", node->index, current,
 			node->pid, stat, node->exec);
 		else if (node->is_pipe <= 2 && option & OPT_L)
-			ft_printf("%*c %d %-28s %s%s\n", get_nb_len(node->index) + 4, ' ',
+			ft_printf("\r%*c %d %-28s %s%s\n", get_nb_len(node->index) + 4, ' ',
 			node->pid, stat, node->exec, (node->right) ? " | " : "");
 		else if (node->is_pipe > 2 && option & OPT_P)
-			ft_printf("%d\n", node->pid);
+			ft_printf("\r%d\n", node->pid);
 		else if (node->is_pipe > 2 && !option)
-			ft_printf("[%d] %c %-28s %s | \n", node->index, current,
+			ft_printf("\r[%d] %c %-28s %s | \n", node->index, current,
 			stat, node->exec);
 		else if (!option)
-			ft_printf("%*c %-28s %s%s\n", get_nb_len(node->index) + 4, ' ',
+			ft_printf("\r%*c %-28s %s%s\n", get_nb_len(node->index) + 4, ' ',
 			stat, node->exec, (node->right) ? " | " : "");
 		node = node->right;
 	}

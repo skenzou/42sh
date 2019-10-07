@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   jobs_update.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tlechien <tlechien@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tlechien <tlechien@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/25 06:56:09 by tlechien          #+#    #+#             */
-/*   Updated: 2019/09/27 11:38:09 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/10/04 19:46:26 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,9 @@ int			display_pid_status(t_child *node, char option)
 		printf("\r[%d] %c %d %-28s %s\n", node->index, current, node->pid,
 		stat, node->exec);
 	else if (option & OPT_P)
-		printf("%d\n", node->pid);
+		printf("\r%d\n", node->pid);
 	else
-		printf("[%d] %c %-28s %s\n", node->index, current,
+		printf("\r[%d] %c %-28s %s\n", node->index, current,
 		stat, node->exec);
 	return (0);
 }
