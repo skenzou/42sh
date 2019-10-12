@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   prompt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aben-azz <aben-azz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 07:12:40 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/10/03 15:19:18 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/10/11 14:37:58 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,8 +157,8 @@ typedef struct	s_tab
 	int						max_offset;
 	char					match[BUFFSIZE];
 	int 					isdir;
-	char          after[BUFFSIZE];
-	char          comp[MAX_PATH];
+	char					after[BUFFSIZE];
+	char					comp[MAX_PATH];
 	char					*data[MAX_HISTORY_LENGHT];
 	char					ext[MAX_HISTORY_LENGHT];
 }				t_ab;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   history.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aben-azz <aben-azz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/01 17:45:36 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/09/21 23:25:56 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/10/12 17:23:54 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 int	add_cmd_to_history(char *str, t_history *history)
 {
+	if (!ft_strcmp("\n", str))
+		return (1);
 	if (history->len)
 		if (!ft_strcmp(str, history->data[history->len - 1]))
 			return (1);

@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/03 19:37:17 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/10/07 22:50:01 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/10/12 17:18:47 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ int		write_in_file(char *file, int index, int max)
 		ft_putstr_fd(history->data[i], fd);
 		ft_putchar_fd(10, fd);
 		//ft_printf("on ecrit: %s dans fd\n", history->data[i]);
-
 		i++;
 	}
 	close(fd);
@@ -41,10 +40,11 @@ int		write_in_file(char *file, int index, int max)
 
 int		read_file(char *file)
 {
-	int ret;
-	int fd;
-	char *line;
-	char *string;
+	int		ret;
+	int		fd;
+	char	*line;
+	char	*string;
+
 	if (!(fd = open(file, O_RDONLY, 0666)))
 		return (1);
 	while ((ret = get_next_line(fd, &line, '\n')))
@@ -54,9 +54,11 @@ int		read_file(char *file)
 		ft_strcpy(string, line);
 		string[ft_strlen(string)] = '\n';
 		lex_del_list(&g_shell->lexer);
-		//ft_printf("Line actuelle: {%s}\n", string);
+		ft_putstr(string);
 		handler(string);
-		//ft_strdel(&line);
+		if (!~add_cmd_to_history(string, g_shell->history))
+			return (0);
+		ft_strdel(&line);
 	}
 	close(fd);
 	remove(file);
@@ -67,27 +69,26 @@ int		exec_command(char *editor, int index, int max)
 {
 	char **editors;
 	int pid;
+	int status;
 
 	if (!(editor = ft_strcjoin(editor, "/tmp/42shtmp", ' ')))
 		return (1);
 	if (!(editors = ft_strsplit(editor, ' ')))
 		return (1);
 	write_in_file("/tmp/42shtmp", index, max);
-	if (!(pid = fork()))
-	{
-		if (!~execvp(editors[0], editors))
-		{
-			ft_putstr_fd("42sh: command not found: ", 2);
-			ft_putstr_fd(editors[0], 2);
-			ft_putchar_fd(10, 2);
-			exit(1);
-		}
-	}
+	if (!(pid = fork()) && !~execvp(editors[0], editors))
+		exit(1);
 	else
 	{
-		wait(&pid);
-		read_file("/tmp/42shtmp");
-		//ft_printf("Process terminé\n");
+		waitpid(pid, &status, WUNTRACED);
+		if (WIFEXITED(status) && !WEXITSTATUS(status))
+			read_file("/tmp/42shtmp");
+		else
+		{
+			ft_putstr_fd("42sh: fc command not found: ", 2);
+			ft_putstr_fd(editors[0], 2);
+			ft_putchar_fd(10, 2);
+		}
 	}
 	return (1);
 }
