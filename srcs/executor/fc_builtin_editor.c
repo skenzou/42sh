@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/03 19:37:17 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/10/12 17:18:47 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/10/12 17:55:27 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,14 +70,25 @@ int		exec_command(char *editor, int index, int max)
 	char **editors;
 	int pid;
 	int status;
+	char **bin;
+	char *path;
 
 	if (!(editor = ft_strcjoin(editor, "/tmp/42shtmp", ' ')))
 		return (1);
 	if (!(editors = ft_strsplit(editor, ' ')))
 		return (1);
 	write_in_file("/tmp/42shtmp", index, max);
-	if (!(pid = fork()) && !~execvp(editors[0], editors))
+	if (!(path = my_env(g_shell->env_tmp)))
+		return (-1);
+	if (!(bin = ft_strsplit(path, ':')))
+		ft_exit("Malloc failed in hash_insert");
+	if (!(editors[0] = (char *)add_path(bin, (unsigned char *)editors[0])))
+		return (-1);
+	if (!(pid = fork()) && !~execve(editors[0], editors, g_shell->env_tmp))
+	{
+		ft_printf("errno: %d\n", errno);
 		exit(1);
+	}
 	else
 	{
 		waitpid(pid, &status, WUNTRACED);
