@@ -2,39 +2,30 @@
 
 ## Current tasks
 
-- Midrissi : fix pipes
-- Aben-azz : fix tcaps
-- Ghamelek : fc builtin
-- tlechien : fix pipes
+- Midrissi : fix core/expansions
+- Aben-azz : fc
+- Ghamelek : rest in peace
+- tlechien : debug / testing.
 
 ## TODO
 - POSIX norme on builtins
 - Error management.
+- Result & redir Pipes (Mo/Théo)
+/*- Echo Posix (Théo/Mo)*/
+- Fc (Hraf/(Théo))
+(- changements pwd jobs)
 
-## TODO ACHRAF
-- Mot selectionné a l'endroit du curseur durant l'autocompletion
-- !!, !word, !number, !-number
-- CTRL-R
-- Completion automatique si path ou si env_var
-- fc ? (Pas sur que ce soit dans termcaps, a voir)
-- Gestion du redimensionnement de fenetre
-- Couleurs dans l'autocompletion
-- Gestion des leaks
-- Copy/cut/past
-- Home et End evenement
-- SHIFT_UP et SHIFT_DOWN pour se deplacer dans une commande en haut et en bas
-- Bonus
-	- Autocompletion en fonction de la commande, ex:
-		- cd => que des dossier
-		- ls => fichier/dossier
-		- man => fichier present dans le dossier man
-- Floation point exception avec fleche du bas
-- Protection getenv fichier historique
+## VERIF
+- Setenv
+- Expansion pipe
+- Leaks
+/*- Kill_pids*/
 
 ## DEBUG
 
-- autocompletion cashes with an unexistant command
-- embedded loop pipes aren't working properly
+- '~' autocompletion (Hraf)
+- Quotes (Mo)
+- Sentenv & doit quand même update les envs dans le parent? (Mo/Théo)
 
 ## DONE
 
