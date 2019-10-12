@@ -6,7 +6,7 @@
 /*   By: tlechien <tlechien@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/04 17:31:04 by tlechien          #+#    #+#             */
-/*   Updated: 2019/10/04 19:32:58 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/10/12 15:18:41 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ static	void	parent_end(t_pipe **begin, t_pipe *elem, int is_bg)
 	while (elem)
 	{
 		close(elem->fd[0]);
-		close(elem->fd[1]);
+		//close(elem->fd[1]);
 		if (is_bg)
 		{
 				(elem == *begin) ? add_pid(3, elem->pid, elem->cmd, ID_RUN) :
@@ -93,6 +93,7 @@ static	void 	end_pipe(t_pipe **begin, t_pipe *elem, int is_bg)
 	prev = NULL;
 	while (!is_bg && elem)
 	{
+		dprintf(debug(), "waiting %d\n", elem->pid);
 		waitpipe(begin, elem);
 		prev = elem;
 		elem = elem->next;
@@ -125,6 +126,7 @@ int launch_pipe (t_pipe **begin, t_pipe *elem, int is_bg)
 			launch_process(*begin, prev, elem, is_bg);
 		else if (elem->pid < 0)
 			shell_exit(FORK_ERR);
+		close(elem->fd[1]);
 		prev = elem;
 		elem = elem->next;
 	}
