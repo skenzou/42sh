@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   completion_geters.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aben-azz <aben-azz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/25 23:59:43 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/06/26 06:12:09 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/10/19 19:10:19 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,8 +75,8 @@ void	get_quote(t_ab *autocomp, char *str)
 		i = 1;
 		str[0] == '\'' && (autocomp->after[0] = '\'');
 		str[0] == '"' && (autocomp->after[0] = '"');
-		str[0] == '{' && (autocomp->after[0] = '{');
-		str[0] == '[' && (autocomp->after[0] = '[');
+		str[0] == '{' && (autocomp->after[0] = '}');
+		str[0] == '[' && (autocomp->after[0] = ']');
 		autocomp->after[1] = '\0';
 	}
 	else

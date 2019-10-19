@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/25 23:58:47 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/10/19 18:57:17 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/10/19 19:08:46 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int		intern_completion(t_ab *autocomp, char *key)
 
 	intern = g_shell->intern;
 	len = ft_strlen(key);
-	i = 0;
+	i = -1;
 	ft_strcpy(autocomp->match, key);
 	while (intern && intern[++i])
 	{

@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/26 00:44:20 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/10/19 18:39:46 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/10/19 19:01:12 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,8 +95,10 @@ int		print_name(t_ab *autocomp, char *str, int i)
 		ft_printf("\x1b[31m%s\x1b[0m", str);
 	else if (autocomp->ext[i] == 'c')
 		ft_printf("\x1b[33m%s\x1b[0m", str);
-	else if (autocomp->ext[i] == 'i' || autocomp->ext[i] == 'e')
+	else if (autocomp->ext[i] == 'i')
 		ft_printf("\x1b[36m%s\x1b[0m", str);
+	else if (autocomp->ext[i] == 'e')
+		ft_printf("\x1b[35m%s\x1b[0m", str);
 	else
 		ft_printf(str);
 	ft_move(g_shell->tcap, "!right", autocomp->max_offset - ft_strlen(str) + 2);
