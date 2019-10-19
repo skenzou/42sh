@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/03 19:37:17 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/10/12 17:55:27 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/10/19 18:27:50 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,10 +78,10 @@ int		exec_command(char *editor, int index, int max)
 	if (!(editors = ft_strsplit(editor, ' ')))
 		return (1);
 	write_in_file("/tmp/42shtmp", index, max);
-	if (!(path = my_env(g_shell->env_tmp)))
+	if (!(path = get_key_value("PATH", g_shell->env_tmp)))
 		return (-1);
 	if (!(bin = ft_strsplit(path, ':')))
-		ft_exit("Malloc failed in hash_insert");
+		return (-1);
 	if (!(editors[0] = (char *)add_path(bin, (unsigned char *)editors[0])))
 		return (-1);
 	if (!(pid = fork()) && !~execve(editors[0], editors, g_shell->env_tmp))
@@ -111,7 +111,7 @@ int		fc_editor(int argc, char **argv, int param)
 	(void)param;
 	char *fcedit;
 
-	fcedit = get_key_value("FCEDIT", g_shell->env);
+	fcedit = get_key_value("FCEDIT", g_shell->env_tmp);
 	int i = 1;
 	while (i < argc && argv[i][0] == '-' && !~ft_indexof(argv[i], 'e'))
 		i++;

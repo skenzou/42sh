@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aben-azz <aben-azz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 23:56:22 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/10/03 13:13:40 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/10/19 18:37:10 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,9 +76,7 @@ int		ft_insert(char *buff, t_cap *tcap)
 		ft_clear_all_lines(tcap);
 		if (ft_add_n_char(buff, position, len, tcap) == -1)
 			return (-1);
-		dprintf(debug(), "tcap:{%s}\n", tcap->command);
 		tcap->char_len = ft_clean_eol(tcap);
-		dprintf(debug(), "tcapa:{%s}\n", tcap->command);
 		ft_putstr(tcap->command);
 		ft_replace_cursor(tcap);
 		ft_move(tcap, "right", len);

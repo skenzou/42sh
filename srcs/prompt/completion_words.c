@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   completion_words.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aben-azz <aben-azz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/25 23:58:47 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/06/26 22:40:27 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/10/19 18:57:17 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ int		intern_completion(t_ab *autocomp, char *key)
 
 	intern = g_shell->intern;
 	len = ft_strlen(key);
-	autocomp->max_offset = 0;
 	i = 0;
+	ft_strcpy(autocomp->match, key);
 	while (intern && intern[++i])
 	{
 		if (intern[i] && !ft_strncmp(key, intern[i], len))
@@ -32,7 +32,7 @@ int		intern_completion(t_ab *autocomp, char *key)
 			autocomp->ext[autocomp->len] = 'i';
 			ft_strncpy(autocomp->data[autocomp->len], intern[i], index);
 			autocomp->max_offset =
-							ft_max(autocomp->max_offset, ft_strlen(intern[i]));
+		ft_max(autocomp->max_offset, ft_strlen(autocomp->data[autocomp->len]));
 			autocomp->len++;
 		}
 	}
@@ -46,11 +46,12 @@ int		env_completion(t_ab *autocomp, char *key)
 	char	**env;
 	int		index;
 
-	env = g_shell->env;
+	env = g_shell->env_tmp;
 	i = -1;
 	len = ft_strlen(key);
 	autocomp->max_offset = 0;
 	autocomp->len = 0;
+	ft_strcpy(autocomp->match, key);
 	while (env && env[++i])
 	{
 		if (env[i] && !ft_strncmp(key, env[i], len))
@@ -60,7 +61,7 @@ int		env_completion(t_ab *autocomp, char *key)
 			autocomp->ext[autocomp->len] = 'e';
 			ft_strncpy(autocomp->data[autocomp->len], env[i], index);
 			autocomp->max_offset =
-					ft_max(autocomp->max_offset, ft_strlen(env[i] + index + 1));
+		ft_max(autocomp->max_offset, ft_strlen(autocomp->data[autocomp->len]));
 			autocomp->len++;
 		}
 	}
@@ -99,7 +100,6 @@ int		path_completion(t_ab *autocomp, char *key)
 	int		i;
 
 	ft_bzero(path, BUFFSIZE);
-	dprintf(debug(), "path completion, key: |%s|\n", key);
 	if (~ft_indexof(key, '/'))
 	{
 		i = ft_strlen(key) - 1;
@@ -118,11 +118,11 @@ int		path_completion(t_ab *autocomp, char *key)
 
 int		arg_completion(t_ab *autocomp, t_cap *tc, char *str, int position)
 {
-	if (is_env_var(autocomp, str))
+	int index = is_env_var(autocomp, str);
+	if (index)
 		return (env_completion(autocomp, str));
 	else if (tc->command[position - 1] && tc->command[position - 1] == '/')
 	{
-		dprintf(debug(), "str: |%s|\n", str);
 		return (add_to_completion(autocomp, str, 'r'));
 	}
 	path_completion(autocomp, str);

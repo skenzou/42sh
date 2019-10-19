@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   completion_file.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aben-azz <aben-azz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/26 00:44:20 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/09/28 09:17:48 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/10/19 18:39:46 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,9 @@ int		add_to_completion(t_ab *autocomp, char *path, char ext)
 
 int		first_arg_completion(t_ab *autocomp, t_cap *tc, char *str, int position)
 {
-	if (is_env_var(autocomp, str))
+	int index = is_env_var(autocomp, str);
+	dprintf(debug(), "isenvvar: %d, |%s|\n", index, str);
+	if (index)
 		return (env_completion(autocomp, str));
 	else if (tc->command[position - 1] && tc->command[position - 1] == '/')
 		return (add_to_completion(autocomp, str, 0));

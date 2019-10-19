@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   completion.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aben-azz <aben-azz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 06:02:13 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/09/28 09:30:55 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/10/19 18:56:30 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,7 +149,6 @@ int		ft_tab(t_cap *tcap, t_ab *autocomp)
 	ft_bzero(autocomp->match, MAX_PATH);
 	if (!get_words_completion(autocomp, tcap) || !init_autocomp(tcap, autocomp))
 		return (1);
-	dprintf(debug(), "{%d/%d}\n", autocomp->max_offset, tcap->cursx_max);
 	if (autocomp->max_offset >= g_shell->tcap->cursx_max)
 	{
 		autocomp->state = 0;
