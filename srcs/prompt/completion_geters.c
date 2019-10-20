@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/25 23:59:43 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/10/19 19:10:19 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/10/20 06:35:43 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,15 @@
 
 void	get_tilde(char *path, char *final_path)
 {
-	char	env_home[MAX_PATH];
 	int		i;
+	char	*home;
 
+	home = get_key_value("HOME", g_shell->env);
 	i = -1;
-	env_home[0] = 0;
-	ft_strcpy(env_home, get_key_value("HOME", g_shell->env));
-	if (path[0] == '~' && env_home[0])
+	if (home && path[0] == '~')
 	{
-		ft_strcpy(final_path, env_home);
-		ft_strcpy(final_path + ft_strlen(env_home), path + 1);
+		ft_strcpy(final_path, home);
+		ft_strcpy(final_path + ft_strlen(home), path + 1);
 	}
 	else
 		ft_strcpy(final_path, path);
