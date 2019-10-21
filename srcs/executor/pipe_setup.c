@@ -6,7 +6,7 @@
 /*   By: tlechien <tlechien@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/04 17:30:01 by tlechien          #+#    #+#             */
-/*   Updated: 2019/10/08 17:33:49 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/10/22 01:01:18 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void push_pipe(t_ast *root, t_pipe **begin)
 	if (!(new = (t_pipe *)ft_memalloc(sizeof(t_pipe))))
 		shell_exit(MALLOC_ERR);
 	new->cmd = root->token->content;
+	new->redir = root->token->redir;
 	if (pipe)
 	{
 		while (pipe->next)

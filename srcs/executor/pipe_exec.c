@@ -6,7 +6,7 @@
 /*   By: tlechien <tlechien@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/04 17:31:04 by tlechien          #+#    #+#             */
-/*   Updated: 2019/10/12 15:18:41 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/10/22 01:02:40 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ static	void	launch_process(t_pipe *begin,t_pipe *prev, t_pipe *pipe, int is_bg)
 			dup2(prev->fd[0], STDIN_FILENO);
 			close(prev->fd[1]);
 		}
-		pipe_exec(pipe->cmd, 0);
+		pipe_exec(pipe->cmd, pipe->redir);
 		exit(1);
 }
 

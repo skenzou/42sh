@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 00:40:57 by midrissi          #+#    #+#             */
-/*   Updated: 2019/10/07 21:15:03 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/10/22 01:01:31 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ typedef struct		s_pipe
 	int				fd[2];
 	char			**cmd;
 	int				pid;
+	int				redir;
 	struct s_pipe	*next;
 }					t_pipe;
 

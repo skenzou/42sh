@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pre_exec.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: midrissi <midrissi@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/24 13:50:03 by midrissi          #+#    #+#             */
-/*   Updated: 2019/09/21 23:23:53 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/10/22 01:26:47 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,8 @@ int				ft_pre_execution(char ***args, int redir, t_builtin **builtin)
 		{
 			if (is_path((*args)[0]))
 				err = check_file((*args)[0]);
-			else
-				err = hash_table(&((*args)[0]), g_shell->env);
+			else if ((err = hash_table(&((*args)[0]), g_shell->env)))
+				err = hash_table(&((*args)[0]), g_shell->intern);
 		}
 		if (err)
 			err_handler(err, (*args)[0]);
