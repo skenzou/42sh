@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   prompt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aben-azz <aben-azz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 07:12:40 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/09/21 23:23:45 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/10/11 14:37:58 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,10 +97,10 @@ typedef struct	s_cap
 	char		*carriage;
 	char		*clr_curr_line;
 	char		*clr_all_line;
-	char		*place_cursor;
+	//char		*place_cursor;
 	char		*sound;
-	char		*save;
-	char		*restore;
+	//char		*save;
+	//char		*restore;
 	int			cursx;
 	int			cursx_max;
 	int			cursy_max;
@@ -157,8 +157,8 @@ typedef struct	s_tab
 	int						max_offset;
 	char					match[BUFFSIZE];
 	int 					isdir;
-	char          after[BUFFSIZE];
-	char          comp[MAX_PATH];
+	char					after[BUFFSIZE];
+	char					comp[MAX_PATH];
 	char					*data[MAX_HISTORY_LENGHT];
 	char					ext[MAX_HISTORY_LENGHT];
 }				t_ab;
@@ -260,6 +260,7 @@ int 	end_ctrl_r(t_ctrl_r *ctrl_r);
 int		ft_put_termcaps(int c);
 char	*correct(char *string, char **possible, int *difference);
 char	*get_git_status(void);
+int		ft_clean_eol(t_cap *tcap);
 
 /*
 **	SIGNAL_HANDLER.C

@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/10 02:39:58 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/06/25 23:50:49 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/10/03 15:19:47 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,5 +89,5 @@ void		print_prompt_prefix(void)
 		return ;
 	}
 	print_default_prompt_prefix();
-	tputs(g_shell->tcap->save, 1, ft_put_termcaps);
+	//tputs(g_shell->tcap->save, 1, ft_put_termcaps);
 }

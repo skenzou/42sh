@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   completion_file.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aben-azz <aben-azz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/26 00:44:20 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/06/26 23:40:02 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/10/19 19:01:12 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	create_file(char *name, char *path, t_ab *comp, char ext)
 	ft_bzero(file, MAX_PATH);
 	cat_fullpath(full_path, name, path);
 	lstat(full_path, &stats);
-	dprintf(debug(), "createfile: |%s|\n", file);
+	//dprintf(debug(), "createfile: |%s|\n", file);
 	if ((comp->isdir = file_name_ext(name, stats, file)))
 	{
 		if (!file[0])
@@ -76,12 +76,14 @@ int		add_to_completion(t_ab *autocomp, char *path, char ext)
 
 int		first_arg_completion(t_ab *autocomp, t_cap *tc, char *str, int position)
 {
-	if (is_env_var(autocomp, str))
+	int index = is_env_var(autocomp, str);
+	dprintf(debug(), "isenvvar: %d, |%s|\n", index, str);
+	if (index)
 		return (env_completion(autocomp, str));
 	else if (tc->command[position - 1] && tc->command[position - 1] == '/')
 		return (add_to_completion(autocomp, str, 0));
 	command_completion(autocomp, str);
-	//path_completion(autocomp, str);
+	path_completion(autocomp, str);
 	return (autocomp->len > 0);
 }
 
@@ -93,8 +95,10 @@ int		print_name(t_ab *autocomp, char *str, int i)
 		ft_printf("\x1b[31m%s\x1b[0m", str);
 	else if (autocomp->ext[i] == 'c')
 		ft_printf("\x1b[33m%s\x1b[0m", str);
-	else if (autocomp->ext[i] == 'i' || autocomp->ext[i] == 'e')
+	else if (autocomp->ext[i] == 'i')
 		ft_printf("\x1b[36m%s\x1b[0m", str);
+	else if (autocomp->ext[i] == 'e')
+		ft_printf("\x1b[35m%s\x1b[0m", str);
 	else
 		ft_printf(str);
 	ft_move(g_shell->tcap, "!right", autocomp->max_offset - ft_strlen(str) + 2);

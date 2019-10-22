@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/28 15:35:56 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/06/25 23:50:49 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/10/03 13:11:54 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,33 @@ char	*get_git_status(void)
 		close(fd);
 	}
 	return (NULL);
+}
+
+int		ft_clean_eol(t_cap *tcap)
+{
+	int		len;
+	int		j;
+	char	*str;
+	int		i;
+
+	len = 0;
+	i = -1;
+	while (tcap->command[++i])
+		if (tcap->command[i] != '\n')
+			len++;
+	if (!(str = ft_strnew(len)))
+		return (tcap->char_len);
+	i = -1;
+	j = 0;
+	while (tcap->command[++i])
+	{
+		if (tcap->command[i] != '\n')
+			str[j++] = tcap->command[i];
+	}
+	ft_bzero(tcap->command, BUFFSIZE);
+	ft_strcpy(tcap->command, str);
+	ft_strdel(&str);
+	return (len);
 }
 
 char	*correct(char *string, char **possible, int *difference)

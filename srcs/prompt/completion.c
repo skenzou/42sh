@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   completion.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aben-azz <aben-azz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 06:02:13 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/06/26 23:03:35 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/10/19 19:04:50 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int		init_autocomp(t_cap *tcap, t_ab *autocomp)
 		{
 			if (g_shell->autocomp->after[0])
 				ft_insert(g_shell->autocomp->after, tcap);
-			ft_insert(" ", tcap);
+			//ft_insert(" ", tcap);
 		}
 		autocomp->state = 0;
 		return (0);
@@ -86,32 +86,8 @@ int		get_words_completion(t_ab *autocomp, t_cap *tc)
 	return (0);
 }
 
-int		process_completion(t_ab *autocomp)
+int		print_completion(t_ab *autocomp, int row, int i)
 {
-	int row;
-	int col;
-	int i;
-	int o;
-	t_cap *tcap;
-
-	tcap = g_shell->tcap;
-	row = 0;
-	i = 0;
-	col = -1;
-	end_event(tcap);
-	o = tcap->cursy * (tcap->cursx_max + 1) + (tcap->cursx) - tcap->prompt_len;
-	ft_move(tcap, "left", tcap->char_len - o);
-	ft_move(tcap, "down", 1);
-	while (++col < autocomp->col)
-	{
-		row = -1;
-		while (++row < autocomp->row)
-		{
-			print_name(autocomp, autocomp->data[i], i);
-			i++;
-		}
-		ft_move(g_shell->tcap, "down", 1);
-	}
 	if (autocomp->carry > 0)
 	{
 		row = autocomp->carry;
@@ -134,6 +110,36 @@ int		process_completion(t_ab *autocomp)
 	return (1);
 }
 
+int		process_completion(t_ab *autocomp)
+{
+	int		row;
+	int		col;
+	int		i;
+	int		o;
+	t_cap	*tcap;
+
+	tcap = g_shell->tcap;
+	row = 0;
+	i = 0;
+	col = -1;
+	end_event(tcap);
+	o = tcap->cursy * (tcap->cursx_max + 1) + (tcap->cursx) - tcap->prompt_len;
+	ft_move(tcap, "left", tcap->char_len - o);
+	ft_move(tcap, "down", 1);
+	autocomp->row = ft_max(autocomp->row, 1);
+	while (++col < autocomp->col)
+	{
+		row = -1;
+		while (++row < autocomp->row)
+		{
+			print_name(autocomp, autocomp->data[i], i);
+			i++;
+		}
+		ft_move(g_shell->tcap, "down", 1);
+	}
+	return (print_completion(autocomp, row, i));
+}
+
 int		ft_tab(t_cap *tcap, t_ab *autocomp)
 {
 	autocomp->max_offset = 0;
@@ -143,6 +149,11 @@ int		ft_tab(t_cap *tcap, t_ab *autocomp)
 	ft_bzero(autocomp->match, MAX_PATH);
 	if (!get_words_completion(autocomp, tcap) || !init_autocomp(tcap, autocomp))
 		return (1);
+	if (autocomp->max_offset >= g_shell->tcap->cursx_max)
+	{
+		autocomp->state = 0;
+		return (1);
+	}
 	process_completion(autocomp);
 	return (1);
 }
