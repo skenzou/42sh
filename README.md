@@ -10,22 +10,19 @@
 ## TODO
 - POSIX norme on builtins
 - Error management.
-- Result & redir Pipes (Mo/Théo)
-/*- Echo Posix (Théo/Mo)*/
 - Fc (Hraf/(Théo))
 (- changements pwd jobs)
 
 ## VERIF
-- Setenv
-- Expansion pipe
 - Leaks
-/*- Kill_pids*/
 
 ## DEBUG
 
-- '~' autocompletion (Hraf)
 - Quotes (Mo)
-- Sentenv & doit quand même update les envs dans le parent? (Mo/Théo)
+- Heredoc EO\ (Mo)
+- handler > ft_lstdel crash (Mo)
+- ctrl+d heredoc (Achraf + Théo)
+- Home key multiligne (Achraf)
 
 ## DONE
 
