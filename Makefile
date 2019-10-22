@@ -6,7 +6,7 @@
 #    By: midrissi <midrissi@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/03 09:24:41 by midrissi          #+#    #+#              #
-#    Updated: 2019/10/04 19:31:39 by tlechien         ###   ########.fr        #
+#    Updated: 2019/10/22 05:10:37 by tlechien         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,7 +45,7 @@ NAME		= 42sh
 MSG			=	$(_BOLD)$(_BLUE)Compiling 42sh$(_END)
 
 CC			= gcc
-C_FLAGS		= -fsanitize=address -Wall -Wextra -Werror
+C_FLAGS		= -Wall -Wextra -Werror -fsanitize=address
 SRC_PATH	= srcs/
 OBJ_PATH	= .obj/
 LFT_PATH	= ./libft/
@@ -78,7 +78,8 @@ _EXEC 		= alias_builtin.c alias_init.c alias_utils.c tools.c\
 			unsetenv_builtin.c cd_builtin_utils.c hash_builtin.c \
 			cd_builtin_chdir.c utils2.c handle_hdoc.c  \
 			export_builtin2.c test_builtin_tools.c bin_hash_tools.c \
-			pipe_exec.c pipe_setup.c
+			pipe_exec.c pipe_setup.c fc_builtin.c fc_builtin_list.c \
+			fc_builtin_subst.c fc_builtin_utils.c fc_builtin_editor.c
 EXEC 		= $(addprefix $(SRC_PATH)executor/,$(_EXEC))
 _EXEC_O 	:= $(_EXEC:.c=.o)
 EXEC_O 		:= $(EXEC:.c=.o)

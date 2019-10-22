@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 00:40:57 by midrissi          #+#    #+#             */
-/*   Updated: 2019/10/22 01:01:31 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/10/22 05:09:33 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,12 @@
 # include "shell.h"
 
 # define ALIAS_FILE		".21sh_alias"
-# define CHS_LEN 		8
+# define FC_OPTIONS 	"erlns"
+# define FC_EDITOR 		(1 << 0)
+# define FC_REVERSE 	(1 << 1)
+# define FC_LIST 		(1 << 2)
+# define FC_NO_NUMBER 	(1 << 3)
+# define FC_NO_EDITOR 	(1 << 4)
 
 typedef struct		s_hash_entry
 {
@@ -130,12 +135,27 @@ int					export_builtin(int ac, char **av);
 */
 int					export_options(int ac, char **av);
 /*
-** FT_EXEC_PIPE.C
+** FC_BUILTIN.C
 */
-void 				parse_pipe (t_ast *root, t_ast *origin, t_pipe **pipe);
-int 				launch_pipe (t_pipe **begin, t_pipe *pipe, int is_bg);
-void 				push_pipe(t_ast *root, t_pipe **begin);
-
+int					fc_builtin(int ac, char **cmd);
+/*
+** FC_BUILTIN_EDITOR.c
+*/
+int		fc_editor(int argc, char **argv, int param);
+/*
+** FC_BUILTIN_LIST.C
+*/
+int					fc_list(int ac, char **av, int param);
+/*
+** FC_BUILTIN_LIST.C
+*/
+int					fc_no_editor(int ac, char **av);
+/*
+** FC_BUILTIN_UTILS.c
+*/
+void				arg_to_number(char *str, char *str2, int *index, int *max);
+int					get_param(int argc, char **argv);
+int					check_compatibility(int p);
 /*
 ** GET_OPTIONS.C
 */
@@ -147,10 +167,6 @@ int					params(char **flags, int ac, char **av, int (*usage)());
 ** HANDLE_HDOC.C
 */
 void				handle_hdoc(t_list *redir);
-/*
-** HANDLE_PIPE.C
-*/
-void				handle_pipe(t_ast *root, char job);
 /*
 ** HANDLE_REDIR.C
 */
@@ -165,9 +181,14 @@ void				empty_table(void);
 */
 void				param_expansion(char **ptr);
 /*
-** PARSE_PIPES.C
+** PIPE_EXEC.C
 */
-void				parse_pipes(t_ast *root, t_pipe **pipes, size_t nbpipes);
+int 				launch_pipe (t_pipe **begin, t_pipe *pipe, int is_bg);
+/*
+** PIPE_SETUP.C
+*/
+void 				push_pipe(t_ast *root, t_pipe **begin);
+void 				parse_pipe (t_ast *root, t_ast *origin, t_pipe **pipe);
 /*
 ** PRE_EXEC.C
 */

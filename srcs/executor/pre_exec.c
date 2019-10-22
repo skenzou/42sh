@@ -6,13 +6,13 @@
 /*   By: midrissi <midrissi@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/24 13:50:03 by midrissi          #+#    #+#             */
-/*   Updated: 2019/10/22 01:26:47 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/10/22 05:11:47 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-#define NB_BUILTINS 19
+#define NB_BUILTINS 20
 
 static const t_builtin g_builtins[NB_BUILTINS] = {
 	{"echo", &echo_builtin},
@@ -33,7 +33,8 @@ static const t_builtin g_builtins[NB_BUILTINS] = {
 	{"alias", &alias_builtin},
 	{"unalias", &unalias_builtin},
 	{"[", &test_builtin},
-	{"history", &history_builtin}
+	{"history", &history_builtin},
+	{"fc", &fc_builtin}
 };
 
 t_builtin		*get_builtin(char *cmd)
