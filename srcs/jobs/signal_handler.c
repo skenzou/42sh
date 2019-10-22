@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/28 15:31:17 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/10/04 16:30:07 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/10/22 03:27:48 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 ** Extension of sigint_handler() that deals with tcaps reset.
 */
 
-static void	sigint_tcap(void)
+void	interrupt_tcap(void)
 {
 	t_cap *tcap;
 
@@ -46,7 +46,7 @@ void		sigint_handler(int sig)
 	if (sig == SIGINT)
 	{
 		signal(SIGINT, sigint_handler);
-		sigint_tcap();
+		interrupt_tcap();
 		if (g_shell->inhib_mod == 1)
 		{
 			fcntl(0, F_SETFL, O_NONBLOCK);

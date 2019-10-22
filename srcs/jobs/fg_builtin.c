@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fg_builtin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tlechien <tlechien@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tlechien <tlechien@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/16 05:04:02 by tlechien          #+#    #+#             */
-/*   Updated: 2019/09/24 03:39:47 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/10/22 04:07:55 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@ static int	waitfg(t_child *node)
 	signal(SIGCHLD, SIG_DFL);
 	signal(SIGINT, sigchld_handler);
 	signal(SIGTSTP, sigtstp_handler);
+	tcsetpgrp(0, (node->pid));
 	if (node && node->status != 0 && ((node->status = SIGCONT) || 1))
 		kill(node->pid, SIGCONT);
 	display_pid_status(node, 1);
-	tcsetpgrp(0, (node->pid));
 	waitpid(node->pid, &status, WUNTRACED);
 	tcsetpgrp(0, getpgrp());
 	if (WIFEXITED(status))

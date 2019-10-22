@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handler.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: midrissi <midrissi@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/29 17:39:49 by midrissi          #+#    #+#             */
-/*   Updated: 2019/09/24 01:41:08 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/10/22 03:26:23 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char		**dup_env(char **env)
 
 	i = ft_split_count((const char **)env);
 	if (!(p = (char **)ft_memalloc(sizeof(char *) * (i + 1))))
-		exit(0);
+		shell_exit(MALLOC_ERR);
 	i = -1;
 	while (env[++i])
 		if (!(p[i] = ft_strdup(env[i])))
@@ -72,7 +72,7 @@ char	*read_line(t_cap *tcap)
 		ft_bzero(buffer, 4);
 		tcsetattr(0, TCSADRAIN, g_shell->term);
 		read(0, &buffer, 3);
-		if (g_shell->inhib_mod == 2)
+		if (g_shell->inhib_mod >= 2)
 			return(NULL);
 		if ((ret = read_buffer(buffer, tcap)) == -2)
 			return (clean_before_return(tcap));

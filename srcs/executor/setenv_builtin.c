@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   setenv_builtin.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: midrissi <midrissi@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 18:46:30 by midrissi          #+#    #+#             */
-/*   Updated: 2019/06/22 19:45:58 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/10/22 02:14:41 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,13 @@ static char				**addkey(char *key, char *value, char **env)
 
 	count = ft_split_count((const char**)env);
 	fresh_env = (char **)ft_memalloc(sizeof(char *) * (count + 2));
-	fresh_env == NULL ? exit(1) : 0;
+	fresh_env == NULL ? shell_exit(MALLOC_ERR) : 0;
 	i = -1;
 	while (++i < count)
 		if (!(fresh_env[i] = ft_strdup(env[i])))
-			exit(1);
+			shell_exit(MALLOC_ERR);
 	fresh_env[i] = !value ? key : ft_strjoin(key, value);
-	fresh_env[i] == NULL ? exit(1) : 0;
+	fresh_env[i] == NULL ? shell_exit(MALLOC_ERR) : 0;
 	fresh_env[i + 1] = NULL;
 	ft_splitdel(env);
 	return (fresh_env);
@@ -53,13 +53,13 @@ void					ft_setenv(char *key, char *value, char ***env)
 	char	*temp;
 
 	key = ft_strjoin(key, "=");
-	key == NULL ? ft_exit("Malloc failed in ft_setenv") : 0;
+	key == NULL ? shell_exit(MALLOC_ERR) : 0;
 	i = get_indexof_key(key, *env);
 	if (i >= 0)
 	{
 		temp = (*env)[i];
 		(*env)[i] = !value ? key : ft_strjoin(key, value);
-		(*env)[i] == NULL ? exit(1) : 0;
+		(*env)[i] == NULL ? shell_exit(MALLOC_ERR) : 0;
 		ft_strdel(&temp);
 	}
 	else

@@ -6,7 +6,7 @@
 /*   By: tlechien <tlechien@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/25 00:52:53 by tlechien          #+#    #+#             */
-/*   Updated: 2019/10/03 20:03:00 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/10/22 03:28:22 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,6 +125,7 @@ char				*full_cmd(char **cmd);
 /*
 **	SIGNAL_HANDLER.C
 */
+void				interrupt_tcap(void);
 void				sigint_handler(int sig);
 void				sigfork(int sig);
 void				sigwinch_handler(int sig);

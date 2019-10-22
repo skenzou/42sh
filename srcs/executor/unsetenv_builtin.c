@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   unsetenv_builtin.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: midrissi <midrissi@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 20:26:58 by midrissi          #+#    #+#             */
-/*   Updated: 2019/06/23 18:22:43 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/10/22 02:15:42 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,14 @@ char			**removekey2(char *key, int keylen, const char **env)
 	keylen = ft_strlen(key);
 	count = ft_split_count(env);
 	fresh_env = (char **)ft_memalloc(sizeof(char *) * (count + 1));
-	fresh_env == NULL ? exit(1) : 0;
+	fresh_env == NULL ? shell_exit(MALLOC_ERR) : 0;
 	j = 0;
 	i = -1;
 	while (++i < count)
 		if (ft_strncmp(env[i], key, keylen))
 		{
 			fresh_env[j] = ft_strdup(env[i]);
-			fresh_env[j++] == NULL ? exit(1) : 0;
+			fresh_env[j++] == NULL ? shell_exit(MALLOC_ERR) : 0;
 		}
 	fresh_env[j] = NULL;
 	ft_splitdel((char**)env);
@@ -48,14 +48,14 @@ char			**removekey(char *key, int keylen, const char **env)
 
 	count = ft_split_count(env);
 	fresh_env = (char **)ft_memalloc(sizeof(char *) * (count + 1));
-	fresh_env == NULL ? exit(1) : 0;
+	fresh_env == NULL ? shell_exit(MALLOC_ERR) : 0;
 	j = 0;
 	i = -1;
 	while (++i < count)
 		if (ft_strncmp(env[i], key, keylen))
 		{
 			fresh_env[j] = ft_strdup(env[i]);
-			fresh_env[j++] == NULL ? exit(1) : 0;
+			fresh_env[j++] == NULL ? shell_exit(MALLOC_ERR) : 0;
 		}
 	fresh_env[j] = NULL;
 	ft_splitdel((char**)env);
@@ -74,7 +74,7 @@ int				unsetenv_builtin(int ac, char **av)
 		return (1);
 	}
 	key = ft_strjoin(av[1], "=");
-	key == NULL ? exit(1) : 0;
+	key == NULL ? shell_exit(MALLOC_ERR) : 0;
 	if ((get_indexof_key(key, g_shell->env)) >= 0)
 		g_shell->env = removekey(key, ft_strlen(key),
 													(const char**)g_shell->env);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handle_hdoc.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: midrissi <midrissi@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/07 06:30:44 by midrissi          #+#    #+#             */
-/*   Updated: 2019/09/22 03:57:32 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/10/22 03:44:59 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static void		exec_hdoc(t_redir *redir, char *tmp_file)
 	if (!(eof = ft_strjoin(redir->dest[0], "\n")))
 		ft_exit("Malloc failed in handle_hdoc");
 	g_shell->tcap->prompt = "heredoc>";
-	while (42 && g_shell->inhib_mod != 2)
+	while (42 && g_shell->inhib_mod == 1)
 	{
 		input = read_line(g_shell->tcap);
 		if (g_shell->inhib_mod == 2 || !ft_strcmp(input, eof))
@@ -54,7 +54,7 @@ void			handle_hdoc(t_list *redir)
 		str[10] = i + 48;
 		if (((t_redir *)redir->content)->op_type == DBL_LESS)
 			exec_hdoc(redir->content, str);
-		if (g_shell->inhib_mod == 2)
+		if (g_shell->inhib_mod != 1)
 			break ;
 		i++;
 		redir = redir->next;

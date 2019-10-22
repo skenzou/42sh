@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   alias_builtin.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tlechien <tlechien@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tlechien <tlechien@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/19 14:48:57 by tlechien          #+#    #+#             */
-/*   Updated: 2019/09/22 00:42:19 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/10/22 02:11:59 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,7 @@ int				unalias_builtin(int ac, char **cmd)
 		{
 			free(g_aliases[index]);
 			if (!(g_aliases[index] = ft_strdup("")))
-				exit(1);
+				shell_exit(MALLOC_ERR);
 		}
 	}
 	return (0);

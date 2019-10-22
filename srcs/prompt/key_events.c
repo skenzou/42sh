@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_events.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aben-azz <aben-azz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/28 15:23:43 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/06/26 22:55:00 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/10/22 03:55:33 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,15 @@ int		ctrl_r_event(t_cap *tcap)
 int		ctrl_d_event(t_cap *tcap)
 {
 	(void)tcap;
-	ft_printf("exit\n");
-	exit(0);
+	if (!g_shell->inhib_mod)
+	{
+		save_alias(1);
+		kill_pids();
+		ft_printf("exit\n");
+		exit(0);
+	}
+	g_shell->tcap->prompt = NULL;
+	g_shell->inhib_mod = 0;
 	return (1);
 }
 
