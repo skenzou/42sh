@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cd_builtin_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: midrissi <midrissi@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/06 02:31:10 by midrissi          #+#    #+#             */
-/*   Updated: 2019/07/01 05:38:37 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/10/23 12:55:21 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,9 +92,7 @@ char			*get_path(char *dir)
 			ft_exit("Malloc failed in get_path");
 		return (path);
 	}
-	entry = get_key_value("CDPATH", g_shell->env_tmp);
-	if (!entry)
-		entry = get_key_value("CDPATH", g_shell->intern);
+	entry = get_all_key_value("CDPATH", g_shell->env_tmp);
 	path = NULL;
 	if (entry)
 		path = test_full_paths(entry, dir);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tilde_expansion.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: midrissi <midrissi@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/29 16:11:24 by midrissi          #+#    #+#             */
-/*   Updated: 2019/06/07 06:24:21 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/10/23 12:55:00 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,7 @@ static char			*get_home(void)
 {
 	char *home;
 
-	home = get_key_value("HOME", g_shell->env);
-	if (!home)
-		home = get_key_value("HOME", g_shell->intern);
+	home = get_all_key_value("HOME", g_shell->env);
 	if (!home)
 		home = get_home_from_pwuid();
 	else

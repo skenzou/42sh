@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   param_expansion.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: midrissi <midrissi@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/29 17:34:20 by midrissi          #+#    #+#             */
-/*   Updated: 2019/07/01 05:40:16 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/10/23 12:55:58 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,7 @@ static char			*dollar_curly(char *old, char *ptr, int *i)
 	str = goto_closing_brace(ptr) + 1;
 	if (!(key = ft_strsub(ptr, 2, str - ptr - 3)))
 		ft_exit("Malloc failed in reform_string");
-	value = get_key_value(key, g_shell->env);
-	if (!value)
-		value = get_key_value(key, g_shell->intern);
+	value = get_all_key_value(key, g_shell->env);
 	if (!value)
 		value = "";
 	len_after_brace = ft_strlen(str);
@@ -71,9 +69,7 @@ static char			*simple_dollar(char *old, char *ptr, int *i)
 	ptr_after_exp = ptr + 1 + exp_len;
 	if (!(key = ft_strsub(ptr, 1, exp_len)))
 		ft_exit("Malloc failed in reform_string");
-	value = get_key_value(key, g_shell->env);
-	if (!value)
-		value = get_key_value(key, g_shell->intern);
+	value = get_all_key_value(key, g_shell->env);
 	if (!value)
 		value = "";
 	len_after_exp = ft_strlen(ptr_after_exp);

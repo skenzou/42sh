@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   shell_var.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: midrissi <midrissi@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/27 19:17:30 by midrissi          #+#    #+#             */
-/*   Updated: 2019/07/01 05:40:50 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/10/23 12:56:28 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,7 @@ void				compare_paths(char *path)
 {
 	char *newpath;
 
-	newpath = get_key_value("PATH", g_shell->env);
-	if (!newpath)
-		newpath = get_key_value("PATH", g_shell->intern);
+	newpath = get_all_key_value("PATH", g_shell->env);
 	if ((!path && newpath) || (path && !newpath))
 		empty_table();
 	else if (path && newpath)
@@ -105,8 +103,7 @@ void				handle_intern_var(char **args)
 	}
 	else
 	{
-		(path = get_key_value("PATH", g_shell->env)) ||
-		(path = get_key_value("PATH", g_shell->intern));
+		path = get_all_key_value("PATH", g_shell->env);
 		while (++j < i)
 			add_to_right_tab(args[j], &g_shell->env, &g_shell->intern);
 		compare_paths(path);

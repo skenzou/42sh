@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 00:40:57 by midrissi          #+#    #+#             */
-/*   Updated: 2019/10/22 05:09:33 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/10/23 12:44:28 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -211,6 +211,7 @@ int					open_file(t_redir *redir);
 ** SET_BUILTIN.C
 */
 int					set_builtin();
+char				*get_all_key_value(char *key, char **env);
 /*
 ** SETENV_BUILTIN.C
 */

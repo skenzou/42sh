@@ -17,7 +17,7 @@ void	get_tilde(char *path, char *final_path)
 	int		i;
 	char	*home;
 
-	home = get_key_value("HOME", g_shell->env);
+	home = get_all_key_value("HOME", g_shell->env);
 	i = -1;
 	if (home && path[0] == '~')
 	{

@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/28 15:23:43 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/10/22 03:55:33 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/10/23 11:35:13 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,8 +75,6 @@ int		ctrl_d_event(t_cap *tcap)
 		ft_printf("exit\n");
 		exit(0);
 	}
-	g_shell->tcap->prompt = NULL;
-	g_shell->inhib_mod = 0;
 	return (1);
 }
 

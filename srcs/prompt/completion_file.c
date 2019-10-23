@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/26 00:44:20 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/10/19 19:01:12 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/10/23 12:28:07 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ int		add_to_completion(t_ab *autocomp, char *path, char ext)
 int		first_arg_completion(t_ab *autocomp, t_cap *tc, char *str, int position)
 {
 	int index = is_env_var(autocomp, str);
-	dprintf(debug(), "isenvvar: %d, |%s|\n", index, str);
+	//dprintf(debug(), "isenvvar: %d, |%s|\n", index, str);
 	if (index)
 		return (env_completion(autocomp, str));
 	else if (tc->command[position - 1] && tc->command[position - 1] == '/')

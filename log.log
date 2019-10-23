@@ -1,22 +1,76 @@
-createfile: ||
-createfile: ||
-createfile: ||
-createfile: ||
-createfile: ||
-createfile: ||
-createfile: ||
-createfile: ||
-createfile: ||
-createfile: ||
-createfile: ||
-createfile: ||
-createfile: ||
-createfile: ||
-createfile: ||
-createfile: ||
-createfile: ||
-createfile: ||
-createfile: ||
-createfile: ||
-shell_fds: 3 4 
-here
+isenvvar: 1, ||
+nb de ligne : 54 59 == 1 
+isenvvar: 1, ||
+nb de ligne : 51 59 == 1 
+isenvvar: 1, |./|
+isenvvar: 1, |/|
+isenvvar: 0, |/|
+isenvvar: 0, |./|
+isenvvar: 0, |./includes/|
+nb de ligne : 59 59 == 2 
+nb de ligne : 65 59 == 1 
+nb de ligne : 48 59 == 1 
+isenvvar: 0, |~/|
+probleme opendir: ~/
+isenvvar: 0, |~/|
+probleme opendir: ~/
+isenvvar: 0, |~/|
+probleme opendir: ~/
+isenvvar: 0, |~/|
+probleme opendir: ~/
+isenvvar: 0, |~/|
+probleme opendir: ~/
+isenvvar: 0, |~/|
+probleme opendir: ~/
+isenvvar: 0, |~/|
+probleme opendir: ~/
+isenvvar: 0, |~/|
+probleme opendir: ~/
+isenvvar: 0, |~/|
+probleme opendir: ~/
+isenvvar: 0, |~/|
+probleme opendir: ~/
+isenvvar: 0, |~/|
+probleme opendir: ~/
+isenvvar: 0, |~/|
+probleme opendir: ~/
+isenvvar: 0, |~/|
+probleme opendir: ~/
+isenvvar: 0, |~/|
+probleme opendir: ~/
+isenvvar: 0, |~/|
+probleme opendir: ~/
+nb de ligne : 42 59 == 1 
+waiting 71277
+waiting 71278
+probleme opendir: /exam/
+probleme opendir: /exam/
+probleme opendir: /exam/
+probleme opendir: /exam/
+probleme opendir: /exam/
+probleme opendir: /exam/
+probleme opendir: /exam/
+probleme opendir: /exam/
+probleme opendir: /exam/
+probleme opendir: ~/
+probleme opendir: ~/
+probleme opendir: ~/
+probleme opendir: ~/
+probleme opendir: ~/
+probleme opendir: ~/
+probleme opendir: ~/
+probleme opendir: ~/
+probleme opendir: ~/
+probleme opendir: ~/
+probleme opendir: ~/
+probleme opendir: ~/
+probleme opendir: ~/
+probleme opendir: ~/
+probleme opendir: ~/
+probleme opendir: ~/
+probleme opendir: ~/
+probleme opendir: ~/
+probleme opendir: ~/
+probleme opendir: ~/
+probleme opendir: ~/
+probleme opendir: ~/

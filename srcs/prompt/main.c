@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aben-azz <aben-azz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/27 17:27:48 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/09/24 00:51:13 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/10/23 12:49:10 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,15 +46,18 @@ char		**g_aliases;
 
 char				*clean_before_return(t_cap *tcap)
 {
+	int len;
+
+	len = ((tcap->char_len + tcap->prompt_len) / tcap->cursx_max) - tcap->cursy;
 	tcsetattr(0, TCSADRAIN, g_shell->term_backup);
 	ft_printf("\x1b[0m");
 	tcap->cursx = tcap->prompt_len;
-	tcap->cursy = 0;
 	tcap->command[tcap->char_len] = '\n';
 	if (add_cmd_to_history(tcap->command, g_shell->history) == -1)
 		return (NULL);
+	ft_nputchar(10, len + 1);
+	tcap->cursy = 0;
 	tcap->char_len = 0;
-	ft_printf("\n");
 	return (tcap->command);
 }
 

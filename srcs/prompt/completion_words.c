@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/25 23:58:47 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/10/19 19:08:46 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/10/23 12:45:54 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ int		command_completion(t_ab *autocomp, char *key)
 
 	path_split = NULL;
 	path = NULL;
-	if (!(path = ft_strdup(get_key_value("PATH", g_shell->env))))
+	if (!(path = ft_strdup(get_all_key_value("PATH", g_shell->env))))
 		return (0);
 	if (!(path_split = ft_strsplit(path, ':')))
 	{

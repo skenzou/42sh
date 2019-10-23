@@ -16,7 +16,7 @@ static void			intern_to_env(char *key)
 {
 	char	*value;
 
-	value = get_key_value(key, g_shell->intern);
+	value = get_all_key_value(key, g_shell->intern);
 	update_env(key, value); // faire encore plus de test pour ce cas ci
 	g_shell->intern = removekey2(key, 0, (const char**)g_shell->intern);
 }
@@ -25,7 +25,7 @@ static void			env_to_env(char *key)
 {
 	char	*value;
 
-	value = get_key_value(key, g_shell->env_tmp);
+	value = get_all_key_value(key, g_shell->env_tmp);
 	if (value)
 	{
 		if (!(value = ft_strdup(value)))

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   prompt_prefix.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aben-azz <aben-azz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/10 02:39:58 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/10/03 15:19:47 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/10/23 12:41:17 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static int	print_prefix(void)
 	char	*name;
 
 	//ft_putchar(10);
-	name = get_key_value("USER", g_shell->env);
+	name = get_all_key_value("USER", g_shell->env);
 	name || (name = "42sh");
 	git = NULL;
 	string = NULL;

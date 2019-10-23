@@ -83,7 +83,7 @@ static char			*reorder_pwd(char *path, char *buff)
 
 	if (path && path[0] == '/')
 		return (clean_path(path, buff));
-	oldpwd = get_key_value("OLDPWD", g_shell->env);
+	oldpwd = get_all_key_value("OLDPWD", g_shell->env);
 	ft_bzero((void *)full_path, MAX_PATH_LEN);
 	ft_strcpy(full_path, oldpwd);
 	ft_strcat(full_path, "/");
@@ -98,7 +98,7 @@ int					change_dir(char *path, char flag)
 
 	if (cd_err(check_dir(path), path))
 		return (1);
-	pwd = get_key_value("PWD", g_shell->env_tmp);
+	pwd = get_all_key_value("PWD", g_shell->env_tmp);
 	if (pwd)
 		ft_setenv("OLDPWD", pwd, &g_shell->env);
 	if (chdir(path) == -1)

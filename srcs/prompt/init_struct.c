@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_struct.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aben-azz <aben-azz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/09 00:37:47 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/10/03 15:18:52 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/10/23 12:15:19 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static int	init_history(t_history *history)
 {
 	char *home;
 
-	if ((home = ft_strdup(get_key_value("HOME", g_shell->env))))
+	if ((home = ft_strdup(get_all_key_value("HOME", g_shell->env))))
 	{
 		if (!(history->file_name = ft_strcjoin(home, ".42sh_history", '/')))
 		{

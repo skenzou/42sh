@@ -78,7 +78,7 @@ int		exec_command(char *editor, int index, int max)
 	if (!(editors = ft_strsplit(editor, ' ')))
 		return (1);
 	write_in_file("/tmp/42shtmp", index, max);
-	if (!(path = get_key_value("PATH", g_shell->env_tmp)))
+	if (!(path = get_all_key_value("PATH", g_shell->env_tmp)))
 		return (-1);
 	if (!(bin = ft_strsplit(path, ':')))
 		return (-1);
@@ -111,7 +111,7 @@ int		fc_editor(int argc, char **argv, int param)
 	(void)param;
 	char *fcedit;
 
-	fcedit = get_key_value("FCEDIT", g_shell->env_tmp);
+	fcedit = get_all_key_value("FCEDIT", g_shell->env_tmp);
 	int i = 1;
 	while (i < argc && argv[i][0] == '-' && !~ft_indexof(argv[i], 'e'))
 		i++;

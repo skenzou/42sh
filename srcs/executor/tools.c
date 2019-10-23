@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   tools.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: midrissi <midrissi@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/09 06:45:33 by midrissi          #+#    #+#             */
-/*   Updated: 2019/06/07 06:28:08 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/10/23 12:48:22 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*get_key_value(char *key, char **taba)
 	int		key_index;
 
 	if (!(key = ft_strjoin(key, "=")))
-		ft_exit("Malloc failed in get_key_value");
+		ft_exit("Malloc failed in get_all_key_value");
 	key_index = get_indexof_key(key, taba);
 	if (key_index >= 0)
 	{

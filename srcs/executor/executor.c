@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/03 16:15:41 by midrissi          #+#    #+#             */
-/*   Updated: 2019/10/12 17:50:34 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/10/23 12:45:10 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,7 @@ static void		handle_builtin(t_builtin *builtin, char **args)
 {
 	char	*path;
 
-	(path = get_key_value("PATH", g_shell->env)) ||
-	(path = get_key_value("PATH", g_shell->intern));
+	path = get_all_key_value("PATH", g_shell->env);
 	g_shell->lastsignal = builtin->function(ft_split_count((const char**)args),
 																		args);
 	compare_paths(path);

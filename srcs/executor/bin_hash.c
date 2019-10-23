@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bin_hash.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: midrissi <midrissi@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/13 06:11:23 by midrissi          #+#    #+#             */
-/*   Updated: 2019/06/23 01:46:50 by ghamelek         ###   ########.fr       */
+/*   Updated: 2019/10/23 12:46:41 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ t_hash_entry				*hash_insert(unsigned char *key, char **env)
 			|| !(item->key = (unsigned char *)ft_strdup((char *)key)))
 		ft_exit("Malloc failed in hash_insert");
 	hashindex = hashcode(key);
-	if (!(path = my_env(env)))
+	if (!(path = get_all_key_value("PATH", env)))
 		return (NULL);
 	if (!(bin = ft_strsplit(path, ':')))
 		ft_exit("Malloc failed in hash_insert");
