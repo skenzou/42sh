@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/28 07:28:50 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/10/05 18:05:46 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/10/23 14:14:48 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static inline void	print_history(int max, int index, int p)
 	}
 }
 
-static int			get_history_index(int x, int y, int p)
+static int			get_history_index(int x, int y, int p, int list)
 {
 	int			index;
 	int			max;
@@ -57,7 +57,8 @@ static int			get_history_index(int x, int y, int p)
 		max = index;
 		index = tmp;
 	}
-	print_history(max, index, p);
+	if (list)
+		print_history(max, index, p);
 	return (0);
 }
 
@@ -73,7 +74,7 @@ int					fc_list(int ac, char **av, int param)
 	max = 0;
 	i = 1;
 	if (ac == 2)
-		return (get_history_index(len - 17, len - 1, param));
+		return (get_history_index(len - 17, len - 1, param, 1));
 	while (i < ac && (av[i][0] == '-' && (av[i][1] && !ft_isdigit(av[i][1]))))
 		i++;
 	if (i == ac - 1 || i == ac - 2 || ((param & FC_REVERSE) && i == ac))
@@ -81,7 +82,7 @@ int					fc_list(int ac, char **av, int param)
 		(param & FC_REVERSE && i == ac) && i--;
 		arg_to_number(av[i], i == ac - 2 ? av[i + 1] : NULL, &index, &max);
 		if (~index && ~max)
-			return (get_history_index(index, max, param));
+			return (get_history_index(index, max, param, 1));
 		else
 			ft_printf("occurrence non trouvee\n");
 	}

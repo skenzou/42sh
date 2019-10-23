@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/03 19:37:17 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/10/19 18:27:50 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/10/23 14:15:28 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ int		write_in_file(char *file, int index, int max)
 {
 	int fd;
 	t_history *history;
-	int i;
 
 	if (!(fd = open(file, O_RDWR | O_TRUNC |O_CREAT, 0666)))
 		return (1);
@@ -26,13 +25,25 @@ int		write_in_file(char *file, int index, int max)
 		index = g_shell->history->len - 2;
 		max = index + 1;
 	}
-	i = index;
-	while (i < max)
+	if (max > index)
 	{
-		ft_putstr_fd(history->data[i], fd);
-		ft_putchar_fd(10, fd);
-		//ft_printf("on ecrit: %s dans fd\n", history->data[i]);
-		i++;
+		while (max >= index)
+		{
+			ft_putstr_fd(history->data[max], fd);
+			ft_putchar_fd(10, fd);
+			//ft_printf("on ecrit: %s dans fd\n", history->data[i]);
+			max--;
+		}
+	}
+	else
+	{
+		while (max <= index)
+		{
+			ft_putstr_fd(history->data[max], fd);
+			ft_putchar_fd(10, fd);
+			//ft_printf("on ecrit: %s dans fd\n", history->data[i]);
+			max++;
+		}
 	}
 	close(fd);
 	return (0);
@@ -65,28 +76,37 @@ int		read_file(char *file)
 	return (1);
 }
 
-int		exec_command(char *editor, int index, int max)
+char **init_editor(char *arg)
 {
-	char **editors;
-	int pid;
-	int status;
 	char **bin;
 	char *path;
+	char *editor;
+	char **editors;
 
-	if (!(editor = ft_strcjoin(editor, "/tmp/42shtmp", ' ')))
-		return (1);
+	if (!(editor = ft_strcjoin(arg, "/tmp/42shtmp", ' ')))
+		return (NULL);
 	if (!(editors = ft_strsplit(editor, ' ')))
-		return (1);
-	write_in_file("/tmp/42shtmp", index, max);
+		return (NULL);
 	if (!(path = get_all_key_value("PATH", g_shell->env_tmp)))
-		return (-1);
+		return (NULL);
 	if (!(bin = ft_strsplit(path, ':')))
-		return (-1);
+		return (NULL);
 	if (!(editors[0] = (char *)add_path(bin, (unsigned char *)editors[0])))
-		return (-1);
-	if (!(pid = fork()) && !~execve(editors[0], editors, g_shell->env_tmp))
+		return (NULL);
+	return (editors);
+}
+int		exec_command(char *arg, int index, int max)
+{
+	char **editor;
+	int pid;
+	int status;
+
+	if (!(editor = init_editor(arg)))
+		ft_putstr_fd("Erreur d'allocation dans init_editor", 2);
+	write_in_file("/tmp/42shtmp", index, max);
+	if (!(pid = fork()) && !~execve(editor[0], editor, g_shell->env_tmp))
 	{
-		ft_printf("errno: %d\n", errno);
+		ft_printf("42sh: unable to launch command %s [%d]\n", editor[0], errno);
 		exit(1);
 	}
 	else
@@ -97,18 +117,50 @@ int		exec_command(char *editor, int index, int max)
 		else
 		{
 			ft_putstr_fd("42sh: fc command not found: ", 2);
-			ft_putstr_fd(editors[0], 2);
+			ft_putstr_fd(editor[0], 2);
 			ft_putchar_fd(10, 2);
 		}
 	}
 	return (1);
 }
 
+
+static int			get_editor_history_index(int x, int y, int p, char *editor)
+{
+	int			index;
+	int			max;
+	int			tmp;
+	t_history	*history;
+
+	history = g_shell->history;
+	max = ~y ? ft_max(0, x) : history->len - 1;
+	index = ~y ? ft_max(0, y) : x;
+	if (max >= history->len || index >= history->len)
+		return (-2);
+	else if (!x || !y)
+		return (-3);
+	if (p & FC_REVERSE)
+	{
+		tmp = max;
+		max = index;
+		index = tmp;
+	}
+	exec_command(editor, index, max);
+	return (0);
+}
+
+int		fc_editor_multi_arg(char *editor, char *av1, char *av2, int param)
+{
+	int index;
+	int max;
+
+	arg_to_number(av1, av2, &index, &max);
+	get_editor_history_index(index, max, param, editor);
+	return 1;
+}
+
 int		fc_editor(int argc, char **argv, int param)
 {
-	(void)argc;
-	(void)argv;
-	(void)param;
 	char *fcedit;
 
 	fcedit = get_all_key_value("FCEDIT", g_shell->env_tmp);
@@ -117,30 +169,18 @@ int		fc_editor(int argc, char **argv, int param)
 		i++;
 	while (i < argc && argv[i + 1] && argv[i + 1][0] == '-' && argv[i + 1][1] == 'e')
 		i++;
-	//ft_printf("%d/%d\n", i, argc);
 	if (argc - 1 > i && argv[i + 1][0] == '-')
-	{
-		ft_printf("erreur param apres -e\n");
-		return (1);
-	}
+		return (ft_printf("erreur param apres -e\n") ? 1 : 1);
 	if (i == argc - 1)
-	{
-		ft_printf("Aucun argument pour -e\n");
-		return (1);
-	}
+		return (ft_printf("Aucun argument pour -e\n") ? 1 : 1);
 	else
 	{
 		i++;
-		//ft_printf("ac: %d i: %d, arg: |%s| fcedit: %s\n", argc, i, argv[i], fcedit);
 		if (argc - 1 > i)
-			ft_printf("ya d args supp : {%s, %s}\n", argv[i + 1], argc - 1 - i == 2 ? argv[i + 2] : NULL);
+			fc_editor_multi_arg(argv[i], argv[i + 1],
+								argc - 1 - i == 2 ? argv[i + 2] : NULL, param);
 		else
-		{
-			//ft_printf("Aucun argument, editeur: |%s|\n", argv[i]);
 			exec_command(argv[i], -1, -1);
-		}
 	}
-
-	//ft_printf("editor actif reverse :%d\n", (param & FC_REVERSE) > 0);
 	return (0);
 }
