@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   signals_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tlechien <tlechien@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tlechien <tlechien@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/12 13:41:37 by tlechien          #+#    #+#             */
-/*   Updated: 2019/09/27 00:55:08 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/10/23 11:13:35 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,9 @@ void	sigtstp_handler(int sig)
 		signal(SIGTSTP, sigtstp_handler);
 }
 
+/*
+** Handler for QUIT signal.
+*/
 
 void		sigquit_dflhandler(int sig)
 {
