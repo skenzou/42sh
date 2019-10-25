@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   history_up_down.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aben-azz <aben-azz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 06:28:16 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/06/25 23:55:04 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/10/25 15:51:06 by wbraeckm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,10 @@ int	histo_up(t_cap *tcap, t_history *h)
 	if (!(command = ft_strdup(h->data[h->len - h->position - 1])))
 		return (1);
 	if (!(len = ft_strlen(command)))
+	{
+		ft_strdel(&command);
 		return (1);
+	}
 	string = ft_strnew(len);
 	ft_strncpy(string, command, len);
 	ft_insert(string, tcap);
