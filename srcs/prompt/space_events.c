@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   space_events.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aben-azz <aben-azz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/22 20:28:50 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/06/26 22:58:49 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/11/03 05:27:42 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,14 +54,16 @@ int		space_event(t_cap *tcap)
 		while (i--)
 			ft_delete_back(tcap);
 		ft_insert(g_shell->autocomp->data[g_shell->autocomp->pos], tcap);
-		if (g_shell->autocomp->data[g_shell->autocomp->pos][ft_strlen(g_shell->autocomp->data[g_shell->autocomp->pos])-1] != '/')
+		if (g_shell->autocomp->data[g_shell->autocomp->pos]
+			[ft_strlen(g_shell->autocomp->data[g_shell->autocomp->pos]) - 1]
+																		!= '/')
 		{
 			if (g_shell->autocomp->after[0])
 				ft_insert(g_shell->autocomp->after, tcap);
 			ft_insert(" ", tcap);
 		}
 		g_shell->autocomp->state = 0;
-		int i = -1;
+		i = -1;
 		while (++i < g_shell->autocomp->len)
 		{
 			ft_strdel(&(g_shell->autocomp->data[i]));

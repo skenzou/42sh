@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   history.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aben-azz <aben-azz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/01 17:45:36 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/09/21 23:25:56 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/11/03 05:26:18 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ int	add_cmd_to_history(char *str, t_history *history)
 
 int	history_builtin(int argc, char **argv)
 {
-	t_history *history;
-	int i;
+	t_history	*history;
+	int			i;
 
 	(void)argc;
 	(void)argv;
@@ -71,7 +71,7 @@ int	read_history(t_history *history)
 		while ((ret = get_next_line(fd, &str, 1)) > 0)
 		{
 			history->read++;
-			if (!(history->data[history->len++] =	ft_strdup(str)))
+			if (!(history->data[history->len++] = ft_strdup(str)))
 			{
 				ft_strdel(&str);
 				return (-1);
@@ -80,6 +80,5 @@ int	read_history(t_history *history)
 		}
 		close(fd);
 	}
-
 	return (1);
 }

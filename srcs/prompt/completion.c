@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 06:02:13 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/10/19 19:04:50 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/11/03 05:25:50 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ int		init_autocomp(t_cap *tcap, t_ab *autocomp)
 		{
 			if (g_shell->autocomp->after[0])
 				ft_insert(g_shell->autocomp->after, tcap);
-			//ft_insert(" ", tcap);
 		}
 		autocomp->state = 0;
 		return (0);
@@ -127,9 +126,8 @@ int		process_completion(t_ab *autocomp)
 	ft_move(tcap, "left", tcap->char_len - o);
 	ft_move(tcap, "down", 1);
 	autocomp->row = ft_max(autocomp->row, 1);
-	while (++col < autocomp->col)
+	while (++col < autocomp->col && (row = -1))
 	{
-		row = -1;
 		while (++row < autocomp->row)
 		{
 			print_name(autocomp, autocomp->data[i], i);

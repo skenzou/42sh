@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   reader.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aben-azz <aben-azz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/28 15:31:17 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/09/21 23:38:16 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/11/03 05:14:13 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ static int		handle_eol(char *buffer, t_cap *tcap)
 	return (1);
 }
 
-int checkbuffer(char *string)
+int				checkbuffer(char *string)
 {
 	int i;
 
@@ -98,7 +98,8 @@ static int		handle_key(char *buffer, t_cap *tcap)
 
 int				read_buffer(char *buffer, t_cap *tcap)
 {
-	if (ft_isprint(buffer[0]) && g_shell->autocomp->state && (buffer[0] != ENTER) && buffer[0] != SPACE)
+	if (ft_isprint(buffer[0]) && g_shell->autocomp->state &&
+									(buffer[0] != ENTER) && buffer[0] != SPACE)
 	{
 		tputs(tcap->clr_all_line, 1, ft_put_termcaps);
 		g_shell->autocomp->state = 0;

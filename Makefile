@@ -6,7 +6,7 @@
 #    By: midrissi <midrissi@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/03 09:24:41 by midrissi          #+#    #+#              #
-#    Updated: 2019/10/22 05:10:37 by tlechien         ###   ########.fr        #
+#    Updated: 2019/11/03 04:53:58 by aben-azz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,7 +45,7 @@ NAME		= 42sh
 MSG			=	$(_BOLD)$(_BLUE)Compiling 42sh$(_END)
 
 CC			= gcc
-C_FLAGS		= -Wall -Wextra -Werror -fsanitize=address
+C_FLAGS		= -Wall -Wextra -Werror -g -v #-fsanitize=address
 SRC_PATH	= srcs/
 OBJ_PATH	= .obj/
 LFT_PATH	= ./libft/

@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/10 02:39:58 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/10/23 12:41:17 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/11/03 05:12:47 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,8 @@ static int	print_prefix(void)
 	char	*git;
 	char	*name;
 
-	//ft_putchar(10);
 	name = get_all_key_value("USER", g_shell->env);
 	name || (name = "42sh");
-	git = NULL;
 	string = NULL;
 	git = get_git_status();
 	string = getcwd(string, 20);
@@ -41,7 +39,6 @@ static int	print_prefix(void)
 	{
 		if (git)
 			ft_strdel(&git);
-
 		return (-1);
 	}
 	prompt_len = ft_strlen((string + ft_lastindexof(string, '/') + 1)) +
@@ -49,12 +46,8 @@ static int	print_prefix(void)
 	ft_printf(g_shell->lastsignal ? PROMPT1_ERR : PROMPT1);
 	ft_printf(PROMPT2, (string + ft_lastindexof(string, '/') + 1));
 	ft_strdel(&string);
-	if (git)
-	{
-		prompt_len += 7 + ft_strlen(git);
-		ft_printf(PROMPT3, git);
-		ft_strdel(&git);
-	}
+	if (git && (prompt_len += 7 + ft_strlen(git)))
+		ft_printf(PROMPT3, git) ? ft_strdel(&git) : ft_strdel(&git);
 	ft_printf(PROMPT4, name);
 	return (prompt_len);
 }
@@ -89,5 +82,4 @@ void		print_prompt_prefix(void)
 		return ;
 	}
 	print_default_prompt_prefix();
-	//tputs(g_shell->tcap->save, 1, ft_put_termcaps);
 }

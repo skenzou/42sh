@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/25 23:58:47 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/10/23 12:45:54 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/11/03 05:24:47 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,33 +39,32 @@ int		intern_completion(t_ab *autocomp, char *key)
 	return (1);
 }
 
-int		env_completion(t_ab *autocomp, char *key)
+int		env_completion(t_ab *comp, char *k)
 {
 	int		i;
 	int		len;
-	char	**env;
-	int		index;
+	char	**nv;
+	int		o;
 
-	env = g_shell->env_tmp;
+	nv = g_shell->env_tmp;
 	i = -1;
-	len = ft_strlen(key);
-	autocomp->max_offset = 0;
-	autocomp->len = 0;
-	ft_strcpy(autocomp->match, key);
-	while (env && env[++i])
+	len = ft_strlen(k);
+	comp->max_offset = 0;
+	comp->len = 0;
+	ft_strcpy(comp->match, k);
+	while (nv && nv[++i])
 	{
-		if (env[i] && !ft_strncmp(key, env[i], len))
+		if (nv[i] && !ft_strncmp(k, nv[i], len) && (o = ft_indexof(nv[i], '=')))
 		{
-			index = ft_indexof(env[i], '=');
-			autocomp->data[autocomp->len] = ft_strnew(index);
-			autocomp->ext[autocomp->len] = 'e';
-			ft_strncpy(autocomp->data[autocomp->len], env[i], index);
-			autocomp->max_offset =
-		ft_max(autocomp->max_offset, ft_strlen(autocomp->data[autocomp->len]));
-			autocomp->len++;
+			comp->data[comp->len] = ft_strnew(o);
+			comp->ext[comp->len] = 'e';
+			ft_strncpy(comp->data[comp->len], nv[i], o);
+			comp->max_offset = ft_max(comp->max_offset,
+											ft_strlen(comp->data[comp->len]));
+			comp->len++;
 		}
 	}
-	intern_completion(autocomp, key);
+	intern_completion(comp, k);
 	return (1);
 }
 
@@ -118,8 +117,9 @@ int		path_completion(t_ab *autocomp, char *key)
 
 int		arg_completion(t_ab *autocomp, t_cap *tc, char *str, int position)
 {
-	int index = is_env_var(autocomp, str);
-	if (index)
+	int index;
+
+	if ((index = is_env_var(autocomp, str)))
 		return (env_completion(autocomp, str));
 	else if (tc->command[position - 1] && tc->command[position - 1] == '/')
 	{

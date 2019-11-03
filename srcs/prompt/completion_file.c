@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/26 00:44:20 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/11/03 05:03:08 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/11/03 05:16:41 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ void	create_file(char *name, char *path, t_ab *comp, char ext)
 	ft_bzero(file, MAX_PATH);
 	cat_fullpath(full_path, name, path);
 	lstat(full_path, &stats);
-	//dprintf(debug(), "createfile: |%s|\n", file);
 	if ((comp->isdir = file_name_ext(name, stats, file)))
 	{
 		if (!file[0])
@@ -44,11 +43,12 @@ int		add_to_completion(t_ab *autocomp, char *path, char ext)
 	DIR			*dir;
 	char		final_path[MAX_PATH];
 	char		complet_final_path[MAX_PATH];
+	int			i = 0;
+	int j = 0;
 
 	final_path[0] = 0;
 	get_tilde(path, final_path);
-	int i = 0;
-	int j = 0;
+
 	ft_bzero(complet_final_path, MAX_PATH);
 	while (final_path[i])
 	{
@@ -78,9 +78,9 @@ int		add_to_completion(t_ab *autocomp, char *path, char ext)
 
 int		first_arg_completion(t_ab *autocomp, t_cap *tc, char *str, int position)
 {
-	int index = is_env_var(autocomp, str);
-	//dprintf(debug(), "isenvvar: %d, |%s|\n", index, str);
-	if (index)
+	int index;
+
+	if ((index = is_env_var(autocomp, str)))
 		return (env_completion(autocomp, str));
 	else if (tc->command[position - 1] && tc->command[position - 1] == '/')
 		return (add_to_completion(autocomp, str, 0));
@@ -109,23 +109,24 @@ int		print_name(t_ab *autocomp, char *str, int i)
 
 char	file_name_ext(char *string, t_stat stats, char *name)
 {
-	char ext;
+	char	ext;
+	int		i;
+	int		j;
 
+	i = 0;
+	j = 0;
 	ext = 0;
 	if (S_ISDIR(stats.st_mode))
 		ext = 'd';
 	else if (S_ISREG(stats.st_mode))
 		ext = '-';
 	ft_bzero(name, MAX_PATH);
-	int i = 0;
-	int j = 0;
 	while (string[i])
 	{
 		if (string[i] == ' ')
 			name[j++] = '\\';
 		name[j++] = string[i++];
 	}
-	//dprintf(debug(), "filenameext, str: |%s|, name: |%s|\n", string, name);
 	if (ext == 'd')
 		name[ft_strlen(name)] = '/';
 	return (ext);

@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/28 15:23:43 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/10/23 11:35:13 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/11/03 05:26:46 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,9 @@ int		enter_event(t_cap *tcap)
 			ft_insert(" ", tcap);
 		}
 		g_shell->autocomp->state = 0;
-		int i = -1;
+		i = -1;
 		while (++i < g_shell->autocomp->len)
-		{
 			ft_strdel(&(g_shell->autocomp->data[i]));
-		}
 		g_shell->autocomp->pos = 0;
 		g_shell->autocomp->isdir = 0;
 		g_shell->autocomp->len = 0;
