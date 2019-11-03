@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/26 00:44:20 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/10/23 12:28:07 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/11/03 05:03:08 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ void	create_file(char *name, char *path, t_ab *comp, char ext)
 	{
 		if (!file[0])
 			return ;
+		if (comp->data[comp->len])
+			ft_strdel(&comp->data[comp->len]);
 		comp->data[comp->len] = ft_strdup(file);
 		comp->max_offset = ft_max(comp->max_offset, ft_strlen(file));
 		comp->isdir = comp->isdir == 'd';
