@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/01 17:45:36 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/11/03 05:26:18 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/11/06 17:09:15 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 int	add_cmd_to_history(char *str, t_history *history)
 {
+	if (!str || !*str)
+		return (-1);
 	if (history->len)
 		if (!ft_strcmp(str, history->data[history->len - 1]))
 			return (1);

@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/24 15:44:19 by midrissi          #+#    #+#             */
-/*   Updated: 2019/10/15 23:55:19 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/11/06 17:32:07 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,7 +120,7 @@ int			echo_builtin(int argc, char **argv)
 		while (++i < argc)
 		{
 			if (treat_spec(&argv[i]) || i < argc - 1)
-				ft_printf("%s", argv[i]);
+				ft_printf("%s ", argv[i]);
 			else
 				ft_printf("%s\n", argv[i]);
 		}
