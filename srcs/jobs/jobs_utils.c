@@ -6,7 +6,7 @@
 /*   By: tlechien <tlechien@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 04:40:55 by tlechien          #+#    #+#             */
-/*   Updated: 2019/10/22 02:29:18 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/11/06 16:41:45 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,6 @@ int		kill_pids(void)
 			tmp->status = SIGTERM;
 		}
 		kill(ID_PID, SIGTERM);
-		/*if (ID_STATUS != SIGTERM && !ID_PIPE)
-		{
-			err_display(ANSI_RED"42sh: can't kill process: ", ID_EXEC,
-			": pid >");
-			ft_putnbr_fd(ID_PID, 2);
-			ft_putendl_fd(ANSI_RESET, 2);
-		}*/
 		remove_pid(g_pid_table);
 	}
 	return (0);
@@ -61,6 +54,24 @@ int		remove_pid(t_child *node)
 	if (g_pid_table == node)
 		g_pid_table = curr;
 	free(node);
+	return (0);
+}
+
+/*
+** End of waitpipe() that adds the pipe to the g_pid_table if an element is
+** suspended during execution.
+*/
+
+int		append_pipe_pids(t_pipe **begin, t_pipe *elem)
+{
+	elem = *begin;
+	while (elem)
+	{
+		(elem == *begin) ? add_pid(3, elem->pid, elem->cmd, ID_SUSP) :
+		add_amperpipe((*begin)->pid, elem->pid,
+					full_cmd(elem->cmd), ID_SUSP);
+		elem = elem->next;
+	}
 	return (0);
 }
 

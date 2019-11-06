@@ -6,7 +6,7 @@
 /*   By: tlechien <tlechien@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/12 13:41:37 by tlechien          #+#    #+#             */
-/*   Updated: 2019/10/23 11:13:35 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/11/06 16:42:00 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	sigtstp_handler(int sig)
 ** Handler for QUIT signal.
 */
 
-void		sigquit_dflhandler(int sig)
+void	sigquit_dflhandler(int sig)
 {
 	if (sig == SIGQUIT)
 	{

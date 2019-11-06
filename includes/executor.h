@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 00:40:57 by midrissi          #+#    #+#             */
-/*   Updated: 2019/10/23 12:44:28 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/11/06 16:45:24 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,6 +154,7 @@ int					fc_no_editor(int ac, char **av);
 ** FC_BUILTIN_UTILS.c
 */
 void				arg_to_number(char *str, char *str2, int *index, int *max);
+char 				*randomize_path(char *path);
 int					get_param(int argc, char **argv);
 int					check_compatibility(int p);
 /*

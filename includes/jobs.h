@@ -6,7 +6,7 @@
 /*   By: tlechien <tlechien@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/25 00:52:53 by tlechien          #+#    #+#             */
-/*   Updated: 2019/10/22 03:28:22 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/11/06 16:41:22 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,6 +121,7 @@ int					update_pid_table(void);
 */
 int					kill_pids(void);
 int					remove_pid(t_child *node);
+int					append_pipe_pids(t_pipe **begin, t_pipe *elem);
 char				*full_cmd(char **cmd);
 /*
 **	SIGNAL_HANDLER.C

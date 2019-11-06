@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/14 23:53:49 by midrissi          #+#    #+#             */
-/*   Updated: 2019/10/08 17:48:49 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/11/06 16:41:36 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 ** Returns -1 for anormal exits and update_pid_table.
 */
 
-int				ft_waitprocess(pid_t pid, char **cmd, char *handler, char *stat)
+int		ft_waitprocess(pid_t pid, char **cmd, char *handler, char *stat)
 {
 	int			status;
 	t_child		*node;
@@ -57,8 +57,8 @@ int				ft_waitprocess(pid_t pid, char **cmd, char *handler, char *stat)
 int		waitpipe(t_pipe **begin, t_pipe *elem)
 {
 	int			status;
-	char*		handler;
-	char*		stat;
+	char		*handler;
+	char		*stat;
 	t_child		*node;
 
 	signal(SIGTSTP, sigtstp_handler);
@@ -76,17 +76,7 @@ int		waitpipe(t_pipe **begin, t_pipe *elem)
 			elem->cmd[0], handler, stat);
 	}
 	else if (WSTOPSIG(status) && search_pid(&node, NULL, (*begin)->pid))
-	{
-		elem = *begin;
-		while (elem)
-		{
-			if (elem == *begin)
-				add_pid(3, elem->pid, elem->cmd, ID_SUSP);
-			else
-				add_amperpipe((*begin)->pid, elem->pid, full_cmd(elem->cmd), ID_SUSP);
-			elem = elem->next;
-		}
-	}
+		append_pipe_pids(begin, elem);
 	signal(SIGTSTP, sigtstp_dflhandler);
 	return (-1);
 }
@@ -96,7 +86,7 @@ int		waitpipe(t_pipe **begin, t_pipe *elem)
 ** the g_pid_table.
 */
 
-int				ft_fork_amper(char **cmd, char **env)
+int		ft_fork_amper(char **cmd, char **env)
 {
 	pid_t	pid;
 
@@ -120,7 +110,7 @@ int				ft_fork_amper(char **cmd, char **env)
 ** adds it to the g_pid_table.
 */
 
-int				ft_fork_builtin(t_builtin *builtin, int ac, char **cmd)
+int		ft_fork_builtin(t_builtin *builtin, int ac, char **cmd)
 {
 	pid_t pid;
 
@@ -142,7 +132,7 @@ int				ft_fork_builtin(t_builtin *builtin, int ac, char **cmd)
 ** Regular bin fork-exec with foreground waiting.
 */
 
-int				ft_fork(char **cmd, char **env)
+int		ft_fork(char **cmd, char **env)
 {
 	pid_t pid;
 
