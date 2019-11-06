@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/03 19:37:17 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/10/23 14:15:28 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/10/28 17:32:13 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ int		write_in_file(char *file, int index, int max)
 		index = g_shell->history->len - 2;
 		max = index + 1;
 	}
+	printf("on va de %d a %d\n", index, max);
 	if (max > index)
 	{
 		while (max >= index)
@@ -76,34 +77,46 @@ int		read_file(char *file)
 	return (1);
 }
 
-char **init_editor(char *arg)
+char **init_editor(char *arg, char *path_random)
 {
 	char **bin;
 	char *path;
 	char *editor;
 	char **editors;
 
-	if (!(editor = ft_strcjoin(arg, "/tmp/42shtmp", ' ')))
+	if (!(editor = ft_strcjoin(arg, path_random, ' ')))
 		return (NULL);
 	if (!(editors = ft_strsplit(editor, ' ')))
 		return (NULL);
+	ft_printf("ok la\n");
 	if (!(path = get_all_key_value("PATH", g_shell->env_tmp)))
 		return (NULL);
 	if (!(bin = ft_strsplit(path, ':')))
 		return (NULL);
 	if (!(editors[0] = (char *)add_path(bin, (unsigned char *)editors[0])))
 		return (NULL);
+	ft_strdel(&editor);
+	//ft_strdel(&path);
+	ft_splitdel(bin);
 	return (editors);
 }
+
 int		exec_command(char *arg, int index, int max)
 {
 	char **editor;
 	int pid;
 	int status;
+	char *path;
 
-	if (!(editor = init_editor(arg)))
-		ft_putstr_fd("Erreur d'allocation dans init_editor", 2);
-	write_in_file("/tmp/42shtmp", index, max);
+	if (!(path = randomize_path("/tmp")))
+		return (1);
+	if (!(editor = init_editor(arg, path)))
+	{
+		ft_putstr_fd("Erreur d'allocation dans init_editor\n", 2);
+		return (1);
+	}
+
+	write_in_file(path , index, max);
 	if (!(pid = fork()) && !~execve(editor[0], editor, g_shell->env_tmp))
 	{
 		ft_printf("42sh: unable to launch command %s [%d]\n", editor[0], errno);
@@ -113,7 +126,7 @@ int		exec_command(char *arg, int index, int max)
 	{
 		waitpid(pid, &status, WUNTRACED);
 		if (WIFEXITED(status) && !WEXITSTATUS(status))
-			read_file("/tmp/42shtmp");
+			read_file(path);
 		else
 		{
 			ft_putstr_fd("42sh: fc command not found: ", 2);

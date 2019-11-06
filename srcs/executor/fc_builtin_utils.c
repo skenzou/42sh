@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/28 07:33:58 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/10/03 19:51:58 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/10/28 17:21:18 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,20 @@ static int	find_first_occurrence(char *string)
 		if (!ft_strncmp(string, history->data[i], ft_strlen(string)))
 			return (i);
 	return (-1);
+}
+
+char *randomize_path(char *path)
+{
+ 	char	*ret;
+
+	char *random = ft_itoa(ft_rand(10000));
+	if (random)
+	{
+		ret = ft_strcjoin(path, random, '/');
+		ft_strdel(&random);
+		random = ret;
+	}
+	return (random);
 }
 
 void		arg_to_number(char *str, char *str2, int *index, int *max)

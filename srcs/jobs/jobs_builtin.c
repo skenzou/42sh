@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   jobs_builtin.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tlechien <tlechien@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tlechien <tlechien@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 04:51:21 by tlechien          #+#    #+#             */
-/*   Updated: 2019/09/24 03:14:20 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/11/06 15:31:01 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/shell.h"
 
 /*
-** Recurses on the pid_table and displays the bg processus.
+** Recurses on the pid_table and displays the background processes.
 */
 
 static int	all_pid(t_child *node, char option)
@@ -38,7 +38,7 @@ static int	usage_jobs(void)
 }
 
 /*
-** Builtin that displays background processus with some infos.
+** Builtin that displays background processes with some infos.
 */
 
 int			jobs_builtin(int ac, char **cmd)
