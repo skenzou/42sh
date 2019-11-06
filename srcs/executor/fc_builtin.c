@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/22 02:02:47 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/10/03 19:51:15 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/11/06 18:06:45 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,5 +60,7 @@ int		fc_builtin(int argc, char **argv)
 		return (handle_error(fc_no_editor(argc, argv)));
 	else if (param & FC_EDITOR)
 		return (handle_error(fc_editor(argc, argv, param)));
+	// else
+	// 	return (handle_error(fc_no_param(argc, argv, param)));
 	return (0);
 }

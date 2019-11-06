@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/07 06:30:44 by midrissi          #+#    #+#             */
-/*   Updated: 2019/10/22 03:44:59 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/11/06 19:45:26 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,10 @@ static void		exec_hdoc(t_redir *redir, char *tmp_file)
 		write(fd, input, ft_strlen(input));
 	}
 	g_shell->tcap->prompt = NULL;
-	(eof)? ft_strdel(&eof): 0;
+	(eof) ? ft_strdel(&eof) : 0;
 	close(fd);
 	if (g_shell->inhib_mod == 2)
-			return ;
+		return ;
 	fd = open(tmp_file, O_RDONLY);
 	redir->hdoc_fd = fd;
 }

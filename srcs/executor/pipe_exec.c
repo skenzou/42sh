@@ -6,7 +6,7 @@
 /*   By: tlechien <tlechien@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/04 17:31:04 by tlechien          #+#    #+#             */
-/*   Updated: 2019/10/22 01:02:40 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/11/06 19:50:09 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,27 +33,27 @@ static int		pipe_exec(char **cmd, int redir)
 ** Launches an unitary elem of the pipe and set its fds.
 */
 
-static	void	launch_process(t_pipe *begin,t_pipe *prev, t_pipe *pipe, int is_bg)
+static	void	launch_process(t_pipe *beg, t_pipe *prev, t_pipe *pipe, int bg)
 {
-		if (is_bg)
-		{
-			resetsign();
-			setpgid(pipe->pid, begin->pid);
-		}
-		else
-			setpgid(getpid(), getpgrp());
-		if (pipe->next)
-		{
-			dup2(pipe->fd[1], STDOUT_FILENO);
-			close(pipe->fd[0]);
-		}
-		if (prev)
-		{
-			dup2(prev->fd[0], STDIN_FILENO);
-			close(prev->fd[1]);
-		}
-		pipe_exec(pipe->cmd, pipe->redir);
-		exit(1);
+	if (bg)
+	{
+		resetsign();
+		setpgid(pipe->pid, beg->pid);
+	}
+	else
+		setpgid(getpid(), getpgrp());
+	if (pipe->next)
+	{
+		dup2(pipe->fd[1], STDOUT_FILENO);
+		close(pipe->fd[0]);
+	}
+	if (prev)
+	{
+		dup2(prev->fd[0], STDIN_FILENO);
+		close(prev->fd[1]);
+	}
+	pipe_exec(pipe->cmd, pipe->redir);
+	exit(1);
 }
 
 /*
@@ -67,14 +67,13 @@ static	void	parent_end(t_pipe **begin, t_pipe *elem, int is_bg)
 	while (elem)
 	{
 		close(elem->fd[0]);
-		//close(elem->fd[1]);
 		if (is_bg)
 		{
-				(elem == *begin) ? add_pid(3, elem->pid, elem->cmd, ID_RUN) :
-				add_amperpipe((*begin)->pid, elem->pid,
-							full_cmd(elem->cmd), ID_RUN);
-				g_shell->dprompt = 0;
-				g_shell->chld_check = 1;
+			(elem == *begin) ? add_pid(3, elem->pid, elem->cmd, ID_RUN) :
+			add_amperpipe((*begin)->pid, elem->pid,
+						full_cmd(elem->cmd), ID_RUN);
+			g_shell->dprompt = 0;
+			g_shell->chld_check = 1;
 		}
 		elem = elem->next;
 	}
@@ -86,7 +85,7 @@ static	void	parent_end(t_pipe **begin, t_pipe *elem, int is_bg)
 ** frees the pipe list.
 */
 
-static	void 	end_pipe(t_pipe **begin, t_pipe *elem, int is_bg)
+static	void	end_pipe(t_pipe **begin, t_pipe *elem, int is_bg)
 {
 	t_pipe *prev;
 
@@ -113,9 +112,9 @@ static	void 	end_pipe(t_pipe **begin, t_pipe *elem, int is_bg)
 ** Launches each elem of a pipe and links them together.
 */
 
-int launch_pipe (t_pipe **begin, t_pipe *elem, int is_bg)
+int				launch_pipe(t_pipe **begin, t_pipe *elem, int is_bg)
 {
-	t_pipe  *prev;
+	t_pipe	*prev;
 
 	prev = NULL;
 	elem = *begin;

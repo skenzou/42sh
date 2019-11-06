@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/28 15:23:43 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/11/03 05:26:46 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/11/06 20:14:48 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,29 +19,25 @@ int		enter_event(t_cap *tcap)
 
 	autocomp = g_shell->autocomp;
 	g_shell->history->position = -1;
-	if (autocomp->state)
-	{
-		tputs(tcap->clr_all_line, 1, ft_put_termcaps);
-		i = ft_strlen(g_shell->autocomp->match);
-		while (i--)
-			ft_delete_back(tcap);
-		ft_insert(g_shell->autocomp->data[g_shell->autocomp->pos], tcap);
-		if (!g_shell->autocomp->isdir)
-		{
-			if (g_shell->autocomp->after[0])
-				ft_insert(g_shell->autocomp->after, tcap);
-			ft_insert(" ", tcap);
-		}
-		g_shell->autocomp->state = 0;
-		i = -1;
-		while (++i < g_shell->autocomp->len)
-			ft_strdel(&(g_shell->autocomp->data[i]));
-		g_shell->autocomp->pos = 0;
-		g_shell->autocomp->isdir = 0;
-		g_shell->autocomp->len = 0;
-		return (1);
-	}
-	return (-2);
+	if (!autocomp->state)
+		return (-2);
+	tputs(tcap->clr_all_line, 1, ft_put_termcaps);
+	i = ft_strlen(g_shell->autocomp->match);
+	while (i--)
+		ft_delete_back(tcap);
+	ft_insert(g_shell->autocomp->data[g_shell->autocomp->pos], tcap);
+	if (!g_shell->autocomp->isdir && g_shell->autocomp->after[0])
+		ft_insert(g_shell->autocomp->after, tcap);
+	if (!g_shell->autocomp->isdir)
+		ft_insert(" ", tcap);
+	g_shell->autocomp->state = 0;
+	i = -1;
+	while (++i < g_shell->autocomp->len)
+		ft_strdel(&(g_shell->autocomp->data[i]));
+	g_shell->autocomp->pos = 0;
+	g_shell->autocomp->isdir = 0;
+	g_shell->autocomp->len = 0;
+	return (1);
 }
 
 int		ctrl_r_event(t_cap *tcap)

@@ -6,7 +6,7 @@
 /*   By: tlechien <tlechien@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/04 17:30:01 by tlechien          #+#    #+#             */
-/*   Updated: 2019/10/22 01:01:18 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/11/06 19:47:12 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 ** Adds a new node at the end of the t_pipe list.
 */
 
-void push_pipe(t_ast *root, t_pipe **begin)
+void	push_pipe(t_ast *root, t_pipe **begin)
 {
 	t_pipe *new;
 	t_pipe *pipe;
@@ -40,7 +40,7 @@ void push_pipe(t_ast *root, t_pipe **begin)
 ** Parses the ast and creates a list of the pipe to be executed.
 */
 
-void parse_pipe (t_ast *root, t_ast *origin, t_pipe **pipe)
+void	parse_pipe(t_ast *root, t_ast *origin, t_pipe **pipe)
 {
 	if (root->left)
 		parse_pipe(root->left, origin, pipe);

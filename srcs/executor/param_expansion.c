@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/29 17:34:20 by midrissi          #+#    #+#             */
-/*   Updated: 2019/10/23 12:55:58 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/11/06 19:47:46 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,9 +104,7 @@ void				param_expansion(char **ptr)
 			str = dollar_curly(str, str + i, &i);
 		}
 		else if (str[i] == '$')
-		{
 			str = simple_dollar(str, str + i, &i);
-		}
 		i++;
 	}
 	if (ft_strlen(str) == 0)

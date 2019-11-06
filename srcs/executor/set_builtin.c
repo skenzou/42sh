@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/27 17:25:38 by midrissi          #+#    #+#             */
-/*   Updated: 2019/10/23 12:44:03 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/11/06 19:55:33 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,9 @@ char	*get_all_key_value(char *key, char **env)
 
 	if (env == g_shell->intern)
 		return (value = get_key_value(key, g_shell->intern));
-	else
-		if (!(value = get_key_value(key, g_shell->env)))
-				return (value = get_key_value(key, g_shell->intern));
-	return value;
+	else if (!(value = get_key_value(key, g_shell->env)))
+		return (value = get_key_value(key, g_shell->intern));
+	return (value);
 }
 
 int		set_builtin(void)

@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/26 00:44:20 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/11/03 05:16:41 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/11/06 20:01:45 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,24 +43,16 @@ int		add_to_completion(t_ab *autocomp, char *path, char ext)
 	DIR			*dir;
 	char		final_path[MAX_PATH];
 	char		complet_final_path[MAX_PATH];
-	int			i = 0;
-	int j = 0;
+	int			i = -1;
+	int 		j = 0;//you still have a param available or you can do an int[2]
 
 	final_path[0] = 0;
 	get_tilde(path, final_path);
-
 	ft_bzero(complet_final_path, MAX_PATH);
-	while (final_path[i])
-	{
+	while (final_path[++i])
 		if (final_path[i] && final_path[i] != '\\')
-		{
-			complet_final_path[j] = final_path[i];
-			j++;
-		}
-		i++;
-	}
-
-	if ((dir = opendir(complet_final_path)))
+			complet_final_path[j++] = final_path[i];
+	if ((dir = opendir(complet_final_path))) //if !dir => return (error) pour gain de place
 	{
 		while ((d = readdir(dir)))
 		{
@@ -72,7 +64,7 @@ int		add_to_completion(t_ab *autocomp, char *path, char ext)
 		return (1);
 	}
 	else
-		dprintf(debug(), "probleme opendir: %s\n", complet_final_path);
+		dprintf(debug(), "probleme opendir: %s\n", complet_final_path);//change that
 	return (0);
 }
 

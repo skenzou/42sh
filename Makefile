@@ -6,7 +6,7 @@
 #    By: midrissi <midrissi@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/03 09:24:41 by midrissi          #+#    #+#              #
-#    Updated: 2019/11/06 16:58:33 by tlechien         ###   ########.fr        #
+#    Updated: 2019/11/06 19:35:01 by tlechien         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -70,7 +70,7 @@ LEXER_O 	:= $(LEXER:.c=.o)
 _EXEC 		= alias_builtin.c alias_init.c alias_utils.c tools.c\
 			bin_hash.c cd_builtin.c echo_builtin.c env_builtin.c \
 			err_handler.c executor.c exit_builtin.c expansions.c \
-			export_builtin.c  get_options.c \
+			export_builtin.c  get_options.c echo_utils.c\
 			handle_redir.c param_expansion.c \
 			pre_exec.c quote_expansion.c redir_utils.c \
 			set_builtin.c setenv_builtin.c shell_var.c tab_utils.c \

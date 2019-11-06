@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/03 19:37:17 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/10/28 17:32:13 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/11/06 17:56:02 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,12 @@ int		write_in_file(char *file, int index, int max)
 		index = g_shell->history->len - 2;
 		max = index + 1;
 	}
-	printf("on va de %d a %d\n", index, max);
 	if (max > index)
 	{
 		while (max >= index)
 		{
 			ft_putstr_fd(history->data[max], fd);
 			ft_putchar_fd(10, fd);
-			//ft_printf("on ecrit: %s dans fd\n", history->data[i]);
 			max--;
 		}
 	}
@@ -42,7 +40,6 @@ int		write_in_file(char *file, int index, int max)
 		{
 			ft_putstr_fd(history->data[max], fd);
 			ft_putchar_fd(10, fd);
-			//ft_printf("on ecrit: %s dans fd\n", history->data[i]);
 			max++;
 		}
 	}
@@ -96,7 +93,6 @@ char **init_editor(char *arg, char *path_random)
 	if (!(editors[0] = (char *)add_path(bin, (unsigned char *)editors[0])))
 		return (NULL);
 	ft_strdel(&editor);
-	//ft_strdel(&path);
 	ft_splitdel(bin);
 	return (editors);
 }
@@ -174,9 +170,6 @@ int		fc_editor_multi_arg(char *editor, char *av1, char *av2, int param)
 
 int		fc_editor(int argc, char **argv, int param)
 {
-	char *fcedit;
-
-	fcedit = get_all_key_value("FCEDIT", g_shell->env_tmp);
 	int i = 1;
 	while (i < argc && argv[i][0] == '-' && !~ft_indexof(argv[i], 'e'))
 		i++;

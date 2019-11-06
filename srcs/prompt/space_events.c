@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/22 20:28:50 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/11/03 05:27:42 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/11/06 20:27:02 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,9 @@
 int		backspace_event(t_cap *tcap)
 {
 	t_ctrl_r *ctrl_r;
+	int i;
 
+	i = -1;
 	ctrl_r = g_shell->ctrl_r;
 	if (ctrl_r->state)
 	{
@@ -28,17 +30,12 @@ int		backspace_event(t_cap *tcap)
 	{
 		tputs(tcap->clr_all_line, 1, ft_put_termcaps);
 		g_shell->autocomp->state = 0;
-		int i = -1;
 		while (++i < g_shell->autocomp->len)
-		{
 			ft_strdel(&(g_shell->autocomp->data[i]));
-		}
 		g_shell->autocomp->pos = 0;
 		return (1);
 	}
-	else
-		return (ft_delete_back(tcap));
-	return (1);
+	return (ft_delete_back(tcap));
 }
 
 int		space_event(t_cap *tcap)
@@ -55,8 +52,7 @@ int		space_event(t_cap *tcap)
 			ft_delete_back(tcap);
 		ft_insert(g_shell->autocomp->data[g_shell->autocomp->pos], tcap);
 		if (g_shell->autocomp->data[g_shell->autocomp->pos]
-			[ft_strlen(g_shell->autocomp->data[g_shell->autocomp->pos]) - 1]
-																		!= '/')
+		[ft_strlen(g_shell->autocomp->data[g_shell->autocomp->pos]) - 1] != '/')
 		{
 			if (g_shell->autocomp->after[0])
 				ft_insert(g_shell->autocomp->after, tcap);
@@ -65,9 +61,7 @@ int		space_event(t_cap *tcap)
 		g_shell->autocomp->state = 0;
 		i = -1;
 		while (++i < g_shell->autocomp->len)
-		{
 			ft_strdel(&(g_shell->autocomp->data[i]));
-		}
 		g_shell->autocomp->pos = 0;
 		g_shell->autocomp->isdir = 0;
 		g_shell->autocomp->len = 0;

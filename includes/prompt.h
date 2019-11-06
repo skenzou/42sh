@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 07:12:40 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/10/23 12:15:13 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/11/06 20:21:23 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,9 +68,10 @@
 # define CUT					-120
 # define PASTE					-102
 # define MAX_HISTORY_LENGHT		4096
-# define MAX_PATH		PATH_MAX
+# define MAX_PATH		PATH_MAX //this needs to go!
 # define UNUSED			0
 # define DEBUG_LOG		0
+
 
 typedef struct	s_data
 {

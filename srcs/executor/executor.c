@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/03 16:15:41 by midrissi          #+#    #+#             */
-/*   Updated: 2019/10/23 12:45:10 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/11/06 19:43:53 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,29 +65,25 @@ void			ft_execute_ast(t_ast *root)
 
 	if (!root)
 		return ;
-	if (root->token->op_type == PIPE)
+	if (root->OP_TYPE == PIPE)
 	{
 		pipe = NULL;
 		parse_pipe(root, root->right, &pipe);
 		launch_pipe(&pipe, pipe, root->job);
 		return ;
 	}
-	if (root->token->op_type == AND && root->left &&
-		(root->left->token->op_type == TOKEN_WORD ||
-										root->left->token->op_type == PIPE))
+	if (root->OP_TYPE == AND && root->left &&
+		(root->left->OP_TYPE == TOKEN_WORD || root->left->OP_TYPE == PIPE))
 		root->left->job = 1;
-	if (root->token->op_type == AND && root->left && root->left->right
-		&& (root->left->right->token->op_type == TOKEN_WORD
-	|| root->left->right->token->op_type == PIPE))
+	if (root->OP_TYPE == AND && root->left && root->left->right && (root->left->
+		right->OP_TYPE == TOKEN_WORD || root->left->right->OP_TYPE == PIPE))
 		root->left->right->job = 1;
 	if (root->left)
 		ft_execute_ast(root->left);
-	if (root->left && root->token->op_type == DBL_AND && g_shell->lastsignal)
+	if ((root->left && root->OP_TYPE == DBL_AND && g_shell->lastsignal) ||
+		(root->left && root->OP_TYPE == DBL_PIPE && !g_shell->lastsignal))
 		return ;
-	if (root->left && root->token->op_type == DBL_PIPE && !g_shell->lastsignal)
-		return ;
-	if (root->right)
-		ft_execute_ast(root->right);
+	(root->right) ? ft_execute_ast(root->right) : 0;
 	if (root->token->type == TOKEN_WORD)
 		ft_execute(root->token->content, root->token->redir, root->job);
 }

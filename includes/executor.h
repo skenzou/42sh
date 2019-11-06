@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 00:40:57 by midrissi          #+#    #+#             */
-/*   Updated: 2019/11/06 16:45:24 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/11/06 19:41:02 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@
 # define FC_LIST 		(1 << 2)
 # define FC_NO_NUMBER 	(1 << 3)
 # define FC_NO_EDITOR 	(1 << 4)
+# define CHS_LEN 		8
+# define OP_TYPE		token->op_type
 
 typedef struct		s_hash_entry
 {
@@ -101,6 +103,11 @@ int					cd_builtin(int argc, char **argv);
 ** ECHO_BUILTIN.C
 */
 int					echo_builtin(int argc, char **argv);
+/*
+** ECHO_UTILS>C
+*/
+long				ft_pow(int base, int pow);
+int					b_conv(char *str, int len, int base);
 /*
 ** ENV_BUILTIN.C
 */
