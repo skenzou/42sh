@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/28 07:28:50 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/10/23 14:14:48 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/11/07 22:13:44 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,8 +81,12 @@ int					fc_list(int ac, char **av, int param)
 	{
 		(param & FC_REVERSE && i == ac) && i--;
 		arg_to_number(av[i], i == ac - 2 ? av[i + 1] : NULL, &index, &max);
+		if (index > len)
+			return(err_display("no such event\n", NULL, NULL));
 		if (~index && ~max)
-			return (get_history_index(index, max, param, 1));
+			return (get_history_index(index, ft_min(max,len - 1), param, 1));
+		else if (~index && !~max)
+			return(get_history_index(index, len - 1, param, 1));
 		else
 			ft_printf("occurrence non trouvee\n");
 	}
