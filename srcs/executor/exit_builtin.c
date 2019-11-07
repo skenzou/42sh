@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/24 20:05:06 by midrissi          #+#    #+#             */
-/*   Updated: 2019/10/03 19:54:38 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/11/07 19:32:10 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ int		exit_builtin(int ac, char **av)
 		value = ft_atoi(av[1]);
 	save_alias(1);
 	kill_pids();
-	ft_printf("exit\n");
 	exit(value);
 	return (0);
 }

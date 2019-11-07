@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/29 17:39:49 by midrissi          #+#    #+#             */
-/*   Updated: 2019/10/23 12:39:47 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/11/07 17:34:37 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,6 @@ char	*read_line(t_cap *tcap)
 
 int	handler(const char *input)
 {
-	t_list	*redir;
 	char	*in;
 
 	// if (!ft_strcmp(input, "history\n"))
@@ -110,12 +109,11 @@ int	handler(const char *input)
 	if (g_shell->print_flags & PRINT_LEXER)
 		print_lexer(g_shell->lexer);
 	ft_parse(g_shell->lexer);
-	redir = g_shell->redir;
-	handle_hdoc(redir);
+	handle_hdoc(g_shell->redir);
 	if (g_shell->inhib_mod == 2)
 		return (1);
 	ft_execute_ast(g_shell->ast);
-	ft_lstdel(&redir, redir_delone);      // leak possible
+	ft_lstdel(&(g_shell->redir), redir_delone);      // leak possible
 	del_ast(&g_shell->ast);
 	g_shell->redir = NULL;
 	g_shell->lexer = NULL;

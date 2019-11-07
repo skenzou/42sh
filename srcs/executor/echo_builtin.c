@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/24 15:44:19 by midrissi          #+#    #+#             */
-/*   Updated: 2019/11/06 19:33:36 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/11/06 20:38:47 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,38 +42,6 @@ static int		sub_oct(char **line, int i)
 	return (0);
 }
 
-// int				treat_spec(char **ptr)
-// {
-// 	char	*line;
-// 	int		i;
-// 	int		y;
-// 	char	charset_r[CHS_LEN] = {'a', 'b', 'c', 'f', 'n', 'r', 't', 'v'};
-// 	char	charset_w[CHS_LEN] = {'\a', '\b', '\0', '\f', '\n', '\r', '\t', '\v'};
-//
-// 	line = *ptr;
-// 	i = -1;
-// 	while (line[++i])
-// 	{
-// 		if (line[i] == 92 && line[i + 1] != '0')
-// 		{
-// 			y = -1;
-// 			while ((++y) < CHS_LEN)
-// 			{
-// 				if (line[i + 1] == charset_r[y])
-// 				{
-// 					sub_char(&line, i, charset_w[y]);
-// 					if (y == 2)
-// 						return (1);
-// 					break;
-// 				}
-// 			}
-// 		}
-// 		else if (line[i] == 92 && line[i + 1] == '0')
-// 			sub_oct(&line, i);
-// 	}
-// 	return (0);
-// }
-
 int				treat_spec(char **ptr)
 {
 	char		*line;
@@ -90,7 +58,7 @@ int				treat_spec(char **ptr)
 		if (line[i] == 92 && line[i + 1] != '0')
 		{
 			y = 0;
-			while ((y) < CHS_LEN && line[i + 1] != charset_r[y])
+			while (y < CHS_LEN && line[i + 1] != charset_r[y])
 				y++;
 			sub_char(&line, i, charset_w[y]);
 			if (y == 2)
