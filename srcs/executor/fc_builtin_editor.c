@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/03 19:37:17 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/11/08 01:50:20 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/11/08 12:04:10 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,8 @@ int			exec_command(char *arg, int index, int max)
 		else
 			ft_printf("42sh: fc command not found: %s\n", editor[0]);
 	}
+	ft_splitdel(editor);
+	ft_strdel(&path);
 	return (1);
 }
 
@@ -90,9 +92,16 @@ int			fc_editor_multi_arg(char *editor, char *av1, char *av2, int param)
 {
 	int index;
 	int max;
+	char *it;
 
-	arg_to_number(av1, av2, &index, &max);
+	if (!(it = ft_itoa(ft_max(g_shell->history->len - 2, 0))))
+		return (0);
+	if (!ft_strcmp(av1, "noarg"))
+		arg_to_number(it, av2, &index, &max);
+	else
+		arg_to_number(av1, av2, &index, &max);
 	index_to_exec(index, max, param, editor);
+	ft_strdel(&it);
 	return (1);
 }
 

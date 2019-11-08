@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/22 02:02:47 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/11/08 02:03:40 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/11/08 11:58:32 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,23 +49,23 @@ int		fc_no_param(int argc, char **av, int param)
 
 	j = 1;
 	i = 3;
-	(void)param;
-	if (argc == 1)
-		return (1);
 	if (!(fcedit = get_all_key_value("FCEDIT", g_shell->env_tmp)))
 		if (!(fcedit = ft_strdup("vim")))
 			return (shell_exit(MALLOC_ERR));
+
 	av_custom[0] = NULL;
 	av_custom[1] = "-e";
 	av_custom[2] = fcedit;
-	av_custom[i] = NULL;
-	while (j < argc && i < 5)
+	if (argc == 1)
+		av_custom[i++] = "noarg";
+	while (argc > 1 && j < argc && i < 5)
 	{
 		if (av[j] && av[j][0] != '-')
-			if (!(av_custom[i++] = ft_strdup(av[j])))
+			if (!(av_custom[i++] = av[j]))
 				return (shell_exit(MALLOC_ERR));
 		j++;
 	}
+	av_custom[i] = NULL;
 	return (fc_editor(i, av_custom, param));
 }
 

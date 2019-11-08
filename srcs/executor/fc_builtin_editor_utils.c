@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 01:41:47 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/11/08 01:42:13 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/11/08 12:03:07 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ int		read_file(char *file)
 		if (!~add_cmd_to_history(string, g_shell->history))
 			return (0);
 		ft_strdel(&line);
+		ft_strdel(&string);
 	}
 	close(fd);
 	remove(file);
