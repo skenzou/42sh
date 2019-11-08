@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/22 20:28:50 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/11/06 20:27:02 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/11/08 01:01:09 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int		backspace_event(t_cap *tcap)
 {
-	t_ctrl_r *ctrl_r;
-	int i;
+	t_ctrl_r	*ctrl_r;
+	int			i;
 
 	i = -1;
 	ctrl_r = g_shell->ctrl_r;
@@ -38,35 +38,39 @@ int		backspace_event(t_cap *tcap)
 	return (ft_delete_back(tcap));
 }
 
+int		select_autocompletion(t_cap *tcap)
+{
+	int	i;
+
+	tputs(tcap->clr_all_line, 1, ft_put_termcaps);
+	i = ft_strlen(g_shell->autocomp->match);
+	while (i--)
+		ft_delete_back(tcap);
+	ft_insert(g_shell->autocomp->data[g_shell->autocomp->pos], tcap);
+	if (g_shell->autocomp->data[g_shell->autocomp->pos]
+	[ft_strlen(g_shell->autocomp->data[g_shell->autocomp->pos]) - 1] != '/')
+	{
+		if (g_shell->autocomp->after[0])
+			ft_insert(g_shell->autocomp->after, tcap);
+		ft_insert(" ", tcap);
+	}
+	g_shell->autocomp->state = 0;
+	i = -1;
+	while (++i < g_shell->autocomp->len)
+		ft_strdel(&(g_shell->autocomp->data[i]));
+	g_shell->autocomp->pos = 0;
+	g_shell->autocomp->isdir = 0;
+	g_shell->autocomp->len = 0;
+	return (1);
+}
+
 int		space_event(t_cap *tcap)
 {
 	int	index;
-	int	i;
 
 	index = 0;
 	if (g_shell->autocomp->state)
-	{
-		tputs(tcap->clr_all_line, 1, ft_put_termcaps);
-		i = ft_strlen(g_shell->autocomp->match);
-		while (i--)
-			ft_delete_back(tcap);
-		ft_insert(g_shell->autocomp->data[g_shell->autocomp->pos], tcap);
-		if (g_shell->autocomp->data[g_shell->autocomp->pos]
-		[ft_strlen(g_shell->autocomp->data[g_shell->autocomp->pos]) - 1] != '/')
-		{
-			if (g_shell->autocomp->after[0])
-				ft_insert(g_shell->autocomp->after, tcap);
-			ft_insert(" ", tcap);
-		}
-		g_shell->autocomp->state = 0;
-		i = -1;
-		while (++i < g_shell->autocomp->len)
-			ft_strdel(&(g_shell->autocomp->data[i]));
-		g_shell->autocomp->pos = 0;
-		g_shell->autocomp->isdir = 0;
-		g_shell->autocomp->len = 0;
-		return (1);
-	}
+		return (select_autocompletion(tcap));
 	else if (~(index = ft_lastindexof(tcap->command, '!')))
 		expansion_history(tcap->command, tcap, index);
 	ft_insert(" ", tcap);

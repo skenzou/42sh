@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 07:12:40 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/11/06 20:21:23 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/11/08 00:58:30 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -376,6 +376,7 @@ int		add_to_completion(t_ab *autocomp, char *path, char ext);
 int		first_arg_completion(t_ab *autocomp, t_cap *tc, char *str, int pos);
 int		print_name(t_ab *autocomp, char *str, int i);
 int		process_completion(t_ab *autocomp);
+int		print_completion(t_ab *autocomp, int row, int i);
 /*
 **	MAIN.C
 */

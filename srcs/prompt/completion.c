@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 06:02:13 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/11/06 20:08:06 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/11/08 00:58:06 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,30 +77,6 @@ int		get_words_completion(t_ab *autocomp, t_cap *tc)
 			return (1);
 	}
 	return (0);
-}
-
-int		print_completion(t_ab *autocomp, int row, int i)
-{
-	if (autocomp->carry > 0)
-	{
-		row = autocomp->carry;
-		while (row--)
-		{
-			print_name(autocomp, autocomp->data[i], i);
-			i++;
-		}
-	}
-	ft_replace_cursor(g_shell->tcap);
-	i = 0;
-	if (autocomp->col > g_shell->tcap->cursy_max)
-		sigint_handler(SIGINT);
-	else
-		while (i < autocomp->col + (autocomp->carry > 0 ? 1 : +1))
-		{
-			ft_move(g_shell->tcap, "up", 1);
-			i++;
-		}
-	return (1);
 }
 
 int		process_completion(t_ab *autocomp)

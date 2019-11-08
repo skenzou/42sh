@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   completion_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aben-azz <aben-azz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 06:02:13 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/06/26 00:45:27 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/11/08 00:58:09 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,4 +71,28 @@ int		is_env_var(t_ab *autocomp, char *path)
 	ft_bzero(path, MAX_PATH);
 	ft_strcpy(path, copy + i);
 	return (i > 0);
+}
+
+int		print_completion(t_ab *autocomp, int row, int i)
+{
+	if (autocomp->carry > 0)
+	{
+		row = autocomp->carry;
+		while (row--)
+		{
+			print_name(autocomp, autocomp->data[i], i);
+			i++;
+		}
+	}
+	ft_replace_cursor(g_shell->tcap);
+	i = 0;
+	if (autocomp->col > g_shell->tcap->cursy_max)
+		sigint_handler(SIGINT);
+	else
+		while (i < autocomp->col + (autocomp->carry > 0 ? 1 : +1))
+		{
+			ft_move(g_shell->tcap, "up", 1);
+			i++;
+		}
+	return (1);
 }

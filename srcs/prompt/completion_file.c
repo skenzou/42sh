@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/26 00:44:20 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/11/06 20:01:45 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/11/08 00:57:07 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,28 +43,25 @@ int		add_to_completion(t_ab *autocomp, char *path, char ext)
 	DIR			*dir;
 	char		final_path[MAX_PATH];
 	char		complet_final_path[MAX_PATH];
-	int			i = -1;
-	int 		j = 0;//you still have a param available or you can do an int[2]
+	int			i_j[2];
 
+	i_j[0] = -1;
+	i_j[1] = 0;
 	final_path[0] = 0;
 	get_tilde(path, final_path);
 	ft_bzero(complet_final_path, MAX_PATH);
-	while (final_path[++i])
-		if (final_path[i] && final_path[i] != '\\')
-			complet_final_path[j++] = final_path[i];
-	if ((dir = opendir(complet_final_path))) //if !dir => return (error) pour gain de place
+	while (final_path[++i_j[0]])
+		if (final_path[i_j[0]] && final_path[i_j[0]] != '\\')
+			complet_final_path[i_j[1]++] = final_path[i_j[0]];
+	if ((dir = opendir(complet_final_path)))
 	{
 		while ((d = readdir(dir)))
-		{
 			if ((d->d_name[0] != '.' || autocomp->match[0] == '.') &&
 			!ft_strncmp(d->d_name, autocomp->match, ft_strlen(autocomp->match)))
 				create_file(d->d_name, complet_final_path, autocomp, ext);
-		}
 		closedir(dir);
 		return (1);
 	}
-	else
-		dprintf(debug(), "probleme opendir: %s\n", complet_final_path);//change that
 	return (0);
 }
 
