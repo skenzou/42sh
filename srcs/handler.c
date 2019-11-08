@@ -6,13 +6,13 @@
 /*   By: midrissi <midrissi@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/29 17:39:49 by midrissi          #+#    #+#             */
-/*   Updated: 2019/11/07 17:34:37 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/11/08 02:17:43 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-char		**dup_env(char **env)
+char				**dup_env(char **env)
 {
 	char	**p;
 	int		i;
@@ -28,12 +28,14 @@ char		**dup_env(char **env)
 	return (p);
 }
 
-int			debug(void)
-{
-	int fd;
-
-	return (fd = open("log.log", O_RDWR | O_APPEND | O_CREAT, 0666));
-}
+/*
+** int			debug(void)
+** {
+** 	int fd;
+**
+** 	return (fd = open("log.log", O_RDWR | O_APPEND | O_CREAT, 0666));
+** }
+*/
 
 static inline void	before_read_line(char *buffer, t_cap *tcap)
 {
@@ -54,14 +56,13 @@ static inline void	before_read_line(char *buffer, t_cap *tcap)
 	print_prompt_prefix();
 }
 
-char	*read_line(t_cap *tcap)
+char				*read_line(t_cap *tcap)
 {
 	char	buffer[4];
 	int		ret;
 
-	ret = 0;
 	before_read_line(buffer, tcap);
-	if (tcap->overflow)
+	if (!(ret = 0) && tcap->overflow)
 	{
 		ft_insert(tcap->carry, tcap);
 		ft_bzero(tcap->carry, 2);
@@ -73,7 +74,7 @@ char	*read_line(t_cap *tcap)
 		tcsetattr(0, TCSADRAIN, g_shell->term);
 		read(0, &buffer, 3);
 		if (g_shell->inhib_mod >= 2)
-			return(NULL);
+			return (NULL);
 		if ((ret = read_buffer(buffer, tcap)) == -2)
 			return (clean_before_return(tcap));
 		else if (!ret)
@@ -84,20 +85,18 @@ char	*read_line(t_cap *tcap)
 	}
 }
 
+/*
+** check leak dans handler, lst ? input ?
+**suppression de la ligne 99: 	in[ft_strlen(in) - 1] = '\0';
+*/
 
-int	handler(const char *input)
+int					handler(const char *input)
 {
 	char	*in;
 
-	// if (!ft_strcmp(input, "history\n"))
-	// {
-	// 	debug_history(g_shell->history);
-	// 	return (1);
-	// }
 	if (!(in = ft_strdup(input)))
-		exit(1); //TODO + free input ??
-	in[ft_strlen(in) - 1] = '\0';
- 	in = parse_aliases(in, in, in);
+		exit(1);
+	in = parse_aliases(in, in, in);
 	check_inhib(&in);
 	if (g_shell->inhib_mod == 2)
 	{
@@ -113,7 +112,7 @@ int	handler(const char *input)
 	if (g_shell->inhib_mod == 2)
 		return (1);
 	ft_execute_ast(g_shell->ast);
-	ft_lstdel(&(g_shell->redir), redir_delone);      // leak possible
+	ft_lstdel(&(g_shell->redir), redir_delone);
 	del_ast(&g_shell->ast);
 	g_shell->redir = NULL;
 	g_shell->lexer = NULL;

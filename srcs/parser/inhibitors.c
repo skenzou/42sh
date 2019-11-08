@@ -6,11 +6,15 @@
 /*   By: midrissi <midrissi@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 01:26:49 by midrissi          #+#    #+#             */
-/*   Updated: 2019/11/06 19:57:00 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/11/08 02:16:17 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
+
+/*
+**free *word ?
+*/
 
 static void		read_inhib(char inhib, char **word)
 {
@@ -22,7 +26,6 @@ static void		read_inhib(char inhib, char **word)
 		input = read_line(g_shell->tcap);
 		if (g_shell->inhib_mod == 2)
 			return ;
-		// free *word;
 		if (ft_strchr(input, inhib) || inhib == '\\')
 			input[ft_strlen(input) - 1] = '\0';
 		save = *word;

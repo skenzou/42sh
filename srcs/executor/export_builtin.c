@@ -3,21 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   export_builtin.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: midrissi <midrissi@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/28 13:22:00 by midrissi          #+#    #+#             */
-/*   Updated: 2019/07/01 05:39:42 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/11/08 02:12:05 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
+
+/*
+**faire des test pour update_env();
+*/
 
 static void			intern_to_env(char *key)
 {
 	char	*value;
 
 	value = get_all_key_value(key, g_shell->intern);
-	update_env(key, value); // faire encore plus de test pour ce cas ci
+	update_env(key, value);
 	g_shell->intern = removekey2(key, 0, (const char**)g_shell->intern);
 }
 
