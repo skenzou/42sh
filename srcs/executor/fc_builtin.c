@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/22 02:02:47 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/11/06 18:06:45 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/11/08 02:03:40 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,35 @@ int		handle_error(int code)
 	return (code);
 }
 
+int		fc_no_param(int argc, char **av, int param)
+{
+	int		i;
+	char	*fcedit;
+	char	*av_custom[6];
+	int		j;
+
+	j = 1;
+	i = 3;
+	(void)param;
+	if (argc == 1)
+		return (1);
+	if (!(fcedit = get_all_key_value("FCEDIT", g_shell->env_tmp)))
+		if (!(fcedit = ft_strdup("vim")))
+			return (shell_exit(MALLOC_ERR));
+	av_custom[0] = NULL;
+	av_custom[1] = "-e";
+	av_custom[2] = fcedit;
+	av_custom[i] = NULL;
+	while (j < argc && i < 5)
+	{
+		if (av[j] && av[j][0] != '-')
+			if (!(av_custom[i++] = ft_strdup(av[j])))
+				return (shell_exit(MALLOC_ERR));
+		j++;
+	}
+	return (fc_editor(i, av_custom, param));
+}
+
 int		fc_builtin(int argc, char **argv)
 {
 	int param;
@@ -55,12 +84,12 @@ int		fc_builtin(int argc, char **argv)
 	}
 	debug_param(param);
 	if (param & FC_LIST)
-		return (handle_error(fc_list(argc, argv, param)));
+		return (fc_list(argc, argv, param));
 	else if (param & FC_NO_EDITOR)
-		return (handle_error(fc_no_editor(argc, argv)));
+		return (fc_no_editor(argc, argv));
 	else if (param & FC_EDITOR)
-		return (handle_error(fc_editor(argc, argv, param)));
-	// else
-	// 	return (handle_error(fc_no_param(argc, argv, param)));
+		return (fc_editor(argc, argv, param));
+	else
+		return (fc_no_param(argc, argv, param));
 	return (0);
 }

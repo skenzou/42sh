@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/28 07:32:50 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/11/06 17:28:52 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/11/08 01:50:45 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ int						fc_no_editor(int ac, char **av)
 	index = 0;
 	max = 0;
 	if (ac == 2 && (!~fc_execute_command(g_shell->history->len - 2, NULL)))
-			ft_putstr_fd("42sh: fc: Command not found in history\n", 2);
+		ft_putstr_fd("42sh: fc: Command not found in history\n", 2);
 	else if (ac != 2)
 	{
 		i = 1;

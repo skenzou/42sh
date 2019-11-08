@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 00:40:57 by midrissi          #+#    #+#             */
-/*   Updated: 2019/11/06 19:41:02 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/11/08 02:05:58 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,7 +148,13 @@ int					fc_builtin(int ac, char **cmd);
 /*
 ** FC_BUILTIN_EDITOR.c
 */
-int		fc_editor(int argc, char **argv, int param);
+int					fc_editor(int argc, char **argv, int param);
+
+/*
+** FC_BUILTIN_EDITOR_UTILS.C
+*/
+int					write_in_file(char *file, int index, int max);
+int					read_file(char *file);
 /*
 ** FC_BUILTIN_LIST.C
 */
@@ -161,7 +167,7 @@ int					fc_no_editor(int ac, char **av);
 ** FC_BUILTIN_UTILS.c
 */
 void				arg_to_number(char *str, char *str2, int *index, int *max);
-char 				*randomize_path(char *path);
+char				*randomize_path(char *path);
 int					get_param(int argc, char **argv);
 int					check_compatibility(int p);
 /*
@@ -191,12 +197,12 @@ void				param_expansion(char **ptr);
 /*
 ** PIPE_EXEC.C
 */
-int 				launch_pipe (t_pipe **begin, t_pipe *pipe, int is_bg);
+int					launch_pipe(t_pipe **begin, t_pipe *pipe, int is_bg);
 /*
 ** PIPE_SETUP.C
 */
-void 				push_pipe(t_ast *root, t_pipe **begin);
-void 				parse_pipe (t_ast *root, t_ast *origin, t_pipe **pipe);
+void				push_pipe(t_ast *root, t_pipe **begin);
+void				parse_pipe(t_ast *root, t_ast *origin, t_pipe **pipe);
 /*
 ** PRE_EXEC.C
 */
