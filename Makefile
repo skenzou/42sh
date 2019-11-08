@@ -6,7 +6,7 @@
 #    By: midrissi <midrissi@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/03 09:24:41 by midrissi          #+#    #+#              #
-#    Updated: 2019/11/08 02:03:06 by aben-azz         ###   ########.fr        #
+#    Updated: 2019/11/08 11:59:18 by aben-azz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,7 +45,7 @@ NAME		= 42sh
 MSG			=	$(_BOLD)$(_BLUE)Compiling 42sh$(_END)
 
 CC			= gcc
-C_FLAGS		= -Wall -Wextra -Werror -fsanitize=address
+C_FLAGS		= -Wall -Wextra -Werror -g -v #-fsanitize=address
 SRC_PATH	= srcs/
 OBJ_PATH	= .obj/
 LFT_PATH	= ./libft/
@@ -79,7 +79,8 @@ _EXEC 		= alias_builtin.c alias_init.c alias_utils.c tools.c\
 			cd_builtin_chdir.c utils2.c handle_hdoc.c  \
 			export_builtin2.c test_builtin_tools.c bin_hash_tools.c \
 			pipe_exec.c pipe_setup.c fc_builtin.c fc_builtin_list.c \
-			fc_builtin_subst.c fc_builtin_utils.c fc_builtin_editor.c
+			fc_builtin_subst.c fc_builtin_utils.c fc_builtin_editor.c \
+			fc_builtin_editor_utils.c
 EXEC 		= $(addprefix $(SRC_PATH)executor/,$(_EXEC))
 _EXEC_O 	:= $(_EXEC:.c=.o)
 EXEC_O 		:= $(EXEC:.c=.o)

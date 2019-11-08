@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/03 19:37:17 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/11/08 12:04:10 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/11/08 13:16:46 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,9 +90,9 @@ static int	index_to_exec(int tindex, int tmax, int p, char *editor)
 
 int			fc_editor_multi_arg(char *editor, char *av1, char *av2, int param)
 {
-	int index;
-	int max;
-	char *it;
+	int		index;
+	int		max;
+	char	*it;
 
 	if (!(it = ft_itoa(ft_max(g_shell->history->len - 2, 0))))
 		return (0);

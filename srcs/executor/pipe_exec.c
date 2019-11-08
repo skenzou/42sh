@@ -6,7 +6,7 @@
 /*   By: tlechien <tlechien@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/04 17:31:04 by tlechien          #+#    #+#             */
-/*   Updated: 2019/11/08 11:43:46 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/11/08 13:17:19 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,6 @@ static	void	end_pipe(t_pipe **begin, t_pipe *elem, int is_bg)
 	prev = NULL;
 	while (!is_bg && elem)
 	{
-		//dprintf(debug(), "waiting %d\n", elem->pid);
 		g_shell->lastsignal = waitpipe(begin, elem);
 		prev = elem;
 		elem = elem->next;

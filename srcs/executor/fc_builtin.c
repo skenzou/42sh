@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/22 02:02:47 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/11/08 11:58:32 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/11/08 13:16:52 by aben-azz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ int		fc_no_param(int argc, char **av, int param)
 	if (!(fcedit = get_all_key_value("FCEDIT", g_shell->env_tmp)))
 		if (!(fcedit = ft_strdup("vim")))
 			return (shell_exit(MALLOC_ERR));
-
 	av_custom[0] = NULL;
 	av_custom[1] = "-e";
 	av_custom[2] = fcedit;
