@@ -35,7 +35,7 @@ t_ast			*newnode(t_token *token, t_list *pointer)
 	t_ast *node;
 
 	if (!(node = (t_ast *)ft_memalloc(sizeof(t_ast))))
-		ft_exit("Malloc failed in newnode");
+		shell_exit(MALLOC_ERR);
 	if (token)
 		node->token = token;
 	else

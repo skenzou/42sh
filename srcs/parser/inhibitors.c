@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   inhibitors.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: midrissi <midrissi@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 01:26:49 by midrissi          #+#    #+#             */
-/*   Updated: 2019/11/09 15:51:04 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/11/09 16:23:23 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static void		read_inhib(char inhib, char **word)
 			input[ft_strlen(input) - 1] = '\0';
 		save = *word;
 		if (!(*word = ft_strjoin(*word, input)))
-			ft_exit("Malloc failed in exec_inhib");
+			shell_exit(MALLOC_ERR);
 		free(save);
 		if (ft_strchr(input, inhib) || inhib == '\\')
 			break ;
@@ -49,7 +49,7 @@ static void		exec_inhib(char inhib, char **str)
 		g_shell->tcap->prompt = ">";
 	save = *str;
 	if (inhib != BSLASH && !(*str = ft_strjoin(*str, "\n")))
-		ft_exit("Malloc failed in exec_inhib");
+		shell_exit(MALLOC_ERR);
 	else
 		(*str)[ft_strlen(*str) - 1] = '\n';
 	if (inhib != BSLASH)

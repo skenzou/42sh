@@ -105,7 +105,7 @@ static void			create_token(t_list **lexer, char *str,
 	t_list		*list;
 
 	if (!str)
-		ft_exit("Malloc fail");
+		shell_exit(MALLOC_ERR);
 	if (join_if_2words(lexer, str, type))
 		return ;
 	if (op_type == SEMI && (*lexer == NULL || (*lexer &&
@@ -115,7 +115,7 @@ static void			create_token(t_list **lexer, char *str,
 		return ;
 	}
 	if (!(token.content = (char **)ft_memalloc((sizeof(char *) * 2))))
-		ft_exit("Malloc failed in create_token");
+		shell_exit(MALLOC_ERR);
 	token.content[0] = str;
 	token.content[1] = NULL;
 	token.size = 1;
@@ -124,7 +124,7 @@ static void			create_token(t_list **lexer, char *str,
 	token.op_type = op_type;
 	token.redir = op_type == TOKEN_REDIR;
 	if (!(list = ft_lstnew((void *)&token, sizeof(token))))
-		ft_exit("Failed to malloc a node of my lexer list");
+		shell_exit(MALLOC_ERR);
 	ft_lstadd(lexer, list);
 }
 

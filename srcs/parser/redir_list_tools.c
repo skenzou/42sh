@@ -34,7 +34,7 @@ void		create_redir(char *red, char **dest, size_t size,
 	redir.end_of_leaf = redir_type == OTHER_OP;
 	node = ft_lstnew((void *)&redir, sizeof(redir));
 	if (!node)
-		ft_exit("Failed to malloc a node for my redir list");
+		shell_exit(MALLOC_ERR);
 	ft_lstadd(&(g_shell->redir), node);
 }
 
