@@ -18,7 +18,7 @@ char	*get_key_value(char *key, char **taba)
 	int		key_index;
 
 	if (!(key = ft_strjoin(key, "=")))
-		ft_exit("Malloc failed in get_all_key_value");
+		shell_exit(MALLOC_ERR);
 	key_index = get_indexof_key(key, taba);
 	if (key_index >= 0)
 	{

@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/13 06:11:23 by midrissi          #+#    #+#             */
-/*   Updated: 2019/10/23 12:46:41 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/11/09 16:12:51 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static void					add_index(int hashindex)
 	t_list *new;
 
 	if (!(new = ft_lstnew((void *)&hashindex, sizeof(int))))
-		ft_exit("Malloc failed");
+		shell_exit(MALLOC_ERR);
 	ft_lstpushback(&g_shell->hash_indexes, new);
 }
 
@@ -56,14 +56,14 @@ t_hash_entry				*hash_insert(unsigned char *key, char **env)
 	int				hashindex;
 
 	item = NULL;
-	if (!(item = (t_hash_entry*)ft_memalloc(sizeof(t_hash_entry)))
-			|| !(item->key = (unsigned char *)ft_strdup((char *)key)))
-		ft_exit("Malloc failed in hash_insert");
-	hashindex = hashcode(key);
 	if (!(path = get_all_key_value("PATH", env)))
 		return (NULL);
+	if (!(item = (t_hash_entry*)ft_memalloc(sizeof(t_hash_entry)))
+			|| !(item->key = (unsigned char *)ft_strdup((char *)key)))
+		shell_exit(MALLOC_ERR);
+	hashindex = hashcode(key);
 	if (!(bin = ft_strsplit(path, ':')))
-		ft_exit("Malloc failed in hash_insert");
+		shell_exit(MALLOC_ERR);
 	if (!(key = add_path(bin, key)))
 		return ((t_hash_entry*)free_duo(bin, &item));
 	add_index(hashindex);
@@ -89,7 +89,7 @@ int							hash_table(char **str, char **env)
 		{
 			item->hit = 1;
 			*str = ft_strdup((char*)item->data);
-			!(*str) ? ft_exit("Malloc failed in hash_table") : 0;
+			!(*str) ? shell_exit(MALLOC_ERR): 0;
 			ft_strdel(&copy);
 			return (check_file(*str));
 		}
@@ -100,7 +100,7 @@ int							hash_table(char **str, char **env)
 	{
 		item->hit++;
 		*str = ft_strdup((char *)item->data);
-		!(*str) ? ft_exit("Malloc failed in hash_table") : 0;
+		!(*str) ? shell_exit(MALLOC_ERR): 0;
 		ft_strdel(&copy);
 		return (check_file(*str));
 	}

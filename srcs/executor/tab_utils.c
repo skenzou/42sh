@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tab_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: midrissi <midrissi@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 01:14:21 by midrissi          #+#    #+#             */
-/*   Updated: 2019/06/20 19:02:28 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/11/09 16:12:35 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,12 @@ char		**dup_tab(char **old, size_t size)
 
 	size = ft_split_count((const char**)old);
 	new = (char **)ft_memalloc(sizeof(char *) * (size + 1));
-	!new ? ft_exit("Failed to allocate a new char** in realloc_new_tab") : 0;
+	!new ? shell_exit(MALLOC_ERR): 0;
 	i = 0;
 	while (i < size)
 	{
 		if (!(new[i] = ft_strdup(old[i])))
-			ft_exit("Malloc failed in dup_tab");
+			shell_exit(MALLOC_ERR);
 		i++;
 	}
 	new[i] = NULL;
@@ -60,18 +60,18 @@ char		**join_2tab(char **curr, char **next, size_t curr_size,
 	size_t	j;
 
 	new = (char **)ft_memalloc(sizeof(char *) * (curr_size + next_size + 1));
-	!new ? ft_exit("Failed to allocate a new char** in realloc_new_tab") : 0;
+	!new ? shell_exit(MALLOC_ERR): 0;
 	i = 0;
 	while (i < curr_size)
 	{
 		if (!(new[i] = ft_strdup(curr[i])))
-			ft_exit("Malloc failed in join_2tab");
+			shell_exit(MALLOC_ERR);
 		i++;
 	}
 	j = 0;
 	while (j < next_size)
 		if (!(new[i++] = ft_strdup(next[j++])))
-			ft_exit("Malloc failed in join_2tab");
+			shell_exit(MALLOC_ERR);
 	new[i] = NULL;
 	return (new);
 }
@@ -83,7 +83,7 @@ char		**realloc_new_tab(char *needle, char **old, size_t size)
 
 	size = ft_split_count((const char**)old);
 	new = (char **)ft_memalloc(sizeof(char *) * (size + 2));
-	!new ? ft_exit("Failed to allocate a new char** in realloc_new_tab") : 0;
+	!new ? shell_exit(MALLOC_ERR): 0;
 	i = 0;
 	while (i < size)
 	{

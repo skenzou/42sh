@@ -19,7 +19,7 @@ void			ft_post_exec(t_ast *root)
 	if (g_shell->env != g_shell->env_tmp)
 		ft_splitdel(g_shell->env_tmp);
 	if (!(str = ft_itoa(g_shell->lastsignal)))
-		ft_exit("Maloc failed in ft_post_exec");
+		shell_exit(MALLOC_ERR);
 	ft_setenv("?", str, &g_shell->intern);
 	ft_strdel(&str);
 	g_shell->env_tmp = g_shell->env;

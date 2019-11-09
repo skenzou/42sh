@@ -43,10 +43,10 @@ unsigned char		*add_path(char **bin, unsigned char *argv)
 	{
 		old_bin = *(bin + i);
 		if (!(bin[i] = ft_strjoin(bin[i], "/")))
-			ft_exit("Malloc failed in add_path");
+			shell_exit(MALLOC_ERR);
 		ft_strdel(&old_bin);
 		if (!(str = (unsigned char *)ft_strjoin(bin[i], (char *)argv)))
-			ft_exit("Malloc failed in add_path");
+			shell_exit(MALLOC_ERR);
 		if (access((char *)str, R_OK) == 0)
 			return (str);
 		ft_strdel((char **)&str);

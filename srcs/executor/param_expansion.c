@@ -31,13 +31,13 @@ static char			*dollar_curly(char *old, char *ptr, int *i)
 
 	str = goto_closing_brace(ptr) + 1;
 	if (!(key = ft_strsub(ptr, 2, str - ptr - 3)))
-		ft_exit("Malloc failed in reform_string");
+		shell_exit(MALLOC_ERR);
 	value = get_all_key_value(key, g_shell->env);
 	if (!value)
 		value = "";
 	len_after_brace = ft_strlen(str);
 	if (!(ptr = ft_strnew(*i + ft_strlen(value) + len_after_brace)))
-		ft_exit("Malloc failed in dollar_curly");
+		shell_exit(MALLOC_ERR);
 	ft_strncpy(ptr, old, *i);
 	ft_strcat(ptr, value);
 	ft_strcat(ptr, str);
@@ -68,13 +68,13 @@ static char			*simple_dollar(char *old, char *ptr, int *i)
 	exp_len = len_to_next_dollar(ptr + 1);
 	ptr_after_exp = ptr + 1 + exp_len;
 	if (!(key = ft_strsub(ptr, 1, exp_len)))
-		ft_exit("Malloc failed in reform_string");
+		shell_exit(MALLOC_ERR);
 	value = get_all_key_value(key, g_shell->env);
 	if (!value)
 		value = "";
 	len_after_exp = ft_strlen(ptr_after_exp);
 	if (!(ptr = ft_strnew(len_after_exp + ft_strlen(value) + *i)))
-		ft_exit("Malloc failed in simple_dollar");
+		shell_exit(MALLOC_ERR);
 	ft_strncpy(ptr, old, *i);
 	ft_strcat(ptr, value);
 	ft_strcat(ptr, ptr_after_exp);

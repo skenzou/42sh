@@ -18,7 +18,7 @@ static void		unset_key(char *str)
 	int		key_index;
 
 	if (!(key = ft_strjoin(str, "=")))
-		ft_exit("Malloc failed in unset_builtin");
+		shell_exit(MALLOC_ERR);
 	key_index = get_indexof_key(key, g_shell->env_tmp);
 	if (key_index >= 0)
 		g_shell->env_tmp = removekey(key, ft_strlen(key),

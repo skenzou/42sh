@@ -20,7 +20,7 @@ static void		remove_escape(char **str, int *start)
 	is_newline = (*str)[*start + 1] == '\n';
 	tmp = *str;
 	if (!(*str = ft_strnew(ft_strlen(*str) - (1 - is_newline))))
-		ft_exit("Malloc failed in remove_escape");
+		shell_exit(MALLOC_ERR);
 	ft_strncpy(*str, tmp, *start);
 	ft_strcpy(*str + *start, tmp + *start + 1 + is_newline);
 	free(tmp);
@@ -33,7 +33,7 @@ static void		realloc_without_quotes(char **str, int start, int end)
 
 	tmp = *str;
 	if (!(*str = ft_strnew(ft_strlen(*str) - 2)))
-		ft_exit("Malloc failed in realloc_without_quotes");
+		shell_exit(MALLOC_ERR);
 	ft_strncpy(*str, tmp, start);
 	ft_strncpy((*str) + start, tmp + start + 1, end - start - 1);
 	ft_strcpy((*str) + end - 1, tmp + end + 1);
@@ -58,7 +58,7 @@ static void		remove_double(char **str, int *i)
 	if (ft_strequ(*str, "\"\""))
 	{
 		if (!(*str = ft_strnew(0)))
-			ft_exit("Malloc failed in realloc_without_quotes");
+			shell_exit(MALLOC_ERR);
 		free(tmp);
 		(*i) = 0;
 		return ;

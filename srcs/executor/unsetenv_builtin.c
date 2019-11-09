@@ -20,7 +20,7 @@ char			**removekey2(char *key, int keylen, const char **env)
 	int		j;
 
 	if (!(key = ft_strjoin(key, "=")))
-		ft_exit("Malloc failed in removekey2");
+		shell_exit(MALLOC_ERR);
 	keylen = ft_strlen(key);
 	count = ft_split_count(env);
 	fresh_env = (char **)ft_memalloc(sizeof(char *) * (count + 1));

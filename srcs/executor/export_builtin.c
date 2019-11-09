@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/28 13:22:00 by midrissi          #+#    #+#             */
-/*   Updated: 2019/11/08 02:12:05 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/11/09 16:12:08 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static void			env_to_env(char *key)
 	if (value)
 	{
 		if (!(value = ft_strdup(value)))
-			ft_exit("Malloc failed in intern_to_env");
+			shell_exit(MALLOC_ERR);
 		if ((get_indexof_key2(key, g_shell->intern)) >= 0)
 			g_shell->intern = removekey2(key, 0, (const char**)g_shell->intern);
 		update_env(key, value);
@@ -51,7 +51,7 @@ static void			env_to_env(char *key)
 static void			simple_export(char *key, char *value, char *ptr)
 {
 	if (!(value = ft_strdup(ptr + 1)))
-		ft_exit("Malloc failed in exec_export");
+		shell_exit(MALLOC_ERR);
 	update_env(key, value);
 	ft_strdel(&value);
 	if ((get_indexof_key2(key, g_shell->intern)) >= 0)
@@ -98,7 +98,7 @@ int					export_builtin(int ac, char **av)
 			key = ft_strsub(av[i], 0, ptr - av[i]);
 		else
 			key = ft_strdup(av[i]);
-		!key ? ft_exit("Malloc failed in export_builtin") : 0;
+		!key ? shell_exit(MALLOC_ERR): 0;
 		ret += exec_export(key, ptr);
 		ft_strdel(&key);
 	}

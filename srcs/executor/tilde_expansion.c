@@ -39,7 +39,7 @@ static char			*check_user(char *str, char *home)
 	else
 		str = ft_strdup(buff);
 	if (!str)
-		ft_exit("Malloc failed in tilde_expansion");
+		shell_exit(MALLOC_ERR);
 	return (str);
 }
 
@@ -53,7 +53,7 @@ static char			*get_home(void)
 	else
 	{
 		if (!(home = ft_strdup(home)))
-			ft_exit("Malloc failed in tilde_expansion");
+			shell_exit(MALLOC_ERR);
 	}
 	return (home);
 }
@@ -78,7 +78,7 @@ void				tilde_expansion(char **ptr)
 	if (str != home)
 		free(home);
 	if (!str)
-		ft_exit("Malloc failed in tilde_expansion");
+		shell_exit(MALLOC_ERR);
 	free(*ptr);
 	*ptr = str;
 }

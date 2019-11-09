@@ -23,7 +23,7 @@ char			*get_oldpwd(char **env)
 		if (!ft_strncmp(env[i], "OLDPWD=", 7))
 		{
 			if (!(str = ft_strdup(env[i] + 7)))
-				ft_exit("Malloc failed in get_oldpwd");
+				shell_exit(MALLOC_ERR);
 			return (str);
 		}
 	}
@@ -54,7 +54,7 @@ char			*join_path(char *path, char *dir)
 	else
 		full_path = ft_strcjoin(path, dir, '/');
 	if (!full_path)
-		ft_exit("Malloc failed in test_full_paths");
+		shell_exit(MALLOC_ERR);
 	return (full_path);
 }
 
@@ -65,7 +65,7 @@ char			*test_full_paths(char *entry, char *dir)
 	int		i;
 
 	if (!(paths = ft_strsplit(entry, ':')))
-		ft_exit("Malloc failed in test_full_paths");
+		shell_exit(MALLOC_ERR);
 	i = -1;
 	fpath = NULL;
 	while (paths[++i])
@@ -89,7 +89,7 @@ char			*get_path(char *dir)
 	if (*dir == '/' || *dir == '.' || ft_strnequ(dir, "..", 2))
 	{
 		if (!(path = ft_strdup(dir)))
-			ft_exit("Malloc failed in get_path");
+			shell_exit(MALLOC_ERR);
 		return (path);
 	}
 	entry = get_all_key_value("CDPATH", g_shell->env_tmp);
@@ -100,6 +100,6 @@ char			*get_path(char *dir)
 		ft_printf("%s\n", path);
 	if (!path)
 		if (!(path = ft_strdup(dir)))
-			ft_exit("Malloc failed in get_path");
+			shell_exit(MALLOC_ERR);
 	return (path);
 }

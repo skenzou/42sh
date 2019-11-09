@@ -55,7 +55,7 @@ int						get_indexof_key2(char *key, char **env)
 
 	i = -1;
 	if (!(key = ft_strjoin(key, "=")))
-		ft_exit("Malloc failed in get_indexof_key2");
+		shell_exit(MALLOC_ERR);
 	len = ft_strlen(key);
 	while (env && env[++i])
 	{

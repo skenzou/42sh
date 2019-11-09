@@ -22,7 +22,7 @@ static void		exec_hdoc(t_redir *redir, char *tmp_file)
 	fd = open(tmp_file, O_RDWR | O_CREAT | O_TRUNC, 0666);
 	input = NULL;
 	if (!(eof = ft_strjoin(redir->dest[0], "\n")))
-		ft_exit("Malloc failed in handle_hdoc");
+		shell_exit(MALLOC_ERR);
 	g_shell->tcap->prompt = "heredoc>";
 	while (42 && g_shell->inhib_mod == 1)
 	{
@@ -47,7 +47,7 @@ void			handle_hdoc(t_list *redir)
 
 	g_shell->inhib_mod = 1;
 	if (!(str = ft_strdup("/tmp/.hdoc1")))
-		ft_exit("malloc failed in handle_hdoc");
+		shell_exit(MALLOC_ERR);
 	i = 0;
 	while (redir)
 	{

@@ -23,9 +23,9 @@ static void			add_to_right_tab(char *needle, char ***env, char ***intern)
 	while (needle[i] && needle[i] != '=')
 		i++;
 	if (!(key = ft_strsub(needle, 0, i)))
-		ft_exit("Malloc failed in check_intern_var failed");
+		shell_exit(MALLOC_ERR);
 	if (!(value = ft_strdup(needle + i + 1)))
-		ft_exit("Malloc failed in check_intern_var failed");
+		shell_exit(MALLOC_ERR);
 	entry = get_indexof_key2(key, g_shell->env);
 	ft_expand_one(&value);
 	if (entry >= 0)
@@ -73,9 +73,9 @@ static void			add_to_env_tmp(char *needle)
 	while (needle[i] && needle[i] != '=')
 		i++;
 	if (!(key = ft_strsub(needle, 0, i)))
-		ft_exit("Malloc failed in check_intern_var failed");
+		shell_exit(MALLOC_ERR);
 	if (!(value = ft_strdup(needle + i + 1)))
-		ft_exit("Malloc failed in check_intern_var failed");
+		shell_exit(MALLOC_ERR);
 	ft_expand_one(&value);
 	ft_setenv(key, value, &g_shell->env_tmp);
 	ft_strdel(&key);
@@ -97,7 +97,7 @@ void				handle_intern_var(char **args)
 	if (args[i])
 	{
 		if (!(g_shell->env_tmp = ft_splitdup(g_shell->env)))
-			ft_exit("Malloc failed in handle_intern_var");
+			shell_exit(MALLOC_ERR);
 		while (++j < i)
 			add_to_env_tmp(args[j]);
 	}
