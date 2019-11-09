@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/03 19:37:17 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/11/08 13:16:46 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/11/09 19:11:08 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ char		**init_editor(char *arg, char *path_random)
 		return (NULL);
 	if (!(editors = ft_strsplit(editor, ' ')))
 		return (NULL);
-	ft_printf("ok la\n");
 	if (!(path = get_all_key_value("PATH", g_shell->env_tmp)))
 		return (NULL);
 	if (!(bin = ft_strsplit(path, ':')))
@@ -107,8 +106,10 @@ int			fc_editor_multi_arg(char *editor, char *av1, char *av2, int param)
 
 int			fc_editor(int argc, char **av, int param)
 {
-	int i;
+	int			i;
+	t_history	*history;
 
+	history = g_shell->history;
 	i = 1;
 	while (i < argc && av[i][0] == '-' && !~ft_indexof(av[i], 'e'))
 		i++;
@@ -125,7 +126,7 @@ int			fc_editor(int argc, char **av, int param)
 			fc_editor_multi_arg(av[i], av[i + 1],
 								argc - 1 - i == 2 ? av[i + 2] : NULL, param);
 		else
-			exec_command(av[i], -1, -1);
+			exec_command(av[i], (history->len - 2), (history->len - 2));
 	}
 	return (0);
 }

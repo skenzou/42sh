@@ -6,15 +6,11 @@
 /*   By: midrissi <midrissi@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 01:26:49 by midrissi          #+#    #+#             */
-/*   Updated: 2019/11/09 16:51:46 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/11/09 18:42:51 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
-
-/*
-**free *word ?
-*/
 
 static void		read_inhib(char inhib, char **word)
 {
@@ -29,6 +25,8 @@ static void		read_inhib(char inhib, char **word)
 		if (ft_strchr(input, inhib) || inhib == '\\')
 			input[ft_strlen(input) - 1] = '\0';
 		save = *word;
+		if (inhib == '\\' && (*word)[ft_strlen(*word) - 2] != ' ')
+			(*word)[ft_strlen(*word) - 1] = '\0';
 		if (!(*word = ft_strjoin(*word, input)))
 			shell_exit(MALLOC_ERR);
 		free(save);

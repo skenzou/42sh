@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 01:14:21 by midrissi          #+#    #+#             */
-/*   Updated: 2019/11/09 16:12:35 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/11/09 18:48:28 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char		**dup_tab(char **old, size_t size)
 
 	size = ft_split_count((const char**)old);
 	new = (char **)ft_memalloc(sizeof(char *) * (size + 1));
-	!new ? shell_exit(MALLOC_ERR): 0;
+	!new ? shell_exit(MALLOC_ERR) : 0;
 	i = 0;
 	while (i < size)
 	{
@@ -60,7 +60,7 @@ char		**join_2tab(char **curr, char **next, size_t curr_size,
 	size_t	j;
 
 	new = (char **)ft_memalloc(sizeof(char *) * (curr_size + next_size + 1));
-	!new ? shell_exit(MALLOC_ERR): 0;
+	!new ? shell_exit(MALLOC_ERR) : 0;
 	i = 0;
 	while (i < curr_size)
 	{
@@ -83,7 +83,7 @@ char		**realloc_new_tab(char *needle, char **old, size_t size)
 
 	size = ft_split_count((const char**)old);
 	new = (char **)ft_memalloc(sizeof(char *) * (size + 2));
-	!new ? shell_exit(MALLOC_ERR): 0;
+	!new ? shell_exit(MALLOC_ERR) : 0;
 	i = 0;
 	while (i < size)
 	{

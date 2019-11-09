@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   shell.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: midrissi <midrissi@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 16:42:03 by midrissi          #+#    #+#             */
-/*   Updated: 2019/09/20 23:17:43 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/11/09 18:48:57 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,6 @@
 # define JOBS_BUILTIN		21
 # define TYPE_BUILTIN		22
 # define TEST_BUILTIN		23
-//# define OPEN_ERR			24
 # define AMBIGOUS_REDIRECT	25
 # define BAD_FD				26
 

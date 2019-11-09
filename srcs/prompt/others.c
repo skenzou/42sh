@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/28 15:35:56 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/11/03 05:08:39 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/11/09 18:56:00 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,25 +72,4 @@ int		ft_clean_eol(t_cap *tcap)
 	ft_strcpy(tcap->command, str);
 	ft_strdel(&str);
 	return (len);
-}
-
-char	*correct(char *string, char **possible, int *difference)
-{
-	size_t	distance;
-	int		i;
-	int		smallest;
-	size_t	dist;
-
-	i = -1;
-	distance = SIZE_MAX;
-	while (possible[++i])
-	{
-		if (distance > (dist = ft_levenshtein(string, possible[i])))
-		{
-			distance = dist;
-			smallest = i;
-		}
-	}
-	*difference = (int)distance;
-	return (possible[smallest]);
 }

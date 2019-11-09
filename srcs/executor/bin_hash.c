@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/13 06:11:23 by midrissi          #+#    #+#             */
-/*   Updated: 2019/11/09 16:12:51 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/11/09 18:48:03 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ int							hash_table(char **str, char **env)
 		{
 			item->hit = 1;
 			*str = ft_strdup((char*)item->data);
-			!(*str) ? shell_exit(MALLOC_ERR): 0;
+			!(*str) ? shell_exit(MALLOC_ERR) : 0;
 			ft_strdel(&copy);
 			return (check_file(*str));
 		}
@@ -100,7 +100,7 @@ int							hash_table(char **str, char **env)
 	{
 		item->hit++;
 		*str = ft_strdup((char *)item->data);
-		!(*str) ? shell_exit(MALLOC_ERR): 0;
+		!(*str) ? shell_exit(MALLOC_ERR) : 0;
 		ft_strdel(&copy);
 		return (check_file(*str));
 	}

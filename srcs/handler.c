@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/29 17:39:49 by midrissi          #+#    #+#             */
-/*   Updated: 2019/11/09 17:45:02 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/11/09 18:17:13 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,6 @@ char				*read_line(t_cap *tcap)
 
 /*
 ** check leak dans handler, lst ? input ?
-**suppression de la ligne 99: 	in[ft_strlen(in) - 1] = '\0';
 */
 
 int					handler(const char *input)

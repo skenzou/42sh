@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/28 13:22:00 by midrissi          #+#    #+#             */
-/*   Updated: 2019/11/09 16:12:08 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/11/09 18:48:12 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ int					export_builtin(int ac, char **av)
 			key = ft_strsub(av[i], 0, ptr - av[i]);
 		else
 			key = ft_strdup(av[i]);
-		!key ? shell_exit(MALLOC_ERR): 0;
+		!key ? shell_exit(MALLOC_ERR) : 0;
 		ret += exec_export(key, ptr);
 		ft_strdel(&key);
 	}
