@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/29 17:39:49 by midrissi          #+#    #+#             */
-/*   Updated: 2019/11/09 16:46:12 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/11/09 17:45:02 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,12 @@ char				**dup_env(char **env)
 	return (p);
 }
 
-/*
-** int			debug(void)
-** {
-** 	int fd;
-**
-** 	return (fd = open("log.log", O_RDWR | O_APPEND | O_CREAT, 0666));
-** }
-*/
+int			debug(void)
+{
+	int fd;
+
+	return (fd = open("log.log", O_RDWR | O_APPEND | O_CREAT, 0666));
+}
 
 static inline void	before_read_line(char *buffer, t_cap *tcap)
 {
@@ -98,6 +96,7 @@ int					handler(const char *input)
 	redir = NULL;
 	if (!(in = ft_strdup(input)))
 		exit(1);
+	in[ft_strlen(in) - 1] = '\0';
 	in = parse_aliases(in, in, in);
 	check_inhib(&in);
 	if (g_shell->inhib_mod == 2)
