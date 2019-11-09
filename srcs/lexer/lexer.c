@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/30 18:51:02 by midrissi          #+#    #+#             */
-/*   Updated: 2019/09/22 01:50:00 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/11/09 16:03:34 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,8 +157,14 @@ static void			build_lexer_helper(t_list **lexer,
 	{
 		quote = *(*input)++;
 		while (**input && **input != quote)
+		{
+			// if (**input == '\\' && *((*input) + 1) == quote)
+			// 	(*input) += 2;
+			// else
 			(*input)++;
-		(*input)++;
+		}
+		if (**input)
+			(*input)++;
 	}
 	else
 		(*input)++;

@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 00:57:44 by midrissi          #+#    #+#             */
-/*   Updated: 2019/06/07 06:16:05 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/11/09 15:54:06 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,8 @@ static void		realloc_without_quotes(char **str, int start, int end)
 
 static void		remove_double(char **str, int *i)
 {
-	int start;
+	int		start;
+	char	*tmp;
 
 	start = *i;
 	(*i)++;
@@ -52,6 +53,15 @@ static void		remove_double(char **str, int *i)
 			remove_escape(str, i);
 		else
 			(*i)++;
+	}
+	tmp = *str;
+	if (ft_strequ(*str, "\"\""))
+	{
+		if (!(*str = ft_strnew(0)))
+			ft_exit("Malloc failed in realloc_without_quotes");
+		free(tmp);
+		(*i) = 0;
+		return ;
 	}
 	realloc_without_quotes(str, start, *i);
 	(*i)--;

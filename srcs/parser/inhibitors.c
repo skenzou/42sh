@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   inhibitors.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: midrissi <midrissi@student.s19.be>         +#+  +:+       +#+        */
+/*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 01:26:49 by midrissi          #+#    #+#             */
-/*   Updated: 2019/11/08 02:16:17 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/11/09 15:51:04 by midrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ static int		check_quotes(char **str, char **cmd)
 		inhib = *(*str)++;
 		while (**str && **str != inhib)
 		{
-			if (**str == BSLASH && *(*(str + 1)))
+			if (**str == BSLASH && *((*str) + 1))
 				(*str) += 2;
 			else
 				(*str)++;
