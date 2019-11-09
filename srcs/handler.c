@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/29 17:39:49 by midrissi          #+#    #+#             */
-/*   Updated: 2019/11/08 02:17:43 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/11/09 16:46:12 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,9 @@ char				*read_line(t_cap *tcap)
 int					handler(const char *input)
 {
 	char	*in;
+	t_list	*redir;
 
+	redir = NULL;
 	if (!(in = ft_strdup(input)))
 		exit(1);
 	in = parse_aliases(in, in, in);
@@ -108,11 +110,12 @@ int					handler(const char *input)
 	if (g_shell->print_flags & PRINT_LEXER)
 		print_lexer(g_shell->lexer);
 	ft_parse(g_shell->lexer);
-	handle_hdoc(g_shell->redir);
+	redir = g_shell->redir;
+	handle_hdoc(redir);
 	if (g_shell->inhib_mod == 2)
 		return (1);
 	ft_execute_ast(g_shell->ast);
-	ft_lstdel(&(g_shell->redir), redir_delone);
+	ft_lstdel(&redir, redir_delone);
 	del_ast(&g_shell->ast);
 	g_shell->redir = NULL;
 	g_shell->lexer = NULL;

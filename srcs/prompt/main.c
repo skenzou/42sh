@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/27 17:27:48 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/10/23 13:17:52 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/11/09 16:32:17 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,5 @@ int					main(int ac, char **av, char **env)
 			return (-1);
 		update_pid_table();
 	}
-	save_alias(1);
-	kill_pids();
 	return (0);
 }

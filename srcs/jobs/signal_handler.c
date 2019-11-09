@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/28 15:31:17 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/11/06 16:42:15 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/11/09 16:45:40 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,10 @@ void	sigint_handler(int sig)
 		if (g_shell->inhib_mod == 1)
 		{
 			fcntl(0, F_SETFL, O_NONBLOCK);
-			ft_lstdel(&g_shell->redir, redir_delone);
+			//ft_lstdel(&g_shell->redir, redir_delone);
 			(g_shell->ast) ? del_ast(&g_shell->ast) :
 							lex_del_list(&g_shell->lexer);
+			g_shell->redir = NULL;
 			g_shell->ast = NULL;
 			g_shell->lexer = NULL;
 			g_shell->tcap->prompt = NULL;

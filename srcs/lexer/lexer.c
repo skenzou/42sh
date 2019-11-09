@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lexer.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: midrissi <midrissi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: midrissi <midrissi@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/30 18:51:02 by midrissi          #+#    #+#             */
-/*   Updated: 2019/11/09 16:03:34 by midrissi         ###   ########.fr       */
+/*   Updated: 2019/11/09 16:48:45 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,10 +158,10 @@ static void			build_lexer_helper(t_list **lexer,
 		quote = *(*input)++;
 		while (**input && **input != quote)
 		{
-			// if (**input == '\\' && *((*input) + 1) == quote)
-			// 	(*input) += 2;
-			// else
-			(*input)++;
+			if (**input == '\\' && *((*input) + 1) == quote)
+				(*input) += 2;
+			else
+				(*input)++;
 		}
 		if (**input)
 			(*input)++;
