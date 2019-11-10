@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/03 16:15:41 by midrissi          #+#    #+#             */
-/*   Updated: 2019/11/06 19:43:53 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/11/10 20:12:47 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,11 @@ static void		handle_builtin(t_builtin *builtin, char **args)
 {
 	char	*path;
 
-	path = get_all_key_value("PATH", g_shell->env);
+	path = ft_strdup(get_all_key_value("PATH", g_shell->env));
 	g_shell->lastsignal = builtin->function(ft_split_count((const char**)args),
 																		args);
 	compare_paths(path);
+	ft_strdel(path);
 }
 
 static void		ft_execute(char **args, int redir, int background)
