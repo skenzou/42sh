@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/04 13:56:36 by midrissi          #+#    #+#             */
-/*   Updated: 2019/11/06 16:43:39 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/11/10 17:44:58 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,4 +162,5 @@ int				ft_nlastindexof(char *string, char c, int n);
 int				ft_isspace(int c);
 char			*ft_strreplace(char *orig, char *rep, char *with);
 long long		ft_rand(long long n);
+int				ft_strdel2(char **as);
 #endif

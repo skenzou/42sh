@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/03 19:37:17 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/11/09 19:11:08 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/11/10 18:12:38 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,20 @@ char		**init_editor(char *arg, char *path_random)
 	char *editor;
 	char **editors;
 
-	if (!(editor = ft_strcjoin(arg, path_random, ' ')))
+	if (!(editor = ft_strcjoin(arg, path_random, ' '))
+				&& handle_error(FC_MALLOC_ERR))
 		return (NULL);
-	if (!(editors = ft_strsplit(editor, ' ')))
+	if (!(editors = ft_strsplit(editor, ' '))
+				&& handle_error(FC_MALLOC_ERR))
 		return (NULL);
-	if (!(path = get_all_key_value("PATH", g_shell->env_tmp)))
+	if (!(path = get_all_key_value("PATH", g_shell->env_tmp))
+				&& handle_error(FC_NO_PATH))
 		return (NULL);
-	if (!(bin = ft_strsplit(path, ':')))
+	if (!(bin = ft_strsplit(path, ':'))
+				&& handle_error(FC_MALLOC_ERR))
 		return (NULL);
-	if (!(editors[0] = (char *)add_path(bin, (unsigned char *)editors[0])))
+	if (!(editors[0] = (char *)add_path(bin, (unsigned char *)editors[0]))
+				&& handle_error(FC_BIN_NFOUND))
 		return (NULL);
 	ft_strdel(&editor);
 	ft_splitdel(bin);
@@ -41,26 +46,25 @@ int			exec_command(char *arg, int index, int max)
 	int		status;
 	char	*path;
 
-	if (!(path = randomize_path("/tmp")) ||
-		!(editor = init_editor(arg, path)))
+	if ((!(path = randomize_path("/tmp")) && handle_error(FC_MALLOC_ERR)) ||
+		!(editor = init_editor(arg, path)) || write_in_file(path, index, max))
 		return (1);
-	write_in_file(path, index, max);
 	if (!(pid = fork()) && !~execve(editor[0], editor, g_shell->env_tmp))
 	{
-		ft_printf("42sh: unable to launch command %s [%d]\n", editor[0], errno);
-		exit(1);
+		exit(ft_printf("42sh: fc: unable to launch command %s [%d]\n",
+				editor[0], errno) || 1);
 	}
 	else
 	{
 		waitpid(pid, &status, WUNTRACED);
 		if (WIFEXITED(status) && !WEXITSTATUS(status))
-			read_file(path);
+			status = read_file(path);
 		else
-			ft_printf("42sh: fc command not found: %s\n", editor[0]);
+			status = ft_printf("42sh: fc: command not found: %s\n", editor[0]);
 	}
 	ft_splitdel(editor);
 	ft_strdel(&path);
-	return (1);
+	return (status);
 }
 
 static int	index_to_exec(int tindex, int tmax, int p, char *editor)
@@ -83,8 +87,7 @@ static int	index_to_exec(int tindex, int tmax, int p, char *editor)
 		max = index;
 		index = tmp;
 	}
-	exec_command(editor, index, max);
-	return (0);
+	return (exec_command(editor, index, max));
 }
 
 int			fc_editor_multi_arg(char *editor, char *av1, char *av2, int param)
@@ -94,14 +97,13 @@ int			fc_editor_multi_arg(char *editor, char *av1, char *av2, int param)
 	char	*it;
 
 	if (!(it = ft_itoa(ft_max(g_shell->history->len - 2, 0))))
-		return (0);
-	if (!ft_strcmp(av1, "noarg"))
+		return (handle_error(FC_MALLOC_ERR));
+	if (!av1)
 		arg_to_number(it, av2, &index, &max);
 	else
 		arg_to_number(av1, av2, &index, &max);
-	index_to_exec(index, max, param, editor);
 	ft_strdel(&it);
-	return (1);
+	return (index_to_exec(index, max, param, editor));
 }
 
 int			fc_editor(int argc, char **av, int param)
@@ -116,17 +118,17 @@ int			fc_editor(int argc, char **av, int param)
 	while (i < argc && av[i + 1] && av[i + 1][0] == '-' && av[i + 1][1] == 'e')
 		i++;
 	if (argc - 1 > i && av[i + 1][0] == '-')
-		return (ft_printf("erreur param apres -e\n") ? 1 : 1);
+		return (handle_error(FC_ERR_PARAM));
 	if (i == argc - 1)
-		return (ft_printf("Aucun argument pour -e\n") ? 1 : 1);
+		return (handle_error(FC_NO_ARG_E));
 	else
 	{
 		i++;
 		if (argc - 1 > i)
-			fc_editor_multi_arg(av[i], av[i + 1],
+			i = fc_editor_multi_arg(av[i], av[i + 1],
 								argc - 1 - i == 2 ? av[i + 2] : NULL, param);
 		else
-			exec_command(av[i], (history->len - 2), (history->len - 2));
+			i = exec_command(av[i], (history->len - 2), (history->len - 2));
 	}
-	return (0);
+	return (i);
 }

@@ -6,7 +6,7 @@
 #    By: midrissi <midrissi@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/10/09 12:43:35 by midrissi          #+#    #+#              #
-#    Updated: 2019/11/09 18:10:49 by tlechien         ###   ########.fr        #
+#    Updated: 2019/11/10 17:45:08 by tlechien         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,7 @@ ft_abs.c ft_get_color.c ft_percent.c ft_interpolate.c ft_split_count.c \
 ft_strcjoin.c ft_strsplitstr.c ft_count_words_str.c ft_lastindexof.c \
 ft_indexof.c ft_levenshtein.c ft_substr.c ft_isonly_digit.c ft_strlen2.c \
 ft_splitdup.c ft_min.c ft_max.c ft_nlastindexof.c ft_exit.c ft_isspace.c \
-ft_strreplace.c ft_rand.c
+ft_strreplace.c ft_rand.c ft_strdel2.c
 
 _END			=	\x1b[0m
 _BOLD			=	\x1b[1m
