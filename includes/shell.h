@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 16:42:03 by midrissi          #+#    #+#             */
-/*   Updated: 2019/11/09 18:48:57 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/11/10 17:09:20 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,8 @@
 # define TEST_BUILTIN		23
 # define AMBIGOUS_REDIRECT	25
 # define BAD_FD				26
+
+# define HISTORY			g_shell->history
 
 /*
 **	ERRORS

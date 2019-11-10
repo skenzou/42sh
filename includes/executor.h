@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 00:40:57 by midrissi          #+#    #+#             */
-/*   Updated: 2019/11/08 02:05:58 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/11/10 18:03:49 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,16 @@
 # define FC_LIST 		(1 << 2)
 # define FC_NO_NUMBER 	(1 << 3)
 # define FC_NO_EDITOR 	(1 << 4)
+# define FC_MALLOC_ERR		-10
+# define FC_CANT_OPEN		-9
+# define FC_NO_PATH			-8
+# define FC_NOT_FOUND		-7
+# define FC_BIN_NFOUND		-6
+# define FC_NO_EVENT		-5
+# define FC_TOO_MANY_ARGS	-4
+# define FC_ERR_PARAM		-3
+# define FC_NO_ARG_E		-2
+# define FC_NO_HISTORY		-1
 # define CHS_LEN 		8
 # define OP_TYPE		token->op_type
 
@@ -144,12 +154,12 @@ int					export_options(int ac, char **av);
 /*
 ** FC_BUILTIN.C
 */
+int					handle_error(int code);
 int					fc_builtin(int ac, char **cmd);
 /*
 ** FC_BUILTIN_EDITOR.c
 */
 int					fc_editor(int argc, char **argv, int param);
-
 /*
 ** FC_BUILTIN_EDITOR_UTILS.C
 */
