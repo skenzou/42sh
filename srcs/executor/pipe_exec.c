@@ -6,7 +6,7 @@
 /*   By: tlechien <tlechien@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/04 17:31:04 by tlechien          #+#    #+#             */
-/*   Updated: 2019/11/08 13:17:19 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/11/12 14:30:48 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ static	void	parent_end(t_pipe **begin, t_pipe *elem, int is_bg)
 		}
 		elem = elem->next;
 	}
+	ft_post_exec(NULL);
 }
 
 /*

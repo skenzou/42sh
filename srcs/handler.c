@@ -6,7 +6,7 @@
 /*   By: midrissi <midrissi@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/29 17:39:49 by midrissi          #+#    #+#             */
-/*   Updated: 2019/11/09 18:17:13 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/11/12 13:41:10 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,6 @@ char				**dup_env(char **env)
 			exit(0);
 	p[i] = NULL;
 	return (p);
-}
-
-int			debug(void)
-{
-	int fd;
-
-	return (fd = open("log.log", O_RDWR | O_APPEND | O_CREAT, 0666));
 }
 
 static inline void	before_read_line(char *buffer, t_cap *tcap)
@@ -99,14 +92,9 @@ int					handler(const char *input)
 	in = parse_aliases(in, in, in);
 	check_inhib(&in);
 	if (g_shell->inhib_mod == 2)
-	{
-		ft_strdel(&in);
-		return (1);
-	}
+		return (ft_strdel2(&in) || 1);
 	build_lexer(in, &g_shell->lexer);
 	ft_strdel(&in);
-	if (g_shell->print_flags & PRINT_LEXER)
-		print_lexer(g_shell->lexer);
 	ft_parse(g_shell->lexer);
 	redir = g_shell->redir;
 	handle_hdoc(redir);
