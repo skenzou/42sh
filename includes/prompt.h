@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 07:12:40 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/11/09 19:12:56 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/11/12 20:06:52 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -368,6 +368,7 @@ int							first_arg_completion(t_ab *comp, t_cap *tc,
 int							print_name(t_ab *autocomp, char *str, int i);
 int							process_completion(t_ab *autocomp);
 int							print_completion(t_ab *autocomp, int row, int i);
+int							multi_putstr_fd(char *s1, char *s2, char *s3);
 /*
 **	MAIN.C
 */
