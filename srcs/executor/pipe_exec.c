@@ -6,7 +6,7 @@
 /*   By: tlechien <tlechien@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/04 17:31:04 by tlechien          #+#    #+#             */
-/*   Updated: 2019/11/12 14:30:48 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/11/12 19:30:39 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,6 +126,8 @@ int				launch_pipe(t_pipe **begin, t_pipe *elem, int is_bg)
 		else if (elem->pid < 0)
 			shell_exit(FORK_ERR);
 		close(elem->fd[1]);
+		if (elem->redir)
+			go_to_next_cmd(g_shell->redir);
 		prev = elem;
 		elem = elem->next;
 	}
