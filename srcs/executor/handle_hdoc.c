@@ -29,7 +29,7 @@ static void		exec_hdoc(t_redir *redir, char *tmp_file)
 		input = read_line(g_shell->tcap);
 		if (g_shell->inhib_mod == 2 || !ft_strcmp(input, eof))
 			break ;
-		write(fd, input, ft_strlen(input));
+		write(fd, input, ft_strlen2(input));
 	}
 	g_shell->tcap->prompt = NULL;
 	(eof) ? ft_strdel(&eof) : 0;

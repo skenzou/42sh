@@ -26,7 +26,7 @@ int		init_autocomp(t_cap *tcap, t_ab *autocomp)
 		return (tputs(tcap->sound, 1, ft_put_termcaps) && 0);
 	else if (autocomp->len == 1)
 	{
-		i = ft_strlen(g_shell->autocomp->match);
+		i = ft_strlen2(g_shell->autocomp->match);
 		while (i--)
 			ft_delete_back(tcap);
 		ft_insert(g_shell->autocomp->data[0], tcap);

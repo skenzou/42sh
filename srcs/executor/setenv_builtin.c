@@ -18,7 +18,7 @@ int						get_indexof_key(char *key, char **env)
 	int len;
 
 	i = -1;
-	len = ft_strlen(key);
+	len = ft_strlen2(key);
 	while (env && env[++i])
 	{
 		if (!ft_strncmp(key, env[i], len))

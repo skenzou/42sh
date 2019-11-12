@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/27 17:27:48 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/11/09 17:53:11 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/11/12 18:12:54 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,8 +91,11 @@ int					main(int ac, char **av, char **env)
 	char	*string;
 
 	if (!~(tgetent(NULL, get_key_value("TERM", env))) || !init_struct(env) ||
-			init_pid() || init_alias(1) || init_fd_table())
+		init_pid() || init_alias(1) || init_fd_table())
+	{
+		ft_putstr_fd("Env undefined or malloc error.\n", 2);
 		return (-1);
+	}
 	ft_bzero((void *)g_shell->hash_table, TABLE_SIZE);
 	if (ac > 1)
 		check_flags(av, ac);

@@ -20,7 +20,7 @@ int		intern_completion(t_ab *autocomp, char *key)
 	int		index;
 
 	intern = g_shell->intern;
-	len = ft_strlen(key);
+	len = ft_strlen2(key);
 	i = -1;
 	ft_strcpy(autocomp->match, key);
 	while (intern && intern[++i])
@@ -32,7 +32,7 @@ int		intern_completion(t_ab *autocomp, char *key)
 			autocomp->ext[autocomp->len] = 'i';
 			ft_strncpy(autocomp->data[autocomp->len], intern[i], index);
 			autocomp->max_offset =
-		ft_max(autocomp->max_offset, ft_strlen(autocomp->data[autocomp->len]));
+		ft_max(autocomp->max_offset, ft_strlen2(autocomp->data[autocomp->len]));
 			autocomp->len++;
 		}
 	}
@@ -48,7 +48,7 @@ int		env_completion(t_ab *comp, char *k)
 
 	nv = g_shell->env_tmp;
 	i = -1;
-	len = ft_strlen(k);
+	len = ft_strlen2(k);
 	comp->max_offset = 0;
 	comp->len = 0;
 	ft_strcpy(comp->match, k);
@@ -60,7 +60,7 @@ int		env_completion(t_ab *comp, char *k)
 			comp->ext[comp->len] = 'e';
 			ft_strncpy(comp->data[comp->len], nv[i], o);
 			comp->max_offset = ft_max(comp->max_offset,
-											ft_strlen(comp->data[comp->len]));
+											ft_strlen2(comp->data[comp->len]));
 			comp->len++;
 		}
 	}
@@ -101,7 +101,7 @@ int		path_completion(t_ab *autocomp, char *key)
 	ft_bzero(path, BUFFSIZE);
 	if (~ft_indexof(key, '/'))
 	{
-		i = ft_strlen(key) - 1;
+		i = ft_strlen2(key) - 1;
 		while (key[i] && key[i] != '/')
 			i--;
 		ft_strcpy(autocomp->match, key + i + 1);

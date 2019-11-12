@@ -21,10 +21,10 @@ static void		unset_key(char *str)
 		shell_exit(MALLOC_ERR);
 	key_index = get_indexof_key(key, g_shell->env_tmp);
 	if (key_index >= 0)
-		g_shell->env_tmp = removekey(key, ft_strlen(key),
+		g_shell->env_tmp = removekey(key, ft_strlen2(key),
 											(const char **)g_shell->env_tmp);
 	else if ((get_indexof_key(key, g_shell->intern)) >= 0)
-		g_shell->intern = removekey(key, ft_strlen(key),
+		g_shell->intern = removekey(key, ft_strlen2(key),
 										(const char **)g_shell->intern);
 	ft_strdel(&key);
 }

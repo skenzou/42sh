@@ -23,10 +23,10 @@ static void		read_inhib(char inhib, char **word)
 		if (g_shell->inhib_mod == 2)
 			return ;
 		if (ft_strchr(input, inhib) || inhib == '\\')
-			input[ft_strlen(input) - 1] = '\0';
+			input[ft_strlen2(input) - 1] = '\0';
 		save = *word;
-		if (inhib == '\\' && (*word)[ft_strlen(*word) - 2] != ' ')
-			(*word)[ft_strlen(*word) - 1] = '\0';
+		if (inhib == '\\' && (*word)[ft_strlen2(*word) - 2] != ' ')
+			(*word)[ft_strlen2(*word) - 1] = '\0';
 		if (!(*word = ft_strjoin(*word, input)))
 			shell_exit(MALLOC_ERR);
 		free(save);
@@ -49,7 +49,7 @@ static void		exec_inhib(char inhib, char **str)
 	if (inhib != BSLASH && !(*str = ft_strjoin(*str, "\n")))
 		shell_exit(MALLOC_ERR);
 	else
-		(*str)[ft_strlen(*str) - 1] = '\n';
+		(*str)[ft_strlen2(*str) - 1] = '\n';
 	if (inhib != BSLASH)
 		free(save);
 	read_inhib(inhib, str);

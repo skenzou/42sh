@@ -49,7 +49,7 @@ static inline void	ft_exec_cut(t_cap *tc, t_cc *copy)
 	ft_bzero(copy->copied, BUFFSIZE);
 	ft_strncpy(copy->copied, tc->command + copy->from,
 												copy->to - copy->from);
-	while (++a < (int)ft_strlen(copy->copied))
+	while (++a < (int)ft_strlen2(copy->copied))
 		ft_delete_back(tc);
 }
 

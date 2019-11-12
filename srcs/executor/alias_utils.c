@@ -66,7 +66,7 @@ int			is_alias(char *key)
 	int	i;
 	int	len;
 
-	len = (key) ? ft_strlen(key) : 0;
+	len = (key) ? ft_strlen2(key) : 0;
 	if (!is_reserved(key))
 		return (-1);
 	i = -1;
@@ -89,7 +89,7 @@ char		*get_alias(char *key)
 	int		len;
 	char	*value;
 
-	len = (key) ? ft_strlen(key) : 0;
+	len = (key) ? ft_strlen2(key) : 0;
 	if (!is_reserved(key))
 		return (NULL);
 	if ((i = is_alias(key)) >= 0)

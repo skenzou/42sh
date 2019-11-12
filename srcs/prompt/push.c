@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 23:56:22 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/10/19 18:37:10 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/11/12 18:11:57 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ int		ft_add_n_char(char *buff, int pos, int len, t_cap *tcap)
 {
 	char	*tmp;
 
-	if (len > (int)ft_strlen(buff))
-		len = ft_strlen(buff);
+	if (len > (int)ft_strlen2(buff))
+		len = ft_strlen2(buff);
 	if (!(tmp = ft_strdup(tcap->command)))
 		return (-1);
 	ft_bzero(tcap->command, BUFFSIZE);
@@ -55,10 +55,6 @@ void	ft_clean_buff(t_cap *tcap)
 	}
 }
 
-/*
-** ouais ok xd
-*/
-
 int		ft_insert(char *buff, t_cap *tcap)
 {
 	int		position;
@@ -66,11 +62,11 @@ int		ft_insert(char *buff, t_cap *tcap)
 
 	if (!buff)
 		return (1);
-	if (tcap->char_len + ft_strlen(buff) >= BUFFSIZE - 2)
+	if (tcap->char_len + ft_strlen2(buff) >= BUFFSIZE - 2)
 		tputs(tcap->sound, 1, ft_put_termcaps);
 	else
 	{
-		len = ft_strlen(buff);
+		len = ft_strlen2(buff);
 		position = tcap->cursy * (tcap->cursx_max + 1) +
 			(tcap->cursx) - tcap->prompt_len;
 		ft_clear_all_lines(tcap);

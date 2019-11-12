@@ -19,7 +19,7 @@ static void		remove_escape(char **str, int *start)
 
 	is_newline = (*str)[*start + 1] == '\n';
 	tmp = *str;
-	if (!(*str = ft_strnew(ft_strlen(*str) - (1 - is_newline))))
+	if (!(*str = ft_strnew(ft_strlen2(*str) - (1 - is_newline))))
 		shell_exit(MALLOC_ERR);
 	ft_strncpy(*str, tmp, *start);
 	ft_strcpy(*str + *start, tmp + *start + 1 + is_newline);
@@ -32,7 +32,7 @@ static void		realloc_without_quotes(char **str, int start, int end)
 	char *tmp;
 
 	tmp = *str;
-	if (!(*str = ft_strnew(ft_strlen(*str) - 2)))
+	if (!(*str = ft_strnew(ft_strlen2(*str) - 2)))
 		shell_exit(MALLOC_ERR);
 	ft_strncpy(*str, tmp, start);
 	ft_strncpy((*str) + start, tmp + start + 1, end - start - 1);

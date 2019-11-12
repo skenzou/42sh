@@ -20,7 +20,7 @@ static int	find_first_occurrence(char *string)
 	history = g_shell->history;
 	i = history->len - 1;
 	while (i--)
-		if (!ft_strncmp(string, history->data[i], ft_strlen(string)))
+		if (!ft_strncmp(string, history->data[i], ft_strlen2(string)))
 			return (i);
 	return (-1);
 }

@@ -21,14 +21,14 @@ int	add_cmd_to_history(char *str, t_history *history)
 		return (-1);
 	while (str[i] && ft_isspace(str[i]))
 		i++;
-	if (i == ft_strlen(str))
+	if (i == ft_strlen2(str))
 		return (0);
 	if (history->len)
 		if (!ft_strcmp(str, history->data[history->len - 1]))
 			return (1);
 	if (!(history->data[history->len++] = ft_strdup(str)))
 		return (0);
-	history->data[history->len - 1][ft_strlen(str) - 1] = '\0';
+	history->data[history->len - 1][ft_strlen2(str) - 1] = '\0';
 	history->data[history->len] = NULL;
 	if (!write_history(str, history))
 		return (-1);
@@ -54,13 +54,13 @@ int	write_history(char *string, t_history *history)
 {
 	int fd;
 
-	if (!ft_strlen(string) || !ft_strcmp(string, " \n") ||
+	if (!ft_strlen2(string) || !ft_strcmp(string, " \n") ||
 		!ft_strcmp(string, "\n"))
 		return (1);
 	fd = open(history->file_name, O_RDWR | O_APPEND | O_CREAT, 0666);
 	if (fd > 0)
 	{
-		write(fd, string, ft_strlen(string) - 1);
+		write(fd, string, ft_strlen2(string) - 1);
 		ft_putchar_fd(1, fd);
 		close(fd);
 		return (1);

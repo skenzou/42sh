@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/26 00:44:20 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/11/08 00:57:07 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/11/12 18:17:39 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	create_file(char *name, char *path, t_ab *comp, char ext)
 		if (comp->data[comp->len])
 			ft_strdel(&comp->data[comp->len]);
 		comp->data[comp->len] = ft_strdup(file);
-		comp->max_offset = ft_max(comp->max_offset, ft_strlen(file));
+		comp->max_offset = ft_max(comp->max_offset, ft_strlen2(file));
 		comp->isdir = comp->isdir == 'd';
 		comp->ext[comp->len] = comp->isdir ? 'd' : ext;
 		comp->len++;
@@ -57,7 +57,7 @@ int		add_to_completion(t_ab *autocomp, char *path, char ext)
 	{
 		while ((d = readdir(dir)))
 			if ((d->d_name[0] != '.' || autocomp->match[0] == '.') &&
-			!ft_strncmp(d->d_name, autocomp->match, ft_strlen(autocomp->match)))
+		!ft_strncmp(d->d_name, autocomp->match, ft_strlen2(autocomp->match)))
 				create_file(d->d_name, complet_final_path, autocomp, ext);
 		closedir(dir);
 		return (1);
@@ -78,21 +78,21 @@ int		first_arg_completion(t_ab *autocomp, t_cap *tc, char *str, int position)
 	return (autocomp->len > 0);
 }
 
-int		print_name(t_ab *autocomp, char *str, int i)
+int		print_name(t_ab *comp, char *str, int i)
 {
-	if (i == autocomp->pos)
+	if (i == comp->pos)
 		ft_printf("\x1b[7m%s\x1b[0m", str);
-	else if (autocomp->ext[i] == 'd')
+	else if (comp->ext[i] == 'd')
 		ft_printf("\x1b[31m%s\x1b[0m", str);
-	else if (autocomp->ext[i] == 'c')
+	else if (comp->ext[i] == 'c')
 		ft_printf("\x1b[33m%s\x1b[0m", str);
-	else if (autocomp->ext[i] == 'i')
+	else if (comp->ext[i] == 'i')
 		ft_printf("\x1b[36m%s\x1b[0m", str);
-	else if (autocomp->ext[i] == 'e')
+	else if (comp->ext[i] == 'e')
 		ft_printf("\x1b[35m%s\x1b[0m", str);
 	else
 		ft_printf(str);
-	ft_move(g_shell->tcap, "!right", autocomp->max_offset - ft_strlen(str) + 2);
+	ft_move(g_shell->tcap, "!right", comp->max_offset - ft_strlen2(str) + 2);
 	return (1);
 }
 
@@ -117,6 +117,6 @@ char	file_name_ext(char *string, t_stat stats, char *name)
 		name[j++] = string[i++];
 	}
 	if (ext == 'd')
-		name[ft_strlen(name)] = '/';
+		name[ft_strlen2(name)] = '/';
 	return (ext);
 }

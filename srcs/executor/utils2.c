@@ -56,7 +56,7 @@ int						get_indexof_key2(char *key, char **env)
 	i = -1;
 	if (!(key = ft_strjoin(key, "=")))
 		shell_exit(MALLOC_ERR);
-	len = ft_strlen(key);
+	len = ft_strlen2(key);
 	while (env && env[++i])
 	{
 		if (!ft_strncmp(key, env[i], len))

@@ -51,10 +51,10 @@ int		read_file(char *file)
 		return (handle_error(FC_CANT_OPEN));
 	while ((ret = get_next_line(fd, &line, '\n')))
 	{
-		if (!(string = ft_strnew(ft_strlen(line) + 1)))
+		if (!(string = ft_strnew(ft_strlen2(line) + 1)))
 			return (handle_error(FC_MALLOC_ERR));
 		ft_strcpy(string, line);
-		string[ft_strlen(string)] = '\n';
+		string[ft_strlen2(string)] = '\n';
 		lex_del_list(&g_shell->lexer);
 		ft_putstr(string);
 		handler(string);

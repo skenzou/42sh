@@ -21,7 +21,7 @@ char			**removekey2(char *key, int keylen, const char **env)
 
 	if (!(key = ft_strjoin(key, "=")))
 		shell_exit(MALLOC_ERR);
-	keylen = ft_strlen(key);
+	keylen = ft_strlen2(key);
 	count = ft_split_count(env);
 	fresh_env = (char **)ft_memalloc(sizeof(char *) * (count + 1));
 	fresh_env == NULL ? shell_exit(MALLOC_ERR) : 0;
@@ -76,7 +76,7 @@ int				unsetenv_builtin(int ac, char **av)
 	key = ft_strjoin(av[1], "=");
 	key == NULL ? shell_exit(MALLOC_ERR) : 0;
 	if ((get_indexof_key(key, g_shell->env)) >= 0)
-		g_shell->env = removekey(key, ft_strlen(key),
+		g_shell->env = removekey(key, ft_strlen2(key),
 													(const char**)g_shell->env);
 	ft_strdel(&key);
 	if (same)

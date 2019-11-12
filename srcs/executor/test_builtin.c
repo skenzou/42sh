@@ -53,7 +53,7 @@ static	int		suit_unary_test(char **av, struct stat *buf)
 	else if (!ft_strcmp(av[1], "-x"))
 		return ((access(av[2], X_OK) != 0));
 	else if (!ft_strcmp(av[1], "-z"))
-		return ((ft_strlen(av[2]) != 0));
+		return ((ft_strlen2(av[2]) != 0));
 	else if (av[1][0] == '-')
 	{
 		ft_putstr_fd(av[0], 2);

@@ -27,7 +27,7 @@ char	*get_key_value(char *key, char **taba)
 			entry++;
 		free(key);
 		entry += (*entry == '=');
-		return (ft_strlen(entry) ? entry : NULL);
+		return (ft_strlen2(entry) ? entry : NULL);
 	}
 	free(key);
 	return (NULL);

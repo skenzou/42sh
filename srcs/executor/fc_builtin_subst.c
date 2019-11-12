@@ -20,10 +20,10 @@ static int				fc_execute_command(int index, char *string)
 	{
 		if (!~index || index > HISTORY->len - 1 || !HISTORY->len)
 			return (handle_error(FC_NO_HISTORY));
-		if (!(command = ft_strnew(ft_strlen(HISTORY->data[index]) + 1)))
+		if (!(command = ft_strnew(ft_strlen2(HISTORY->data[index]) + 1)))
 			return (handle_error(FC_MALLOC_ERR));
 		ft_strcpy(command, HISTORY->data[index]);
-		command[ft_strlen(HISTORY->data[index])] = '\n';
+		command[ft_strlen2(HISTORY->data[index])] = '\n';
 		lex_del_list(&g_shell->lexer);
 		if (!~add_cmd_to_history(command, HISTORY))
 			return (handle_error(FC_MALLOC_ERR) && !ft_strdel2(&command));
@@ -77,10 +77,10 @@ static int				fc_replace_in_command(int ac, int b, char **av)
 									arg_to_number(av[i], NULL, &to, NULL);
 	if (!~to || to > g_shell->history->len - 1 || !g_shell->history->len)
 		return (handle_error(FC_NO_HISTORY));
-	if (!(command = ft_strnew(ft_strlen(g_shell->history->data[to]) + 1)))
+	if (!(command = ft_strnew(ft_strlen2(g_shell->history->data[to]) + 1)))
 		return (handle_error(FC_MALLOC_ERR));
 	ft_strcpy(command, g_shell->history->data[to]);
-	command[ft_strlen(g_shell->history->data[to])] = '\n';
+	command[ft_strlen2(g_shell->history->data[to])] = '\n';
 	i = b - 1;
 	return (fc_replace(b, &command, av, ac));
 }

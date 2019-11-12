@@ -35,13 +35,13 @@ static char			*dollar_curly(char *old, char *ptr, int *i)
 	value = get_all_key_value(key, g_shell->env);
 	if (!value)
 		value = "";
-	len_after_brace = ft_strlen(str);
-	if (!(ptr = ft_strnew(*i + ft_strlen(value) + len_after_brace)))
+	len_after_brace = ft_strlen2(str);
+	if (!(ptr = ft_strnew(*i + ft_strlen2(value) + len_after_brace)))
 		shell_exit(MALLOC_ERR);
 	ft_strncpy(ptr, old, *i);
 	ft_strcat(ptr, value);
 	ft_strcat(ptr, str);
-	*i = *i + ft_strlen(value) - 1;
+	*i = *i + ft_strlen2(value) - 1;
 	free(key);
 	free(old);
 	return (ptr);
@@ -72,13 +72,13 @@ static char			*simple_dollar(char *old, char *ptr, int *i)
 	value = get_all_key_value(key, g_shell->env);
 	if (!value)
 		value = "";
-	len_after_exp = ft_strlen(ptr_after_exp);
-	if (!(ptr = ft_strnew(len_after_exp + ft_strlen(value) + *i)))
+	len_after_exp = ft_strlen2(ptr_after_exp);
+	if (!(ptr = ft_strnew(len_after_exp + ft_strlen2(value) + *i)))
 		shell_exit(MALLOC_ERR);
 	ft_strncpy(ptr, old, *i);
 	ft_strcat(ptr, value);
 	ft_strcat(ptr, ptr_after_exp);
-	*i = *i + ft_strlen(value) - 1;
+	*i = *i + ft_strlen2(value) - 1;
 	free(old);
 	free(key);
 	return (ptr);
@@ -89,7 +89,7 @@ void				param_expansion(char **ptr)
 	char	*str;
 	int		i;
 
-	if (!*ptr || ft_strlen(*ptr) == 0)
+	if (!*ptr || ft_strlen2(*ptr) == 0)
 		return ;
 	str = *ptr;
 	i = 0;
@@ -107,7 +107,7 @@ void				param_expansion(char **ptr)
 			str = simple_dollar(str, str + i, &i);
 		i++;
 	}
-	if (ft_strlen(str) == 0)
+	if (ft_strlen2(str) == 0)
 		ft_strdel(&str);
 	*ptr = str;
 }

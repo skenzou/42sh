@@ -22,7 +22,7 @@ void	get_tilde(char *path, char *final_path)
 	if (home && path[0] == '~')
 	{
 		ft_strcpy(final_path, home);
-		ft_strcpy(final_path + ft_strlen(home), path + 1);
+		ft_strcpy(final_path + ft_strlen2(home), path + 1);
 	}
 	else
 		ft_strcpy(final_path, path);

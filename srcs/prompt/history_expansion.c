@@ -25,9 +25,9 @@ static int		search_history(char *data, char *found, t_history *history)
 	while (++i < history->len)
 	{
 		ft_strcpy(string, history->data[history->len - i - 1]);
-		if ((len = ft_strlen(string)))
+		if ((len = ft_strlen2(string)))
 		{
-			if (!ft_strncmp(string, data, ft_strlen(data)))
+			if (!ft_strncmp(string, data, ft_strlen2(data)))
 			{
 				ft_strcpy(found, string);
 				return (1);
@@ -51,7 +51,7 @@ static int		word_expansion(char *string, t_cap *tcap, int index)
 	if (search_history(exp, result, history))
 	{
 		i = -1;
-		while (++i < (int)ft_strlen(exp) + 1)
+		while (++i < (int)ft_strlen2(exp) + 1)
 			ft_delete_back(tcap);
 		ft_insert(result, tcap);
 		return (1);

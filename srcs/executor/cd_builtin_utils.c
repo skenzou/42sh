@@ -49,7 +49,7 @@ char			*join_path(char *path, char *dir)
 
 	if (!path || !dir)
 		return (NULL);
-	if (path[ft_strlen(path) - 1] == '/')
+	if (path[ft_strlen2(path) - 1] == '/')
 		full_path = ft_strjoin(path, dir);
 	else
 		full_path = ft_strcjoin(path, dir, '/');

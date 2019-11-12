@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/22 20:28:50 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/11/08 01:01:09 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/11/12 16:11:34 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,12 @@ int		select_autocompletion(t_cap *tcap)
 	int	i;
 
 	tputs(tcap->clr_all_line, 1, ft_put_termcaps);
-	i = ft_strlen(g_shell->autocomp->match);
+	i = ft_strlen2(g_shell->autocomp->match);
 	while (i--)
 		ft_delete_back(tcap);
 	ft_insert(g_shell->autocomp->data[g_shell->autocomp->pos], tcap);
 	if (g_shell->autocomp->data[g_shell->autocomp->pos]
-	[ft_strlen(g_shell->autocomp->data[g_shell->autocomp->pos]) - 1] != '/')
+	[ft_strlen2(g_shell->autocomp->data[g_shell->autocomp->pos]) - 1] != '/')
 	{
 		if (g_shell->autocomp->after[0])
 			ft_insert(g_shell->autocomp->after, tcap);

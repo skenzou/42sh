@@ -27,7 +27,7 @@ int	histo_up(t_cap *tcap, t_history *h)
 	ft_clear_replace(tcap);
 	if (!(command = ft_strdup(h->data[h->len - h->position - 1])))
 		return (1);
-	if (!(len = ft_strlen(command)))
+	if (!(len = ft_strlen2(command)))
 	{
 		ft_strdel(&command);
 		return (1);
@@ -55,7 +55,7 @@ int	histo_down(t_cap *tcap, t_history *h)
 	ft_clear_replace(tcap);
 	if (!(command = ft_strdup(h->data[h->len - h->position - 1])))
 		return (1);
-	if (!(len = ft_strlen(command)))
+	if (!(len = ft_strlen2(command)))
 	{
 		ft_strdel(&command);
 		return (1);

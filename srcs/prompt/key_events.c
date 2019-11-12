@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/28 15:23:43 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/11/06 20:14:48 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/11/12 18:22:01 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int		enter_event(t_cap *tcap)
 	if (!autocomp->state)
 		return (-2);
 	tputs(tcap->clr_all_line, 1, ft_put_termcaps);
-	i = ft_strlen(g_shell->autocomp->match);
+	i = ft_strlen2(g_shell->autocomp->match);
 	while (i--)
 		ft_delete_back(tcap);
 	ft_insert(g_shell->autocomp->data[g_shell->autocomp->pos], tcap);
@@ -61,8 +61,7 @@ int		ctrl_r_event(t_cap *tcap)
 
 int		ctrl_d_event(t_cap *tcap)
 {
-	(void)tcap;
-	if (!g_shell->inhib_mod)
+	if (!g_shell->inhib_mod && !tcap->char_len)
 	{
 		save_alias(1);
 		kill_pids();

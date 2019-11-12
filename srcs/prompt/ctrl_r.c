@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ctrl_r.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aben-azz <aben-azz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aben-azz <aben-azz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 06:02:13 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/06/25 23:55:08 by aben-azz         ###   ########.fr       */
+/*   Updated: 2019/11/12 16:11:34 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int		add_buffer_ctrl_r(char *buffer, t_ctrl_r *ctrl_r)
 	int i;
 
 	i = -1;
-	while (++i < (int)ft_strlen(buffer))
+	while (++i < (int)ft_strlen2(buffer))
 		ctrl_r->data[ctrl_r->index++] = buffer[0];
 	ctrl_r->data[ctrl_r->index] = '\0';
 	return (clear_before_ctrl_r(g_shell->tcap, ctrl_r));
@@ -45,7 +45,7 @@ int		end_ctrl_r(t_ctrl_r *ctrl_r)
 	if (!ctrl_r->not_found)
 	{
 		ft_strcpy(tcap->command, ctrl_r->found);
-		tcap->char_len = ft_strlen(ctrl_r->found);
+		tcap->char_len = ft_strlen2(ctrl_r->found);
 	}
 	ctrl_r->not_found = 0;
 	ft_bzero(ctrl_r->found, BUFFSIZE);
@@ -67,12 +67,12 @@ int		search_ctrl_r(t_ctrl_r *ctrl_r, t_history *history)
 	while (++i < history->len)
 	{
 		ft_strcpy(string, history->data[history->len - i - 1]);
-		if ((len = ft_strlen(string)))
+		if ((len = ft_strlen2(string)))
 		{
 			if (!ft_strncmp(string, ctrl_r->data, ctrl_r->index))
 			{
 				ft_bzero(ctrl_r->found, BUFFSIZE);
-				ft_strncpy(ctrl_r->found, string, len - 1);
+				ft_strncpy(ctrl_r->found, string, len);
 				return (1);
 			}
 		}
