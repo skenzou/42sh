@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/28 15:35:56 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/11/09 18:56:00 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/11/12 20:07:53 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,17 @@
 int		ft_put_termcaps(int c)
 {
 	write(1, &c, 1);
+	return (1);
+}
+
+int		multi_putstr_fd(char *s1, char *s2, char *s3)
+{
+	if (s1)
+		ft_putstr_fd(s1, 0);
+	if (s2)
+		ft_putstr_fd(s2, 0);
+	if (s3)
+		ft_putstr_fd(s3, 0);
 	return (1);
 }
 

@@ -6,7 +6,7 @@
 /*   By: aben-azz <aben-azz@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/28 15:31:17 by aben-azz          #+#    #+#             */
-/*   Updated: 2019/11/12 16:06:43 by tlechien         ###   ########.fr       */
+/*   Updated: 2019/11/12 18:36:32 by tlechien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void	interrupt_tcap(void)
 	tcap->char_len = 0;
 	tcap->cursx = tcap->prompt_len;
 	tcap->cursy = 0;
+	g_shell->ctrl_r->state = 0;
 }
 
 /*
